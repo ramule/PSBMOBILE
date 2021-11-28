@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<div class="main bg-m">
+	<div class="right-main-column ">
+		<div class="right-col-container pad-b full-width">
+			<!-- ======== body page content start from here ======== -->
+			<div class="body-page-container main-dashborad manage-payee">
+				<div class="container-fluid">
+					<div class="row">
+						<div class="col-12 p-0">
+							<div class="breadcrumb">
+								<ul class="lst-breadcrumb">
+									<!-- <li> <a>My Accounts</a> </li>
+									<li [routerLink]="['/myBorrowings']"> <a>My Borrowings</a> </li>
+									<li [routerLink]="['/loanDetails']"> <a> Loan Account Details</a> </li>
+									<li> Pay EMI </li> -->
+									<li *ngFor="let name of DataService.breadcrumblist">
+										<a (click)="DataService.breadcrumroute(name.routeName)">{{name.currentRoute | translate}}</a>
+								</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+					<!--.row -->
+					<div class="vspacer15 customize d-none d-md-block d-lg-block d-xl-block"></div>
+					<div class="row no-gutters">
+						<div class="col-12">
+							<div class="row1">
+								<div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-9">
+									<!-- Greencard2 Start here -->
+									<div class="greencard2">
+										<div class="row1 hide-m">
+											<div class="col-md-8 col-12">
+												<h4>Pay EMI</h4> </div>
+											<div class="col-md-4 col-12"> </div>
+										</div>
+										<div class="row1">
+											<div class="col-sm-12 col-12 col-md-12">
+												<div class="white-box2 mb-3 mt-0 pad-custom2">
+													<div class="col-12 ">
+														<div class="row1">
+															<div class="col-12 emi-row" [ngClass]="{'active': payMethod == 'overdue'}">
+																<div class="row1">
+																	<div class="col-8">
+																		<div class="emi-selection">
+																			<div class="ux-selection" [class.disablePointer]="overDueAmt == 0">
+																				<label class="ux-selection2"> Pay Overdue Amount
+																					<input type="radio" (change)='onTypeChange("overdue")' [checked]="payMethod == 'overdue'" name="pay-emi-radio" [(ngModel)]="payAmt.mode" value="overDue" > <span class="checkmark"></span> </label>
+																			</div>
+																		</div>
+																	</div>
+																	<div class="col-4">
+																		<div class="emi-selection">
+																			<p>{{overDueAmt | customcurrency }}</p>
+																		</div>
+																	</div>
+																</div>
+															</div>
+															<div class="col-12 p-0">
+																<div class="ux-input mt-1 mb-3">
+																	<!-- <p class="info-message">Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum</p> -->
+																	<p class="error-message"></p>
+																</div>
+															</div>
+														</div>
+													</div>
+													<div class="col-12">
+														<div class="row1">
+															<div class="col-12 emi-row"  [ngClass]="{'active': payMethod == 'emidue'}">
+																<div class="row1">
+																	<div class="col-8">
+																		<div class="emi-selection">
+																			<div class="ux-selection">
+																				<label class="ux-selection2"> Pay EMI 
+																					<input type="radio"   (change)='onTypeChange("emidue")'  [checked]="payMethod == 'emidue'" name="pay-emi-radio" [(ngModel)]="payAmt.mode" value="emiDue" > <span class="checkmark"></span> </label>
+																			</div>
+																		</div>
+																	</div>
+																	<div class="col-4">
+																		<div class="emi-selection">
+																			<p>{{emiDtl.flowAmount | customcurrency}}</p>
+																		</div>
+																	</div>
+																</div>
+															</div>
+															<div class="col-12 p-0">
+																<div class="ux-input mt-1 mb-3">
+																	<!-- <p class="info-message">Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum</p> -->
+																	<p class="error-message"></p>
+																</div>
+															</div>
+														</div>
+													</div>
+													<div class="col-12" >
+														<div class="row1">
+															<div class="col-12 emi-row" [ngClass]="{'active': payMethod == 'advance'}">
+															
+																<div class="row1">
+																	<div class="col-8">
+																		<div class="emi-selection">
+																			<div class="ux-selection">
+																				<label class="ux-selection2"> Pay Advance Amount
+																					<input type="radio" name="pay-emi-radio" [(ngModel)]="payAmt.mode" [checked]="payMethod == 'advance'" value="advEmi" (change)='onTypeChange("advance")' > <span class="checkmark"></span> </label>
+																			</div>
+																		</div>
+																	</div>
+																	<div class="col-4">
+																		<form [formGroup]="advanceEmiForm">
+																		<div class="emi-selection" [class.disablePointer]="payMethod != 'advance'" >
+																			<input type="text" placeholder="₹ 0.00" [ngClass]="advanceEmiForm.invalid ? 'error' : '' " [(ngModel)]="payAdvEmi"  formControlName="amount" limit-to="12" (blur)="formatCurrency($event.target.value)" id="amt" data-a-sign="Rs." (input)="OnInput($event.target.value)">
+																		</div>
+																	</form >
+																	</div>
+																</div>
+															</div>
+															<div class="col-12 p-0">
+																<div class="ux-input mt-1">
+																	<!-- <p class="info-message">Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum</p> -->
+																	<p class="error-message" *ngIf="advanceEmiForm.controls['amount'].hasError('required') && (advanceEmiForm.controls['amount'].dirty || advanceEmiForm.controls['amount'].touched)"> {{"REQUIRED_MSG" | translate}} </p>
+
+																</div>
+															</div>
+														</div>
+													</div>
+												</div>
+											</div>
+											<div class="col-12 col-md-12">
+												<ul class="bottom-footer1">
+													<li>
+														<div class="btn-div">
+															<button class="ux-button secondary sm-mob" (click)="goToPage('myBorrowings')" >Cancel</button>
+														</div>
+														<div class="btn-div">
+															<button class="ux-button primary sm-mob" (click)="goToPage('sendMoneyLoan')"  >Pay Now</button>
+														</div>
+													</li>
+												</ul>
+											</div>
+										</div>
+									</div>
+									<!-- Greencard2 End here -->
+								</div>
+								<!-- Right Column Ads Start -->
+								<div class="col-12 col-md-12 col-lg-12 col-xl-3 d-none d-xl-block">
+									<div class="right-ads">
+										<a> <img src="assets/images/banner/my-card-banner.jpg"> </a>
+									</div>
+									<!-- <div class="vspacer30"></div> -->
+									<!-- <div class="offers-card">
+											<div class="header-block clearfix">
+												<h5>Offers on your card</h5>
+											</div>
+
+											<div class="panel-body">
+												<div class="recentpayment-control">
+													<ul>
+													    <li>
+															<img src="assets/images/banner/offer-banner.png">
+														</li>
+													</ul>
+												</div> 
+											 </div>
+										</div>  --></div>
+								<!-- Right Column Ads Ends -->
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!--.right-col-container-->
+	</div>
+	<!--.right-main-column-->
+</div>
+<!-- main -->

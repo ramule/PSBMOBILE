@@ -1,0 +1,124 @@
+<div class="main bg-m">
+	<!-- header section End -->
+	<div class="right-main-column ">
+		<div class="right-col-container pad-b full-width">
+			<!-- ======== body page content start from here ======== -->
+			<div class="body-page-container main-dashborad manage-payee">
+				<div class="container-fluid">
+					<div class="row">
+						<div class="col-12 p-0">
+							<div class="breadcrumb">
+								<ul class="lst-breadcrumb">
+									<!-- <li> <a href="javascript:;">Social Securities</a> </li>
+									<li [routerLink]="['/pmsbyDetails']"> <a href="javascript:;">PMSBY</a> </li>
+									<li>Overview</li> -->
+									<li *ngFor="let name of DataService.breadcrumblist">
+										<a (click)="DataService.breadcrumroute(name.routeName)">{{name.currentRoute | translate}}</a>
+								</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+					<!--.row -->
+					<div class="vspacer15 customize d-none d-md-block d-lg-block d-xl-block"></div>
+					<div class="row no-gutters">
+						<div class="col-12">
+							<div class="row1">
+								<div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-9">
+									<!-- Greencard2 Start here -->
+									<div class="greencard2">
+										<div class="row1 hide-m">
+											<div class="col-md-8 col-12">
+												<h4>Overview</h4> </div>
+											<div class="col-md-4 col-12"> </div>
+										</div>
+										<div class="row1">
+											<div class="col-sm-12 col-12 col-md-12">
+												<div class="mar-t result-container1">
+													<!-- <h6 class="pmsby-info">Insurance will be active only after submission of signed hard copy of Pradhan mantri jeevan Jyoti Bima Yojana form in the branch.</h6> -->
+													<div class="info-bottom pad-custom pad-custom-setting">
+
+														<div class="info-details">
+															  <div class="row">
+																  <h6>Scheme</h6>
+																  <h5>{{overviewDetails.scheme}}</h5>
+															   </div>
+														  </div>
+														  <div class="info-details">
+															  <div class="row">
+																  <h6>Name</h6>
+																  <h5>{{overviewDetails.name}}</h5>
+																</div>
+														  </div>
+														  <div class="info-details">
+															  <div class="row">
+																  <h6>Date of Birth</h6>
+																  <h5>{{overviewDetails.dob}}</h5>
+															  </div>
+														  </div>
+														  <div class="info-details">
+															  <div class="row">
+																  <h6>Nominee Name</h6>
+																  <h5>{{overviewDetails.nomineeName}}</h5>
+															  </div>
+														  </div>
+														  <div class="info-details">
+															  <div class="row">
+																  <h6> Debit Account </h6>
+																  <h5>{{overviewDetails.debitAccount}}</h5>
+															  </div>
+														  </div>
+														  <div class="info-details">
+															  <div class="row">
+																  <h6> Date of Enrollment </h6>
+																  <h5>{{overviewDetails.dateOfEnrollment}}</h5>
+															  </div>
+														  </div>
+														  <div class="info-details">
+															  <div class="row">
+																  <h6> Premium Amount </h6>
+																  <h5>{{overviewDetails.premiumAmount | customcurrency}}</h5>
+															  </div>
+														  </div>
+													   </div>
+												</div>
+											</div>
+											<div class="col-12 col-md-12">
+												<div class="row1">
+													<div class="col-md-12 col-xl-12 col-lg-12 col-12">
+														<ul class="bottom-footer1">
+															<li>
+																<div class="btn-div">
+																	<button class=" ux-button secondary sm-mob" (click)="goToPage('pmsby')" >Cancel</button>
+																</div>
+																<div class="btn-div">
+																	<button class=" ux-button primary sm-mob" (click)="goToPage('pmsbyAuthorization')" >Confirm</button>
+																</div>
+															</li>
+														</ul>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+									<!-- Greencard2 End here -->
+								</div>
+								<!-- Right Column Ads Start -->
+								<div class="col-12 col-md-12 col-lg-12 col-xl-3 d-none d-xl-block">
+									<div class="right-ads">
+										<a > <img src="assets/images/banner/my-card-banner.jpg"> </a>
+									</div>
+									<div class="vspacer30"></div>
+								</div>
+								<!-- Right Column Ads Ends -->
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!--.right-col-container-->
+	</div>
+	<!--.right-main-column-->
+</div>
+<!-- main -->

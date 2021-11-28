@@ -1,0 +1,565 @@
+<div class="main bg-m">
+	<div class="nav-overlay"></div>
+	<!-- End Global Nav -->
+	<div class="right-main-column ">
+		<div class="right-col-container full-width">
+			<div class="body-page-container main-dashborad manage-payee">
+				<div class="container-fluid">
+					<div class="row">
+						<div class="col-12 p-0">
+							<div class="breadcrumb">
+								<ul class="lst-breadcrumb">
+									<!-- <li> <a href="">Social securities </a> </li>
+									<li> PMJJBY </li> -->
+									<li *ngFor="let name of DataService.breadcrumblist"> <a (click)="DataService.breadcrumroute(name.routeName)">{{name.currentRoute | translate}}</a> </li>
+								</ul>
+							</div>
+						</div>
+					</div>
+					<div class="vspacer15 customize d-none d-md-block d-lg-block d-xl-block"></div>
+					<div class="row no-gutters">
+						<div class="col-12">
+							<div class="row1">
+								<div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-9">
+									<!-- Greencard2 Start here -->
+									<div class="greencard2">
+										<div class="row1">
+											<div class="col-sm-12 col-12 col-md-12">
+												<div class="widget-box5 mb-3">
+													<div class="bg-white1 pad-custom5 clearfix">
+														<div class="pension-yojna-block clearfix">
+															<div class="steps-block" [ngStyle]="{display : navStepClose ? 'block' : 'none' }"> <span class="close" (click)="close()"><img
+																			src="assets/images/svg/close-b.svg"></span>
+																<ul>
+																	<li class="active" *ngFor="let pmjjbyStepsDetails of pmjjby ; index as i" [ngClass]="{'active':pmjjbyStepsDetails.stepActive,'completed':pmjjbyStepsDetails.stepStatus === 'completed' , 'inprogress':pmjjbyStepsDetails.stepStatus === 'inprogress'}">
+																		<input type="radio" [value]="pmjjbyStepsDetails.tabName" [(ngModel)]="pmjjbyStepsDetails.tabName" name="steps" [checked]="pmjjbyStepsDetails.stepActive" (change)="onstepChange(pmjjbyStepsDetails.tabName , pmjjbyStepsDetails.stepIndex )"> <span class="step-number" *ngIf="pmjjbyStepsDetails.stepStatus != 'completed'">{{pmjjbyStepsDetails.stepIndex}}</span> <span class="step-number" *ngIf="pmjjbyStepsDetails.stepStatus == 'completed'"><div class="icon"></div></span> <b class="step-name"> {{pmjjbyStepsDetails.stepName}}</b> </li>
+																</ul>
+															</div>
+															<!-- steps-block -->
+															<div class="tab-block">
+																<div id="1" *ngIf="activeTab =='step1'" [ngClass]="activeTab =='step1' ? 'tempstep active' : 'tempstep' ">
+																	<div class="row1">
+																		<div class="col-12 col-lg-12 col-md-12 col-sm-12 position-static">
+																			<div class="row">
+																				<div class="col-12 position-static">
+																					<ul class="step-list">
+																						<li class="step-matched"> <em> <span
+																								 class="primary">STEP 1 </span> <span class="secondary">of STEP 3</span>
+																							 </em> </li>
+																					</ul>
+																					<div class="tab-header">
+																						<h4>Pradhan Mantri Jeeevan Jyoti Bima Yojana(PMJJBY)</h4> </div>
+																				</div>
+																				<!-- col-12 position-static -->
+																				<div class="col-12">
+																					<div class="details-section">
+																						<div class="row1">
+																							<div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+																								<h5> Personal Details </h5> </div>
+																						</div>
+																						<div class="row1">
+																							<div class="col-12 ">
+																								<div class="ux-selection mt-3 ux-input">
+																									<label class="ux-selection1">I confirm that I have not enrolled for PMJJBY account in any other institution/elsewhere
+																										<input type="checkbox" [checked]="isStep1ConfirmCheckboxChange" name="radioboxdemo" (change)="onCheckboxValChange()"> <span class="checkmark"></span>
+																										<!-- <input type="checkbox" name="radioboxdemo"> <span class="checkmark"></span> -->
+																										<p class="error-message" *ngIf="!isStep1ConfirmCheckboxChange">Please provide confirmation</p>
+																									</label>
+																								</div>
+																							</div>
+																						</div>
+																						<div class="row1">
+
+																							<div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+																								<div class="ux-input ux-disabled">
+																									<label>Full Name</label>
+																									<input type="text" placeholder="Enter your Full Name" disabled [value]="customerData.custName | titlecase" class="pr-2">
+																									<p class="error-message"> </p>
+																								</div>
+																							</div>
+																							<div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 gen-column">
+																								<div class="ux-input ux-disabled">
+																									<label>Gender</label>
+																									<input type="text" placeholder="Enter Gander" disabled [value]="customerData.gender" class="pr-2">
+																									<p class="error-message"> </p>
+																								</div>
+																							</div>
+																							<div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
+																								<div class="ux-input ux-disabled">
+																									<label>Date of Birth</label>
+																									<input type="text" placeholder="Enter your Birth Date" disabled [value]="customerData.custBirthDate">
+																									<p class="error-message"> </p>
+																								</div>
+																							</div>
+
+																						</div>
+																						<div class="row1">
+																							<div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+																								<div class="permanent-address"> Permanent Address</div>
+																								<p class="error-message"> </p>
+																							</div>
+																						</div>
+																						<div class="row1">
+																							<div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
+																								<div class="ux-input ux-disabled">
+																									<label>Address Line 1</label>
+																									<input type="text" placeholder="Enter Address" disabled [value]="customerData.add1">
+																									<p class="error-message"> </p>
+																								</div>
+																							</div>
+																							<div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
+																								<div class="ux-input ux-disabled">
+																									<label>Address Line 2</label>
+																									<input type="text" placeholder="Enter Address" disabled [value]="customerData.add2">
+																									<p class="error-message"> </p>
+																								</div>
+																							</div>
+																						</div>
+																						<div class="row1">
+
+																							<div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
+																								<div class="ux-input ux-disabled">
+																									<label>State</label>
+																									<!-- <select required disabled>
+																										<option value="" selected> Select State </option>
+																										<option value="Def"> Def </option>
+																										<option value="Ghi"> Ghi </option>
+																									</select> -->
+																									<input type="text" disabled [value]="DataService.custProfileStateCityObj.state">
+																									<p class="error-message"> </p>
+																								</div>
+																							</div>
+																							<div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
+																								<div class="ux-input ux-disabled">
+																									<label>City</label>
+																									<!-- <select required disabled>
+																										<option value="" selected> Select City </option>
+																										<option value="Def"> Def </option>
+																										<option value="Ghi"> Ghi </option>
+																									</select> -->
+																									<input type="text" disabled [value]="DataService.custProfileStateCityObj.city">
+																									<p class="error-message"> </p>
+																								</div>
+																							</div>
+																						</div>
+																						<div class="row1">
+																							<div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
+																								<div class="ux-input ux-disabled">
+																									<label>{{'PIN' | translate}}</label>
+																									<input type="text" placeholder="Enter Pin" disabled [value]="customerData.pin">
+																									<p class="error-message"> </p>
+																								</div>
+																							</div>
+                                              <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
+																								<div class="ux-input ux-disabled">
+																									<label>{{'AADHAAR_CARD' | translate}}</label>
+																									<input type="text" placeholder="Enter Pin" disabled [value]="this.commonMethod.maskNumber(customerData.addharCard)">
+																									<p class="error-message"> </p>
+																								</div>
+																							</div>
+																						</div>
+																					</div>
+																					<!-- details-section -->
+																				</div>
+																				<!-- col-12 -->
+																				<div class="col-12 col-lg-12 col-md-12 col-sm-12 position-static">
+																					<div class="ux-footer border-n">
+																						<div class="row1">
+																							<div class="col-12 col-md-12">
+																								<ul class="bottom-footer1">
+																									<li>
+																										<div class="btn-div custom-mar text-left">
+																											<button class="ux-button secondary sm-mob cancel-btn" (click)="goToPage('pmjjby')">Cancel</button>
+																										</div>
+																										<div class="btn-div custom-mar">
+																											<button class="ux-button primary sm-mob" (click)="nextstep(1)">Next</button>
+																										</div>
+																									</li>
+																								</ul>
+																							</div>
+																						</div>
+																					</div>
+																				</div>
+																			</div>
+																		</div>
+																	</div>
+																</div>
+																<!-- tempstep 1 -->
+																<div id="2" *ngIf="activeTab =='step2'" [ngClass]="activeTab =='step2' ? 'tempstep active' : 'tempstep' ">
+																	<form [formGroup]="additionalDetailsForm">
+																		<div class="row1">
+																			<div class="col-12 col-lg-12 col-md-12 col-sm-12 position-static">
+																				<div class="row">
+																					<div class="col-12 position-static">
+																						<ul class="step-list">
+																							<li class="step-matched"> <em> <span
+																								 class="primary">STEP 2 </span> <span class="secondary">of STEP 3</span>
+																						 	</em>
+																						</li>
+																						</ul>
+																					 <div class="tab-header">
+																							<h4>Pradhan Mantri Jeeevan Jyoti Bima Yojana(PMJJBY)</h4> </div>
+																					</div>
+																					<!-- col-12 position-static -->
+																					<div class="col-12">
+																						<div class="details-section">
+																							<div class="row1">
+																								<div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+																									<h5>
+																										Additional Details
+																									</h5>
+																								</div>
+																							</div>
+																							<div class="row1" >
+																								<div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
+																									<div class="ux-input">
+																										<label>Nominee Name</label>
+																										<input type="text" value="Sunita Madhuvan" placeholder="Enter Name" formControlName="nomineeName">
+																										<!-- <p class="info-message greentext"> Nominee can only be your spouse</p> -->
+																										<p class="error-message" *ngIf="additionalDetailsForm.controls['nomineeName'].hasError('required') && (additionalDetailsForm.controls['nomineeName'].dirty || additionalDetailsForm.controls['nomineeName'].touched)">This field is required</p>
+																										<p class="error-message" *ngIf="additionalDetailsForm.controls['nomineeName'].hasError('pattern') && (additionalDetailsForm.controls['nomineeName'].dirty || additionalDetailsForm.controls['nomineeName'].touched)"> Only characters are allowed</p>
+																									</div>
+																								</div>
+																								<div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
+																									<div class="ux-input">
+																										<label>{{'RELATIONSHIP_WITH_AC_HOLDER' | translate }}</label>
+																										<select name='nomineeRelation' formControlName="relationship">
+																											<option value="">{{'SELECT_RELATION' | translate }}</option>
+																											<option *ngFor="let relationShip of relationShipList" [value]="relationShip.ref_code">{{relationShip.DESCRIPTION}}</option>
+																										</select>
+																										<p class="error-message" *ngIf="additionalDetailsForm.controls['relationship'].hasError('required') && (additionalDetailsForm.controls['relationship'].dirty || additionalDetailsForm.controls['relationship'].touched)">This field is required</p>
+																									</div>
+																								</div>
+																							</div>
+																							<div class="row1">
+																								<div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
+																									<div class="ux-input">
+																										<label>Nominee Aadhar Card</label>
+																										<input type="text" numbersOnly autocomplete="off" limit-to="12" placeholder="Enter Aadhaar Number" formControlName="aadharNumber">
+																										<p class="error-message" *ngIf="additionalDetailsForm.controls['aadharNumber'].hasError('required') && (additionalDetailsForm.controls['aadharNumber'].dirty || additionalDetailsForm.controls['aadharNumber'].touched)">This field is required</p>
+																										<p class="error-message" *ngIf="additionalDetailsForm.controls['aadharNumber'].hasError('minlength') && (additionalDetailsForm.controls['aadharNumber'].dirty || additionalDetailsForm.controls['aadharNumber'].touched)"> Please enter 12 digit aadhar card number </p>
+																									</div>
+																								</div>
+																								<div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
+																									<div class="ux-input">
+																										<label> Date of Birth</label>
+																										<input type="text" formControlName="dob" readonly [owlDateTime]="dt1" [owlDateTimeTrigger]="dt1" class="datepicker1" placeholder="DD/MM/YYYY" (ngModelChange)="onDateChange($event)" [max]="currentDate"> <em class="calendar-enable"></em>
+																										<owl-date-time [pickerType]="'calendar'" #dt1></owl-date-time><em class=" calendar-ic cal-top" [owlDateTimeTrigger]="dt1"></em> <em class=" calendar-ic cal-top"></em> <span class="errormsg" *ngIf="additionalDetailsForm.controls['dob'].hasError('required') && additionalDetailsForm.controls['dob'].touched">{{ 'ENTER_DATE_OF_BIRTH' | translate }}</span>
+																										<!-- <p class="text-danger"> Nominee is minor</p>
+																										<p class="error-message"> </p> -->
+																									</div>
+																								</div>
+																							</div>
+																							<div class="row1" >
+																								<div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+																									<div class="ux-input">
+																										<h6>Nominee address</h6>
+																										<div class="ux-selection1 mar-rcustom pt-2 "style="display:none">
+																											<label>Same as applicant Permanent address
+																												<input type="checkbox" name="communicationAddress" formControlName="communicationAddress" (click)="onNomineeAddCheckboxCheck()"> <span class="checkmark setcheckbox"></span> </label>
+																										</div>
+																									</div>
+																								</div>
+																							</div>
+                                              <div class="row1" >
+                                                <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
+                                                  <div [ngClass]="isNomineeAddCheckBoxChecked ? 'ux-input ux-disabled' : 'ux-input'">
+                                                    <label>Address</label>
+                                                    <input type="text" placeholder="Enter Address line 1" limit-to="25" formControlName="nomineeAddress1">
+                                                    <p class="error-message" *ngIf="additionalDetailsForm.controls['nomineeAddress1'].hasError('required') && (additionalDetailsForm.controls['nomineeAddress1'].dirty || additionalDetailsForm.controls['nomineeAddress1'].touched)">This field is required</p>
+                                                  </div>
+                                                </div>
+                                                <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
+                                                  <div [ngClass]="isNomineeAddCheckBoxChecked ? 'ux-input ux-disabled' : 'ux-input'">
+                                                    <label>{{'STATE' | translate }}</label>
+                                                    <select *ngIf="!isNomineeAddCheckBoxChecked" formControlName="nomineeState" (change)="getNomineeCity($event.target.value)">
+                                                      <option value="">{{'SELECT_STATE' | translate }}</option>
+                                                      <option *ngFor="let stateDtl of stateNomineeList" [value]="stateDtl.ID">{{stateDtl.state}}</option>
+                                                    </select>
+                                                    <input *ngIf="isNomineeAddCheckBoxChecked" type="text" formControlName="nomineeState">
+                                                    <p class="error-message" *ngIf="additionalDetailsForm.controls['nomineeState'].hasError('required') && (additionalDetailsForm.controls['nomineeState'].dirty || additionalDetailsForm.controls['nomineeState'].touched)">This field is required</p>
+                                                  </div>
+                                                </div>
+                                              </div>
+                                              <div class="row1" >
+                                                <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
+                                                  <div [ngClass]="isNomineeAddCheckBoxChecked ? 'ux-input ux-disabled' : 'ux-input'">
+                                                    <label>{{'CITY' | translate }}</label>
+                                                    <select *ngIf="!isNomineeAddCheckBoxChecked" formControlName="nomineeCity">
+                                                      <option value="">{{'SELECT_CITY' | translate }}</option>
+                                                      <option *ngFor="let cityDtl of nomineeCityList" [value]="cityDtl.ID">{{cityDtl.city}}</option>
+                                                    </select>
+                                                    <input *ngIf="isNomineeAddCheckBoxChecked" type="text" formControlName="nomineeCity">
+                                                    <p class="error-message" *ngIf="additionalDetailsForm.controls['nomineeCity'].hasError('required') && (additionalDetailsForm.controls['nomineeCity'].dirty || additionalDetailsForm.controls['nomineeCity'].touched)">This field is required</p>
+                                                  </div>
+                                                </div>
+                                                <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
+                                                  <div [ngClass]="isNomineeAddCheckBoxChecked ? 'ux-input ux-disabled' : 'ux-input'">
+                                                    <label>PIN</label>
+                                                    <input type="text" placeholder="Enter PIN" formControlName="nomineePin" numbersOnly limit-to="6" autocomplete="off" >
+                                                    <p class="error-message" *ngIf="additionalDetailsForm.controls['nomineePin'].hasError('required') && (additionalDetailsForm.controls['nomineePin'].dirty || additionalDetailsForm.controls['nomineePin'].touched)">This field is required</p>
+                                                  </div>
+                                                </div>
+                                              </div>
+                                              <div *ngIf="minorFlag">
+                                                <div class="row1">
+                                                  <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 my-3">
+                                                    <h6>Please Provide Guardian Details </h6> </div>
+                                                </div>
+                                                <div class="row1">
+                                                  <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
+                                                    <div class="ux-input">
+                                                      <label>Guardian Name</label>
+                                                      <input type="text" placeholder="Enter Guardian Name" limit-to="25" formControlName="guardianName">
+                                                      <p class="error-message" *ngIf="additionalDetailsForm.controls['guardianName'].hasError('required') && (additionalDetailsForm.controls['guardianName'].dirty || additionalDetailsForm.controls['guardianName'].touched)">This field is required</p>
+                                                        <p class="error-message" *ngIf="additionalDetailsForm.controls['guardianName'].hasError('pattern') && (additionalDetailsForm.controls['guardianName'].dirty || additionalDetailsForm.controls['guardianName'].touched)"> Only characters are allowed</p>
+                                                    </div>
+                                                  </div>
+                                                  <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
+                                                    <div class="ux-input">
+                                                      <label>{{'GUARDIAN_TYPE' | translate }}</label>
+                                                      <select formControlName="guardianType">
+                                                        <option value=""> Select Guardian Type </option>
+                                                        <option *ngFor="let gardian of relationShipList" [value]="gardian.ref_code">{{gardian.DESCRIPTION}}</option>
+                                                      </select>
+                                                      <p class="error-message" *ngIf="additionalDetailsForm.controls['guardianType'].hasError('required') && (additionalDetailsForm.controls['guardianType'].dirty || additionalDetailsForm.controls['guardianType'].touched)">This field is required</p>
+                                                    </div>
+                                                  </div>
+                                                </div>
+                                                <div class="row1">
+                                                  <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
+                                                    <div class="ux-input">
+                                                      <label>Address</label>
+                                                      <input type="text" placeholder="Enter Address line 1" formControlName="guardianAddress1">
+                                                      <p class="error-message" *ngIf="additionalDetailsForm.controls['guardianAddress1'].hasError('required') && (additionalDetailsForm.controls['guardianAddress1'].dirty || additionalDetailsForm.controls['guardianAddress1'].touched)">This field is required</p>
+                                                    </div>
+                                                  </div>
+                                                  <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
+                                                    <div class="ux-input">
+                                                      <label>{{'STATE' | translate }}</label>
+                                                      <select formControlName="guardianState" (change)="getGuardianCity($event.target.value)">
+                                                        <option value="">{{'SELECT_STATE' | translate }}</option>
+                                                        <option *ngFor="let stateDtl of stateGuardianList" [value]="stateDtl.ID">{{stateDtl.state}}</option>
+                                                      </select>
+                                                      <p class="error-message" *ngIf="additionalDetailsForm.controls['guardianState'].hasError('required') && (additionalDetailsForm.controls['guardianState'].dirty || additionalDetailsForm.controls['guardianState'].touched)">This field is required</p>
+                                                    </div>
+                                                  </div>
+                                                </div>
+                                                <div class="row1">
+                                                  <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
+                                                    <div class="ux-input">
+                                                      <label>{{'CITY' | translate }}</label>
+                                                      <select formControlName="guardianCity">
+                                                        <option value="">{{'SELECT_CITY' | translate }}</option>
+                                                        <option *ngFor="let cityDtl of guardianCityList" [value]="cityDtl.ID">{{cityDtl.city}}</option>
+                                                      </select>
+                                                      <p class="error-message" *ngIf="additionalDetailsForm.controls['guardianCity'].hasError('required') && (additionalDetailsForm.controls['guardianCity'].dirty || additionalDetailsForm.controls['guardianCity'].touched)">This field is required</p>
+                                                    </div>
+                                                  </div>
+                                                  <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
+                                                    <div class="ux-input">
+                                                      <label>PIN</label>
+                                                      <input type="text" placeholder="Enter PIN" formControlName="guardianPin" numbersOnly limit-to="6" autocomplete="off" >
+                                                      <p class="error-message" *ngIf="additionalDetailsForm.controls['guardianPin'].hasError('required') && (additionalDetailsForm.controls['guardianPin'].dirty || additionalDetailsForm.controls['guardianPin'].touched)">This field is required</p>
+                                                    </div>
+                                                  </div>
+                                                </div>
+                                              </div>
+																						</div>
+																						<!-- details-section -->
+																					</div>
+																					<!-- col-12 -->
+																					<div class="col-12 col-lg-12 col-md-12 col-sm-12 position-static">
+																						<div class="ux-footer border-n">
+																							<div class="row1">
+																								<div class="col-12 col-md-12">
+																									<ul class="bottom-footer1">
+																										<li>
+																											<div class="btn-div custom-mar text-left">
+																												<button class="ux-button secondary sm-mob cancel-btn" (click)="prevstep(2)">Previous</button>
+																											</div>
+																											<div class="btn-div custom-mar">
+																												<button class="ux-button primary sm-mob" (click)="pmjjbySubmit('additionalDetails', 2)">Next</button>
+																											</div>
+																										</li>
+																									</ul>
+																								</div>
+																							</div>
+																						</div>
+																					</div>
+																					<!-- col-12 position-static -->
+																				</div>
+																			</div>
+																		</div>
+																	</form>
+																</div>
+																<!-- tempstep 2 -->
+																<div id="3" *ngIf="activeTab =='step3'" [ngClass]="activeTab =='step3' ? 'tempstep active' : 'tempstep' ">
+																	<form [formGroup]="pensionDetailsForm">
+																		<div class="row1">
+																			<div class="col-12 col-lg-12 col-md-12 col-sm-12 position-static">
+																				<div class="row">
+																					<div class="col-12 position-static">
+																						<ul class="step-list">
+																							<li class="step-matched"> <em> <span
+																								 class="primary">STEP 3 </span> <span class="secondary">of STEP 3</span>
+																								</em>
+																							</li>
+																						</ul>
+																						<div class="tab-header">
+																							<h4>Pradhan Mantri Jeeevan Jyoti Bima Yojana(PMJJBY)</h4>
+																						</div>
+																					</div>
+																					<!-- col-12 position-static -->
+																					<div class="col-12">
+																						<div class="details-section">
+																							<div class="row1">
+																								<div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+																									<h5 class="sub-tab-header">
+																										Pension Details
+																									</h5> </div>
+																							</div>
+																							<div class="row1">
+																								<div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
+																									<div class="ux-input ">
+																										<label>Select Debit Account</label>
+																										<select formControlName="debitAccount" (change)="onFromAccountSelect($event.target.value)">
+																											<option *ngFor="let item of savingAccList" [value]="item.accountNo">{{item.SchemeCode}} {{item.sbAccount}} </option>
+																										</select>
+																										<p class="error-message" *ngIf="pensionDetailsForm.controls['debitAccount'].hasError('required') && (pensionDetailsForm.controls['debitAccount'].dirty || pensionDetailsForm.controls['debitAccount'].touched)">This field is required</p>
+																										<p class="info-msg text-right"> Available Balance <span class="greentext m-0">
+																												{{accBalance | customcurrency}}
+																											</span> </p>
+																									</div>
+																								</div>
+																							</div>
+																							<div class="row1">
+																								<div class="col-12 col-sm-12 col-md-6 col-lg- col-xl-6">
+																									<div class="ux-input ">
+																										<div class="premium clearfix"> <small class="info-msg float-left">Premium Amount</small> <span class="greentext float-right">{{premiumAmount | customcurrency}}
+																											</span> </div>
+																									</div>
+																								</div>
+																							</div>
+																							<div class="row1">
+																								<div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 ">
+																									<h6 class="my-2">
+
+																									</h6> </div>
+																							</div>
+
+																							<div class="row1">
+																								<div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+																									<div class="ux-selection ux-input">
+																										<label class="ux-selection1">I accept the <a href="javascript:void(0)" (click)="openPopUp()" class="reg-txt">Terms
+																												&
+																												Conditions</a>
+																											<input type="checkbox" name="radioboxdemo" formControlName="termsCondition" required> <span class="checkmark"></span> </label>
+																										<p class="error-message" *ngIf="pensionDetailsForm.controls['termsCondition'].hasError('required') && (pensionDetailsForm.controls['termsCondition'].dirty || pensionDetailsForm.controls['termsCondition'].touched)">This field is required</p>
+
+																									</div>
+																								</div>
+																							</div>
+																						</div>
+																						<!-- details-section -->
+																					</div>
+																					<!-- col-12 -->
+																					<div class="col-12 col-lg-12 col-md-12 col-sm-12 position-static">
+																						<div class="ux-footer border-n">
+																							<div class="row1">
+																								<div class="col-12 col-md-12">
+																									<ul class="bottom-footer1">
+																										<li>
+																											<div class="btn-div custom-mar text-left">
+																												<button class="ux-button secondary sm-mob cancel-btn" (click)="prevstep(3)">Previous</button>
+																											</div>
+																											<div class="btn-div custom-mar">
+																												<button class="ux-button primary sm-mob" (click)="pmjjbySubmit('pensionDetails', 'pmjjbyOverview')">Submit</button>
+																											</div>
+																										</li>
+																									</ul>
+																								</div>
+																							</div>
+																						</div>
+																					</div>
+																				 </div>
+																			 </div>
+																		 </div>
+																	</form>
+																</div>
+															</div>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+									<!-- Greencard2 End here -->
+								</div>
+								<!-- Right Column Ads Start -->
+								<div class="col-12 col-md-12 col-lg-12 col-xl-3 d-none d-xl-block">
+									<div class="right-ads">
+										<a> <img src="assets/images/banner/my-card-banner.jpg"> </a>
+									</div>
+									<div class="vspacer30"></div>
+								</div>
+								<!-- Right Column Ads Ends -->
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!--.right-col-container-->
+	</div>
+	<!--.right-main-column-->
+</div>
+<!-- main -->
+
+<div class="popup-bottom md-popup tpin-popup">
+	<div class="row1">
+		<div class="col-10">
+			<h4 class="text-left">Terms & Condition</h4>
+		</div>
+		<div class="col-2">
+			<button class="ux-button-icon close-btn" (click)="closepopup()" >
+				<img src="assets/images/svg/close-b.svg" alt="cross-icon" class="img-vsmall">
+			</button>
+		</div>
+	</div>
+	<div class="row1">
+		<div class="col-12">
+			<b>By clicking the Submit button</b>
+			<ol class="order-list">
+
+
+					<li>1. I hereby give my consent to become a member of ‘Pradhan Mantri Jeevan Jyoti Bima Yojana’ of LIC of India which will be administered by Bank under Master Policy No. 900100012.</li>
+
+					<li>2. I hereby declare that my age is between 18 to 50 years. I also understand that the assurance on the life cover of the subscriber terminates on attaining age of 55 years subject to annual renewal up to that date (entry, however, is not possible beyond the age of 50 years)</li>
+
+					<li>3. I hereby authorize you to debit my Savings Bank Account with your Bank with Rs. 330/- (Rupees Three Hundred Thirty Only) or any other applicable premium plus Taxes if applicable towards premium of life cover under PMJJBY. I further authorize you to deduct in future after 25th May and not later than on 1st of June every year until further instructions, an amount of Rs.330/- (Rupees three hundred thirty only), or any amount as decided from time to time, which may be intimated immediately if and when revised, towards renewal of coverage under the scheme.</li>
+
+					<li>4. I have not authorized any other Bank / Post Office to debit premium in respect of this scheme. I am aware that in case of multiple enrolments for the scheme by me, my insurance cover will be restricted to Rs. Two Lakhs only and the premium paid by me for multiple enrolments shall be liable to be forfeited.</li>
+
+					<li>5. I authorize Punjab & Sind Bank to convey my personal details, as required, regarding my admission into the group insurance scheme of the Insurer.</li>
+
+					<li>6. I hereby nominate my nominee as provided in the online application under this scheme.</li>
+
+					<li>7. If the nominee is a minor, I have appointed his / her guardian details in the online application. (Applicable in case where Nominee is minor)</li>
+
+					<li>8. I have read and understood the Scheme rules and I hereby give my consent to become a member of the Scheme. I am aware that the risk will not be covered during the first 45 days from the date of enrolment / re-joining into the scheme (lien period) and in case of death (other than due to accident) during lien period, no claim would be admissible.</li>
+
+					<li>9. I have read and understood the Scheme rules given on Punjab & Sind Bank Website (https://punjabandsindbank.co.in/content/pradhan-mantri-jeevan-jyoti) and I hereby give my consent to become a member of the Scheme. Also I undertake to immediately inform the bank of any change in the information furnished by me.</li>
+
+					<li>10. I authorize the Bank to convey my personal details, given below, as required, regarding my admission into the group insurance scheme to LIC</li>
+
+				<li>	11. I hereby declare that the information provided by me is true in all respects and that I agree and declare that the above information shall form the basis of admission to the above scheme and that if any information be found untrue, my membership to the scheme shall be treated as cancelled.</li>
+			</ol>
+		</div>
+	</div>
+	<div class="row1 mt-2">
+		<div class="col-12 col-md-12 text-center">
+			<button class="ux-button secondary sm-mob" (click)="closepopup()" >OK</button>
+		</div>
+	 </div>
+</div>

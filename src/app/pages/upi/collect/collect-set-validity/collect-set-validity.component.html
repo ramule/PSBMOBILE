@@ -1,0 +1,177 @@
+<div class="main main-bg2">
+
+
+  <div class="right-main-column mar-custom">
+    <div class="right-col-container  pad-b pb-0">
+
+      <div class="body-page-container">
+        <div class="vspacer5 d-sm-block d-none"></div>
+        <div class="container-fluid">
+          <form [formGroup]="setValidityForm" (ngSubmit)="updateSetValidity()">
+            <div class="row">
+              <div class="bg-section2">
+                <div class="col-12">
+                  <div class="row1">
+                    <div class="payee-info1">
+                      <div class="row">
+                        <div class="info-inner">
+                          <div class="info-lft">
+                            <span class="yellow">
+                              <!-- <img src="assets/images/icons/user1.png" alt="user-img"> -->
+                              <h6>{{DataService.selectedVpaDetailsCollect.accountDetails.custName | firstLastChar}}</h6>
+                            </span>
+                          </div>
+                          <div class="info-center">
+                            <a href="javascript:;"> <img src="assets/images/svg/double-left-arrows.svg"
+                                alt="double-left-arrows-icon"> </a>
+                          </div>
+                          <div class="info-rit">
+                            <span class="yellow">
+                              <h6>{{DataService.validateAddressResp.MASKNAME | firstLastChar}}</h6>
+                              <!-- <img src="assets/images/icons/user5.png" alt="user-img"> -->
+                            </span>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col-12 col-md-12">
+                          <h5>{{'COLLECT_FROM' | translate}} {{DataService.validateAddressResp.MASKNAME}}</h5>
+                          <h6>{{'UPI_ID' | translate }} : {{DataService.validateAddressResp.validatedVpa}}</h6>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row1">
+                    <div class="col-sm-12 col-12 col-md-12">
+                      <div class="ux-input white-input mar-tb">
+                        <!-- Android Keyboard Start -->
+                        <!-- <input type="tel" placeholder="₹ 0" autocomplete="off" formControlName="amount" limit-to="12" (blur)="formatCurrency($event.target.value)" id="amt" data-a-sign="Rs." class="focusInput"> -->
+                        <!-- Android Keyboard End -->
+                        <!-- iOS Keyboard Start -->
+                        <input type="text" inputmode="decimal" placeholder="₹ 0" autocomplete="off"
+                          formControlName="amount" limit-to="12" (blur)="formatCurrency($event.target.value)" id="amtValidity"
+                          data-a-sign="Rs." class="focusInput" />
+                        <!-- iOS Keyboard End -->
+                        <div class="text-center"> <span class="errormsg" style="top:48px;"
+                            *ngIf="setValidityForm.controls['amount'].hasError('required')  && setValidityForm.controls['amount'].touched">
+                            {{ 'ENTER_AMOUNT_ERROR' | translate }}
+                          </span></div>
+                        <p class="text-center error-message"
+                          *ngIf="setValidityForm.controls['amount'].hasError('pattern')">
+                          {{ 'ENTER_NUMBER_ERROR' | translate}}</p>
+                        <p></p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row1">
+                    <div class="col-sm-5 col-5 col-md-3 m-auto">
+                      <div class="ux-input dark-input mar-tb">
+                        <input type="text" formControlName="remarks" (change)="OnChange($event.target.value)"
+                          autocomplete="off" limit-to="100" class="focusInput" placeholder="{{'REMARKS' | translate}}">
+                        <p class="text-center error-message"
+                          *ngIf="setValidityForm.controls['remarks'].hasError('pattern')">
+                          {{ 'ENTER_SPECIAL_CHARACTOR_ERROR' | translate}}</p>
+                        <p class="text-center col-w"> </p>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Info Bottom Container Start -->
+                  <div class="info-bottom-container">
+                    <div class="row1 mt-5">
+                      <div class="col-sm-12 col-12 col-md-12 m-auto">
+                        <!-- Deposit Start -->
+                        <div class="bottom-info">
+
+
+                          <!-- <div class="popup-bottom focusCloseable register1 popup-active"> -->
+                          <div class="row1">
+                            <div class="col-12">
+                              <h4>{{'SET_VALIDITY' | translate}}</h4>
+                            </div>
+                          </div>
+                          <div class="row1 mt-2">
+                            <div class="col-6">
+                              <div class="ux-input">
+                                <label>{{'DATE' | translate}}</label>
+                                <input type="text" class="datepicker1" formControlName="date" placeholder="DD/MM/YYYY"
+                                  readonly (click)="openDatePicker()">
+                                <div class="text-center"> <span class="errormsg"
+                                    *ngIf="setValidityForm.controls['date'].hasError('required')  && setValidityForm.controls['date'].touched">
+                                    {{ 'ENTER_DATE_ERROR' | translate }}
+                                  </span></div>
+                                <p></p>
+                                <em class="calendar-ic cal-top" (click)="openDatePicker()"></em>
+                              </div>
+                            </div>
+                            <div class="col-6">
+                              <div class="ux-input">
+                                <label>{{'TIME' | translate}}</label>
+                                <input type="text" name="time" formControlName="time"
+                                  placeholder="{{'SELECT_A_TIME' | translate}}" class="timepicker" readonly
+                                  (click)="openTimePicker()">
+                                <div class="text-center"> <span class="errormsg"
+                                    *ngIf="setValidityForm.controls['time'].hasError('required')  && setValidityForm.controls['time'].touched">
+                                    {{ 'ENTER_TIME_ERROR' | translate }}
+                                  </span></div>
+                                <p></p>
+                                <em class="clock-ic cal-top" (click)="openTimePicker()"></em>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="row1 mt-2">
+                            <div class="col-12 text-center">
+                              <button type="submit" class="ux-button primary submit md"
+                                [disabled]="setValidityForm.invalid">{{'UPDATE' |
+                                translate}}</button>
+                            </div>
+                          </div>
+
+
+                          <div class="row1">
+                            <div class="col-12 text-center mt-4">
+                              <div class="powered-logo">
+                                <img src="assets/images/logo/powered-upi-logo.svg" alt="powered-upi-logo">
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <!-- Deposit End -->
+
+                      </div>
+                    </div>
+                  </div>
+                  <!-- Info Bottom Container End -->
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+</div>
+<!-- main -->
+
+<!-- Popup Start -->
+<div class="popup-bottom collect-setValidity">
+  <div class="row1">
+    <div class="col-12">
+      <h4 class="text-center"> <img src="./assets/images/svg/information.svg" alt="information-icon">
+        {{'INFORMATION' | translate}}</h4>
+    </div>
+  </div>
+  <div class="row1">
+    <div class="col-12">
+      <p>{{information | translate}}</p>
+    </div>
+  </div>
+  <div class="row1  mt-2">
+    <div class="col-12 text-center" (click)="closePopup('div.popup-bottom.collect-setValidity')">
+      <button class="ux-button primary submit-btn" type="button">{{'OK' | translate}}</button>
+    </div>
+  </div>
+</div>
+<!-- Popup End -->

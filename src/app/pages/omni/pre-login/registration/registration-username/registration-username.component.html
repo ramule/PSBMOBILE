@@ -1,0 +1,164 @@
+<div class="row1">
+	<div class="col-12 col-lg-6 col-md-12 col-sm-12 position-static">
+		<form [formGroup]="registrationFormstep3" (ngSubmit)="submitStep3()">
+			<div class="row1">
+				<div class="col-12">
+					<ul class="step-list">
+						<li class="step-matched"> <em><span class="primary">{{'STEP_3' | translate}}</span> 
+							<span *ngIf="DataService.regType != 'loan'" class="secondary">{{"OF_STEP_6" | translate}}</span><span *ngIf="DataService.regType == 'loan'" class="secondary">{{"OF_STEP_5" | translate}}</span></em> </li>
+					</ul>
+					<div class="tab-header">
+						<div class="row1">
+							<div class="col-12 col-md-12">
+								<h4>{{'SET_LOGIN_CREDENTIALS' | translate}}</h4> </div>
+						</div>
+					</div>
+				</div>
+				<div class="col-12">
+					<div class="details-section">
+						<div class="row1">
+							<div Class="col-12 col-md-12 col-xl-10 col-lg-12">
+								<div class="ux-input twoicons">
+									<label>{{'SET_USERNAME' | translate}} <img src="assets/images/svg/completed.svg" class="tick-img" *ngIf="isuserNameVerfied"></label> <img src="assets/images/svg/username.svg" class="left-img">
+									<a href="javascript:;"(mouseenter) ="usernamepolicy()"><img src="assets/images/svg/information.svg" class="right-img"> </a>
+									<input type="text" placeholder="{{'ENTER_USER_NAME' | translate}}" formControlName="username" username (input)="onUserChange($event.target.value)" limit-to="20" autocomplete="off">
+									<p class="error-message"></p>
+								</div>
+								<div class="ux-input">
+									<p style="color:green" class="error-message" *ngIf="isuserNameVerfied">{{"USERNAME_AVAILABLE" | translate}} </p>
+									<p class="error-message" *ngIf="isuseravailable">{{"USERNAME_UNAVAILABLE" | translate}} </p>
+									<p class="error-message" *ngIf="notclickedflag">Please Check Username Availability</p>
+									<p class="error-message" *ngIf="registrationFormstep3.controls['username'].touched && registrationFormstep3.controls['username'].hasError('required')">{{"PLEASE_ENTER_USERNAME" | translate }}</p>
+									<p class="error-message" *ngIf="!registrationFormstep3.controls['username'].hasError('required') && registrationFormstep3.controls['username'].hasError('minlength')">Username cannot be less than 8 digits</p>
+								</div>
+							</div>
+							<div class="col-12 col-md-12 col-xl-10 col-lg-12" *ngIf="!registrationFormstep3.controls['username'].hasError('minlength')">
+								<div class="text-right"> <a href="javascript:;" class="reg-txt" (click)="checkAvailability()">{{"CHECK_AVAILABILITY" | translate}}</a> </div>
+							</div>
+						</div>
+						<!-- </div> -->
+						<!-- <div class="details-section"> -->
+						<div class="row1">
+							<div Class="col-12 col-md-12 col-xl-10 col-lg-12">
+								<div class="ux-input twoicons">
+									<label>{{'SET_PASSWORD' | translate}}</label> <img src="assets/images/svg/password-b.svg" class="left-img">
+									<a href="javascript:;" (mouseenter) ="passwordpolicy()"> <img src="assets/images/svg/information.svg" class="right-img"> </a>
+									<input type="password" autocomplete="new-password" placeholder="{{'ENTER_PASSWORD' | translate}}" formControlName="password" lmit-to="16"> </div>
+								<div class="ux-input">
+									<p class="error-message" *ngIf="registrationFormstep3.controls['password'].touched && registrationFormstep3.controls['password'].hasError('required')">{{"PLEASE_ENTER_PASSWORD" | translate }}</p>
+									<p class="error-message" *ngIf="registrationFormstep3.controls['password'].hasError('pattern') && registrationFormstep3.controls['password'].touched" id="password-error">{{"PASSWORD_INSTRUCTIONS" | translate}}</p>
+
+								</div>
+							</div>
+							<div Class="col-12 col-md-12 col-xl-10 col-lg-12">
+								<div class="ux-input twoicons">
+									<label>{{'CONFIRM_PASSWORD' | translate}}</label> <img src="assets/images/svg/password-b.svg" class="left-img">
+									<input type="password" placeholder="{{'ENTER_CONFIRM_PASSWORD' | translate}}" formControlName="confPassword" lmit-to="16" autocomplete="off"> </div>
+								<div class="ux-input">
+									<p class="error-message" *ngIf="registrationFormstep3.controls['confPassword'].touched && registrationFormstep3.controls['confPassword'].hasError('required')">{{"PLEASE_ENTER_CONF_PASSWORD" | translate }}</p>
+									<p class="error-message" *ngIf="!registrationFormstep3.controls['confPassword'].hasError('required') && !registrationFormstep3.controls['confPassword'].hasError('minlength') && registrationFormstep3.hasError('passwordNotMatch')  && registrationFormstep3.controls['confPassword'].touched">{{'PASSWORD_MISMATCH_MSG' | translate}}</p>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="col-12 col-lg-10 col-md-12 col-sm-12 position-static">
+					<div class="ux-footer border-n">
+						<div class="row1">
+							<div class="col-12 col-md-12">
+								<ul class="bottom-footer1">
+									<li>
+										<div class="btn-div custom-mar hide-m">
+											<!-- <button class="ux-button secondary sm-mob cancel-btn" type="button" (click)="cancelbtn()" *ngIf="DataService.isFromOmniReg.isStepIII">{{'PREVIOUS' | translate}}</button> -->
+										</div>
+										<div class="btn-div custom-mar w100">
+											<button class="ux-button primary sm-mob" type="submit" >{{'NEXT' | translate}}</button>
+										</div>
+									</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</form>
+	</div>
+	<div class="col-12 col-lg-6 col-md-2 col-sm-12 d-none d-lg-block d-xl-block"> <img src="assets/images/svg/regImg1.svg" class="right-regImg"> </div>
+</div>
+
+
+  <!-- User Name Popup Start-->
+
+  <!-- <div class="popup-bottom md-popup username-popup">
+	<div class="row1">
+		<div class="col-10">
+			<h4 class="text-left">User Name Policy</h4>
+		</div>
+		<div class="col-2">
+			<button class="ux-button-icon close-btn">
+				<img src="../assets/images/svg/close-b.svg" alt="cross-icon" class="img-vsmall">
+			</button>
+		</div>
+	</div>
+  <div class="row1">
+		<div class="col-12">
+			 <h5 class="text-left">The following rules are applicable for setting/modify the User Name.</h5>
+		</div>
+		<div class="col-12 mt-2">
+			 <ul class="orderlist">
+				<li>Omnichannel Digital Banking application username shall be a minimum of 8 and a maximum of 20 characters with no spaces in-between.</li>
+				<li>  Username can be alphanumeric with support for special characters like (. and _ )</li>	
+			 </ul>
+		</div>
+	</div>
+	<div class="row1 mt-2">
+		<div class="col-12 col-md-12 text-center">
+			<button class="ux-button secondary sm-mob">OK</button>
+		</div>
+	 </div>
+</div> -->
+
+<!-- User Name Popup End-->
+
+
+ <!-- Password Popup Start-->
+
+ <!-- <div class="popup-bottom md-popup password-popup">
+	<div class="row1">
+		<div class="col-10">
+			<h4 class="text-left">Password Policy</h4>
+		</div>
+		<div class="col-2">
+			<button class="ux-button-icon close-btn">
+				<img src="../assets/images/svg/close-b.svg" alt="cross-icon" class="img-vsmall">
+			</button>
+		</div>
+	</div>
+  <div class="row1">
+		<div class="col-12">
+			 <h5 class="text-left">The following rules are applicable for setting/modify the Password.</h5>
+		</div>
+		<div class="col-12 mt-2">
+			 <ul class="orderlist">
+				<li> Omnichannel Digital Banking application Password shall be a minimum of 8 and a maximum of 16 characters with no spaces in-between.</li>
+				<li> Password shall be aphanumeric and should contain atleast.</li>
+				<li>One Capital Alphabet.</li>
+				<li>One Lower case Aplhabet.</li>
+				<li>One numeral.</li>
+				<li>one special character.</li>
+				<ul class="orderlist">
+				<li>Password can not consist of all characters of user-id.</li>
+				<li> Modified password can not be same as any of previous 3 passwords..</li>
+				<li>In case a customer does not log into Internet Banking for more than 180 days his password will expire.</li>
+				</ul>
+			 </ul>
+		</div>
+	</div>
+	<div class="row1 mt-2">
+		<div class="col-12 col-md-12 text-center">
+			<button class="ux-button secondary sm-mob">OK</button>
+		</div>
+	 </div>
+</div> -->
+
+<!-- Password Popup End-->

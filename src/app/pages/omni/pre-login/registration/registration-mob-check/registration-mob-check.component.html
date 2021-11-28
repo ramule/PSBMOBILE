@@ -1,0 +1,130 @@
+<div class="main prelogin-page">
+
+    <div class="full-container full">
+        <div class="login-container">
+            <div class="central-box">
+
+                <!-- Banner Container Start -->
+                <div class="banner-container bg">
+                   
+                    <div class="left-content">
+                        <h5>{{"IMP_SECURITY_INFO" | translate }}</h5>
+                        <div class="vspacer10"></div>
+                        <p>
+                            {{"BEST_VIEW_IN_IE" | translate }}<br />
+                            {{"YOUR_LOGIN_PWD" | translate }}<br />
+                            {{"ACCESS_TO_DATA" | translate }}
+                        </p>
+                        <div class="vspacer10"></div>
+                        <button role="button"
+                            class="ux-button sm primary ml-0">{{"SEQ_TIPS" | translate }}</button>
+                    </div>
+                    <div class="secure-img">
+                        <img src="assets/images/icons/secure.png" alt="secure">
+                    </div>
+                    <div class="keyboard-section">
+                        <div class="keyboard-inner">
+                        </div>
+                    </div>
+                </div>
+                <!-- Banner Container End -->
+
+                <!-- Loginform Container Start -->
+                <div class="loginform-container">
+                    <div class="login-form">
+                        <!-- <div class="vspacer10"></div> -->
+                        <div class="login-heading">
+                            
+                            <div class="vspacer5"></div>
+                            <h3>{{"REGISTRATION" | translate }}</h3>
+                            <h5>{{"WELCOME_BACK_REG" | translate }} </h5>
+                        </div>
+
+                        <div class="vspacer10"></div>
+                        <form [formGroup]="registrationForm" (ngSubmit)="submitregistration()">
+                            <div class="row1">
+                                <div Class="col-12">
+                                    <div class="ux-input">
+                                        <label for="otp">{{"MOBILE_NUMBER" | translate }}</label>
+                                        <input type="text"  formControlName="mobNumber" limit-to="10" numbersOnly>
+                                        <!-- <span class="errormsg"
+                                            *ngIf="registrationForm.controls['mobNumber'].hasError('required')  && registrationForm.controls['mobNumber'].touched">This
+                                            field is required</span>
+                                        <span class="errormsg"
+                                            *ngIf="registrationForm.controls['mobNumber'].hasError('pattern')">Please
+                                            enter numbers only</span>
+                                        <span class="errormsg"
+                                            *ngIf="registrationForm.controls['mobNumber'].hasError('minlength')">Length
+                                            is too short</span>
+                                        <p></p> --> 
+                                        <span class="errormsg" *ngIf="registrationForm.controls['mobNumber'].touched && registrationForm.controls['mobNumber'].hasError('required')">{{"PLEASE_ENTER_MOBLIE_NO" | translate }}</span>
+                                        <span class="errormsg" *ngIf="!registrationForm.controls['mobNumber'].hasError('required') && registrationForm.hasError('isInvalidMobileNo')  && registrationForm.controls['mobNumber'].touched">{{"PLEASE_ENTER_VALID_MOB_NO" | translate }}</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row1">
+                                <div class="col-12 col-md-12">
+                                    <div class="text-right">
+                                        <em>{{"OTP_WILL_BE_SENT" | translate }}</em>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="vspacer20"></div>
+                            <div class="row1">
+                                <div Class="col-12">
+                                    <div class="formfooter">
+                                        <button type="submit" role="button"
+                                            class="ux-button primary d-block w-100 m-0">{{"REGISTER" | translate }}</button>
+                                    </div>
+                                </div>
+                                <div class="vspacer20"></div>
+                                <div Class="col-12">
+                                    <div class="fgt-txt">{{"ALREADY_A_CUST" | translate }}?</div>
+                                </div>
+                                <div class="vspacer10"></div>
+                                <div Class="col-12">
+                                    <div class="formfooter">
+                                        <button routerLink="/login" role="button"
+                                            class="ux-button secondary d-block w-100 m-0">{{"LOGIN_BTN" | translate }}</button>
+                                    </div>
+                                </div>
+                                <div class="vspacer10"></div>
+                                <div class="vspacer5"></div>
+                            </div>
+                        </form>
+                        <div class="vspacer40"></div>
+                        <div class="vspacer40"></div>
+                    </div>
+                    <app-footer-mobile></app-footer-mobile>
+
+
+                    <!-- Loginform Container End -->
+                </div>
+
+            </div>
+
+        </div>
+        <!-- .full-container -->
+
+    </div>
+</div>
+
+<div class="popup-bottom blocked-user sm-popup">
+    <div class="row1">
+        <div class="col-12">
+            <h4 class="text-center">
+                <img src="./assets/images/svg/information.svg" alt="error-icon"> {{ 'INFORMATION' | translate }}
+            </h4>
+        </div>
+    </div>
+    <div class="row1">
+        <div class="col-12 mb-4">
+            <p> Mobile Number Is Blocked.Please Contact Bank </p>
+        </div>
+    </div>
+    <div class="row1  mt-2">
+        <div class="col-12 text-center">
+            <button class="ux-button submit-btn" (click)="closePopup('blocked-user')">{{ 'CLOSE' | translate }}</button>
+        </div>
+    </div>
+</div>

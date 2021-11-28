@@ -1,0 +1,556 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <meta charset="UTF-8">
+    <title>Forgot password - MPIN</title>
+    <link href="../css/lib/bootstrap.min.css" rel="stylesheet">
+    <link href="../css/lib/owl.carousel.min.css" rel="stylesheet">
+    <link href="../css/lib/jquery-ui.min.css" rel="stylesheet">
+	<link href="../css/lib/datatables.min.css" rel="stylesheet" >
+	<link href="../css/lib/jquery.mCustomScrollbar.min.css" rel="stylesheet">
+	<link href="../css/main.css" rel="stylesheet">
+
+</head>
+
+<body>
+    <div class="ios-nav-overlay"></div>
+    <div  class="prelogin-page">
+ 
+          <!-- header section Start -->
+
+	  <header class="global-header">
+		<div class="desk-header">
+			<div class="container-fluid">
+				<div class="row">
+				  	<div class="col-xl-3 col-lg-3 col-md-3 col-sm-2 col-2 d-none d-md-block d-lg-block d-xl-block">
+						   <ul class="headerlist">
+                               <li>
+                                   <a href="#"> <img src="../assets/images/svg/home1.svg" alt="home-icon"> <em>Home</em></a>
+                               </li>
+                           </ul>
+					   </div>
+					<div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
+						<div class="brand-heading text-center m-auto">
+							 <span class="logo-img">
+                                <img src="../assets/images/logo/logo1.png" alt="psb-logo">
+							 </span> 
+						</div>
+					</div> 
+					<div class="col-xl-6 col-lg-6 col-md-6 col-sm-2 col-2 d-none d-md-block d-lg-block d-xl-block">
+						 
+					</div> 
+				</div> 
+			</div> 
+		</div> 
+	 </header> <!-- global-header -->
+
+<!-- header section End -->
+                    
+<div class="registration-steps ">
+    <div class="row">
+        <div class="col-12 position-static">
+
+            <div class="inner-header">
+                <div class="registration-container">
+                    <h4>Forgot MPIN?</h4>
+                    <!-- <a class="close-registration" ><img (click)="mobPrevclick('cross')" src="../assets/images/svg/close-w.svg"></a> -->
+                    
+                    <a class="prev-tab"><img src="../assets/images/svg/close-w.svg"></a>
+                   
+
+                </div>
+            </div>
+
+            <div class="registrationsteps-block registration-container acc-opening-page">
+               <div class="row">
+                <div class="background-block" style="background-image: url(../assets/images/background/basic-background.png);">
+                       
+                </div>
+                <div class="middle-block">
+                    <div class="pageHeader">
+                        <h3>User Authentication</h3>   
+                        <!-- <span>Please enter details registerd in your Bank Account</span> -->
+                    </div>
+                    <div class="col-12 position-static p-0">
+                        <ul class="channel-tab">
+                            <li><a href="#debit-card" class="active"><img src="../assets/images/svg/card.svg">Debit Card</a></li>
+                            <li><a href="#banktoken"><img src="../assets/images/icons/card.png">OTP Validation</a></li>
+                        </ul>
+                        <div class="creditials-tab-panel custom-panel custom-pad">
+                            <div id="debit-card" class="main-pannel active">
+                                <div class="row1">
+                                    <div class="col-12">
+                                        <div class="ux-input pb-0">
+                                            <label for="username">User Name</label>
+                                              <input type="text" name="username" placeholder="Enter user name" value="" required="" limit-to="40">
+                                        </div>
+                                    </div>
+                                     <div class="col-12">
+                                        <div class="ux-input pb-0">
+                                            <label for="password">Password</label>
+                                              <input type="text" name="password" placeholder="Enter password" value="" required="" limit-to="40">
+                                        </div>
+                                    </div>
+                                    
+                                </div>
+                                 
+                            </div>
+                            <div id="banktoken" class="main-pannel">
+                            
+                                <div class="row1">
+                                    <div class="col-12 col-xl-12 col-lg-12 col-md-12">
+                                        <div class="ux-input pb-0">
+                                            <label for="upiId">Mobile Number ********987</label>
+                                              <input type="text" name="mobilenumber" placeholder="Enter mobile Number" value="" required="" limit-to="40">
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-xl-12 col-lg-12 col-md-12">
+                                        <div class="ux-input pb-0">
+                                            <label for="upiId">Email Address ******sa@gmail.com</label>
+                                              <input type="text" name="emailaddress" placeholder="Enter email address" value="" required="" limit-to="40">
+                                        </div>
+                                    </div>
+                                   
+
+                                </div> 
+                            </div> 
+                           
+                         </div>
+                        <div class="col-12 col-lg-10 col-md-12 col-sm-12">
+                             <div class="text-center button-block">
+                                <a  href="javascript:;" class="ux-button primary  " onclick="opencustpoup('otp')">Next</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+               </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+
+
+    
+
+ 
+    <!-- Footer Code Starts Here -->
+		<footer>   
+			<div class="global-footer full-footer">
+			 <div class="in-glfooter">
+				 <div class="container-fluid">
+					 <div class="row">
+						  <div class="col-4 col-xl-6 col-lg-6 col-md-6 col-sm-4">
+							 <div class="glfooter-content">
+								 <div class="glfooter-box">
+									 <div class="glcopyright-text">
+										 <em>Powered by</em> <img src="../assets/images/kiya-logo.png">
+									 </div>
+								 </div>
+							 </div>
+						 </div>
+						 <div class="col-8 col-xl-6 col-lg-6 col-md-6 col-sm-8">
+							 <div class="glfooter-content">
+								 <div class="glfooter-box">
+									 <div class="glcopyright-text1">
+										 <em>Copyright © 2020 Infrasoft Technologies Ltd. All rights reserved.</em>
+									 </div>
+								 </div>
+							 </div>
+						 </div>
+					 </div>
+				 </div>
+			 </div>
+		 </div>
+    </footer>  
+  <!-- Footer Code Ends -->
+
+        
+</div>
+    <!-- .prelogin-page -->
+
+
+
+
+
+
+
+    <div class="popup-bottom upi-account numberConfirmation text-center otp" id="otp">
+        <div class="row1">
+            <div class="col-12 col-md-2 col-lg-2 col-xl-2">
+            </div>
+            <div class="col-10 col-md-8 col-lg-8 col-xl-8">
+                <h4>OTP Verification</h4>
+            </div>
+            <div class="col-2 col-md-2 col-lg-2 col-xl-2">
+                <button class="ux-button-icon close-btn">
+                    <img src="../assets/images/svg/close-b.svg" alt="cross-icon" class="img-vsmall">
+                </button>
+            </div>
+        </div>
+        <div class="row1">
+            <div class="col-12">
+                <div class="imgblock">
+                    <img src="../assets/images/icons/mobile.svg">
+                </div>
+                <span class="otpinfo">Pleas enter 6 digit OTP sent on your mobile number and Email ID </span>
+                <h5 class="text-center">Mobile OTP</h5>
+                <div class="box-password d-inline-block">
+    
+                    <input id="mobile1" type="password" maxlength="1" placeholder="●" onkeyup="onKeyUpEventforAll(1, event ,'mobile' )"
+                        onfocus="onFocusEventAll(1,'mobile')" >
+                    <input id="mobile2" type="password" maxlength="1" placeholder="●" onkeyup="onKeyUpEventforAll(2, event,'mobile')"
+                        onfocus="onFocusEventAll(2,'mobile')">
+                    <input id="mobile3" type="password" maxlength="1" placeholder="●" onkeyup="onKeyUpEventforAll(3, event,'mobile')"
+                        onfocus="onFocusEventAll(3,'mobile')">
+                    <input id="mobile4" type="password" maxlength="1" placeholder="●" onkeyup="onKeyUpEventforAll(4, event,'mobile')"
+                        onfocus="onFocusEventAll(4 ,'mobile')" >
+                    <input id="mobile5" type="password" maxlength="1" placeholder="●" onkeyup="onKeyUpEventforAll(5, event,'mobile')"
+                        onfocus="onFocusEventAll(5 ,'mobile')" >
+                    <input id="mobile6" type="password" maxlength="1" placeholder="●" onkeyup="onKeyUpEventforAll(6, event,'mobile')"
+                        onfocus="onFocusEventAll(6,'mobile')" >
+                        <div class="clearfix mt-1">
+                            <b class="float-left">2:00</b><a class="float-right" >Resend</a>
+                        </div>
+                </div>
+                <h5 class="text-center">Email OTP</h5>
+                <div class="box-password d-inline-block">
+    
+                    <input id="email1" type="password" maxlength="1" placeholder="●" onkeyup="onKeyUpEventforAll(1, event ,'email' )"
+                        onfocus="onFocusEventAll(1,'email')" >
+                    <input id="email2" type="password" maxlength="1" placeholder="●" onkeyup="onKeyUpEventforAll(2, event,'email')"
+                        onfocus="onFocusEventAll(2,'email')">
+                    <input id="email3" type="password" maxlength="1" placeholder="●" onkeyup="onKeyUpEventforAll(3, event,'email')"
+                        onfocus="onFocusEventAll(3,'email')">
+                    <input id="email4" type="password" maxlength="1" placeholder="●" onkeyup="onKeyUpEventforAll(4, event,'email')"
+                        onfocus="onFocusEventAll(4 ,'email')" >
+                    <input id="email5" type="password" maxlength="1" placeholder="●" onkeyup="onKeyUpEventforAll(5, event,'email')"
+                        onfocus="onFocusEventAll(5 ,'email')" >
+                    <input id="email6" type="password" maxlength="1" placeholder="●" onkeyup="onKeyUpEventforAll(6, event,'email')"
+                        onfocus="onFocusEventAll(6,'email')" >
+                        <div class="clearfix mt-1">
+                            <b class="float-left">2:00</b><a class="float-right" >Resend</a>
+                        </div>
+                </div>
+                
+                <div class="button-footer">
+                    <a  class="ux-button primary" href="forgot-pwd-set-mpin.html"
+                       >Submit</a>
+                </div>
+            </div>
+            
+        </div>
+    
+    </div>
+
+
+
+
+
+
+
+    <div id="numberConfirmation" class="modal fade " role="dialog">
+		<div class="modal-dialog modal-dialog-centered">
+			  <div class="modal-content">
+				
+				<div class="modal-body text-center">
+                    <div class="imgblock">
+                        <img src="../assets/images/icons/mobile.svg">    
+                    </div>
+					<h3>OTP Verification</h3>
+
+                    <span>OTP sent on your mobile number ending with ******0967</span>
+                    <div class="box-password d-inline-block">
+                        
+                        <input id="otp1" type="password" maxlength="1" placeholder="●" onkeyup="onKeyUpEvent(1, event)" onfocus="onFocusEvent(1)">
+                        <input id="otp2" type="password" maxlength="1" placeholder="●" onkeyup="onKeyUpEvent(2, event)" onfocus="onFocusEvent(2)">
+                        <input id="otp3" type="password" maxlength="1" placeholder="●" onkeyup="onKeyUpEvent(3, event)" onfocus="onFocusEvent(3)">
+                        <input id="otpd4" type="password" maxlength="1" placeholder="●" onkeyup="onKeyUpEvent(4, event)" onfocus="onFocusEvent(4)">
+                        <input id="otp5" type="password" maxlength="1" placeholder="●" onkeyup="onKeyUpEvent(5, event)" onfocus="onFocusEvent(5)">
+                        <input id="otp6" type="password" maxlength="1" placeholder="●" onkeyup="onKeyUpEvent(6, event)" onfocus="onFocusEvent(6)">
+                        <div class="clearfix mt-1   ">
+                            <b class="float-left">02.00</b><a class="float-right" >Resend</a>    
+                        </div>
+                     </div>
+				 </div>
+				<div class="button-footer">
+					<button type="button" class="ux-button sm secondary" data-dismiss="modal">No</button>
+					<button type="button" class="ux-button sm primary"   data-dismiss="modal" onclick="nextStep(1)">Submit</button>
+				</div>
+			 </div>
+
+		</div> 
+	</div>
+    <div id="usernamePolicy" class="modal fade " role="dialog">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                        <div class="mh-bottom">
+                        <div class="row1">
+                            <div class="col-10"><h6>Username Policy</h6></div>
+                            <div class="col-2"><a href="javascript:;" data-dismiss="modal"><span class="mh-cross" ></span></a></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-body">
+                    <h4> Lorem Ipsum</h4>
+                        <p>"Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit..."
+                        "There is no one who loves pain itself, who seeks after it and wants to have it, simply because it is pain..."</p>
+                    </div>
+                <div class="modal-footer">
+                    <button type="button" class="ux-button sm secondary" data-dismiss="modal">OK</button>
+                    
+                </div>
+            </div>
+
+        </div> 
+    </div> 
+
+    <div id="passwordPolicy" class="modal fade " role="dialog">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <div class="mh-bottom">
+                        <div class="row1">
+                            <div class="col-10"><h6>{{'PASSWORD_POLICY' |translate}}</h6></div>
+                            <div class="col-2"><a href="javascript:;" data-dismiss="modal"><span class="mh-cross" ></span></a></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-body">
+                    <h4> Lorem Ipsum</h4>
+                        <p>"Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit..."
+                        "There is no one who loves pain itself, who seeks after it and wants to have it, simply because it is pain..."</p>
+                        
+                        <ul>
+                        <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</li>
+                    <li> Pellentesque quis magna quis augue maximus vestibulum vel eu mi.</li>
+                    <li>Fusce non est eu nisl fermentum scelerisque.</li>
+                        <li>Aliquam faucibus odio a erat cursus convallis.</li>
+                        <li>Suspendisse sit amet ex eu lectus fringilla efficitur nec non sapien.</li>
+                    <li> Etiam feugiat sapien ut lacus pharetra tristique.</li>
+                    <li>Nam a metus ullamcorper, tincidunt arcu non, consectetur lectus.</li>
+                        <li>Fusce vitae odio tincidunt, varius purus non, tincidunt mauris.</li>
+                        <li>Fusce porttitor urna at pellentesque posuere.</li>
+                        <li> Duis vel dolor consectetur, scelerisque ex vitae, vestibulum turpis.</li>
+                        <li> In ultrices urna nec dui auctor, nec suscipit diam scelerisque.</li>
+                        <li> Proin et urna ac magna volutpat accumsan.</li>
+                        <li> Aenean consectetur nisl eu efficitur ornare.</li>
+                        <li> Maecenas porta ex nec risus commodo viverra.</li>
+                        <li> Nulla at lectus eleifend, auctor dui sed, tempus nisi.</li>
+                        <li>Aliquam tristique quam quis tortor bibendum, et finibus ex varius.</li>
+                        </ul>
+                </div>
+                <div class="modal-footer">
+                <button type="button" class="ux-button sm secondary" data-dismiss="modal">OK</button>
+                </div>
+            </div>
+
+        </div> 
+    </div>
+    <div id="adhaarOptions" class="modal fade " role="dialog">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                        <div class="mh-bottom">
+                        <div class="row1">
+                            <div class="col-10"><h6>Provide Consent</h6></div>
+                            <div class="col-2"><a href="javascript:;" data-dismiss="modal"><span class="mh-cross" ></span></a></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-body">
+                    <ul>
+                        <li class="ux-selection"><label class="ux-selection1"><input type="checkbox" name="consent"><span class="checkmark"></span><em>Adhhaar Declaration for Verification from UIDAI</em></label></li>    
+                        <li class="ux-selection"><label class="ux-selection1"><input type="checkbox" name="consent"><span class="checkmark"></span><em>PAN Declaration for verification From NSDL</em></label></li>    
+                    </ul>
+                    </div>
+                <div class="modal-footer">
+                    <div class="button-footer">
+                        <button type="button" class="ux-button sm secondary" data-dismiss="modal">No</button>
+                        <button type="button" class="ux-button sm primary"   data-dismiss="modal" onclick="nextStep(2)">Submit</button>
+                    </div>
+                    
+                </div>
+            </div>
+
+        </div> 
+    </div> 
+    <div id="upiOptions" class="modal fade " role="dialog">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                        <div class="mh-bottom">
+                        <div class="row1">
+                            <div class="col-10"><h6>Provide Consent</h6></div>
+                            <div class="col-2"><a href="javascript:;" data-dismiss="modal"><span class="mh-cross" ></span></a></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-body">
+                    <ul>
+                        <li class="ux-selection"><label class="ux-selection1"><input type="checkbox" name="consent"><span class="checkmark"></span><em>FATCA & CRS Declaration</em></label></li>    
+                        <li class="ux-selection"><label class="ux-selection1"><input type="checkbox" name="consent"><span class="checkmark"></span><em>Banks Terms and Condition</em></label></li>    
+                        <li class="ux-selection"><label class="ux-selection1"><input type="checkbox" name="consent"><span class="checkmark"></span><em>Authorize Bank to communicate via SMS, EMAIL or WhatsApp</em></label></li>    
+                        <li class="ux-selection"><label class="ux-selection1"><input type="checkbox" name="consent"><span class="checkmark"></span><em>Aadhaar based account is not opened anywhere else</em></label></li>    
+                   </ul>
+                    </div>
+                <div class="modal-footer">
+                    <div class="button-footer">
+                        <button type="button" class="ux-button sm secondary" data-dismiss="modal">No</button>
+                        <button type="button" class="ux-button sm primary"   data-dismiss="modal" onclick="nextStep(7)">Submit</button>
+                    </div>
+                    
+                </div>
+            </div>
+
+        </div> 
+    </div> 
+    <script src="../jsHtml/lib/jquery.min.js"></script>
+	<script src="../jsHtml/lib/bootstrap.min.js"></script>
+	<script src="../jsHtml/lib/jquery-ui.min.js"></script>
+	<script src="../jsHtml/lib/owl.carousel.min.js"></script>
+	<script src="../jsHtml/lib/popper.min.js"></script>
+    <script src="../jsHtml/lib/jquery.mousewheel.min.js"></script>
+	<script src="../jsHtml/lib/jquery.mCustomScrollbar.js"></script>
+    <script src="../jsHtml/lib/datatables.min.js"></script>
+	<script src="../jsHtml/common.js"></script>
+	<script  src="../jsHtml/lib/chart2.min.js"></script>
+ 
+    <script>
+
+
+
+
+        function nextStep(index){
+              var nextindex= index + 1
+            console.log('its working :' + index);
+            $('.registration-container .steps-block ul li').removeClass('active inprogress');
+            $('.tempstep').removeClass('active')
+            $('.tab-block').find('#'+ nextindex).addClass('active')
+            $('.registration-container .steps-block ul li:nth-child('+index +')').addClass('completed')
+            $('.registration-container .steps-block ul li:nth-child('+nextindex +')').addClass('active inprogress')
+
+        };
+        function prevStep(index){
+              var prevStep= index - 1
+           
+            $('.registration-container .steps-block ul li').removeClass('active');
+            $('.tempstep').removeClass('active')
+            $('.tab-block').find('#'+ prevStep).addClass('active')
+           
+            $('.registration-container .steps-block ul li:nth-child('+prevStep +')').addClass('active')
+
+        }
+        function goTo(goToStep){
+            $('.registration-container .steps-block ul li').removeClass('active');
+            $('.registration-container .steps-block ul li:nth-child('+ goToStep +')').addClass('active')
+            $('.tempstep').removeClass('active')
+            $('.tab-block').find('#'+ goToStep).addClass('active')
+        }
+
+        $(document).on('click', '.channel-tab li a', function(e){
+            e.preventDefault();
+            var tragetId = $(this).attr('href');
+            $('.channel-tab li a').removeClass('active');
+            $(this).addClass('active');
+            $('.creditials-tab-panel .main-pannel').removeClass('active')
+            $('.creditials-tab-panel' ).find(tragetId).addClass('active')
+
+        })
+ 
+	//  createGlobalNavMore();
+	function getSpasswordElement(index) {
+        return document.getElementById('spassword' + index);
+      }
+      function onKeyUpEvent(index, event) {
+        const eventCode = event.which || event.keyCode;
+        if (getSpasswordElement(index).value.length === 1) {
+          if (index !== 6) {
+            getSpasswordElement(index+ 1).focus();
+          } else {
+            getSpasswordElement(index).blur();
+            // Submit code
+            console.log('submit code ');
+          }
+        }
+        if (eventCode === 12 && index !== 1) {
+          getSpasswordElement(index - 1).focus();
+        }
+      }
+      function onFocusEvent(index) {
+        for (item = 1; item < index; item++) {
+          const currentElement = getSpasswordElement(item);
+          if (!currentElement.value) {
+              currentElement.focus();
+              break;
+          }
+        }
+	  }
+	  
+	  function getCpasswordElement(index) {
+        return document.getElementById('cpassword' + index);
+      }
+      function onKeyUpEvents(index, event) {
+        const eventCode = event.which || event.keyCode;
+        if (getCpasswordElement(index).value.length === 1) {
+          if (index !== 6) {
+            getCpasswordElement(index+ 1).focus();
+          } else {
+            getCpasswordElement(index).blur();
+            // Submit code
+            console.log('submit code ');
+          }
+        }
+        if (eventCode === 12 && index !== 1) {
+          getCpasswordElement(index - 1).focus();
+        }
+      }
+      function onFocusEvents(index) {
+        for (item = 1; item < index; item++) {
+          const currentElement = getCpasswordElement(item);
+          if (!currentElement.value) {
+              currentElement.focus();
+              break;
+          }
+        }
+      }
+      $("#numberConfirmation").click(function(){
+		// console.log('working');
+		if ( !$('#numberAuthpoup').hasClass('popup-active') ) {
+				$('#numberAuthpoup').addClass('popup-active');
+				$( 'div.ios-nav-overlay' ).fadeIn(400);
+			} else {
+				$('#numberAuthpoup').removeClass('popup-active');
+				$( 'div.ios-nav-overlay' ).fadeOut(400);
+		 	}
+	   });
+
+
+	  $("button.mpin-submit").click(function(){
+		// console.log('working');
+		if ( !$('div.popup-bottom.mpin-success').hasClass('popup-active') ) {
+				$('div.popup-bottom.mpin-success').addClass('popup-active');
+				$( 'div.ios-nav-overlay' ).fadeIn(400);
+			} else {
+				$('div.popup-bottom.mpin-success').removeClass('popup-active');
+				$( 'div.ios-nav-overlay' ).fadeOut(400);
+		 	}
+       });
+       
+       $('.registration-container .steps-block span.close').click(function(){
+            $('.steps-block').fadeOut();
+
+       })
+        $('ul.step-list li.step-matched em').click(function(){
+            $('.steps-block').fadeIn();
+
+       })
+</script>
+    
+</body>
+
+</html>

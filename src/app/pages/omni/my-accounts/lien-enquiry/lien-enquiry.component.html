@@ -1,0 +1,223 @@
+<div class="main bg-m">
+	<div class="right-main-column">
+		<div class="right-col-container pad-b full-width">
+			<!-- ======== body page content start from here ======== -->
+			<div class="body-page-container">
+				<div class="container-fluid">
+					<div class="row">
+						<div class="col-12 p-0">
+							<div class="breadcrumb">
+								<ul class="lst-breadcrumb">
+									<!-- <li [routerLink]="['/myAccount']"> <a>My Accounts</a> </li>
+									<li [routerLink]="['/myAccountDetails']"> <a>Operative Accounts</a> </li>
+									<li [routerLink]="['/myAccountsInfo']"> <a>Savings Account Details</a> </li>
+									<li> Lien Enquiry </li> -->
+									<li *ngFor="let name of DataService.breadcrumblist">
+                                        <a (click)="breadcrumroute(name.routeName)">{{name.currentRoute | translate}}</a>
+                                    </li>
+								</ul>
+							</div>
+						</div>
+					</div>
+					<!--.row -->
+					<div class="vspacer15 customize d-none d-md-block d-lg-block d-xl-block"></div>
+					<div class="row no-gutters">
+						<div class="col-12">
+							<div class="row1">
+								<div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-9">
+									<!-- Greencard2 Start here -->
+									<div class="greencard2">
+										<div class="row1 hide-m">
+											<div class="col-md-8 col-12">
+												<h4>Lien Enquiry</h4> </div>
+											<div class="col-md-4 col-12"> </div>
+										</div>
+										<div class="row1">
+											<div class="col-sm-12 col-12 col-md-12">
+												<div class="white-box2 mar-t mb-3">
+													<div class="row1">
+														<div class="col-12 col-md-12 col-xl-12 mt-2">
+															<div class="info-card green-light">
+																<ul class="comp-info2">
+																	<li>
+																		<div class="grid-info ">
+																			<div class="full-info">
+																				<h5>Total Lien Balance</h5> </div>
+																		</div>
+																		<div class="grid-info">
+																			<div class="full-info">
+																				<h6>Amount</h6>
+																				<h5> {{DataService.totalLienAmount | customcurrency}}</h5> </div>
+																		</div>
+																	</li>
+																</ul>
+															</div>
+														</div>
+													</div>
+													<div class="row1">
+														<div class="col-sm-12 col-12 col-md-12">
+															<div id="accordion" class="accordion-container info-card2">
+																<div class="card2" *ngFor="let item of lienDtl; index as i;" >
+																	<a class="card-link" data-toggle="collapse" [href]="'#lien'+i" aria-expanded="true">
+																		<div class="card-header3">
+																			<div class="panel-title3">
+																				<h4>{{i+1}}. Lien Enquiry</h4> </div> <em></em> </div>
+																	</a>
+																	<div [id]="'lien'+i" class="collapse show" data-parent="#accordion">
+																		<div class="card-body">
+																			<div class="row1">
+																				<div class="col-12">
+																					<div class="info-bottom pad-custom">
+																						<!-- <div class="info-details">
+																							<div class="row">
+																								<h6>Lien Type</h6>
+																								<h5>Lorum Ipsum</h5> </div>
+																						</div> -->
+																						<div class="info-details">
+																							<div class="row">
+																								<h6>Expiry Date</h6>
+																								<h5>{{item.lienExpiryDate}}</h5> </div>
+																						</div>
+																						<div class="info-details">
+																							<div class="row">
+																								<h6>Lien Amount</h6>
+																								<h5>{{item.lienAmount | customcurrency}}</h5> </div>
+																						</div>
+																						<div class="info-details">
+																							<div class="row">
+																								<h6>Remark</h6>
+																								<h5>{{item.remarks}}</h5> </div>
+																						</div>
+																						<div class="info-details">
+																							<div class="row">
+																								<h6>Reason</h6>
+																								<h5>{{item.lienReasonCode}}</h5> </div>
+																						</div>
+																					</div>
+																				</div>
+																			</div>
+																		</div>
+																	</div>
+																</div>
+
+																<!-- <div class="card2">
+																	<a class="card-link collapsed" data-toggle="collapse" href="#lien2" aria-expanded="false">
+																		<div class="card-header3">
+																			<div class="panel-title3">
+																				<h4>02. Lien Enquiry</h4> </div> <em></em> </div>
+																	</a>
+																	<div id="lien2" class="collapse" data-parent="#accordion">
+																		<div class="card-body">
+																			<div class="row1">
+																				<div class="col-12">
+																					<div class="info-bottom pad-custom">
+																						<div class="info-details">
+																							<div class="row">
+																								<h6>Lien Type</h6>
+																								<h5>Lorum Ipsum</h5> </div>
+																						</div>
+																						<div class="info-details">
+																							<div class="row">
+																								<h6>Expiry Date</h6>
+																								<h5>24 Oct 2021</h5> </div>
+																						</div>
+																						<div class="info-details">
+																							<div class="row">
+																								<h6>Lien Amount</h6>
+																								<h5><img src="assets/images/svg/rupee-bl.svg" alt="rupees-icon"> 5,000.00</h5> </div>
+																						</div>
+																						<div class="info-details">
+																							<div class="row">
+																								<h6>Remark</h6>
+																								<h5>Lorum Ipsum</h5> </div>
+																						</div>
+																						<div class="info-details">
+																							<div class="row">
+																								<h6>Reason</h6>
+																								<h5>Lorum Ipsum</h5> </div>
+																						</div>
+																					</div>
+																				</div>
+																			</div>
+																		</div>
+																	</div>
+																</div>
+																<div class="card2">
+																	<a class="card-link collapsed" data-toggle="collapse" href="#lien3" aria-expanded="false">
+																		<div class="card-header3">
+																			<div class="panel-title3">
+																				<h4>03. Lien Enquiry</h4> </div> <em></em> </div>
+																	</a>
+																	<div id="lien3" class="collapse" data-parent="#accordion">
+																		<div class="card-body">
+																			<div class="row1">
+																				<div class="col-12">
+																					<div class="info-bottom pad-custom">
+																						<div class="info-details">
+																							<div class="row">
+																								<h6>Lien Type</h6>
+																								<h5>Lorum Ipsum</h5> </div>
+																						</div>
+																						<div class="info-details">
+																							<div class="row">
+																								<h6>Expiry Date</h6>
+																								<h5>24 Oct 2021</h5> </div>
+																						</div>
+																						<div class="info-details">
+																							<div class="row">
+																								<h6>Lien Amount</h6>
+																								<h5><img src="assets/images/svg/rupee-bl.svg" alt="rupees-icon"> 5,000.00</h5> </div>
+																						</div>
+																						<div class="info-details">
+																							<div class="row">
+																								<h6>Remark</h6>
+																								<h5>Lorum Ipsum</h5> </div>
+																						</div>
+																						<div class="info-details">
+																							<div class="row">
+																								<h6>Reason</h6>
+																								<h5>Lorum Ipsum</h5> </div>
+																						</div>
+																					</div>
+																				</div>
+																			</div>
+																		</div>
+																	</div>
+																</div> -->
+															</div>
+														</div>
+													</div>
+												</div>
+											</div>
+											<div class="col-12 col-md-12">
+												<ul class="bottom-footer1">
+													<li>
+														<div class="btn-div w100">
+															<button class=" ux-button secondary sm-mob" (click)="goToPage('myAccountsInfo')">Back</button>
+														</div>
+													</li>
+												</ul>
+											</div>
+										</div>
+									</div>
+									<!-- Greencard2 End here -->
+								</div>
+								<!-- Right Side Column Start -->
+								<div class="col-12 col-md-12 col-lg-12 col-xl-3 d-none d-xl-block">
+									<div class="right-ads">
+										<a> <img src="assets/images/banner/my-card-banner.jpg"> </a>
+									</div>
+									<div class="vspacer30"></div>
+								</div>
+								<!-- Right Side Column End -->
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!--.right-col-container-->
+	</div>
+	<!--.right-main-column-->
+</div>
+<!-- main -->

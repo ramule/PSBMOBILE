@@ -1,0 +1,437 @@
+<div class="prelogin-page bg2 bg-custom upi-login">
+
+    <!-- Loginform Container Start -->
+    <div class="col-12 col-sm-12">
+        <div class="row">
+            <div class="login-bg">
+                <div class="row1">
+                    <div class="col-12">
+                        <div class="login-header">
+                            <div class="brand-logo mt-0">
+                                <img src="assets/images/logo/psb-logo.png" alt="psb-logo">
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="vspacer15"></div>
+                    <div class="col-sm-12 col-12 col-md-12 mb-1">
+
+
+
+
+                        <div class="whitebg-input mar-custom psb-login">
+                            <div class="row1">
+                                <div class="col-12 m-auto">
+                                    <div class="ux-swicthbox" *ngIf="isMPINSet" >
+                                        <label>
+                                            <input type="checkbox" id="loginswitch" [checked]="isMpinChecked" (change)="checkedType()">
+                                            <span class="bar"></span>
+                                            <span class="mpin">Mpin</span>
+                                            <span class="username">Username</span>
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row1">
+                                <form [formGroup]="LoginForm" (ngSubmit)="loginUsername()" *ngIf="!isMpinChecked" >
+                                    <div class="col-12 forUsername">
+                                        <div class="row1">
+                                            <div Class="col-12">
+                                                <div class="ux-input">
+                                                    <label>{{"USERNAME" | translate }}</label>
+                                                    <input type="text" placeholder='{{"ENTER_USER_NAME" | translate}}'
+                                                        formControlName="username" limit-to="20" username class="text-left">
+                                                    <span class="errormsg"
+                                                        *ngIf="LoginForm.controls['username'].touched && LoginForm.controls['username'].hasError('required')">{{"PLEASE_ENTER_USERNAME"
+                                                        | translate }}</span>
+                                                        <div class="text-right">
+                                                            <a class="fogot-mpin link-text " (click)="routeTo('/ForgotUsername')" >Forgot Username</a>
+                                                        </div>
+                                                </div>
+                                            </div>
+                                            <div Class="col-12">
+                                                <div class="ux-input">
+                                                    <label>{{"PASSWORD" | translate }}</label>
+                                                    <input type="password" autocomplete="off" class="text-left"
+                                                        placeholder='{{"ENTER_PASSWORD" | translate}}'
+                                                        formControlName="password" limit-to="20">
+                                                    <span class="errormsg"
+                                                        *ngIf="LoginForm.controls['password'].touched && LoginForm.controls['password'].hasError('required')">{{"PLEASE_ENTER_PASSWORD"
+                                                        | translate }}</span>
+                                                    <div class="text-right">
+                                                        <a class="fogot-mpin link-text text-right" (click)="forgotFlow('ForgotPassword')">Forgot password</a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div Class="col-12">
+
+                                                <button type="submit" role="button"
+                                                    class="ux-button primary d-block w-100 mt-1">Login</button>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
+                                <div class="col-12 col-md-12 forMpin"  *ngIf="isMPINSet && isMpinChecked" >
+                                    <form [formGroup]="MPINForm">
+                                        <div class="row1">
+                                            <div class="col-12">
+                                                <div class="ux-input password1 p1 mb-0 mt-3">
+                                                    <label for="sapassword" class="mb0">Enter MPIN</label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row3">
+                                            <div class="col-sm-2 col-2 col-md-2">
+                                                <div class="ux-input password1 p1 mb-1">
+                                                    <input #mPinLogin id="spassword1" maxlength="1" placeholder="" (keyup)="onKeyUpEvent(0, $event, 'mpin')" (focus)="onFocusEvents(0,'mpin' )" numbersOnly type="tel" formControlName="mpin1" (blur)="loginWithMPIN()" />
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-2 col-2 col-md-2">
+                                                <div class="ux-input password1 p1 mb-1">
+                                                    <input #mPinLogin id="spassword2" maxlength="1" placeholder="" (keyup)="onKeyUpEvent(1, $event , 'mpin')" (focus)="onFocusEvents(1 ,'mpin')" numbersOnly type="tel" formControlName="mpin2" (blur)="loginWithMPIN()" />
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-2 col-2 col-md-2">
+                                                <div class="ux-input password1 p1 mb-1">
+                                                    <input #mPinLogin id="spassword3" maxlength="1" placeholder="" (keyup)="onKeyUpEvent(2, $event, 'mpin')" (focus)="onFocusEvents(2 ,'mpin')" numbersOnly type="tel" formControlName="mpin3" (blur)="loginWithMPIN()" />
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-2 col-2 col-md-2">
+                                                <div class="ux-input password1 p1 mb-1">
+                                                    <input #mPinLogin id="spassword4"  maxlength="1" placeholder="" (keyup)="onKeyUpEvent(3, $event, 'mpin')" (focus)="onFocusEvents(3 ,'mpin')" numbersOnly type="tel" formControlName="mpin4" (blur)="loginWithMPIN()" />
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-2 col-2 col-md-2">
+                                                <div class="ux-input password1 p1 mb-1">
+                                                    <input #mPinLogin id="spassword5" maxlength="1" placeholder="" (keyup)="onKeyUpEvent(4, $event, 'mpin')" (focus)="onFocusEvents(4 ,'mpin')" numbersOnly type="tel" formControlName="mpin5" (blur)="loginWithMPIN()" />
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-2 col-2 col-md-2">
+                                                <div class="ux-input password1 p1 mb-1">
+                                                    <input #mPinLogin id="spassword6" maxlength="1" placeholder="" (keyup)="onKeyUpEvent(5, $event, 'mpin')" (focus)="onFocusEvents(5,'mpin')" numbersOnly type="tel" formControlName="mpin6" (blur)="loginWithMPIN()" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </form>
+                                    <div class="row">
+                                        <div class="col-12">
+                                            <div class="ux-input input-error password1 p1 mt-0 mb-0">
+                                                <p> </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- For biometric call-->
+                                <div Class="col-12 " *ngIf="isBiometricAvailable && isBiomertric">
+                                    <div class="ux-input">
+                                        <label class="small-message text-center mb-0">OR</label>
+                                    </div>
+                                </div>
+                                <!-- <div class="col-12 col-md-12" *ngIf="isBiometricAvailable && isBiomertric">
+                                    <div class="text-center">
+                                        <a>
+                                            <span class="round-circle1" (click)="bioMetricAuth()" >
+                                                <img src="assets/images/svg/biometric.svg" alt="biometric-icon">
+                                            </span>
+                                        </a>
+                                    </div>
+                                </div> -->
+
+
+
+                                <div class="col-12 col-md-12" *ngIf="isBiometricAvailable && isBiomertric && (biometricType == 'finger' || biometricType == 'biometric')">
+                                    <div class="text-center">
+                                        <a (click)="bioMetricAuthClick(true)" class="biometric-login">
+                                            <span class="round-circle1">
+                                                <img src="assets/images/svg/biometric.svg"
+                                                    alt="biometric-icon">
+                                            </span>
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="col-12 col-md-12" *ngIf="isBiometricAvailable && isBiomertric && (biometricType == 'face')">
+                                    <div class="text-center">
+                                        <a (click)="bioMetricAuthClick(true)" class="biometric-login">
+                                            <span class="round-circle1">
+                                                <img src="assets/images/svg/face-g.svg" alt="face-login-icon">
+                                            </span>
+                                        </a>
+                                    </div>
+                                </div>
+
+                                <div class="col-12 col-md-12" *ngIf="isBiometricAvailable && isBiomertric">
+                                    <div class="ux-input pb-0">
+                                        <div class="text-center">
+                                            <em class="message">Login with biometric</em>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-12" *ngIf="isMPINSet && isMpinChecked"  (click)="forgotFlow('forgotMpinMob')">
+                        <div class="white-radius-container forMpin" >
+                            <a class="fogot-mpin link-text" >Forgot MPIN?</a>
+                        </div>
+                    </div>
+                    
+                </div>
+                <div class="row1">
+                    <div class="col-sm-12 col-12 col-md-12">
+                        <div class="slider-section pos-custom">
+                            <div class="scroll-box mt-0">
+                                <div class="owl-carousel box-owl" role="list">
+                                    <owl-carousel-o role="list" [options]="loginCarouselOptions" #cardsCarousel>
+                                        <ng-container class="item" role="listitem" style="padding: 5px;">
+                                            <ng-template class="slide" carouselSlide [width]="320">
+                                                <div class="item ux-small-scroll2" role="listitem">
+                                                    <a href="javascript:;">
+                                                        <span>
+                                                            <img src="assets/images/slides/dashboard-banner.png"
+                                                                alt="banner1">
+                                                        </span>
+                                                    </a>
+                                                </div>
+                                            </ng-template>
+                                        </ng-container>
+                                        <ng-container class="item" role="listitem" style="padding: 5px;">
+                                            <ng-template class="slide" carouselSlide [width]="320">
+                                                <div class="item ux-small-scroll2" role="listitem">
+                                                    <a href="javascript:;">
+                                                        <span>
+                                                            <img src="assets/images/slides/dashboard-banner.png"
+                                                                alt="banner2">
+                                                        </span>
+                                                    </a>
+                                                </div>
+                                            </ng-template>
+                                        </ng-container>
+                                        <ng-container class="item" role="listitem" style="padding: 5px;">
+                                            <ng-template class="slide" carouselSlide [width]="320">
+                                                <div class="item ux-small-scroll2" role="listitem">
+                                                    <a href="javascript:;">
+                                                        <span>
+                                                            <img src="assets/images/slides/dashboard-banner.png"
+                                                                alt="banner3">
+                                                        </span>
+                                                    </a>
+                                                </div>
+                                            </ng-template>
+                                        </ng-container>
+                                    </owl-carousel-o>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- <div class="ios-nav-overlay"></div> -->
+
+</div>
+
+<!-- footer section start -->
+<footer>
+	<nav class="ios-global-nav3">
+		<ul class="lst-ios-nav">
+			<li>
+				<a href="javascript:;" (click)="routeTo('/languageChange')">
+					<span class="inav-icon">
+					  <img src="assets/images/svg/translate1-w.svg" alt="translate-icon">
+					</span>
+					Language
+				</a>
+			</li>
+			<!-- <li>
+				<a href="javascript:;">
+					<span class="inav-icon">
+					  <img src="assets/images/svg/mobile banking-w.svg" alt="mobile-banking">
+					</span>
+					Mobile Banking
+				</a>
+			</li> -->
+			<li>
+				<a href="javascript:;" (click)="checkFlow(); setUpiFlag()" >
+					<span class="inav-icon">
+					  <img src="assets/images/svg/bhim_icon.svg" alt="bank-icon">
+					</span>
+					UPI
+				</a>
+			</li>
+			 <li>
+				<a href="javascript:;" (click)="routeTo('/locateUs')" >
+					<span class="inav-icon">
+					  <img src="assets/images/svg/pin1-w.svg" alt="location-icon">
+					</span>
+					 Locate Us
+				</a>
+			</li>
+			<li>
+				<a href="javascript:;" (click)="routeTo('/contactUs')">
+					<span class="inav-icon">
+					  <img src="assets/images/svg/phone1-w.svg" alt="contact-icon">
+					</span>
+				   Contact Us
+				</a>
+			</li>
+		</ul>
+	</nav>
+</footer>
+<!-- footer section end -->
+
+
+
+<div class="popup-bottom show-biometric-info">
+    <div class="row1">
+        <div class="col-12">
+            <h4 class="text-center"> <img src="assets/images/svg/information.svg" alt="information-icon"> {{'INFORMATION' | translate}}</h4>
+        </div>
+    </div>
+    <div class="row1">
+        <div class="col-12">
+            <p>{{ information | translate}}</p>
+        </div>
+    </div>
+    <div class="row1  mt-2">
+        <div class="col-12 text-center" (click)="closePopup('div.popup-bottom.show-biometric-info')">
+            <button class="ux-button primary submit-btn" type="button">{{'OK' | translate}}</button>
+        </div>
+    </div>
+</div>
+
+
+<!-- Select MPIN Info Popup Start -->
+
+<div class="popup-bottom mpin-info">
+	<div class="row1">
+	  <div class="col-10">
+		<h4>Forgot MPIN</h4>
+	  </div>
+	  <div class="col-2">
+		<button class="ux-button-icon close-btn" (click)="closeAllPopup()">
+			<img src="assets/images/svg/close-b.svg" alt="cross-icon" class="img-vsmall">
+		</button> 
+	  </div>
+	</div>
+	<form action="set-mpin.html" id="mpin-form"> 
+		<div class="row1">
+		 <div class="col-12">
+			<div class="ux-input digit-input2">
+				<label for="">Linked Account Number</label>
+				 <input type="text" placeholder="XXXX XXXX XXXX" name="card-number" id="card"  value="" minlength="14" maxlength="14"  >
+				   <!-- <input type="text" placeholder="XXXX XXXX XXXX" minlength="12" maxlength="12" onkeypress="return checkDigit(event)"> -->
+				   <span class="show-digit2">1234</span> 
+				   <em class="info-message">Enter your account number linked with primary UPI id</em>
+                   <p class="mb-0 error-message"></p>
+			  </div>
+		   </div> 
+			 <div class="col-12 col-md-12">
+				<div class="row1">
+					   <div class="col-12">
+						   <div class="ux-input  p1 mb-0 mt-3 mb-3">
+							   <label for="otp" class="mb0">Enter OTP</label>
+							   <em class="info-message">Please enter 6 digit OPT sent on Email ID <br/> ******shah@gmail.com</em>
+							</div> 	 
+						</div>
+				   </div>
+				   <div class="row">
+							<div class="col-12 pl-2 pr-2">
+                                <form [formGroup]="otpForm">
+								<div class="row3">
+
+                                    <div class="col-sm-2 col-2 col-md-2" *ngFor="let otpInput of otpFormInput | slice:0:6; index as i">
+                                        <div class="ux-input password1 p1  mb-1">
+                                            <input id="otppassword{{i}}" #OTPFormRow type="tel" maxlength="1" placeholder="&#9679;"  (keyup)="onKeyUpEvent(i, $event, 'otp')" formControlName="{{otpInput}}" pattern="\d*"> </div>
+                                    </div>
+									<!-- <div class="col-sm-2 col-2 col-md-2">
+									   <div class="ux-input password1 p1 mb-1">
+										   <input id="otppassword1" type="password" maxlength="1" placeholder="&#9679" onkeyup="onKeyupEvent(1, event)" onfocus="onfocusEvent(1)"/>
+										</div> 
+								   </div>
+								   <div class="col-sm-2 col-2 col-md-2">
+									   <div class="ux-input password1 p1 mb-1">
+										   <input id="otppassword2" type="password" maxlength="1" placeholder="&#9679" onkeyup="onKeyupEvent(2, event)" onfocus="onfocusEvent(2)"/>
+										</div> 
+								   </div>
+								   <div class="col-sm-2 col-2 col-md-2">
+									   <div class="ux-input password1 p1 mb-1">
+										   <input id="otppassword3" type="password" maxlength="1" placeholder="&#9679" onkeyup="onKeyupEvent(3, event)" onfocus="onfocusEvent(3)"/>
+										</div> 
+								   </div>
+								   <div class="col-sm-2 col-2 col-md-2">
+									   <div class="ux-input password1 p1 mb-1">
+										   <input id="otppassword4" type="password" maxlength="1" placeholder="&#9679" onkeyup="onKeyupEvent(4, event)" onfocus="onfocusEvent(4)"/>
+										</div> 
+								   </div>
+								   <div class="col-sm-2 col-2 col-md-2">
+									   <div class="ux-input password1 p1 mb-1">
+										   <input id="otppassword5" type="password" maxlength="1" placeholder="&#9679" onkeyup="onKeyupEvent(5, event)" onfocus="onfocusEvent(5)"/>
+										</div> 
+								   </div>
+								   <div class="col-sm-2 col-2 col-md-2">
+									   <div class="ux-input password1 p1 mb-1">
+										   <input id="otppassword6" type="password" maxlength="1" placeholder="&#9679" onkeyup="onKeyupEvent(6, event)" onfocus="onfocusEvent(6)"/>
+										</div> 
+								   </div> -->
+								</div> 
+                            </form>
+							 <div class="row1">
+								<div class="col-12">
+								   <div class="ux-input password1 p1 mt-0 mb-0">
+										<p class="error-message"></p>
+									</div> 	 
+								</div>
+							 </div> 
+							 <div class="row1">
+								<div class="col-6 col-md-6">
+									<div class="text-left">
+										 <p class="text-left"> 
+											 <span class="success-text">00.20</span>
+										 </p>
+									 </div> 	 
+								 </div>
+								<div class="col-6 col-md-6">
+								   <div class="text-right mt-3">
+									   <button class="ux-linkbutton default-underline">{{ 'RESEND' | translate }}</button>
+									</div> 	 
+								</div>
+							 </div> 
+						  </div>
+				   </div>
+			  </div>
+		  </div>
+
+		 <div class="row mt-2">
+			<div class="col-12 text-center">
+			   <button class="ux-button primary debit-details" (click)="otpSubmit()" >Proceed</button>
+			</div>
+		 </div>
+	</form>
+</div> 
+
+<!-- Select MPIN Info Popup End -->	
+
+<!-- Show Common Info Popup Start -->
+<div class="popup-bottom show-common-info-login sm-popup">
+    <div class="row1">
+        <div class="col-12">
+            <h4 class="text-center"> <img src="assets/images/svg/information.svg" alt="information-icon">{{ "INFORMATION" | translate}}
+            </h4>
+        </div>
+    </div>
+    <div class="row1">
+        <div class="col-12">
+            <p>{{ information}}</p>
+            <span class="errormsg text-center">{{warningResp}}</span>
+        </div>
+    </div>
+    <div class="row1  mt-2">
+        <div class="col-12 text-center" (click)="closePopup('div.popup-bottom.show-common-info-login')">
+            <button class="ux-button primary submit-btn" type="button">{{"OK" | translate}}</button>
+        </div>
+    </div>
+</div>

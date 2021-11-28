@@ -1,0 +1,201 @@
+<div class="main main-bg2">
+    <div class="right-main-column mar-custom">
+        <div class="right-col-container pad-b">
+            <div class="body-page-container">
+                <div class="vspacer5 d-sm-block d-none"></div>
+                <div class="container-fluid">
+                    <form [formGroup]="payAmountForm" (ngSubmit)="routePage('payUpiConfirm')">
+                        <div class="row">
+                            <div class="bg-section2">
+                                <div class="col-12">
+                                    <div class="row1">
+                                        <div class="payee-info1">
+                                            <div class="row">
+                                                <div class="info-inner">
+                                                    <div class="info-lft">
+                                                        <span class="green1">
+                                                            <h6>{{DataService.selectedVpaDetailsPay.accountDetails.custName
+                                                                | firstLastChar}}</h6>
+                                                            <!-- <img src="assets/images/icons/user1.png" alt="user-img"> -->
+                                                        </span>
+                                                    </div>
+                                                    <div class="info-center">
+                                                        <a>
+                                                            <img src="assets/images/svg/double-right-arrows.svg" alt="double-right-arrows-icon" />
+                                                        </a>
+                                                    </div>
+                                                    <div class="info-rit">
+                                                        <span class="green1">
+                                                            <h6>{{payeeObj.payeeName | firstLastChar}}</h6>
+                                                            <!-- <img src="assets/images/icons/user5.png" alt="user-img"> -->
+                                                        </span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-12 col-md-12" *ngIf="DataService.verifyAddressResp.MASKNAME">
+                                                    <h5>{{ 'PAYMENT_TO' | translate}} {{DataService.verifyAddressResp.MASKNAME}}
+                                                    </h5>
+                                                    <h5><span>{{DataService.verifyAddressResp.accType}}
+                                                            {{DataService.verifyAddressResp.maskedAccountNumber}}</span>
+                                                    </h5>
+                                                    <!-- <h6>{{DataService.verifyAddressResp.paymentAddress}}</h6> -->
+                                                    <h6>{{'UPI_ID' | translate }} : {{DataService.verifyAddressResp.validatedVpa}}</h6>
+                                                </div>
+                                                <!-- for Account and IFSC details -->
+                                                <div class="col-12 col-md-12" *ngIf="DataService.verifyAddressResp.bankPayeeName">
+                                                    <h5>{{ 'PAYMENT_TO' | translate}} {{DataService.verifyAddressResp.bankPayeeName}}
+                                                    </h5>
+                                                    <h5><span>{{DataService.verifyAddressResp.bankIfsc}} / {{DataService.verifyAddressResp.reActNum}}</span></h5>
+                                                    <h6>{{DataService.verifyAddressResp.bankName}}</h6>
+                                                </div>
+                                                <div class="col-12 col-md-12" *ngIf="DataService.verifyAddressResp.mmidPayeeName">
+                                                    <h5>{{ 'PAYMENT_TO' | translate}} {{DataService.verifyAddressResp.mmidPayeeName}}
+                                                    </h5>
+                                                    <h5><span>{{DataService.verifyAddressResp.bankIfsc}}
+                                                            {{DataService.verifyAddressResp.enterMmid}}</span></h5>
+                                                    <h6>{{DataService.verifyAddressResp.mobileNumber}}</h6>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row1">
+                                        <div class="col-sm-5 col-8 col-md-3 m-auto">
+                                            <div class="white-input ux-input mar-tb position-relative" >
+                                                <!-- Android Keyboard start -->
+                                                <!-- <input type="tel" placeholder="₹ 0" autocomplete="off" formControlName="amount" limit-to="12"  id="amt" data-a-sign="Rs."> -->
+                                                <!-- Android Keyboard end -->
+                                                <!-- iOS Keyboard Start -->
+                                                <!-- class="pay-rupee position-absolute" [(ngModel)]="paymentRupees"  -->
+                                                <input type="text" placeholder="₹ 0" autocomplete="off" formControlName="amount" id="amt" data-a-sign="Rs." inputmode="decimal" limit-to="12" (blur)="formatCurrency($event.target.value)" />
+                                                <!-- iOS Keyboard End -->
+                                                <!-- <div class="text-center"> <span class="errormsg" style="top:48px;" *ngIf="payAmountForm.controls['amount'].hasError('required')  && payAmountForm.controls['amount'].touched">
+														{{ 'ENTER_AMOUNT_ERROR' | translate }}
+													</span></div> -->
+                                                    <!-- <span class="payment">
+                                                      ₹   {{paymentRupees}} 
+                                                    </span> -->
+                                                    <p class="text-center error-message" *ngIf="payAmountForm.controls['amount'].hasError('required')  && payAmountForm.controls['amount'].touched">{{ 'ENTER_AMOUNT_ERROR' | translate }}</p>
+                                                    <p class="text-center error-message" *ngIf="payAmountForm.controls['amount'].hasError('pattern')">{{ 'ENTER_NUMBER_ERROR' | translate}}</p>
+                                            <p class="text-center error-message"></p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row1">
+                                        <div class="col-sm-5 col-5 col-md-3 m-auto">
+                                            <div class="dark-input ux-input mar-tb">
+                                                <input type="text" formControlName="remarks" autocomplete="off" limit-to="100" placeholder="{{'REMARKS' | translate}}">
+                                                <p class="text-center error-message" *ngIf="payAmountForm.controls['remarks'].hasError('pattern')">{{ 'ENTER_SPECIAL_CHARACTOR_ERROR' | translate}}</p>
+                                                <p class="text-center error-message"></p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- </div>
+						</div>
+					</div> -->
+                                    <!-- Info Bottom Container Start -->
+                                    <div class="info-bottom-container">
+                                        <div class="row1 mt-5">
+                                            <div class="col-sm-12 col-12 col-md-12 m-auto">
+                                                <!-- Deposit Start -->
+                                                <div *ngIf="DataService.upiPayVpaList.length > 0">
+                                                    <div class="bottom-info" *ngFor="let vpaDetails of DataService.upiPayVpaList" [hidden]="!vpaDetails?.isSelected">
+
+                                                        <!-- <div class="popup-bottom2 register1 popup-active" *ngFor="let vpaDetails of DataService.upiPayVpaList" [hidden]="!vpaDetails?.isSelected"> -->
+                                                        <!-- <div > -->
+
+                                                        <div class="row1">
+                                                            <div class="col-12">
+                                                                <h4>{{ 'FROM_UPI_ID' | translate}}</h4>
+                                                            </div>
+                                                        </div>
+                                                        <!-- <form action="#" id="payment-form"> -->
+                                                        <div *ngIf="vpaDetails.isSelected">
+                                                            <div class="row1 mt-2" *ngFor="let accDetails of vpaDetails.accounts" [hidden]="!accDetails?.isSelected">
+                                                                <div class="col-12">
+                                                                    <h5>{{'UPI_ID' | translate }} : {{vpaDetails.paymentAddress}}</h5>
+                                                                    <h6>{{accDetails.accType}} {{accDetails.maskedAccountNumber}}
+                                                                    </h6>
+                                                                    <em>{{accDetails.bankName}}</em>
+                                                                    <br />
+                                                                    <em style="color: red;" *ngIf="accDetails.mbeba == 'N'">{{
+                                                                        'UPI_PIN_IS_NOT_SET_FOR_THIS_ACCOUNT' |
+                                                                        translate}}</em>
+                                                                </div>
+                                                                <div class="col-12 mt-1 ">
+                                                                    <div>
+                                                                        <a (click)="routePage('payUpiIdList')" class="reg-txt">{{'CHANGE_AC' |
+                                                                            translate}}</a>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-12 col-md-12 mt-4">
+                                                                    <em class="custom-t"><span>*</span> {{
+                                                                        'NPCI_CIRCULAR_PAYMENT_MSG' | translate }}
+                                                                    </em>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="row1 mt-3">
+                                                            <div class="col-12 text-center">
+                                                                <button class="ux-button primary submit md" [disabled]="(payAmountForm.invalid && DataService.upiPayVpaList.length > 0) || mbebaFlag == 'N'">{{
+                                                                    'CONFIRM' | translate}}</button>
+                                                            </div>
+                                                        </div>
+                                                        <!-- </form> -->
+                                                        <div class="row1">
+                                                            <div class="col-12 text-center mt-4">
+                                                                <div class="powered-logo">
+                                                                    <img src="assets/images/logo/powered-upi-logo.svg" alt="powered-upi-logo">
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <!-- </div> -->
+                                                        <!-- Deposit End -->
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!-- Info Bottom Container End -->
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+    <!-- Register Popup End -->
+
+</div>
+
+<div class="popup-bottom retryMsg">
+    <div class="row">
+        <div class="col-12">
+            <h4 class="text-center"> <img src="./assets/images/svg/error.svg" alt="error-icon"> {{'ERROR' | translate}}
+            </h4>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12">
+            <p>
+                {{ payErrorMsg | translate}}
+            </p>
+        </div>
+    </div>
+    <div class="row1 mt-2">
+        <div class="col-6 text-center">
+            <button class="ux-button secondary no md close-btn" (click)="closePopup('retryMsg')">{{ 'CANCEL' |
+                translate}}</button>
+        </div>
+        <div class="col-6 text-center">
+            <button class="logout-btn ux-button primary md" (click)="onClickPayAmount()">{{'RETRY' |
+                translate}}</button>
+        </div>
+    </div>
+</div>

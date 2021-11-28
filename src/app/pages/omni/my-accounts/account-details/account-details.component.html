@@ -1,0 +1,346 @@
+<div class="main bg-none">
+    <div class="nav-overlay"></div>
+	<div class="right-main-column ">
+		<div class="right-col-container pad-b full-width">
+			<!-- ======== body page content start from here ======== -->
+			<div class="body-page-container main-dashborad">
+				<div class="container-fluid">
+					<div class="row">
+						<div class="col-12 p-0">
+							<div class="breadcrumb">
+								<ul class="lst-breadcrumb">
+									<!-- <li> <a href="javascript:;" (click)="goBack()" >{{"MY_ACCOUNTS" | translate }}</a> </li>
+									<li> <a href="javascript:;" [routerLink]="['/myAccount']">OPERATIVE_ACCOUNTS</a> </li>
+									 <li> {{title | translate }} </li>
+									<li> SAVING_ACCOUNTS_DETAILS </li> -->
+									<li *ngFor="let name of dataService.breadcrumblist">
+                                        <a (click)="breadcrumroute(name.routeName)">{{name.currentRoute | translate}}</a>
+                                    </li>
+								</ul>
+							</div>
+						</div>
+					</div>
+					<!--.row -->
+					<div class="vspacer15 customize d-none d-md-block d-lg-block d-xl-block"></div>
+					<div class="row no-gutters">
+						<div class="col-12">
+							<div class="row1">
+								<div class="col-12 col-sm-12 col-md-12 col-lg-12  col-xl-9">
+									<div class="ux-acc-container" style="margin: 0">
+										<div class="greenCard acc-info greenCard-accout-info">
+											<div class="ux-component5 d-block d-md-none d-lg-none d-xl-none">
+												<div class="ux-dropdown">
+													<div class="drp-box">
+														<a href="#savings" class="drp-enterdata active">
+															<div class="card-actions">
+																<div class="row1">
+																	<div class="col-12">
+																		<h4>My Savings (02)</h4> <span class="d-block d-md-none d-lg-none d-xl-none text-left">001184918391</span> </div>
+																</div>
+															</div>
+															<div class="vspacer20 d-none d-md-block d-lg-block d-xl-block"></div>
+															<div class="row1">
+																<div class="col-5"> </div>
+																<div class="col-7"> <span class="account-balance disable-status">
+																		<em class="entered-data " amt="50,000.00">
+																			<i> <img src="assets/images/svg/rupee-grey.svg" alt="rupees-icon"> </i> <b>50,000</b>
+																		</em>
+																	</span>
+																	<div class="total-target"> <small>Total Available Balance</small> </div>
+																</div>
+															</div>
+															<div class="col-sm-12 col-12"> </div>
+														</a>
+													</div>
+												</div>
+											</div>
+											<div class="info-box d-none d-md-block d-lg-block d-xl-block">
+												<label>Savings Account</label>
+												<select (change)="getAccountDetails($event.target.value)">
+													<option  *ngFor="let item of accountList, let i= index"  [value]="item.accountNumber">{{item.SchemeCode}} {{item.sbAccount}}</option>
+												</select> <span><img src="assets/images/svg/rupee.svg" class="rupee">{{selectedAccount.sbBalance}}</span> <i><img src="assets/images/svg/visible.svg"></i> <i>
+                                                    <img src="assets/images/svg/refresh.svg"></i> <small>Last refreshed on 12<sup>th</sup> Oct 2020 21:22</small> </div>
+											<div class="inner-whiteCard d-none d-md-block d-lg-block d-xl-block">
+												<h4>Account Balances</h4>
+												<ul>
+													<li>
+														<h5>{{selectedAccount.sbBalance}}</h5> <span>Total Available Balance</span> </li>
+													<li>
+														<h5>{{selectedAccount.sbBalance}}</h5> <span>Effective Balance</span> </li>
+													<li>
+														<h5>{{selectedAccount.sbBalance}}</h5> <span>Lien Balance</span> </li>
+													<li>
+														<h5>{{selectedAccount.sbBalance}}</h5> <span>Unclear Balance</span> </li>
+													<li>
+														<h5>{{selectedAccount.sbBalance}}</h5> <span>Closing Balance</span> </li>
+												</ul>
+											</div>
+											<div class="button-block d-none d-md-block d-lg-block d-xl-block">
+												<button class="secondary ux-button sm">Pay Bills</button>
+												<button class="secondary ux-button sm" (click)="gotoFundtransfer()">Send Money</button>
+												<button class="secondary ux-button sm">Freeze Account</button>
+												<button class="secondary ux-button sm">Spend Analyzer</button>
+                                                 <a (click)="gotoDetailStatement()" class="secondary ux-button sm">Detailed Statement</a> </div>
+										</div>
+										<div class="d-block d-md-none d-lg-none d-xl-none">
+											<ul class="accinfo-tab clearfix">
+												<li><a href="#mini-stat" class="active">Mini Statement</a></li>
+												<li><a href="#acc-details">Account Details</a></li>
+											</ul>
+										</div>
+										<div class="statement-table overlap acc-info custom-tab active mini-statement-table" id="mini-stat">
+											<div class="block-header clearfix d-none d-md-block d-lg-block d-xl-block">
+												<h5>Mini Statement</h5>
+												<ul>
+													<li>
+														<a><img src="assets/images/svg/email.svg">Interest Certificate</a>
+													</li>
+													<li>
+														<a><img src="assets/images/svg/email.svg">Balance Certificate</a>
+													</li>
+													<li>
+														<a><img src="assets/images/svg/download.svg">Download</a>
+													</li>
+													<li>
+														<a><img src="assets/images/svg/print.svg">Print</a>
+													</li>
+												</ul>
+											</div>
+											<div class="datatable-box datatable-box-info">
+												<div class="table-responsivebox">
+													<table id="min-statment" class="table table-hover display table-borderless">
+														<thead>
+															<tr>
+																<th>Transaction Date</th>
+																<th>Transaction Perticular</th>
+																<th>CR/DR</th>
+																<th>Amount (₹)</th>
+															</tr>
+														</thead>
+														<tbody>
+															<tr class="no-borders" *ngFor="let transaction of transactionList, let i= index">
+																<td class="d-table-cell d-md-none d-lg-none d-xl-none">{{transaction.Date}} <small class="d-block">2018042114610/Withdrawal Transfer</small> </td>
+																<td class="d-none d-md-table-cell d-lg-table-cell d-xl-table-cell">24/09/2020</td>
+																<td class="d-none d-md-table-cell d-lg-table-cell d-xl-table-cell">9595038586, Expense, IMPS</td>
+																<td class="text-left"><span class="credit-debit dr "></span></td>
+																<td class="text-left"> 1,000.00 </td>
+															</tr>
+
+                                                            <!-- <tr class="no-borders" *ngFor="let transaction of transactionList, let i= index"  >
+                                                                <td>{{transaction.Date}}</td>
+                                                                <td>{{transaction.ReferenceNumber}}, {{transaction.fullRemarks}}</td>
+
+                                                                <td class="text-right" *ngIf="transaction.Deposit == undefined" > <span class="currency dr">{{transaction.Withdrawal | customcurrency : 'symbol' }}</span>  </td>
+                                                                <td class="text-right" *ngIf="transaction.Withdrawal == undefined" > <span class="currency cr">{{transaction.Deposit | customcurrency : 'symbol'}}</span>  </td>
+                                                             </tr> -->
+
+
+														</tbody>
+													  </table>
+												 </div>
+											 </div>
+											 <div class="panel-footer clearfix d-block d-md-none d-lg-none d-xl-none ">
+												<button class="secondary ux-button sm float-left ">Send Money</button>
+												<a href="detailed-statement.html " class="primary ux-button sm float-right ">Detailed Statement</a>
+											</div>
+										</div>
+								   	</div>
+
+									</div>
+									<div class="col-12 col-md-12 col-lg-12 col-xl-3 ">
+										<div class="row1 ">
+											<div class="col-xl-12 col-lg-6 col-md-6 col-12 ">
+												<div class="inner-right-block custom-tab account-detail-inner-right " id="acc-details ">
+												<div class="header-block clearfix d-none d-md-block d-lg-block d-xl-block ">
+													<h5>Account Details</h5>
+													<a class="right-icon"><img src="assets/images/svg/share1-w.svg ">Share</a>
+												</div>
+												<div class="panel-body ">
+													<ul>
+                                                        <li *ngFor="let accDetails of accountDetailsList" >{{accDetails.label | translate }}<h5>{{accDetails.details}}</h5></li>
+														<!-- <li>Customer Name<h5>Sanjeev Madhavan</h5></li>
+														<li >Account Type<h5>Savings</h5></li>
+														<li>Account Number<h5>001184918391</h5>	 </li>
+														<li class="d-none d-md-block d-lg-block d-xl-block ">Current Rate of Interest<h5>3.05%</h5> </li>
+														<li class="d-none d-md-block d-lg-block d-xl-block ">Branch Address<h5>Andheri, East, Sagar Colony, Mumbai</h5></li>
+														<li>IFSC code<h5>INFR001118</h5></li>
+														<li >Customer ID	<h5>869683850</h5> </li>
+														<li class="d-none d-md-block d-lg-block d-xl-block ">Nomanie Name<h5>Prasad Thakre</h5></li>
+														<li class="d-none d-md-block d-lg-block d-xl-block ">Rewards<h5>390 </h5></li>
+														<li>MMID<h5>970593</h5></li>
+														<li>Linked UPI Address<h5>Sanjeev.sharma@upi</h5></li> -->
+													</ul>
+												</div>
+												<!-- <div class="panel-footer clearfix d-none d-md-block d-lg-block d-xl-block ">
+													<button class="secondary ux-button sm float-left ">More Services</button>
+													<button class="primary ux-button sm float-right ">Update Details</button>
+												</div> -->
+												<div class="panel-footer clearfix d-block d-md-none d-lg-none d-xl-none ">
+													<button class="secondary ux-button sm float-left ">Share</button>
+													<button class="primary ux-button sm float-right ">Update</button>
+												</div>
+											</div>
+										</div>
+										<div class="col-xl-12 col-lg-6 col-md-6 col-12 d-none d-md-block d-lg-block d-xl-block ">
+											<div class="inner-right-block innerRightBlockBottom ">
+
+												<div class="panel-body ">
+													<ul class="extra-options ">
+														<li><a ><img src="assets/images/svg/Deposit_Icon.svg " alt=" ">OPEN FIXED DEPOSIT</a></li>
+														<li><a ><img src="assets/images/svg/amount.svg " alt=" ">APPLY FOR PPF</a></li>
+
+													</ul>
+												</div>
+
+											</div>
+										</div>
+							   		</div>
+								</div>
+
+                        	</div>
+
+						</div>
+
+					</div><!--.container-fluid-->
+				</div><!--.body-page-container-->
+			</div>
+
+			</div><!--.right-col-container-->
+		</div><!--.right-main-column-->
+
+</div> <!-- main -->
+
+
+	
+
+	<!-- logout Modal Starts-->
+
+	<div id="logoutModal " class="modal fade " role="dialog ">
+		<div class="modal-dialog modal-dialog-centered ">
+			  <div class="modal-content ">
+				<div class="modal-header ">
+					 <div class="mh-bottom ">
+						<div class="row1 ">
+							<div class="col-10 "><h6>Confirmation</h6></div>
+							<div class="col-2 "><a href="javascript:; " data-dismiss="modal "><span class="mh-cross " ></span></a></div>
+						</div>
+					</div>
+				</div>
+				<div class="modal-body ">
+					<p>Do you want logout from this application?</p>
+				 </div>
+				<div class="modal-footer ">
+					<button type="button " class="ux-button sm secondary " data-dismiss="modal ">No</button>
+					<button type="button " class="ux-button sm primary "  onclick=" location.href='login.html' ">Yes</button>
+				</div>
+			 </div>
+
+		</div>
+	</div>
+
+ <!-- logout Modal Ends-->
+
+
+ <!-- OLD DESIGN MODEL -->
+
+ <div id="shareModal" class="modal fade " role="dialog">
+    <div class="modal-dialog modal-lg modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="mh-bottom">
+                    <div class="row1">
+                        <div class="col-10">
+                            <h6>Account Details</h6>
+                        </div>
+                        <div class="col-2"><a href="javascript:;" data-dismiss="modal"><span
+                                    class="mh-cross"></span></a></div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-body">
+                <div *ngFor="let customer of ShareViaList;index as i">
+                    <div id="modal-share" class="sendInfo-block">
+                        <label class="ux-selection1">{{customer.label | translate}} : <b> {{customer.details}}</b>
+                            <input type="checkbox" name="infoSend" [(ngModel)]="customer.isChecked"
+                                [ngModelOptions]="{ standalone: true }">
+                            <span class="checkmark"></span>
+                        </label>
+                    </div>
+                    <div class="text-center mt-5">
+
+                        <!-- <button class="ux-button sm primary text-center">Send</button> -->
+                        <li><a href="javascript:;" (click)="shareViaMail()" title="Share via Email"
+                                class="ux-button sm primary text-center txt"><i class="icon-mail"></i>
+                                {{'SHARE_VIA_MAIL' | translate}}</a></li>
+                        <li><a href="javascript:;" (click)="copyToClipboard()" title="Copy to Clipboard"
+                                class="ux-button sm primary text-center txt"><i class="icon-mail"></i>
+                                {{'COPY_TO_CLIPBOARD' | translate}}</a></li>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="downloadTransaction" class="modal fade " role="dialog">
+    <div class="modal-dialog modal-lg modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="mh-bottom">
+                    <div class="row1">
+                        <div class="col-10">
+                            <h6>{{'DOWNLOAD' | translate}}</h6>
+                        </div>
+                        <div class="col-2"><a href="javascript:;" data-dismiss="modal"><span
+                                    class="mh-cross"></span></a></div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-4" (click)="exportAs('pdf', 'portrait')">
+                        <img class="download-img" src="assets/images/icons/pdf.svg" alt="download-icon">
+                        <p class="download-type">Pdf</p>
+                    </div>
+                    <div class="col-4" (click)="exportAs('xlsx')">
+                        <img class="download-img" src="assets/images/icons/excel.png" alt="download-icon">
+                        <p class="download-type">Excel</p>
+                    </div>
+                    <div class="col-4" (click)="exportAs('txt')">
+                        <img class="download-img" src="assets/images/icons/text.webp" alt="download-icon">
+                        <p class="download-type">Text</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+<div id="fundTransfer" class="modal fade " role="dialog">
+    <div class="modal-dialog modal-lg modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="mh-bottom">
+                    <div class="row1">
+                        <div class="col-10">
+                            <h6>Transfer to</h6>
+                        </div>
+                        <div class="col-2"><a href="javascript:;" data-dismiss="modal"><span
+                                    class="mh-cross"></span></a></div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-body">
+                <div class="transferButton text-center">
+                    <button class="ux-button sm primary mx-1"
+                        (click)="transferRoute('/ownBanks')">{{'SAME_BANK' | translate}} </button>
+                    <button class="ux-button sm primary mx-1"
+                        (click)="transferRoute('/otherBanks')">{{'OTHER_BANK' | translate}} </button>
+                    <!-- <button class="ux-button sm primary" >{{'INTERNATIONAL_ACCOUNT' | translate}}</button> -->
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>

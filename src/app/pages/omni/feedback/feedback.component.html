@@ -1,0 +1,183 @@
+<div class="main bg-m">
+	<!-- Start Global Nav -->
+	<!-- <div class="nav-overlay"></div> -->
+	<!-- End Global Nav -->
+	<div class="right-main-column ">
+		<div class="right-col-container pad-b full-width">
+			<!-- ======== body page content start from here ======== -->
+			<div class="body-page-container main-dashborad manage-payee">
+				<div class="container-fluid">
+					<div class="row">
+						<div class="col-12 p-0">
+							<div class="breadcrumb">
+								<ul class="lst-breadcrumb">
+									<!-- <li> <a  (click)="goBack()" >{{"DASHBOARD" | translate}}</a> </li>
+									<li> {{"FEEDBACK" | translate}} </li> -->
+									<li *ngFor="let name of DataService.breadcrumblist">
+										<a (click)="DataService.breadcrumroute(name.routeName)">{{name.currentRoute | translate}}</a>
+								</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+					<!--.row -->
+					<div class="vspacer15 customize d-none d-md-block d-lg-block d-xl-block"></div>
+					<div class="row no-gutters">
+						<div class="col-12">
+							<div class="row1">
+								<div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-9">
+									<!-- Greencard2 Start here -->
+									<div class="greencard2">
+										<div class="row1 hide-m">
+											<div class="col-12 col-md-3">
+												<h4>{{"FEEDBACK" | translate}}</h4> </div>
+											<div class="col-12 col-md-6">
+												<div class="success-alert feedback-alert">
+													<div class="alert alert-light alert-dismissible web-alert mb-0">
+														<button type="button" class="close alertclose">&times;</button> <strong><img src="assets/images/svg/success-circle.svg" alt="success-icon"></strong><em>Success</em><small>Your Feedback has been submitted successfully</small> </div>
+												</div>
+												<!-- success-alert -->
+											</div>
+											<div class="col-12 col-md-3"> </div>
+										</div>
+										<!-- row1 -->
+										<form [formGroup]="feedbackForm" >
+										<div class="row1">
+											<div class="col-sm-12 col-12 col-md-12">
+												<div class="text-center box-center-image"><img src="assets/images/icons/feedback-icon.svg" alt="cheque-img" /> </div>
+												<div class="widget-box5 mb-3 white-up">
+													<div class="bg-white1 pad-custom">
+														<div class="row">
+															<div class="col-md-4  col-12"> </div>
+															<div class="col-md-4 col-12">
+
+																<div class="rating-box">
+																	<p class="d-block text-center rate-us"> Rate us </p>
+																	<div class="fb-star-rating">
+																		<div class="star-rating" >
+																			<s [ngClass]="{'active': selectedStar >= 1}" (click)="starclick(1)">
+
+																			</s>
+																			<s [ngClass]="{'active': selectedStar >= 2}" (click)="starclick(2)">
+
+																			</s>
+																			<s [ngClass]="{'active': selectedStar >= 3}" (click)="starclick(3)">
+
+																			</s>
+																			<s [ngClass]="{'active': selectedStar >= 4}" (click)="starclick(4)">
+
+																			</s>
+																			<s [ngClass]="{'active': selectedStar >= 5}" (click)="starclick(5)">
+
+																			</s>
+																		</div>
+
+																		<input id="rating" type="hidden"  formControlName="rating"  [(ngModel)]="star"  >
+																		<div class="show-result">{{selectedStar}}</div>
+																		<input id="rating" type="hidden" formControlName="rating">
+																		<span class="errormsg d-block text-center" *ngIf="feedbackForm.controls['rating'].touched && feedbackForm.controls['rating'].hasError('required')">Please enter rating</span>
+																	</div>
+
+																	<!-- fb-star-rating -->
+																	<p class="d-block text-center experience"> {{"HOW_WAS_EXP" | translate}}? </p>
+																	<div Class="col-12">
+																		<div class="ux-input">
+																			<!-- <label>First Name</label> -->
+																			<input type="text" placeholder="Describe Here" formControlName="remark">
+																			<span class="errormsg" *ngIf="feedbackForm.controls['remark'].touched && feedbackForm.controls['remark'].hasError('required')">Please enter remark</span>
+
+																			<p></p>
+																		</div>
+																	</div>
+																</div>
+
+															</div>
+															<div class="col-md-4 col-12"> </div>
+														</div>
+													</div>
+													<!-- bg-white1 -->
+												</div>
+												<!-- widget-box5 -->
+											</div>
+											<!-- col-sm-12 col-12 col-md-12 -->
+											<div class="col-12 col-md-12">
+												<ul class="bottom-footer1">
+													<li>
+														<div class="btn-div">
+															<button type="submit" class="ux-button secondary sm-mob" (click)="cancleFeedback()">{{"CANCEL" | translate}}</button>
+														</div>
+														<div class="btn-div">
+															<button type="submit" class="submit-btn1 ux-button primary sm-mob btn-fb" (click)="feedbackSubmit()" >{{"SUBMIT" | translate}}</button>
+														</div>
+													</li>
+												</ul>
+											</div>
+											<!-- col-12 col-md-12 -->
+										</div>
+									</form>
+										<!-- row1 -->
+									</div>
+									<!-- greencard2 -->
+								</div>
+								<!-- col-12 col-sm-12 col-md-12 col-lg-12 col-xl-9 -->
+								<!-- Greencard2 End here -->
+								<!-- Right Column Ads Start -->
+								<div class="col-12 col-md-12 col-lg-12 col-xl-3 d-none d-xl-block">
+									<div class="right-ads">
+										<a> <img src="assets/images/banner/my-card-banner.jpg"> </a>
+									</div>
+									<div class="vspacer30"></div>
+									<!-- Offercard Start-->
+									<!-- <div class="offers-card">
+										<div class="header-block clearfix">
+											<h5>Offers on your card</h5> </div>
+										<div class="panel-body">
+											<div class="recentpayment-control">
+												<ul>
+													<li> <img src="assets/images/banner/offer-banner.png"> </li>
+												</ul>
+											</div>
+										</div>
+									</div> -->
+									<!-- Offercard Ends-->
+								</div>
+								<!-- Right Column Ads Ends -->
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!--.right-col-container-->
+	</div>
+	<!--.right-main-column-->
+
+</div>
+<!-- main -->
+
+
+<!-- success Popup Start -->
+<div class="ios-nav-overlay "></div>
+<div class="popup-bottom sm-popup confirmation1 ">
+	<div class="row1">
+		<div class="col-12">
+			<h4 class="text-center"> <img src="assets/images/svg/success-circle.svg" alt="success-icon"> {{"SUCCESS" | translate}}</h4> </div>
+	</div>
+	<div class="row1">
+		<div class="col-12">
+			<p>{{result}} </p>
+		</div>
+	</div>
+	<div class="row1 mt-2">
+		<div class="col-6 text-center">
+			<button (click)="closePopups()" class="ux-button secondary no md close-btn" >{{"CANCEL" | translate}}</button>
+		</div>
+		<div class="col-6 text-center">
+			<button (click)="okconfirm()" class="ux-button primary md">{{"OK" | translate}}</button>
+		</div>
+	</div>
+</div>
+<!-- success Popup End -->
+<!-- <p>{{"FEEDBACK_SUCCESSS_MSG" | translate}} </p> -->
+
+

@@ -1,0 +1,1102 @@
+<div class="main bg-m">
+	<div class="nav-overlay"></div>
+	<div class="right-main-column ">
+		<div class="right-col-container pad-b full-width">
+			<!-- ======== body page content start from here ======== -->
+			<div class="body-page-container main-dashborad manage-payee myprofile mob-aligment">
+				<div class="container-fluid">
+					<div class="row">
+						<div class="col-12 p-0">
+							<div class="breadcrumb">
+								<ul class="lst-breadcrumb">
+
+									<!-- <li> <a (click)='goBack()'>Dashboard</a> </li>
+									<li *ngIf="profileTypeModule == '' "> My Profile </li>
+									<li *ngIf="profileTypeModule != '' "> <a [routerLink]="['/profileDetails']">My Profile</a> </li> -->
+									<li *ngFor="let name of dataService.breadcrumblist">
+										<a (click)="dataService.breadcrumroute(name.routeName)">{{name.currentRoute |
+											translate}}</a>
+									</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+					<!--.row -->
+					<div class="vspacer15 customize d-none d-md-block d-lg-block d-xl-block"></div>
+					<div class="row no-gutters">
+						<div class="col-12">
+							<div class="row1">
+								<div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-9">
+									<!-- Greencard2 Start here -->
+									<div class="greencard2">
+										<div class="row1 hide-m">
+											<div class="col-md-8 col-12">
+												<h4>{{'MY_PROFILE' |
+													translate}}</h4>
+											</div>
+											<div class="col-md-4 col-12"> </div>
+										</div>
+										<div class="row1">
+											<div class="col-sm-12 col-12 col-md-12">
+												<div class="widget-box5 mb-3">
+													<div class="bg-white1 pad-custom mtc">
+														<div class="row1">
+															<div class="col-sm-12 col-12 col-md-6 col-lg-6 col-xl-5">
+																<!-- <div class="myprofile-detail">
+																	<div class="row1">
+																		<div class="col-sm-12 col-12 col-md-3" (click)="platform == 'web'? fileUpload.click() : selectImage()" >
+																			<div class="profileImg"> -->
+																<!-- <img src="assets/images/svg/profile-icon.svg" alt=""> -->
+																<!--
+																				<img [src]="dataService.profileImage" onError="this.onerror=null;this.src='./assets/images/svg/user-profile-w.svg';" alt="">
+																			</div>
+																			<a class="browsephoto"   >
+																				<img src="assets/images/svg/camera.svg" alt="">
+																				<input #fileUpload type="file" (click)="fileUpload.value = null" (change)="uploadImage($event)" style="display:none" accept="image/*">
+																			</a> -->
+																<!-- already commented part : <a class="browsephoto" *ngIf="platform != 'web'" (click)="selectImage()"  >
+																				<img src="assets/images/svg/camera.svg" alt="">
+																			</a> -->
+																<!-- </div>
+																		<div class="col-sm-12 col-12 col-md-9">
+																			<h5>{{custName | titlecase}}</h5>
+																			<p><small>Last login on {{lastLogin}}</small></p>
+																		</div>
+																	</div>
+																</div> -->
+
+																<div class="myprofile-info"
+																	(click)="platform == 'web'? fileUpload.click() : selectImage()">
+																	<div class="profile-circle">
+																		<h4 *ngIf="dataService.profileImage == '' && custName">
+																			{{custName | firstLastChar | uppercase }}
+																		</h4>
+																		<img *ngIf="dataService.profileImage != '' "
+																			[src]="dataService.profileImage"
+																			onError="this.onerror=null;this.src='./assets/images/svg/user-profile-w.svg';"
+																			alt="">
+																		<!-- <img src="../assets/images/svg/profile-icon.svg" alt=""> -->
+																		<!-- <img src="../assets/images/icons/user8.png" alt="user-img">  -->
+																		<a class="browse-photo">
+																			<img src="assets/images/svg/camera.svg"
+																				alt="">
+																			<input #fileUpload type="file"
+																				(click)="fileUpload.value = null"
+																				(change)="uploadImage($event)"
+																				style="display:none" accept="image/*">
+																		</a>
+
+																	</div>
+																	<h3 *ngIf="custName">{{custName | titlecase}}</h3>
+																<!---	<em>Last login on {{lastLogin}}</em>-->
+																<em> {{'LAST_LOGIN' | translate}} {{lastLogin}}</em>
+																</div>
+															</div>
+															<div
+																class="col-sm-12 col-12 col-md-6 col-lg-6 col-xl-7 pr-1 pl-1">
+																<ul class="profile-link2">
+																	<li>
+																		<a
+																			(click)="goToPage('profileUpdate', 'password')">
+																			<img src="assets/images/svg/change-mpin.svg"
+																				alt="change-password-icon">  {{'CHANGE_PASSWORD' | translate}} </a>
+																	</li>
+                                  <!-- <li> -->
+																	<li *ngIf="platform != 'web'">
+																		<a (click)="goToPage('profileUpdate', 'mpin')">
+																			<img src="assets/images/svg/change-mpin.svg"
+																				alt="change-mpin-icon"> {{'CHANGE_MPIN' | translate}} </a>
+																	</li>
+																	<li>
+																		<a (click)="goToPage('profileUpdate', 'tpin')">
+																			<img src="assets/images/svg/change-mpin.svg"
+																				alt="change-tpin-icon">  {{'CHANGE_TPIN' | translate}}</a>
+																	</li>
+																	<li>
+																		<a (click)="goToResetTpin('resetTpin')">
+																			<img src="assets/images/svg/change-mpin.svg"
+																				alt="change-tpin-icon">  {{'RESET_TPIN' | translate}} </a>
+																	</li>
+																</ul>
+															</div>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+										<div class="row1" [ngClass]="profileTypeModule == '' ? '' : 'hideDetails' ">
+											<div class="col-sm-12 col-12 col-md-12">
+												<div class="widget-box5 mb-3">
+													<div class="bg-white1 pad-custom">
+														<div class="row1">
+															<div class="col-md-12 col-12">
+																<div class="row1">
+																	<div class="col-md-6 col-lg-6 col-xl-4 col-12">
+																		<h6 class="detail-heading">  {{'BASIC_DETAILS' | translate}}</h6>
+																	</div>
+																</div>
+															</div>
+														</div>
+														<div class="row1">
+															<div class="col-md-12 col-12">
+																<div class="row1">
+																	<div class="col-md-6 col-lg-6 col-xl-4 col-12">
+																		<div class="ux-input ux-readonly edit-input">
+																			<label> {{'USER_NAME' | translate}}</label>
+																			<h5 class="edit-field">
+																				{{dataService.userName}}
+																				<a (click)="profileEdit('username')"
+																					class="editIcon">
+																					<img src="assets/images/svg/edit.svg"
+																						class="img-fluid">
+																				</a>
+																			</h5>
+																		</div>
+																	</div>
+																	<div class="col-md-6 col-lg-6 col-xl-4 col-12">
+																		<div class="ux-input ux-readonly edit-input">
+																			<label>  {{'EMAIL_ID' | translate}}</label>
+																			<h5 class="edit-field">
+																				{{maskedEmailId}}
+																				<a (click)="profileEdit('email')"
+																					class="editIcon">
+																					<img src="assets/images/svg/edit.svg"
+																						class="img-fluid">
+																				</a>
+																			</h5>
+																		</div>
+																	</div>
+																</div>
+															</div>
+														</div>
+														<div class="row1">
+															<div class="col-md-12 col-12">
+																<div class="row1">
+																	<div class="col-md-6 col-lg-6 col-xl-4 col-12">
+																		<div class="ux-input ux-readonly">
+																			<label>  {{'REGISTER_MOBILE_NUMBER' | translate}}</label>
+																			<h5>{{maskedMobileNo}}</h5>
+																		</div>
+																	</div>
+																	<div class="col-md-6 col-lg-6 col-xl-4 col-12">
+																		<div class="ux-input ux-readonly edit-input">
+																			<label> {{'PRIMARY_ACCOUNT_NUMBER' | translate}}</label>
+																			<h5 class="edit-field">{{accNo}}
+																				<a class="editIcon"
+																					id="selectAcct-submit"
+																					(click)="profileEdit('primaryAccount')">
+																					<!-- <img src="assets/images/svg/edit.svg" class="img-fluid"> -->
+																				</a>
+																			</h5>
+																		</div>
+																	</div>
+																</div>
+															</div>
+														</div>
+														<div class="row1 border-bottom mt-2 mb-4"> </div>
+														<div class="row1">
+															<div class="col-md-12 col-12">
+																<div class="row1">
+																	<div class="col-md-6 col-lg-6 col-xl-4 col-12">
+																		<h6 class="detail-heading"> {{'ADDRESS_DETAILS' | translate}}</h6>
+																	</div>
+																</div>
+															</div>
+														</div>
+														<div class="row1">
+															<div class="col-md-12 col-12">
+																<div class="row1">
+																	<div class="col-md-6 col-lg-6 col-xl-4 col-12">
+																		<div class="ux-input ux-readonly edit-input">
+																			<label>  {{'COMMUNICATION_ADDRESS' | translate}}</label>
+																			<h5 class="edit-field">
+																				{{communicationAdd}}
+																				<a (click)="profileEdit('address')"
+																					class="editIcon">
+																					<!-- <img src="assets/images/svg/edit.svg" > -->
+																				</a>
+																			</h5>
+																		</div>
+																	</div>
+																	<div class="col-md-6 col-lg-6 col-xl-4 col-12">
+																		<div class="ux-input ux-readonly edit-input">
+																			<label>{{'PERMANENT_ADDRESS' | translate}}</label>
+																			<h5 class="edit-field">
+																				{{permanentAdd}}
+																				<a (click)="profileEdit('address')"
+																					class="editIcon">
+																					<!-- <img src="assets/images/svg/edit.svg" class="img-fluid"> -->
+																				</a>
+																			</h5>
+																		</div>
+																	</div>
+
+																	<div class="col-md-6 col-lg-6 col-xl-4 col-12"
+																		style="display:none">
+																		<div class="ux-input ux-readonly edit-input">
+																			<label> {{'EMAIL_ALERT_CONFIG' | translate}}</label>
+																			<ul class="radio-list4">
+																				<li>
+																					<div class="ux-selection yes">
+																						<label class="ux-selection2">Yes
+																							<input type="radio"
+																								checked="checked"
+																								value="yes"
+																								name="email-alert">
+																							<span
+																								class="checkmark"></span>
+																						</label>
+																					</div>
+																				</li>
+																				<li>
+																					<div class="ux-selection no">
+																						<label class="ux-selection2">No
+																							<input type="radio"
+																								value="no"
+																								name="email-alert">
+																							<span
+																								class="checkmark"></span>
+																						</label>
+																					</div>
+																				</li>
+																			</ul>
+																		</div>
+																	</div>
+
+
+																</div>
+															</div>
+														</div>
+														<div class="row1 border-bottom mt-2 mb-4"> </div>
+														<div class="row1">
+															<div class="col-md-12 col-12">
+																<div class="row1">
+																	<div class="col-md-6 col-lg-6 col-xl-4 col-12">
+																		<h6 class="detail-heading"> {{'KYC_DETAIL ' | translate}}</h6>
+																	</div>
+																</div>
+															</div>
+														</div>
+														<div class="row1">
+															<div class="col-md-12 col-12">
+																<div class="row1">
+																	<div class="col-md-6 col-lg-6 col-xl-4 col-12">
+																		<div class="ux-input ux-readonly edit-input">
+																			<label>  {{'AADHAR_NUMBER' | translate}}</label>
+																			<h5 class="edit-field">
+																				{{this.maskedAddharCard}}
+																				<a *ngIf="addharCard == '-'" style="display:none"
+																					(click)="profileEdit('aadhar')"
+																					class="editIcon">
+																					<!-- <a (click)="profileEdit('aadhar')" class="editIcon" > -->
+																					<img src="assets/images/svg/edit.svg"
+																						class="img-fluid">
+																				</a>
+																			</h5>
+																		</div>
+																	</div>
+																	<div class="col-md-6 col-lg-6 col-xl-4 col-12">
+																		<div class="ux-input ux-readonly edit-input">
+																			<label> {{'PAN_NUMBER' | translate}}</label>
+																			<h5 class="edit-field">{{maskedPanCard}}
+																				<a *ngIf="panCard == '-'"
+																					(click)="profileEdit('pan')"
+																					class="editIcon">
+																					<img src="assets/images/svg/edit.svg"
+																						class="img-fluid">
+																				</a>
+																			</h5>
+																		</div>
+																	</div>
+																</div>
+															</div>
+														</div>
+														</div>
+												</div>
+														<!-- <div class="row1 border-bottom mt-2 mb-4"> </div> -->
+														<div class="widget-box5 mb-3" *ngIf="!dataService.isLoanAccount">
+															<div class="bg-white1 pad-custom">
+														<div class="row1">
+															<div class="col-md-12 col-12">
+																<div class="row1">
+																	<div class="col-md-6 col-lg-6 col-xl-4 col-12">
+																		<h6 class="detail-heading"> {{'TRANSACTION_LIMIT' | translate}}
+																		</h6>
+																	</div>
+																</div>
+															</div>
+														</div>
+														<div class="row1">
+															<div class="col-md-12 col-12">
+																<div class="row1">
+																	<div class="col-md-6 col-lg-6 col-xl-4 col-12 mb-3">
+																		<div class="slider-info p-0">
+																			<div class="col-12 p-0">
+																				<div class="row1">
+																					<div
+																						class="col-md-6 col-lg-6 col-xl-6 col-6">
+																						<small> {{'INTERNET_BANKING' | translate}}</small>
+																					</div>
+																					<div
+																						class="col-md-6 col-lg-6 col-xl-6 col-6">
+																						<input type="text" inputmode="decimal"
+																							class="sliderInput ux-input maxmin"
+                                              numbersOnly
+																							[value]="ibLimits.custSetlimit"
+                                              min=0
+																							[max]="ibLimits.maxAmount"
+																							[(ngModel)]="amountText"
+																							[name]="ibLimits.custSetlimit"
+																							(ngModelChange)="sliderInput($event)"
+																							(blur)="IBblur()"
+																							(focus)="focusRangeSlider(amountText, 'internetBanking')"
+																							 />
+																					</div>
+																				</div>
+																			</div>
+																			<div class="row1">
+																				<div class="col-12">
+																					<div class="limit-slider my-2 mx-1">
+																					</div>
+																					<div class="sliderticks">
+
+																						<input type="range" min="0"
+																							[max]="ibLimits.maxAmount"
+																							[value]="ibLimits.custSetlimit "
+																							(change)="ibchange($event)">
+																					</div>
+																					<p style="float:left">
+																						{{ibLimits.minAmount |
+																						customcurrency: "symbol"}}</p>
+																					<p style="float:right">
+																						{{ibLimits.maxAmount |
+																						customcurrency: "symbol"}}</p>
+																				</div>
+																			</div>
+																		</div>
+																	</div>
+																	<div class="col-md-6 col-lg-6 col-xl-4 col-12 mb-3">
+																		<div class="slider-info p-0">
+																			<div class="col-12 p-0">
+																				<div class="row1">
+																					<div
+																						class="col-md-6 col-lg-6 col-xl-6 col-6">
+																						<small> {{'MOBILE_BANKING' | translate}}</small>
+																					</div>
+																					<div
+																						class="col-md-6 col-lg-6 col-xl-6 col-6">
+																						<input type="text" inputmode="decimal"
+																							class="sliderInput ux-input maxmin1"
+																							numbersOnly
+																							[value]="mbLimits.custSetlimit"
+																							min=0
+																							[max]="mbLimits.maxAmount"
+																							[(ngModel)]="amountText1"
+																							[name]="mbLimits.custSetlimit"
+																							(ngModelChange)="sliderInput1($event)"
+																							(blur)="MBblur()"
+																							(focus)="focusRangeSlider(amountText1, 'mobileBanking')"
+																							 />
+																					</div>
+
+																				</div>
+																			</div>
+																			<div class="row1">
+																				<div class="col-12">
+																					<div
+																						class="limit-slider1 my-2 mx-1">
+																					</div>
+																					<div class="sliderticks">
+																						<!-- <p>0</p>
+                                                                                        <p>1,00,000.00</p> -->
+																						<input type="range" min="0"
+																							[max]="mbLimits.maxAmount"
+																							[value]="mbLimits.custSetlimit "
+																							(change)="mbchange($event)">
+																					</div>
+																					<p style="float:left">
+																						{{mbLimits.minAmount |
+																						customcurrency: "symbol"}}</p>
+																					<p style="float:right">
+																						{{mbLimits.maxAmount |
+																						customcurrency: "symbol"}}</p>
+																				</div>
+																			</div>
+																		</div>
+																	</div>
+																	<!-- <div class="col-md-6 col-lg-6 col-xl-4 col-12 mb-3"  *ngIf="!dataService.isNRENRO">
+																		<div class="slider-info p-0">
+																			<div class="col-12 p-0">
+																				<div class="row1">
+																					<div
+																						class="col-md-6 col-lg-6 col-xl-6 col-6">
+																						<small> {{'UPI_TRANSACTION' | translate}}</small>
+																					</div>
+																					<div
+																						class="col-md-6 col-lg-6 col-xl-6 col-6">
+																						<input type="text" inputmode="decimal"
+																							class="sliderInput ux-input maxmin2"
+																							numbersOnly
+																							[value]="upiLimits.custSetlimit"
+																							min=0
+																							[max]="upiLimits.maxAmount"
+																							[(ngModel)]="amountText2"
+																							[name]="upiLimits.custSetlimit"
+																							(ngModelChange)="sliderInput2($event)"
+																							(blur)="UBblur()"
+																							(focus)="focusRangeSlider(amountText2, 'upiTransaction')"
+																							/>
+																					</div>
+
+																				</div>
+																			</div>
+																			<div class="row1">
+																				<div class="col-12">
+																					<div
+																						class="limit-slider2 my-2 mx-1">
+																					</div>
+																					<div class="sliderticks">
+																						<input type="range" min="0"
+																							[max]="upiLimits.maxAmount"
+																							[value]="upiLimits.custSetlimit "
+																							(change)="upichange($event)">
+																					</div>
+																					<p style="float:left">
+																						{{upiLimits.minAmount |
+																						customcurrency: "symbol"}}</p>
+																					<p style="float:right">
+																						{{upiLimits.maxAmount |
+																						customcurrency: "symbol"}}</p>
+																				</div>
+																			</div>
+																		</div>
+																	</div> -->
+
+
+														<!-- <div class="row1">
+															<div class="col-md-12 col-12">
+																<div class="row1"> -->
+
+
+																	<!-- <div class="col-md-6 col-lg-6 col-xl-4 col-12">
+																		<div class="slider-info p-0">
+																			<div class="col-12 p-0">
+																				<div class="row1">
+																					<div
+																						class="col-md-6 col-lg-6 col-xl-6 col-6">
+																						<small> {{'WATCH_BANKING' | translate}}</small>
+																					</div>
+																					<div
+																						class="col-md-6 col-lg-6 col-xl-6 col-6">
+																						<input type="text" inputmode="decimal"
+																							class="sliderInput ux-input maxmin3"
+																							numbersOnly
+																							[value]="wbLimits.custSetlimit"
+																							min=0
+																							[max]="wbLimits.maxAmount"
+																							[(ngModel)]="amountText3"
+																							[name]="wbLimits.custSetlimit"
+																							(ngModelChange)="sliderInput3($event)"
+																							(blur)="WBblur()"
+																							(focus)="focusRangeSlider(amountText3, 'watchBanking')"
+																							/>
+																					</div>
+
+																				</div>
+																			</div>
+																			<div class="row1">
+																				<div class="col-12">
+																					<div
+																						class="limit-slider3 my-2 mx-1">
+																					</div>
+																					<div class="sliderticks">
+																						<input type="range" min="0"
+																							[max]="wbLimits.maxAmount"
+																							[value]="wbLimits.custSetlimit "
+																							(change)="wbchange($event)">
+																					</div>
+																					<p style="float:left">
+																						{{wbLimits.minAmount |
+																						customcurrency: "symbol"}}</p>
+																					<p style="float:right">
+																						{{wbLimits.maxAmount |
+																						customcurrency: "symbol"}}</p>
+																				</div>
+																			</div>
+																		</div>
+																	</div> -->
+
+																<!-- </div> -->
+																<div class="col-md-12 col-lg-12 col-xl-8 col-12 saveBtn"
+																	style="float: right;">
+																	<button class="ux-button sm1 my-3 primary"
+																		[disabled]="buttonDisabled"
+																		(click)="addLimitsss()"> {{'SAVE' | translate}}</button>
+																</div>
+															</div>
+														</div>
+													</div>
+												</div>
+											</div>
+
+											<div class="widget-box5 mb-3" style="display: none;">
+												<div class="bg-white1 pad-custom">
+													<div class="row1">
+														<div class="col-md-12 col-12">
+															<div class="row1">
+																<div class="col-md-6 col-lg-6 col-xl-4 col-12">
+																	<h6 class="detail-heading">{{'AUTHENTICATION_MODE' | translate}} </h6>
+																</div>
+															</div>
+														</div>
+													</div>
+													<div class="row1">
+														<div class="col-12 col-md-12 col-lg-12 col-xl-12 ">
+															<div class="ux-selection m-100">
+																<label class="ux-selection2">{{'OTP' | translate}}
+																	<input type="radio" name="radioboxdemo" value="OTP" [(ngModel)]="authMode" [ngModelOptions]="{standalone: true}" (click)="selModeAuth('O')" >
+																	<span class="checkmark"></span>
+																</label>
+															</div>
+															<div class="ux-selection m-100">
+																<label class="ux-selection2">{{'TPIN' | translate}}
+																	<input type="radio" name="radioboxdemo" value="TPIN" [(ngModel)]="authMode" [ngModelOptions]="{standalone: true}" (click)="selModeAuth('T')" >
+																	<span class="checkmark"></span>
+																</label>
+															</div>
+															<!-- <div class="ux-selection m-100">
+																<label class="ux-selection2">{{'SOFT_TOKEN' | translate}}
+																	<input type="radio" name="radioboxdemo" value="SOFT_TOKEN" [(ngModel)]="authMode" [ngModelOptions]="{standalone: true}" (click)="selModeAuth('S')" >
+																	<span class="checkmark"></span>
+																</label>
+															</div>
+															<div class="ux-selection m-100">
+																<label class="ux-selection2">{{'HARD_TOKEN' | translate}}
+																	<input type="radio" name="radioboxdemo" value="HARD_TOKEN" [(ngModel)]="authMode" [ngModelOptions]="{standalone: true}"  (click)="selModeAuth('H')" >
+																	<span class="checkmark"></span>
+																</label>
+															</div> -->
+														</div>
+														<div class="col-md-12 col-lg-12 col-xl-8 col-12 saveBtn" style="float: right;">
+															<button class="ux-button sm1 my-3 primary"
+																(click)="saveAuthMode()"> {{'SAVE' | translate}}</button>
+														</div>
+													</div>
+
+													 
+												</div>
+											</div>
+										</div>
+									</div>
+										<!-- profile edit call start -->
+										<app-profile-edit *ngIf="profileTypeModule != '' "
+											[profileModuleType]="profileTypeModule" (prevEvent)="backToProfile($event)"
+											(emailToSend)="onReceivedEmailId($event)"></app-profile-edit>
+										<!-- Profile edit call end -->
+									</div>
+									<!-- Greencard2 End here -->
+								</div>
+								<!-- Right Column Ads Start -->
+								<div class="col-12 col-md-12 col-lg-12 col-xl-3 d-none d-xl-block">
+									<div class="right-ads">
+										<a> <img src="assets/images/banner/my-card-banner.jpg"> </a>
+									</div>
+								</div>
+								<!-- Right Column Ads Ends -->
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!--.right-col-container-->
+	</div>
+	<!--.right-main-column-->
+</div>
+<!-- main -->
+<!-- opt-verification Modal Starts-->
+<!-- <div class="ios-nav-overlay"></div> -->
+<div class="popup-bottom sm-popup opt-verification popup1">
+	<div class="row1">
+		<div class="col-12">
+			<h4> {{'SELECT_PRIMARY_ACCOUNT' | translate}}</h4>
+		</div>
+	</div>
+	<div class="row1">
+		<div class="modal-body">
+			<div class="row1">
+				<div class="col-12 mb-2" *ngFor="let custaccount of custAccountList">
+					<div class="ux-selection">
+						<label class="ux-selection2">SB-{{custaccount.sbAccount}}
+							<input type="radio" checked="checked" name="account"> <span class="checkmark"></span>
+						</label>
+					</div>
+				</div>
+				<!-- <div class="col-12 mb-2">
+					<div class="ux-selection">
+						<label class="ux-selection2">SB - 0987 5555 4444
+							<input type="radio" name="account"> <span class="checkmark"></span> </label>
+					</div>
+				</div>
+				<div class="col-12 mb-2">
+					<div class="ux-selection">
+						<label class="ux-selection2">SB - 0987 5555 4444
+							<input type="radio" name="account"> <span class="checkmark"></span> </label>
+					</div>
+				</div> -->
+			</div>
+			<div class="row1  mt-2">
+				<div class="col-6 text-center">
+					<button class="ux-button secondary md close-btn" (click)="closePopup()">{{'CANCEL' | translate}}</button>
+				</div>
+				<div class="col-6 text-center">
+					<button class="ux-button primary md">Apply</button>
+				</div>
+			</div>
+		</div>
+		<!-- modal-body -->
+	</div>
+</div>
+<!-- opt-verification Modal Starts-->
+
+<!-- Upload Profile Picture Popup Start -->
+<div class="popup-bottom profile-dtl">
+	<div class="row1">
+		<div class="col-10">
+			<h4>{{'UPLOAD_PROFILE_PICTURE' | translate}}</h4>
+		</div>
+		<div class="col-2">
+			<button class="ux-button-icon close-btn" (click)="_closePopup('div.popup-bottom.profile-dtl')">
+				<img src="assets/images/svg/close-b.svg" alt="cross-icon" class="img-vsmall">
+			</button>
+		</div>
+	</div>
+	<div class="row1">
+		<div class="col-12">
+			<ul class="profile-list">
+				<li (click)="selectImageFromGallery()">
+					<a href="javascript:;">
+						<img src="assets/images/svg/gallery1.svg" alt="gallery-icon"> {{'SELECT_FROM_GALLERY' |
+						translate}}
+					</a>
+				</li>
+				<li (click)="takePhoto()">
+					<a href="javascript:;">
+						<img src="assets/images/svg/photo-camera.svg" alt="camera-icon"> {{'TAKE_PHOTO' | translate}}
+					</a>
+				</li>
+				<!-- <li (click)="removeProfilePopUp()">
+			<a class="delete-btn">
+			  <img src="assets/images/svg/delete.svg" alt="remove-icon"> {{'REMOVE_PROFILE_PICTURE' | translate}}
+			</a>
+		  </li> -->
+			</ul>
+		</div>
+	</div>
+	<!-- <div class="row mt-2">
+		  <div class="col-12 text-center">
+			  <button class="ux-button primary submit-btn" (click)="closeProfilePopUp()" >{{'CONFIRM' | translate}}</button>
+		  </div>
+	  </div> -->
+</div>
+
+
+<!-- Popup Start -->
+<div class="popup-bottom camera-info">
+	<div class="row1">
+		<div class="col-12">
+			<h4 class="text-center"> <img src="assets/images/svg/information.svg" alt="information-icon">
+				{{'INFORMATION' | translate}}</h4>
+		</div>
+	</div>
+	<div class="row1">
+		<div class="col-12">
+			<p>{{information | translate}}</p>
+		</div>
+	</div>
+	<div class="row1  mt-2">
+		<div class="col-12 text-center">
+			<button class="ux-button primary submit-btn" type="button"
+				(click)="_closePopup('div.popup-bottom.camera-info')">{{'OK' | translate}}</button>
+		</div>
+	</div>
+</div>
+
+<!-- OTP Popup Start-->
+<div class="popup-bottom md-popup otp-popup">
+	<div class="row1">
+		<div class="col-12">
+			<h4 class="text-center">  {{'OTP_VERIFICATION' | translate}}</h4>
+		</div>
+		<!-- <div class="col-2">
+			<button class="ux-button-icon close-btn" (click)="closeOtpPopup('otp-popup','otpForm')"> <img src="assets/images/svg/close-b.svg" alt="cross-icon" class="img-vsmall"> </button>
+		</div> -->
+	</div>
+	<div class="row1">
+		<div class="col-12 col-md-8 col-lg-8 col-xl-8 m-auto">
+			<div class="mob-icon"> <img src="assets/images/icons/mobile.svg" alt="mobile-icon"> </div>
+			<h6 class="text-center mar-tb">  {{'OTP_SEND_MOBILE' | translate}} {{maskedMobileNo}}  {{'AND_EMAIL_ID' | translate}}
+				{{maskedEmailId}}</h6>
+		</div>
+	</div>
+	<form [formGroup]="otpForm">
+		<div class="row1">
+			<div class="col-12 col-md-8 col-lg-8 col-xl-8  m-auto">
+				<div class="row1">
+					<div class="col-12 col-md-12 col-xl-12 col-lg-12">
+						<div class="ux-input password1 mb-1">
+							<label for="mobileOtp text-center"> {{'MOBILE_OTP' | translate}}</label>
+						</div>
+					</div>
+					<div class="col-12">
+						<div class="row4">
+							<div class="col-sm-2 col-2 col-md-2">
+								<div class="ux-input password1 mb-1">
+									<input id="mobile1" type="tel" #mobileOTPRow limit-to="1" numbersOnly
+										placeholder="●" (keyup)=" onKeyUpEventOtp(0, $event,'mobile')"
+										(focus)="onFocusEvent(0,'mobile')" formControlName="mobile1">
+								</div>
+							</div>
+							<div class="col-sm-2 col-2 col-md-2">
+								<div class="ux-input password1 mb-1">
+									<input id="mobile2" type="tel" #mobileOTPRow limit-to="1" numbersOnly
+										placeholder="●" (keyup)=" onKeyUpEventOtp(1, $event,'mobile')"
+										(focus)="onFocusEvent(1,'mobile')" formControlName="mobile2">
+								</div>
+							</div>
+							<div class="col-sm-2 col-2 col-md-2">
+								<div class="ux-input password1 mb-1">
+									<input id="mobile3" type="tel" #mobileOTPRow limit-to="1" numbersOnly
+										placeholder="●" (keyup)=" onKeyUpEventOtp(2, $event,'mobile')"
+										(focus)="onFocusEvent(2,'mobile')" formControlName="mobile3">
+								</div>
+							</div>
+							<div class="col-sm-2 col-2 col-md-2">
+								<div class="ux-input password1 mb-1">
+									<input id="mobile4" type="tel" #mobileOTPRow limit-to="1" numbersOnly
+										placeholder="●" (keyup)=" onKeyUpEventOtp(3, $event,'mobile')"
+										(focus)="onFocusEvent(3,'mobile')" formControlName="mobile4">
+								</div>
+							</div>
+							<div class="col-sm-2 col-2 col-md-2">
+								<div class="ux-input password1  mb-1">
+									<input id="mobile5" type="tel" #mobileOTPRow limit-to="1" numbersOnly
+										placeholder="●" (keyup)=" onKeyUpEventOtp(4, $event,'mobile')"
+										(focus)="onFocusEvent(4,'mobile')" formControlName="mobile5">
+								</div>
+							</div>
+							<div class="col-sm-2 col-2 col-md-2">
+								<div class="ux-input password1 mb-1">
+									<input id="mobile6" type="tel" #mobileOTPRow limit-to="1" numbersOnly
+										placeholder="●" (keyup)=" onKeyUpEventOtp(5, $event,'mobile')"
+										(focus)="onFocusEvent(5,'mobile')" formControlName="mobile6">
+								</div>
+							</div>
+						</div>
+						<div class="row1">
+							<div class="col-12">
+								<div class="ux-input password1 mt-0 mb-0">
+									<p class="error-message"></p>
+								</div>
+							</div>
+						</div>
+						<div class="row4">
+							<div class="col-6 col-md-6">
+								<div class="text-left">
+									<p class="text-left"> <span class="success-text"
+											*ngIf="mobileCounter > 0">{{mobileCounter| formatTimer }}</span> </p>
+								</div>
+							</div>
+							<div class="col-6 col-md-6">
+								<div class="text-right">
+									<button class="ux-linkbutton default-underline mt-3"
+										[ngClass]="mobileCounter > 0 ? 'mydisabled' : 'resendActive'"
+										(click)="resendOTPLink('mobile')">{{ 'RESEND' | translate }}</button>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="row1">
+			<div class="col-12 col-md-8 col-lg-8 col-xl-8  m-auto">
+				<div class="row1">
+					<div class="col-12 col-md-12 col-xl-12 col-lg-12">
+						<div class="ux-input password1 mb-1">
+							<label for="emailOtp text-center"> {{'EMAIL_OTP' | translate}}</label>
+						</div>
+					</div>
+					<div class="col-12 col-md-12">
+						<div class="row4">
+							<div class="col-sm-2 col-2 col-md-2">
+								<div class="ux-input password1 mb-1">
+									<input id="email1" type="tel" #emailOTPRow limit-to="1" placeholder="●"
+										(keyup)="onKeyUpEventOtp(0, $event,'email')" (focus)="onFocusEvent(0,'email')"
+										formControlName="email1">
+								</div>
+							</div>
+							<div class="col-sm-2 col-2 col-md-2">
+								<div class="ux-input password1 mb-1">
+									<input id="email2" type="tel" #emailOTPRow limit-to="1" placeholder="●"
+										(keyup)="onKeyUpEventOtp(1, $event,'email')" (focus)="onFocusEvent(1,'email')"
+										formControlName="email2">
+								</div>
+							</div>
+							<div class="col-sm-2 col-2 col-md-2">
+								<div class="ux-input password1 mb-1">
+									<input id="email3" type="tel" #emailOTPRow limit-to="1" placeholder="●"
+										(keyup)="onKeyUpEventOtp(2, $event,'email')" (focus)="onFocusEvent(2,'email')"
+										formControlName="email3">
+								</div>
+							</div>
+							<div class="col-sm-2 col-2 col-md-2">
+								<div class="ux-input password1 mb-1">
+									<input id="email4" type="tel" #emailOTPRow limit-to="1" placeholder="●"
+										(keyup)="onKeyUpEventOtp(3, $event,'email')" (focus)="onFocusEvent(3,'email')"
+										formControlName="email4">
+								</div>
+							</div>
+							<div class="col-sm-2 col-2 col-md-2">
+								<div class="ux-input password1  mb-1">
+									<input id="email5" type="tel" #emailOTPRow limit-to="1" placeholder="●"
+										(keyup)="onKeyUpEventOtp(4, $event,'email')" (focus)="onFocusEvent(4,'email')"
+										formControlName="email5">
+								</div>
+							</div>
+							<div class="col-sm-2 col-2 col-md-2">
+								<div class="ux-input password1 mb-1">
+									<input id="email6" type="tel" #emailOTPRow limit-to="1" placeholder="●"
+										(keyup)="onKeyUpEventOtp(5, $event,'email')" (focus)="onFocusEvent(5,'email')"
+										formControlName="email6">
+								</div>
+							</div>
+						</div>
+						<div class="row1">
+							<div class="col-12">
+								<div class="ux-input password1 mt-0 mb-0">
+									<p class="error-message"></p>
+								</div>
+							</div>
+						</div>
+						<div class="row4">
+							<div class="col-6 col-md-6">
+								<div class="text-left">
+									<p class="text-left"> <span class="success-text" *ngIf="counter > 0">{{counter|
+											formatTimer }}</span> </p>
+								</div>
+							</div>
+							<div class="col-6 col-md-6">
+								<div class="text-right">
+									<button class="ux-linkbutton default-underline mt-3"
+										[ngClass]="counter > 0 ? 'mydisabled' : 'resendActive'"
+										(click)="resendOTPLink('email')">{{ 'RESEND' | translate }}</button>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</form>
+	<div class="row1">
+		<div class="col-12">
+			<div class="ux-input password1 mt-0 mb-0">
+				<p class="error-message"></p>
+			</div>
+			<div class="text-center">
+				<span class="errormsg">{{otpfailMsg}}</span>
+			</div>
+		</div>
+	</div>
+	<div class="row1 mt-2">
+		<div class="col-12 col-md-8 col-lg-8 col-xl-8  m-auto">
+			<div class="row1">
+				<div class="col-6 text-center">
+					<button class="ux-button secondary sm-mob close-btn" type="submit"
+						(click)="closeOtpPopup('otp-popup','otpForm')">{{'CANCEL' | translate}}</button>
+				</div>
+				<div class="col-6 text-center">
+					<button class="ux-button primary sm-mob otp-submit" type="submit" (click)="validateOtp()"
+						[disabled]="otpForm.invalid">{{ 'SUBMIT' | translate }}</button>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- OTP Popup End-->
+
+<div class="popup-bottom md-popup otp-popuplimit otp">
+	<div class="row1">
+		<div class="col-12">
+			<h4 class="text-center">  {{'OTP_VERIFICATION' | translate}}</h4>
+		</div>
+		<!-- <div class="col-12">
+			<button class="ux-button-icon close-btn" (click)="closeOtpPopup('otp-popuplimit','otpFormLimit')"> <img
+					src="assets/images/svg/close-b.svg" alt="cross-icon" class="img-vsmall"> </button>
+		</div> -->
+	</div>
+	<div class="row1">
+		<div class="col-12 col-md-8 col-lg-8 col-xl-8 m-auto">
+			<div class="mob-icon"> <img src="assets/images/icons/mobile.svg" alt="mobile-icon"> </div>
+			<!-- <h4 class="greentext text-center mar-b ">OTP Verification</h4> -->
+			<h6 class="text-center">  {{'ENTER_SIX_DIGIT_OTP' | translate}} {{maskedMobileNo}}</h6>
+		</div>
+	</div>
+	<div class="row1">
+		<div class="col-12 col-md-8 col-lg-8 col-xl-8  m-auto">
+			<div class="row1">
+				<div class="col-12 col-md-12">
+					<form [formGroup]="otpFormLimit">
+						<div class="row4">
+							<div class="col-sm-2 col-2 col-md-2">
+								<div class="ux-input password1 mb-1">
+									<input id="otp1" autocomplete="off" #otpRow type="tel" numbersOnly
+										maxlength="1" placeholder="●" (keyup)="onKeyUpEventOtp(0, $event, 'otp')"
+										(focus)="onFocusEvent(0,'otp')" formControlName="otp1">
+								</div>
+							</div>
+							<div class="col-sm-2 col-2 col-md-2">
+								<div class="ux-input password1 mb-1">
+									<input id="otp2" autocomplete="off" #otpRow type="tel" numbersOnly
+										maxlength="1" placeholder="●" (keyup)="onKeyUpEventOtp(1, $event, 'otp')"
+										(focus)="onFocusEvent(1,'otp')" formControlName="otp2">
+								</div>
+							</div>
+							<div class="col-sm-2 col-2 col-md-2">
+								<div class="ux-input password1 mb-1">
+									<input id="otp3" autocomplete="off" #otpRow type="tel" numbersOnly
+										maxlength="1" placeholder="●" (keyup)="onKeyUpEventOtp(2, $event, 'otp')"
+										(focus)="onFocusEvent(2,'otp')" formControlName="otp3">
+								</div>
+							</div>
+							<div class="col-sm-2 col-2 col-md-2">
+								<div class="ux-input password1 mb-1">
+									<input id="otp4" autocomplete="off" #otpRow type="tel" numbersOnly
+										maxlength="1" placeholder="●" (keyup)="onKeyUpEventOtp(3, $event, 'otp')"
+										(focus)="onFocusEvent(3,'otp')" formControlName="otp4">
+								</div>
+							</div>
+							<div class="col-sm-2 col-2 col-md-2">
+								<div class="ux-input password1  mb-1">
+									<input id="otp5" autocomplete="off" #otpRow type="tel" numbersOnly
+										maxlength="1" placeholder="●" (keyup)="onKeyUpEventOtp(4, $event, 'otp')"
+										(focus)="onFocusEvent(4,'otp')" formControlName="otp5">
+								</div>
+							</div>
+							<div class="col-sm-2 col-2 col-md-2">
+								<div class="ux-input password1 mb-1">
+									<input id="otp6" autocomplete="off" #otpRow type="tel" numbersOnly
+										maxlength="1" placeholder="●" (keyup)="onKeyUpEventOtp(5, $event, 'otp')"
+										(focus)="onFocusEvent(5,'otp')" formControlName="otp6">
+								</div>
+							</div>
+						</div>
+					</form>
+					<div class="row1">
+						<div class="col-12">
+							<div class="ux-input password1 mt-0 mb-0">
+								<p class="error-message"></p>
+							</div>
+							<div class="text-center">
+								<span class="errormsg">{{otpfailMsg}}</span>
+							</div>
+						</div>
+					</div>
+					<div class="row4">
+						<div class="col-6 col-md-6">
+							<div class="text-left">
+								<p class="text-left"> <span class="success-text" *ngIf="counter > 0">{{counter |
+										formatTimer }}</span> </p>
+							</div>
+						</div>
+						<div class="col-6 col-md-6">
+							<div class="text-right">
+								<button class="ux-linkbutton default-underline mt-3" (click)="ResendOTP()"
+									[ngClass]="counter > 0 ? 'mydisabled' : 'resendActive'">{{ 'RESEND' | translate }}</button>
+							</div>
+						</div>
+
+
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="row1 mt-2">
+		<div class="col-12 col-md-8 col-lg-8 col-xl-8  m-auto">
+			<div class="row1">
+				<div class="col-6 text-center">
+					<button class="ux-button secondary sm-mob close-btn"
+						(click)="closeOtpPopup('otp-popuplimit','otpFormLimit')">{{'CANCEL' | translate}}</button>
+				</div>
+				<div class="col-6 text-center">
+					<button class="ux-button primary sm-mob otp-submit" (click)="validateOtpAddlimit()"
+						[disabled]="otpFormLimit.invalid">{{ 'SUBMIT' | translate }}</button>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<!-- Popup Start -->
+<div class="popup-bottom sm-popup profile-limit-info">
+	<div class="row1">
+		<div class="col-12">
+			<h4 class="text-center"> <img src="assets/images/svg/information.svg" alt="information-icon">
+				{{'INFORMATION' | translate}}</h4>
+		</div>
+	</div>
+	<div class="row1">
+		<div class="col-12">
+			<p>{{limitsUpdateInfo | translate}}</p>
+		</div>
+	</div>
+	<div class="row1  mt-2">
+		<div class="col-12 text-center">
+			<button class="ux-button primary submit-btn" type="button"
+				(click)="closeLimitPopup()">{{'OK' | translate}}</button>
+		</div>
+	</div>
+</div>
+
+
+
+
+<!-- Popup Start -->
+<div class="popup-bottom sm-popup update-auth-data">
+	<div class="row1">
+		<div class="col-12">
+			<h4 class="text-center"> <img src="assets/images/svg/information.svg" alt="information-icon">
+				{{'INFORMATION' | translate}}</h4>
+		</div>
+	</div>
+	<div class="row1">
+		<div class="col-12">
+			<p>{{ userInfo }}</p>
+		</div>
+	</div>
+	<div class="row1  mt-2">
+		<div class="col-12 text-center">
+			<button class="ux-button primary submit-btn" type="button"
+				(click)="_closePopup('div.popup-bottom.update-auth-data')">{{'OK' | translate}}</button>
+		</div>
+	</div>
+</div>
+
+
+<div class="popup-bottom sm-popup success-popup ">
+	<form  id="success-form">
+		<div class="row1 mt-3">
+			<div class="success"> <img src="assets/images/svg/check.svg" alt="success-icon">
+				<h3>Success</h3>
+				<h5>Email Id updated successfully</h5>
+			</div>
+		</div>
+		<div class="row1 mt-3">
+			<div class="col-12 text-center">
+				<button class="ux-button primary md " (click)="close()">Ok</button>
+			</div>
+		</div>
+	</form>
+</div>

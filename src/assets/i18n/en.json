@@ -1,0 +1,9 @@
+{
+    "NAME":"Your Name",
+    "MOBILE_NUMBER":"Mobile Number",
+    "EMAIL":"Email",
+    "OTP_NOTIFICATION" : "Please verify one time password (OTP) sent on your registered mobile number",
+    "RESEND_OTP" : "Resend OTP",
+    "USERNAME" : "Username",
+    "LOGIN_BTN" : "Login"
+}

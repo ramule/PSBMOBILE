@@ -1,0 +1,110 @@
+<div class="main bg-m">
+	<div class="right-main-column ">
+		<div class="right-col-container pad-b full-width">
+			<!-- ======== body page content start from here ======== -->
+			<div class="body-page-container main-dashborad mycards bill-wrapper">
+				<div class="container-fluid">
+					<div class="row">
+						<div class="col-12 p-0">
+							<div class="breadcrumb">
+								<ul class="lst-breadcrumb">
+									<li *ngFor="let name of DataService.breadcrumblist">
+                                        <a (click)="DataService.breadcrumroute(name.routeName)">{{name.currentRoute | translate}}</a>
+                                </li>
+								</ul>
+							</div>
+						</div>
+					</div>
+					<!--.row -->
+					<div class="vspacer15 customize d-none d-xl-block d-lg-block d-md-none d-sm-none "></div>
+					<div class="row no-gutters">
+						<div class="col-12">
+							<div class="row1">
+								<div class="col-12 col-sm-12 col-md-12 col-lg-12  col-xl-9">
+									<div class="greencard2 tracklist">
+										<div class="row1 hide-m">
+											<div class="col-md-10 col-12">
+												<h4>Confirmation</h4> </div>
+											<div class="col-md-2 col-12">
+												<div class="header-actions"> <img src="assets/images/icons/billpay.png" alt="billpay-img" class="small-img"> </div>
+											</div>
+										</div>
+										<div class="row1">
+											<div class="col-sm-12 col-12 col-md-12">
+												<div class="white-box2 mb-3 mt-0 p-0">
+													<div class="info-bottom pad-custom">
+														<div class="info-details pr-35">
+															<div class="row">
+																<div class="left-info">
+																	<h6>Biller Category</h6>
+																	<h5>Mobile Bill</h5> </div>
+																<div class="right-info  d-block d-sm-none"> <span class="assure-icon">
+                                                                            <img src="assets/images/svg/b-icon1.svg" alt="adani-logo">
+                                                                        </span> </div>
+															</div>
+														</div>
+														<div class="info-details">
+															<div class="row">
+																<div class="left-info"> <span class="biller-icon">
+                                                                            <img src="assets/images/icons/airtel.png" alt="adani-logo">
+                                                                        </span>
+																	<div class="right-info">
+																		<h6>Biller Name</h6>
+																		<h5>Airtel</h5> </div>
+																</div>
+															</div>
+														</div>
+														<div class="info-details">
+															<div class="row">
+																<h6>MICR</h6>
+																<h5>986587867</h5> </div>
+														</div>
+														<div class="info-details">
+															<div class="row">
+																<h6>Nick Name for Reminder</h6>
+																<h5>Monthly Mobile Bill</h5> </div>
+														</div>
+														<div class="info-details">
+															<div class="row">
+																<h6>Reminder Date for Each Month</h6>
+																<h5>26</h5> </div>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+										<div class="vspacer40 d-none d-sm-block"></div>
+										<div class="row1">
+											<div class="col-md-12 col-lg-12 col-12 ">
+												<ul class="bottom-footer1">
+													<li>
+														<div class="btn-div hide-m">
+															<button class=" ux-button secondary sm-mob delete-btn" >Cancel</button>
+														</div>
+														<div class="btn-div w100">
+															<button class=" ux-button primary sm-mob" (click)="goToPage('editBillReminderSuccess')" >Submit</button>
+														</div>
+													</li>
+												</ul>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="col-12 col-md-12 col-lg-12 col-xl-3 d-none d-xl-block">
+									<div class="right-ads">
+										<a> <img src="assets/images/banner/my-card-banner.jpg"> </a>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!--.container-fluid-->
+			</div>
+			<!--.body-page-container-->
+		</div>
+		<!--.right-col-container-->
+	</div>
+	<!--.right-main-column-->
+</div>
+<!-- main -->

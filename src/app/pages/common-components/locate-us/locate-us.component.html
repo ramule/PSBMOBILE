@@ -1,0 +1,348 @@
+<div class="prelogin-page">
+	<div class="registration-steps">
+		<div class="row1">
+			<div class="col-12 position-static">
+				<div class="inner-header">
+					<div class="registration-container">
+						<!-- <a class="prev-tab"><img src="assets/images/svg/close-w.svg"></a> -->
+						<h4>{{'LOCATES_US' | translate}}</h4>
+						<a class="close-registration" (click)="cancel()"><img  src="assets/images/svg/close-w.svg"></a>
+					</div>
+				</div>
+				<div class="registrationsteps-block registration-container clearfix locate-us">
+                    <form [formGroup]="findBranchATMForm" (ngSubmit)="submitLocForm()" autocomplete="off" >
+					<div id="accordion1" class="accordion-container card-container mt-0 mb-3 hide-m">
+						<div class="card2 overflow">
+							<a class="card-link" data-toggle="collapse" href="#find" aria-expanded="true">
+								<div class="card-header6">
+									<div class="panel-title">
+										<ul class="comp-info">
+											<li>
+												<div class="grid-info ">
+													<div class="full-info">
+														<h5>Find Branch/ATM</h5> </div>
+												</div>
+											</li>
+										</ul>
+									</div> <em></em> </div>
+								<!--card-header-->
+							</a>
+							<div id="find" class="collapse show" data-parent="#accordion1">
+								<div class="card-body bg-w pad-custom">
+									<div class="row1">
+										<div class="col-12 p-0">
+											<ul class="custom-radio-list bg-grey">
+												<li *ngFor="let item of searchList; index as i;">
+													<div class="ux-selection branch">
+														<label class="ux-selection2">{{item.displayName}}
+															<input type="radio"  [checked]="item.selected"[value] ="item.name" formControlName="searchList" name="searchList"  (change)="searchDataTypeChange(item.value)"> <span class="checkmark"></span> </label>
+													</div>
+												</li>
+												<!-- <li>
+													<div class="ux-selection atm">
+														<label class="ux-selection2">ATM
+															<input type="radio" value="atm" name="searchtype"> <span class="checkmark"></span> </label>
+													</div>
+												</li>
+												<li>
+													<div class="ux-selection zonal-office">
+														<label class="ux-selection2">Zonal Office
+															<input type="radio" value="zonal-office" name="searchtype"> <span class="checkmark"></span> </label>
+													</div>
+												</li>
+												<li>
+													<div class="ux-selection head-office">
+														<label class="ux-selection2">Head Office
+															<input type="radio" value="head-office" name="searchtype"> <span class="checkmark"></span> </label>
+													</div>
+												</li> -->
+											</ul>
+										</div>
+										<div class="col-12 p-0">
+											<div class="search-container clearfix">
+												<h6>{{'SEARCH_BY' | translate}}</h6>
+												<div class="ux-selection" *ngFor="let item of searchType; index as i;">
+													<label class="ux-selection2">{{item.displayName}}
+														<input type="radio" [checked]="item.selected" [value] ="item.name"  formControlName="searchType" name="searchType" (change)="searchSubTypeChange(item)"> <span class="checkmark"></span> </label>
+												</div>
+												<!-- <div class="ux-selection">
+													<label class="ux-selection2">State/City
+														<input type="radio" value="state-city" name="searchby"> <span class="checkmark"></span> </label>
+												</div>
+												<div class="ux-selection">
+													<label class="ux-selection2">Branch code
+														<input type="radio" value="branch-code" name="searchby"> <span class="checkmark"></span> </label>
+												</div>
+												<div class="ux-selection">
+													<label class="ux-selection2">IFSC
+														<input type="radio" value="ifsc" name="searchby"> <span class="checkmark"></span> </label>
+												</div> -->
+											</div>
+										</div>
+									</div>
+									<div class="row1">
+										<div class="col-12 p-0">
+											<div class="search-box pt-0">
+												<div class="row">
+													<div class="col-12 col-md-6 col-lg-4 col-xl-4">
+														<div class="ux-input mt-0">
+															<input type="text" placeholder="{{searchtype}}" formControlName="searchText">
+															<p class="error-message"></p>
+														</div>
+													</div>
+													<div class="col-12 col-md-6 col-lg-4 col-xl-4">
+														<button class="ux-linkbutton link-text primary mt-3" (click)="detectLocation()" > <img src="assets/images/svg/add-g.svg" alt="ad-icon"> Detect Location </button>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+									<div class="row1 border-t">
+										<div class="col-12 col-md-12">
+											<ul class="bottom-footer1">
+												<li>
+													<div class="btn-div">
+														<button class=" ux-button secondary sm-mob" type="button" (click)="clear('desktop')">{{'CLEAR' | translate}}</button>
+													</div>
+													<div class="btn-div">
+														<button class=" ux-button primary sm-mob" type="submit" [disabled]="findBranchATMForm.invalid" (click)="searchApplyClicked('desktop')">{{'APPLY' | translate}}</button>
+													</div>
+												</li>
+											</ul>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+                    </form>
+					<div class="branch-searchresult">
+						<div class="ios-nav-overlay"></div>
+						<div class="ux-nav-tabs" style="margin:0">
+							<div class="responsive5">
+								<ul class="nav nav-tabs nav-justified bor-n" role="tablist">
+									<li class="nav-item"> <a class="nav-link active" data-toggle="tab" href="#tab01" (click)= "getDefaultBankData()">{{'LIST' | translate}}</a> </li>
+									<li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#tab02" (click)= "setGoogleMap()">{{'MAP' | translate}}</a> </li>
+								</ul>
+								<!-- Tab panes -->
+								<div class="tab-content ">
+									<div class="tabHeading clearfix">
+										<div class="row1">
+											<div class="col-8 col-sm-9">
+												<h4>Result(03)</h4></div>
+											<div class="col-4 col-sm-3">
+												<div class="text-right">
+													<button class="filter-btn ux-linkbutton link-text primary " (click)="openFilterPopup()" > <img src="assets/images/svg/add-g.svg" alt="filter-icon"> {{'FILTER' | translate}} </button>
+												</div>
+											</div>
+										</div>
+									</div>
+									<div id="tab01" class=" tab-pane branch-lst active">
+										<ul>
+											<li class="result-info">
+												<h6 >{{bankLocationDetailList.length}} Records found <span>{{serachedLocation}}</span></h6> </li>
+											<li class="bank" *ngFor="let bankDtl of bankLocationDetailList" (click)="openFilter(bankDtl)" >
+                                                <span class="branch-detail">
+                                                        <b *ngIf="bankDtl.location == '3'">{{'PUNJAB_SIND_BANK' | translate}} - {{'ATM' | translate}} </b>
+                                                        <b *ngIf="bankDtl.location == '4'">{{'PUNJAB_SIND_BANK' | translate}} - {{bankDtl.branchCode}} </b>
+                                                        <b *ngIf="bankDtl.location == '5'">{{'PUNJAB_SIND_BANK' | translate}} -  {{'ZONAL_OFFICE' | translate}} </b>
+                                                        <b *ngIf="bankDtl.location == '6'">{{'PUNJAB_SIND_BANK' | translate}} - {{'HEAD_OFFICE' | translate}} </b>
+
+                                                        <p><img src="assets/images/svg/location-g.svg" alt="location-icon"> {{bankDtl.address1}} </p>
+                                                        <a><img src="assets/images/icons/phone-call.svg" alt="phone-icon">{{bankDtl.phone_number == "Not Available" ? "-" : bankDtl.phone_number}}</a><br>
+                                                        <a><img src="assets/images/svg/email.svg" alt="email-icon">{{bankDtl.email_id}}</a><br>
+                                                        <!-- <a class="services" ><img src="assets/images/svg/bank-icon.svg" alt="bank-icon"> {{'HEAD_OFFICE' | translate}}</a>
+                                                        <div class="service-list">
+                                                            <ul>
+                                                                <li class="active">Cash Deposit machine</li>
+                                                                <li>For Aadhaar enrolment</li>
+                                                                <li class="active">Loan Servicing</li>
+                                                                <li>SME branches</li>
+                                                                <li class="active">RTGS branches</li>
+                                                                <li class="active">PFF Nomanies</li>
+                                                                <li>Direct Tax branches</li>
+                                                            </ul>
+                                                        </div> -->
+                                                    </span> </li>
+											<!-- <li class="bank"> <span class="branch-detail">
+                                                        <b>Punjab & Sind Bank - B0499</b>
+                                                        <p><img src="assets/images/svg/location-g.svg" alt="location-icon"> Kurla Rd, Near samgham cinema, Anderi (E), Mumbai - Maharashtra 400059</p>
+                                                        <a><img src="assets/images/icons/phone-call.svg" alt="phone-icon">9876543210</a><br>
+                                                        <a><img src="assets/images/svg/email.svg" alt="email-icon">psb@gmail.com</a><br>
+                                                        <a class="services"><img src="assets/images/svg/bank-icon.svg" alt="bank-icon"> Banking services</a>
+                                                        <div class="service-list">
+                                                            <ul>
+                                                                <li class="active">Cash Deposit machine</li>
+                                                                <li>For Aadhaar enrolment</li>
+                                                                <li class="active">Loan Servicing</li>
+                                                                <li>SME branches</li>
+                                                                <li class="active">RTGS branches</li>
+                                                                <li class="active">PFF Nomanies</li>
+                                                                <li>Direct Tax branches</li>
+                                                            </ul>
+                                                        </div>
+                                                    </span> </li> -->
+										</ul>
+									</div>
+									<div id="tab02" class="tab-pane branch-map fade">
+										<!-- <img src="assets/images/icons/map.png"> -->
+										<!-- <div class="map-container">
+											<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3769.5405545511962!2d72.8735725143775!3d19.127801455314057!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be7c81f79f80d47%3A0xc34e6d37e35a6877!2sInfrasoft%20Technologies%20Ltd!5e0!3m2!1sen!2sin!4v1617886463000!5m2!1sen!2sin" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+										</div> -->
+                                        <div class="mt-map-wrapper">
+                                            <div class="map-controller" id="map" #map style="width: 100%;">
+                                            </div>
+                                          </div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- .full-container -->
+
+<!-- Filter Popup Start -->
+<div class="popup-bottom filter1">
+	<div class="row1">
+		<div class="col-10">
+			<h4>Filter by</h4> </div>
+		<div class="col-2">
+			<button class="ux-button-icon close-btn" (click)="close()"> <img src="assets/images/svg/close-b.svg" alt="cross-icon" class="img-vsmall"> </button>
+		</div>
+	</div>
+	<form [formGroup]="findBranchATMForm" (ngSubmit)="submitLocForm()" autocomplete="off" id="filter-form">
+		<div class="row mt-2 mb-3">
+			<div class="col-12 p-0">
+				<ul class="custom-radio-list">
+                    <li *ngFor="let item of searchList; index as i;">
+                        <div class="ux-selection branch">
+                            <label class="ux-selection2">{{item.displayName}}
+                                <input type="radio"  [checked]="item.selected"[value] ="item.name" formControlName="searchList" name="searchList"  (change)="searchDataTypeChange(item.value)"> <span class="checkmark"></span> </label>
+                        </div>
+                    </li>
+					<!-- <li>
+						<div class="ux-selection branch">
+							<label class="ux-selection2">Branch
+								<input type="radio" checked="checked" value="branch" name="searchtype"> <span class="checkmark"></span> </label>
+						</div>
+					</li>
+					<li>
+						<div class="ux-selection atm">
+							<label class="ux-selection2">ATM
+								<input type="radio" value="atm" name="searchtype"> <span class="checkmark"></span> </label>
+						</div>
+					</li>
+					<li>
+						<div class="ux-selection zonal-office">
+							<label class="ux-selection2">Zonal Office
+								<input type="radio" value="zonal-office" name="searchtype"> <span class="checkmark"></span> </label>
+						</div>
+					</li>
+					<li>
+						<div class="ux-selection head-office">
+							<label class="ux-selection2">Head Office
+								<input type="radio" value="head-office" name="searchtype"> <span class="checkmark"></span> </label>
+						</div>
+					</li> -->
+				</ul>
+			</div>
+		</div>
+		<div class="row1">
+			<div class="col-12">
+				<h5>Search By</h5> </div>
+			<div class="col-12 col-md-12">
+				<ul class="radio-list6">
+					<li  *ngFor="let item of searchType; index as i;">
+						<div class="ux-selection">
+							<label class="ux-selection2">{{item.displayName}}
+								<input type="radio" [checked]="item.selected" [value] ="item.name"  formControlName="searchType" name="searchType" (change)="searchSubTypeChange(item)"> <span class="checkmark"></span> </label>
+						</div>
+					</li>
+					<!-- <li>
+						<div class="ux-selection">
+							<label class="ux-selection2">State/City
+								<input type="radio" value="state-city" name="searchby"> <span class="checkmark"></span> </label>
+						</div>
+					</li>
+					<li>
+						<div class="ux-selection">
+							<label class="ux-selection2">Branch code
+								<input type="radio" value="branch-code" name="searchby"> <span class="checkmark"></span> </label>
+						</div>
+					</li>
+					<li>
+						<div class="ux-selection">
+							<label class="ux-selection2">IFSC
+								<input type="radio" value="ifsc" name="searchby"> <span class="checkmark"></span> </label>
+						</div>
+					</li> -->
+				</ul>
+			</div>
+		</div>
+		<div class="row1 mb-3">
+			<div class="col-12">
+				<div class="ux-input mt-0">
+					<input type="text" placeholder="Search Location" formControlName="searchText">
+					<p class="error-message"></p>
+				</div>
+			</div>
+			<div class="col-12 text-right">
+				<button class="ux-linkbutton link-text primary" > <img src="assets/images/svg/add-g.svg" alt="ad-icon"> Detect Location </button>
+			</div>
+		</div>
+		<div class="row1 mt-2">
+			<div class="col-6 text-center">
+				<button class="ux-button secondary  md" type="button" (click)="clear('mobile')">{{'CLEAR' | translate}}</button>
+			</div>
+			<div class="col-6 text-center">
+				<button class=" ux-button primary sm-mob" type="submit" [disabled]="findBranchATMForm.invalid" (click)="searchApplyClicked('mobile')">{{'APPLY' | translate}}</button>
+			</div>
+		</div>
+  </form>
+
+</div>
+<!-- Filter Popup End -->
+
+<div class="popup-bottom sm-mob permission-denied">
+    <div class="row1">
+        <div class="col-12">
+            <h4 class="text-center">
+                <img src="assets/images/svg/information.svg" alt="error-icon"> {{ 'INFORMATION' | translate}}
+            </h4>
+        </div>
+    </div>
+    <div class="row1">
+        <div class="col-12 mb-4">
+            <p>Location permission is denied .Please change it from setting</p>
+        </div>
+    </div>
+    <div class="row1  mt-2">
+        <div class="col-12 text-center">
+            <button class="ux-button primary submit-btn" (click)="close()">{{'OK' | translate}}</button> <!--(click)="closePopup('permission-denied')" -->
+        </div>
+    </div>
+</div>
+
+<div class="popup-bottom sm-mob enable-location-permission">
+    <div class="row1">
+      <div class="col-12">
+        <h4 class="text-center"> <img src="assets/images/svg/information.svg" alt="information-icon">
+          {{'INFORMATION' | translate}}</h4>
+      </div>
+    </div>
+    <div class="row1">
+      <div class="col-12">
+        <p>{{ 'LOCATION_ENABLE_PERMISSION_INFORMATION' | translate}}</p>
+      </div>
+    </div>
+    <div class="row1  mt-2">
+      <div class="col-12 text-center" (click)="close()"> <!--(click)="closePopup('enable-location-permission')" -->
+        <button class="ux-button primary submit-btn" type="button" (click)="enableLocation()">{{'OK' |
+          translate}}</button>
+      </div>
+    </div>
+  </div>

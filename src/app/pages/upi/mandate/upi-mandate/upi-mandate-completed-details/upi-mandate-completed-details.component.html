@@ -1,0 +1,263 @@
+<div class="main">
+
+
+  <div class="right-main-column minus-rt-col mar-custom">
+    <div class="right-col-container">
+
+      <div class="body-page-container">
+        <div class="container-fluid">
+          <div class="row">
+            <div class="bg-section">
+              <div class="col-12">
+                <div class="row1">
+                  <div class="col-sm-12 col-12 col-md-12">
+
+                    <div class="white-bg1 pad-custom">
+                      <ul class="complaint-list">
+                        <li>
+                          <div class="full-container">
+                            <div class="row1">
+                              <div class="col-12 col-md-12">
+                                <div class="left-info">
+                                  <h6 class="heading"
+                                    *ngIf="completedMandate.initiatedBy == 'PAYER' && completedMandate.createdBy == 'CREATED_BY_ME'">
+                                    {{'SEND_TO' | translate}} {{completedMandate.payeeName}} </h6>
+                                  <h6 class="heading"
+                                    *ngIf="completedMandate.initiatedBy == 'PAYER' && completedMandate.createdBy == 'CREATED_BY_OTHERS'">
+                                    {{'RECEIVED_FROM' | translate}} {{completedMandate.payerName}} </h6>
+                                  <h6 class="heading"
+                                    *ngIf="completedMandate.initiatedBy == 'PAYEE' && completedMandate.createdBy == 'CREATED_BY_ME'">
+                                    {{'REQUESTED_TO' | translate}} {{completedMandate.payerName}} </h6>
+                                  <h6 class="heading"
+                                    *ngIf="completedMandate.initiatedBy == 'PAYEE' && completedMandate.createdBy == 'CREATED_BY_OTHERS'">
+                                    {{'REQUESTED_BY' | translate}} {{completedMandate.payeeName}} </h6>
+                                  <h5
+                                    *ngIf="completedMandate.initiatedBy == 'PAYER' && completedMandate.createdBy == 'CREATED_BY_ME'">
+                                    {{'UPI_ID' | translate }} :  {{completedMandate.payeeAddress}} </h5>
+                                  <h5
+                                    *ngIf="completedMandate.initiatedBy == 'PAYER' && completedMandate.createdBy == 'CREATED_BY_OTHERS'">
+                                    {{'UPI_ID' | translate }} :  {{completedMandate.payerAddress}} </h5>
+                                  <h5
+                                    *ngIf="completedMandate.initiatedBy == 'PAYEE' && completedMandate.createdBy == 'CREATED_BY_ME'">
+                                    {{'UPI_ID' | translate }} :  {{completedMandate.payerAddress}} </h5>
+                                  <h5
+                                    *ngIf="completedMandate.initiatedBy == 'PAYEE' && completedMandate.createdBy == 'CREATED_BY_OTHERS'">
+                                    {{'UPI_ID' | translate }} : {{completedMandate.payeeAddress}} </h5>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </li>
+                        <li>
+                          <div class="full-container">
+                            <div class="row1">
+                              <div class="col-12 col-md-12">
+                                <div class="left-info" *ngIf="completedMandate.initiatedBy == 'PAYER'">
+                                  <h6>{{'FROM_UPI_ID' | translate}}</h6>
+                                  <h5>{{'UPI_ID' | translate }} : {{completedMandate.payerAddress}}</h5>
+                                </div>
+                                <div class="left-info" *ngIf="completedMandate.initiatedBy == 'PAYEE'">
+                                  <h6>{{'DEPOSIT_TO_UPI_ID' | translate}}</h6>
+                                  <h5>{{'UPI_ID' | translate }} : {{completedMandate.payeeAddress}}</h5>
+                                </div>
+
+                              </div>
+                            </div>
+                          </div>
+                        </li>
+                        <li>
+                          <div class="full-container">
+                            <div class="row1">
+                              <div class="col-12 col-md-12">
+                                <div class="left-info">
+                                  <h6>{{'LINKED_ACCOUNT' | translate}}</h6>
+                                  <h5 *ngIf="completedMandate.initiatedBy == 'PAYEE'">
+                                    {{completedMandate.payeeAccount | maskAccountNo}}
+                                  </h5>
+                                  <h5 *ngIf="completedMandate.initiatedBy == 'PAYER'">
+                                    {{completedMandate.payerAccount | maskAccountNo}}</h5>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </li>
+                        <li>
+                          <div class="full-container">
+                            <div class="row1">
+                              <div class="col-12 col-md-12">
+                                <div class="left-info">
+                                  <h6>
+                                    {{completedMandate.initiatedBy == 'PAYER' ? ('PAY' | translate) : ('COLLECT' | translate)}}
+                                    {{'INITIATED_BY' | translate}} </h6>
+                                  <h5 *ngIf="completedMandate.initiatedBy == 'PAYEE'">
+                                    {{completedMandate.payeeName}}
+                                  </h5>
+                                  <h5 *ngIf="completedMandate.initiatedBy == 'PAYER'">
+                                    {{completedMandate.payerName}}
+                                  </h5>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </li>
+                        <li>
+                          <div class="full-container">
+                            <div class="row1">
+                              <div class="col-12 col-md-12">
+                                <div class="left-info">
+                                  <h6>{{'START_DATE' | translate}}</h6>
+                                  <h5>{{completedMandate.validityStart | formatDate}}</h5>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </li>
+                        <li>
+                          <div class="full-container">
+                            <div class="row1">
+                              <div class="col-12 col-md-12">
+                                <div class="left-info">
+                                  <h6>{{'EXPIRY_DATE' | translate}}</h6>
+                                  <h5>{{completedMandate.validityEnd | formatDate}}</h5>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </li>
+                        <li>
+                          <div class="full-container">
+                            <div class="row1">
+                              <div class="col-12 col-md-12">
+                                <div class="left-info">
+                                  <h6>{{'AMOUNT' | translate}}</h6>
+                                  <h5>
+                                    <!-- <img src="assets/images/svg/rupee-bl.svg" alt="rupees-icon"> -->
+                                    {{completedMandate.amount | customcurrency:'symbol'}}
+                                  </h5>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </li>
+                        <li>
+                          <div class="full-container">
+                            <div class="row1">
+                              <div class="col-12 col-md-12">
+                                <div class="left-info">
+                                  <h6>{{'DEBIT_FREQUENCY' | translate}}</h6>
+                                  <h5>{{completedMandate.frequency}}</h5>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </li>
+                        <li>
+                          <div class="full-container">
+                            <div class="row1">
+                              <div class="col-12 col-md-12">
+                                <div class="left-info">
+                                  <h6>{{'UMN' | translate}}</h6>
+                                  <h5>
+                                    {{completedMandate.umn != null && completedMandate.umn != 'null' ? completedMandate.umn : 'NA' }}
+                                  </h5>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </li>
+                        <li>
+                          <div class="full-container">
+                            <div class="row1">
+                              <div class="col-12 col-md-12">
+                                <div class="left-info">
+                                  <h6>{{'REMARKS' | translate}}</h6>
+                                  <h5>{{completedMandate.remarks ? completedMandate.remarks : '-'}}</h5>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </li>
+                        <li *ngIf="completedMandate.status == 'FAILED'">
+                          <div class="full-container">
+                            <div class="row1">
+                              <div class="col-12 col-md-12">
+                                <div class="left-info">
+                                  <h6>{{'REASON' | translate}}</h6>
+                                  <h5>{{completedMandate.errorMsg ? completedMandate.errorMsg : '-'}}</h5>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </li>
+                        <li>
+                          <div class="full-container">
+                            <div class="row1">
+                              <div class="col-12 col-md-12">
+                                <div class="left-info">
+                                  <h6>{{'STATUS' | translate}}</h6>
+                                  <h5>{{completedMandate.status}}</h5>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </li>
+                        <li *ngIf="completedMandate?.payeeCode != 'null' && completedMandate?.payeeCode != '0000'">
+                          <div class="full-container">
+                            <div class="row1">
+                              <div class="col-12 col-md-12">
+                                <div class="left-info">
+                                  <h5 class="success">
+                                    <a (click)="viewInvoice(completedMandate.refUrl)">{{"VIEW_INVOICE" | translate}}</a>
+                                  </h5>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </li>
+                        <br>
+                      </ul>
+
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+      <!-- </div>
+  </div>
+
+</div> -->
+
+
+    </div>
+  </div>
+
+</div>
+
+<!-- main -->
+
+
+<div class="footer-container sticky-actions"
+    >
+    <div class="footer-inactions minus-rt-col">
+        <div class="container-fluid">
+            <div class="row">
+                <div
+                    class="col-12 col-md-12 text-center">
+                    <button class="ux-button secondary md" (click)="raiseComplaint()">{{'RAISE_COMPLAINT' |
+                        translate}}</button>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12 col-md-12 col-lg-12 text-center">
+                    <div class="powered-logo">
+                        <img src="assets/images/logo/powered-upi-logo.svg" alt="powered-upi-logo">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

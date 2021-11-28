@@ -1,0 +1,625 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <title>Pending Request</title>
+    <link href="../css/lib/bootstrap.min.css" rel="stylesheet">
+    <link href="../css/lib/jquery-ui.min.css" rel="stylesheet">
+    <link href="../css/lib/jquery.mCustomScrollbar.min.css" rel="stylesheet">
+    <link href="../css/main.css" rel="stylesheet">
+
+</head>
+
+<body>
+
+    <div class="main">
+
+        <!--  Header Section Start -->
+
+        <header class="global-header brand-bg2 minus-nav">
+            <div class="in-header">
+                <div class="header-icons-lft">
+                    <div class="header-actions">
+                        <button class="ux-button-header">
+                            <img src="../assets/images/svg/left-arrow.svg" alt="left-arrow-icon" class="img-small" />
+                        </button>
+                    </div>
+                </div>
+                <div class="brand-logo">
+                    <h3>Pending Request</h3>
+                </div>
+                <div class="header-icons-rit">
+                    <div class="header-actions">
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- Header Section End -->
+
+        <div class="right-main-column minus-rt-col mar-custom">
+            <div class="right-col-container pad-b">
+
+                <div class="body-page-container">
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="bg-section">
+                                <div class="col-12">
+                                    <div class="row1">
+                                        <div class="col-sm-12 col-12 col-md-12">
+                                            <div class="row1">
+                                                <div class="col-sm-12 col-12 col-md-12">
+                                                    <div class="ux-nav-tabs" style="margin:0">
+                                                        <div class="responsive3">
+                                                            <ul class="nav nav-tabs nav-justified bor-n" role="tablist">
+                                                                <li class="nav-item">
+                                                                    <a class="nav-link active" data-toggle="tab" href="#me">Pending with me</a>
+                                                                </li>
+                                                                <li class="nav-item">
+                                                                    <a class="nav-link" data-toggle="tab" href="#payer">Pending with Payer</a>
+                                                                </li>
+                                                            </ul>
+
+                                                            <!-- Tab panes -->
+                                                            <div class="tab-content custom-tab-content pt-0 pb-0">
+                                                                <div id="me" class=" tab-pane active">
+                                                                    <div class="row1">
+                                                                        <div class="col-sm-12 col-12 col-md-12">
+                                                                            <ul class="payment-list">
+                                                                                <li>
+                                                                                    <div class="full-container mb-0">
+                                                                                        <div class="row1">
+                                                                                            <div class="col-8 col-md-6">
+                                                                                                <div class="left-info1">
+                                                                                                    <h6 class="heading">Requested by Payee</h6>
+                                                                                                    <h5>ajaysingh@psb</h5>
+                                                                                                </div>
+                                                                                            </div>
+                                                                                            <div class="col-4 col-md-6">
+                                                                                                <div class="right-info mt-2">
+                                                                                                    <h5 class="cust-mar"> 
+                                                                                                        <img src="../assets/images/svg/rupee-bl.svg" alt="rupees-icon">2500.00
+                                                                                                        <div class="overlap-badge2">
+                                                                                                            <em>Mandate</em>
+                                                                                                        </div>
+                                                                                                    </h5>
+                                                                                                </div>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                        <div class="row1 mt-2">
+                                                                                            <div class="col-6 col-md-6">
+                                                                                                <div class="left-info3">
+                                                                                                    <div class="icon-info">
+                                                                                                        <span>
+                                                                                                            <img src="../assets/images/svg/expiry-date.svg" alt="expiry-date-icon">
+                                                                                                        </span>
+                                                                                                    </div>
+                                                                                                    <em>Expiry Date & Time</em>
+                                                                                                    <h6>31 March 2020 <br /> 12:36:56</h6>
+                                                                                                </div>
+                                                                                            </div>
+                                                                                            <div class="col-6 col-md-6">
+                                                                                                <div class="left-info3">
+                                                                                                    <div class="icon-info">
+                                                                                                        <span>
+                                                                                                            <img src="../assets/images/svg/requested-date.svg" alt="request-date-icon">
+                                                                                                        </span>
+                                                                                                    </div>
+                                                                                                    <em>Request Date & Time</em>
+                                                                                                    <h6>30 March 2020 <br /> 18:25:25</h6>
+                                                                                                </div>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                        <div class="row1 mt-2">
+                                                                                            <div class="col-12 col-md-12">
+                                                                                                <div class="full-info2">
+                                                                                                    <em>Please Note! Requested amount get debited from <br />your account</em>
+                                                                                                </div>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                        <div class="row1 mt-2">
+                                                                                            <div class="col-5 col-md-6 pr-1 pl-2">
+                                                                                                <div class="text-left">
+                                                                                                    <button class="ux-linkbutton small-link-text default">
+                                                                                                        <img src="../assets/images/svg/reminder-g.svg" alt="reminder-icon">
+                                                                                                        Set Reminder
+                                                                                                    </button>
+                                                                                                    <button class="ux-linkbutton small-link-text default">
+                                                                                                        <img src="../assets/images/svg/block-r.svg" alt="block-icon">
+                                                                                                        Block UPI Id
+                                                                                                    </button>
+                                                                                                </div>
+                                                                                            </div>
+                                                                                            <div class="col-7 col-md-6 pl-1">
+                                                                                                <div class="btn-section">
+                                                                                                    <div class="text-right">
+                                                                                                        <button class="ux-button secondary sm5">Reject</button>
+                                                                                                        <button class="ux-button primary sm5">Accept</button>
+                                                                                                    </div>
+                                                                                                </div>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </li>
+                                                                                <li>
+                                                                                    <div class="full-container mb-0">
+                                                                                        <div class="row1">
+                                                                                            <div class="col-8 col-md-6">
+                                                                                                <div class="left-info1">
+                                                                                                    <h6 class="heading">Requested by Payee</h6>
+                                                                                                    <h5>ajaysingh@psb</h5>
+                                                                                                </div>
+                                                                                            </div>
+                                                                                            <div class="col-4 col-md-6">
+                                                                                                <div class="right-info mt-2">
+                                                                                                    <h5 class="cust-mar"> <img src="../assets/images/svg/rupee-bl.svg" alt="rupees-icon">2500.00</h5>
+                                                                                                </div>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                        <div class="row1 mt-2">
+                                                                                            <div class="col-6 col-md-6">
+                                                                                                <div class="left-info3">
+                                                                                                    <div class="icon-info">
+                                                                                                        <span>
+                                                                                                            <img src="../assets/images/svg/expiry-date.svg" alt="expiry-date-icon">
+                                                                                                        </span>
+                                                                                                    </div>
+                                                                                                    <em>Expiry Date & Time</em>
+                                                                                                    <h6>31 March 2020 <br /> 12:36:56</h6>
+                                                                                                </div>
+                                                                                            </div>
+                                                                                            <div class="col-6 col-md-6">
+                                                                                                <div class="left-info3">
+                                                                                                    <div class="icon-info">
+                                                                                                        <span>
+                                                                                                            <img src="../assets/images/svg/requested-date.svg" alt="request-date-icon">
+                                                                                                        </span>
+                                                                                                    </div>
+                                                                                                    <em>Request Date & Time</em>
+                                                                                                    <h6>30 March 2020 <br /> 18:25:25</h6>
+                                                                                                </div>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                        <div class="row1 mt-2">
+                                                                                            <div class="col-12 col-md-12">
+                                                                                                <div class="full-info2">
+                                                                                                    <em>Please Note! Requested amount get debited from <br />your account</em>
+                                                                                                </div>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                        <div class="row1 mt-2">
+                                                                                            <div class="col-5 col-md-6 pr-1 pl-2">
+                                                                                                <div class="text-left">
+                                                                                                    <button class="ux-linkbutton small-link-text default">
+                                                                                                        <img src="../assets/images/svg/reminder-g.svg" alt="reminder-icon">
+                                                                                                        Set Reminder
+                                                                                                    </button>
+                                                                                                    <button class="ux-linkbutton small-link-text default">
+                                                                                                        <img src="../assets/images/svg/block-r.svg" alt="block-icon">
+                                                                                                        Block UPI Id
+                                                                                                    </button>
+                                                                                                </div>
+                                                                                            </div>
+                                                                                            <div class="col-7 col-md-6 pl-1">
+                                                                                                <div class="btn-section">
+                                                                                                    <div class="text-right">
+                                                                                                        <button class="ux-button secondary sm5">Reject</button>
+                                                                                                        <button class="ux-button primary sm5">Accept</button>
+                                                                                                    </div>
+                                                                                                </div>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </li>
+                                                                                <li>
+                                                                                    <div class="full-container mb-0">
+                                                                                        <div class="row1">
+                                                                                            <div class="col-8 col-md-6">
+                                                                                                <div class="left-info1">
+                                                                                                    <h6 class="heading">Requested by Payee</h6>
+                                                                                                    <h5>ajaysingh@psb</h5>
+                                                                                                </div>
+                                                                                            </div>
+                                                                                            <div class="col-4 col-md-6">
+                                                                                                <div class="right-info mt-2">
+                                                                                                    <h5 class="cust-mar"> <img src="../assets/images/svg/rupee-bl.svg" alt="rupees-icon">2500.00</h5>
+                                                                                                </div>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                        <div class="row1 mt-2">
+                                                                                            <div class="col-6 col-md-6">
+                                                                                                <div class="left-info3">
+                                                                                                    <div class="icon-info">
+                                                                                                        <span>
+                                                                                                            <img src="../assets/images/svg/expiry-date.svg" alt="expiry-date-icon">
+                                                                                                        </span>
+                                                                                                    </div>
+                                                                                                    <em>Expiry Date & Time</em>
+                                                                                                    <h6>31 March 2020 <br /> 12:36:56</h6>
+                                                                                                </div>
+                                                                                            </div>
+                                                                                            <div class="col-6 col-md-6">
+                                                                                                <div class="left-info3">
+                                                                                                    <div class="icon-info">
+                                                                                                        <span>
+                                                                                                            <img src="../assets/images/svg/requested-date.svg" alt="request-date-icon">
+                                                                                                        </span>
+                                                                                                    </div>
+                                                                                                    <em>Request Date & Time</em>
+                                                                                                    <h6>30 March 2020 <br /> 18:25:25</h6>
+                                                                                                </div>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                        <div class="row1 mt-2">
+                                                                                            <div class="col-12 col-md-12">
+                                                                                                <div class="full-info2">
+                                                                                                    <em>Please Note! Requested amount get debited from <br />your account</em>
+                                                                                                </div>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                        <div class="row1 mt-2">
+                                                                                            <div class="col-5 col-md-6 pr-1 pl-2">
+                                                                                                <div class="text-left">
+                                                                                                    <button class="ux-linkbutton small-link-text default">
+                                                                                                        <img src="../assets/images/svg/reminder-g.svg" alt="reminder-icon">
+                                                                                                        Set Reminder
+                                                                                                    </button>
+                                                                                                    <button class="ux-linkbutton small-link-text default">
+                                                                                                        <img src="../assets/images/svg/block-r.svg" alt="block-icon">
+                                                                                                        Block UPI Id
+                                                                                                    </button>
+                                                                                                </div>
+                                                                                            </div>
+                                                                                            <div class="col-7 col-md-6 pl-1">
+                                                                                                <div class="btn-section">
+                                                                                                    <div class="text-right">
+                                                                                                        <button class="ux-button secondary sm5">Reject</button>
+                                                                                                        <button class="ux-button primary sm5">Accept</button>
+                                                                                                    </div>
+                                                                                                </div>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </li>
+                                                                                <li>
+                                                                                    <div class="full-container mb-0">
+                                                                                        <div class="row1">
+                                                                                            <div class="col-8 col-md-6">
+                                                                                                <div class="left-info1">
+                                                                                                    <h6 class="heading">Requested by Payee</h6>
+                                                                                                    <h5>ajaysingh@psb</h5>
+                                                                                                </div>
+                                                                                            </div>
+                                                                                            <div class="col-4 col-md-6">
+                                                                                                <div class="right-info mt-2">
+                                                                                                    <h5 class="cust-mar"> <img src="../assets/images/svg/rupee-bl.svg" alt="rupees-icon">2500.00</h5>
+                                                                                                </div>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                        <div class="row1 mt-2">
+                                                                                            <div class="col-6 col-md-6">
+                                                                                                <div class="left-info3">
+                                                                                                    <div class="icon-info">
+                                                                                                        <span>
+                                                                                                            <img src="../assets/images/svg/expiry-date.svg" alt="expiry-date-icon">
+                                                                                                        </span>
+                                                                                                    </div>
+                                                                                                    <em>Expiry  Date & Time</em>
+                                                                                                    <h6>31 March 2020 <br /> 12:36:56</h6>
+                                                                                                </div>
+                                                                                            </div>
+                                                                                            <div class="col-6 col-md-6">
+                                                                                                <div class="left-info3">
+                                                                                                    <div class="icon-info">
+                                                                                                        <span>
+                                                                                                            <img src="../assets/images/svg/requested-date.svg" alt="request-date-icon">
+                                                                                                        </span>
+                                                                                                    </div>
+                                                                                                    <em>Request  Date & Time</em>
+                                                                                                    <h6>30 March 2020 <br /> 18:25:25</h6>
+                                                                                                </div>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                        <div class="row1 mt-2">
+                                                                                            <div class="col-12 col-md-12">
+                                                                                                <div class="full-info2">
+                                                                                                    <em>Please Note! Requested amount get debited from <br />your account</em>
+                                                                                                </div>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                        <div class="row1 mt-2">
+                                                                                            <div class="col-5 col-md-6 pr-1 pl-2">
+                                                                                                <div class="text-left">
+                                                                                                    <button class="ux-linkbutton small-link-text default">
+                                                                                                        <img src="../assets/images/svg/reminder-g.svg" alt="reminder-icon">
+                                                                                                        Set Reminder
+                                                                                                    </button>
+                                                                                                    <button class="ux-linkbutton small-link-text default">
+                                                                                                        <img src="../assets/images/svg/block-r.svg" alt="block-icon">
+                                                                                                        Block UPI Id
+                                                                                                    </button>
+                                                                                                </div>
+                                                                                            </div>
+                                                                                            <div class="col-7 col-md-6 pl-1">
+                                                                                                <div class="btn-section">
+                                                                                                    <div class="text-right">
+                                                                                                        <button class="ux-button secondary sm5">Reject</button>
+                                                                                                        <button class="ux-button primary sm5">Accept</button>
+                                                                                                    </div>
+                                                                                                </div>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </li>
+                                                                            </ul>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div id="payer" class="tab-pane fade">
+                                                                    <div class="row1">
+                                                                        <div class="col-sm-12 col-12 col-md-12">
+                                                                            <ul class="payment-list">
+                                                                                <li>
+                                                                                    <div class="full-container mb-0">
+                                                                                        <div class="row1">
+                                                                                            <div class="col-8 col-md-6">
+                                                                                                <div class="left-info1">
+                                                                                                    <h6 class="heading">Requested to Payer</h6>
+                                                                                                    <h5>madhurram@psb</h5>
+                                                                                                </div>
+                                                                                            </div>
+                                                                                            <div class="col-4 col-md-6">
+                                                                                                <div class="right-info mt-2">
+                                                                                                    <h5 class="cust-mar"> <img src="../assets/images/svg/rupee-bl.svg" alt="rupees-icon">5422.00
+                                                                                                        <div class="overlap-badge2">
+                                                                                                            <em>Mandate</em>
+                                                                                                        </div>
+                                                                                                    </h5>
+                                                                                                </div>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                        <div class="row1 mt-2">
+                                                                                            <div class="col-6 col-md-6">
+                                                                                                <div class="left-info3">
+                                                                                                    <div class="icon-info">
+                                                                                                        <span>
+                                                                                                            <img src="../assets/images/svg/expiry-date.svg" alt="expiry-date-icon">
+                                                                                                        </span>
+                                                                                                    </div>
+                                                                                                    <em>Expiry Date & Time</em>
+                                                                                                    <h6>31 March 2020 <br /> 12:36:56</h6>
+                                                                                                </div>
+                                                                                            </div>
+                                                                                            <div class="col-6 col-md-6">
+                                                                                                <div class="left-info3">
+                                                                                                    <div class="icon-info">
+                                                                                                        <span>
+                                                                                                            <img src="../assets/images/svg/requested-date.svg" alt="request-date-icon">
+                                                                                                        </span>
+                                                                                                    </div>
+                                                                                                    <em>Request Date & Time</em>
+                                                                                                    <h6>30 March 2020 <br /> 18:25:25</h6>
+                                                                                                </div>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                         <div class="row1 mt-2">
+                                                                                            <div class="col-5 col-md-6 pr-1 pl-2">
+                                                                                               
+                                                                                            </div>
+                                                                                            <div class="col-7 col-md-6 pl-1">
+                                                                                                <div class="btn-section">
+                                                                                                    <div class="text-right">
+                                                                                                        <button class="ux-button secondary sm5">View</button>
+                                                                                                     </div>
+                                                                                                </div>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </li>
+                                                                                <li>
+                                                                                    <div class="full-container mb-0">
+                                                                                        <div class="row1">
+                                                                                            <div class="col-8 col-md-6">
+                                                                                                <div class="left-info1">
+                                                                                                    <h6 class="heading">Requested to Payer</h6>
+                                                                                                    <h5>riteshsigri@hdfc</h5>
+                                                                                                </div>
+                                                                                            </div>
+                                                                                            <div class="col-4 col-md-6">
+                                                                                                <div class="right-info mt-2">
+                                                                                                    <h5 class="cust-mar"> <img src="../assets/images/svg/rupee-bl.svg" alt="rupees-icon">1200.00</h5>
+                                                                                                </div>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                        <div class="row1 mt-2">
+                                                                                            <div class="col-6 col-md-6">
+                                                                                                <div class="left-info3">
+                                                                                                    <div class="icon-info">
+                                                                                                        <span>
+                                                                                                            <img src="../assets/images/svg/expiry-date.svg" alt="expiry-date-icon">
+                                                                                                        </span>
+                                                                                                    </div>
+                                                                                                    <em>Expiry Date & Time</em>
+                                                                                                    <h6>31 March 2020 <br /> 12:36:56</h6>
+                                                                                                </div>
+                                                                                            </div>
+                                                                                            <div class="col-6 col-md-6">
+                                                                                                <div class="left-info3">
+                                                                                                    <div class="icon-info">
+                                                                                                        <span>
+                                                                                                            <img src="../assets/images/svg/requested-date.svg" alt="request-date-icon">
+                                                                                                        </span>
+                                                                                                    </div>
+                                                                                                    <em>Request Date & Time</em>
+                                                                                                    <h6>30 March 2020 <br /> 18:25:25</h6>
+                                                                                                </div>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                         <div class="row1 mt-2">
+                                                                                            <div class="col-5 col-md-6 pr-1 pl-2">
+                                                                                               
+                                                                                            </div>
+                                                                                            <div class="col-7 col-md-6 pl-1">
+                                                                                                <div class="btn-section">
+                                                                                                    <div class="text-right">
+                                                                                                        <button class="ux-button secondary sm5">View</button>
+                                                                                                     </div>
+                                                                                                </div>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </li>
+                                                                            </ul>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- main -->
+
+
+
+    <!-- =========== modal popup start ===============  -->
+
+
+    <!-- Filter Popup Start -->
+
+    <div class="popup-bottom filter1">
+        <div class="row1">
+            <div class="col-10">
+                <h4>Filter</h4>
+            </div>
+            <div class="col-2">
+                <button class="ux-button-icon">
+                    <img src="../assets/images/svg/close-b.svg" alt="cross-icon" class="img-vsmall">
+                </button>
+            </div>
+        </div>
+        <form action="#" id="filter-form">
+            <div class="row1 mt-2">
+                <div class="col-12 col-sm-12 col-md-12 col-lg-12">
+                    <div class="ux-input">
+                        <label for="upiId">UPI ID</label>
+                        <select required="">
+                            <option value="">Select</option>
+                            <option value="9768245145@psb">9768245145@psb</option>
+                        </select>
+                        <p class="mb-0"></p>
+                    </div>
+                </div>
+            </div>
+            <div class="row1">
+                <div class="col-6">
+                    <div class="ux-input">
+                        <label>Start Date</label>
+                        <input type="text" class="datepicker1" placeholder="DD/MM/YYYY">
+                        <em class="calendar-ic cal-top"></em>
+                    </div>
+                </div>
+                <div class="col-6">
+                    <div class="ux-input">
+                        <label>End Date</label>
+                        <input type="text" class="datepicker1" placeholder="DD/MM/YYYY">
+                        <em class="calendar-ic cal-top"></em>
+                    </div>
+                </div>
+            </div>
+            <div class="row1">
+                <div class="col-12 col-sm-12 col-md-12 col-lg-12">
+                    <div class="ux-input">
+                        <label for="">Transaction Type</label>
+                        <select required="">
+                            <option value="">Select</option>
+                            <option value="Collect">Collect</option>
+                        </select>
+                        <p class="mb-0"></p>
+                    </div>
+                </div>
+            </div>
+            <div class="row1 mt-2">
+                <div class="col-6 text-center">
+                    <button class="ux-button secondary  md" onclick="window.location.href = '#'">Clear</button>
+                </div>
+                <div class="col-6 text-center">
+                    <button class="ux-button primary md" onclick="window.location.href = 'transaction-success.html'">Apply</button>
+                </div>
+            </div>
+        </form>
+    </div>
+
+    <!-- Filter Popup End -->
+    <div class="ios-nav-overlay"></div>
+
+
+    <!-- =========== modal popup end ===============  -->
+
+    <script src="../js/lib/jquery.min.js"></script>
+    <script src="../js/lib/bootstrap.min.js"></script>
+    <script src="../js/lib/jquery-ui.min.js"></script>
+    <script src="../js/lib/popper.min.js"></script>
+    <script src="../js/lib/jquery.mousewheel.min.js"></script>
+    <script src="../js/lib/jquery.mCustomScrollbar.js"></script>
+    <script src="../js/lib/datatables.min.js"></script>
+    <script src="../js/common.js"></script>
+
+    <script type="text/javascript">
+        //  createGlobalNavMore();
+
+        $("ul.info-list li").click(function() {
+            console.log('its working');
+            $("ul.info-list li").removeClass("active");
+            if (!$(this).hasClass('active')) {
+                $(this).addClass('active');
+            } else {
+                $(this).removeClass('active');
+            }
+        });
+
+        $("ul.payment-list li").click(function() {
+            console.log('its working');
+            $("ul.payment-list li").removeClass("active");
+            if (!$(this).hasClass('active')) {
+                $(this).addClass('active');
+            } else {
+                $(this).removeClass('active');
+            }
+        });
+
+        $("button.filter-btn").click(function() {
+            console.log('working');
+            if (!$('div.popup-bottom.filter1').hasClass('popup-active')) {
+                $('div.popup-bottom.filter1').addClass('popup-active');
+                $('div.ios-nav-overlay').fadeIn(400);
+            } else {
+                $('div.popup-bottom.filter1').removeClass('popup-active');
+                $('div.ios-nav-overlay').fadeOut();
+            }
+        });
+    </script>
+
+</body>
+
+</html>

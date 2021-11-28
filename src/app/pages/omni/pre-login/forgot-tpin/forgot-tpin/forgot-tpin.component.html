@@ -1,0 +1,49 @@
+<div class="ios-nav-overlay"></div>
+<div class="prelogin-page">
+	<div class="registration-steps ">
+		<div class="row">
+			<div class="col-12 position-static">
+				<div class="inner-header">
+					<div class="registration-container">
+						<h4>Forgot TPIN?</h4>
+						<!-- <a class="close-registration" ><img (click)="mobPrevclick('cross')" src="assets/images/svg/close-w.svg"></a> -->
+						<a class="prev-tab"><img src="assets/images/svg/close-w.svg"></a>
+					</div>
+				</div>
+				<div class="registrationsteps-block registration-container acc-opening-page">
+					<div class="row">
+						<div class="background-block" style="background-image: url(assets/images/background/basic-background.png);"> </div>
+						<div class="middle-block">
+							<div class="pageHeader">
+								<h3>Set TPIN</h3> <span>MPIN is a 6 digit numerical PIN, which can be used for transaction validation</span> </div>
+							<div class="col-12 col-lg-12 col-md-12 col-sm-12 p-0">
+								<div class="box-password">
+									<label class="txt-center">Enter MPIN</label>
+									<input id="spassword1" type="password" maxlength="1" placeholder="●" onkeyup="onKeyUpEventforAll(1, event,'spassword')" onfocus="onFocusEventAll(1,'spassword')"  formControlName="MPIN1">
+									<input id="spassword2" type="password" maxlength="1" placeholder="●" onkeyup="onKeyUpEventforAll(2, event,'spassword')" onfocus="onFocusEventAll(2,'spassword')" formControlName="MPIN2">
+									<input id="spassword3" type="password" maxlength="1" placeholder="●" onkeyup="onKeyUpEventforAll(3, event,'spassword')" onfocus="onFocusEventAll(3,'spassword')" formControlName="MPIN3">
+									<input id="spassword4" type="password" maxlength="1" placeholder="●" onkeyup="onKeyUpEventforAll(4, event,'spassword')" onfocus="onFocusEventAll(4,'spassword')" formControlName="MPIN4">
+									<input id="spassword5" type="password" maxlength="1" placeholder="●" onkeyup="onKeyUpEventforAll(5, event,'spassword')" onfocus="onFocusEventAll(5,'spassword')" formControlName="MPIN5">
+									<input id="spassword6" type="password" maxlength="1" placeholder="●" onkeyup="onKeyUpEventforAll(6, event,'spassword')" onfocus="onFocusEventAll(6,'spassword')" formControlName="MPIN6"> </div>
+								<div class="box-password">
+									<label class="txt-center">Re-enter MPIN</label>
+									<input id="cpassword1" type="password" maxlength="1" placeholder="●" onkeyup="onKeyUpEventforAll(1, event,'cpassword')" onfocus="onFocusEventAll(1,'cpassword')" formControlName="RMPIN1">
+									<input id="cpassword2" type="password" maxlength="1" placeholder="●" onkeyup="onKeyUpEventforAll(2, event,'cpassword')" onfocus="onFocusEventAll(2,'cpassword')" formControlName="RMPIN2">
+									<input id="cpassword3" type="password" maxlength="1" placeholder="●" onkeyup="onKeyUpEventforAll(3, event,'cpassword')" onfocus="onFocusEventAll(3,'cpassword')" formControlName="RMPIN3">
+									<input id="cpassword4" type="password" maxlength="1" placeholder="●" onkeyup="onKeyUpEventforAll(4, event,'cpassword')" onfocus="onFocusEventAll(4,'cpassword')" formControlName="RMPIN4">
+									<input id="cpassword5" type="password" maxlength="1" placeholder="●" onkeyup="onKeyUpEventforAll(5, event,'cpassword')" onfocus="onFocusEventAll(5,'cpassword')" formControlName="RMPIN5">
+									<input id="cpassword6" type="password" maxlength="1" placeholder="●" onkeyup="onKeyUpEventforAll(6, event,'cpassword')" onfocus="onFocusEventAll(6,'cpassword')" formControlName="RMPIN6"> </div>
+							</div>
+							<div class="col-12 position-static">
+								<div class="text-center button-block"> <a (click)="setTPIN()" class="ux-button primary  ">Submit
+                                </a> </div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+</div>
+<!-- .prelogin-page -->

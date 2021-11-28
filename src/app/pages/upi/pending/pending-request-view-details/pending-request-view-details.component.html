@@ -1,0 +1,375 @@
+<div class="main">
+    <div class="right-main-column minus-rt-col mar-custom">
+        <div class="right-col-container cust-pb">
+            <div class="body-page-container">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="bg-section">
+                            <div class="col-12">
+                                <div class="row1">
+                                    <div class="col-sm-12 col-12 col-md-12">
+                                        <!-- <div class="row1">
+                      <div class="col-sm-12 col-12 col-md-12"> -->
+                                        <div class="white-bg1 pad-custom">
+                                            <ul class="complaint-list">
+                                                <li>
+                                                    <div class="full-container">
+                                                        <div class="row1">
+                                                            <div class="col-12">
+                                                                <div class="left-info1">
+                                                                    <h6 *ngIf="pendingWithMe.notificationType == 'MANDATE_NOTIFICATION'">{{'TO_BE_SENT_TO' | translate}} {{pendingWithMe.payeeName}}</h6>
+                                                                    <h6 *ngIf="pendingWithMe.notificationType != 'MANDATE_NOTIFICATION'">{{'REQUESTED_BY' | translate}} {{pendingWithMe.payeeName}}</h6>
+                                                                    <h5>{{'UPI_ID' | translate }} : {{pendingWithMe.payeeAddress}}</h5>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                                <li>
+                                                    <div class="full-container">
+                                                        <div class="row1">
+                                                            <div class="col-12">
+                                                                <div class="left-info1">
+                                                                    <h6>{{'PAYEE_NAME' | translate}}</h6>
+                                                                    <h5>{{pendingWithMe.payeeName}}</h5>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                                <li>
+                                                    <div class="full-container">
+                                                        <div class="row1">
+                                                            <div class="col-12">
+                                                                <div class="left-info1">
+                                                                    <h6>{{'AMOUNT' | translate}}</h6>
+                                                                    <h5> {{pendingWithMe.amount | customcurrency:'symbol'}}</h5>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                                <!-- <li>
+                              <div class="full-container">
+                                <div class="row1">
+                                  <div class="col-12">
+                                    <div class="left-info1">
+                                      <h6>{{'REMARKS' | translate}}</h6>
+                                      <h5>{{pendingWithMe.remarks ? pendingWithMe.remarks : '-'}}</h5>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            </li> -->
+                                                <li>
+                                                    <div class="full-container">
+                                                        <div class="row1">
+                                                            <div class="col-12">
+                                                                <div class="left-info1">
+                                                                    <h6>{{'REQUESTED_DATE_TIME' | translate}}</h6>
+                                                                    <h5>{{pendingWithMe.requestedDate}}</h5>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                                <li>
+                                                    <div class="full-container">
+                                                        <div class="row1">
+                                                            <div class="col-12">
+                                                                <div class="left-info1">
+                                                                    <h6>{{'EXPIRY_DATE_AND_TIME' | translate}}</h6>
+                                                                    <h5>{{pendingWithMe.expiredDate}}</h5>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                                <li>
+                                                    <div class="full-container">
+                                                        <div class="row1">
+                                                            <div class="col-12">
+                                                                <div class="left-info1">
+                                                                    <h6>{{'INVOICE_URL' | translate}}</h6>
+                                                                    <h5 (click)="viewInvoice()">{{pendingWithMe.refUrl}}</h5>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                                <li>
+                                                    <div class="full-container">
+                                                        <div class="row1">
+                                                            <div class="col-6">
+                                                                <div class="left-info1">
+                                                                    <h5>
+                                                                        <a class="reminder-btn set" (click)="openSetReminderPopup()"> <img src="assets/images/svg/reminder-g.svg" alt="reminder-icon" class="big-img"> {{'SET_REMINDER' | translate}} </a>
+                                                                    </h5>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-6">
+                                                                <div class="right-info" (click)="openBlockUPIPopup()">
+                                                                    <h5>
+                                                                        <a class="block-btn block"> <img src="assets/images/svg/block-r.svg" alt="block-icon" class="big-img"> {{'BLOCK_UPI_ID' | translate}}</a>
+                                                                    </h5>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- footer section start -->
+            <div class="footer-container sticky-actions">
+                <div class="footer-inactions minus-rt-col">
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-6 text-center">
+                                <button class="ux-button secondary md reject-btn" (click)="openRejectPopup()">{{'REJECT' | translate}}</button>
+                            </div>
+                            <div class="col-6 text-center">
+                                <button class="ux-button primary md" (click)="goToPage('pendingConfirmation')">{{ pendingWithMe.notificationType == 'MANDATE_NOTIFICATION' ? ('EXECUTE' | translate) : ('ACCEPT' | translate)}}</button>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-12 col-md-12 col-lg-12 text-center">
+                                <div class="powered-logo"> <img src="assets/images/logo/powered-upi-logo.svg" alt="powered-upi-logo">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- footer section end -->
+        </div>
+    </div>
+</div>
+<!-- main -->
+
+<!-- =========== modal popup start ===============  -->
+
+
+<!-- Reject Popup Start -->
+
+<div class="popup-bottom rejectPendingReq">
+    <div class="row1">
+        <div class="col-10">
+            <h4 class="mb-0">{{'CONFIRMATION' | translate}}</h4>
+            <h6>{{'REJECT_REASON' | translate}}</h6>
+        </div>
+        <div class="col-2">
+            <button class="ux-button-icon close-btn">
+        <img src="assets/images/svg/close-b.svg" alt="cross-icon" class="img-vsmall">
+      </button>
+        </div>
+    </div>
+    <form [formGroup]="rejectForm" (ngSubmit)="rejectReq()" id="reject-form">
+        <div class="row1 mt-3">
+            <div class="col-12 col-md-12">
+                <div class="ux-input">
+                    <label>{{'REASON' | translate}}</label>
+                    <textarea type="text" rows="3" placeholder="" formControlName="reason" limit-to="200" class="ios-collect-reject-css"> </textarea>
+                    <p class="error-message" *ngIf="rejectForm.controls['reason'].hasError('required')  && rejectForm.controls['reason'].touched">
+                        {{ 'ENTER_REASON_ERROR' | translate }}
+                    </p>
+                    <p class="text-center error-message" *ngIf="rejectForm.controls['reason'].hasError('pattern')">{{ 'ENTER_ALPHABET_NUMBER_ERROR' | translate}}</p>
+                    <em class="small-message text-right">{{rejectForm.controls.reason.value.length}}/200</em>
+                    <p class="mb-0"></p>
+                </div>
+            </div>
+            <div class="col-12">
+                <div class="ux-selection1">
+                    <label>{{'REPORT_AS_SPAM' | translate}}
+            <input type="checkbox" formControlName="spam">
+            <span class="checkmark"></span>
+          </label>
+                </div>
+            </div>
+        </div>
+        <div class="row1 mt-3">
+            <div class="col-12 text-center">
+                <button class="ux-button primary md" type="submit" [disabled]="rejectForm.invalid">{{'CONFIRM' |
+          translate}}</button>
+            </div>
+        </div>
+    </form>
+</div>
+
+<!-- Reject Popup End -->
+
+<!-- Reminder Popup Start -->
+
+<div class="popup-bottom snoozeReminder">
+    <div class="row1">
+        <div class="col-10">
+            <h4 class="mb-0">{{'SET_REMINDER' | translate}}</h4>
+        </div>
+        <div class="col-2">
+            <button class="ux-button-icon close-btn">
+        <img src="assets/images/svg/close-b.svg" alt="cross-icon" class="img-vsmall">
+      </button>
+        </div>
+    </div>
+    <form [formGroup]="setReminderForm" (ngSubmit)="setSnoozeNotification()" id="reminder-form">
+        <div class="row1 mt-3">
+            <div class="col-6">
+                <div class="ux-input">
+                    <label>{{'DATE' | translate}}</label>
+                    <input type="text" class="datepicker1" formControlName="date" placeholder="DD/MM/YYYY" readonly (click)="openDatePicker()">
+                    <p class="error-message" *ngIf="setReminderForm.controls['date'].hasError('required')  && setReminderForm.controls['date'].touched">
+                        {{ 'ENTER_DATE_ERROR' | translate }}
+                    </p>
+                    <em class="calendar-ic cal-top" (click)="openDatePicker()"></em>
+                </div>
+            </div>
+            <div class="col-6">
+                <div class="ux-input">
+                    <label>{{'TIME' | translate}}</label>
+                    <input type="text" name="time" formControlName="time" placeholder="{{'SELECT_A_TIME' | translate}}" class="timepicker1" readonly (click)="openTimePicker()">
+                    <p class="error-message" *ngIf="setReminderForm.controls['time'].hasError('required')  && setReminderForm.controls['time'].touched">
+                        {{ 'ENTER_TIME_ERROR' | translate }}
+                    </p>
+                    <p class="error-message" *ngIf="!setReminderForm.controls['time'].hasError('required')  && setReminderForm.controls['time'].touched && timeError">
+                        {{ 'ENTER_VALID_EXPIRY_TIME' | translate }}
+                    </p>
+                    <em class="clock-ic cal-top" (click)="openTimePicker()"></em>
+                </div>
+            </div>
+        </div>
+        <div class="row1 mt-3">
+            <div class="col-12 text-center">
+                <button class="set-btn-reminder ux-button primary md" type="submit" [disabled]="timeError || setReminderForm.invalid">{{'SET_REMINDER' | translate}}</button>
+            </div>
+        </div>
+    </form>
+</div>
+
+<!-- Reminder Popup End -->
+
+
+<!-- Reminder Success Popup Start -->
+
+<div class="popup-bottom successReminder">
+    <div class="row1 mt-3">
+        <div class="success">
+            <img src="assets/images/svg/check.svg" alt="success-icon">
+            <h3>{{'SUCCESS' | translate }}</h3>
+            <h5>{{setReminderResp?.msg}}</h5>
+        </div>
+    </div>
+    <div class="row1 mt-3">
+        <div class="col-12 text-center" (click)="closePopup('div.popup-bottom.successReminder')">
+            <button class="ux-button primary md">{{'OK' | translate}}</button>
+        </div>
+    </div>
+</div>
+
+<!-- Reminder Success Popup End -->
+
+
+<!-- Block ID Popup Start -->
+
+
+<div class="popup-bottom blockUPI">
+    <!-- rejectPendingReq-->
+    <div class="row1">
+        <div class="col-10">
+            <h4 class="mb-0">{{'CONFIRMATION' | translate}}</h4>
+            <h6>{{'HOW_LONG_DO_YOU_WANT_TO_BLOCK' | translate}} <br /> {{pendingWithMe.payeeAddress}} ?</h6>
+        </div>
+        <div class="col-2">
+            <button class="ux-button-icon close-btn" (click)="closePopup('div.popup-bottom.blockUPI')">
+        <img src="assets/images/svg/close-b.svg" alt="cross-icon" class="img-vsmall">
+      </button>
+        </div>
+    </div>
+    <form [formGroup]="blockUPIIdForm" id="reminder-form" (ngSubmit)="blockUPI()">
+        <div class="row1 mt-3">
+            <div class="col-4 col-xl-3 col-lg-4 col-md-6">
+                <div class="ux-selection dis-b">
+                    <label class="ux-selection2">{{'FOREVER' | translate}}
+            <input type="radio" value="forever" formControlName="blockPeriod">
+            <span class="checkmark"></span>
+          </label>
+                </div>
+            </div>
+            <div class="col-4 col-xl-3 col-lg-4 col-md-6">
+                <div class="ux-selection dis-b">
+                    <label class="ux-selection2">{{'1_DAY' | translate}}
+            <input type="radio" value="day" formControlName="blockPeriod">
+            <span class="checkmark"></span>
+          </label>
+                </div>
+            </div>
+            <div class="col-4 col-xl-3 col-lg-4 col-md-6">
+                <div class="ux-selection dis-b">
+                    <label class="ux-selection2">{{'1_WEEK' | translate}}
+            <input type="radio" value="week" formControlName="blockPeriod">
+            <span class="checkmark"></span>
+          </label>
+                </div>
+            </div>
+            <div class="col-4 col-xl-3 col-lg-4 col-md-6">
+                <div class="ux-selection dis-b">
+                    <label class="ux-selection2">{{'1_MONTH' | translate}}
+            <input type="radio" value="month" formControlName="blockPeriod">
+            <span class="checkmark"></span>
+          </label>
+                </div>
+            </div>
+            <div class="col-4 col-xl-3 col-lg-4 col-md-6">
+                <div class="ux-selection dis-b">
+                    <label class="ux-selection2">{{'1_YEAR' | translate}}
+            <input type="radio" value="year" formControlName="blockPeriod">
+            <span class="checkmark"></span>
+          </label>
+                </div>
+            </div>
+        </div>
+        <div class="row1 mt-3">
+            <div class="col-12 col-md-12">
+                <div class="ux-input">
+                    <label>{{'REASON' | translate}}</label>
+                    <textarea type="text" rows="3" placeholder="" formControlName="reason" limit-to="200" class="ios-collect-reject-css"> </textarea>
+                    <p class="error-message" *ngIf="rejectForm.controls['reason'].hasError('required')  && rejectForm.controls['reason'].touched">
+                        {{ 'ENTER_REASON_ERROR' | translate }}
+                    </p>
+                    <p class="text-center error-message" *ngIf="rejectForm.controls['reason'].hasError('pattern')">{{ 'ENTER_ALPHABET_NUMBER_ERROR' | translate}}</p>
+                    <em class="small-message text-right">{{rejectForm.controls.reason.value.length}}/200</em>
+                    <p class="mb-0"></p>
+                </div>
+            </div>
+            <div class="col-12">
+                <div class="ux-selection1">
+                    <label>{{'REPORT_AS_SPAM' | translate}}
+            <input type="checkbox" formControlName="spam">
+            <span class="checkmark"></span>
+          </label>
+                </div>
+            </div>
+        </div>
+        <div class="row1 mt-3">
+            <div class="col-6 text-center">
+                <button class="ux-button secondary md" type="button" (click)="closePopup('div.popup-bottom.blockUPI')">{{'NO' | translate}}</button>
+            </div>
+            <div class="col-6 text-center">
+                <button class="ux-button primary md" type="submit" [disabled]="blockUPIIdForm.invalid">{{'YES' |
+          translate}}</button>
+            </div>
+        </div>
+    </form>
+</div>
+
+<!-- Block ID Popup End -->
+
+<!-- <div class="ios-nav-overlay"></div>  -->
+
+
+<!-- =========== modal popup end ===============  -->

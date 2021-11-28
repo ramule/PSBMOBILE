@@ -1,0 +1,68 @@
+table {
+    thead{
+        tr{
+            th{
+                font-size: 1.1rem;
+                font-weight: 400;
+                	@media (max-width:480px) {
+                        font-size:0.9rem;
+                    }
+            }
+        }
+    }
+    tbody{
+        tr td{
+            padding-left: 1.25rem !important;
+            font-size: 1rem;
+            color: rgba(0,0,0,0.65);
+            @media (max-width:480px) {
+                font-size:0.9rem;
+                padding-left: 0.3rem !important; ;
+
+
+            }
+        }
+    }
+}
+
+.pad-0{
+    padding: 0px !important;
+    margin: 0px !important;
+}
+
+.list-image{
+    width: 14px;
+}
+.value-image{
+    width: 16px;
+}
+
+.gradient-height{
+    height: 223px;
+}
+
+* .datatable-box .table td em img, * .datatable-box .table th em img, .table-box .table td em img, .table-box .table th em img {
+    width: 15px;
+    height: 15px;
+    margin-right: 3px;
+}
+
+.account_adjust{
+    max-width:100%;
+    white-space:nowrap;
+}
+
+
+// added by sarfaraj 3 Feb
+.drp-box .drp-enterdata{
+    cursor: pointer;
+    opacity: 0.7;
+    background-color: #ffffff;
+
+    [theme="dark"] & {background-color: #292929!important;}
+}
+
+.ux-component5 .ux-dropdown .drp-box .drp-enterdata.active{
+    opacity: 1 !important;
+}
+

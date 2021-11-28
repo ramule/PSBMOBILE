@@ -1,0 +1,275 @@
+<div class="right-main-column">
+    <div class="right-col-container pad-b full-width">
+
+
+        <!-- ======== body page content start from here ======== -->
+
+        <div class="body-page-container main-dashborad">
+            <div class="container-fluid">
+
+                <div class="row">
+                    <div class="col-12 p-0">
+                        <div class="breadcrumb">
+                            <ul class="lst-breadcrumb">
+                                <li>
+                                    {{"RECHARGE_AND_BILLPAY" | translate }}
+                                </li>
+                            </ul>
+                            <div class="right-logo">
+                                <img src="assets/images/svg/BBPS_Logo.svg" alt="bbps-icon">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--.row -->
+
+                <div class="row">
+                    <div class="col-12 p-0">
+                        <div class="gradient-box pad-0 bg">
+                            <div class="tabs-container">
+
+                                <!-- Mobile -->
+                                <div class="tab-content1 tc-showing">
+                                    <div class="row no-gutters">
+                                        <div class="col-12">
+                                            <div class="row1">
+                                                <div class="col-12 col-xl-12 col-lg-12 col-md-12">
+
+                                                    <!-- accordian starts here -->
+                                                    <div class="ux-acc-container" style="margin: 0">
+                                                        <ul>
+                                                            <li>
+                                                                <div class="acc-slide slide-active mt-2">
+                                                                    <div class="col-12">
+                                                                        <div class="row mt-2 mb-2">
+                                                                            <h4>{{"ADD_BILLER" | translate }}</h4>
+                                                                        </div>
+                                                                    </div>
+
+                                                                    <div class="acc-slide-content"
+                                                                        style="display: block;">
+                                                                        <div class="slide-body  component-box ">
+                                                                            <div class="row1">
+                                                                                <div class="col-12">
+                                                                                    <form [formGroup]="addBillerForm" (ngSubmit)="submitAddBiller()">
+                                                                                    <div class="row1">
+                                                                                        <div class="col-12 col-xl-3 col-lg-4 col-md-6 ">
+                                                                                            <div class="ux-input">
+                                                                                                <label>{{"CATEGORY" | translate }}</label>
+                                                                                                <select required="" formControlName="category" (change)="onCategoryChange($event.target.value)" >
+                                                                                                    <option value="">{{"SELECT" | translate }}</option>
+                                                                                                    <option *ngFor="let category of categoryList" [value]="category.id">{{category.type}}</option>
+                                                                                                </select>
+                                                                                                <span class="errormsg" *ngIf="formErrorsAddBiller.category">{{ formErrorsAddBiller.category }}</span>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                        <div class="col-12 col-xl-3 col-lg-4 col-md-6">
+                                                                                            <div class="ux-input">
+                                                                                                <label>{{"BILLER_NAME" | translate }}</label>
+                                                                                                <select required="" formControlName="billerName">
+                                                                                                    <option value="">{{"SELECT" | translate }}</option>
+                                                                                                    <option *ngFor="let biller of billerList" [value]="biller.id">{{biller.billerName}}</option>
+                                                                                                </select>
+                                                                                                <span class="errormsg" *ngIf="formErrorsAddBiller.billerName">{{ formErrorsAddBiller.billerName }}</span>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                        <div class="col-12 col-xl-3 col-lg-4 col-md-6">
+                                                                                            <div class="ux-input">
+                                                                                                <label>{{"BILLER_ID_NO" | translate }}</label>
+                                                                                                <input type="text" placeholder="" formControlName="billerId" limit-to="20" alphaNumeric >
+                                                                                                <span class="errormsg" *ngIf="formErrorsAddBiller.billerId">{{ formErrorsAddBiller.billerId }}</span>
+                                                                                                <span class="errormsg" *ngIf="!addBillerForm.controls['billerId'].hasError('required') && addBillerForm.hasError('invalidBillerId')  && addBillerForm.controls['billerId'].touched">Please enter valid biller Id</span>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                    <div class="row1">
+                                                                                        <div class="col-12 col-xl-3 col-lg-4 col-md-6 ">
+                                                                                            <div class="ux-input">
+                                                                                                <label>{{"TRANSFER_FROM" | translate }}</label>
+                                                                                                <select required="" formControlName="accountNo" (change)="onAccountNoChange($event.target.value)" >
+                                                                                                    <option value="">{{"SELECT" | translate }}</option>
+                                                                                                    <option *ngFor="let account of accountList" [value]="account.accountNumber">{{account.sbAccount}}</option>
+                                                                                                </select>
+                                                                                                <span class="errormsg" *ngIf="formErrorsAddBiller.accountNo">{{ formErrorsAddBiller.accountNo }}</span>
+                                                                                                <div class="text-right" *ngIf="isAccountSelected">
+                                                                                                    <em class="message">{{"TOTAL_AVL_BAL_IS" | translate }}
+                                                                                                        {{selectedAccBal | customcurrency:"symbol"}}</em>
+                                                                                                </div>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                        <div class="col-12 col-xl-3 col-lg-4 col-md-6">
+                                                                                            <div class="ux-input">
+                                                                                                <label>{{"BILLER_NICKNAME" | translate }}</label>
+                                                                                                <input type="text" placeholder="" formControlName="billerNickName" >
+                                                                                                <span class="errormsg" *ngIf="formErrorsAddBiller.billerNickName" limit-to="20">{{ formErrorsAddBiller.billerNickName }}</span>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                    <div class="d-block d-sm-block d-lg-none d-md-none mt-3">
+                                                                                        <div class="row1">
+                                                                                            <div
+                                                                                                class="col-12 col-xl-3 col-lg-5 col-md-4">
+                                                                                                <div class="ux-input">
+                                                                                                    <label>{{"SET_AUTOPAYMENT" | translate }} ?</label>
+                                                                                                </div>
+                                                                                            </div>
+                                                                                            <div
+                                                                                                class="col-12 col-xl-3 col-lg-4 col-md-6">
+                                                                                                <div
+                                                                                                    class="ux-selection">
+                                                                                                    <label class="ux-selection2">{{"YES" | translate }}
+                                                                                                        <input type="radio" checked="checked" name="radioboxdemo">
+                                                                                                        <span class="checkmark"></span>
+                                                                                                    </label>
+                                                                                                    <div>
+                                                                                                    </div>
+                                                                                                </div>
+                                                                                                <div
+                                                                                                    class="ux-selection">
+                                                                                                    <label class="ux-selection2">{{"NO" | translate }}
+                                                                                                        <input type="radio" name="radioboxdemo">
+                                                                                                        <span class="checkmark"></span>
+                                                                                                    </label>
+                                                                                                    <div>
+                                                                                                    </div>
+                                                                                                </div>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                        <div class="row1">
+                                                                                            <div
+                                                                                                class="col-12 col-xl-3 col-lg-4 col-md-6">
+                                                                                                <div class="ux-input">
+                                                                                                    <label>{{"AUTO_PAY_MODE" | translate }}</label>
+                                                                                                    <select required="">
+                                                                                                        <option value="">{{"SELECT" | translate }}</option>
+                                                                                                        <option value="Full Payment">{{"FULL_PAYMENT" | translate }}</option>
+                                                                                                    </select>
+                                                                                                </div>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                    </form>
+                                                                                </div>
+                                                                            </div>
+
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="ux-footer border-n p-0">
+                                                                    <div class="row1">
+                                                                        <div class="col-6 col-lg-6 col-md-6 col-sm-6">
+                                                                            <button class="ux-button secondary sm2 d-xl-none d-lg-none d-md-none"
+                                                                                (click)="gotoPrevPage()">{{"CANCEL" | translate }}</button>
+                                                                        </div>
+                                                                        <div class="col-6 col-lg-6 col-md-6 col-sm-6">
+                                                                            <button class="ux-button primary sm2 d-xl-none d-lg-none d-md-none"
+                                                                                (click)="submitAddBiller()">{{"ADD" | translate }}</button>
+                                                                        </div>
+                                                                    </div>
+                                                                    <!-- <div class="row  d-none d-sm-none d-xl-block d-lg-block d-md-block">
+                                                                        <div
+                                                                            class="col-12 col-lg-12 col-md-12 col-sm-12 p-0">
+                                                                            <button class="ux-button primary float-right ml-4"
+                                                                                (click)="submitAddBiller()">ADD</button>
+                                                                            <button class="ux-button secondary float-right"
+                                                                                (click)="gotoPrevPage()">Cancel</button>
+                                                                        </div>
+                                                                    </div> -->
+
+                                                                </div>
+                                                            </li>
+                                                            <li class="d-none d-sm-none d-lg-block d-md-block">
+                                                                <div class="acc-slide">
+                                                                    <div class="row mt-3 mb-2">
+                                                                        <div
+                                                                            class="col-12 col-xl-12 col-lg-12 col-md-12">
+                                                                            <div class="ux-selection dis-b">
+                                                                                <label class="ux-selection1">{{"AUTO_PAYMENT" | translate }}
+                                                                                    <input type="checkbox" name="autopayment" (change)="autoPay($event.target.checked)">
+                                                                                    <span class="checkmark"></span>
+                                                                                </label>
+                                                                                <div>
+                                                                                    <small class="message">({{"AUTO_PAY_CONDITION" | translate }})</small>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="acc-slide-content" style="display: block;">
+                                                                        <div class="slide-body  component-box bg-lg" style="display:none;" id="details">
+                                                                            <div class="row1">
+                                                                                <div class="col-12 col-xl-3 col-lg-5 col-md-4">
+                                                                                    <div class="ux-input">
+                                                                                        <label>{{"SET_AUTOPAYMENT" | translate }} ?</label>
+                                                                                    </div>
+                                                                                </div>
+                                                                                <div
+                                                                                    class="col-12 col-xl-3 col-lg-4 col-md-6">
+                                                                                    <div class="ux-selection">
+                                                                                        <label class="ux-selection2">{{"YES" | translate }}
+                                                                                            <input type="radio" checked="checked" name="radioboxdemo">
+                                                                                            <span class="checkmark"></span>
+                                                                                        </label>
+                                                                                        <div>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                    <div class="ux-selection">
+                                                                                        <label class="ux-selection2">{{"NO" | translate }}
+                                                                                            <input type="radio" name="radioboxdemo">
+                                                                                            <span class="checkmark"></span>
+                                                                                        </label>
+                                                                                        <div>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="row1">
+                                                                                <div
+                                                                                    class="col-12 col-xl-3 col-lg-4 col-md-6">
+                                                                                    <div class="ux-input">
+                                                                                        <label>{{"AUTO_PAY_MODE" | translate }}</label>
+                                                                                        <select required="">
+                                                                                            <option value="">{{"SELECT" | translate }}</option>
+                                                                                            <option value="Full Payment">{{"FULL_PAYMENT" | translate }}</option>
+                                                                                        </select>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="ux-footer border-n p-0">
+                                                                    <!-- <div class="row1">
+                                                                        <div class="col-6 col-lg-6 col-md-6 col-sm-6">
+                                                                            <button class="ux-button secondary sm2 d-xl-none d-lg-none d-md-none"
+                                                                                (click)="gotoPrevPage()">Cancel</button>
+                                                                        </div>
+                                                                        <div class="col-6 col-lg-6 col-md-6 col-sm-6">
+                                                                            <button class="ux-button primary sm2 d-xl-none d-lg-none d-md-none"
+                                                                                (click)="submitAddBiller()">ADD</button>
+                                                                        </div>
+                                                                    </div> -->
+                                                                    <div class="row  d-none d-sm-none d-xl-block d-lg-block d-md-block">
+                                                                        <div
+                                                                            class="col-12 col-lg-12 col-md-12 col-sm-12 p-0">
+                                                                            <button class="ux-button primary float-right ml-4"
+                                                                                (click)="submitAddBiller()">{{"ADD" | translate }}</button>
+                                                                            <button class="ux-button secondary float-right"
+                                                                                (click)="gotoPrevPage()">{{"CANCEL" | translate }}</button>
+                                                                        </div>
+                                                                    </div>
+
+                                                                </div>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>

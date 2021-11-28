@@ -1,0 +1,127 @@
+<!-- <div class="pagetheme-settings">
+    <div class="section-header">
+    <h6>Theme Customization</h6>
+    <span>X</span>
+    </div>
+    <ul class="theme-list clearfix  mb-3">
+        <li [ngClass]="{'default active' : selectedTheme == 'default' }" theme="default"  (click)="themechanger('default')"><span style="background-image: url('assets/images/background/bg-dark.png')"></span></li>
+        <li [ngClass]="{'default active' :  selectedTheme == 'light'}" theme="light"  (click)="themechanger('light')"><span style="background-image: url('assets/images/background/bg-light.png')"></span></li>
+
+        <li [ngClass]="{'diwali active' : selectedTheme == 'diwali' }" theme="diwali" (click)="themechanger('diwali')"><span style="background-image: url('assets/images/background/diwali.jpg')"></span></li>
+        <li [ngClass]="{'xmas active' :  selectedTheme == 'xmas' }"  theme="xmas" (click)="themechanger('xmas')"><span style="background-image: url('assets/images/background/christmas.jpg')"></span></li>
+        <li [ngClass]="{'eid active' : selectedTheme == 'eid' }" theme="eid" (click)="themechanger('eid')"><span style="background-image: url('assets/images/background/eid.jpg')"></span></li>
+    </ul>
+    <h6>{{'SIDE_BAR_COLOR' | translate}}</h6>
+    <ul class="color-list mb-3">
+        <li class="blue" color="blue" [ngClass]="{'active' : selectedSideBarColor == 'blue' }" (click)="setSideBarColor('blue')"><span></span></li>
+        <li class="red" color="red" [ngClass]="{'active' : selectedSideBarColor == 'red' }" (click)="setSideBarColor('red')"><span></span></li>
+    </ul>
+
+
+    <h6>{{'SIDE_BAR_BG' | translate }}</h6><div class="background-check"><input type="checkbox" id="background"><label></label></div>
+    
+    <ul class="background-list  mb-3">
+        <li class=" " background="bg1" [ngClass]="{'active' : selectedBg == 'bg1'}" (click)="setBackground('bg1')"><span style="background-image: url('assets/images/background/nav-bg.png')"></span></li>
+        <li class="bg2" background="bg2" [ngClass]="{'active' : selectedBg == 'bg2'}"  (click)="setBackground('bg2')"><span style="background-image: url('assets/images/background/bg2.jpg')"></span></li>
+    </ul>
+
+    <h6>{{'MENU_OPTION' | translate}}</h6>
+    <div class="comp menuoptions">
+        <label class="ux-selection2">{{'VERTICAL' | translate}}
+            <input type="radio" value="vertical" [(ngModel)]="selectedMenuOption"
+            [ngModelOptions]="{ standalone: true }"  name="radioboxdemo" [checked]="selectedMenuOption == 'vertical'">
+            <span class="checkmark"></span>
+          </label>
+          <label class="ux-selection2">{{'HORIZONTAL' |translate}}
+            <input type="radio" value="horizontal" [(ngModel)]="selectedMenuOption"
+            [ngModelOptions]="{ standalone: true }" name="radioboxdemo" [checked]="selectedMenuOption == 'horizontal'">
+            <span class="checkmark"></span>
+          </label>
+    </div>
+    
+    <div class="text-center">
+         <button class="ux-button sm primary text-center" (click)="updateTheme()">{{'UPDATE_THEME' | translate}} </button>
+    </div>
+
+</div> -->
+<aside class="notification-panel sticky-panel themePanel" id="themePanel">
+    <div class="notp-header">
+        <a href="javascript:;" class="btn-closenoty"></a>
+        <h5>Theme Customizer</h5>
+    </div> 
+    <div class="notp-content">
+        <div class="notp-innercontent">
+            <div class="notp-nodatafound">
+                <div class="nightmode clearfix">
+                    <h5>Night Mode</h5>
+                    <div class="modebox">
+                        <div class="el-switch-main">
+                            <img src="../assets/images/svg/moon.svg">
+                            <label class="el-switch">
+                                <input type="checkbox" name="nightswtich">
+                                <span class="el-switch-style"></span>
+                            </label>	
+                        </div>
+                    </div>
+                </div>
+                <div class="theme-block">
+                    <h5>Theme</h5>
+                    <div class="row1 mb-1">
+                        <div class="col-12">
+                            <ul class="theme-list themechange">
+                                <li class="dark active" theme="default" style="background-image: url(../assets/images/background/bg-dark.png)"></li>
+                                <li class="light " theme="light" style="background-image: url(../assets/images/background/light-pattern.png)"></li>
+                                
+                            </ul>
+                        </div>
+                    </div> 
+                </div> 
+                <div class="theme-block">
+                    <h5>Layout Background</h5>
+                    <div class="row1 mb-1">
+                        <div class="col-12">
+                            <ul class="theme-list background-layout">
+                                <li class="active" layoutbg="default" style="background-image: url(../assets/images/background/psb-pattern-grey.png)"></li>
+                                <li layoutbg="white" style="background-color:#fff;    box-shadow: 0 0 5px rgb(0 0 0 / 20%);"></li>
+                            
+                            </ul>
+                        </div>
+                    </div> 
+                </div> 
+                <div class="theme-block">
+                    <h5>Sidebar Background image</h5>
+                    <div class="row1 mb-1">
+                        <div class="col-12">
+                            <ul class="theme-list sidebarnavbg">
+                                <li class="light active" sidenavbg="default" style="background-image: url(../assets/images/background/nav-bg.png);  box-shadow: 0 0 5px rgb(0 0 0 / 20%);"></li>
+                                <li class="dark" sidenavbg="darkgreen" style="background-image: url(../assets/images/background/bg-dark.png)"></li>
+                            </ul>
+                        </div>
+                    </div> 
+                </div> 
+
+
+              </div>
+         <div class="vspacer20"></div>
+         <div class="vspacer20"></div>
+       <div class="row1">
+           <div class="col-12 col-xl-12 col-lg-12 col-md-12 ">
+                <div class="ux-footer">
+                   <button class="ux-button sm primary float-right">Submit</button>
+                </div>
+             </div>
+          </div>
+
+          </div> 
+        </div> 
+    <!-- <div class="notp-footer">
+        <p>Test</p>
+    </div>  -->
+    <!-- <div class="page-tools">
+        <div class="lst-page-tools">
+              <a href="#" class="rightpannel">
+                  <img src="../assets/images/svg/adjust.svg" alt="adjust-icon"> 
+                </a>
+         </div>
+     </div> -->
+</aside>

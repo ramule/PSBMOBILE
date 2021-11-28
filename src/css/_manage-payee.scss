@@ -1,0 +1,160 @@
+.manage-payee{
+    .greenCard.sendMoney .outer-layer{
+        padding-top: 25px;
+    }
+    .fund-transfer-wrapp{padding: 0;}
+    .table thead {display: none;}
+    .datatable-box{
+        .payee-list{
+            position: relative;
+            display: block;
+            margin-bottom: 15px;
+            font-size: 12px;
+            .fnt-large &{	font-size:13px;line-height:14px;}
+		    .fnt-xlarge & {	font-size:14px;line-height: 15px;}
+            color: #b4b3b3;
+            
+            margin:0; 
+            span.img-control{    
+                display: inline-block;
+                vertical-align: middle;
+                margin: 5px 0;
+                width: 34px;
+                height: 34px;
+                    border-radius: 100%;
+                background-color: rgba(0,0,0,0.4);
+                img{
+                    border-radius: 100%;
+                    width: 34px;
+                    height: 34px;
+                    /*border:1px solid rgba($brand-primary-color,1);*/
+                }
+                b{
+                    font-size: 16px;
+                    .fnt-large &{	font-size:17px;line-height:18px;}
+                    .fnt-xlarge & {	font-size:18px;line-height: 19px;}
+                    padding: 5px 0px;
+                    text-align: center;
+                    font-weight: normal;
+                    display: block;
+                }
+            }
+            span.payee-detail{
+                display: inline-block;
+                vertical-align: middle;
+                color: $black;
+                [theme="dark"] & {color: $white;}
+                font-size: 12px;
+                .fnt-large &{	font-size:13px;line-height:14px;}
+                .fnt-xlarge & {	font-size:14px;line-height: 15px;}
+                margin: 0 5px;
+                b{
+                    display: block;
+                    font-weight: 600;
+                    font-size: 12px;
+                    .fnt-large &{	font-size:13px;line-height:14px;}
+                    .fnt-xlarge & {	font-size:14px;line-height: 15px;}
+                }
+                em{
+                    display: block;
+                    font-weight: normal;
+                    font-style: normal;
+                    font-size: 10px;
+                    .fnt-large &{	font-size:11px;line-height:12px;}
+                    .fnt-xlarge & {	font-size:12px;line-height: 13px;}
+                    color: rgba($black,0.7);
+                    [theme="dark"] & {color: $white;}
+                }
+                
+            }
+            span.mp-status{
+                padding-left: 40px;
+                display: inline-block;
+                vertical-align: middle;
+                color: $action-danger-color;
+                font-size: 10px;
+                .fnt-large &{	font-size:11px;line-height:12px;}
+                    .fnt-xlarge & {	font-size:12px;line-height: 13px;}
+                font-style: italic;
+                @media (max-width:767px) {
+                    display: block;
+                }
+            }
+            i.expand { 
+                background: url('#{$images-icons-path}arrow-down-rb.png') no-repeat center;
+                transform: rotate(0deg);
+                transition: all 0.5s ease;
+                @include opacity(1);
+                content: '';
+                width:20px;
+                height:20px;
+                background-size:20px;
+                position: absolute;
+                /*top: 29%;*/
+                top: 50%;
+                right:15px;
+                display: block;
+                margin-top: -20px;
+                padding: 20px;
+                cursor:pointer;
+            } /* end of i */
+        }
+        .dt-viewdetails{
+            vertical-align: middle;
+        }
+        tr.dt-rowexpandable{
+            .payee-list{
+                i.expand{
+                    transform: rotate(180deg);
+                }
+            }
+        }
+    }/*.datatable-box*/
+    table tbody tr td{padding-left:0 !important;}
+    table tbody tr td.dt-viewdetails{padding-left:.75rem !important;}
+    /*div.dataTables_wrapper table.dataTable{border-top: 1px solid #e6e6e6;}*/
+    div.dataTables_wrapper table.dataTable tr.dt-rowexpandable, div.dataTables_wrapper table.dataTable tr.dt-rowexpandable:hover{background-color: transparent;}
+    div.dataTables_wrapper table.dataTable tr.dt-rowexpandable+tr.dt-rowexpanded-details td{border-top: 1px solid rgba($black,0.1);}
+    div.dataTables_wrapper table.dataTable tr.dt-rowexpandable+tr.dt-rowexpanded-details td .dt-exdetails-container{
+        background-color: rgba($black, 0.05);padding: 0;
+        @media (max-width:767px) {
+            padding: 0 0.75rem !important;
+        }
+    }
+    div.dataTables_wrapper table.dataTable tr.dt-rowexpandable+tr.dt-rowexpanded-details td .dt-exdetails-container .dt-exdetails{padding: 0.75rem 0}
+    div.dataTables_wrapper table.dataTable tr.dt-rowexpandable+tr.dt-rowexpanded-details td .dt-exdetails-container .dt-exfooter{
+        padding:0.75rem 0;
+        border-top: 1px solid rgba($black, 0.05);
+        .ux-button{
+            padding: 0.4rem 0.7rem;
+            & + .ux-button{
+                margin-left: 15px;
+            }
+        }
+    }
+    * .datatable-box .table.table-hover tbody tr:hover, .table-box .table.table-hover tbody tr:hover{ background-color: transparent;
+    }
+    .dt-custom{
+        display: block;
+        text-align: right;
+        @media (max-width:767px) {
+            text-align: center;
+        }
+    }
+    .dt-addpayee{display: inline-block;vertical-align: middle;margin:5px 0; .ux-button.sm, a.ux-button.sm{max-width: 130px;padding: 0.3rem 0.7rem;img{width:18px;height:18px;}}}
+    .dataTables_filter{display: inline-block;vertical-align: middle;margin:5px 0;label{margin-bottom:0;}}
+    .dt-title{
+        span{
+            display:block;padding: 8px 0;margin: 5px 0; color: rgba($black,0.55);
+            [theme="dark"] & {color: $white;}
+            font-weight: 600;
+            @media (max-width:767px) {
+                text-align: center;
+                padding: 5px 0;
+                margin: 0px 0;
+            }
+        }
+    }
+}/*.manage-payee*/
+
+

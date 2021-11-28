@@ -1,0 +1,538 @@
+<div class=" prelogin-page">
+    <div class=" registration-steps">
+        <div class="row1">
+            <div class="col-12">
+                <div class="inner-header">
+                    <div class="registration-container">
+                        <a class="prev-tab" (click)="backToPrevPage()"><img src="assets/images/svg/left-arrow.svg">Back to Login</a>
+                        <h4>{{'RETAIL_ACCOUNT_REGISTRATION' |  translate }}</h4>
+                        <a class="close-registration" ><img (click)="mobPrevclick( )" src="assets/images/svg/close-w.svg"></a>
+                    </div>
+                </div>
+
+                <div class="registrationsteps-block registration-container clearfix">
+                    <div class="steps-block">
+                        <span class="close"><img src="assets/images/svg/close-b.svg"></span>
+                        <ul>
+                            <li *ngFor="let step of registrationsteps; index as i"
+                                [ngClass]="{'active':step.stepActive,'completed':step.stepStatus === 'completed' , 'inprogress':step.stepStatus === 'inprogress'}">
+                                <input type="radio" [value]="step.tabName" [(ngModel)]="step.tabName" name="steps"
+                                    [checked]="step.stepActive">
+                                    <!-- (change)="onstepChange(step.tabName , step.stepIndex )" -->
+                                <span class="step-number">{{step.stepIndex}}</span><b class="step-name">
+                                    {{step.stepname}}</b>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="tab-block">
+                        <div *ngIf="activeTab =='step1'">
+                            <app-registration-cust-details (nextEvent)="nextstep($event)" (termsConditionEvent)="termsConditionPopup($event)">
+                            </app-registration-cust-details>
+                            <!-- <button (click)="nextstep(1)" class="ux-button sm primary">next</button> -->
+                        </div>
+                        <div *ngIf="activeTab =='step2'">
+                            <app-registration-validate-reg-details (nextEvent2)="nextstep($event)"
+                                (prevEvent)="prevstep($event)"></app-registration-validate-reg-details>
+                            <!-- <button (click)="prevstep(2)" class="ux-button sm secondary" >Prev</button><button (click)="nextstep(2)" class="ux-button sm primary">next</button> -->
+                        </div>
+                        <div *ngIf="activeTab =='step3'">
+
+                            <app-registration-username (nextEvent2)="nextstep($event)" (prevEvent)="prevstep($event)">
+                            </app-registration-username>
+                            <!-- <button (click)="prevstep(3)" class="ux-button sm secondary">Prev</button ><button (click)="nextstep(3)" class="ux-button sm primary">next</button> -->
+                        </div>
+                        <div *ngIf="activeTab =='step4'">
+
+                            <app-registration-create-upi (nextEvent2)="nextstep($event)" (prevEvent)="prevstep($event)">
+                            </app-registration-create-upi>
+                            <!-- <button (click)="prevstep(3)" class="ux-button sm secondary">Prev</button ><button (click)="nextstep(3)" class="ux-button sm primary">next</button> -->
+                        </div>
+                        <div *ngIf="activeTab =='step5' ">
+                            <app-registration-mpin (nextEvent2)="nextstep($event)" (prevEvent)="prevstep($event)">
+                            </app-registration-mpin>
+
+                            <!-- <button (click)="prevstep(4)" class="ux-button sm secondary">Prev</button><button (click)="nextstep(4)" class="ux-button sm primary">next</button> -->
+                        </div>
+                        <div *ngIf="activeTab =='step6' ">
+                            <app-registration-tpin (nextEvent2)="nextstep($event)" (prevEvent)="prevstep($event)">
+                            </app-registration-tpin>
+                            <!-- <button (click)="prevstep(5)" class="ux-button sm secondary">Prev</button><button (click)="nextstep('completed')" class="ux-button sm primary">next</button> -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- <div id="numberConfirmation" class="modal fade numberConfirmation" role="dialog">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+
+            <div class="modal-body text-center">
+                <div class="imgblock">
+                    <img src="assets/images/icons/mobile.svg">
+                </div>
+                <h3>OTP Verification</h3>
+
+                <span>OTP sent on your mobile number ending with {{DataService.maskRegisternumber}}</span>
+                <div class="box-password d-inline-block">
+
+                    <input id="otp1" type="password" maxlength="1" placeholder="●" onkeyup="onKeyUpEventforAll(1, event ,'otp' )"
+                        onfocus="onFocusEventAll(1,'otp')" [(ngModel)]="otp1" [ngModelOptions]="{ standalone: true }">
+                    <input id="otp2" type="password" maxlength="1" placeholder="●" onkeyup="onKeyUpEventforAll(2, event,'otp')"
+                        onfocus="onFocusEventAll(2,'otp')" [(ngModel)]="otp2" [ngModelOptions]="{ standalone: true }">
+                    <input id="otp3" type="password" maxlength="1" placeholder="●" onkeyup="onKeyUpEventforAll(3, event,'otp')"
+                        onfocus="onFocusEventAll(3,'otp')" [(ngModel)]="otp3" [ngModelOptions]="{ standalone: true }">
+                    <input id="otp4" type="password" maxlength="1" placeholder="●" onkeyup="onKeyUpEventforAll(4, event,'otp')"
+                        onfocus="onFocusEventAll(4 ,'otp')" [(ngModel)]="otp4" [ngModelOptions]="{ standalone: true }">
+                    <input id="otp5" type="password" maxlength="1" placeholder="●" onkeyup="onKeyUpEventforAll(5, event,'otp')" onfocus="onFocusEventAll(5,'otp')" [(ngModel)]="otp5" [ngModelOptions]="{ standalone: true }">
+                    <input id="otp6" type="password" maxlength="1" placeholder="●" onkeyup="onKeyUpEventforAll(6, event,'otp')" onfocus="onFocusEventAll(6,'otp')" [(ngModel)]="otp6" [ngModelOptions]="{ standalone: true }">
+                    <div class="clearfix mt-1">
+                        <b class="float-left"> {{counter | formatTimer }} </b><a class="float-right" [ngClass]="counter > 0 ? 'float-right mydisabled' : 'float-right resendActive'" (click)="resendOtp()" >Resend</a>
+                    </div>
+                </div>
+            </div>
+            <div class="button-footer">
+                <button type="button" class="ux-button sm secondary" data-dismiss="modal">Cancel</button>
+                <button type="button" class="ux-button sm primary" data-dismiss="modal"
+                    (click)="otpConfirmation()">Submit</button>
+            </div>
+        </div>
+
+    </div>
+</div> -->
+
+
+<div class="popup-bottom sm-popup opt-verification popup1 numberConfirmation" id="numberConfirmation">
+    <div class="row1">
+        <div class="col-10">
+        </div>
+        <div class="col-2">
+            <!-- <button class="ux-button-icon close-btn" (click)="closePopup('sm-popup.opt-verification.popup1.numberConfirmation')" >
+                <img src="assets/images/svg/close-b.svg" alt="cross-icon" class="img-vsmall">
+            </button> -->
+        </div>
+    </div>
+
+    <div class="row1">
+        <div class="modal-body">
+                <div class="row1">
+                    <div class="col-12">
+                        <div class="text-center">
+                            <img src="assets/images/icons/mobile.svg" alt="mobile-icon">
+                        </div>
+
+                        <div class="text-center">
+                            <h4 class="greentext text-center">{{"OTP_VERIFICATION" |  translate}}</h4>
+                        </div>
+
+                        <p>{{"OTP_HELP_TEXT" |  translate }} {{DataService.maskRegisternumber}}</p>
+                        <div class="text-center">
+                            <div class="col-12">
+                            <div class="row1">
+                                <div class="col-12 pl-2 pr-2">
+                                    <div class="row3">
+                                        <div class="col-sm-2 col-2 col-md-2">
+                                           <div class="ux-input password1 mb-1">
+                                               <input id="otppassword1" type="password" maxlength="1" placeholder="●" #mOtpRow  numbersOnly (keyup)="onKeyUp(0, $event)" (focus)="onFocus(0)"
+                                               [(ngModel)]="otp1" [ngModelOptions]="{ standalone: true }" tabindex="1">
+                                            </div>
+                                           </div>
+                                           <div class="col-sm-2 col-2 col-md-2">
+                                           <div class="ux-input password1 mb-1">
+                                               <input id="otppassword2" type="password" maxlength="1" placeholder="●" #mOtpRow numbersOnly (keyup)="onKeyUp(1, $event)" (focus)="onFocus(1)"
+                                               [(ngModel)]="otp2" [ngModelOptions]="{ standalone: true }" tabindex="2">
+                                            </div>
+                                           </div>
+                                           <div class="col-sm-2 col-2 col-md-2">
+                                           <div class="ux-input password1 mb-1">
+                                               <input id="otppassword3" type="password" maxlength="1" placeholder="●" #mOtpRow numbersOnly (keyup)="onKeyUp(2, $event)" (focus)="onFocus(2)"
+                                               [(ngModel)]="otp3" [ngModelOptions]="{ standalone: true }" tabindex="3">
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-2 col-2 col-md-2">
+                                            <div class="ux-input password1 mb-1">
+                                               <input id="otppassword4" type="password" maxlength="1" placeholder="●" #mOtpRow numbersOnly (keyup)="onKeyUp(3, $event)" (focus)="onFocus(3)"
+                                               [(ngModel)]="otp4" [ngModelOptions]="{ standalone: true }" tabindex="4">
+                                            </div>
+                                        </div>
+                                           <div class="col-sm-2 col-2 col-md-2">
+                                           <div class="ux-input password1  mb-1">
+                                               <input id="otppassword5" type="password" maxlength="1" placeholder="●" #mOtpRow numbersOnly (keyup)="onKeyUp(4, $event)" (focus)="onFocus(4)"
+                                               [(ngModel)]="otp5" [ngModelOptions]="{ standalone: true }" tabindex="5">
+                                            </div>
+                                           </div>
+                                           <div class="col-sm-2 col-2 col-md-2">
+                                           <div class="ux-input password1 mb-1">
+                                               <input id="otppassword6" type="password" maxlength="1" placeholder="●" #mOtpRow numbersOnly (keyup)="onKeyUp(5, $event)" (focus)="onFocus(5)"
+                                               [(ngModel)]="otp6" [ngModelOptions]="{ standalone: true }" tabindex="6">
+                                            </div>
+                                           </div>
+                                    </div>
+                                <div class="row1">
+                                    <div class="col-12">
+                                       <div class="ux-input password1 mt-0 mb-0">
+                                            <p class="error-message pt-1">{{invaildotp}}</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row3">
+                                    <div class="col-6 col-md-6">
+                                            <p class="text-left pt-1">
+                                                <span class=" settimer" *ngIf="counter > 0" >{{counter | formatTimer }}</span>
+                                            </p>
+                                    </div>
+                                    <div class="col-6 col-md-6">
+                                        <div class="text-right">
+                                           <button class="ux-linkbutton default-underline mt3"  (click)="resendOtp()"
+                                           [ngClass]="counter > 0 ? 'rsnd-lnk mydisabled' : 'rsnd-lnk resendActive'" tabindex="-1"
+                                           >{{"RESEND" | translate}}</button>
+                                        </div>
+                                    </div>
+                                 </div>
+                              </div>
+                               </div>
+                        </div>
+                        </div>
+                    </div>
+                </div>
+             </div>
+    </div>
+
+</div>
+
+
+
+<div id="usernamePolicy" class="modal fade " role="dialog">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="mh-bottom">
+                    <div class="row1">
+                        <div class="col-10">
+                            <h6>{{"USERNAME_ POLICY" | translate}}</h6>
+                        </div>
+                        <div class="col-2"><a href="javascript:;" data-dismiss="modal"><span
+                                    class="mh-cross"></span></a></div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-body">
+                <h4>The following rules are applicable for setting/ modifying the Username</h4>
+               <ol>
+                   <li> Omnichannel Digital Banking application username shall be a minimum of 8 and a maximum of 20 characters with no spaces in-between.</li>
+                   <li> Username can be alphanumeric with support for special characters like (. and _ )</li>
+         
+               </ol>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="ux-button sm secondary" data-dismiss="modal">{{"OK" |  translate}}</button>
+
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<div id="passwordPolicy" class="modal fade " role="dialog">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="mh-bottom">
+                    <div class="row1">
+                        <div class="col-10">
+                            <h6>{{"PASSWORD_POLICY" |  translate}}</h6>
+                        </div>
+                        <div class="col-2"><a href="javascript:;" data-dismiss="modal"><span
+                                    class="mh-cross"></span></a></div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-body">
+                <h4> The following rules are applicable for setting/ modifying the password.</h4>         
+                <ol>
+                    <li> Omnichannel Digital Banking application Password shall be a minimum of 8 and a maximum of 16 characters with no spaces in-between.</li>
+                    <li> Password shall be aphanumeric and should contain atleast.</li>
+                    <ol>
+                    <li> One Capital Alphabet.</li>
+                    <li> One Lower case Aplhabet.</li>
+                    <li> One numeral.</li>
+                    <li> one special character.</li>
+                    </ol>
+                    <li> Password can not consist of all characters of user-id.</li>
+                    <li> Modified password can not be same as any of previous 3 passwords.</li>
+                    <li> In case a customer does not log into Internet Banking for more than 180 days his password will expire.</li>                
+                </ol>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="ux-button sm secondary" data-dismiss="modal">{{"OK" | translate}}</button>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<div class="popup-bottom invalid-registration-dtl">
+    <div class="row1">
+        <div class="col-12">
+            <h4 class="text-center"> <img src="./assets/images/svg/information.svg" alt="information-icon">{{"INFORMATION" | translate}}
+            </h4>
+        </div>
+    </div>
+    <div class="row1">
+        <div class="col-12">
+            <p *ngIf="information != ''">{{information}}</p>
+        </div>
+    </div>
+    <div class="row1  mt-2">
+        <!-- <div class="col-12 text-center" (click)="redirecToLogin('show-sessionTimedOut-info')"> -->
+        <div class="col-12 text-center" (click)="closePopup('invalid-registration-dtl')">
+            <button class="ux-button primary submit-btn" type="button">{{"OK" | translate}}</button>
+        </div>
+    </div>
+</div>
+
+     <!-- User Name Popup Start-->
+
+     <div class="popup-bottom md-popup username-popup">
+        <div class="row1">
+            <div class="col-10">
+                <h4 class="text-left">User Name Policy</h4>
+            </div>
+            <div class="col-2">
+                <button class="ux-button-icon close-btn" (click)="closePopups('username-popup')">
+                    <img src="../assets/images/svg/close-b.svg" alt="cross-icon" class="img-vsmall">
+                </button>
+            </div>
+        </div>
+        <div class="row1">
+            <div class="col-12">
+                 <h5 class="text-left">The following rules are applicable for setting/modify the User Name.</h5>
+            </div>
+            <div class="col-12 mt-2">
+                 <ul class="orderlist">
+                    <li>Omnichannel Digital Banking application username shall be a minimum of 8 and a maximum of 20 characters with no spaces in-between.</li>
+                    <li>  Username can be alphanumeric with support for special characters like (. and _ )</li>	
+                 </ul>
+            </div>
+        </div>
+		<div class="row1 mt-2">
+			<div class="col-12 col-md-12 text-center">
+				<button class="ux-button secondary sm-mob" (click)="closePopups('username-popup')" >OK</button>
+			</div>
+		 </div>
+	</div>
+
+    <!-- User Name Popup End-->
+
+
+     <!-- Password Popup Start-->
+
+     <div class="popup-bottom md-popup password-popup">
+        <div class="row1">
+            <div class="col-10">
+                <h4 class="text-left">Password Policy</h4>
+            </div>
+            <div class="col-2">
+                <button class="ux-button-icon close-btn" (click)="closePopups('password-popup')">
+                    <img src="assets/images/svg/close-b.svg" alt="cross-icon" class="img-vsmall">
+                </button>
+            </div>
+        </div>
+        <div class="row1">
+            <div class="col-12">
+                 <h5 class="text-left">The following rules are applicable for setting/modify the Password.</h5>
+            </div>
+            <div class="col-12 mt-2">
+                 <ol class="orderlist">
+                    <li> Omnichannel Digital Banking application Password shall be a minimum of 8 and a maximum of 16 characters with no spaces in-between.</li>
+                    <li> Password shall be aphanumeric and should contain atleast.</li>
+                    <ol >
+                    <li>One Capital Alphabet.</li>
+                    <li>One Lower case Aplhabet.</li>
+                    <li>One numeral.</li>
+                    <li>one special character.</li>  
+                    </ol>                
+                    <li>Password cannot consist of all characters of user-id.</li>
+                    <li> Modified password can not be same as any of previous 3 passwords..</li>
+                    <li>In case a customer does not log into Internet Banking for more than 180 days his password will expire.</li>
+                   
+                 </ol>
+            </div>
+        </div>
+		<div class="row1 mt-2">
+			<div class="col-12 col-md-12 text-center">
+				<button class="ux-button secondary sm-mob" (click)="closePopups('password-popup')">OK</button>
+			</div>
+		 </div>
+	</div>
+
+    <!-- Password Popup End-->
+
+
+     <!-- MPIN Info Popup Start-->
+
+     <div class="popup-bottom md-popup mpin-popup">
+        <div class="row1">
+            <div class="col-10">
+                <h4 class="text-left">MPIN Policy</h4>
+            </div>
+            <div class="col-2">
+                <button class="ux-button-icon close-btn" (click)="closePopups('mpin-popup')">
+                    <img src="assets/images/svg/close-b.svg" alt="cross-icon" class="img-vsmall">
+                </button>
+            </div>
+        </div>
+	  <div class="row1">
+			<div class="col-12">
+				 <h5 class="text-left">Below rules should be considered while setting the MPIN/ TPIN.</h5>
+			</div>
+            <div class="col-12 mt-2">
+				 <ul class="orderlist">
+                    <li>MPIN/ TPIN should be 6-digit number.</li>
+                    <li> Set MPIN/ TPIN and Confirm MPIN/ TPIN should be equal.</li>
+                    <li>MPIN/ TPIN should not be simple.</li>
+                    <li>MPIN/ TPIN should not contain more than 2 sequential or 2 repeating numbers like 123456 or 111111 or 123123 etc.</li>
+                    <li>MPIN/ TPIN can not be same as last three MPIN/ TPINs.</li>
+                    <li>MPIN and TPIN should be different.</li>
+                    <li>MPIN and TPIN shall be changed every 6 months..</li>
+                 </ul>
+			</div>
+		</div>
+		<div class="row1 mt-2">
+			<div class="col-12 col-md-12 text-center">
+				<button class="ux-button secondary sm-mob" (click)="closePopups('mpin-popup')">OK</button>
+			</div>
+		 </div>
+	</div>
+
+    <!-- MPIN Info Popup End-->
+
+
+
+     <!-- TPIN Info Popup Start-->
+
+     <div class="popup-bottom md-popup tpin-popup">
+        <div class="row1">
+            <div class="col-10">
+                <h4 class="text-left">TPIN Policy</h4>
+            </div>
+            <div class="col-2">
+                <button class="ux-button-icon close-btn" (click)="closePopups('tpin-popup')">
+                    <img src="assets/images/svg/close-b.svg" alt="cross-icon" class="img-vsmall">
+                </button>
+            </div>
+        </div>
+	  <div class="row1">
+			<div class="col-12">
+				 <h5 class="text-left">Below rules should be considered while setting the MPIN/ TPIN.</h5>
+			</div>
+            <div class="col-12 mt-2">
+                <ul class="orderlist">
+                   <li>MPIN/ TPIN should be 6-digit number.</li>
+                   <li> Set MPIN/ TPIN and Confirm MPIN/ TPIN should be equal.</li>
+                   <li>MPIN/ TPIN should not be simple.</li>
+                   <li>MPIN/ TPIN should not contain more than 2 sequential or 2 repeating numbers like 123456 or 111111 or 123123 etc.</li>
+                   <li>MPIN/ TPIN can not be same as last three MPIN/ TPINs.</li>
+                   <li>MPIN and TPIN should be different.</li>
+                   <li>MPIN and TPIN shall be changed every 6 months..</li>
+                </ul>
+           </div>
+		</div>
+		<div class="row1 mt-2">
+			<div class="col-12 col-md-12 text-center">
+				<button class="ux-button secondary sm-mob" (click)="closePopups('tpin-popup')" >OK</button>
+			</div>
+		 </div>
+	</div>
+
+    <!-- TPIN Info Popup End-->
+
+
+<!-- Show Common Info Popup Start -->
+<div class="popup-bottom show-valid-acc sm-popup">
+	<div class="row1">
+		<div class="col-12">
+			<h4 class="text-center"> <img src="assets/images/svg/information.svg" alt="information-icon">{{ "INFORMATION" | translate}}
+			</h4>
+		</div>
+	</div>
+	<div class="row1">
+		<div class="col-12">
+			<p>Please provide valid account details for registration</p>
+		</div>
+	</div>
+	<div class="row1  mt-2">
+		<div class="col-12 text-center" (click)="closePopup('show-valid-acc')">
+			<button class="ux-button primary submit-btn" type="button">{{"OK" | translate}}</button>
+		</div>
+	</div>
+</div>
+<!-- Show Common Info Popup End -->
+
+
+<!-- Show Common valid user -->
+<div class="popup-bottom show-valid-user sm-popup">
+	<div class="row1">
+		<div class="col-12">
+			<h4 class="text-center"> <img src="assets/images/svg/information.svg" alt="information-icon">{{ "INFORMATION" | translate}}
+			</h4>
+		</div>
+	</div>
+	<div class="row1">
+		<div class="col-12">
+			<p>{{DataService.errorMsg}}</p>
+		</div>
+	</div>
+	<div class="row1  mt-2">
+		<div class="col-12 text-center" (click)="closePopup('show-valid-user')">
+			<button class="ux-button primary submit-btn" type="button">{{"OK" | translate}}</button>
+		</div>
+	</div>
+</div>
+<!-- Show Common -->
+
+
+
+<div class="popup-bottom sm-popup entered-upi-error">
+    <div class="row1">
+        <div class="col-12">
+            <h4 class="text-center">
+                <img src="assets/images/svg/information.svg" alt="error-icon"> {{ 'INFORMATION' | translate }}
+            </h4>
+        </div>
+    </div>
+    <div class="row1">
+        <div class="col-12 mb-4">
+            <p>We are unable to activate UPI for your Mobile/Account. Please get into touch with your Branch for more details</p>
+        </div>
+    </div>
+    <div class="row1  mt-2">
+        <div class="col-12 text-center">
+            <button class="ux-button submit-btn" (click)="skip('entered-upi-error')">{{ 'SKIP' | translate }}</button>
+        </div>
+    </div>
+</div>
+
+
+<div class="popup-bottom checkavailable-upi-error sm-popup">
+    <div class="row1">
+        <div class="col-12">
+            <h4 class="text-center">
+                <img src="assets/images/svg/information.svg" alt="error-icon"> {{ 'INFORMATION' | translate }}
+            </h4>
+        </div>
+    </div>
+    <div class="row1">
+        <div class="col-12 mb-4">
+            <p>{{DataService.errorResult}}</p>
+        </div>
+    </div>
+    <div class="row1  mt-2">
+        <div class="col-12 text-center">
+            <button class="ux-button submit-btn" (click)="closePopup('checkavailable-upi-error')">{{ 'CLOSE' | translate }}</button>
+        </div>
+    </div>
+</div>
+
+<app-terms-conditons [termsConditionType]="termsCondition"></app-terms-conditons>

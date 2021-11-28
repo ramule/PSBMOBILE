@@ -1,0 +1,100 @@
+<div class="main">
+	<div class="right-main-column minus-rt-col mar-custom">
+		<div class="right-col-container pad-b">
+			<div class="body-page-container">
+				<div class="container-fluid">
+					<div class="row">
+						<div class="bg-section">
+							<div class="col-12">
+								<div class="row1">
+									<div class="col-sm-12 col-12 col-md-12">
+
+                                        <!-- No Record Found Section -->
+										<div class="white-bg1 pad-custom" *ngIf="!showapproveMandateList">
+											<div class="unfound-info2 cust-p">
+											<img src="assets/images/svg/approve-mandate-no-data.svg" alt="approve-mandate-icon">
+												<h6>{{'NO_RECORD_FOUND' | translate}}</h6>
+											</div>
+										</div>	
+                                        <!-- No Record Found Section End -->
+
+										<div class="white-bg1 pad-custom" *ngFor="let approveMandate of approveMandateList" [hidden]="!showapproveMandateList">
+											<ul class="payment-list" *ngIf="approveMandate.notificationType == 'MANDATE_NOTIFICATION'" >
+												<li>
+													<div class="full-container mb-0">
+														<div class="row1">
+															<div class="col-8 col-md-6">
+																<div class="left-info1">
+																	<h6 class="heading" *ngIf="approveMandate.status == 'PENDING'">{{'REQUESTED_BY' | translate}} {{approveMandate.payeeName}}</h6>
+                                                                    <h6 class="heading" *ngIf="approveMandate.status == 'CREATED'">{{'MODIFIED_BY' | translate}} {{approveMandate.payeeName}}</h6>
+																	<h5>{{'UPI_ID' | translate }} : {{approveMandate.payeeAddress}}</h5> </div>
+															</div>
+															<div class="col-4 col-md-6">
+																<div class="right-info mt-2">
+																	<h5> <!--<img src="assets/images/svg/rupee-bl.svg" alt="rupees-icon"> --> {{approveMandate.amount |customcurrency:'symbol'}}  </h5> </div>
+															</div>
+														</div>
+														<div class="row1 mt-2">
+															<div class="col-7 col-md-6">
+																<div class="left-info3">
+																	<div class="icon-info"> <span>
+															<img src="assets/images/svg/expiry-date.svg" alt="expiry-date-icon">
+														</span> </div> <em>{{'START_DATE' | translate}} - {{'END_DATE' | translate}}</em>
+																	<h6> {{approveMandate.validityStart  }} - {{approveMandate.validityEnd }}</h6> </div>
+															</div>
+															<div class="col-5 col-md-6">
+																<div class="left-info3">
+																	<div class="icon-info"> <span>
+															<img src="assets/images/svg/requested-date.svg" alt="request-date-icon">
+														</span> </div> <em>{{'FREQUENCY' | translate}}</em>
+																	<h6>{{ approveMandate.frequency }}</h6> </div>
+															</div>
+														</div>
+														<div class="row1 mt-2">
+															<div class="col-5 col-md-6">
+																<div class="left-info1">
+																	<div class="autoplay-logo"> <img src="assets/images/svg/upi-autopay-small.svg" alt="upi-autoplay"> </div>
+																</div>
+															</div>
+															<div class="col-7 col-md-6">
+																<div class="btn-section">
+																	<div class="text-right">
+																		<button class="ux-button secondary sm5" (click)="goToPage(approveMandate,'approveMandateViewDetails')">{{'VIEW' | translate }}</button>
+																	</div>
+																</div>
+															</div>
+														</div>
+													</div>
+												</li>
+												
+											</ul>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<!-- Complaint Success Popup Start -->
+<div class="popup-bottom success">
+    <form action="#" id="success-form">
+        <div class="row mt-3">
+            <div class="success"> <img src="assets/images/svg/check.svg" alt="success-icon">
+                <h3>{{'SUCCESS' | translate}}</h3>
+                <h5>Your complaint has been successfully escalated and reported to <a>digitalsupport@psb.com</a></h5>
+            </div>
+        </div>
+        <div class="row1 mt-3">
+            <div class="col-12 text-center">
+                <button class="ux-button primary md ">{{'OK' | translate}}</button>
+            </div>
+        </div>
+    </form>
+</div>
+<!-- Complaint Success Popup End -->
+<!-- <div class="ios-nav-overlay"></div> -->

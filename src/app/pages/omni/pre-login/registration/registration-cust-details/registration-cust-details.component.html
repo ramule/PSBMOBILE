@@ -1,0 +1,98 @@
+<div class="row1">
+	<div class="col-12 col-lg-6 col-md-12 col-sm-12 position-static">
+		<form [formGroup]="registrationFormCustDtl">
+			<div class="row1">
+				<div class="col-12">
+					<ul class="step-list">
+						<li class="step-matched"> <em><span class="primary">{{"STEP" | translate}} {{"1" | translate}}</span>
+              <span *ngIf="DataService.regType != 'loan'" class="secondary">{{"OF_STEP_6" | translate}}</span>
+			  <span *ngIf="DataService.regType == 'loan'" class="secondary">{{"OF_STEP_5" | translate}}</span></em> </li>
+					</ul>
+					<div class="tab-header">
+						<div class="row1">
+							<div class="col-12 col-md-12">
+								<h4>{{"ACCOUNT_INFO" | translate}}</h4> </div>
+						</div>
+					</div>
+				</div>
+				<div class="col-12">
+					<div class="details-section">
+						<div class="row1">
+							<div Class="col-12 co-md-12 col-xl-10 col-lg-12">
+								<div class="ux-input" [ngClass]="{'ux-disabled': isReadOnly != 'web' }">
+									<label>{{"REG_MOBILE_NUMBER" | translate}}</label>
+									<input type="text" placeholder='{{"ENTER_MOBILE_NO" | translate}}' formControlName="mobNumber" numbersOnly limit-to="10" [readonly]="isReadOnly != 'web'" autocomplete="off" >
+                  <p class="error-message" *ngIf="registrationFormCustDtl.controls['mobNumber'].touched && registrationFormCustDtl.controls['mobNumber'].hasError('required')">{{"PLEASE_ENTER_MOBILE_NO" | translate }}</p>
+				  <p class="error-message" *ngIf="!registrationFormCustDtl.controls['mobNumber'].hasError('required') && registrationFormCustDtl.controls['mobNumber'].hasError('pattern')">{{"PLEASE_ENTER_VALID_MOBILE_NO" | translate }}</p>
+								</div>
+							</div>
+							<div Class="col-12 co-md-12 col-xl-10 col-lg-12">
+								<div class="ux-input">
+									<label>{{"CUST_ID" | translate}}</label>
+									<input limit-to="9" type="tel" placeholder='{{"ENTER_CUST_ID" | translate}}' formControlName="custId" numbersOnly autocomplete="off" >
+                  <p class="error-message" *ngIf="registrationFormCustDtl.controls['custId'].touched && registrationFormCustDtl.controls['custId'].hasError('required')">{{"PLEASE_ENTER_CUST_ID" | translate }}</p>
+				  <p class="error-message" *ngIf="!registrationFormCustDtl.controls['custId'].hasError('required') && registrationFormCustDtl.controls['custId'].hasError('pattern')">{{"PLEASE_ENTER_VALID_CUST_ID" | translate }}</p>
+								</div>
+							</div>
+							<div Class="col-12 co-md-12 col-xl-10 col-lg-12">
+								<div class="ux-input">
+									<label>{{"ACCOUNT_NUMBER" | translate}}</label>
+									<input limit-to="14" type="tel" placeholder='{{"ENTER_ACCOUNT_NUMBER" | translate}}' formControlName="accNo" numbersOnly autocomplete="off">
+                  <p class="error-message" *ngIf="registrationFormCustDtl.controls['accNo'].touched && registrationFormCustDtl.controls['accNo'].hasError('required')">{{"PLEASE_ENTER_ACC" | translate }}</p>
+				  <p class="error-message" *ngIf="!registrationFormCustDtl.controls['accNo'].hasError('required') && registrationFormCustDtl.controls['accNo'].hasError('pattern')">{{"PLEASE_ENTER_VALID_ACC" | translate }}</p>
+								</div>
+							</div>
+							<div Class="col-12 co-md-12 col-xl-10 col-lg-12">
+								<div class="ux-input">
+									<label>Email ID</label>
+									<input type="text" placeholder='{{"ENTER_EMAIL_ID" | translate}}' formControlName="email" autocomplete="off">
+									<p class="info-message">This Email ID shall be updated in your Bank account</p>
+									<p class="error-message" *ngIf="registrationFormCustDtl.controls['email'].touched && registrationFormCustDtl.controls['email'].hasError('required')">{{"PLEASE_ENTER_EMAILID" | translate }}</p>
+									<p class="error-message" *ngIf="registrationFormCustDtl.controls['email'].touched && registrationFormCustDtl.controls['email'].hasError('pattern')">{{"PLEASE_ENTER_VALID_EMAIL" | translate }}</p>
+
+                			</div>
+							</div>
+							<div Class="col-12 co-md-12 col-xl-10 col-lg-12 mt-2" *ngIf="DataService.showMigrated" >
+								<div class="ux-selection float-none display-block">
+									<label class="ux-selection1">{{'MIGRATED_USER' | translate }}
+										<input type="checkbox" name="radioboxdemo"  formControlName="migrated" autocomplete="off">
+										<span class="checkmark"></span>
+									  </label>
+								 </div>
+							</div>
+							<div Class="col-12 co-md-12 col-xl-10 col-lg-12 mt-2">
+								 <div class="ux-selection mt-3 ux-input">
+									<label class="ux-selection1">I agree to the <a   href="javascript:void(0)" class="reg-txt" (click)="openPopUp()">{{"TERMS_CONDITIONS" | translate}}</a>
+										<input type="checkbox" name="radioboxdemo" required formControlName="termCondition" > <span class="checkmark"></span> </label>
+									  <!-- <p class="error-message" *ngIf="!isCheckbox">Please verify terms and conditions</p> -->
+								</div>
+							</div>
+							<div class="ux-input">
+								<p class="error-message ml-3" *ngIf="registrationFormCustDtl.controls['termCondition'].hasError('required') && (registrationFormCustDtl.controls['termCondition'].dirty || registrationFormCustDtl.controls['termCondition'].touched)"> Please select terms and conditions</p>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="col-12 col-lg-10 col-md-12 col-sm-12 m-auto position-static">
+					<div class="ux-footer border-n">
+						<div class="row1">
+							<div class="col-12 col-md-12">
+								<ul class="bottom-footer1">
+									<li>
+										<div class="btn-div custom-mar hide-m">
+											<button class="ux-button secondary sm-mob cancel-btn" type="button" (click)="cancel()">{{"CANCEL" | translate}}</button>
+										</div>
+										<div class="btn-div custom-mar w100">
+											<button class="otp-btn ux-button primary sm-mob" type="submit" (click)="submit()">{{"NEXT" | translate}}</button>
+										</div>
+									</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</form>
+	</div>
+	<div class="col-12 col-lg-6 col-md-2 col-sm-12  d-none d-lg-block d-xl-block"> <img src="assets/images/svg/regImg1.svg" class="right-regImg"> </div>
+</div>

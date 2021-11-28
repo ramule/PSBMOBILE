@@ -1,0 +1,201 @@
+<form [formGroup]="personalInfoForm" (ngSubmit)="submitForm()">
+  <div class="main">
+    <div class="right-main-column minus-rt-col bg1 mar-custom">
+      <div class="right-col-container">
+        <div class="body-page-container">
+          <div class="container-fluid">
+            <div class="bg-section">
+              <div class="col-sm-12 col-12 col-md-12">
+                <div class="row">
+                  <div class="sub-header2">
+                    <div class="in-header">
+                      <div class="header-icons-lft">
+                        <div class="header-actions">
+                          <button class="ux-button-header" (click)="goBack()">
+                            <img src="./assets/images/svg/left-arrow.svg" alt="left-arrow-icon" class="img-vsmall">
+                          </button>
+                        </div>
+                      </div>
+                      <div class="brand-logo m-auto text-center">
+                        <h4>
+                          {{ 'REGISTRATION' | translate }}
+                        </h4>
+                      </div>
+                      <div class="header-icons-rit">
+                        <div class="header-actions">
+                          <button class="ux-button-header" (click)="goBack()">
+                            <img src="./assets/images/svg/close-w.svg" alt="cross-icon" class="img-vsmall">
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="row1">
+                  <div class="col-sm-12 col-12 col-md-12">
+                    <div class="grey-bg2 mt-0 pad-custom">
+
+                      <div class="row1">
+                        <div class="col-12">
+                          <div class="logo1">
+                            <img src="assets/images/logo/bhim-upi-logo.svg" alt="bhim-upi-logo">
+                          </div>
+                        </div>
+                          <div class="col-12 mt-4">
+                            <ul class="step-list">
+                              <li class="step-matched">
+                                <em>
+                                  <span class="primary">
+                                    {{ 'STEP_1' | translate}}
+                                  </span>
+                                  <span class="secondary">
+                                    {{ 'OF_STEP_2' | translate }}
+                                  </span>
+                                </em>
+                              </li>
+                            </ul>
+                          </div>
+                          <div class="col-12 mt-2 mb-2">
+                            <h4>
+                              {{ 'PROFILE_INFORMATION' | translate }}
+                            </h4>
+                          </div>
+                          <div class="col-sm-12 col-12 col-md-6">
+                            <div class="ux-input ux-disabled">
+                              <label for="mobile">
+                                {{ 'MOBILE_NUMBER' | translate }}
+                              </label>
+                              <input type="text" placeholder="" required value="{{mobileNumber}}" disabled>
+                              <p></p>
+                              <!-- <div class="text-center">
+                                                        <span class="errormsg" *ngIf="">{{ '' | translate}}</span>
+                                                    </div> -->
+                            </div>
+                          </div>
+                          <div class="col-sm-12 col-12 col-md-6">
+                            <div class="ux-input">
+                              <label for="fullName">
+                                {{ 'FULL_NAME' | translate }}
+                              </label>
+                              <input type="text" placeholder='' formControlName="fullName" limit-to="100"
+                                [readonly]="userPersonlaData.isLocalOrApiData == 'apidata' "
+                                [ngStyle]="{'background-color':userPersonlaData.isLocalOrApiData == 'apidata' ? '#efefef' : 'transparent' }">
+                              <div class="text-center">
+                                <span class="errormsg"
+                                  *ngIf="personalInfoForm.controls['fullName'].hasError('required')  && personalInfoForm.controls['fullName'].touched">
+                                  {{ 'ENTER_NAME_ERROR' | translate }}
+                                </span>
+                                <span class="errormsg"
+                                  *ngIf="personalInfoForm.controls['fullName'].hasError('pattern') && personalInfoForm.controls['email'].touched">
+                                  {{ 'INVALID_NAME' | translate }}
+                                </span>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="col-sm-12 col-12 col-md-6">
+                            <div class="ux-input">
+                              <label for="email">
+                                {{ 'EMAIL_ID' | translate }}
+                              </label>
+                              <input type="text" placeholder='' formControlName="email"  maxlength="100"
+                                [readonly]="userPersonlaData.isLocalOrApiData == 'apidata' "
+                                [ngStyle]="{'background-color':userPersonlaData.isLocalOrApiData == 'apidata' ? '#efefef' : 'transparent' }"
+                                limit-to="100">
+                              <div class="text-center">
+                                <span class="errormsg"
+                                  *ngIf="personalInfoForm.controls['email'].hasError('required')  && personalInfoForm.controls['email'].touched">
+                                  {{ 'ENTER_EMAIL_ID_ERROR' | translate }}
+                                </span>
+                                <!-- <span class="errormsg"
+                                  *ngIf="personalInfoForm.controls['email'].hasError('pattern') && personalInfoForm.controls['email'].touched">
+                                  {{ 'INVALID_EMAIL_ID' | translate }}
+                                </span> -->
+                                <span class="errormsg"
+                                *ngIf="!personalInfoForm.controls['email'].hasError('required') && personalInfoForm.controls['email'].hasError('email') && personalInfoForm.controls['email'].touched">
+                                {{ 'INVALID_EMAIL_ID' | translate }}
+                              </span>
+                              </div>
+                              <p></p>
+                            </div>
+                          <!-- </div> -->
+                          <!-- </div> -->
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        
+  <div class="footer-container sticky-actions box-shadow">
+    <div class="footer-inactions minus-rt-col">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-12">
+            <button type="submit" class="ux-button primary md" [disabled]="personalInfoForm.invalid">
+              {{ 'PROCEED' | translate }}
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+<div class="sticky-actions-spacer"></div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- main -->
+
+  <!-- footer section start -->
+<!-- 
+  <div class="footer-container sticky-actions">
+    <div class="footer-inactions minus-rt-col">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-12">
+            <button class="ux-button primary md" type="submit" [disabled]="personalInfoForm.invalid">
+              {{ 'PROCEED' | translate }}
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div> -->
+</form>
+
+
+<div class="popup-bottom isMPINEnabledModal">
+  <div class="row">
+    <div class="col-12">
+      <h4 class="text-center">
+        {{ 'INFORMATION' | translate }}
+        <!-- Information -->
+      </h4>
+    </div>
+  </div>
+  <form action="#" id="terms-form">
+    <div class="row">
+      <div class="col-12">
+        <p>
+          You can use the mobile banking 6 digit quick access MPIN to login to the UPI services
+          <!-- proceed with registration -->
+        </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-12 text-center">
+        <button class="ux-button primary submit3" (click)="hideMPINEnabledModal()">
+          {{ 'OK' | translate }}
+          <!-- OK -->
+        </button>
+      </div>
+    </div>
+  </form>
+</div>
+<!-- <div class="ios-nav-overlay"></div> -->

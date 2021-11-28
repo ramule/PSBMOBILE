@@ -1,0 +1,107 @@
+<div class="prelogin-page">
+
+    <div class="full-container full">
+        <div class="login-container">
+            <div class="central-box">
+
+                <!-- Banner Container Start -->
+                <div class="banner-container">
+                    <div class="left-image">
+                        <img src="./assets/images/background/login_image.png" alt="login image">
+                    </div>
+                    <div class="left-content">
+                        <h5>{{"IMP_SECURITY_INFO" | translate }}</h5>
+                        <div class="vspacer10"></div>
+                        <p>
+                            {{"BEST_VIEW_IN_IE" | translate }}<br />
+                            {{"YOUR_LOGIN_PWD" | translate }}<br />
+                            {{"ACCESS_TO_DATA" | translate }}
+                        </p>
+                        <div class="vspacer10"></div>
+                        <button  role="button"
+                            class="ux-button sm primary ml-0">{{"SEQ_TIPS" | translate }}</button>
+                    </div>
+                    <div class="keyboard-section">
+                        <div class="keyboard-inner">
+                        </div>
+                    </div>
+                </div>
+                <!-- Banner Container End -->
+
+                <!-- Loginform Container Start -->
+                <div class="loginform-container">
+                    <div class="login-form">
+                        <!-- <div class="vspacer10"></div> -->
+                        <div class="login-heading">
+                            <div class="brand-logo">
+                                <img src="./assets/images/logo/logo1.png" alt="kiya-logo">
+                            </div>
+                            <div class="vspacer5"></div>
+                            <h3>{{"OTP_AUTH" | translate }}</h3>
+                            <h5>{{"ENTER_4_DIGIT" | translate }} <br />
+                                {{mobNumber}} <span class="ml-3"><!--<a routerLink="/login">Edit</a>--></span>
+                            </h5>
+                        </div>
+
+                        <div class="vspacer10"></div>
+                        <form [formGroup]="otpForm" (ngSubmit)="sendotp()">
+                            <div class="row1">
+                                <div class="col-12">
+                                    <div class="ux-input">
+                                        <label for="otp">{{"OTP" | translate }}</label>
+                                        <input class="password-mask" type="password" placeholder="{{'ENTER_4_DIGIT_OTP' | translate}}" class="otpinput"
+                                            formControlName="otpnumber" numbersOnly limit-to="4">
+                                        <!-- <span class="errormsg"
+                                            *ngIf="otpForm.controls['otpnumber'].hasError('required')  && otpForm.controls['otpnumber'].touched">This
+                                            field is required</span>
+                                        <span class="errormsg"
+                                            *ngIf="otpForm.controls['otpnumber'].hasError('maxlength') && otpForm.controls['otpnumber'].touched">Invalid
+                                            OTP</span> -->
+                                            <span class="errormsg" *ngIf="otpForm.controls['otpnumber'].touched && otpForm.controls['otpnumber'].hasError('required')">{{"PLEASE_ENTER_OTP" | translate }}</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row1">
+                                <div class="col-12 col-md-6">
+                                    <div class="text-left">
+                                    </div>
+                                </div>
+                                <div class="col-12 col-md-6">
+                                    <div class="text-right">
+                                        <a href="javascript:;" (click)="resendotp()" class="reg-txt">{{"RESEND" | translate }}</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="vspacer20"></div>
+                            <div class="row1">
+                                <div Class="col-6">
+                                    <div class="formfooter">
+                                        <button type="button" (click)="otpcancel()" role="button"
+                                            class="ux-button sm secondary d-block w-100 m-0">{{"CANCEL" | translate }}</button>
+                                    </div>
+                                </div>
+                                <div Class="col-6">
+                                    <div class="formfooter">
+                                        <button type="submit" role="button"
+                                            class="ux-button sm primary d-block w-100 m-0">{{"SUBMIT_BTN" | translate }}</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                        <div class="vspacer40"></div>
+                        <div class="vspacer40"></div>
+                        <div class="vspacer40"></div>
+                    </div>
+                    <app-footer-mobile></app-footer-mobile>
+
+
+                    <!-- Loginform Container End -->
+                </div>
+
+            </div>
+
+        </div>
+        <!-- .full-container -->
+
+    </div>
+</div>

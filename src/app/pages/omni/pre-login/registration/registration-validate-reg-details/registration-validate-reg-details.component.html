@@ -1,0 +1,231 @@
+<div class="row1">
+	<div class="col-12 col-lg-8 col-xl-6 col-md-12 col-sm-12 position-static">
+		<div class="row1">
+			<div class="col-12 position-static">
+				<ul class="step-list">
+					<li class="step-matched"> <em> <span class="primary">{{"STEP" | translate}} {{"2" | translate}} </span>
+						<span *ngIf="DataService.regType != 'loan'" class="secondary">{{"OF_STEP_6" | translate}}</span><span *ngIf="DataService.regType == 'loan'" class="secondary">{{"OF_STEP_5" | translate}}</span></em> </li>
+				</ul>
+				<div class="tab-header">
+					<div class="row1">
+						<div class="col-12 col-md-12">
+							<h4>{{"CHANNEL_CRED" | translate}}</h4> </div>
+					</div>
+				</div>
+			</div>
+			<div class="col-12 col-md-12 col-xl-12 col-lg-12 position-static">
+				<div>
+					<ul class="tabs info-list3" role="tablist">
+						<li role="presentation" class="grid-col-3" (click)="selectedUserAuth('internetBanking')" *ngIf="DataService.isMigratedUser == true" [ngClass]="selectedButton == 'internetBanking' ? 'active' : ''  ">
+							<a class="nav-link cust-pad2">
+								<div class="round-circle">
+									<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 35.922 28.49">
+										<g data-name="19705859691600702437" transform="translate(-3 -9)">
+											<path id="Path_43911" data-name="Path 43911" d="M35.7,9H6.283A3.3,3.3,0,0,0,3,12.283V31.792a3.292,3.292,0,0,0,3.283,3.221H7.459A1.874,1.874,0,0,0,9.193,37.49h4.335a1.848,1.848,0,0,0,1.734-2.477h11.4a1.874,1.874,0,0,0,1.734,2.477h4.335a1.848,1.848,0,0,0,1.734-2.477H35.64a3.3,3.3,0,0,0,3.283-3.283V12.283A3.292,3.292,0,0,0,35.7,9ZM13.529,36.251H9.193a.619.619,0,1,1,0-1.239h4.335a.619.619,0,0,1,0,1.239Zm19.2,0H28.393a.619.619,0,0,1,0-1.239h4.335a.619.619,0,1,1,0,1.239Zm4.955-4.459a2.062,2.062,0,0,1-2.044,2.044H6.221a2.14,2.14,0,0,1-1.982-2.044V12.283a2.062,2.062,0,0,1,2.044-2.044H35.7a2.062,2.062,0,0,1,2.044,2.044V31.792Z" transform="translate(0 0)" />
+											<path id="Path_43912" data-name="Path 43912" d="M26.429,12.6H10.635a3.3,3.3,0,0,0-3.283,3.283v.681H6.919a.585.585,0,0,0-.619.619v3.9a.585.585,0,0,0,.619.619h.434v3.344H6.919a.585.585,0,0,0-.619.619v3.9a.585.585,0,0,0,.619.619h.434a3.325,3.325,0,0,0,3.283,3.964H26.429a3.3,3.3,0,0,0,3.283-3.283V15.821A3.333,3.333,0,0,0,26.429,12.6ZM8.406,28.951H7.539V26.288h.867Zm0-8.485H7.539V17.8h.867Zm20,10.467a2.062,2.062,0,0,1-2.044,2.044H10.635a2.062,2.062,0,0,1-2.044-2.044v-.743h.434a.585.585,0,0,0,.619-.619v-3.9a.585.585,0,0,0-.619-.619H8.592V21.7h.434a.585.585,0,0,0,.619-.619v-3.9a.585.585,0,0,0-.619-.619H8.592v-.743a2.062,2.062,0,0,1,2.044-2.044H26.429a2.062,2.062,0,0,1,2.044,2.044V30.933Z" transform="translate(-1.256 -1.37)" />
+											<path id="Path_43913" data-name="Path 43913" d="M19,27.345a4.335,4.335,0,1,0,8.671,0A4.309,4.309,0,0,0,19,27.345Zm4.335,3.1a3.1,3.1,0,0,1,0-6.193A3.1,3.1,0,0,1,23.335,30.442Z" transform="translate(-6.09 -5.339)" />
+											<path id="Path_43914" data-name="Path 43914" d="M52.813,27.1H51.574a.47.47,0,0,0-.124-.248l.867-.867a.613.613,0,0,0-.867-.867l-.867.867c-.062-.062-.186-.062-.248-.124V24.619a.619.619,0,0,0-1.239,0v1.239a.47.47,0,0,0-.248.124l-.867-.867a.613.613,0,0,0-.867.867l.867.867c-.062.062-.062.186-.124.248H46.619a.619.619,0,0,0,0,1.239h1.239a.47.47,0,0,0,.124.248l-.867.867a.6.6,0,0,0,0,.867.6.6,0,0,0,.867,0l.867-.867c.062.062.186.062.248.124v1.239a.619.619,0,0,0,1.239,0V29.574a.47.47,0,0,0,.248-.124l.867.867a.6.6,0,0,0,.867,0,.6.6,0,0,0,0-.867l-.867-.867c.062-.062.062-.186.124-.248h1.239a.619.619,0,1,0,0-1.239Zm-3.1,1.3a.681.681,0,1,1,.681-.681A.687.687,0,0,1,49.716,28.4Z" transform="translate(-16.368 -5.71)" />
+											<path id="Path_43927" data-name="Path 43927" d="M2.562-12.665a.945.945,0,0,1-.334.526,1.553,1.553,0,0,1-.551.281l1.33,1.753h-.7l-.985-1.307a3.035,3.035,0,0,0-.259-.314.329.329,0,0,0-.242-.1v-.406h.328a1.093,1.093,0,0,0,.5-.1.556.556,0,0,0,.281-.331H.72l.167-.473H1.938a.476.476,0,0,0-.181-.278.668.668,0,0,0-.37-.111H.72L.887-14H3.329l-.167.473H2.45a.985.985,0,0,1,.128.389h.751l-.167.473Z" transform="translate(15.204 34.34)" /> </g>
+									</svg>
+								</div>
+								<div class="text-center"> <em>{{"INTERNET_BANKING" | translate}}</em> </div>
+							</a>
+						</li>
+						<li role="presentation" class="grid-col-3" (click)="selectedUserAuth('debitCard')" *ngIf="!DataService.isLoanRegistration" [ngClass]="selectedButton == 'debitCard' ? 'active' : ''  ">
+							<a class="nav-link cust-pad2">
+								<div class="round-circle">
+									<!-- <img src="../assets/images/svg/debit-card-e.svg" alt="debit-card-icon">   -->
+									<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32.542 24">
+										<path id="debit-card-e" d="M32.542,65.712V84.288A2.715,2.715,0,0,1,29.831,87H2.712A2.715,2.715,0,0,1,0,84.288V76.153a.542.542,0,1,1,1.085,0v8.136a1.629,1.629,0,0,0,1.627,1.627H29.831a1.629,1.629,0,0,0,1.627-1.627V65.712a1.629,1.629,0,0,0-1.627-1.627H2.712a1.629,1.629,0,0,0-1.627,1.627v2.169h27.8a.542.542,0,0,1,0,1.085H1.085v3.525h27.8a.542.542,0,0,1,0,1.085H.542A.542.542,0,0,1,0,73.034V65.712A2.715,2.715,0,0,1,2.712,63H29.831A2.715,2.715,0,0,1,32.542,65.712ZM28.2,79.814a1.764,1.764,0,0,0-2.72-1.479,2.847,2.847,0,1,1-.737-.807,2.847,2.847,0,1,1,1.695,5.134.542.542,0,1,1,0-1.085A1.765,1.765,0,0,0,28.2,79.814Zm-3.39,0a1.763,1.763,0,1,0-1.763,1.763A1.765,1.765,0,0,0,24.814,79.814ZM4.949,78.661H9.492a.542.542,0,0,0,0-1.085H4.949a.542.542,0,0,0,0,1.085Zm0,3.39H9.492a.542.542,0,0,0,0-1.085H4.949a.542.542,0,0,0,0,1.085Z" transform="translate(0 -63)" /> </svg>
+								</div>
+								<div class="text-center"> <em>{{"DEBIT_CARD" | translate}}</em> </div>
+							</a>
+						</li>
+						<li role="presentation" class="grid-col-3" (click)="selectedUserAuth('banktoken')" [ngClass]="selectedButton == 'banktoken' ? 'active' : ''  ">
+							<a class="nav-link cust-pad2">
+								<div class="round-circle">
+									<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 34.2 35.6">
+										<g transform="translate(-3.495 -2.087)">
+											<circle data-name="Ellipse 2748" cx="4.5" cy="4.5" r="4.5" transform="translate(28.095 2.688)" fill="none" stroke-width="1.2" />
+											<circle data-name="Ellipse 2749" cx="4.5" cy="4.5" r="4.5" transform="translate(4.095 2.688)" fill="none" stroke-width="1.2" />
+											<path id="Path_43919" data-name="Path 43919" d="M21.526,35.175H20.351V34H19.175v1.175H18v1.175h1.175v1.175h1.175V36.351h1.175Z" transform="translate(-5.773 -12.821)" />
+											<path id="Path_43921" data-name="Path 43921" d="M20.351,34H19.175v1.175H18v1.175h1.175v1.175h1.175V36.351h1.175V35.175H20.351Z" transform="translate(-5.773 -12.821)" />
+											<path id="Path_43922" data-name="Path 43922" d="M32.219,31.175l-7.044-.008V30H24v1.167a1.185,1.185,0,0,0,1.184,1.184h7.036A1.185,1.185,0,0,0,33.4,31.167V30H32.227Z" transform="translate(-8.247 -11.172)" />
+											<path id="Subtraction_1" data-name="Subtraction 1" d="M18.619,24H16.291a.591.591,0,0,1-.581-.6V21.587c-.2.009-.39.013-.582.013s-.387,0-.582-.013V23.4a.592.592,0,0,1-.583.6h-2.33a.579.579,0,0,1-.556-.426L10.239,20.7A11.59,11.59,0,0,1,3.879,15H.581A.591.591,0,0,1,0,14.4V7.2a.592.592,0,0,1,.581-.6h3.3A10.576,10.576,0,0,1,5.746,3.9,5.5,5.5,0,0,1,4.654.6.591.591,0,0,1,5.235,0h5.273a4.883,4.883,0,0,0,.3,1.2H5.859a4.19,4.19,0,0,0,1.1,2.313.614.614,0,0,1-.023.857A9.369,9.369,0,0,0,4.782,7.444.582.582,0,0,1,4.25,7.8H1.162v6H4.25a.583.583,0,0,1,.532.357,10.521,10.521,0,0,0,2.512,3.406,10.166,10.166,0,0,0,3.613,2.107.6.6,0,0,1,.366.395l.795,2.735h1.313v-1.85a.61.61,0,0,1,.187-.442.563.563,0,0,1,.391-.158l.053,0c.37.032.745.049,1.115.049s.745-.016,1.115-.049l.053,0a.562.562,0,0,1,.391.158.61.61,0,0,1,.187.442V22.8h1.313l.8-2.732a.594.594,0,0,1,.366-.4A10.08,10.08,0,0,0,26,12.479a.589.589,0,0,1,.57-.479h0a4.174,4.174,0,0,0,2.986-1.259,4.434,4.434,0,0,0,1.276-3.055A5.7,5.7,0,0,1,26.6,9.6H26.58A.6.6,0,0,1,26,9.12a9.093,9.093,0,0,0-2.377-4.461,11.149,11.149,0,0,0-4.494-2.81A4.863,4.863,0,0,0,19.6.746a11.276,11.276,0,0,1,7.431,7.631A4.6,4.6,0,0,0,30.2,6.6l.76-.981a.572.572,0,0,1,.454-.223.582.582,0,0,1,.193.034A.6.6,0,0,1,32,6V7.613a5.677,5.677,0,0,1-1.431,3.779,5.356,5.356,0,0,1-3.533,1.788,10.384,10.384,0,0,1-2.487,4.5A12.218,12.218,0,0,1,20.014,20.7l-.839,2.872A.588.588,0,0,1,18.619,24Z" transform="translate(5.095 13.688)" />
+											<circle data-name="Ellipse 2750" cx="4.5" cy="4.5" r="4.5" transform="translate(16.095 8.688)" fill="none" stroke-width="1.2" />
+											<path id="Path_43924" data-name="Path 43924" d="M3.045-12.314a1.193,1.193,0,0,1-.421.664,1.96,1.96,0,0,1-.7.355L3.607-9.083H2.722L1.479-10.734a3.831,3.831,0,0,0-.327-.4.415.415,0,0,0-.306-.123v-.513h.414a1.38,1.38,0,0,0,.629-.13.7.7,0,0,0,.355-.418H.72l.211-.6H2.258a.6.6,0,0,0-.228-.351.844.844,0,0,0-.467-.14H.72L.931-14H4.014l-.211.6H2.9a1.244,1.244,0,0,1,.162.492h.948l-.211.6Z" transform="translate(6.271 19.031)" />
+											<path id="Path_43925" data-name="Path 43925" d="M3.045-12.314a1.193,1.193,0,0,1-.421.664,1.96,1.96,0,0,1-.7.355L3.607-9.083H2.722L1.479-10.734a3.831,3.831,0,0,0-.327-.4.415.415,0,0,0-.306-.123v-.513h.414a1.38,1.38,0,0,0,.629-.13.7.7,0,0,0,.355-.418H.72l.211-.6H2.258a.6.6,0,0,0-.228-.351.844.844,0,0,0-.467-.14H.72L.931-14H4.014l-.211.6H2.9a1.244,1.244,0,0,1,.162.492h.948l-.211.6Z" transform="translate(18.228 24.729)" />
+											<path id="Path_43926" data-name="Path 43926" d="M3.045-12.314a1.193,1.193,0,0,1-.421.664,1.96,1.96,0,0,1-.7.355L3.607-9.083H2.722L1.479-10.734a3.831,3.831,0,0,0-.327-.4.415.415,0,0,0-.306-.123v-.513h.414a1.38,1.38,0,0,0,.629-.13.7.7,0,0,0,.355-.418H.72l.211-.6H2.258a.6.6,0,0,0-.228-.351.844.844,0,0,0-.467-.14H.72L.931-14H4.014l-.211.6H2.9a1.244,1.244,0,0,1,.162.492h.948l-.211.6Z" transform="translate(30.186 18.729)" /> </g>
+									</svg>
+								</div>
+								<div class="text-center"> <em>{{"BANK_TOKEN" | translate}}</em> </div>
+							</a>
+						</li>
+					</ul>
+				</div>
+				<div class="col-12 col-md-12 p-0">
+					<div class="panel entry-content tab-pane" id="internet" *ngIf="DataService.isMigratedUser == true" [ngStyle]="{display : selectedButton == 'internetBanking' ? 'block' : 'none'}">
+						<div class="row1">
+							<form [formGroup]="userCredentialForm">
+							<div class="col-12 col-md-12">
+								<div class="ux-input">
+									<h6>{{"USE_INTERNET_BANKING_CREDENTIALS" | translate}}</h6> </div>
+							</div>
+							<div class="col-12 col-xl-10 col-lg-10 col-md-12">
+								<div class="ux-input" [ngClass]="{'ux-disabled': DataService.isMigratedUser}" >
+									<label for="username">{{"USER_NAME" | translate}}</label>
+									<input type="text" name="username" limit-to="20" username  placeholder="Enter User Name" formControlName="username" readonly limit-to="30" autocomplete="off">
+									<p class="error-message"></p>
+								</div>
+							</div>
+							<div class="col-12 col-xl-10 col-lg-10 col-md-12">
+								<div class="ux-input">
+									<label for="password">{{"PASSWORD" | translate}}</label>
+									<input name="password0" type="password" value="Dummy@123" autocomplete="new-password" style="display: none">
+									<input type="password" id="userpass" name="password" placeholder="Enter Password" formControlName="password" limit-to="30" autocomplete="new-password" onfocus="disableautocompletion(this.id);getFocus(this.id);" onblur="disableautocompletion(this.id);">
+									<p class="error-message"></p>
+								</div>
+							</div>
+							</form>
+						</div>
+					</div>
+					<div class="panel entry-content tab-pane" id="debit-card" *ngIf="!DataService.isLoanRegistration" [ngStyle]="{display : selectedButton == 'debitCard' ? 'block' : 'none'}">
+						<form [formGroup]="registrationFormstep2">
+							<!-- modified by USER PSB1-->
+							<div class="row1">
+								<div class="col-12">
+									<div class="ux-input m-0">
+										<label>{{"DEBIT_CARD_NUMBER" | translate}}</label>
+									</div>
+								</div>
+							</div>
+							<div class="row1">
+								<div class="col-3 pr-1">
+									<div class="ux-input debit-number grp-digit">
+										<input name="password0" type="tel" value="Dummy@123" autocomplete="new-password" style="display: none">
+										<input id="spassword1" #debitcardRow type="password" formControlName="cardNumber1" limit-to="4" numbersOnly placeholder="● ● ● ●" (keyup)="onKeyUpEvent(0, $event, 'debitcard')" limit-to="4"  /> </div>
+								</div>
+								<div class="col-3 px-1">
+									<div class="ux-input debit-number grp-digit">
+										<input name="password0" type="tel" value="Dummy@123" autocomplete="new-password" style="display: none">
+										<input id="spassword2" #debitcardRow type="password" formControlName="cardNumber2" limit-to="4" numbersOnly placeholder="● ● ● ●" (keyup)="onKeyUpEvent(1, $event, 'debitcard')" limit-to="4"  /> </div>
+								</div>
+								<div class="col-3 px-1">
+									<div class="ux-input debit-number grp-digit">
+										<input name="password0" type="tel" value="Dummy@123" autocomplete="new-password" style="display: none">
+										<input id="spassword3" #debitcardRow type="password" formControlName="cardNumber3" limit-to="4" numbersOnly placeholder="● ● ● ●" (keyup)="onKeyUpEvent(2, $event, 'debitcard')" limit-to="4"  /> </div>
+								</div>
+								<div class="col-3 px-1">
+									<div class="ux-input debit-number grp-digit">
+										<input name="password0" type="tel" value="Dummy@123" autocomplete="new-password" style="display: none">
+										<input id="spassword4" #debitcardRow type="password" formControlName="cardNumber4" limit-to="4" numbersOnly placeholder="● ● ● ●" (keyup)="onKeyUpEvent(3, $event, 'debitcard')" limit-to="4" /> </div>
+								</div>
+							</div>
+							<div class="row1" *ngIf="invalidCard" >
+								<span class="error-message">Please Enter Valid Details</span>
+							</div>
+							<!-- modified by USER PSB1 ENDS-->
+							<div class="row1">
+								<div class="col-12 col-md-12">
+									<div class="ux-input mb-0">
+										<label>{{"DEBIT_CARD_EXPIRY_DATE" | translate}}</label>
+									</div>
+								</div>
+								<div class="col-12 col-md-12">
+									<div class="ux-input expiry-input input-data mr-2">
+										<input name="password0" type="tel" value="Dummy@123" autocomplete="new-password" style="display: none">
+										<input #expdateRow id="expiry1" type="password" formControlName="expDate1" limit-to="1" numbersOnly placeholder="M" (keyup)="onKeyUpEvent(0, $event, 'expdate')" /> </div>
+									<div class="ux-input expiry-input input-data">
+										<input name="password0" type="tel" value="Dummy@123" autocomplete="new-password" style="display: none">
+										<input #expdateRow id="expiry2" type="password" formControlName="expDate2" limit-to="1" numbersOnly placeholder="M" (keyup)="onKeyUpEvent(1, $event, 'expdate')" /> </div>
+									<div class="ux-input expiry-input input-data">
+										<p class="custom-text registration-text">/</p>
+									</div>
+									<div class="ux-input expiry-input input-data mr-2">
+										<input name="password0" type="tel" value="Dummy@123" autocomplete="new-password" style="display: none">
+										<input #expdateRow id="expiry3" type="password" formControlName="expDate3" limit-to="1" numbersOnly placeholder="Y" (keyup)="onKeyUpEvent(2, $event, 'expdate')"/> </div>
+									<div class="ux-input expiry-input input-data">
+										<input name="password0" type="tel" value="Dummy@123" autocomplete="new-password" style="display: none">
+										<input #expdateRow id="expiry4" type="password" formControlName="expDate4" limit-to="1" numbersOnly placeholder="Y" (keyup)="onKeyUpEvent(3, $event, 'expdate')"  /> </div>
+								</div>
+								<div class="col-12 col-md-12">
+									<div class="ux-input mb-0">
+										<label>{{"CARD_PIN" | translate}}</label>
+									</div>
+								</div>
+								<div class="col-12 col-md-12">
+									<div class="ux-input expiry-input card-pin mx-1 password1">
+										<input #cardPinRow id="expiry1" type="tel" formControlName="cvvPin1" limit-to="1" placeholder="●" numbersOnly (keyup)="onKeyUpEvent(0, $event, 'cardpin')"  /> </div>
+									<div class="ux-input expiry-input card-pin mx-1 password1">
+										<input #cardPinRow id="expiry2" type="tel" formControlName="cvvPin2" limit-to="1" placeholder="●" numbersOnly (keyup)="onKeyUpEvent(1, $event, 'cardpin')"  /> </div>
+									<div class="ux-input expiry-input card-pin mx-1 password1">
+										<input #cardPinRow id="expiry3" type="tel" formControlName="cvvPin3" limit-to="1" placeholder="●" numbersOnly (keyup)="onKeyUpEvent(2, $event, 'cardpin')"  /> </div>
+                  <div class="ux-input expiry-input card-pin mx-1 password1">
+                    <input #cardPinRow id="expiry4" type="tel" formControlName="cvvPin4" limit-to="1" placeholder="●" numbersOnly (keyup)="onKeyUpEvent(3, $event, 'cardpin')"  /> </div>
+								</div>
+							</div>
+						</form>
+					</div>
+					<div class="panel  entry-content tab-pane" id="bank-token" [ngClass]="{'active': DataService.isLoanRegistration}" [ngStyle]="{display : selectedButton == 'banktoken' ? 'block' : 'none'}">
+						<div class="row1">
+							<div class="col-12 col-xl-12 col-lg-12 col-md-12">
+								<form [formGroup]="bankTokenForm">
+									<div class="ux-input pb-0" [ngClass]="{'ux-disabled': !isRegenerateToken }">
+										<label for="upiId">{{"TOKEN_NUMBER" | translate}}</label>
+										<input type="password" placeholder="Enter Token Number" formControlName="bankToken" readonly limit-to="6" numbersOnly *ngIf="!isRegenerateToken" autocomplete="off">
+										<input type="password" placeholder="Enter Token Number" formControlName="bankToken" limit-to="6" numbersOnly *ngIf="isRegenerateToken" autocomplete="off"> 
+										<span class="errormsg" *ngIf="formErrorsBankToken.bankToken">{{ formErrorsBankToken.bankToken }}</span> </div>
+								</form>
+							</div>
+							<div class="col-12 col-md-12">
+								<div class="text-right">
+									<!-- <a href="javascript:;"  data-toggle="modal" data-target="#usernamePolicy" class="reg-txt">{{'USERNAME_POLICY' |translate}}</a> -->
+                  <!-- <a class="check-availability" (click)="generateToken()" *ngIf="isRegenerateToken">{{"REGENRATE_TOKEN" | translate}}</a> -->
+									<!-- <span class="token-expired">Your token is expired</span> -->
+									<a class="check-availability" (click)="generateToken()" *ngIf="!isRegenerateToken" >{{"GENERATE_TOKEN" | translate}}</a>
+									<a class="check-availability" (click)="generateToken()" *ngIf="isRegenerateToken && tokenStatusId == '13'" >{{"GENERATE_TOKEN" | translate}}</a>
+									<a class="check-availability" (click)="generateToken()" *ngIf="isRegenerateToken && tokenStatusId == '0'" >{{"GENERATE_TOKEN" | translate}}</a>
+									<a class="check-availability" *ngIf="isRegenerateToken && tokenStatusId == '8'" disabled >{{"GENERATE_TOKEN" | translate}}</a>
+									<a class="check-availability"  style="color:grey;pointer-events: none;" (click)="generateToken()" *ngIf="isRegenerateToken && tokenStatusId == '30'" disabled>{{"REGENRATE_TOKEN" | translate}}</a>
+									<a class="check-availability" (click)="generateToken()" *ngIf="isRegenerateToken && tokenStatusId == '6'">{{"REGENRATE_TOKEN" | translate}}</a>
+								</div>
+								<!-- <div class="text-center mt-4"> <small *ngIf="isRegenerateToken">{{"SUCCESS_REQUEST_BANK_TOKEN" | translate}}</small> </div> -->
+
+
+								<!--- Need to test later -->
+								<!-- <a class="check-availability" (click)="generateToken()" *ngIf="!isRegenerateToken" >{{"GENERATE_TOKEN" | translate}}</a>
+									<a class="check-availability" (click)="generateToken()" *ngIf="isRegenerateToken && tokenStatusId == '0'" >{{"GENERATE_TOKEN" | translate}}</a>
+									<a class="check-availability" *ngIf="isRegenerateToken && tokenStatusId == '8'" disabled >{{"GENERATE_TOKEN" | translate}}</a>
+									<a class="check-availability" (click)="generateToken()" *ngIf="isRegenerateToken && tokenStatusId == '30'">{{"REGENRATE_TOKEN" | translate}}</a> </div> -->
+
+
+
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="col-12 col-lg-10 col-md-12 col-sm-12 m-auto position-static">
+					<div class="ux-footer border-n">
+						<div class="row1">
+							<div class="col-12 col-md-12">
+								<ul class="bottom-footer1">
+									<li>
+										<div class="btn-div custom-mar hide-m">
+											<!-- <button class="ux-button secondary sm-mob cancel-btn" (click)="cancel()" *ngIf="DataService.isFromOmniReg.isStepII">{{"PREVIOUS" | translate}}</button> -->
+										</div>
+										<div class="btn-div custom-mar w100">
+											<button class="ux-button primary sm-mob" (click)="submit()" *ngIf="selectedButton == 'debitCard'" [disabled]="registrationFormstep2.invalid">{{"NEXT" | translate}}</button>
+											<button class="ux-button primary sm-mob" (click)="submit()" *ngIf="selectedButton == 'banktoken'" [disabled]="bankTokenForm.invalid">{{"NEXT" | translate}}</button>
+											<button class="ux-button primary sm-mob" (click)="submit()" *ngIf="selectedButton == 'internetBanking'" [disabled]="userCredentialForm.invalid">{{"NEXT" | translate}}</button>
+										</div>
+									</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="col-12 col-lg-6 col-md-2 col-sm-12 d-none d-lg-block d-xl-block"> <img src="assets/images/svg/ChannelCredentials.svg" class="right-regImg"> </div>
+</div>

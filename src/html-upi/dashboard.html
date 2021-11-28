@@ -1,0 +1,1532 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <title>Dashboard</title>
+    <link href="../css/lib/bootstrap.min.css" rel="stylesheet">
+    <link href="../css/lib/jquery-ui.min.css" rel="stylesheet">
+    <link href="../css/lib/owl.carousel.min.css" rel="stylesheet">
+    <link href="../css/lib/jquery.mCustomScrollbar.min.css" rel="stylesheet">
+    <link href="../css/main.css" rel="stylesheet">
+
+</head>
+
+<body>
+
+    <div id="preloader">
+        <div class="preloader-inner"></div>
+     </div> 
+
+
+    <div class="main main-bg iphone12">
+
+        <!-- Start Global Nav -->
+
+        <nav class="global-nav whitebg">
+            <div class="nav-header">
+                <a href="javascript:;" class="btn-closeglnav hi-btn-menu"></a>
+                <!-- <h4>Main Menu</h4> -->
+                <div class="user-details1">
+                    <a href="javascript:;">
+                        <span class="round-circle">
+                            <h3>RS</h3>
+                            <!-- <img src="../assets/images/icons/user1.png" alt="user-img"> -->
+                            <!-- <img src="../assets/images/svg/user-profile-w.svg" alt="user-img"> -->
+                        </span>
+                    </a>
+                    <div class="in-details">
+                        <h5>Mr. Rajesh Shah</h5>
+                        <small>Last Login 08 Jun 2020, 20:45:23 IST</small>
+                    </div>
+                </div>
+            </div>
+            <div class="nav-items">
+                <ul class="lst-nav-item">
+                    <li>
+                        <a href="#">
+                            <!-- <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 18 18">  
+										 <path  d="M236.165,363.417a.749.749,0,1,1-.749-.749A.749.749,0,0,1,236.165,363.417Zm0,0" transform="translate(-226.417 -349.916)"/>
+										 <path  d="M9,18a9,9,0,1,1,9-9A9.01,9.01,0,0,1,9,18ZM9,1.125A7.875,7.875,0,1,0,16.875,9,7.884,7.884,0,0,0,9,1.125Zm0,0"/>
+										 <path  d="M168.514,93.381a.562.562,0,0,1-.562-.562v-.756a1.688,1.688,0,0,1,1.125-1.589,2.323,2.323,0,0,0,1.5-1.96,2.059,2.059,0,1,0-4.118,0,.562.562,0,1,1-1.123,0,3.182,3.182,0,1,1,6.364,0,3.445,3.445,0,0,1-2.245,3.02.562.562,0,0,0-.375.53v.756A.562.562,0,0,1,168.514,93.381Zm0,0" transform="translate(-159.514 -82.328)"/>
+									</svg> -->
+                            <img src="../assets/images/svg/personal-details.svg" alt="personal-details-icon">
+                            Personal Details
+                            <span class="chevron"></span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <!-- <svg xmlns="http://www.w3.org/2000/svg"  viewBox="0 0 17.96 17.96"> 
+										<path  d="M13.47,8.98A4.456,4.456,0,0,0,11.2,9.6l-.747-.3a.559.559,0,0,1-.353-.521V8.346l.035-.008a2.249,2.249,0,0,0,1.649-2.164V3.929a3.929,3.929,0,0,0-7.857,0V6.174A2.256,2.256,0,0,0,5.612,8.346v.435A.559.559,0,0,1,5.26,9.3l-3.5,1.4A2.792,2.792,0,0,0,0,13.306v1.848a1.124,1.124,0,0,0,1.122,1.122H9.971a4.488,4.488,0,1,0,3.5-7.3ZM1.122,15.154V13.306a1.676,1.676,0,0,1,1.058-1.563l3.5-1.4A1.676,1.676,0,0,0,6.735,8.781V8.346a1.134,1.134,0,0,0-.861-1.09,1.124,1.124,0,0,1-.823-1.082V3.929a2.806,2.806,0,0,1,5.612,0V6.174A1.124,1.124,0,0,1,9.84,7.256a1.134,1.134,0,0,0-.86,1.09v.435a1.676,1.676,0,0,0,1.058,1.564l.157.063a4.461,4.461,0,0,0-.885,4.746ZM10.1,13.47a3.362,3.362,0,0,1,5.316-2.742l-4.69,4.69A3.346,3.346,0,0,1,10.1,13.47Zm3.367,3.367a3.346,3.346,0,0,1-1.948-.626l4.69-4.69a3.362,3.362,0,0,1-2.742,5.316Z"/>
+									</svg> -->
+                            <img src="../assets/images/svg/block_user.svg" alt="block_user-icon">
+                            Managed Blocked UPI ID
+                            <span class="chevron"></span>
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="#">
+                            <!-- <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+									 viewBox="0 0 24 24" style="enable-background:new 0 0 24 24;" xml:space="preserve">
+									 <g transform="translate(643 1998)">
+										<rect x="-646.8" y="-2002.1"/>
+										<path style="opacity:0" d="M-644.1-1999.5h26.1v26.1h-26.1V-1999.5z"/>
+										<g transform="translate(-639.695 -1994.697)">
+											<g transform="translate(0 0.001)">
+												<g transform="translate(0 0)">
+													<path d="M8,18.1H0.9c-1,0-1.8-0.8-1.8-1.8V9c0-1,0.8-1.8,1.8-1.8h13c1,0,1.8,0.8,1.8,1.8v1.8c0,0.5,0.4,0.9,0.9,0.9
+														c0.5,0,0.9-0.4,0.9-0.9c0,0,0,0,0-0.1V9c0-2-1.6-3.6-3.6-3.6h-1.1V2.2c0-2.9-2.4-5.3-5.4-5.3C4.4-3.1,2-0.7,1.9,2.2v3.2H0.9
+														c-2,0-3.6,1.6-3.6,3.6v7.4c0,2,1.6,3.6,3.6,3.6H8c0.5,0,0.9-0.4,0.9-0.9C8.8,18.5,8.4,18.2,8,18.1z M3.7,2.2
+														c0-2,1.6-3.5,3.6-3.5c2,0,3.6,1.5,3.6,3.5v3.2H3.7V2.2z"/>
+													<path d="M19.9,11.6c-0.4-0.3-1-0.2-1.3,0.2c0,0,0,0,0,0L14.2,18c-0.2,0.2-0.5,0.2-0.7,0.1c0,0,0,0,0,0l-2.9-2.8
+														c-0.3-0.4-0.9-0.4-1.3,0c-0.4,0.3-0.4,0.9,0,1.3c0,0,0,0,0,0l2.9,2.8l0,0c0.4,0.4,1,0.6,1.6,0.6c0.1,0,0.1,0,0.2,0
+														c0.6,0,1.2-0.4,1.6-0.9l0,0l4.5-6.2C20.4,12.4,20.3,11.9,19.9,11.6C19.9,11.6,19.9,11.6,19.9,11.6z"/>
+												</g>
+											</g>
+										</g>
+										<circle cx="-637.6" cy="-1982.5" r="1.3"/>
+										<circle cx="-632.4" cy="-1982.5" r="1.3"/>
+										<circle cx="-627.2" cy="-1982.5" r="1.3"/>
+									</g>
+									</svg> -->
+                            <img src="../assets/images/svg/change-mpin.svg" alt="change-mpin-icon">
+                            Change MPIN
+                            <span class="chevron"></span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <!-- <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+									 viewBox="0 0 24 24" style="enable-background:new 0 0 24 24;" xml:space="preserve">
+									 <g transform="translate(643 1998)">
+										<rect x="-646.8" y="-2002.1"/>
+										<path style="opacity:0" d="M-644.1-1999.5h26.1v26.1h-26.1V-1999.5z"/>
+										<g transform="translate(-639.695 -1994.697)">
+											<g transform="translate(0 0.001)">
+												<g transform="translate(0 0)">
+													<path d="M8,18.1H0.9c-1,0-1.8-0.8-1.8-1.8V9c0-1,0.8-1.8,1.8-1.8h13c1,0,1.8,0.8,1.8,1.8v1.8c0,0.5,0.4,0.9,0.9,0.9
+														c0.5,0,0.9-0.4,0.9-0.9c0,0,0,0,0-0.1V9c0-2-1.6-3.6-3.6-3.6h-1.1V2.2c0-2.9-2.4-5.3-5.4-5.3C4.4-3.1,2-0.7,1.9,2.2v3.2H0.9
+														c-2,0-3.6,1.6-3.6,3.6v7.4c0,2,1.6,3.6,3.6,3.6H8c0.5,0,0.9-0.4,0.9-0.9C8.8,18.5,8.4,18.2,8,18.1z M3.7,2.2
+														c0-2,1.6-3.5,3.6-3.5c2,0,3.6,1.5,3.6,3.5v3.2H3.7V2.2z"/>
+													<path d="M19.9,11.6c-0.4-0.3-1-0.2-1.3,0.2c0,0,0,0,0,0L14.2,18c-0.2,0.2-0.5,0.2-0.7,0.1c0,0,0,0,0,0l-2.9-2.8
+														c-0.3-0.4-0.9-0.4-1.3,0c-0.4,0.3-0.4,0.9,0,1.3c0,0,0,0,0,0l2.9,2.8l0,0c0.4,0.4,1,0.6,1.6,0.6c0.1,0,0.1,0,0.2,0
+														c0.6,0,1.2-0.4,1.6-0.9l0,0l4.5-6.2C20.4,12.4,20.3,11.9,19.9,11.6C19.9,11.6,19.9,11.6,19.9,11.6z"/>
+												</g>
+											</g>
+										</g>
+										<circle cx="-637.6" cy="-1982.5" r="1.3"/>
+										<circle cx="-632.4" cy="-1982.5" r="1.3"/>
+										<circle cx="-627.2" cy="-1982.5" r="1.3"/>
+									</g>
+									</svg> -->
+                            <img src="../assets/images/svg/generate-QR.svg" alt="generate-QR-icon">
+                            Generate QR
+                            <span class="chevron"></span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="">
+                            <!-- <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:svgjs="http://svgjs.com/svgjs" version="1.1"  x="0" y="0" viewBox="0 0 511.99995 511" style="enable-background:new 0 0 512 512" xml:space="preserve" class="">
+									<g>
+									   <path xmlns="http://www.w3.org/2000/svg" d="m392.503906 153.851562v-153.351562h-273.007812v153.351562h-119.496094v356.492188h512v-356.492188zm0 89.621094h29.875v29.871094h-29.875zm-243.136718-213.097656h213.265624v242.96875h-213.265624zm332.757812 450.09375h-452.25v-119.492188h452.25zm0-149.367188h-452.25v-147.375h89.621094v29.871094h-59.75v89.621094h392.507812v-89.621094h-59.75v-29.871094h89.621094zm-362.628906-87.628906v29.871094h-29.875v-29.871094zm0 0"  data-original="#000000"  class=""/>
+									   <path xmlns="http://www.w3.org/2000/svg" d="m196.253906 84.644531h29.871094v44.808594h-29.871094zm0 0" data-original="#000000" class=""/>
+									   <path xmlns="http://www.w3.org/2000/svg" d="m285.875 84.644531h29.871094v44.808594h-29.871094zm0 0" data-original="#000000" class=""/>
+									   <path xmlns="http://www.w3.org/2000/svg" d="m256 159.328125c-32.945312 0-59.746094 26.800781-59.746094 59.746094h29.871094c0-16.472657 13.402344-29.871094 29.875-29.871094s29.875 13.398437 29.875 29.871094h29.871094c0-32.945313-26.800782-59.746094-59.746094-59.746094zm0 0" data-original="#000000" class=""/>
+									  </g>
+								  </svg> -->
+                            <img src="../assets/images/svg/complaint.svg" alt="complaint-icon">
+                            Complaints
+                            <span class="chevron"></span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <!-- <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+								    	viewBox="0 0 24 24" style="enable-background:new 0 0 24 24;" xml:space="preserve">
+							         <g transform="translate(0.15 0.15)">
+											<path  d="M21.3,5.8h-9.9l-1.6-5C9.7,0.6,9.5,0.4,9.2,0.4H2.4c-1.1,0-2,0.9-2,2c0,0,0,0,0,0v13.5c0,1.1,0.9,2,2,2
+												c0,0,0,0,0,0h7.4l1.6,4.9c0.1,0.3,0.3,0.5,0.6,0.5h9.2c1.1,0,2-0.9,2-2V7.8C23.3,6.7,22.4,5.8,21.3,5.8L21.3,5.8z M2.4,16.6
+												c-0.4,0-0.7-0.3-0.7-0.7V2.4C1.7,2,2,1.7,2.4,1.7c0,0,0,0,0,0h6.3l4.9,14.8H2.4z M13.5,17.9l-1.3,2.9l-1-2.9H13.5z M22,21.3
+												c0,0.4-0.3,0.7-0.7,0.7h-8.2l2-4.5c0.1-0.2,0.1-0.3,0-0.5l-3.3-9.9h9.4c0.4,0,0.7,0.3,0.7,0.7L22,21.3z"/>
+											<path d="M19.9,11.2h-2v-0.7c0-0.4-0.3-0.7-0.7-0.7s-0.7,0.3-0.7,0.7v0.7h-2c-0.4,0-0.7,0.3-0.7,0.7
+												c0,0.4,0.3,0.7,0.7,0.7h3.9c-0.3,0.8-0.7,1.5-1.2,2.1c-0.1-0.2-0.2-0.3-0.3-0.5c-0.2-0.3-0.6-0.4-0.9-0.1c-0.3,0.2-0.4,0.6-0.2,0.9
+												c0.2,0.3,0.4,0.5,0.6,0.8c-0.3,0.4-0.7,0.7-1,1c-0.2,0.3-0.2,0.7,0.1,0.9c0.3,0.2,0.6,0.2,0.9,0c0,0,0.4-0.4,0.9-0.9
+												c0.5,0.5,0.8,0.9,0.9,0.9c0.3,0.3,0.7,0.3,1,0c0.3-0.3,0.3-0.7,0-1l0,0c0,0-0.4-0.4-0.9-1c0.8-0.9,1.4-2,1.7-3.2h0.1
+												c0.4,0,0.7-0.3,0.7-0.7C20.6,11.5,20.3,11.2,19.9,11.2L19.9,11.2z"/>
+											<path d="M9.6,12.3c0-0.1,0-0.2-0.1-0.3L7.2,6.4C7.2,6.1,6.9,6,6.6,6C6.3,6,6.1,6.1,6,6.4L3.7,12c0,0.1-0.1,0.2-0.1,0.3
+												c0,0.4,0.3,0.6,0.6,0.6c0,0,0,0,0,0c0.3,0,0.5-0.2,0.6-0.5l0.3-0.7c0,0,0,0,0.1,0h2.5c0,0,0.1,0,0.1,0l0.3,0.7
+												c0.1,0.3,0.3,0.5,0.6,0.5C9.2,12.9,9.5,12.7,9.6,12.3C9.6,12.3,9.6,12.3,9.6,12.3z M6.6,8.4C6.6,8.4,6.6,8.4,6.6,8.4l0.8,2
+												c0,0,0,0,0,0c0,0,0,0,0,0H5.8c0,0,0,0,0,0c0,0,0,0,0,0L6.6,8.4C6.6,8.4,6.6,8.4,6.6,8.4L6.6,8.4z"/>
+										</g>
+							         </svg> -->
+                            <img src="../assets/images/svg/language-g.svg" alt="setting-icon">
+                            Change Language
+                            <span class="chevron"></span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="">
+                            <!-- <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+								viewBox="0 0 24 24" style="enable-background:new 0 0 24 24;" xml:space="preserve">
+								  	<g transform="translate(643 1998)">
+										<rect style="opacity:0" x="-647.4" y="-2001.4"/>
+										<path style="opacity:0" d="M-644.8-1998.8h25.4v25.4h-25.4V-1998.8z"/>
+										<g transform="translate(-639.254 -1995.109)">
+											<path class="stroke" d="M2.6,10.8h3.7c0.3,0,0.5-0.2,0.5-0.4c0-0.3-0.2-0.5-0.4-0.5c0,0,0,0,0,0H2.6c-0.3,0-0.4,0.2-0.4,0.5
+												C2.2,10.6,2.3,10.8,2.6,10.8z"/>
+											<path class="stroke" d="M9,13.2H2.6c-0.3,0-0.5,0.2-0.5,0.5c0,0.3,0.2,0.5,0.5,0.5H9c0.3,0,0.5-0.2,0.5-0.5C9.4,13.4,9.2,13.2,9,13.2
+												z"/>
+											<path class="stroke" d="M19.8,2.1c0-2.4-2-4.4-4.4-4.4c-2.1,0-3.9,1.4-4.3,3.5H4v-1.4C4-1,3.3-1.6,2.6-1.6S1.2-1,1.2-0.2v1.4H-1
+												c-1.3,0-2.4,1.1-2.4,2.4V18c0,1.3,1.1,2.4,2.4,2.4h16.2c1.3,0,2.4-1.1,2.4-2.4l0,0V5.8C19,5,19.8,3.6,19.8,2.1z M2.1-0.2
+												c0-0.3,0.2-0.4,0.5-0.4C2.8-0.6,3-0.4,3-0.2V3c0,0.3-0.2,0.4-0.5,0.4C2.3,3.4,2.1,3.2,2.1,3V-0.2z M16.8,18c0,0.8-0.7,1.5-1.5,1.5
+												H-1c-0.8,0-1.5-0.7-1.5-1.5V8h2.3v9.1c0,0.3,0.2,0.5,0.5,0.5c0,0,0,0,0,0h11c0.1,0,0.2,0,0.3-0.1l2.7-2.7c0,0,0.1-0.1,0.1-0.1
+												c0,0,0,0,0,0c0,0,0-0.1,0-0.1c0,0,0,0,0,0V8h2.3L16.8,18L16.8,18z M13.6,8V14h-2.3c-0.3,0-0.5,0.2-0.5,0.5l0,0v2.3H0.8V8H13.6z
+													M12.9,14.9l-1.2,1.2v-1.2H12.9z M16.8,7.1H-2.5V3.6c0-0.8,0.7-1.5,1.5-1.5h2.2V3c0,0.8,0.6,1.4,1.4,1.4S4,3.7,4,3V2.1h7
+												c0,2.4,2,4.4,4.4,4.4c0.5,0,0.9-0.1,1.4-0.2V7.1z M15.4,5.5c-1.9,0-3.5-1.6-3.5-3.5s1.6-3.5,3.5-3.5c1.9,0,3.5,1.6,3.5,3.5
+												C18.9,4,17.3,5.5,15.4,5.5z"/>
+											<path class="stroke"  d="M17.2,2.4L17,2.2c-0.2-0.2-0.3-0.4-0.3-0.7V1.3c0-0.7-0.5-1.2-1.2-1.3c-0.4,0-0.7,0.1-1,0.3
+												c-0.3,0.2-0.4,0.6-0.4,0.9v0.3c0,0.2-0.1,0.5-0.2,0.6l-0.2,0.3c-0.1,0.1-0.1,0.4,0.1,0.5C13.8,3,13.9,3,14,3h1.1v0.3
+												c0,0.2,0.1,0.3,0.3,0.3c0.2,0,0.3-0.1,0.3-0.3l0,0V3H17c0.2,0,0.3-0.1,0.3-0.3C17.3,2.6,17.3,2.5,17.2,2.4L17.2,2.4z M14.6,2.3
+												c0.1-0.2,0.2-0.5,0.2-0.8V1.3c0-0.2,0.1-0.3,0.2-0.4c0.1-0.1,0.3-0.2,0.5-0.2c0.3,0,0.6,0.3,0.6,0.6v0.2c0,0.3,0.1,0.6,0.2,0.8
+												L14.6,2.3z"/>
+										</g>
+									</g>
+									</svg> -->
+                            <img src="../assets/images/svg/bill-reminder.svg" alt="bill-reminder-icon">
+                            Bill Reminder
+                            <span class="chevron"></span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="">
+                            <!-- <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+								  viewBox="0 0 24 24" style="enable-background:new 0 0 24 24;" xml:space="preserve">
+										<g transform="translate(643 1998)">
+										  <rect style="opacity:0" x="-647.4" y="-2001.4"/>
+										  <path style="opacity:0" d="M-644.8-1998.8h25.4v25.4h-25.4V-1998.8z"/>
+										  <g transform="translate(-639.254 -1995.109)">
+											  <path class="stroke" d="M2.6,10.8h3.7c0.3,0,0.5-0.2,0.5-0.4c0-0.3-0.2-0.5-0.4-0.5c0,0,0,0,0,0H2.6c-0.3,0-0.4,0.2-0.4,0.5
+												  C2.2,10.6,2.3,10.8,2.6,10.8z"/>
+											  <path class="stroke" d="M9,13.2H2.6c-0.3,0-0.5,0.2-0.5,0.5c0,0.3,0.2,0.5,0.5,0.5H9c0.3,0,0.5-0.2,0.5-0.5C9.4,13.4,9.2,13.2,9,13.2
+												  z"/>
+											  <path class="stroke" d="M19.8,2.1c0-2.4-2-4.4-4.4-4.4c-2.1,0-3.9,1.4-4.3,3.5H4v-1.4C4-1,3.3-1.6,2.6-1.6S1.2-1,1.2-0.2v1.4H-1
+												  c-1.3,0-2.4,1.1-2.4,2.4V18c0,1.3,1.1,2.4,2.4,2.4h16.2c1.3,0,2.4-1.1,2.4-2.4l0,0V5.8C19,5,19.8,3.6,19.8,2.1z M2.1-0.2
+												  c0-0.3,0.2-0.4,0.5-0.4C2.8-0.6,3-0.4,3-0.2V3c0,0.3-0.2,0.4-0.5,0.4C2.3,3.4,2.1,3.2,2.1,3V-0.2z M16.8,18c0,0.8-0.7,1.5-1.5,1.5
+												  H-1c-0.8,0-1.5-0.7-1.5-1.5V8h2.3v9.1c0,0.3,0.2,0.5,0.5,0.5c0,0,0,0,0,0h11c0.1,0,0.2,0,0.3-0.1l2.7-2.7c0,0,0.1-0.1,0.1-0.1
+												  c0,0,0,0,0,0c0,0,0-0.1,0-0.1c0,0,0,0,0,0V8h2.3L16.8,18L16.8,18z M13.6,8V14h-2.3c-0.3,0-0.5,0.2-0.5,0.5l0,0v2.3H0.8V8H13.6z
+													  M12.9,14.9l-1.2,1.2v-1.2H12.9z M16.8,7.1H-2.5V3.6c0-0.8,0.7-1.5,1.5-1.5h2.2V3c0,0.8,0.6,1.4,1.4,1.4S4,3.7,4,3V2.1h7
+												  c0,2.4,2,4.4,4.4,4.4c0.5,0,0.9-0.1,1.4-0.2V7.1z M15.4,5.5c-1.9,0-3.5-1.6-3.5-3.5s1.6-3.5,3.5-3.5c1.9,0,3.5,1.6,3.5,3.5
+												  C18.9,4,17.3,5.5,15.4,5.5z"/>
+											  <path class="stroke"  d="M17.2,2.4L17,2.2c-0.2-0.2-0.3-0.4-0.3-0.7V1.3c0-0.7-0.5-1.2-1.2-1.3c-0.4,0-0.7,0.1-1,0.3
+												  c-0.3,0.2-0.4,0.6-0.4,0.9v0.3c0,0.2-0.1,0.5-0.2,0.6l-0.2,0.3c-0.1,0.1-0.1,0.4,0.1,0.5C13.8,3,13.9,3,14,3h1.1v0.3
+												  c0,0.2,0.1,0.3,0.3,0.3c0.2,0,0.3-0.1,0.3-0.3l0,0V3H17c0.2,0,0.3-0.1,0.3-0.3C17.3,2.6,17.3,2.5,17.2,2.4L17.2,2.4z M14.6,2.3
+												  c0.1-0.2,0.2-0.5,0.2-0.8V1.3c0-0.2,0.1-0.3,0.2-0.4c0.1-0.1,0.3-0.2,0.5-0.2c0.3,0,0.6,0.3,0.6,0.6v0.2c0,0.3,0.1,0.6,0.2,0.8
+												  L14.6,2.3z"/>
+										  </g>
+									  </g>
+									  </svg> -->
+                            <img src="../assets/images/svg/bill-reminder.svg" alt="bill-reminder-icon">
+                            Payment Reminder
+                            <span class="chevron"></span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <!-- <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+									  		viewBox="0 0 24 24" style="enable-background:new 0 0 24 24;" xml:space="preserve">
+									   <g transform="translate(643 1998)">
+											<rect style="opacity:0" x="-647.6" y="-2004.1"/>
+											<path  style="opacity:0" d="M-644.8-2001.3h27.7v27.7h-27.7V-2001.3z"/>
+											<g transform="translate(-639.339 -1993.339)">
+												<path d="M19-4.3H-2.3c-0.5,0-0.9,0.4-0.9,0.9v17.7c0,0.5,0.4,0.9,0.9,0.9h6.7l3.3,3.3c0.4,0.4,0.9,0.4,1.3,0
+													c0,0,0,0,0,0l3.3-3.3H19c0.5,0,0.9-0.4,0.9-0.9V-3.4C19.9-3.9,19.5-4.3,19-4.3z M18.1,13.4h-6.1c-0.2,0-0.5,0.1-0.6,0.3l-3,3l-3-3
+													c-0.2-0.2-0.4-0.3-0.6-0.3h-6.1V-2.5h19.5L18.1,13.4z M4.9,7.1L4.4,10c-0.1,0.5,0.3,1,0.7,1c0.2,0,0.4,0,0.6-0.1l2.6-1.4l2.6,1.4
+													c0.4,0.2,1,0.1,1.2-0.4c0.1-0.2,0.1-0.4,0.1-0.6l-0.5-2.9L13.9,5c0.4-0.3,0.4-0.9,0-1.3c-0.1-0.1-0.3-0.2-0.5-0.3L10.5,3L9.1,0.4
+													C8.9-0.1,8.4-0.3,7.9,0C7.8,0,7.6,0.2,7.5,0.4L6.2,3L3.3,3.5C2.8,3.5,2.5,4,2.5,4.5c0,0.2,0.1,0.4,0.3,0.5L4.9,7.1z M6.9,4.7
+													c0.3,0,0.5-0.2,0.7-0.5l0.7-1.4l0.7,1.4c0.1,0.3,0.4,0.5,0.7,0.5L11.3,5l-1.2,1.1C10,6.3,9.9,6.6,9.9,6.9l0.3,1.6L8.8,7.7
+													c-0.3-0.1-0.6-0.1-0.8,0L6.5,8.5l0.3-1.6c0.1-0.3,0-0.6-0.3-0.8L5.3,5L6.9,4.7z"/>
+											  </g>
+										   </g>
+										</svg> -->
+                            <img src="../assets/images/svg/rate-us1.svg" alt="rate-us-icon">
+                            Rate Us
+                            <span class="chevron"></span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <!-- <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+										viewBox="0 0 24 24" style="enable-background:new 0 0 24 24;" xml:space="preserve">
+										  <g transform="translate(643 1998)">
+												<rect x="-646.6" y="-2001.6" style="opacity:0"/>
+												<path d="M-625.2-1986c-1,0-2.1,0.3-2.9,0.8l-1-0.4c-0.3-0.1-0.5-0.4-0.5-0.7v-0.6l0,0c1.3-0.4,2.1-1.5,2.1-2.8v-2.9
+													c0-2.8-2.4-5.1-5.2-5c-2.8,0-5,2.3-5,5v2.9c0,1.3,0.9,2.5,2.2,2.8v0.6c0,0.3-0.2,0.6-0.5,0.7l-4.5,1.8c-1.4,0.6-2.3,1.9-2.3,3.4
+													v2.4c0,0.8,0.7,1.5,1.5,1.5h11.5c2,2.5,5.7,2.9,8.2,0.9c2.5-2,2.9-5.7,0.9-8.2C-621.7-1985.2-623.4-1986-625.2-1986L-625.2-1986z
+													M-641.2-1978v-2.4c0-0.9,0.5-1.7,1.4-2l4.5-1.8c0.8-0.3,1.4-1.1,1.4-2v-0.6c0-0.7-0.5-1.3-1.1-1.4c-0.6-0.2-1.1-0.8-1.1-1.4v-2.9
+													c0-2,1.7-3.6,3.7-3.6c2,0,3.5,1.6,3.6,3.6v2.9c0,0.7-0.4,1.2-1.1,1.4c-0.7,0.2-1.1,0.7-1.1,1.4v0.6c0,0.9,0.5,1.7,1.4,2l0.2,0.1
+													c-1.6,1.7-2,4.1-1.2,6.2H-641.2z M-625.2-1975.8c-2.4,0-4.4-2-4.4-4.4c0-2.4,2-4.4,4.4-4.4c1.3,0,2.5,0.6,3.4,1.6
+													c0.7,0.8,1.1,1.8,1,2.8C-620.8-1977.7-622.8-1975.8-625.2-1975.8z"/>
+												<path d="M-622.4-1980.7c0,0.3-0.1,0.6-0.3,0.8l-0.8,0.8c-0.2,0.2-0.5,0.2-0.6,0c-0.2-0.2-0.2-0.5,0-0.6l0,0l0.6-0.5
+													h-2.5c-0.5,0-0.9,0.4-0.9,0.9c0,0.5,0.4,0.9,0.9,0.9c0.2,0,0.4,0.2,0.4,0.4s-0.2,0.4-0.4,0.4c-0.5,0-0.9-0.2-1.3-0.5
+													c-0.7-0.7-0.7-1.8,0-2.5c0.3-0.3,0.8-0.5,1.2-0.5h2.5l-0.5-0.5c-0.2-0.2-0.2-0.5,0-0.6c0.2-0.2,0.5-0.2,0.6,0l0.8,0.8
+													C-622.5-1981.3-622.4-1981-622.4-1980.7z"/>
+											</g>
+									  </svg> -->
+                            <img src="../assets/images/svg/refer-friend1.svg" alt="refer-friend-icon">
+                            Refer a Friend
+                            <span class="chevron"></span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <!-- <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 18 18">  
+										 <path  d="M236.165,363.417a.749.749,0,1,1-.749-.749A.749.749,0,0,1,236.165,363.417Zm0,0" transform="translate(-226.417 -349.916)"/>
+										 <path  d="M9,18a9,9,0,1,1,9-9A9.01,9.01,0,0,1,9,18ZM9,1.125A7.875,7.875,0,1,0,16.875,9,7.884,7.884,0,0,0,9,1.125Zm0,0"/>
+										 <path  d="M168.514,93.381a.562.562,0,0,1-.562-.562v-.756a1.688,1.688,0,0,1,1.125-1.589,2.323,2.323,0,0,0,1.5-1.96,2.059,2.059,0,1,0-4.118,0,.562.562,0,1,1-1.123,0,3.182,3.182,0,1,1,6.364,0,3.445,3.445,0,0,1-2.245,3.02.562.562,0,0,0-.375.53v.756A.562.562,0,0,1,168.514,93.381Zm0,0" transform="translate(-159.514 -82.328)"/>
+									</svg> -->
+                            <img src="../assets/images/svg/faq-icon.svg" alt="faq-icon">
+                            FAQs
+                            <span class="chevron"></span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <!-- <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 18 18">  
+										 <path  d="M236.165,363.417a.749.749,0,1,1-.749-.749A.749.749,0,0,1,236.165,363.417Zm0,0" transform="translate(-226.417 -349.916)"/>
+										 <path  d="M9,18a9,9,0,1,1,9-9A9.01,9.01,0,0,1,9,18ZM9,1.125A7.875,7.875,0,1,0,16.875,9,7.884,7.884,0,0,0,9,1.125Zm0,0"/>
+										 <path  d="M168.514,93.381a.562.562,0,0,1-.562-.562v-.756a1.688,1.688,0,0,1,1.125-1.589,2.323,2.323,0,0,0,1.5-1.96,2.059,2.059,0,1,0-4.118,0,.562.562,0,1,1-1.123,0,3.182,3.182,0,1,1,6.364,0,3.445,3.445,0,0,1-2.245,3.02.562.562,0,0,0-.375.53v.756A.562.562,0,0,1,168.514,93.381Zm0,0" transform="translate(-159.514 -82.328)"/>
+									</svg> -->
+                            <img src="../assets/images/svg/privacy-policy.svg" alt="privacy-policy-icon">
+                            Privacy Policy
+                            <span class="chevron"></span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <!-- <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+											viewBox="0 0 24 24" style="enable-background:new 0 0 24 24;" xml:space="preserve">
+                                         <g transform="translate(643 1998)">
+											<rect x="-646.5" y="-2001.5" style="opacity:0"/>
+											<path d="M-625.2-1986c-1,0-2,0.3-2.9,0.8l-1-0.4c-0.3-0.1-0.5-0.4-0.5-0.7v-0.6l0,0c1.3-0.3,2.1-1.5,2.1-2.8v-2.9
+												c0-2.8-2.4-5-5.2-5c-2.7,0-5,2.3-5,5v2.9c0,1.3,0.9,2.5,2.2,2.8v0.6c0,0.3-0.2,0.6-0.5,0.7l-4.5,1.8c-1.4,0.5-2.3,1.9-2.3,3.4v2.4
+												c0,0.8,0.7,1.4,1.5,1.5h11.4c2,2.5,5.7,2.9,8.2,0.9c2.5-2,2.9-5.7,0.9-8.2C-621.8-1985.2-623.5-1986-625.2-1986L-625.2-1986z
+												M-641.2-1978v-2.4c0-0.9,0.5-1.7,1.4-2l4.5-1.8c0.8-0.3,1.4-1.1,1.4-2v-0.6c0-0.7-0.5-1.2-1.1-1.4c-0.6-0.2-1.1-0.7-1.1-1.4v-2.9
+												c0-2,1.7-3.6,3.7-3.6c1.9,0,3.5,1.6,3.6,3.6v2.9c0,0.7-0.4,1.2-1.1,1.4c-0.6,0.2-1.1,0.7-1.1,1.4v0.6c0,0.9,0.5,1.7,1.4,2l0.2,0.1
+												c-1.6,1.6-2,4-1.1,6.1H-641.2z M-625.2-1975.9c-2.4,0-4.4-1.9-4.4-4.4c0-2.4,1.9-4.4,4.4-4.4c1.3,0,2.5,0.6,3.3,1.6
+												c0.7,0.8,1,1.8,1,2.8C-620.9-1977.8-622.8-1975.9-625.2-1975.9z M-623.3-1981.2l-0.9,0.9l0.9,0.9c0.3,0.3,0.3,0.7,0,1s-0.7,0.3-1,0
+												l-0.9-0.9l-0.9,0.9c-0.3,0.3-0.7,0.3-1,0c-0.3-0.3-0.3-0.7,0-1l0.9-0.9l-0.9-0.9c-0.3-0.3-0.3-0.7,0-1c0.3-0.3,0.7-0.3,1,0l0.9,0.9
+												l0.9-0.9c0.3-0.3,0.7-0.3,1,0C-623-1981.9-623-1981.4-623.3-1981.2L-623.3-1981.2z"/>
+										</g>
+									 </svg> -->
+                            <img src="../assets/images/svg/de-register.svg" alt="de-register-icon">
+                            De-Register
+                            <span class="chevron"></span>
+                        </a>
+                    </li>
+                </ul>
+                <div class="nav-content">
+                    <div class="inner1">
+                        <div class="row1">
+                            <div class="col-12">
+                                <a href="#">
+                                    <!-- <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20.544 20.542"> 
+												<g transform="translate(0 -0.021)"><g transform="translate(0 0.021)"><g transform="translate(0 0)">
+													<path d="M19.087.021a1.452,1.452,0,0,0-1.342.893l-1.31,3.129a2.127,2.127,0,0,0-1.455-.6H2.14A2.143,2.143,0,0,0,0,5.583v12.84a2.143,2.143,0,0,0,2.14,2.14H14.98a2.143,2.143,0,0,0,2.14-2.14V9.054L20.407,2.12a1.486,1.486,0,0,0,.137-.644A1.458,1.458,0,0,0,19.087.021Zm-2.823,18.4a1.286,1.286,0,0,1-1.284,1.284H2.14A1.286,1.286,0,0,1,.856,18.423V5.583A1.286,1.286,0,0,1,2.14,4.3H14.98a1.274,1.274,0,0,1,1.086.625L14.552,8.543v-2.1a.428.428,0,0,0-.428-.428H3a.428.428,0,0,0-.428.428V9.863A.428.428,0,0,0,3,10.291H13.82l-.359.856H9.844a.428.428,0,0,0-.428.428v5.136c0,.011.005.021.006.032a2.678,2.678,0,0,1-.583.423.428.428,0,0,0-.154.7A3.208,3.208,0,0,0,11,18.726a3.929,3.929,0,0,0,2.573-.856,3.143,3.143,0,0,0,.793-3l1.9-4.009v7.563Zm-5.4-2.452a2.361,2.361,0,0,1,.571-1.1,1.288,1.288,0,0,1,1.963,0c.542.542.128,1.834-.428,2.391a3.334,3.334,0,0,1-3.22.331,5.544,5.544,0,0,0,.508-.455A2.574,2.574,0,0,0,10.859,15.971Zm-.587-.89V12H13.1l-.657,1.568a2.229,2.229,0,0,0-1.623.7A2.657,2.657,0,0,0,10.272,15.08Zm3.02-1.308,1.152-2.754.647.318-1.306,2.755A2.439,2.439,0,0,0,13.292,13.772Zm.4-6.905V9.435H3.424V6.867Zm5.936-5.112-4.176,8.808-.682-.335,2.17-5.186,1.59-3.8a.6.6,0,0,1,.554-.367.607.607,0,0,1,.6.628A.6.6,0,0,1,19.632,1.755Z" transform="translate(0 -0.021)"/>
+												    </g>
+												  </g>
+												  <g transform="translate(2.568 11.147)">
+											      <path d="M68.708,277.312h-4.28a.428.428,0,0,0-.428.428v5.992a.428.428,0,0,0,.428.428h4.28a.428.428,0,0,0,.428-.428V277.74A.428.428,0,0,0,68.708,277.312ZM68.28,283.3H64.856v-5.136H68.28V283.3Z" transform="translate(-64 -277.312)"/>
+                                                  </g>
+												</g>
+											</svg> -->
+                                    <img src="../assets/images/svg/select-theme.svg" alt="select-theam-icon">
+                                    Select Theme
+                                </a>
+                            </div>
+                        </div>
+                        <div class="row1">
+                            <div class="col-9 col-md-9 pr-0">
+                                <a href="#">
+                                    <!-- <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+												viewBox="0 0 24 24" style="enable-background:new 0 0 24 24;" xml:space="preserve">
+											<path d="M18.8,3.2c-0.1,0-0.2,0-0.3-0.1c-2-1.1-4.2-1.7-6.5-1.6c-2.3,0-4.5,0.6-6.5,1.6C5.2,3.3,4.9,3.2,4.7,2.9
+												C4.6,2.7,4.7,2.3,5,2.1c4.4-2.4,9.7-2.4,14.1,0c0.3,0.2,0.4,0.5,0.2,0.8C19.2,3.1,19,3.2,18.8,3.2z M2.1,9.3c-0.1,0-0.2,0-0.3-0.1
+												C1.5,9.1,1.4,8.7,1.6,8.4c0,0,0,0,0,0C2.8,6.8,4.3,5.5,6,4.6c3.8-1.9,8.2-1.9,12,0c1.7,0.9,3.2,2.2,4.4,3.8c0.2,0.3,0.1,0.6-0.1,0.8
+												c-0.3,0.2-0.6,0.1-0.8-0.1l0,0c-1-1.4-2.4-2.6-3.9-3.4C14,3.9,10,3.9,6.5,5.7c-1.6,0.8-2.9,2-4,3.4C2.5,9.3,2.3,9.4,2.1,9.3z
+												M9.4,23.4c-0.2,0-0.3-0.1-0.4-0.2c-0.9-0.9-1.7-1.9-2.3-3.1c-0.8-1.6-1.3-3.3-1.2-5c0.1-3.5,3-6.4,6.6-6.3c3.5-0.1,6.5,2.7,6.6,6.3
+												c0,0.3-0.3,0.6-0.6,0.6c-0.3,0-0.6-0.3-0.6-0.6c-0.1-2.9-2.5-5.2-5.4-5.1c-2.9-0.1-5.3,2.2-5.4,5.1c0,1.6,0.3,3.1,1.1,4.5
+												c0.6,1,1.3,2,2.2,2.8c0.2,0.2,0.2,0.6,0,0.8C9.7,23.3,9.5,23.4,9.4,23.4z M15.4,23.6c-0.1,0-0.1,0-0.2,0c-1.6-0.4-3.1-1.2-4.3-2.4
+												c-1.6-1.6-2.5-3.8-2.5-6.1c0-1.9,1.7-3.5,3.6-3.4c1.9,0,3.5,1.5,3.6,3.4c0.1,1.3,1.3,2.3,2.6,2.3c1.2-0.1,2.2-1,2.3-2.3
+												C20.2,10.6,16.5,7,12,7.1c-3.2,0-6.2,1.8-7.7,4.7c-0.5,1-0.7,2.1-0.7,3.3c0,1.4,0.3,2.9,0.8,4.2c0.1,0.3,0,0.6-0.3,0.7c0,0,0,0,0,0
+												c-0.3,0.1-0.6,0-0.7-0.3c-0.6-1.5-0.8-3-0.8-4.6c0-1.3,0.3-2.6,0.8-3.8C4.9,8,8.3,5.9,12,6c5.2-0.1,9.5,3.9,9.6,9.1
+												c-0.1,2-1.8,3.5-3.7,3.4c-1.9-0.1-3.3-1.6-3.4-3.4c0-1.3-1.1-2.3-2.4-2.3c-1.3,0-2.4,1-2.4,2.3c0,2,0.8,3.9,2.2,5.2
+												c1,1.1,2.4,1.8,3.8,2.2c0.3,0.1,0.5,0.4,0.4,0.7C15.9,23.4,15.6,23.6,15.4,23.6z"/>
+											<path style="opacity:0" d="M-2-2H26V26H-2V-2z"/>
+											<path d="M17.7,21.2c-1.3,0-2.5-0.3-3.6-1c-1.7-1.1-2.8-3.1-2.8-5.1c0-0.3,0.3-0.6,0.6-0.6s0.6,0.3,0.6,0.6
+												c0,1.7,0.9,3.2,2.3,4.1c0.9,0.6,1.9,0.9,3,0.8c0.4,0,0.8,0,1.2-0.1c0.3-0.1,0.6,0.2,0.7,0.5c0.1,0.3-0.2,0.6-0.5,0.7
+												C18.7,21.2,18.2,21.2,17.7,21.2z"/>
+										</svg> -->
+                                    <img src="../assets/images/svg/fingerprint2.svg" alt="fingerprint-icon">
+                                    Enable Fingerprint/FaceID
+                                </a>
+                            </div>
+                            <div class="col-3 col-md-3">
+                                <div class="custom-control2">
+                                    <div class="custom-control custom-switch pad-2">
+                                        <input type="checkbox" class="custom-control-input" id="customSwitch1">
+                                        <label class="custom-control-label md" for="customSwitch1"> </label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="nav-footer pad">
+                    <div class="powered">
+                        <div class="row1">
+                            <div class="col-8 col-md-8">
+                                <a href="#">
+                                    <!-- <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" class="red" version="1.1"  x="0px" y="0px" viewBox="0 0 511.996 511.996" style="enable-background:new 0 0 511.996 511.996;" xml:space="preserve" ><g><g>
+													<g>
+														<g>
+															<path d="M349.85,62.196c-10.797-4.717-23.373,0.212-28.09,11.009c-4.717,10.797,0.212,23.373,11.009,28.09     c69.412,30.324,115.228,98.977,115.228,176.035c0,106.034-85.972,192-192,192c-106.042,0-192-85.958-192-192     c0-77.041,45.8-145.694,115.192-176.038c10.795-4.72,15.72-17.298,10.999-28.093c-4.72-10.795-17.298-15.72-28.093-10.999     C77.306,99.275,21.331,183.181,21.331,277.329c0,129.606,105.061,234.667,234.667,234.667     c129.592,0,234.667-105.068,234.667-234.667C490.665,183.159,434.667,99.249,349.85,62.196z" data-original="#000000" data-old_color="#000000"/>
+															<path d="M255.989,234.667c11.782,0,21.333-9.551,21.333-21.333v-192C277.323,9.551,267.771,0,255.989,0     c-11.782,0-21.333,9.551-21.333,21.333v192C234.656,225.115,244.207,234.667,255.989,234.667z" data-original="#000000" data-old_color="#000000" />
+														</g>
+													</g>
+												</g></g> 
+										    </svg> -->
+                                    <img src="../assets/images/svg/logout-r.svg" alt="logout-icon">
+                                    Logout
+                                </a>
+                            </div>
+                            <div class="col-4 col-md-4">
+                                <p>V1.0</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </nav>
+
+        <div class="nav-overlay"></div>
+
+        <!-- End Global Nav -->
+
+        <!--  Header Section Start -->
+
+        <header class="global-header primary-bg">
+            <div class="in-header">
+                <div class="header-icons-lft">
+                    <div class="header-actions">
+                        <button class="ux-button-header  menu-btn d-lg-none d-md-block">
+                            <img src="../assets/images/svg/yellow-menu.svg" alt="open-menu-icon" />
+                        </button>
+                    </div>
+                </div>
+                <div class="brand-logo m-auto">
+                    <img src="../assets/images/logo/logo1.png" alt="psb-logo" class="m-auto">
+                </div>
+                <div class="header-icons-rit">
+                    <div class="header-actions">
+                        <button class="ux-button-header btn-notification-bell2" onclick="window.location.href = 'notification.html'">
+                            <img src="../assets/images/svg/bell-w.svg" class="img-small" alt="bell-icon" />
+                            <span class="red-dot"></span>
+                            <!-- <span class="point">1</span> -->
+                        </button>
+                        <button class="ux-button-header btn-logout">
+                            <img src="../assets/images/svg/shutdown-w.svg" class="img-small" alt="logout-icon" />
+                        </button>
+                        <button class="ux-button-header btn-user profile-btn">
+                            <span class="round-circle">
+                                <h5>RS</h5>
+                                <!-- <img src="../assets/images/icons/user1.png" alt="user-img"> -->
+                            </span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- Header Section End -->
+
+        <!--  Right Main Column Section Start -->
+
+        <div class="right-main-column ">
+            <div class="right-col-container pad-b1">
+
+
+                <div class="body-page-container">
+                    <div class="vspacer5 d-sm-block d-none"></div>
+                    <div class="container-fluid">
+                        <div class="row">
+
+                            <div class="col-12 col-md-12">
+                                <div class="scroll-box2">
+                                    <div class="owl-carousel  box-owl" role="list">
+                                        <div class="item" role="listitem">
+                                            <div class="ux-component2 white1">
+                                                <div class="row">
+                                                    <div class="col-12">
+                                                        <div class="profile-bg1 pad-custom">
+                                                            <div class="myprofile">
+                                                                <a href="#" class="setting-btn"> <img src="../assets/images/svg/settings.svg" alt="setting-icon"></a>
+                                                                <h5><em>UPI ID : </em>9768245145@psb <a class="add-upi-id"><img src="../assets/images/svg/arrow-back-bl.svg" class="details-info" style="display: inline-block;"></a> </h5>
+                                                                <a href="#" class="add-btn"> <img src="../assets/images/svg/add-g.svg" class="showAmt" alt="ad-icon"></a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-6 col-sm-6 col-md-6 col-lg-6 pl-1 pr-1">
+                                                        <div class="profile-bg1">
+                                                            <div class="myprofile">
+                                                                <h6>A/C XXXX XXXX XXXX 9557</h6>
+                                                                <small>Saving Account</small>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-6 col-sm-6 col-md-6 col-lg-6 pl-1 pr-1">
+                                                        <div class="ux-dropdown">
+                                                            <div class="drp-box">
+                                                                <a href="javascript:;" class="balance-info drp-enterdata">
+                                                                    <span class="account-balance disable-status">
+                                                                        <em class="entered-data" amt="50,000.00">
+                                                                            <div class="refresh-amt1 ">
+                                                                                <span class="chk-bal card-actions">
+                                                                                    <img src="../assets/images/svg/visible-bl.svg" class="showAmt" alt="visible-icon">
+                                                                                    <img src="../assets/images/svg/invisible-bl.svg" class="hiddenAmt" alt="hide-icon">
+                                                                                </span>
+                                                                            </div>
+                                                                            <i>
+                                                                                <img src="../assets/images/svg/rupee-bl.svg" alt="rupees-icon">
+                                                                            </i> <b>XXXXX.XX</b>
+                                                                            <div class="refresh-amt card-actions">
+                                                                                <img src="../assets/images/svg/refresh-bl.svg" alt="refresh-icon">
+                                                                            </div>
+                                                                        </em>
+                                                                    </span>
+                                                                    <div class="col-sm-12 col-12">
+                                                                        <div class="total-target">
+                                                                            <small>Available Balance</small>
+                                                                        </div>
+                                                                    </div>
+                                                                </a>
+                                                                <!-- <a  href="javascript:;"  class="drp-enterdata balance-info" >
+																	 <span class="account-balance disable-status">
+																		   <em class="entered-data">
+																			   <div class="refresh-amt1 ">
+																				  <span class="chk-bal card-actions">
+																					  <img src="../assets/images/svg/visible-bl.svg" class="showAmt" alt="visible-icon">
+																					  <img src="../assets/images/svg/invisible-bl.svg" class="hiddenAmt" alt="hide-icon">
+																				  </span>
+																			   </div> 
+																			   <span class="info">
+																				   <img src="../assets/images/svg/rupee-bl.svg" alt="rupees-icon"> XXXXX.XX 
+																			  </span> 
+																			  <span class="hide-amt">
+																				  <img src="../assets/images/svg/rupee-bl.svg" alt="rupees-icon"> 50,000.00
+																			  </span>
+																			  <div class="refresh-amt card-actions"> 
+																				  <img src="../assets/images/svg/refresh-bl.svg" alt="refresh-icon">  
+																			  </div>
+																	     </em>
+																	  </span>
+																	  <div class="col-sm-12 col-12">
+																		  <div class="total-target">
+																		    <small>Available Balance</small>
+																	    </div>
+																	  </div> 
+																  </a> -->
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="item" role="listitem">
+                                            <div class="ux-component2 white1">
+                                                <div class="row">
+                                                    <div class="col-12">
+                                                        <div class="profile-bg1 pad-custom">
+                                                            <div class="myprofile">
+                                                                <a href="#" class="setting-btn"> <img src="../assets/images/svg/settings.svg" alt="setting-icon"></a>
+                                                                <h5><em>UPI ID : </em> 9768245145@psb <a class="add-upi-id"><img src="../assets/images/svg/arrow-back-bl.svg" class="details-info" style="display: inline-block;"></a> </h5>
+                                                                <a href="#" class="add-btn"> <img src="../assets/images/svg/add-g.svg" class="showAmt" alt="ad-icon"></a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-6 col-sm-6 col-md-6 col-lg-6 pl-1 pr-1">
+                                                        <div class="profile-bg1">
+                                                            <div class="myprofile">
+                                                                <h6>A/C XXXX XXXX XXXX 9557</h6>
+                                                                <small>Saving Account</small>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-6 col-sm-6 col-md-6 col-lg-6 pl-1 pr-1">
+                                                        <div class="ux-dropdown">
+                                                            <div class="drp-box">
+                                                                <a href="javascript:;" class="balance-info drp-enterdata">
+                                                                    <span class="account-balance disable-status">
+                                                                        <em class="entered-data" amt="80,000.00">
+                                                                            <div class="refresh-amt1 ">
+                                                                                <span class="chk-bal card-actions">
+                                                                                    <img src="../assets/images/svg/visible-bl.svg" class="showAmt" alt="visible-icon">
+                                                                                    <img src="../assets/images/svg/invisible-bl.svg" class="hiddenAmt" alt="hide-icon">
+                                                                                </span>
+                                                                            </div>
+                                                                            <i>
+                                                                                <img src="../assets/images/svg/rupee-bl.svg" alt="rupees-icon">
+                                                                            </i> <b>XXXXX.XX</b>
+                                                                            <div class="refresh-amt card-actions">
+                                                                                <img src="../assets/images/svg/refresh-bl.svg" alt="refresh-icon">
+                                                                            </div>
+                                                                        </em>
+                                                                    </span>
+                                                                    <div class="col-sm-12 col-12">
+                                                                        <div class="total-target">
+                                                                            <small>Available Balance</small>
+                                                                        </div>
+                                                                    </div>
+                                                                </a>
+                                                                <!-- <a  href="javascript:;"  class="drp-enterdata balance-info" >
+																		<span class="account-balance disable-status">
+																			  <em class="entered-data">
+																				  <div class="refresh-amt1 ">
+																					 <span class="chk-bal card-actions">
+																						 <img src="../assets/images/svg/visible-bl.svg" class="showAmt" alt="visible-icon">
+																						 <img src="../assets/images/svg/invisible-bl.svg" class="hiddenAmt" alt="hide-icon">
+																					 </span>
+																				  </div> 
+																				  <span class="info">
+																					  <img src="../assets/images/svg/rupee-bl.svg" alt="rupees-icon"> XXXXX.XX 
+																				 </span> 
+																				 <span class="hide-amt">
+																					 <img src="../assets/images/svg/rupee-bl.svg" alt="rupees-icon"> 10,000.00
+																				 </span>
+																				 <div class="refresh-amt card-actions"> 
+																					 <img src="../assets/images/svg/refresh-bl.svg" alt="refresh-icon">  
+																				 </div>
+																			</em>
+																		 </span>
+																		 <div class="col-sm-12 col-12">
+																			 <div class="total-target">
+																			   <small>Available Balance</small>
+																		   </div>
+																		 </div> 
+																	 </a> -->
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="button-section2">
+                                <div class="button-left">
+                                    <button class="ux-custom-button primary" onclick="window.location.href = 'pay-upi.html'">Pay <img src="../assets/images/svg/rupee-left-g.svg" alt="rupee-icon" /> </button>
+                                </div>
+                                <div class="button-right">
+                                    <button class="ux-custom-button primary" onclick="window.location.href = 'collect-recent-request.html'"><img src="../assets/images/svg/rupee-right-g.svg" alt="rupee-icon" /> Collect</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-12 col-md-12">
+                            <div class="widget-box5 ">
+                                <div class="component-title6">
+                                    <div class="row1">
+                                        <div class="col-8 col-md-9">
+                                            <h3>My Information</h3>
+                                        </div>
+                                        <div class="col-4 col-md-3">
+                                            <a class="ux-linkbutton sm float-right">View All</a>
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <div class="component-box">
+                                    <div class="row">
+                                        <ul class="information-list">
+                                            <li>
+                                                <a href="pending-request.html">
+                                                    <div class="icon1">
+                                                        <img src="../assets/images/svg/pending-request.svg" alt="pending-request-icon" />
+                                                          <span class="red-dot"></span>
+                                                    </div>
+                                                    <em>Pending Request</em>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="#">
+                                                    <div class="icon1">
+                                                        <img src="../assets/images/svg/balance-enquiry.svg" alt="balance-enquiry-icon" />
+                                                    </div>
+                                                    <em>Balance Enquiry</em>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="manage-accounts.html">
+                                                    <div class="icon1">
+                                                        <img src="../assets/images/svg/settings.svg" alt="setting-icon" />
+                                                    </div>
+                                                    <em>Manage Accounts</em>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="transactions.html">
+                                                    <div class="icon1">
+                                                        <img src="../assets/images/svg/transaction.svg" alt="transaction-icon" />
+                                                        <span class="red-dot"></span>
+                                                    </div>
+                                                    <em>Transaction</em>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12 col-md-12">
+                            <div class="widget-box5 ">
+                                <div class="component-title6">
+                                    <div class="row1">
+                                        <div class="col-8 col-md-9">
+                                            <h3>Bill Payment</h3>
+                                        </div>
+                                        <div class="col-4 col-md-3">
+                                            <a class="ux-linkbutton sm float-right">View All</a>
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <div class="component-box">
+                                    <div class="row">
+                                        <ul class="information-list">
+                                            <li>
+                                                <a href="#">
+                                                    <div class="icon1">
+                                                        <img src="../assets/images/svg/mobile-recharge.svg" alt="mobile-recharge-icon" />
+                                                    </div>
+                                                    <em>Mobile Recharge</em>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="#">
+                                                    <div class="icon1">
+                                                        <img src="../assets/images/svg/dth.svg" alt="dth-icon" />
+                                                    </div>
+                                                    <em>DTH</em>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="#">
+                                                    <div class="icon1">
+                                                        <img src="../assets/images/svg/electricity.svg" alt="electricity-icon" />
+                                                    </div>
+                                                    <em>Electricity</em>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="#">
+                                                    <div class="icon1">
+                                                        <img src="../assets/images/svg/fast-tag.svg" alt="fast-tag-icon" />
+                                                    </div>
+                                                    <em>Fast Tag</em>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12 col-md-12">
+                            <div class="widget-box5">
+                                <div class="component-title6">
+                                    <div class="row1">
+                                        <div class="col-8 col-md-9">
+                                            <h3>Recent</h3>
+                                        </div>
+                                        <div class="col-4 col-md-3">
+                                            <a class="ux-linkbutton sm float-right">View All</a>
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <div class="component-box">
+                                    <div class="row1">
+                                        <div class="col-12 col-md-12">
+                                            <ul class="recent-list">
+                                                <li>
+                                                    <a href="#">
+                                                        <span class="red">
+                                                            <h6>A</h6>
+                                                            <!-- <img src="../assets/images/icons/user2.png" alt="user-img"> -->
+                                                        </span>
+                                                        <em>Aarti</em>
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="#">
+                                                        <span class="yellow">
+                                                            <!-- <h6>S</h6> -->
+                                                            <img src="../assets/images/icons/user3.png" alt="user-img"> 
+                                                        </span>
+                                                        <em>Sohan</em>
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="#">
+                                                        <span class="blue">
+                                                            <h6>J</h6>
+                                                            <!-- <img src="../assets/images/icons/user4.png" alt="user-img"> -->
+                                                        </span>
+                                                        <em>Jyoti</em>
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="#">
+                                                        <span class="green">
+                                                            <h6>RS</h6>
+                                                        </span>
+                                                        <em>Rohan Singh</em>
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="#">
+                                                        <span class="yellow">
+                                                            <h6>N</h6>
+                                                        </span>
+                                                        <em>Nivedita </em>
+                                                    </a>
+                                                </li>
+                                            </ul>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-12 col-md-12">
+                            <div class="row">
+                                <!-- Banner Scroll Section Start -->
+                                <div class="banner-section">
+                                    <div class="scroll-section">
+                                        <div class="owl-carousel img-owl" role="list">
+                                            <div class="item ux-img-scroll" role="listitem">
+                                                <a href="#">
+                                                    <span>
+                                                        <img src="../assets/images/slides/banner-01.png" alt="banner1">
+                                                    </span>
+                                                </a>
+                                            </div>
+                                            <div class="item ux-img-scroll" role="listitem">
+                                                <a href="#">
+                                                    <span>
+                                                        <img src="../assets/images/slides/banner-02.png" alt="banner2">
+                                                    </span>
+                                                </a>
+                                            </div>
+                                            <div class="item ux-img-scroll" role="listitem">
+                                                <a href="#">
+                                                    <span>
+                                                        <img src="../assets/images/slides/banner-01.png" alt="banner3">
+                                                    </span>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- Banner Scroll Section End -->
+                            </div>
+                        </div>
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!--  Right Main Column Section End -->
+
+         <!-- Footer Section Start -->
+
+    <footer class="footer-bottom">
+        <div class="inner-footer">
+            <nav class="ios-global-nav-custom">
+                <ul class="lst-ios-nav">
+                    <li class="left-col">
+                        <a href="javascript:;">
+                            <span class="inav-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 21.545 21.545">
+                                    <path d="M56.318,204.436H41.945A1.919,1.919,0,0,1,40,202.549v-9.93a.677.677,0,0,1,1.353,0v9.93a.584.584,0,0,0,.592.574H56.318a.584.584,0,0,0,.592-.574v-9.93a.677.677,0,0,1,1.353,0v9.93A1.919,1.919,0,0,1,56.318,204.436Z" transform="translate(-38.359 -182.892)" />
+                                    <path d="M20.872,26.19A.68.68,0,0,1,20.4,26l-8.373-8.164a1.8,1.8,0,0,0-2.5,0L1.15,26A.685.685,0,0,1,.2,26a.645.645,0,0,1,0-.928L8.571,16.9a3.174,3.174,0,0,1,4.4,0l8.373,8.164a.645.645,0,0,1,0,.928A.68.68,0,0,1,20.872,26.19Z" transform="translate(0 -16.017)" />
+                                    <path d="M181.908,296.517h-5.252a.657.657,0,0,1-.656-.656v-5.826a2.054,2.054,0,0,1,2.051-2.051h2.462a2.054,2.054,0,0,1,2.051,2.051v5.826A.657.657,0,0,1,181.908,296.517Zm-4.6-1.313h3.939v-5.169a.739.739,0,0,0-.738-.739h-2.462a.739.739,0,0,0-.739.739Z" transform="translate(-168.51 -274.972)" />
+                                </svg>
+                                <!-- <img src="../assets/images/svg/hut-bl.svg" alt="home-icon">   -->
+                            </span>
+                            Home
+                        </a>
+                    </li>
+                    <li class="left-col">
+                        <a href="javascript:;">
+                            <span class="inav-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 19.557 19.557">
+                                    <g transform="translate(0)">
+                                        <g transform="translate(0)">
+                                            <path d="M16.693,12.642a9.741,9.741,0,0,0-3.716-2.331,5.653,5.653,0,1,0-6.4,0A9.794,9.794,0,0,0,0,19.557H1.528a8.25,8.25,0,0,1,16.5,0h1.528A9.715,9.715,0,0,0,16.693,12.642ZM9.778,9.778A4.125,4.125,0,1,1,13.9,5.653,4.13,4.13,0,0,1,9.778,9.778Z" transform="translate(0)" />
+                                        </g>
+                                    </g>
+                                </svg>
+                                <!-- <img src="../assets/images/svg/user-bl.svg" alt="profile-icon">   -->
+                            </span>
+                            Profile
+                        </a>
+                    </li>
+                    <li class="right-col">
+                        <a href="javascript:;">
+                            <span class="inav-icon">
+                                <img src="../assets/images/svg/upi-col.svg" alt="upi-icon">
+                                 <span class="red-dot"></span>
+                            </span>
+                            Mandate
+                        </a>
+                      </li>
+                    <li class="right-col">
+                        <a href="javascript:;">
+                            <span class="inav-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:svgjs="http://svgjs.com/svgjs" version="1.1" x="0" y="0" viewBox="0 0 511.99995 511" style="enable-background:new 0 0 512 512" xml:space="preserve">
+                                    <g>
+                                        <path xmlns="http://www.w3.org/2000/svg" d="m392.503906 153.851562v-153.351562h-273.007812v153.351562h-119.496094v356.492188h512v-356.492188zm0 89.621094h29.875v29.871094h-29.875zm-243.136718-213.097656h213.265624v242.96875h-213.265624zm332.757812 450.09375h-452.25v-119.492188h452.25zm0-149.367188h-452.25v-147.375h89.621094v29.871094h-59.75v89.621094h392.507812v-89.621094h-59.75v-29.871094h89.621094zm-362.628906-87.628906v29.871094h-29.875v-29.871094zm0 0" data-original="#000000" class="" />
+                                        <path xmlns="http://www.w3.org/2000/svg" d="m196.253906 84.644531h29.871094v44.808594h-29.871094zm0 0" data-original="#000000" class="" />
+                                        <path xmlns="http://www.w3.org/2000/svg" d="m285.875 84.644531h29.871094v44.808594h-29.871094zm0 0" data-original="#000000" class="" />
+                                        <path xmlns="http://www.w3.org/2000/svg" d="m256 159.328125c-32.945312 0-59.746094 26.800781-59.746094 59.746094h29.871094c0-16.472657 13.402344-29.871094 29.875-29.871094s29.875 13.398437 29.875 29.871094h29.871094c0-32.945313-26.800782-59.746094-59.746094-59.746094zm0 0" data-original="#000000" />
+                                    </g>
+                                </svg>
+                                <!-- <img src="../assets/images/svg/complaint-bl.svg" alt="complaint-icon">   -->
+                            </span>
+                            Complaints
+                        </a>
+                    </li>
+                    <li>
+                        <a href="javascript:;">
+                            <span class="inav-icon">
+                                <img src="../assets/images/svg/qr-w.svg" alt="QRcode-icon">
+                            </span>
+                        </a>
+                     </li>
+                </ul>
+            </nav>
+        </div>
+        <div class="logo-bottom">
+            <img src="../assets/images/logo/bhim-upi-logo.svg" alt="bhim-upi-logo">
+        </div>
+    </footer>
+
+    <!-- Footer Section End -->
+
+    </div>
+
+    <!-- main -->
+
+   
+
+
+
+    <!-- =========== modal popup start ===============  -->
+
+
+    <!-- Logout Popup Start -->
+
+    <div class="popup-bottom logout1">
+        <div class="row">
+            <div class="col-12">
+                <h4 class="text-center">Logout</h4>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <p>
+                    Are you sure you want to Logout?
+                </p>
+            </div>
+        </div>
+        <div class="row1 mt-2">
+            <div class="col-6 text-center">
+                <button class="ux-button secondary no md close-btn" onclick="window.location.href = '#'">No</button>
+            </div>
+            <div class="col-6 text-center">
+                <button class="logout-btn ux-button primary md" onclick="window.location.href = '#'">Yes</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Logout Popup End -->
+
+    <!-- Session Timeout Popup Start -->
+
+    <div class="popup-bottom timeout1">
+        <div class="row">
+            <div class="col-12">
+                <h4 class="text-center">Heading</h4>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <p>
+                    Warning! Better check yourself, <br /> you're not looking too good.
+                </p>
+            </div>
+        </div>
+        <div class="row1 mt-2">
+            <div class="col-12 text-center">
+                <button class="ux-button primary md" onclick="window.location.href = '#'">Ok</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Session Timeout Popup End -->
+
+
+    <!-- Upload Profile Picture Popup Start -->
+
+    <div class="popup-bottom profile1">
+        <div class="row1">
+            <div class="col-10">
+                <h4>Upload Profile Picture</h4>
+            </div>
+            <div class="col-2">
+                <button class="ux-button-icon close-btn">
+                    <img src="../assets/images/svg/close-b.svg" alt="cross-icon" class="img-vsmall">
+                </button>
+            </div>
+        </div>
+        <div class="row1">
+            <div class="col-12">
+                <ul class="profile-list">
+                    <li>
+                        <a href="#">
+                            <img src="../assets/images/svg/gallery1.svg" alt="gallery-icon"> Select From Gallery
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <img src="../assets/images/svg/photo-camera.svg" alt="camera-icon"> Take Photo
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="delete-btn">
+                            <img src="../assets/images/svg/delete.svg" alt="remove-icon"> Remove Profile Pitcute
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="row mt-2">
+            <div class="col-12 text-center">
+                <button class="ux-button primary submit-btn" onclick="window.location.href = '#'">Confirm</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Upload Profile Picture Popup End -->
+
+
+    <!-- Delete Profile Picture Popup Start -->
+
+    <div class="popup-bottom delete-profile-pic">
+        <div class="row">
+            <div class="col-12">
+                <h4 class="text-center">Delete Profile Picture</h4>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <p>
+                    Are you sure you want to delete?
+                </p>
+            </div>
+        </div>
+        <div class="row1 mt-2">
+            <div class="col-6 text-center">
+                <button class="ux-button secondary no md close-btn" onclick="window.location.href = '#'">No</button>
+            </div>
+            <div class="col-6 text-center">
+                <button class="logout-btn ux-button primary md" onclick="window.location.href = '#'">Yes</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Delete Profile Picture Popup End -->
+
+
+    <!-- Select UPI Account Popup End -->
+
+    <div class="popup-bottom upi-account">
+        <div class="row1">
+            <div class="col-10">
+                <h4>Select UPI Account</h4>
+            </div>
+            <div class="col-2">
+                <button class="ux-button-icon close-btn">
+                    <img src="../assets/images/svg/close-b.svg" alt="cross-icon" class="img-vsmall">
+                </button>
+            </div>
+        </div>
+        <div class="row1">
+            <div class="col-12">
+                <div class="row1">
+                    <div class="col-12 col-md-12">
+                        <div class="ux-selection mar-custom">
+                            <label class="ux-selection2">UPI ID: 9768245145@psb
+                                <input type="radio" checked="checked" value="9768245145@psb" name="upi-account">
+                                <span class="checkmark"></span>
+                            </label>
+                            <div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-12">
+                        <div class="ux-selection mar-custom">
+                            <label class="ux-selection2">UPI ID: rajeshshah@psb
+                                <input type="radio" value="rajeshshah@psb" name="upi-account">
+                                <span class="checkmark"></span>
+                            </label>
+                            <div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-12">
+                        <div class="ux-selection mar-custom">
+                            <label class="ux-selection2">UPI ID: rajesh@psb
+                                <input type="radio" value="rajesh@psb" name="upi-account">
+                                <span class="checkmark"></span>
+                            </label>
+                            <div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row mt-2">
+            <div class="col-12 text-center">
+                <button class="ux-button primary submit-btn" onclick="window.location.href = '#'">Submit</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Select UPI Account Popup End -->
+
+
+    <!-- Confirmation Popup Start -->
+
+
+    <div class="popup-bottom confirmation">
+        <div class="row">
+          <div class="col-12">
+          <h4 class="text-center">Confirmation</h4>
+          </div>
+        </div>
+        <form action="#" id="terms-form"> 
+          <div class="row">
+            <div class="col-12">
+              <p>
+                 Do you want to activate the Biometric or Face recognition option?
+              </p>
+            </div>
+            <div class="col-12">
+              <ul class="sim-list">
+                <li>
+                  <a href="#">
+                    <div class="text-center">
+                        <img src="../assets/images/svg/rupee-bl.svg" alt=" ">
+                       <!-- <svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" viewBox="0 0 80 80"  > 
+                      <g transform="translate(0)">
+                        <path class="a" d="M383.541,0h-11.2a2.344,2.344,0,1,0,0,4.687h11.2A3.964,3.964,0,0,1,387.5,8.647v11.2a2.344,2.344,0,0,0,4.688,0V8.647A8.657,8.657,0,0,0,383.541,0Z" transform="translate(-312.188)"></path>
+                        <path class="a" d="M2.344,22.187a2.344,2.344,0,0,0,2.344-2.344V8.647a3.964,3.964,0,0,1,3.96-3.959h11.2a2.344,2.344,0,0,0,0-4.687H8.647A8.657,8.657,0,0,0,0,8.647v11.2a2.344,2.344,0,0,0,2.344,2.344Z"></path>
+                        <path class="a" d="M19.844,387.5H8.647a3.964,3.964,0,0,1-3.96-3.959v-11.2a2.344,2.344,0,1,0-4.687,0v11.2a8.657,8.657,0,0,0,8.647,8.647h11.2a2.344,2.344,0,0,0,0-4.688Z" transform="translate(0 -312.188)"></path>
+                        <path class="a" d="M389.844,370a2.344,2.344,0,0,0-2.344,2.344v11.2a3.964,3.964,0,0,1-3.959,3.959h-11.2a2.344,2.344,0,0,0,0,4.688h11.2a8.657,8.657,0,0,0,8.647-8.647v-11.2A2.344,2.344,0,0,0,389.844,370Z" transform="translate(-312.188 -312.188)"></path>
+                        <path class="a" d="M140.512,50.309c-16.268-12.067-33.8-12.374-50.546-.214a2.344,2.344,0,1,0,2.754,3.793c15.132-10.989,30.425-10.625,45,.186a2.344,2.344,0,1,0,2.793-3.765Z" transform="translate(-75.093 -34.691)"></path>
+                        <path class="a" d="M101.593,105c-9.957,0-22.757,6.63-28.2,14.794a2.344,2.344,0,1,0,3.9,2.6c4.512-6.769,15.867-12.706,24.3-12.706,8.257,0,19.55,4.405,24.215,12.569a2.344,2.344,0,1,0,4.07-2.325C124.5,110.527,111.887,105,101.593,105Z" transform="translate(-61.593 -88.594)"></path>
+                        <path class="a" d="M149.688,251.594c0-7.668,5.678-13.906,12.656-13.906S175,243.926,175,251.594v2.5a2.344,2.344,0,1,0,4.687,0v-2.5c0-10.253-7.78-18.594-17.344-18.594S145,241.341,145,251.594c0,9.966,7.493,15.305,10.8,20.084a2.344,2.344,0,1,0,3.854-2.668C156.075,263.838,149.688,259.549,149.688,251.594Z" transform="translate(-122.344 -196.594)"></path>
+                        <path class="a" d="M134.19,206.142C141.434,191.655,128.553,169,108.344,169,94.116,169,81,181.059,81,196.344c0,5.549.712,10.243,4.186,15.111A2.344,2.344,0,1,0,89,208.732c-2.447-3.429-3.314-6.671-3.314-12.389,0-12.069,10.587-22.656,22.656-22.656a22.792,22.792,0,0,1,16.463,7.353c6.21,6.615,8.441,16.5,5.191,23.006-3.384,6.767-14.31,4.849-14.31-3.952,0-17.382-17.805-12.183-14.617.568a2.344,2.344,0,1,0,4.547-1.137c-.819-3.275.683-5.838,2.726-5.838,1.835,0,2.656,3.217,2.656,6.406C111,213.818,128.58,217.362,134.19,206.142Z" transform="translate(-68.344 -142.594)"></path>
+                      </g>
+                    </svg> -->
+                    </div>
+                   </a>
+                 </li>
+                 <li>
+                   <a href="#">
+                    <div class="text-center">
+                        <img src="../assets/images/svg/rupee-bl.svg" alt=" ">
+                      <!-- <svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" viewBox="0 0 80 80"> 
+                        <path class="a" d="M14.333,34.333H11a2.5,2.5,0,0,1,0-5h3.333A4.172,4.172,0,0,0,18.5,25.167V8.5a2.5,2.5,0,0,1,5,0V25.167A9.174,9.174,0,0,1,14.333,34.333Z" transform="translate(19.833 14)"></path>
+                        <path class="a" d="M21.416,27.92a16.107,16.107,0,0,1-13.82-7.9,2.5,2.5,0,0,1,4.31-2.54,11.042,11.042,0,0,0,19.027,0,2.5,2.5,0,0,1,4.31,2.54A16.126,16.126,0,0,1,21.416,27.92Z" transform="translate(16.917 37.914)"></path>
+                        <path class="a" d="M40.979,27.827a2.5,2.5,0,0,1-2.5-2.5V9.167A4.172,4.172,0,0,0,34.312,5H18.152a2.5,2.5,0,1,1,0-5h16.16a9.176,9.176,0,0,1,9.167,9.167v16.16A2.5,2.5,0,0,1,40.979,27.827Z" transform="translate(36.521)"></path>
+                        <path class="a" d="M2.5,27.827a2.5,2.5,0,0,1-2.5-2.5V9.167A9.176,9.176,0,0,1,9.167,0h16.16a2.5,2.5,0,0,1,0,5H9.167A4.172,4.172,0,0,0,5,9.167v16.16a2.5,2.5,0,0,1-2.5,2.5Z"></path>
+                        <path class="a" d="M34.312,43.479H18.152a2.5,2.5,0,0,1,0-5h16.16a4.172,4.172,0,0,0,4.167-4.167V18.152a2.5,2.5,0,0,1,5,0v16.16A9.176,9.176,0,0,1,34.312,43.479Z" transform="translate(36.521 36.521)"></path>
+                        <path class="a" d="M25.327,43.479H9.167A9.176,9.176,0,0,1,0,34.312V18.152a2.5,2.5,0,0,1,5,0v16.16a4.172,4.172,0,0,0,4.167,4.167h16.16a2.5,2.5,0,0,1,0,5Z" transform="translate(0 36.521)"></path>
+                        <path class="a" d="M7.5,6A2.5,2.5,0,0,0,5,8.5v5a2.5,2.5,0,0,0,5,0v-5A2.5,2.5,0,0,0,7.5,6Z" transform="translate(11.667 14)"></path>
+                        <path class="a" d="M19,6a2.5,2.5,0,0,0-2.5,2.5v5a2.5,2.5,0,0,0,5,0v-5A2.5,2.5,0,0,0,19,6Z" transform="translate(38.5 14)"></path>
+                      </svg> -->
+                     </div>
+                    </a>
+                 </li>
+              </ul>
+            </div>
+          </div>
+      
+          <div class="row">
+          <div class="col-6 text-center">
+            <button class="ux-button secondary" onclick="window.location.href = '#'">Later</button>
+          </div>
+            <div class="col-6 text-center">
+             <button class="ux-button primary" onclick="window.location.href = 'registration-success.html'">Yes</button>
+            </div>
+           </div>
+        </form>
+      </div> 
+
+<!-- <div class="popup-bottom confirmation">
+	<div class="row">
+	  <div class="col-12">
+		<h4 class="text-center">Confirmation</h4>
+	  </div>
+	</div>
+	<form action="#" id="terms-form"> 
+		<div class="row">
+			<div class="col-12">
+				<p>
+				   Do you want to activate the Biometric or Face recognition option?
+				</p>
+			</div>
+			<div class="col-12">
+				<ul class="sim-list">
+					<li>
+						<a href="#">
+							<div class="text-center">
+							   <svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" viewBox="0 0 80 80"> 
+								<g transform="translate(0)">
+									<path class="a" d="M383.541,0h-11.2a2.344,2.344,0,1,0,0,4.687h11.2A3.964,3.964,0,0,1,387.5,8.647v11.2a2.344,2.344,0,0,0,4.688,0V8.647A8.657,8.657,0,0,0,383.541,0Z" transform="translate(-312.188)"></path>
+									<path class="a" d="M2.344,22.187a2.344,2.344,0,0,0,2.344-2.344V8.647a3.964,3.964,0,0,1,3.96-3.959h11.2a2.344,2.344,0,0,0,0-4.687H8.647A8.657,8.657,0,0,0,0,8.647v11.2a2.344,2.344,0,0,0,2.344,2.344Z"></path>
+									<path class="a" d="M19.844,387.5H8.647a3.964,3.964,0,0,1-3.96-3.959v-11.2a2.344,2.344,0,1,0-4.687,0v11.2a8.657,8.657,0,0,0,8.647,8.647h11.2a2.344,2.344,0,0,0,0-4.688Z" transform="translate(0 -312.188)"></path>
+									<path class="a" d="M389.844,370a2.344,2.344,0,0,0-2.344,2.344v11.2a3.964,3.964,0,0,1-3.959,3.959h-11.2a2.344,2.344,0,0,0,0,4.688h11.2a8.657,8.657,0,0,0,8.647-8.647v-11.2A2.344,2.344,0,0,0,389.844,370Z" transform="translate(-312.188 -312.188)"></path>
+									<path class="a" d="M140.512,50.309c-16.268-12.067-33.8-12.374-50.546-.214a2.344,2.344,0,1,0,2.754,3.793c15.132-10.989,30.425-10.625,45,.186a2.344,2.344,0,1,0,2.793-3.765Z" transform="translate(-75.093 -34.691)"></path>
+									<path class="a" d="M101.593,105c-9.957,0-22.757,6.63-28.2,14.794a2.344,2.344,0,1,0,3.9,2.6c4.512-6.769,15.867-12.706,24.3-12.706,8.257,0,19.55,4.405,24.215,12.569a2.344,2.344,0,1,0,4.07-2.325C124.5,110.527,111.887,105,101.593,105Z" transform="translate(-61.593 -88.594)"></path>
+									<path class="a" d="M149.688,251.594c0-7.668,5.678-13.906,12.656-13.906S175,243.926,175,251.594v2.5a2.344,2.344,0,1,0,4.687,0v-2.5c0-10.253-7.78-18.594-17.344-18.594S145,241.341,145,251.594c0,9.966,7.493,15.305,10.8,20.084a2.344,2.344,0,1,0,3.854-2.668C156.075,263.838,149.688,259.549,149.688,251.594Z" transform="translate(-122.344 -196.594)"></path>
+									<path class="a" d="M134.19,206.142C141.434,191.655,128.553,169,108.344,169,94.116,169,81,181.059,81,196.344c0,5.549.712,10.243,4.186,15.111A2.344,2.344,0,1,0,89,208.732c-2.447-3.429-3.314-6.671-3.314-12.389,0-12.069,10.587-22.656,22.656-22.656a22.792,22.792,0,0,1,16.463,7.353c6.21,6.615,8.441,16.5,5.191,23.006-3.384,6.767-14.31,4.849-14.31-3.952,0-17.382-17.805-12.183-14.617.568a2.344,2.344,0,1,0,4.547-1.137c-.819-3.275.683-5.838,2.726-5.838,1.835,0,2.656,3.217,2.656,6.406C111,213.818,128.58,217.362,134.19,206.142Z" transform="translate(-68.344 -142.594)"></path>
+								</g>
+							</svg>
+						  </div>
+						 </a>
+					 </li>
+					 <li>
+					   <a href="#">
+							<div class="text-center">
+								<svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" viewBox="0 0 80 80"> 
+									<path class="a" d="M14.333,34.333H11a2.5,2.5,0,0,1,0-5h3.333A4.172,4.172,0,0,0,18.5,25.167V8.5a2.5,2.5,0,0,1,5,0V25.167A9.174,9.174,0,0,1,14.333,34.333Z" transform="translate(19.833 14)"></path>
+									<path class="a" d="M21.416,27.92a16.107,16.107,0,0,1-13.82-7.9,2.5,2.5,0,0,1,4.31-2.54,11.042,11.042,0,0,0,19.027,0,2.5,2.5,0,0,1,4.31,2.54A16.126,16.126,0,0,1,21.416,27.92Z" transform="translate(16.917 37.914)"></path>
+									<path class="a" d="M40.979,27.827a2.5,2.5,0,0,1-2.5-2.5V9.167A4.172,4.172,0,0,0,34.312,5H18.152a2.5,2.5,0,1,1,0-5h16.16a9.176,9.176,0,0,1,9.167,9.167v16.16A2.5,2.5,0,0,1,40.979,27.827Z" transform="translate(36.521)"></path>
+									<path class="a" d="M2.5,27.827a2.5,2.5,0,0,1-2.5-2.5V9.167A9.176,9.176,0,0,1,9.167,0h16.16a2.5,2.5,0,0,1,0,5H9.167A4.172,4.172,0,0,0,5,9.167v16.16a2.5,2.5,0,0,1-2.5,2.5Z"></path>
+									<path class="a" d="M34.312,43.479H18.152a2.5,2.5,0,0,1,0-5h16.16a4.172,4.172,0,0,0,4.167-4.167V18.152a2.5,2.5,0,0,1,5,0v16.16A9.176,9.176,0,0,1,34.312,43.479Z" transform="translate(36.521 36.521)"></path>
+									<path class="a" d="M25.327,43.479H9.167A9.176,9.176,0,0,1,0,34.312V18.152a2.5,2.5,0,0,1,5,0v16.16a4.172,4.172,0,0,0,4.167,4.167h16.16a2.5,2.5,0,0,1,0,5Z" transform="translate(0 36.521)"></path>
+									<path class="a" d="M7.5,6A2.5,2.5,0,0,0,5,8.5v5a2.5,2.5,0,0,0,5,0v-5A2.5,2.5,0,0,0,7.5,6Z" transform="translate(11.667 14)"></path>
+									<path class="a" d="M19,6a2.5,2.5,0,0,0-2.5,2.5v5a2.5,2.5,0,0,0,5,0v-5A2.5,2.5,0,0,0,19,6Z" transform="translate(38.5 14)"></path>
+								</svg>
+						   </div>
+					    </a>
+					 </li>
+				</ul>
+			</div>
+		</div>
+
+	  <div class="row">
+		<div class="col-6 text-center">
+			<button class="ux-button secondary" onclick="window.location.href = '#'">Later</button>
+		</div>
+		  <div class="col-6 text-center">
+			 <button class="ux-button primary" onclick="window.location.href = 'registration-success.html'">Yes</button>
+		  </div>
+	   </div>
+	</form>
+</div>  -->
+
+<!-- Confirmation Popup End -->	
+
+
+    <div class="ios-nav-overlay"></div>
+
+    <!-- =========== modal popup end ===============  -->
+
+
+    <script src="../js/lib/jquery.min.js"></script>
+    <script src="../js/lib/bootstrap.min.js"></script>
+    <script src="../js/lib/jquery-ui.min.js"></script>
+    <script src="../js/lib/owl.carousel.min.js"></script>
+    <script src="../js/lib/jquery.preloader.js"></script>
+    <script src="../js/lib/popper.min.js"></script>
+    <script src="../js/lib/jquery.mousewheel.min.js"></script>
+    <script src="../js/lib/jquery.mCustomScrollbar.js"></script>
+    <script src="../js/lib/datatables.min.js"></script>
+    <script src="../js/common.js"></script>
+    
+
+    <script type="text/javascript">
+        //  createGlobalNavMore();
+        boxCarousel();
+        imgCarousel();
+
+     
+        // $("nav.ios-global-nav-custom ul.lst-ios-nav li a").click(function(){
+        // 	console.log('its working');
+        //    $("nav.ios-global-nav-custom ul.lst-ios-nav li a").removeClass("active");
+        // 	if (!$(this).hasClass('active') ) {
+        // 		 $(this).addClass('active');
+        // 	 } else {
+        // 		  $(this).removeClass('active');
+        // 	    }
+        //  });  
+
+
+        $(function() {
+            $('nav.ios-global-nav-custom ul.lst-ios-nav li').click(function() {
+                $(this).addClass('active').siblings().removeClass('active');
+            });
+        })
+
+        function boxCarousel() {
+            $('.box-owl').owlCarousel({
+                autoplay: false,
+                autoplayTimeout: 3000,
+                loop: false,
+                rewind: true,
+                nav: true,
+                responsive: {
+                    0: {
+                        items: 1
+                    },
+                    600: {
+                        items: 1
+                    },
+                    768: {
+                        items: 2,
+                        nav: false,
+                        // loop:false
+                    },
+                    1024: {
+                        items: 2,
+                        nav: false,
+                        // loop:false
+                    },
+                    1200: {
+                        items: 2,
+                        nav: false,
+                        // loop:false
+                    },
+                    1366: {
+                        items: 3,
+                        nav: false,
+                        // loop:false
+                    },
+                    1400: {
+                        items: 3,
+                        nav: false,
+                        // loop:false
+                    },
+                    1600: {
+                        items: 3,
+                        nav: false,
+                        // loop:false
+                    }
+                }
+            })
+        }
+
+        function imgCarousel() {
+            $('.img-owl').owlCarousel({
+                autoplay: true,
+                autoplayTimeout: 4000,
+                loop: false,
+                rewind: true,
+                nav: true,
+                responsive: {
+                    0: {
+                        items: 1
+                    },
+                    600: {
+                        items: 1
+                    },
+                    768: {
+                        items: 2,
+                        nav: false,
+                        // loop:false
+                    },
+                    1024: {
+                        items: 2,
+                        nav: false,
+                        // loop:false
+                    },
+                    1200: {
+                        items: 2,
+                        nav: false,
+                        // loop:false
+                    },
+                    1366: {
+                        items: 3,
+                        nav: false,
+                        // loop:false
+                    },
+                    1400: {
+                        items: 3,
+                        nav: false,
+                        // loop:false
+                    },
+                    1600: {
+                        items: 3,
+                        nav: false,
+                        // loop:false
+                    }
+                }
+            })
+        }
+
+        $("ul.theme-list li").click(function() {
+            console.log('its working');
+            $("ul.theme-list li").removeClass("active");
+            if (!$(this).hasClass('active')) {
+                $(this).addClass('active');
+                // $( 'div.ios-nav-overlay' ).fadeIn( 400 );
+                // $( 'body' ).css( 'overflow', 'hidden' );
+            } else {
+                $(this).removeClass('active');
+                // $( 'div.ios-nav-overlay' ).fadeOut(  );
+                // $( 'body' ).css( 'overflow', 'auto' );
+            }
+        });
+
+        // Check Balance Amount 
+
+        $("a.drp-enterdata.balance-info").click(function() {
+
+            if ($(this).hasClass("active")) {
+                $(this).removeClass('active')
+            } else {
+                $(this).addClass('active')
+            }
+        })
+
+        // Check Balance Amount 
+
+
+
+        $("button.btn-logout").click(function() {
+            // console.log('working');
+            if (!$('div.popup-bottom.logout1').hasClass('popup-active')) {
+                $('div.popup-bottom.logout1').addClass('popup-active');
+                $('div.ios-nav-overlay').fadeIn(400);
+            } else {
+                $('div.popup-bottom.logout1').removeClass('popup-active');
+                $('div.ios-nav-overlay').fadeOut(400);
+            }
+        });
+
+        $("button.profile-btn").click(function() {
+            // console.log('working');
+            if (!$('div.popup-bottom.profile1').hasClass('popup-active')) {
+                $('div.popup-bottom.profile1').addClass('popup-active');
+                $('div.ios-nav-overlay').fadeIn(400);
+            } else {
+                $('div.popup-bottom.profile1').removeClass('popup-active');
+                $('div.ios-nav-overlay').fadeOut(400);
+            }
+        });
+
+        $("a.delete-btn").click(function() {
+            // console.log('working');
+            $('div.popup-bottom.profile1').removeClass('popup-active');
+            if (!$('div.popup-bottom.delete-profile-pic').hasClass('popup-active')) {
+                $('div.popup-bottom.delete-profile-pic').addClass('popup-active');
+                $('div.ios-nav-overlay').fadeIn(400);
+            } else {
+                $('div.popup-bottom.delete-profile-pic').removeClass('popup-active');
+                $('div.ios-nav-overlay').fadeOut(400);
+            }
+        });
+
+        $("button.close-btn").click(function() {
+            // console.log('working');
+            $('div.popup-bottom.logout1').removeClass('popup-active');
+            $('div.popup-bottom.profile1').removeClass('popup-active');
+            $('div.popup-bottom.delete-profile-pic').removeClass('popup-active');
+            $('div.popup-bottom.upi-account').removeClass('popup-active');
+            $('div.ios-nav-overlay').fadeOut(400);
+        });
+
+        $("a.add-upi-id").click(function() {
+            // console.log('working');
+            if (!$('div.popup-bottom.upi-account').hasClass('popup-active')) {
+                $('div.popup-bottom.upi-account').addClass('popup-active');
+                $('div.ios-nav-overlay').fadeIn(400);
+            } else {
+                $('div.popup-bottom.upi-account').removeClass('popup-active');
+                $('div.ios-nav-overlay').fadeOut(400);
+            }
+        });
+
+        $("div.ios-nav-overlay").click(function(e) {
+            event.stopPropagation();
+            // console.log('working');
+            $('div.popup-bottom.logout1').removeClass('popup-active');
+            $('div.popup-bottom.profile1').removeClass('popup-active');
+            $('div.popup-bottom.delete-profile-pic').removeClass('popup-active');
+            $('div.popup-bottom.upi-account').removeClass('popup-active');
+            $('div.ios-nav-overlay').fadeOut(400);
+        });
+
+        $(window).preloader({
+           delay: 1500
+       });
+
+       $("ul.sim-list li a").click(function(){
+        console.log('its working');
+        $("ul.sim-list li a").removeClass("active");
+        if (!$(this).hasClass('active') ) {
+                $(this).addClass('active');
+                // $( 'div.ios-nav-overlay' ).fadeIn( 400 );
+                // $( 'body' ).css( 'overflow', 'hidden' );
+            } else {
+                $(this).removeClass('active');
+                // $( 'div.ios-nav-overlay' ).fadeOut(  );
+                // $( 'body' ).css( 'overflow', 'auto' );
+            }
+	});  
+
+
+    </script>
+
+</body>
+
+</html>

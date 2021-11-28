@@ -1,0 +1,482 @@
+
+<nav class="global-nav" *ngIf="commonPageComponent?.sidebarNAv == 'OmniNAv'">
+
+    <div class="navcolor "  [ngClass]=" {'mobileDevice': constant.getIsCordova() == 'cordova'}">
+        <div class="nav-items">
+            <div class="nav-header"  >
+                <div class="brand-logo"  *ngIf="this.constant.getIsCordova() == 'web' ">
+                    <a href="javascript:;" (click)="gotoPage('dashboard',0,'menu')">
+                        <img src="./assets/images/logo/psb-bank.png" alt="PSB-logo" title="PSB">
+                        <!-- <img src="./assets/images/logo/psb-logo.png" alt="PSB-logo" title="PSB"> -->
+
+                    </a>
+                </div>
+                <div class="nav-header" *ngIf="this.constant.getIsCordova() == 'cordova' ">
+                  <!-- <a href="javascript:;" class="btn-closeglnav hi-btn-menu"  (click)="closeSideNAV()"></a> -->
+                       <div class="user-details1">
+                      <a href="javascript:;">
+                          <span class="round-circle">
+                            <img  *ngIf="DataService.profileImage && DataService.profileImage != ''"[src]="DataService.profileImage" onerror="this.src='./assets/images/svg/user-profile-w.svg'" alt="user-img">
+                              <h3 *ngIf="DataService.profileImage == ''">{{this.DataService.userDetails.customerName | firstLastChar}}</h3>
+                          </span>
+                      </a>
+                      <div class="in-details">
+                          <h5>{{this.DataService.userDetails.customerName}}</h5>
+                          <small>{{'LAST_LOGIN' | translate}} {{ this.DataService.userDetails.mobileLastLogin }}</small>
+                      </div>
+                  </div>
+              </div>
+            </div>
+            <ul class="lst-nav-items" *ngIf="DataService.isLoanAccount" >
+                <li  *ngIf="this.constant.getIsCordova() == 'cordova' " (click)="gotoMyprofile()" >
+                  <a >
+                      <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 16 16" style="enable-background:new 0 0 16 16;" xml:space="preserve">
+                          <g transform="translate(643 1998)">
+                              <rect x="-645.6" y="-2000.6" class="st0" width="21.3" height="21.3" style="fill-opacity:0" />
+                              <path d="M-629-1982.5h-12c-0.6,0-1-0.4-1-1v-2.1c0-1,0.6-1.9,1.6-2.3l3.1-1.2c0.2-0.1,0.3-0.3,0.3-0.5v-0.4
+              c-0.9-0.2-1.5-1-1.5-1.9v-2c0-1.9,1.6-3.5,3.5-3.5c1.9,0,3.5,1.6,3.5,3.5v2c0,0.9-0.6,1.7-1.5,1.9l0,0v0.4c0,0.2,0.1,0.4,0.3,0.5
+              l3.1,1.2c1,0.4,1.6,1.3,1.6,2.3v2.1C-628-1983-628.4-1982.5-629-1982.5C-629-1982.5-629-1982.5-629-1982.5z M-635-1996.5
+              c-1.4,0-2.5,1.1-2.5,2.5v2c0,0.4,0.3,0.8,0.7,1c0.4,0.1,0.8,0.5,0.8,1v0.4c0,0.6-0.4,1.2-1,1.4l-3.1,1.2c-0.6,0.2-0.9,0.8-0.9,1.4
+              v2.1h12v-2.1c0-0.6-0.4-1.2-0.9-1.4l-3.1-1.2c-0.6-0.2-0.9-0.8-0.9-1.4v-0.4c0-0.5,0.3-0.9,0.8-1c0.4-0.1,0.7-0.5,0.7-1v-2
+              C-632.5-1995.4-633.6-1996.5-635-1996.5z" />
+                          </g>
+                      </svg>
+                      My Profile
+                      <span class="chevron"></span>
+                  </a>
+                  </li>
+             
+                  <li [ngClass]="{ 'drilldown' :  menu.subMenu.length > 0  }"  *ngFor="let menu of menuListsloan;let i=index" >
+                      <a [ngClass]=" {'active': commonPageComponent.currentpageRoute == '/'+ menu.route }" (click)="gotoPage(menu?.route,i,'menu')" >
+                          <img [src]="'./assets/images/svg/'+ menu.icon" alt="icon" class="omniimg" data-toggle="tooltip" data-placement="right" title="{{menu.menuName | translate}} "> {{menu.menuName | translate}}
+                           <div class="hovering-option">{{menu.menuName | translate}}</div><span class="chevron" *ngIf="menu?.subMenu.length > 0"></span>
+                            
+                       </a>
+                       <!-- <div class="overlap-badge" ><small>Coming Soon</small></div> -->
+                      <div *ngIf="menu?.subMenu.length > 0" class="mysubnavigation-items">
+                          <ul class="lst-subnavigation">
+                              <li *ngFor="let sub of menu?.subMenu;let j=index" >
+                                  <a (click)="gotoPage(sub?.route,j,'sub')" [ngClass]=" {'active': commonPageComponent.currentpageRoute == '/'+ sub.route }">
+                                      {{sub.menuName | translate}}
+                                     
+                                  </a>
+                              </li>
+  
+                          </ul>
+                      </div>
+                     
+                  </li>
+  
+                  <li class="d-block d-md-none d-lg-none" [hidden]="!isBiometricAvailable">
+                      <div class="row fingerprint" style="overflow:hidden" >
+                          <div class="col-9 col-md-9 p-0">
+                              <a >
+                                  <img src="assets/images/svg/fingerprint2.svg" alt="fingerprint-icon">
+                                  Enable Fingerprint / FaceID
+                              </a>
+                          </div>
+                          <div class="col-3 col-md-3">
+                              <div class="custom-control2">
+                                  <div class="custom-control custom-switch pad-2">
+                                      <input type="checkbox" class="custom-control-input" id="customSwitch1" [(ngModel)]="isBiometricEnabled" (change)="enableDisableBiometric($event)">
+                                      <label class="custom-control-label md" for="customSwitch1"> </label>
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+                  </li>
+              </ul>
+
+
+              <ul class="lst-nav-items" *ngIf="DataService.isNRENRO" >
+                <li  *ngIf="this.constant.getIsCordova() == 'cordova' " (click)="gotoMyprofile()" >
+                  <a >
+                      <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 16 16" style="enable-background:new 0 0 16 16;" xml:space="preserve">
+                          <g transform="translate(643 1998)">
+                              <rect x="-645.6" y="-2000.6" class="st0" width="21.3" height="21.3" style="fill-opacity:0" />
+                              <path d="M-629-1982.5h-12c-0.6,0-1-0.4-1-1v-2.1c0-1,0.6-1.9,1.6-2.3l3.1-1.2c0.2-0.1,0.3-0.3,0.3-0.5v-0.4
+              c-0.9-0.2-1.5-1-1.5-1.9v-2c0-1.9,1.6-3.5,3.5-3.5c1.9,0,3.5,1.6,3.5,3.5v2c0,0.9-0.6,1.7-1.5,1.9l0,0v0.4c0,0.2,0.1,0.4,0.3,0.5
+              l3.1,1.2c1,0.4,1.6,1.3,1.6,2.3v2.1C-628-1983-628.4-1982.5-629-1982.5C-629-1982.5-629-1982.5-629-1982.5z M-635-1996.5
+              c-1.4,0-2.5,1.1-2.5,2.5v2c0,0.4,0.3,0.8,0.7,1c0.4,0.1,0.8,0.5,0.8,1v0.4c0,0.6-0.4,1.2-1,1.4l-3.1,1.2c-0.6,0.2-0.9,0.8-0.9,1.4
+              v2.1h12v-2.1c0-0.6-0.4-1.2-0.9-1.4l-3.1-1.2c-0.6-0.2-0.9-0.8-0.9-1.4v-0.4c0-0.5,0.3-0.9,0.8-1c0.4-0.1,0.7-0.5,0.7-1v-2
+              C-632.5-1995.4-633.6-1996.5-635-1996.5z" />
+                          </g>
+                      </svg>
+                      My Profile
+                      <span class="chevron"></span>
+                  </a>
+                  </li>
+             
+                  <li [ngClass]="{ 'drilldown' :  menu.subMenu.length > 0  }"  *ngFor="let menu of menuListsNri;let i=index" >
+                      <a [ngClass]=" {'active': commonPageComponent.currentpageRoute == '/'+ menu.route }" (click)="gotoPage(menu?.route,i,'menu')" >
+                          <img [src]="'./assets/images/svg/'+ menu.icon" alt="icon" class="omniimg" data-toggle="tooltip" data-placement="right" title="{{menu.menuName | translate}} "> {{menu.menuName | translate}}
+                           <div class="hovering-option">{{menu.menuName | translate}}</div><span class="chevron" *ngIf="menu?.subMenu.length > 0"></span>
+                            
+                       </a>
+                       <!-- <div class="overlap-badge" ><small>Coming Soon</small></div> -->
+                      <div *ngIf="menu?.subMenu.length > 0" class="mysubnavigation-items">
+                          <ul class="lst-subnavigation">
+                              <li *ngFor="let sub of menu?.subMenu;let j=index" >
+                                  <a (click)="gotoPage(sub?.route,j,'sub')" [ngClass]=" {'active': commonPageComponent.currentpageRoute == '/'+ sub.route }">
+                                      {{sub.menuName | translate}}
+                                     
+                                  </a>
+                              </li>
+  
+                          </ul>
+                      </div>
+                     
+                  </li>
+  
+                  <li class="d-block d-md-none d-lg-none" [hidden]="!isBiometricAvailable">
+                      <div class="row fingerprint" style="overflow:hidden" >
+                          <div class="col-9 col-md-9 p-0">
+                              <a >
+                                  <img src="assets/images/svg/fingerprint2.svg" alt="fingerprint-icon">
+                                  Enable Fingerprint / FaceID
+                              </a>
+                          </div>
+                          <div class="col-3 col-md-3">
+                              <div class="custom-control2">
+                                  <div class="custom-control custom-switch pad-2">
+                                      <input type="checkbox" class="custom-control-input" id="customSwitch1" [(ngModel)]="isBiometricEnabled" (change)="enableDisableBiometric($event)">
+                                      <label class="custom-control-label md" for="customSwitch1"> </label>
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+                  </li>
+              </ul>
+
+
+
+              <ul class="lst-nav-items"  *ngIf="!DataService.isLoanAccount && !DataService.isNRENRO">
+                <li  *ngIf="this.constant.getIsCordova() == 'cordova' " (click)="gotoMyprofile()" >
+                  <a >
+                      <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 16 16" style="enable-background:new 0 0 16 16;" xml:space="preserve">
+                          <g transform="translate(643 1998)">
+                              <rect x="-645.6" y="-2000.6" class="st0" width="21.3" height="21.3" style="fill-opacity:0" />
+                              <path d="M-629-1982.5h-12c-0.6,0-1-0.4-1-1v-2.1c0-1,0.6-1.9,1.6-2.3l3.1-1.2c0.2-0.1,0.3-0.3,0.3-0.5v-0.4
+              c-0.9-0.2-1.5-1-1.5-1.9v-2c0-1.9,1.6-3.5,3.5-3.5c1.9,0,3.5,1.6,3.5,3.5v2c0,0.9-0.6,1.7-1.5,1.9l0,0v0.4c0,0.2,0.1,0.4,0.3,0.5
+              l3.1,1.2c1,0.4,1.6,1.3,1.6,2.3v2.1C-628-1983-628.4-1982.5-629-1982.5C-629-1982.5-629-1982.5-629-1982.5z M-635-1996.5
+              c-1.4,0-2.5,1.1-2.5,2.5v2c0,0.4,0.3,0.8,0.7,1c0.4,0.1,0.8,0.5,0.8,1v0.4c0,0.6-0.4,1.2-1,1.4l-3.1,1.2c-0.6,0.2-0.9,0.8-0.9,1.4
+              v2.1h12v-2.1c0-0.6-0.4-1.2-0.9-1.4l-3.1-1.2c-0.6-0.2-0.9-0.8-0.9-1.4v-0.4c0-0.5,0.3-0.9,0.8-1c0.4-0.1,0.7-0.5,0.7-1v-2
+              C-632.5-1995.4-633.6-1996.5-635-1996.5z" />
+                          </g>
+                      </svg>
+                      My Profile
+                      <span class="chevron"></span>
+                  </a>
+                  </li>
+             
+                  <li [ngClass]="{  'click-disabled' : menu.ID == 'comingsoon' , 'drilldown' :  menu.subMenu.length > 0  }" *ngFor="let menu of menuLists;let i=index"  [hidden]="menu.menuName == 'BHIM UPI' && DataService.vpaAddressList.length == 0 ">
+                      <a [disabled]="menu.ID == 'comingsoon'" [ngClass]=" {'active': commonPageComponent.currentpageRoute == '/'+ menu.route ,  'click-disabled' : menu.ID == 'comingsoon'}" (click)="gotoPage(menu?.route,i,'menu')" >
+                          <img [src]="'./assets/images/svg/'+ menu.icon" alt="icon" class="omniimg" data-toggle="tooltip" data-placement="right" title="{{menu.menuName | translate}} "> {{menu.menuName | translate}}
+                           <div class="hovering-option">{{menu.menuName | translate}}</div><span class="chevron" *ngIf="menu?.subMenu.length > 0"></span>
+                            
+                       </a>
+                       <div class="overlap-badge" *ngIf="menu.ID == 'comingsoon'"><small> {{'COMING_SOON' | translate}}</small></div>
+                      <div *ngIf="menu?.subMenu.length > 0" class="mysubnavigation-items">
+                          <ul class="lst-subnavigation">
+                              <li *ngFor="let sub of menu?.subMenu;let j=index" >
+                                  <a (click)="gotoPage(sub?.route,j,'sub')" [ngClass]=" {'active': commonPageComponent.currentpageRoute == '/'+ sub.route }">
+                                      {{sub.menuName | translate}}
+                                     
+                                  </a>
+                              </li>
+  
+                          </ul>
+                      </div>
+                     
+                  </li>
+  
+                  <li class="d-block d-md-none d-lg-none" [hidden]="!isBiometricAvailable">
+                      <div class="row fingerprint" style="overflow:hidden" >
+                          <div class="col-9 col-md-9 p-0">
+                              <a >
+                                  <img src="assets/images/svg/fingerprint2.svg" alt="fingerprint-icon">
+                                  Enable Fingerprint / FaceID
+                              </a>
+                          </div>
+                          <div class="col-3 col-md-3">
+                              <div class="custom-control2">
+                                  <div class="custom-control custom-switch pad-2">
+                                      <input type="checkbox" class="custom-control-input" id="customSwitch1" [(ngModel)]="isBiometricEnabled" (change)="enableDisableBiometric($event)">
+                                      <label class="custom-control-label md" for="customSwitch1"> </label>
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+                  </li>
+              </ul>
+           
+        </div>
+        <div class="nav-footer">
+            <div class="poweredby">
+                <div class="row">
+                    <div class="col-12 col-xl-12 p-0">
+
+                        <p>
+                            <img src="assets/images/svg/version-g.svg" alt="version-icon">  Version {{appVersion}}
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</nav>
+
+<!-- <nav class="global-nav whitebg" *ngIf="commonPageComponent?.sidebarNAv == 'OmniMobileNav'">
+
+  <div class="nav-header">
+      <a href="javascript:;" (click)="closeSideNAV()" class="btn-closeglnav hi-btn-menu"></a>
+
+      <div class="user-details1">
+          <a href="javascript:;">
+              <span class="round-circle"><img  *ngIf="DataService.profileImage && DataService.profileImage != ''"[src]="DataService.profileImage" onerror="this.src='./assets/images/svg/user-profile-w.svg'" alt="user-img">
+                  <h3 *ngIf="DataService.profileImage == ''">{{DataService.userName | firstLastChar}}</h3>
+
+              </span>
+          </a>
+          <div class="in-details">
+              <h5>{{userName}}</h5>
+
+              <small>{{'LAST_LOGIN' | translate}} {{ upiLastLogin }}</small>
+
+          </div>
+      </div>
+  </div>
+  <div class="nav-items">
+      <ul class="lst-nav-item">
+          <li [ngClass]="menu?.subMenu.length > 0 ? 'drilldown': menu.menuName == 'THEME_SETTINGS' ? 'd-lg-none':''" *ngFor="let menu of menuListsMobile;let i=index" [hidden]="menu.Status != 'Active'">
+              <a [ngClass]="menu?.subMenu.length > 0 ? 'glnv-dropdown' : menu.menuName == 'DASHBOARD' ? 'active':'' " (click)="gotoPage(menu?.route,i,'menu')">
+                  <img [src]="'./assets/images/svg/'+ menu.icon" alt="icon"> {{menu.menuName | translate}}
+                  <span class="chevron"></span>
+              </a>
+              <div *ngIf="menu?.subMenu.length > 0" class="mysubnavigation-items">
+                  <ul class="lst-subnavigation">
+                      <li *ngFor="let subMenu of menu?.subMenu;let j=index">
+                          <a (click)="gotoPage(subMenu?.route,j,'subMenu')">
+                              <img [src]="'./assets/images/svg/'+ subMenu.icon" alt="icon"> {{subMenu.menuName | translate}}
+                          </a>
+                      </li>
+                  </ul>
+              </div>
+          </li>
+      </ul>
+      <div class="nav-content">
+          <div class="inner1">
+              <div class="row1" [hidden]="!isBiometricAvailable">
+                  <div class="col-9 col-md-9 pr-0">
+                      <a href="javascript:;">
+                          <img src="assets/images/svg/fingerprint2.svg" alt="fingerprint-icon"> {{'FINGERPINT_FACEID' | translate }}
+                      </a>
+                  </div>
+                  <div class="col-3 col-md-3">
+                      <div class="custom-control2">
+                          <div class="custom-control custom-switch pad-2">
+                          <input type="checkbox" class="custom-control-input" id="customSwitch1" [(ngModel)]="isBiometricEnabled" (change)="enableDisableBiometric($event)">
+                          <label class="custom-control-label md" for="customSwitch1"> </label>
+                      </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+      <div class="nav-footer pad">
+          <div class="powered">
+              <div class="row1">
+                  <div class="col-8 col-md-8">
+                      <a href="javascript:;"  (click)="openLogoutModal()">
+                          <img src="assets/images/svg/logout-r.svg" alt="logout-icon"> {{'LOGOUT' | translate}}
+                      </a>
+                  </div>
+                  <div class="col-4 col-md-4">
+                      <p>V{{appVersion}}</p>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+</nav> -->
+
+
+
+<div class="popup-bottom show-biometric-enable-disable-info">
+    <div class="row">
+        <div class="col-12">
+            <h4 class="text-center" *ngIf="!isBiometricEnabled"> {{'DISABLE_FINGERPRINT_FACE_ID' | translate}}</h4>
+            <h4 class="text-center" *ngIf="isBiometricEnabled"> {{'ENABLE_FINGERPRINT_FACE_ID' | translate}}</h4>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12">
+            <p *ngIf="isBiometricEnabled">{{ 'DO_YOU_WANT_TO_ENABLE_FINGERPRINT_FACEID_AUTH' | translate }}</p>
+            <p *ngIf="!isBiometricEnabled">{{'DO_YOU_WANT_TO_DISABLE_FINGERPRINT_FACEID_AUTH' | translate }}</p>
+        </div>
+    </div>
+    <div class="row1 mt-2">
+        <div class="col-6 text-center">
+            <button class="ux-button secondary no md close-btn" (click)="closePopup('div.popup-bottom.show-biometric-enable-disable-info')">{{'NO' | translate}}</button>
+        </div>
+        <div class="col-6 text-center">
+            <button class="logout-btn ux-button primary md" (click)="registerDegisterBiometric('BTN')">{{'YES' | translate}}</button>
+        </div>
+    </div>
+</div>
+
+<!-- Show Common Info Popup Start -->
+<div class="popup-bottom show-common-info-sim sm-popup">
+    <div class="row1">
+        <div class="col-12">
+            <h4 class="text-center"> <img src="./assets/images/svg/information.svg" alt="information-icon">{{ DataService.informationLabel}}
+            </h4>
+        </div>
+    </div>
+    <div class="row1">
+        <div class="col-12">
+            <p *ngIf="DataService.information != ''">{{ DataService.information}}</p>
+        </div>
+    </div>
+    <div class="row1  mt-2">
+        <div class="col-12 text-center" (click)="closePopup('div.popup-bottom.show-common-info-sim')">
+            <button class="ux-button primary submit-btn" type="button" (click)="closeAllPopUp()">{{DataService.primaryBtnText}}</button>
+        </div>
+    </div>
+</div>
+
+<div class="popup-bottom show-biometric-info-popup">
+    <div class="row1">
+        <div class="col-12">
+            <h4 class="text-center"> <img src="./assets/images/svg/information.svg" alt="information-icon"> {{informationLabel}}
+            </h4>
+        </div>
+    </div>
+    <div class="row1">
+        <div class="col-12">
+            <p>{{ information}}</p>
+        </div>
+    </div>
+    <div class="row1  mt-2">
+        <div class="col-12 text-center" (click)="closeBiometricInfoPopup()">
+            <button class="ux-button primary submit-btn" type="button">{{'OK' | translate}}</button>
+        </div>
+    </div>
+</div>
+
+
+<nav class="global-nav whitebg" *ngIf="commonPageComponent?.sidebarNAv == 'OmniMobileNav'">
+  <div class="nav-header">
+      <a href="javascript:;" class="btn-closeglnav hi-btn-menu" (click)="closeSideNAV()"></a>
+           <div class="user-details1">
+          <a href="javascript:;">
+              <span class="round-circle">
+                <img  *ngIf="DataService.profileImage && DataService.profileImage != ''"[src]="DataService.profileImage" onerror="this.src='./assets/images/svg/user-profile-w.svg'" alt="user-img">
+                  <h3 *ngIf="DataService.profileImage == ''">{{this.DataService.userDetails.customerName | firstLastChar}}</h3>
+              </span>
+          </a>
+          <div class="in-details">
+              <h5>{{this.DataService.userDetails.customerName}}</h5>
+              <small>{{'LAST_LOGIN' | translate}} {{ this.DataService.userDetails.mobileLastLogin }}</small>
+          </div>
+      </div>
+  </div>
+  <div class="nav-items ">
+      <ul class="lst-nav-items custom-nav">
+          <li  [ngClass]="menu?.subMenu.length > 0 ? 'drilldown': menu.menuName == 'THEME_SETTINGS' ? 'd-lg-none':''" *ngFor="let menu of menuListsMobile;let i=index" [hidden]="menu.Status != 'Active'">
+              <a   [ngClass]="menu?.subMenu.length > 0 ? 'glnv-dropdown' : menu.menuName == 'DASHBOARD' ? 'active':'' " (click)="gotoPage(menu?.route,i,'menu')">
+                <img [src]="'./assets/images/svg/'+ menu.icon" alt="icon"> {{menu.menuName | translate}}
+                <span class="chevron"></span>
+              </a>
+              <div *ngIf="menu?.subMenu.length > 0" class="mysubnavigation-items">
+                  <ul class="lst-subnavigation">
+                    <li *ngFor="let subMenu of menu?.subMenu;let j=index">
+                      <a (click)="gotoPage(subMenu?.route,j,'subMenu')">
+                          <img [src]="'./assets/images/svg/'+ subMenu.icon" alt="icon"> {{subMenu.menuName | translate}}
+                      </a>
+                  </li>
+                  </ul>
+              </div>
+          </li>
+      </ul>
+
+<div class="popup-bottom show-biometric-enable-disable-info">
+    <div class="row">
+        <div class="col-12">
+            <h4 class="text-center" *ngIf="!isBiometricEnabled"> {{'DISABLE_FINGERPRINT_FACE_ID' | translate}}</h4>
+            <h4 class="text-center" *ngIf="isBiometricEnabled"> {{'ENABLE_FINGERPRINT_FACE_ID' | translate}}</h4>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12">
+            <p *ngIf="isBiometricEnabled">{{ 'DO_YOU_WANT_TO_ENABLE_FINGERPRINT_FACEID_AUTH' | translate }}</p>
+            <p *ngIf="!isBiometricEnabled">{{'DO_YOU_WANT_TO_DISABLE_FINGERPRINT_FACEID_AUTH' | translate }}</p>
+        </div>
+    </div>
+    <div class="row1 mt-2">
+        <div class="col-6 text-center">
+            <button class="ux-button secondary no md close-btn" (click)="closePopup('div.popup-bottom.show-biometric-enable-disable-info')">{{'NO' | translate}}</button>
+        </div>
+        <div class="col-6 text-center">
+            <button class="logout-btn ux-button primary md" (click)="registerDegisterBiometric('BTN')">{{'YES' | translate}}</button>
+        </div>
+    </div>
+</div>
+
+<div class="popup-bottom show-common-info-sim sm-popup">
+    <div class="row1">
+        <div class="col-12">
+            <h4 class="text-center"> <img src="./assets/images/svg/information.svg" alt="information-icon">{{ DataService.informationLabel}}
+            </h4>
+        </div>
+    </div>
+    <div class="row1">
+        <div class="col-12">
+            <p *ngIf="DataService.information != ''">{{ DataService.information}}</p>
+        </div>
+    </div>
+    <div class="row1  mt-2">
+        <div class="col-12 text-center" (click)="closePopup('div.popup-bottom.show-common-info-sim')">
+            <button class="ux-button primary submit-btn" type="button" (click)="closeAllPopUp()">{{DataService.primaryBtnText}}</button>
+        </div>
+    </div>
+</div>
+
+<div class="popup-bottom show-biometric-info-popup">
+    <div class="row1">
+        <div class="col-12">
+            <h4 class="text-center"> <img src="./assets/images/svg/information.svg" alt="information-icon"> {{informationLabel}}
+            </h4>
+        </div>
+    </div>
+    <div class="row1">
+        <div class="col-12">
+            <p>{{ information}}</p>
+        </div>
+    </div>
+    <div class="row1  mt-2">
+        <div class="col-12 text-center" (click)="closeBiometricInfoPopup()">
+            <button class="ux-button primary submit-btn" type="button">{{'OK' | translate}}</button>
+        </div>
+    </div>
+</div>
+
+
+      <div class="nav-footer pad">
+        <div class="powered">
+            <div class="row1">
+                <div class="col-8 col-md-8">
+                    <a href="javascript:;"  (click)="openLogoutModal()">
+                        <img src="assets/images/svg/logout-r.svg" alt="logout-icon"> {{'LOGOUT' | translate}}
+                    </a>
+                </div>
+                <div class="col-4 col-md-4">
+                    <p>V{{appVersion}}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+  </div>
+</nav>
+

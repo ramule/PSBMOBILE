@@ -1,0 +1,940 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <meta charset="UTF-8">
+    <title>Registration</title>
+    <link href="../css/lib/bootstrap.min.css" rel="stylesheet">
+    <link href="../css/lib/owl.carousel.min.css" rel="stylesheet">
+    <link href="../css/lib/jquery-ui.min.css" rel="stylesheet">
+	<link href="../css/lib/datatables.min.css" rel="stylesheet" >
+	<link href="../css/lib/jquery.mCustomScrollbar.min.css" rel="stylesheet">
+	<link href="../css/main.css" rel="stylesheet">
+
+</head>
+
+<body>
+
+    <div class="ios-nav-overlay"></div>
+
+    <div  class="prelogin-page">
+ 
+          <!-- header section Start -->
+
+	  <header class="global-header">
+		<div class="desk-header">
+			<div class="container-fluid">
+				<div class="row">
+				  	<div class="col-xl-3 col-lg-3 col-md-3 col-sm-2 col-2 d-none d-md-block d-lg-block d-xl-block">
+						   <ul class="headerlist">
+                               <li>
+                                   <a href="#"> <img src="../assets/images/svg/home1.svg" alt="home-icon"> <em>Home</em></a>
+                               </li>
+                           </ul>
+					   </div>
+					<div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
+						<div class="brand-heading text-center m-auto">
+							 <span class="logo-img">
+                                <img src="../assets/images/logo/logo1.png" alt="psb-logo">
+							 </span> 
+						</div>
+					</div> 
+					<div class="col-xl-6 col-lg-6 col-md-6 col-sm-2 col-2 d-none d-md-block d-lg-block d-xl-block">
+						 
+					</div> 
+				</div> 
+			</div> 
+		</div> 
+	 </header> <!-- global-header -->
+
+<!-- header section End -->
+                    
+  
+  
+            <div class="registration-steps">
+                <div class="row">
+                    <div class="col-12 position-static">
+   
+                        <div class="inner-header">
+                            <div class="registration-container">
+                                <a class="prev-tab" (click)="mobPrevclick()"><img src="../assets/images/svg/left-arrow.svg">Back to Login</a>
+                                <h4>Registration</h4>
+                                <!-- <a class="close-registration" ><img (click)="mobPrevclick('cross')" src="../assets/images/svg/close-w.svg"></a> -->
+                            </div>
+                        </div>
+
+                        <div class="registrationsteps-block registration-container clearfix">
+                       
+                            <div class="steps-block">
+                                <span class="close"><img src="../assets/images/svg/close-b.svg"></span>
+                                <ul>
+                                    <li  class="active">
+                                        <input type="radio" onchange="goTo(1)"  name="steps"    > 
+                                        <span class="step-number">1</span><b class="step-name"> Account Details</b>
+                                    </li>
+                                    <li  class="">
+                                        <input type="radio" onchange="goTo(2)"  name="steps"    >
+                                        <span class="step-number">2</span><b class="step-name"> User Authentication</b>
+                                    </li>
+                                    <li  class="">
+                                        <input type="radio" onchange="goTo(3)"  name="steps"    >
+                                        <span class="step-number">3</span><b class="step-name"> Set Login Credentials</b>
+                                    </li>
+                                    <li  class="">
+                                        <input type="radio" onchange="goTo(4)"  name="steps"    >
+                                        <span class="step-number">4</span><b class="step-name">Create UPI ID</b>
+                                    </li>
+                                    <li  class="">
+                                        <input type="radio" onchange="goTo(5)"  name="steps"    >
+                                        <span class="step-number">5</span><b class="step-name"> Set MPIN</b>
+                                    </li>
+                                    <li  class="">
+                                        <input type="radio" onchange="goTo(6)"  name="steps"    >
+                                        <span class="step-number">6</span><b class="step-name"> Set TPIN</b>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="tab-block">
+                                <div class="tempstep active" id="1">
+                                    <div class="row">
+                                        <div class="col-12 col-lg-6 col-md-10 col-sm-12 position-static">
+                                          
+                                           <div class="row1">
+                                             <div class="col-12">
+                                                <ul class="step-list">
+                                                    <li class="step-matched">
+                                                        <em> <span class="primary">STEP 1 </span> <span class="secondary">of STEP 6</span> </em>
+                                                     </li>
+                                                </ul>
+                                               <div class="tab-header">
+                                                  <h4>Account Details</h4>
+                                                </div>
+                                             </div>
+                                             <div class="col-12">
+                                               <div class="details-section">
+                                                 <div class="row1">
+                                                   <div Class="col-12">
+                                                     <div class="ux-input">
+                                                           <label>Mobile Number</label>
+                                                             <input type="text" placeholder="10 Digit Mobile Number" formControlName="mobNumber"  >
+                                                           <p></p>
+                                                         </div>
+                                                     </div>  
+                                                     <div Class="col-12">
+                                                         <div class="ux-input">
+                                                             <label>Customer ID</label>
+                                                               <input type="text" placeholder='Your Customer ID' formControlName="custId" limit-to="8" numbersOnly >
+                                                              
+                                                             <p></p>
+                                                           </div>
+                                                       </div>  
+                                                       <div Class="col-12">
+                                                           <div class="ux-input">
+                                                               <label>Account Number</label>
+                                                                 <input type="text" placeholder='Your Account Number' formControlName="accNo" limit-to="{{accountNumberLen}}" numbersOnly >
+                                                                
+                                                               <p></p>
+                                                             </div>
+                                                         </div>
+                                                         <div Class="col-12">
+                                                           <div class="ux-input">
+                                                               <label>Email ID(Optional)</label>
+                                                                 <input type="text" placeholder='Your Account Number' formControlName="accNo" limit-to="{{accountNumberLen}}" numbersOnly >
+                                                                
+                                                               <p></p>
+                                                             </div>
+                                                         </div>  
+                                                   </div>
+                                               </div>
+                                             </div>
+                                             <div class="col-12 col-lg-10 col-md-12 col-sm-12 m-auto position-static">
+                                               <div class="ux-footer border-n">
+                                                 <div class="row1">
+                                                   <div class="col-6 col-lg-6 col-md-6 col-sm-6">
+                                                     
+                                                     </div>
+                                                   <div class="col-6 col-lg-6 col-md-6 col-sm-6 col-12 text-right">
+                                                      <button type="button" class="ux-button sm  secondary  cancel-btn " onclick="prevStep(1)"  >CANCEL</button>
+                                                     <button class="ux-button primary sm  ml-2" onclick="opencustpoup('otp')">Next</button>
+                                                   </div>
+                                                   </div>
+                                                 </div> 
+                                             </div>
+                                          </div> 
+                                        
+                                        </div>
+                                        <div class="col-12 col-lg-6 col-md-2 col-sm-12  d-none d-lg-block d-xl-block">
+                                            <img src="../assets/images/svg/regImg1.svg" class="right-regImg">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="tempstep" id="2">
+                                    <div class="row">
+                                        <div class="col-12 col-lg-6 col-md-10 col-sm-12 position-static">
+                                            <div class="row1">
+                                                <div class="col-12 position-static">
+                                                    <ul class="step-list">
+                                                        <li class="step-matched">
+                                                            <em> <span class="primary">STEP 2 </span> <span class="secondary">of STEP 6</span> </em>
+                                                         </li>
+                                                    </ul>
+                                                   <div class="tab-header">
+                                                      <h4>User Authentication</h4>
+                                                    </div>
+                                                   
+                                                </div>
+                                                <div class="col-12 position-static">
+                                                    <ul class="channel-tab">
+                                                        <li><a href="#debit-card" class="active"><img src="../assets/images/svg/card.svg">Debit Card</a></li>
+                                                        <li><a href="#banktoken"><img src="../assets/images/icons/card.png">Bank Token</a></li>
+                                                    </ul>
+                                                    <div class="creditials-tab-panel custom-panel">
+                                                        <div id="debit-card" class="main-pannel active">
+                                                            <div class="row1">
+                                                                <div class="col-12">
+                                                                    <div class="ux-input m-0">
+                                                                        <label>Enter debit card</label>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-sm-12">
+                                                                   <div class="ux-input debit-number grp-digit">
+                                                                       <input id="spassword1" type="number"  oninput="this.value = this.value.replace(/[^0-9.]/g, ''); this.value = this.value.replace(/(\..*)\./g, '$1');" onKeyDown="if(this.value.length==4 && event.keyCode!=8) return false;" placeholder="&#9679 &#9679 &#9679 &#9679" onkeyup="onKeyUpEvent(1, event)" onfocus="onFocusEvent(1)"/>
+                                                                    </div> 
+                                                                   <div class="ux-input debit-number grp-digit">
+                                                                       <input id="spassword2" type="number" oninput="this.value = this.value.replace(/[^0-9.]/g, ''); this.value = this.value.replace(/(\..*)\./g, '$1');" onKeyDown="if(this.value.length==4 && event.keyCode!=8) return false;"  placeholder="&#9679 &#9679 &#9679 &#9679" onkeyup="onKeyUpEvent(2, event)" onfocus="onFocusEvent(2)"/>
+                                                                    </div> 
+                                                                
+                                                                   <div class="ux-input debit-number grp-digit">
+                                                                       <input id="spassword3" type="number"  oninput="this.value = this.value.replace(/[^0-9.]/g, ''); this.value = this.value.replace(/(\..*)\./g, '$1');" onKeyDown="if(this.value.length==4 && event.keyCode!=8) return false;" placeholder="&#9679 &#9679 &#9679 &#9679" onkeyup="onKeyUpEvent(3, event)" onfocus="onFocusEvent(3)"/>
+                                                                    </div> 
+                                                               
+                                                                   <div class="ux-input debit-number grp-digit">
+                                                                       <input id="spassword4" type="number"  oninput="this.value = this.value.replace(/[^0-9.]/g, ''); this.value = this.value.replace(/(\..*)\./g, '$1');" onKeyDown="if(this.value.length==4 && event.keyCode!=8) return false;" placeholder="&#9679 &#9679 &#9679 &#9679" onkeyup="onKeyUpEvent(4, event)" onfocus="onFocusEvent(4)"/>
+                                                                    </div> 
+                                                                </div> 
+                                                            </div>
+                                                            <div class="row1">
+                                                                <div class="col-12 col-md-12">
+                                                                    <div class="ux-input mb-0">
+                                                                        <label>Debit Card Expire Date</label>
+                                                                    </div>
+                                                                </div> 
+                                                                <div class="col-12 col-md-12">
+                                                                    
+                                                                           <div class="ux-input expiry-input input-data">
+                                                                               <input id="expiry1" type="number" oninput="this.value = this.value.replace(/[^0-3.]/g, ''); this.value = this.value.replace(/(\..*)\./g, '$1');" onKeyDown="if(this.value.length==1 && event.keyCode!=8) return false;" placeholder="M" onkeyup="keyUpEvent(1, event)" onfocus="focusEvent(1)" />
+                                                                            </div> 
+                                                                       <!-- </div>
+                                                                       <div class="col-sm-2 col-2 col-md-2 pl-0"> -->
+                                                                           <div class="ux-input expiry-input input-data">
+                                                                               <input id="expiry2" type="number" oninput="this.value = this.value.replace(/[^0-3.]/g, ''); this.value = this.value.replace(/(\..*)\./g, '$1');" onKeyDown="if(this.value.length==1 && event.keyCode!=8) return false;" placeholder="M" onkeyup="keyUpEvent(2, event)" onfocus="focusEvent(2)" />
+                                                                            </div> 
+                                                                       <!-- </div>
+                                                                       <div class="col-sm-1 col-1 col-md-1 pl-0 pr-0"> -->
+                                                                          <p class="custom-text">/</p>
+                                                                        <!-- </div>
+                                                                       <div class="col-sm-2 col-2 col-md-2 pr-1"> -->
+                                                                           <div class="ux-input expiry-input input-data">
+                                                                               <input id="expiry3" type="number" oninput="this.value = this.value.replace(/[^0-9.]/g, ''); this.value = this.value.replace(/(\..*)\./g, '$1');" onKeyDown="if(this.value.length==1 && event.keyCode!=8) return false;" placeholder="Y" onkeyup="keyUpEvent(3, event)" onfocus="focusEvent(3)" />
+                                                                            </div> 
+                                                                      <!--  </div>
+                                                                       <div class="col-sm-2 col-2 col-md-2 pl-0"> -->
+                                                                           <div class="ux-input expiry-input input-data">
+                                                                               <input id="expiry4" type="number"   oninput="this.value = this.value.replace(/[^0-9.]/g, ''); this.value = this.value.replace(/(\..*)\./g, '$1');" onKeyDown="if(this.value.length==1 && event.keyCode!=8) return false;"  placeholder="Y" onkeyup="keyUpEvent(4, event)" onfocus="focusEvent(4)" />
+                                                                            </div> 
+                                                                       </div>
+                                                                     
+                                                           
+                                                                <div class="col-12 col-md-12">
+                                                                    <div class="ux-input mb-0">
+                                                                        <label>Debit card PIN</label>
+                                                                    </div>
+                                                                </div> 
+                                                                <div class="col-12 col-md-12">
+                                                                    
+                                                                           <div class="ux-input expiry-input card-pin">
+                                                                               <input id="expiry1" type="number" oninput="this.value = this.value.replace(/[^0-3.]/g, ''); this.value = this.value.replace(/(\..*)\./g, '$1');" onKeyDown="if(this.value.length==1 && event.keyCode!=8) return false;" placeholder="&#9679" onkeyup="keyUpEvent(1, event)" onfocus="focusEvent(1)" />
+                                                                            </div> 
+                                                                       <!-- </div>
+                                                                       <div class="col-sm-2 col-2 col-md-2 pl-0 pr-1"> -->
+                                                                           <div class="ux-input expiry-input card-pin">
+                                                                               <input id="expiry2" type="number" oninput="this.value = this.value.replace(/[^0-3.]/g, ''); this.value = this.value.replace(/(\..*)\./g, '$1');" onKeyDown="if(this.value.length==1 && event.keyCode!=8) return false;" placeholder="&#9679" onkeyup="keyUpEvent(2, event)" onfocus="focusEvent(2)" />
+                                                                            </div> 
+                                                                      <!--  </div>
+                                                                      
+                                                                       <div class="col-sm-2 col-2 col-md-2 pl-0 pr-1"> -->
+                                                                           <div class="ux-input expiry-input card-pin">
+                                                                               <input id="expiry3" type="number" oninput="this.value = this.value.replace(/[^0-9.]/g, ''); this.value = this.value.replace(/(\..*)\./g, '$1');" onKeyDown="if(this.value.length==1 && event.keyCode!=8) return false;" placeholder="&#9679" onkeyup="keyUpEvent(3, event)" onfocus="focusEvent(3)" />
+                                                                            </div> 
+                                                                      <!--  </div>
+                                                                       <div class="col-sm-2 col-2 col-md-2 pl-0 pr-0"> -->
+                                                                           <div class="ux-input expiry-input card-pin">
+                                                                               <input id="expiry4" type="number"   oninput="this.value = this.value.replace(/[^0-9.]/g, ''); this.value = this.value.replace(/(\..*)\./g, '$1');" onKeyDown="if(this.value.length==1 && event.keyCode!=8) return false;"  placeholder="&#9679" onkeyup="keyUpEvent(4, event)" onfocus="focusEvent(4)" />
+                                                                            </div> 
+                                                                       </div>
+                                                                     </div> 
+                                                               
+                                                        </div>
+                                                        <div id="banktoken" class="main-pannel">
+                                                        
+                                                            <div class="row1">
+                                                                <div class="col-12 col-xl-12 col-lg-12 col-md-12">
+                                                                    <div class="ux-input pb-0">
+                                                                        <label for="upiId">Token Number</label>
+                                                                          <input type="text" name="upiId" placeholder="Enter Token Number" value="" required="" limit-to="40">
+                                                                    </div>
+                                                                </div> 
+                                                                
+                                                                <div class="col-12 col-md-12">
+                                                                    <div class="text-right">
+                                                                        <!-- <a href="javascript:;"  data-toggle="modal" data-target="#usernamePolicy" class="reg-txt">{{'USERNAME_POLICY' |translate}}</a> -->
+                                                                        <span class="token-expired">Your token is expired</span>
+                                                                        <a href="javascript:;" class="check-availability">Regenerate token</a>
+                                                                    </div>
+                                                                </div>
+
+                                                            </div> 
+                                                        </div> 
+                                                       
+                                                    </div>
+                                                    <div class="col-12 col-lg-10 col-md-12 col-sm-12 m-auto position-static">
+                                                        <div class="ux-footer border-n">
+                                                            <div class="row1">
+                                                                <div class="col-6 col-lg-6 col-md-6 col-sm-6">
+                                                                
+                                                                </div>
+                                                                <div class=" col-lg-6 col-md-6 col-sm-6 text-right col-12">
+                                                                    <button class="ux-button sm secondary cancel-btn" onclick="prevStep(2)"  >Previous</button>
+                                                                    <button class="ux-button sm primary  ml-2" onclick="nextStep(2)">Next</button>
+                                                                </div>
+                                                            </div>
+                                                        </div> 
+                                                    </div>
+                                                </div> 
+                                            </div> 
+                                        </div>
+                                        <div class="col-12 col-lg-6 col-md-2 col-sm-12 d-none d-lg-block d-xl-block">
+                                            <img src="../assets/images/svg/ChannelCredentials.svg" class="right-regImg">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="tempstep" id="3">
+                                    <div class="row">
+                                        <div class="col-12 col-lg-6 col-md-10 col-sm-12 position-static">
+                                            <!-- <form [formGroup]="registrationFormstep3" (ngSubmit)="submitStep3()"> -->
+                                            <div class="row1">
+                                                <div class="col-12">
+                                                    <ul class="step-list">
+                                                        <li class="step-matched">
+                                                            <em> <span class="primary">STEP 3 </span> <span class="secondary">of STEP 6</span> </em>
+                                                         </li>
+                                                    </ul>
+                                                   <div class="tab-header">
+                                                      <h4>Set Login Credentials</h4>
+                                                    </div>
+                                                    
+                                                </div>
+                                                <div class="col-12">
+                                                    <div class="details-section">
+                                                        <div class="row1">
+                                                            <div Class="col-12 col-md-12">
+                                                                <div class="ux-input twoicons">
+                                                                    <label>Set Username</label>
+                                                                    <!-- <label>{{'SET_USERNAME' | translate}}</label> -->
+                                                                    <!-- <input type="text" limit-to="40" alphabetsOnly placeholder="{{'ENTER_USER_NAME' | translate}}" formControlName="username" username > -->
+                                                                   
+                                                                    <img src="../assets/images/svg/username.svg" class="left-img"> 
+                                                                    <a href="javascript:;"  data-toggle="modal" data-target="#usernamePolicy"><img src="../assets/images/svg/information.svg" class="right-img"> </a>
+                                                                    <input type="text" limit-to="40" alphabetsOnly placeholder="Enter  Username" formControlName="username" username >
+                                                                    <!-- <span class="errormsg" *ngIf="registrationFormstep3.controls['username'].touched && registrationFormstep3.controls['username'].hasError('required')">{{"PLEASE_ENTER_USERNAME" | translate }}</span> -->
+                                                                    <p></p>
+                                                                </div>
+                                                            </div> 
+                                                            <div class="col-12 col-md-12">
+                                                                <div class="text-right">
+                                                                    <!-- <a href="javascript:;"  data-toggle="modal" data-target="#usernamePolicy" class="reg-txt">{{'USERNAME_POLICY' |translate}}</a> -->
+                                                                    <a href="javascript:;"   class="check-availability">Check Availability</a>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="details-section">
+                                                        <div class="row1">
+                                                            <div Class="col-12 col-md-12">
+                                                                <div class="ux-input twoicons">
+                                                                    <label>Set Password</label>
+                                                                <!-- <label>{{'SET_PASSWORD' | translate}}</label> -->
+                                                                    <!-- <input type="password" placeholder="{{'ENTER_PASSWORD' | translate}}" formControlName="password" lmit-to="40" password > -->
+                                                                    <img src="../assets/images/svg/password-b.svg" class="left-img"> 
+                                                                    <a href="javascript:;"  data-toggle="modal" data-target="#passwordPolicy"><img src="../assets/images/svg/information.svg" class="right-img"> </a>
+                                                                    <input type="password" placeholder="Enter Password" formControlName="password" lmit-to="40" password >
+                                                                    <!-- <span class="errormsg" *ngIf="registrationFormstep3.controls['password'].touched && registrationFormstep3.controls['password'].hasError('required')">{{"PLEASE_ENTER_PASSWORD" | translate }}</span>
+                                                                    <span class="errormsg" *ngIf="!registrationFormstep3.controls['password'].hasError('minlength') && registrationFormstep3.controls['password'].hasError('passwordStrength')  && registrationFormstep3.controls['password'].touched">{{registrationFormstep3.get('password').errors['passwordStrength'] | translate}}</span> -->
+                                                                <p></p>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-12 col-md-12">
+                                                                <!-- <div class="text-right">
+                                                                    <a href="javascript:;"  data-toggle="modal" data-target="#passwordPolicy" class="reg-txt">{{'PASSWORD_POLICY' | translate}}</a>
+                                                                </div> -->
+                                                            </div> 
+                                                            <div Class="col-12 col-md-12">
+                                                                <div class="ux-input twoicons">
+                                                                    <label>Confirm Password</label>
+                                                                    <!-- <label>{{'CONFIRM_PASSWORD' | translate}}</label>
+                                                                    <input type="password" placeholder="{{'ENTER_CONFIRM_PASSWORD' | translate}}" formControlName="confPassword" lmit-to="40" password > -->
+                                                                    <img src="../assets/images/svg/password-b.svg" class="left-img"> 
+                                                                    <input type="password" placeholder="Re-enter Password" formControlName="confPassword" lmit-to="40" password >
+                                                                    <!-- <span class="errormsg" *ngIf="registrationFormstep3.controls['confPassword'].touched && registrationFormstep3.controls['confPassword'].hasError('required')">{{"PLEASE_ENTER_CONF_PASSWORD" | translate }}</span>
+                                                                    <span class="errormsg"*ngIf="!registrationFormstep3.controls['confPassword'].hasError('required') && !registrationFormstep3.controls['confPassword'].hasError('minlength') && registrationFormstep3.hasError('passwordNotMatch')  && registrationFormstep3.controls['confPassword'].touched">{{'PASSWORD_MISMATCH_MSG' | translate}}</span> -->
+                                                                    <p></p>
+                                                                </div>
+                                                            </div>  
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                 <div class="col-12 col-lg-10 col-md-12 col-sm-12 position-static">
+                                                    <div class="ux-footer border-n">
+                                                        <div class="row1">
+                                                            <div class="col-12 col-lg-6 col-md-6 col-sm-6">
+                                                                
+                                                            </div>
+                                                            <div class="col-12 col-lg-6 col-md-6 col-sm-6 text-right">
+                                                                <!-- <button class="ux-button secondary sm  cancel-btn" type="button" (click)="cancelbtn()" *ngIf="DataService.isFromOmniReg.isStepIII" >{{'PREVIOUS' | translate}}</button>
+                                                                <button class="ux-button primary sm  ml-2" type="submit">{{'NEXT' | translate}}</button> -->
+                                                                <button class="ux-button sm secondary cancel-btn" onclick="prevStep(3)"  >Previous</button>
+                                                                    <button class="ux-button sm primary  ml-2" onclick="nextStep(3)">Next</button>
+                                                            </div>
+                                                        </div>
+                                                    </div> 
+                                                </div>
+                                            </div> 
+                                         </div> 
+                                         <div class="col-12 col-lg-6 col-md-2 col-sm-12 d-none d-lg-block d-xl-block">
+                                            <img src="../assets/images/svg/regImg1.svg" class="right-regImg">
+                                        </div>
+                                    </div>
+   
+                                    <!-- <button (click)="prevstep(3)" class="ux-button sm secondary">Prev</button ><button (click)="nextstep(3)" class="ux-button sm primary">next</button> -->
+                                </div>
+                                <div  class="tempstep" id="4" >
+                                    <div class="row">
+                                        <div class="col-12 col-lg-6 col-md-10 col-sm-12 position-static">
+                                            <!-- <form [formGroup]="registrationFormstep3" (ngSubmit)="submitStep3()"> -->
+                                            <div class="row1">
+                                                <div class="col-12">
+                                                    <ul class="step-list">
+                                                        <li class="step-matched">
+                                                            <em> <span class="primary">STEP 4 </span> <span class="secondary">of STEP 6</span> </em>
+                                                         </li>
+                                                    </ul>
+                                                   <div class="tab-header">
+                                                        <h4>Create UPI (Unified Payment Interface) ID</h4> 
+                                                        <small>UPI is an instant payment system helping in transferring the funds <a href="#">More</a></small>
+                                                    </div>
+                                                </div>
+                                                <div class="col-12">
+                                                    <div class="details-section">
+                                                        <div class="row1">
+                                                            <div Class="col-12 col-md-12">
+                                                                <div class="ux-input pb-0">
+                                                                    <label for="upiId">UPI ID</label>
+                                                                      <input type="text" name="upiId" placeholder="Enter UPI ID/Mobile Number" value="" required="" limit-to="40">
+                                                                      <span class="show-info2">@psb</span>
+                                                                </div>
+                                                            </div> 
+                                                            <div class="col-12 col-md-12">
+                                                                <div class="text-right">
+                                                                    <!-- <a href="javascript:;"  data-toggle="modal" data-target="#usernamePolicy" class="reg-txt">{{'USERNAME_POLICY' |translate}}</a> -->
+                                                                    <a href="javascript:;" class="check-availability">Check Availability</a>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="row1">
+                                                            <div Class="col-12 col-md-12">
+                                                               <div class="link-upi-account ">
+                                                                   <label>Linked Bank Account</label>
+                                                                    <a href="#" class="clearfix">
+                                                                    <img src="../assets/images/logo/logo-small.png">
+                                                                    <div class="txt-block">
+                                                                        <span><sup>**** ****  ****</sup>9381 </span>
+                                                                        <b>Savings Account</b>
+                                                                    </div>
+                                                                    
+                                                                    </a>   
+                                                                </div>
+                                                            </div> 
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-12 col-lg-10 col-md-12 col-sm-12 position-static">
+                                                    <div class="ux-footer border-n">
+                                                        <div class="row1">
+                                                            <div class="col-12 col-lg-6 col-md-6 col-sm-6">
+                                                                
+                                                            </div>
+                                                            <div class="col-12 col-lg-6 col-md-6 col-sm-6 text-right">
+                                                                <!-- <button class="ux-button secondary sm  cancel-btn" type="button" (click)="cancelbtn()" *ngIf="DataService.isFromOmniReg.isStepIII" >{{'PREVIOUS' | translate}}</button>
+                                                                <button class="ux-button primary sm  ml-2" type="submit">{{'NEXT' | translate}}</button> -->
+                                                                <button class="ux-button sm secondary cancel-btn" onclick="prevStep(4)"  >Previous</button>
+                                                                    <button class="ux-button sm primary  ml-2" onclick="nextStep(4)">Next</button>
+                                                            </div>
+                                                        </div>
+                                                    </div> 
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-12 col-lg-6 col-md-2 col-sm-12 d-none d-lg-block d-xl-block">
+                                            <img src="../assets/images/svg/UPIID.svg" class="right-regImg">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="tempstep" id="5">
+                                    <div class="row">
+                                        <div class="col-12 col-lg-6 col-md-10 col-sm-12 position-static">
+                                            <!-- <form [formGroup]="registrationFormstep3" (ngSubmit)="submitStep3()"> -->
+                                            <div class="row1">
+                                                <div class="col-12">
+                                                   
+                                                    <ul class="step-list">
+                                                        <li class="step-matched">
+                                                            <em> <span class="primary">STEP 5 </span> <span class="secondary">of STEP 6</span> </em>
+                                                         </li>
+                                                    </ul>
+                                                   <div class="tab-header clearfix">
+                                                    <h4>Set MPIN</h4> <a href="#" class="skip">Skip this step >> </a>
+                                                        <small>MPIN is 6 digit numerical quick access PIN, which can be used for login into your mobile application</small>
+                                                    </div>
+                                                </div>
+                                                <div class="col-12 col-lg-12 col-md-12 col-sm-12">
+                                                    <div class="box-password">
+                                                        <label>Enter MPIN</label>
+                                                        <input id="spassword1" type="password" maxlength="1" placeholder="●" onkeyup="onKeyUpEvent(1, event)" onfocus="onFocusEvent(1)">
+                                                        <input id="spassword2" type="password" maxlength="1" placeholder="●" onkeyup="onKeyUpEvent(2, event)" onfocus="onFocusEvent(2)">
+                                                        <input id="spassword3" type="password" maxlength="1" placeholder="●" onkeyup="onKeyUpEvent(3, event)" onfocus="onFocusEvent(3)">
+                                                        <input id="spassword4" type="password" maxlength="1" placeholder="●" onkeyup="onKeyUpEvent(4, event)" onfocus="onFocusEvent(4)">
+                                                        <input id="spassword5" type="password" maxlength="1" placeholder="●" onkeyup="onKeyUpEvent(5, event)" onfocus="onFocusEvent(5)">
+                                                        <input id="spassword6" type="password" maxlength="1" placeholder="●" onkeyup="onKeyUpEvent(6, event)" onfocus="onFocusEvent(6)">
+                                                     </div> 
+                                                     <div class="box-password">
+                                                        <label>Re-enter MPIN</label>
+                                                        <input id="cpassword1" type="password" maxlength="1" placeholder="●" onkeyup="onKeyUpEvent(1, event)" onfocus="onFocusEvent(1)">
+                                                        <input id="cpassword2" type="password" maxlength="1" placeholder="●" onkeyup="onKeyUpEvent(2, event)" onfocus="onFocusEvent(2)">
+                                                        <input id="cpassword3" type="password" maxlength="1" placeholder="●" onkeyup="onKeyUpEvent(3, event)" onfocus="onFocusEvent(3)">
+                                                        <input id="cpassword4" type="password" maxlength="1" placeholder="●" onkeyup="onKeyUpEvent(4, event)" onfocus="onFocusEvent(4)">
+                                                        <input id="cpassword5" type="password" maxlength="1" placeholder="●" onkeyup="onKeyUpEvent(5, event)" onfocus="onFocusEvent(5)">
+                                                        <input id="cpassword6" type="password" maxlength="1" placeholder="●" onkeyup="onKeyUpEvent(6, event)" onfocus="onFocusEvent(6)">
+                                                     </div> 
+                                                 </div>
+                                                <div class="col-12 col-lg-10 col-md-12 col-sm-12 position-static">
+                                                    <div class="ux-footer border-n">
+                                                        <div class="row1">
+                                                            
+                                                            <div class="col-12 col-lg-12 col-md-12 col-sm-12 text-right">
+                                                                <!-- <button class="ux-button secondary sm  cancel-btn" type="button" (click)="cancelbtn()" *ngIf="DataService.isFromOmniReg.isStepIII" >{{'PREVIOUS' | translate}}</button>
+                                                                <button class="ux-button primary sm  ml-2" type="submit">{{'NEXT' | translate}}</button> -->
+                                                                <button class="ux-button sm secondary cancel-btn" onclick="prevStep(5)"  >Previous</button>
+                                                                    <button class="ux-button sm primary  ml-2" onclick="nextStep(5)">Next</button>
+                                                            </div>
+                                                        </div>
+                                                    </div> 
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-12 col-lg-6 col-md-2 col-sm-12 d-none d-lg-block d-xl-block">
+                                            <img src="../assets/images/svg/SetTPIN.svg" class="right-regImg">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="tempstep " id="6">
+                                    <div class="row">
+                                        <div class="col-12 col-lg-6 col-md-10 col-sm-12 position-static">
+                                            <!-- <form [formGroup]="registrationFormstep3" (ngSubmit)="submitStep3()"> -->
+                                            <div class="row1">
+                                                <div class="col-12">
+                                                    
+                                                    <ul class="step-list">
+                                                        <li class="step-matched">
+                                                            <em> <span class="primary">STEP 6 </span> <span class="secondary">of STEP 6</span> </em>
+                                                         </li>
+                                                    </ul>
+                                                   <div class="tab-header">
+                                                    <h4>Set TPIN</h4> 
+                                                    <small>TPIN is 6 digit numerical PIN, used while doing transactions</small>
+                                                    </div>
+                                                </div>
+                                                <div class="col-12 col-lg-12 col-md-12 col-sm-12">
+                                                    <div class="box-password">
+                                                        <label>Enter TPIN</label>
+                                                        <input id="spassword1" type="password" maxlength="1" placeholder="●" onkeyup="onKeyUpEvent(1, event)" onfocus="onFocusEvent(1)">
+                                                        <input id="spassword2" type="password" maxlength="1" placeholder="●" onkeyup="onKeyUpEvent(2, event)" onfocus="onFocusEvent(2)">
+                                                        <input id="spassword3" type="password" maxlength="1" placeholder="●" onkeyup="onKeyUpEvent(3, event)" onfocus="onFocusEvent(3)">
+                                                        <input id="spassword4" type="password" maxlength="1" placeholder="●" onkeyup="onKeyUpEvent(4, event)" onfocus="onFocusEvent(4)">
+                                                        <input id="spassword5" type="password" maxlength="1" placeholder="●" onkeyup="onKeyUpEvent(5, event)" onfocus="onFocusEvent(5)">
+                                                        <input id="spassword6" type="password" maxlength="1" placeholder="●" onkeyup="onKeyUpEvent(6, event)" onfocus="onFocusEvent(6)">
+                                                     </div> 
+                                                     <div class="box-password">
+                                                        <label>Re-enter TPIN</label>
+                                                        <input id="cpassword1" type="password" maxlength="1" placeholder="●" onkeyup="onKeyUpEvent(1, event)" onfocus="onFocusEvent(1)">
+                                                        <input id="cpassword2" type="password" maxlength="1" placeholder="●" onkeyup="onKeyUpEvent(2, event)" onfocus="onFocusEvent(2)">
+                                                        <input id="cpassword3" type="password" maxlength="1" placeholder="●" onkeyup="onKeyUpEvent(3, event)" onfocus="onFocusEvent(3)">
+                                                        <input id="cpassword4" type="password" maxlength="1" placeholder="●" onkeyup="onKeyUpEvent(4, event)" onfocus="onFocusEvent(4)">
+                                                        <input id="cpassword5" type="password" maxlength="1" placeholder="●" onkeyup="onKeyUpEvent(5, event)" onfocus="onFocusEvent(5)">
+                                                        <input id="cpassword6" type="password" maxlength="1" placeholder="●" onkeyup="onKeyUpEvent(6, event)" onfocus="onFocusEvent(6)">
+                                                     </div> 
+                                                 </div>
+                                                <div class="col-12 col-lg-10 col-md-12 col-sm-12 position-static">
+                                                    <div class="ux-footer border-n">
+                                                        <div class="row1">
+                                                            
+                                                            <div class="col-12 col-lg-12 col-md-12 col-sm-12 text-right">
+                                                                <!-- <button class="ux-button secondary sm  cancel-btn" type="button" (click)="cancelbtn()" *ngIf="DataService.isFromOmniReg.isStepIII" >{{'PREVIOUS' | translate}}</button>
+                                                                <button class="ux-button primary sm  ml-2" type="submit">{{'NEXT' | translate}}</button> -->
+                                                                <button class="ux-button sm secondary cancel-btn" onclick="prevStep(5)"  >Previous</button>
+                                                                <a href="registration-success.html" class="ux-button sm primary  ml-2" >Next</a>
+                                                            </div>
+                                                        </div>
+                                                    </div> 
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-12 col-lg-6 col-md-2 col-sm-12 d-none d-lg-block d-xl-block">
+                                            <img src="../assets/images/svg/SetTPIN.svg" class="right-regImg">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                    </div>
+                </div>
+            </div>
+         </div>
+        <!-- .full-container -->
+ 
+    <!-- Footer Code Starts Here -->
+		<footer>   
+			<div class="global-footer full-footer">
+			 <div class="in-glfooter">
+				 <div class="container-fluid">
+					 <div class="row">
+						  <div class="col-4 col-xl-6 col-lg-6 col-md-6 col-sm-4">
+							 <div class="glfooter-content">
+								 <div class="glfooter-box">
+									 <div class="glcopyright-text">
+										 <em>Powered by</em> <img src="../assets/images/kiya-logo.png">
+									 </div>
+								 </div>
+							 </div>
+						 </div>
+						 <div class="col-8 col-xl-6 col-lg-6 col-md-6 col-sm-8">
+							 <div class="glfooter-content">
+								 <div class="glfooter-box">
+									 <div class="glcopyright-text1">
+										 <em>Copyright © 2020 Infrasoft Technologies Ltd. All rights reserved.</em>
+									 </div>
+								 </div>
+							 </div>
+						 </div>
+					 </div>
+				 </div>
+			 </div>
+		 </div>
+    </footer>  
+  <!-- Footer Code Ends -->
+
+        
+    </div>
+    <!-- .prelogin-page -->
+    <div class="popup-bottom upi-account numberConfirmation text-center otp" id="otp">
+        <div class="row1">
+            <div class="col-12 col-md-2 col-lg-2 col-xl-2">
+            </div>
+            <div class="col-10 col-md-8 col-lg-8 col-xl-8">
+                <h4>OTP Verification</h4>
+            </div>
+            <div class="col-2 col-md-2 col-lg-2 col-xl-2">
+                <button class="ux-button-icon close-btn">
+                    <img src="../assets/images/svg/close-b.svg" alt="cross-icon" class="img-vsmall">
+                </button>
+            </div>
+        </div>
+        <div class="row1">
+            <div class="col-12">
+                <div class="imgblock">
+                    <img src="../assets/images/icons/mobile.svg">
+                </div>
+                <span class="otpinfo">Pleas enter 6 digit OTP sent on your mobile number and Email ID </span>
+                <h5 class="text-center">Mobile OTP</h5>
+                <div class="box-password d-inline-block">
+    
+                    <input id="mobile1" type="password" maxlength="1" placeholder="●" onkeyup="onKeyUpEventforAll(1, event ,'mobile' )"
+                        onfocus="onFocusEventAll(1,'mobile')" >
+                    <input id="mobile2" type="password" maxlength="1" placeholder="●" onkeyup="onKeyUpEventforAll(2, event,'mobile')"
+                        onfocus="onFocusEventAll(2,'mobile')">
+                    <input id="mobile3" type="password" maxlength="1" placeholder="●" onkeyup="onKeyUpEventforAll(3, event,'mobile')"
+                        onfocus="onFocusEventAll(3,'mobile')">
+                    <input id="mobile4" type="password" maxlength="1" placeholder="●" onkeyup="onKeyUpEventforAll(4, event,'mobile')"
+                        onfocus="onFocusEventAll(4 ,'mobile')" >
+                    <input id="mobile5" type="password" maxlength="1" placeholder="●" onkeyup="onKeyUpEventforAll(5, event,'mobile')"
+                        onfocus="onFocusEventAll(5 ,'mobile')" >
+                    <input id="mobile6" type="password" maxlength="1" placeholder="●" onkeyup="onKeyUpEventforAll(6, event,'mobile')"
+                        onfocus="onFocusEventAll(6,'mobile')" >
+                        <div class="clearfix mt-1">
+                            <b class="float-left">2:00</b><a class="float-right" >Resend</a>
+                        </div>
+                </div>
+                
+                
+                <div class="button-footer">
+                    <a  class="ux-button sm primary"  data-dismiss="modal" onclick="nextStep(1)"
+                       >Submit</a>
+                </div>
+            </div>
+            
+        </div>
+    
+    </div>
+
+    <div id="numberConfirmation1" class="modal fade " role="dialog">
+		<div class="modal-dialog modal-dialog-centered">
+			  <div class="modal-content">
+				
+				<div class="modal-body text-center">
+                    <div class="imgblock">
+                        <img src="../assets/images/icons/mobile.svg">    
+                    </div>
+					<h3>OTP Verification</h3>
+
+                    <span>OTP sent on your mobile number ending with ******0967</span>
+                    <div class="box-password d-inline-block">
+                        
+                        <input id="otp1" type="password" maxlength="1" placeholder="●" onkeyup="onKeyUpEvent(1, event)" onfocus="onFocusEvent(1)">
+                        <input id="otp2" type="password" maxlength="1" placeholder="●" onkeyup="onKeyUpEvent(2, event)" onfocus="onFocusEvent(2)">
+                        <input id="otp3" type="password" maxlength="1" placeholder="●" onkeyup="onKeyUpEvent(3, event)" onfocus="onFocusEvent(3)">
+                        <input id="otpd4" type="password" maxlength="1" placeholder="●" onkeyup="onKeyUpEvent(4, event)" onfocus="onFocusEvent(4)">
+                        <input id="otp5" type="password" maxlength="1" placeholder="●" onkeyup="onKeyUpEvent(5, event)" onfocus="onFocusEvent(5)">
+                        <input id="otp6" type="password" maxlength="1" placeholder="●" onkeyup="onKeyUpEvent(6, event)" onfocus="onFocusEvent(6)">
+                        <div class="clearfix mt-1   ">
+                            <b class="float-left">02.00</b><a class="float-right" >Resend</a>    
+                        </div>
+                     </div>
+				 </div>
+				<div class="button-footer">
+					<button type="button" class="ux-button sm secondary" data-dismiss="modal">No</button>
+					<button type="button" class="ux-button sm primary"   data-dismiss="modal" onclick="nextStep(1)">Submit</button>
+				</div>
+			 </div>
+
+		</div> 
+	</div>
+
+    <div id="usernamePolicy" class="modal fade " role="dialog">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                        <div class="mh-bottom">
+                        <div class="row1">
+                            <div class="col-10"><h6>Username Policy</h6></div>
+                            <div class="col-2"><a href="javascript:;" data-dismiss="modal"><span class="mh-cross" ></span></a></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-body">
+                    <h4> Lorem Ipsum</h4>
+                        <p>"Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit..."
+                        "There is no one who loves pain itself, who seeks after it and wants to have it, simply because it is pain..."</p>
+                    </div>
+                <div class="modal-footer">
+                    <button type="button" class="ux-button sm secondary" data-dismiss="modal">OK</button>
+                    
+                </div>
+            </div>
+
+        </div> 
+    </div> 
+
+    <div id="passwordPolicy" class="modal fade " role="dialog">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <div class="mh-bottom">
+                        <div class="row1">
+                            <div class="col-10"><h6>{{'PASSWORD_POLICY' |translate}}</h6></div>
+                            <div class="col-2"><a href="javascript:;" data-dismiss="modal"><span class="mh-cross" ></span></a></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-body">
+                    <h4> Lorem Ipsum</h4>
+                        <p>"Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit..."
+                        "There is no one who loves pain itself, who seeks after it and wants to have it, simply because it is pain..."</p>
+                        
+                        <ul>
+                        <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</li>
+                    <li> Pellentesque quis magna quis augue maximus vestibulum vel eu mi.</li>
+                    <li>Fusce non est eu nisl fermentum scelerisque.</li>
+                        <li>Aliquam faucibus odio a erat cursus convallis.</li>
+                        <li>Suspendisse sit amet ex eu lectus fringilla efficitur nec non sapien.</li>
+                    <li> Etiam feugiat sapien ut lacus pharetra tristique.</li>
+                    <li>Nam a metus ullamcorper, tincidunt arcu non, consectetur lectus.</li>
+                        <li>Fusce vitae odio tincidunt, varius purus non, tincidunt mauris.</li>
+                        <li>Fusce porttitor urna at pellentesque posuere.</li>
+                        <li> Duis vel dolor consectetur, scelerisque ex vitae, vestibulum turpis.</li>
+                        <li> In ultrices urna nec dui auctor, nec suscipit diam scelerisque.</li>
+                        <li> Proin et urna ac magna volutpat accumsan.</li>
+                        <li> Aenean consectetur nisl eu efficitur ornare.</li>
+                        <li> Maecenas porta ex nec risus commodo viverra.</li>
+                        <li> Nulla at lectus eleifend, auctor dui sed, tempus nisi.</li>
+                        <li>Aliquam tristique quam quis tortor bibendum, et finibus ex varius.</li>
+                        </ul>
+                </div>
+                <div class="modal-footer">
+                <button type="button" class="ux-button sm secondary" data-dismiss="modal">OK</button>
+                </div>
+            </div>
+
+        </div> 
+    </div>
+	 
+    <script src="../jsHtml/lib/jquery.min.js"></script>
+	<script src="../jsHtml/lib/bootstrap.min.js"></script>
+	<script src="../jsHtml/lib/jquery-ui.min.js"></script>
+	<script src="../jsHtml/lib/owl.carousel.min.js"></script>
+	<script src="../jsHtml/lib/popper.min.js"></script>
+    <script src="../jsHtml/lib/jquery.mousewheel.min.js"></script>
+	<script src="../jsHtml/lib/jquery.mCustomScrollbar.js"></script>
+    <script src="../jsHtml/lib/datatables.min.js"></script>
+	<script src="../jsHtml/common.js"></script>
+	<script  src="../jsHtml/lib/chart2.min.js"></script>
+ 
+    <script>
+        function nextStep(index){
+              var nextindex= index + 1
+            console.log('its working :' + index);
+            $('.registration-container .steps-block ul li').removeClass('active inprogress');
+            $('.tempstep').removeClass('active')
+            $('.tab-block').find('#'+ nextindex).addClass('active')
+            $('.registration-container .steps-block ul li:nth-child('+index +')').addClass('completed')
+            $('.registration-container .steps-block ul li:nth-child('+nextindex +')').addClass('active inprogress')
+
+        };
+        function prevStep(index){
+              var prevStep= index - 1
+           
+            $('.registration-container .steps-block ul li').removeClass('active');
+            $('.tempstep').removeClass('active')
+            $('.tab-block').find('#'+ prevStep).addClass('active')
+           
+            $('.registration-container .steps-block ul li:nth-child('+prevStep +')').addClass('active')
+
+        }
+        function goTo(goToStep){
+            $('.registration-container .steps-block ul li').removeClass('active');
+            $('.registration-container .steps-block ul li:nth-child('+ goToStep +')').addClass('active')
+            $('.tempstep').removeClass('active')
+            $('.tab-block').find('#'+ goToStep).addClass('active')
+        }
+
+        $(document).on('click', '.channel-tab li a', function(e){
+            e.preventDefault();
+            var tragetId = $(this).attr('href');
+            $('.channel-tab li a').removeClass('active');
+            $(this).addClass('active');
+            $('.creditials-tab-panel .main-pannel').removeClass('active')
+            $('.creditials-tab-panel' ).find(tragetId).addClass('active')
+
+        })
+ 
+	//  createGlobalNavMore();
+	function getSpasswordElement(index) {
+        return document.getElementById('spassword' + index);
+      }
+      function onKeyUpEvent(index, event) {
+        const eventCode = event.which || event.keyCode;
+        if (getSpasswordElement(index).value.length === 4) {
+          if (index !== 6) {
+            getSpasswordElement(index+ 1).focus();
+          } else {
+            getSpasswordElement(index).blur();
+            // Submit code
+            console.log('submit code ');
+          }
+        }
+        if (eventCode === 12 && index !== 1) {
+          getSpasswordElement(index - 1).focus();
+        }
+      }
+      function onFocusEvent(index) {
+        for (item = 4; item < index; item++) {
+          const currentElement = getSpasswordElement(item);
+          if (!currentElement.value) {
+              currentElement.focus();
+              break;
+          }
+        }
+	  }
+	  
+	  function getCpasswordElement(index) {
+        return document.getElementById('cpassword' + index);
+      }
+      function onKeyUpEvents(index, event) {
+        const eventCode = event.which || event.keyCode;
+        if (getCpasswordElement(index).value.length === 4) {
+          if (index !== 6) {
+            getCpasswordElement(index+ 1).focus();
+          } else {
+            getCpasswordElement(index).blur();
+            // Submit code
+            console.log('submit code ');
+          }
+        }
+        if (eventCode === 12 && index !== 1) {
+          getCpasswordElement(index - 1).focus();
+        }
+      }
+      function onFocusEvents(index) {
+        for (item = 1; item < index; item++) {
+          const currentElement = getCpasswordElement(item);
+          if (!currentElement.value) {
+              currentElement.focus();
+              break;
+          }
+        }
+      }
+      $("#numberConfirmation").click(function(){
+		// console.log('working');
+		if ( !$('#numberAuthpoup').hasClass('popup-active') ) {
+				$('#numberAuthpoup').addClass('popup-active');
+				$( 'div.ios-nav-overlay' ).fadeIn(400);
+			} else {
+				$('#numberAuthpoup').removeClass('popup-active');
+				$( 'div.ios-nav-overlay' ).fadeOut(400);
+		 	}
+	   });
+
+
+	  $("button.mpin-submit").click(function(){
+		// console.log('working');
+		if ( !$('div.popup-bottom.mpin-success').hasClass('popup-active') ) {
+				$('div.popup-bottom.mpin-success').addClass('popup-active');
+				$( 'div.ios-nav-overlay' ).fadeIn(400);
+			} else {
+				$('div.popup-bottom.mpin-success').removeClass('popup-active');
+				$( 'div.ios-nav-overlay' ).fadeOut(400);
+		 	}
+       });
+       
+       $('.registration-container .steps-block span.close').click(function(){
+            $('.steps-block').fadeOut();
+
+       })
+        $('ul.step-list li.step-matched em').click(function(){
+            $('.steps-block').fadeIn();
+
+       })
+</script>
+    
+</body>
+
+</html>

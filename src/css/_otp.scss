@@ -1,0 +1,29 @@
+.prelogin-page{
+	.otp-page{
+	padding :10px 15px; 
+	@media (max-width:767px) {
+			padding:0px
+		}
+		.right-col-container{
+			background-color: $white;
+			border-radius:5px; 
+			box-shadow: 0 0 10px rgba(0,0,0,0.2);
+			width:600px;
+			max-width: 100%;
+			margin: 100px auto 0 ;
+			padding: 68px 0px 100px;
+		@media (max-width:767px) {
+		height:100vh;border-radius:0px; 
+		
+
+			margin: 0 auto;padding: 60px 0px;
+			
+			
+		}
+
+		}
+	}	
+
+
+}
+

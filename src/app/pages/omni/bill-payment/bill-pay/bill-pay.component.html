@@ -1,0 +1,199 @@
+<div class="right-main-column">
+	<div class="right-col-container pad-b full-width">
+
+
+		<!-- ======== body page content start from here ======== -->
+
+		<div class="body-page-container main-dashborad">
+			<div class="container-fluid">
+
+				<div class="row">
+					<div class="col-12 p-0">
+						<div class="breadcrumb">
+							<ul class="lst-breadcrumb">
+								<li>
+									{{'RECHARGE_AND_BILL_PAY' | translate}}
+								</li>
+							</ul>
+							<div class="right-logo">
+								<img src="assets/images/svg/BBPS_Logo.svg" alt="bbps-icon">
+							</div>
+						</div>
+					</div>
+				</div>
+				<!--.row -->
+
+				<div class="row">
+					<div class="col-12 p-0">
+						<div class="gradient-box pad-0 bg">
+							<div class="col-12 p-0">
+								<nav class="tab-pills">
+									<div class="main-bg">
+										<div class="tabs">
+											<ul class="lst-tabs textalign">
+												<li>
+													<a class="tab-selected">
+														<img src="assets/images/svg/mobile-analytics.svg"
+															alt="mobile-analytics-icon">
+														<em>{{'MOBILE' | translate}}</em>
+													</a>
+												</li>
+												<li>
+													<a>
+														<img src="assets/images/svg/idea.svg" alt="idea-icon">
+														<em>{{'ELECTRICITY' | translate}}</em>
+													</a>
+												</li>
+												<li>
+													<a>
+														<img src="assets/images/svg/landline.svg" alt="landline-icon">
+														<em>{{'LANDLINE' | translate}}</em>
+													</a>
+												</li>
+												<li>
+													<a>
+														<img src="assets/images/svg/water.svg" alt="water-icon">
+														<em>{{'WATER' | translate}}</em>
+													</a>
+												</li>
+												<li>
+													<a>
+														<img src="assets/images/svg/technology.svg"
+															alt="technology-icon">
+														<em>{{'DTH' | translate}}</em>
+													</a>
+												</li>
+												<li>
+													<a>
+														<img src="assets/images/svg/gas.svg" alt="gas-icon">
+														<em>{{'GAS' | translate}}</em>
+													</a>
+												</li>
+												<li class="dis-n">
+													<a>
+														<img src="assets/images/svg/tax.svg" alt="tax-icon">
+														<em>{{'TAX' | translate}}</em>
+													</a>
+												</li>
+												<li>
+													<a>
+														<img src="assets/images/svg/insurance.svg" alt="insurance-icon">
+														<em>{{'INSURANCE' | translate}}</em>
+													</a>
+												</li>
+												<li class="dis-n">
+													<a>
+														<img src="assets/images/svg/donation.svg" alt="donation-icon">
+														<em>{{'DONATION' | translate}}</em>
+													</a>
+												</li>
+												<!-- <li class="dropdown1">
+													<a class="item-links" (click)="moreClicked=true;" >
+														<img src="assets/images/svg/more_btn.svg" alt="fmore-btn-icon">
+														<em>{{'MORE' | translate}}</em>
+													</a>
+													<div class="bm-notification" [ngStyle]="{'opacity': moreClicked ? '1' : '0' }" >
+														<div class="nf-content">
+															<div class="template-list">
+																<dl class="dl-template-items">
+																	<div>
+																		<a href="javascript:;"> <img
+																				src="assets/images/svg/communication.svg"
+																				alt="communication-icon">
+																			{{'CREDIT_CARD' | translate}} </a>
+																	</div>
+																	<div>
+																		<a href="javascript:;"> <img
+																				src="assets/images/svg/communication.svg"
+																				alt="communication-icon">
+																			{{'CABLE_TV' | translate}}</a>
+																	</div>
+																	<div>
+																		<a href="javascript:;"> <img
+																				src="assets/images/svg/communication.svg"
+																				alt="communication-icon">
+																			{{'DATA_CARD' | translate}}</a>
+																	</div>
+																</dl>
+															</div>
+														</div>
+													</div>
+
+												</li> -->
+											</ul>
+											<!--.lst-tabs-->
+										</div>
+										<!--.tabs-->
+
+
+									</div>
+
+									<div class="tabs-container">
+
+										<!-- Mobile -->
+										<div class="tab-content1 tc-showing">
+											<app-mobile-bill></app-mobile-bill>
+										</div> <!-- Mobile -->
+
+										<!-- Electricity -->
+										<div class="tab-content1">
+											<app-electricity-bill></app-electricity-bill>
+										</div> <!-- Electricity -->
+
+										<!-- Landline -->
+										<div class="tab-content1">
+											<app-landline-bill></app-landline-bill>
+										</div> <!-- Landline -->
+
+										<!-- Water -->
+										<div class="tab-content1">
+											<app-water-bill></app-water-bill>
+										</div> <!-- Water -->
+
+										<!-- DTH -->
+										<div class="tab-content1">
+											<app-dth-bill></app-dth-bill>
+										</div> <!-- DTH -->
+
+										<!-- Gas -->
+										<div class="tab-content1">
+											<app-gas-bill></app-gas-bill>
+										</div> <!-- Gas -->
+
+										<!-- Tax -->
+										<div class="tab-content1">
+											<app-tax></app-tax>
+										</div> <!-- Tax -->
+
+										<!-- Insurance -->
+										<div class="tab-content1">
+											<app-insurance-bill></app-insurance-bill>
+										</div> <!-- Insurance -->
+
+										<!-- Donation -->
+										<div class="tab-content1">
+											<app-donation></app-donation>
+										</div> <!-- Donation -->
+
+
+									</div>
+								</nav> <!-- tab-pills -->
+
+							</div>
+						</div>
+					</div>
+				</div>
+				<!--.row -->
+
+
+
+			</div>
+			<!--.container-fluid-->
+		</div>
+		<!--.body-page-container-->
+
+
+	</div>
+	<!--.right-col-container-->
+</div>
+<!--.right-main-column-->

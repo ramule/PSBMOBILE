@@ -1,0 +1,170 @@
+<div class="main">
+
+	<div class="right-main-column minus-rt-col mar-custom">
+		<div class="right-col-container cust-pb">
+
+			<div class="body-page-container">
+				<div class="container-fluid">
+					<div class="row">
+						<div class="bg-section">
+							<div class="col-12">
+								<div class="row1">
+									<div class="col-sm-12 col-12 col-md-12">
+										<div class="row1">
+											<div class="col-sm-12 col-12 col-md-12">
+												<div class="white-box2 pad-customise">
+													<ul class="payment-list">
+														<li>
+															<div class="full-container">
+																<div class="row1">
+																	<div class="col-12">
+																		<div class="left-info1">
+																			<h6 class="heading" *ngIf="pendingByPayer.notificationType == 'MANDATE_NOTIFICATION'"> {{'TO_BE_RECEIVED_FROM' | translate}}
+																				{{pendingByPayer.payerName}} </h6>
+																			  <h6 class="heading" *ngIf="!pendingByPayer?.notificationType">{{'REQUESTED_TO' | translate}}
+																				{{pendingByPayer.payerName}}</h6>
+																			<h5>{{'UPI_ID' | translate }} : {{pendingByPayer.payerAddress}}</h5>
+																		</div>
+																	</div>
+																</div>
+															</div>
+														</li>
+														<li>
+															<div class="full-container">
+																<div class="row1">
+																	<div class="col-12">
+																		<div class="left-info1">
+																			<h6>{{'DEPOSIT_TO_UPI_ID' | translate}}</h6>
+																			<h5>{{'UPI_ID' | translate }} : {{pendingByPayer.payeeAddress}}</h5>
+																		</div>
+																	</div>
+																</div>
+															</div>
+														</li>
+														<li>
+															<div class="full-container">
+																<div class="row1">
+																	<div class="col-12">
+																		<div class="left-info1">
+																			<h6>{{'LINKED_ACCOUNT' | translate}} </h6>
+																			<h5>{{defaultVPAAccount.accType}}
+																				{{defaultVPAAccount.maskedAccountNumber}}
+																			</h5>
+																		</div>
+																	</div>
+																</div>
+															</div>
+														</li>
+														<li>
+															<div class="full-container">
+																<div class="row1">
+																	<div class="col-12">
+																		<div class="left-info1">
+																			<h6>{{'PAYER_NAME' | translate}}</h6>
+																			<h5>{{pendingByPayer.payerName}}</h5>
+																		</div>
+																	</div>
+																</div>
+															</div>
+														</li>
+														<li>
+															<div class="full-container">
+																<div class="row1">
+																	<div class="col-12">
+																		<div class="left-info1">
+																			<h6>{{'AMOUNT' | translate}}</h6>
+																			<h5> {{pendingByPayer.amount |
+																				customcurrency:'symbol'}}</h5>
+																		</div>
+																	</div>
+																</div>
+															</div>
+														</li>
+														<li>
+															<div class="full-container">
+																<div class="row1">
+																	<div class="col-12">
+																		<div class="left-info1">
+																			<h6>{{'REMARKS' | translate}}</h6>
+																			<h5>{{pendingByPayer?.remarks ?
+																				pendingByPayer.remarks : '-'}}</h5>
+																		</div>
+																	</div>
+																</div>
+															</div>
+														</li>
+														<li>
+															<div class="full-container">
+																<div class="row1">
+																	<div class="col-12">
+																		<div class="left-info1">
+																			<h6>{{'REQUESTED_DATE_TIME' | translate}}</h6>
+																			<h5>{{pendingByPayer.requestedDate}}</h5>
+																		</div>
+																	</div>
+																</div>
+															</div>
+														</li>
+														<li>
+															<div class="full-container">
+																<div class="row1">
+																	<div class="col-12">
+																		<div class="left-info1">
+																			<h6>{{'EXPIRY_DATE_AND_TIME' | translate
+																				}}</h6>
+																			<h5>{{pendingByPayer.expiredDate}}</h5>
+																		</div>
+																	</div>
+																</div>
+															</div>
+														</li>
+													</ul>
+													<!-- <div class="row mt-2">
+										<div class="col-6 text-center">
+											<button class="ux-button secondary md reject-btn" onclick="window.location.href = '#'">Reject</button>
+										</div> 
+									    <div class="col-6 text-center">
+											 <button class="ux-button primary md" onclick="window.location.href = 'pending-request-confirmation.html'">Accept</button>
+										 </div> 
+									</div>  -->
+												</div>
+											</div>
+										</div>
+
+
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+
+
+				</div>
+			</div>
+			<!-- footer section start -->
+
+			<div class="footer-container sticky-actions">
+				<div class="footer-inactions minus-rt-col">
+					<div class="container-fluid">
+						<div class="row">
+							<div class="col-12 col-md-12 col-lg-12 text-center">
+								<div class="powered-logo mt-0">
+									<img src="assets/images/logo/powered-upi-logo.svg" alt="powered-upi-logo">
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+
+			<!-- footer section end -->
+
+		</div>
+	</div>
+
+</div>
+
+<!-- main -->
+
+<div class="ios-nav-overlay"></div>

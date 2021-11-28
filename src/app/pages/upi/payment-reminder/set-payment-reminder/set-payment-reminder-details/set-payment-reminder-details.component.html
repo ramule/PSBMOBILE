@@ -1,0 +1,170 @@
+<div class="main">
+	<div class="right-main-column minus-rt-col mar-custom">
+		<div class="right-col-container">
+			<div class="body-page-container">
+				<div class="container-fluid">
+					<div class="row">
+						<div class="bg-section">
+							<div class="col-12">
+								<div class="row1">
+									<!-- Start UPI Selection Card-->
+									<div class="col-12" *ngIf="activePaymentCard == 'upid' ">
+										<div class="white-bg1">
+											<div class="payee-info">
+												<div class="info-lft"> <span class="green1">
+                                                            <img src="assets/images/icons/user14.png" alt="user-img">
+                                                            <!-- <h6>SS</h6> -->
+                                                        </span> </div>
+												<div class="info-rit">
+													<h5>Ronak Khanna</h5>
+													<h6> <span>UPI ID :</span> ronakk@psb</h6> <em>9875142547</em> </div>
+											</div>
+										</div>
+									</div>
+									<!-- End UPI Selection Card-->
+									<!-- Start Account IFSC Card -->
+									<div class="col-12" *ngIf="activePaymentCard == 'account' ">
+										<div class="white-bg1">
+											<div class="payee-info">
+												<div class="info-lft"> <span class="green1">
+                                                            <!-- <img src="assets/images/icons/user5.png" alt="user-img"> -->
+                                                            <h6>SS</h6>
+                                                        </span> </div>
+												<div class="info-rit">
+													<h5 class="mt-2">Sohan Shah</h5>
+													<h6>XXXX XXXX XXXX 4345</h6>
+													<!-- <em>9875142547</em> --></div>
+											</div>
+										</div>
+									</div>
+									<!-- End Account IFSC Card -->
+
+									<!-- Common for UPID and Account IFSC -->
+                                <form [formGroup]="setPaymentReminderDetailsForm">
+									<div class="col-12">
+										<div class="white-bg1 mt-2">
+											<div class="row1">
+												<div class="col-12 col-md-12">
+													<div class="ux-input">
+														<label>Amount</label>
+														<input type="text" numbersOnly placeholder="Enter Amount" formControlName="amount">
+                                                        <p class="error-message" *ngIf="setPaymentReminderDetailsForm.controls['amount'].hasError('required') && (setPaymentReminderDetailsForm.controls['amount'].dirty || setPaymentReminderDetailsForm.controls['amount'].touched)">Please select Value</p>
+													</div>
+												</div>
+											</div>
+											<div class="row1 mt-2">
+												<div class="col-12 col-md-12">
+													<div class="ux-input">
+														<h6 class="dark-text">Set Validity</h6> </div>
+												</div>
+											</div>
+											<div class="row1">
+												<div class="col-6 col-md-6">
+													<div class="ux-input">
+														<label>Start Date</label>
+														<input type="text" class="datepicker1" placeholder="DD/MM/YYYY" formControlName="startDate"> <em class="calendar-ic cal-top" id="btnPicker" ></em> 
+                                                        <p class="error-message" *ngIf="setPaymentReminderDetailsForm.controls['startDate'].hasError('required') && (setPaymentReminderDetailsForm.controls['startDate'].dirty || setPaymentReminderDetailsForm.controls['startDate'].touched)">Please select Value</p>
+                                                    </div>
+                                                </div>
+												<div class="col-6 col-md-6">
+													<div class="ux-input">
+														<label>End Date</label>
+														<input type="text" class="datepicker1" placeholder="DD/MM/YYYY" formControlName="endDate"> <em class="calendar-ic cal-top" id="btnPicker" ></em> 
+                                                        <p class="error-message" *ngIf="setPaymentReminderDetailsForm.controls['endDate'].hasError('required') && (setPaymentReminderDetailsForm.controls['endDate'].dirty || setPaymentReminderDetailsForm.controls['endDate'].touched)">Please select Value</p>
+                                                    </div>
+                                                </div>
+											</div>
+											<div class="row1 mt-2">
+												<div class="col-12 col-md-12">
+													<div class="ux-input">
+														<h6 class="dark-text">Set Frequency</h6> </div>
+												</div>
+											</div>
+											<div class="row1">
+												<div class="col-12 col-md-12 col-sm-12">
+													<div class="row1">
+														<div class="col-4 col-md-4 pr-2">
+															<div class="ux-selection mar-custom">
+																<label class="ux-selection2">Weekly
+																	<input type="radio" checked="checked" value="weekly" name="setFrequency" formControlName="setFrequency"> <span class="checkmark"></span> </label>
+																<div> </div>
+															</div>
+														</div>
+														<div class="col-4 col-md-4 pl-2 pr-2">
+															<div class="ux-selection mar-custom">
+																<label class="ux-selection2">Monthly
+																	<input type="radio" value="monthly" name="setFrequency" formControlName="setFrequency"> <span class="checkmark"></span> </label>
+																<div> </div>
+															</div>
+														</div>
+													</div>
+													<div class="row1">
+														<div class="col-4 col-md-4 pr-2">
+															<div class="ux-selection mar-custom">
+																<label class="ux-selection2">Quarterly
+																	<input type="radio" checked="checked" value="quarterly" name="setFrequency" formControlName="setFrequency"> <span class="checkmark"></span> </label>
+																<div> </div>
+															</div>
+														</div>
+														<div class="col-4 col-md-4 pl-2 pr-2">
+															<div class="ux-selection mar-custom">
+																<label class="ux-selection2 mr-0">Half Yearly
+																	<input type="radio" value="half-yearly" name="setFrequency" formControlName="setFrequency"> <span class="checkmark"></span> </label>
+																<div> </div>
+															</div>
+														</div>
+														<div class="col-4 col-md-4 pl-2">
+															<div class="ux-selection mar-custom">
+																<label class="ux-selection2">Annually
+																	<input type="radio" value="annually" name="setFrequency" formControlName="setFrequency"> <span class="checkmark"></span> </label>
+																<div> </div>
+															</div>
+														</div>
+													</div>
+												</div>
+                                                <div class="col-12 col-md-12">
+                                                    <div class="ux-input">
+                                                        <p class="error-message" *ngIf="setPaymentReminderDetailsForm.controls['setFrequency'].hasError('required') && (setPaymentReminderDetailsForm.controls['setFrequency'].dirty || setPaymentReminderDetailsForm.controls['setFrequency'].touched)">Please select Value</p>
+                                                    </div>
+                                                </div>
+											</div>
+											<div class="row1 mt-2">
+												<div class="col-12 col-md-12">
+													<div class="ux-input">
+														<label>Remarks</label>
+														<input type="text" placeholder="Enter Remarks" formControlName="remark">
+                                                        <p class="error-message" *ngIf="setPaymentReminderDetailsForm.controls['remark'].hasError('required') && (setPaymentReminderDetailsForm.controls['remark'].dirty || setPaymentReminderDetailsForm.controls['remark'].touched)">Please select Value</p>
+                                                        <p class="error-message" *ngIf="setPaymentReminderDetailsForm.controls['remark'].hasError('pattern') && (setPaymentReminderDetailsForm.controls['remark'].dirty || setPaymentReminderDetailsForm.controls['remark'].touched)">Please select Value</p>
+
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+                                </form>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- Bottom Button Section Start -->
+			<div class="footer-container sticky-actions">
+				<div class="footer-inactions minus-rt-col">
+					<div class="container-fluid">
+						<div class="row">
+							<div class="col-6 col-lg-6 col-md-6 text-center">
+								<button class="ux-button secondary">Cancel</button>
+							</div>
+							<div class="col-6 col-lg-6 col-md-6 text-center">
+								<button class="ux-button primary" type="submit" (click)="setPaymentReminderDetailSubmit('setPaymentReminderConfirmation')">Set Reminder</button>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- Bottom Button Section End -->
+		</div>
+	</div>
+</div>
+<!-- main -->

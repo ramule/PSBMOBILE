@@ -1,0 +1,317 @@
+<div class="main bg-m">
+	<div class="nav-overlay"></div>
+	<div class="right-main-column">
+		<div class="right-col-container pad-b full-width">
+			<!-- ======== body page content start from here ======== -->
+			<div class="body-page-container main-dashborad manage-payee">
+				<div class="container-fluid">
+					<div class="row">
+						<div class="col-12 p-0">
+							<div class="breadcrumb">
+								<ul class="lst-breadcrumb">
+									<!-- <li> <a href="javascript:;">{{"SERVICE_REQUEST" | translate}}</a> </li>
+									<li> {{"CHEQUE_BOOK_REQUEST" | translate}} </li> -->
+									<li *ngFor="let name of DataService.breadcrumblist">
+										<a (click)="DataService.breadcrumroute(name.routeName)">{{name.currentRoute | translate}}</a>
+								</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+					<!--.row -->
+					<div class="vspacer15 customize d-none d-md-block d-lg-block d-xl-block"></div>
+					<div class="row no-gutters">
+						<div class="col-12">
+							<div class="row1">
+								<div class="col-12 col-sm-12 col-md-12 col-lg-12  col-xl-9">
+									<!-- Greencard2 Start here -->
+									<div class="greencard2">
+										<div class="row1 hide-m">
+											<div class="col-12">
+												<h4> {{'NEW_CHEQUE_BOOK_REQUEST' | translate}}</h4> </div>
+										</div>
+										<div class="row1">
+											<div class="col-sm-12 col-12 col-md-12">
+												<div class="widget-box5 mb-3">
+													<div class="bg-white1 pad-custom">
+														<form [formGroup]="commonForm">
+															<div class="row1">
+																<div class="col-12 col-md-6 col-lg-6 col-xl-4" (click)="onAccountSelectType()">
+																	<div class="ux-input">
+																		<label>{{"SELECT_ACCOUNT" | translate}}</label>
+																		<select class="change" id="savingAccSel" formControlName="savingAcc" (change)="selectAccount()" *ngIf="platform == 'web'" >
+																			<!--(change)="selectAccount($event.target.value)"-->
+																			<option value="">{{"SELECT" | translate}}</option>
+																			<option *ngFor="let account of accountList" [value]="account.accountNo">{{account.SchemeCode}} {{account.sbAccount}}</option>
+																		</select>
+																		<div *ngIf="platform != 'web'" >
+																			<input type="text" formControlName="accountNo" placeholder="{{ 'SELECT_ACCOUNT' | translate }}" readonly>
+																			<span class="right-custom-arrow"></span> </div>
+
+																		<p class="error-message" *ngIf="formErrorsCommon.savingAcc">{{ formErrorsCommon.savingAcc  | translate }} </p>
+																	</div>
+																</div>
+																<div class="col-12 col-md-6 col-lg-6 col-xl-4">
+																	<div class="ux-input">
+																		<label> {{"NUMBER_OF_LEAVES" | translate}}</label>
+																		<select class="change" formControlName="checkPageNo">
+																			<!--(change)="selectAccount($event.target.value)"-->
+																			<option value="">{{"SELECT" | translate}}</option>
+																			<option *ngFor="let leaves of noOfLeave" [value]="leaves.No">{{leaves.No}}</option>
+																		</select>
+																		<p class="error-message" *ngIf="formErrorsCommon.savingAcc">{{ formErrorsCommon.checkPageNo }}</p>
+																	</div>
+																</div>
+															</div>
+
+															<div class="row1" *ngIf="address">
+																<div class="col-12">
+																	<div class="ux-input">
+																		<label>Preferred Address</label>
+																	</div>
+																</div>
+															</div>
+															<div class="row1" *ngIf="address" >
+																<div class="col-12 col-md-6 col-lg-6 col-xl-4">
+																	<div class="ux-selection" [class.disablePointer]="address.communicationAdd == ''">
+																		<label class="ux-selection2">Communication Address
+																			<input type="radio" checked="addressType == 'communication'" name="commAddress" value="communication" [(ngModel)]="addressType" formControlName="commAddress" [ngClass]="{'click-disabled': address?.communicationAdd == ''}"  />
+																			<span class="checkmark"></span>
+																		</label>
+																		<address class="pl-4 mt-2" >{{address.communicationAdd == "" ? "-" : address.communicationAdd }}</address>
+																	</div>
+																</div>
+																<div class="col-12 col-md-6 col-lg-6 col-xl-4">
+																	<div class="ux-selection" [class.disablePointer]="address.permenantAdd1 == ''" >
+																		<label class="ux-selection2">Permanent Address
+																			<input type="radio" checked="addressType == 'permanent'" name="commAddress" value="permanent" [(ngModel)]="addressType" formControlName="commAddress" [ngClass]="{'click-disabled': address?.permenantAdd1 == ''}"/>
+																			<span class="checkmark"></span>
+																		</label>
+																		<address class="pl-4 mt-2" >{{address.permenantAdd1 == "" ? "-" : address.permenantAdd1 }}</address>
+																	</div>
+																</div>
+															</div>
+															<div class="row1" *ngIf="address" >
+																<div class="col-12 col-md-6 col-lg-6 col-xl-4">
+																	<div class="ux-input">
+																		<p class="error-message" *ngIf="commonForm.controls['commAddress'].hasError('required') && (commonForm.controls['commAddress'].dirty || commonForm.controls['commAddress'].touched)"> This field is required </p>
+																	</div>
+																</div>
+															</div>
+
+														</form>
+														<!-- <div class="row1" *ngIf="address != ''">
+															<div class="col-12 col-md-6 col-lg-6 col-xl-4">
+																<div class="ux-input">
+																	<address> {{address}} </address>
+																</div>
+															</div>
+
+														</div> -->
+														<div class="communication box" id="Communication" style="display: none;">
+															<form [formGroup]="CommunicationAdd" (ngSubmit)="CommunicationSubmit()">
+																<div class="row1">
+																	<div class="col-12 col-md-6 col-lg-6 col-xl-4">
+																		<div class="ux-input ux-disabled">
+																			<label>{{'ADDRESS_LINE_1' | translate}}</label>
+																			<input type="text" placeholder="{{'ENTER_ADDRESS_LINE_1' | translate}}" formControlName="addressLine1" disabled>
+																			<p *ngIf="formErrorsCommunicationAdd.addressLine1">{{ formErrorsCommunicationAdd.addressLine1 }} </p>
+																		</div>
+																	</div>
+																	<div class="col-12 col-md-6 col-lg-6 col-xl-4">
+																		<div class="ux-input ux-disabled">
+																			<label>{{'ADDRESS_LINE_2' | translate}}</label>
+																			<input type="text" placeholder="{{'ENTER_ADDRESS_LINE_2' | translate}}" formControlName="addressLine2" disabled>
+																			<p class="error-message"></p>
+																		</div>
+																	</div>
+																</div>
+																<div class="row">
+																	<div class="col-12 col-md-6 col-lg-6 col-xl-4">
+																		<div class="ux-input ux-disabled" id="add3" style="display:none;">
+																			<label>{{'ADDRESS_LINE_3' | translate}}/ {{'LANDMARK' | translate}}</label>
+																			<input type="text" placeholder="{{'ENTER_ADDRESS_LINE_3' | translate}}">
+																			<p class="error-message"></p>
+																		</div>
+																	</div>
+																</div>
+																<div class="row1">
+																	<div class="col-12 col-md-6 col-lg-6 col-xl-4">
+																		<div class="ux-input ux-disabled">
+																			<label>{{'STATE' | translate}}</label>
+																			<select id="stateComm" formControlName="state" (change)="getCitiesListByStateId($event.target.value)">
+																				<option value="">{{'SELECT' | translate}}</option>
+																				<option *ngFor="let stateObj of stateList" [value]="stateObj.ID">{{stateObj.state}}</option>
+																			</select>
+																			<p class="error-message" *ngIf="formErrorsCommunicationAdd.state"> {{ formErrorsCommunicationAdd.state }}</p>
+																		</div>
+																	</div>
+                                  									<div class="col-12 col-md-6 col-lg-6 col-xl-4">
+																		<div class="ux-input ux-disabled">
+																			<label>{{'CITY' | translate}}</label>
+																			<select id="cityComm" formControlName="city">
+																				<option value="">{{'SELECT' | translate}}</option>
+																				<option *ngFor="let cityObj of cityList" [value]="cityObj.city">{{cityObj.city}}</option>
+																			</select>
+																			<p class="error-message" *ngIf="formErrorsCommunicationAdd.city"> {{ formErrorsCommunicationAdd.city }}</p>
+																		</div>
+																	</div>
+																	<div class="col-12 col-md-6 col-lg-6 col-xl-4">
+																		<div class="ux-input ux-disabled">
+																			<label>{{'PIN_CODE' | translate}}</label>
+																			<input type="text" numbersOnly limit-to="6" placeholder="{{'ENTER_PIN_CODE' | translate}}" formControlName="pinCode">
+																			<p class="error-message" *ngIf="formErrorsCommunicationAdd.pinCode">{{ formErrorsCommunicationAdd.pinCode }}</p>
+																		</div>
+																	</div>
+																</div>
+															</form>
+														</div>
+														<div class="row1">
+															<div class="col-12">
+																<div class="ux-input mt-3">
+																	<label class="" (click)="openchargespopup()"> <a  class="reg-txt">{{'APPLICABLE CHARGES' | translate}}</a> </label>
+																</div>
+															</div>
+														</div>
+														<div class="row1">
+															<div class="col-12 ">
+																<div class="ux-selection mt-3 ux-input">
+																	<label class="ux-selection1">{{"I_ACCEPT" | translate}} <a   href="javascript:void(0)" class="reg-txt" (click)="openPopUp()">{{"TERMS_CONDITIONS" | translate}}</a>
+																		<input type="checkbox" name="radioboxdemo" [(ngModel)]="isCheckbox"> <span class="checkmark"></span> </label>
+																	  <!-- <p class="error-message" *ngIf="!isCheckbox">Please verify terms and conditions</p> -->
+																</div>
+															</div>
+														</div>
+														<div class="row">
+															<div class="col-12">
+																<div class="ux-input">
+																	<p class="error-message"></p>
+																</div>
+															</div>
+														</div>
+													</div>
+												</div>
+											</div>
+											<div class="vspacer30 customize d-none d-md-block d-lg-block d-xl-block" *ngIf="!address"></div>
+											<div class="col-12 col-md-12">
+												<ul class="bottom-footer1">
+													<li>
+														<div class="btn-div">
+															<button class="ux-button secondary sm-mob"  (click)="cancel()"> {{"CANCEL" | translate}}</button>
+														</div>
+														<div class="btn-div">
+															<button class="ux-button primary sm-mob"  [disabled]="!isCheckbox" (click)="submit()"> {{"PROCEED" | translate}}</button>
+														</div>
+													</li>
+												</ul>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="col-12 col-md-12 col-lg-12 col-xl-3 d-none d-md-block d-lg-block d-xl-block">
+									<div class="right-ads">
+										<a> <img src="assets/images/banner/my-card-banner.jpg"> </a>
+									</div>
+									<div class="vspacer30"></div>
+								</div>
+								<!-- Right Column Ads Ends -->
+							</div>
+						</div>
+						<!--.container-fluid-->
+					</div>
+					<!--.body-page-container-->
+				</div>
+				<!--.right-col-container-->
+			</div>
+			<!--.right-main-column-->
+		</div>
+	</div>
+</div>
+
+<div class="popup-bottom md-popup chargesPopup" >
+	<div class="row">
+		<div class="col-12">
+
+			<h4 class="text-center"> {{'APPLICABLE_CHARGES' | translate}}</h4>
+
+				<div class="popup-body">
+
+					<b>  {{'CHEQUE_BOOK_CHARGES' | translate}}: </b>
+
+					<b>	 {{'SAVING_BANK_ACCOUNT' | translate}}</b>
+						<ul>
+							<li> {{'LEAVER_PER_YEAR' | translate}}</li>
+							<li>  {{'EXTRA_LEAVES' | translate}} </li>
+						
+						</ul>
+						<b> {{'CURRENT_ACCOUNT' | translate}}</b>
+						<ul>
+							<li> {{'LEAF_FOR_INDIVIDUAL' | translate}}.</li>
+							<li> {{'LEAF_FOR_NON_INDIVIDULA' | translate}} .</li>
+						</ul>
+				</div>
+			</div>
+	</div>
+
+	<div class="row1 mt-2">
+		<div class="col-12 text-center">
+			<button class="ux-button secondary no md close-btn" (click)="closePoup()">{{"CANCEL" | translate}}</button>
+		</div>
+
+	</div>
+</div>
+
+<div class="popup-bottom md-popup termscondition-popup">
+	<div class="row1">
+		<div class="col-10 text-center">
+			<h4 >{{"TERMS_CONDITIONS" | translate}}</h4>
+		</div>
+		<div class="col-2">
+			<button class="ux-button-icon close-btn" (click)="closepopup()" >
+				<img src="assets/images/svg/close-b.svg" alt="cross-icon" class="img-vsmall">
+			</button>
+		</div>
+	</div>
+	<div class="row1">
+		<div class="col-12">
+			<ol class="orderlist">
+				<li> {{"SELECTED_ADDRESS_IS_CORRECT" | translate}} </li>
+				<li> {{"CONFIRM_RESIDE_ADDRESS_CURRENTLY" | translate}}</li>				
+			</ol>
+		</div>
+	</div>
+	<div class="row1 mt-2">
+		<div class="col-12 col-md-12 text-center">
+			<button class="ux-button secondary sm-mob" (click)="closepopup()" > {{"OK" | translate}}</button>
+		</div>
+	 </div>
+</div>
+
+<!-- Select Accounts Popup Start-->
+<div class="popup-bottom sel-account">
+	<div class="row1">
+		<div class="col-10">
+			<h4>{{"SELECT_FROM_ACCOUNT" | translate }}</h4> </div>
+		<div class="col-2">
+			<button class="ux-button-icon close-btn" (click)="_closePopup()"> <img src="assets/images/svg/close-b.svg" alt="cross-icon" class="img-vsmall"> </button>
+		</div>
+	</div>
+	<div class="row1">
+		<div class="col-12">
+			<div class="row1">
+				<div class="col-12 col-md-12" *ngFor="let account of accountList; let i = index">
+					<div class="ux-selection mar-custom">
+						<label class="ux-selection2">{{account.SchemeCode}} {{account.sbAccount}}
+							<input type="radio" [value]="account.accountNo" name="upi-account" [checked]="selectedAccount == account?.accountNo ? true : false" [(ngModel)]="selectedAccount" [ngModelOptions]="{standalone: true}" > <span class="checkmark"></span> </label>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="row mt-2">
+		<div class="col-12 text-center">
+			<button class="ux-button primary submit-btn2" (click)="onFromAccountSelect(selectedAccount);_closePopup()">{{ 'SUBMIT' | translate }}</button>
+		</div>
+	</div>
+</div>
+<!-- Select Accounts Popup End-->

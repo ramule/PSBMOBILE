@@ -1,0 +1,180 @@
+
+
+// theme settings
+
+$themeBrandsidebarimg  :none;
+$themeBrandsidebargrad:linear-gradient(to right,#00833c, #00833c);
+$themeBrandprimaryColor: #00833c; 
+$themeBrandprimaryhover: #00833c;
+$themeBrandcardBackground:linear-gradient(to left, #00833c, #00833c);
+$themeBrandbodyColor : $black;
+$themeBrandcardHeader : linear-gradient(to bottom, #00833c, rgb(95, 95, 95));
+ 
+
+
+// ***********************************************************************************
+
+$theme0sidebarimg  :none;
+$theme0sidebargrad:linear-gradient(to right,$dark-theme-shade1, $dark-theme-shade1);
+$theme0sidebartext: #BEBEBE;
+$theme0sidebarhover: $brand-primary-color;
+$theme0primaryColor: #e8a627; 
+$theme0primaryhover: #ffa800;
+$theme0cardBackground:linear-gradient(to left, #4d4d4d, #000000);
+$theme0bodyColor : $black;
+$theme0cardHeader : linear-gradient(to bottom, #242323, rgb(95, 95, 95));
+
+
+$theme1sidebarimg  :url('#{$images-background-path}diwali.jpg');
+$theme1sidebargrad: linear-gradient(to bottom, rgba(242, 179, 29, 1), rgba(255, 224, 80, 0.5));
+$theme1primaryColor: #e8a627; 
+$theme1primaryhover: #ffa800;
+$theme1cardBackground:linear-gradient(to left, #f2b41d, #e39f2c);
+$theme1bodyColor : #ffe0a0;
+
+
+$theme2sidebarimg  : url('#{$images-background-path}christmas.jpg'); 
+$theme2sidebargrad: linear-gradient(to bottom,rgba(136, 1, 0, 0.72), rgba(243, 67, 62, 0.75));  
+$theme2primaryColor: #df6560; 
+$theme2primaryhover: #c22e2c;
+$theme2cardBackground:linear-gradient(to left, rgba(139, 3, 2, 0.8), #dd573c);
+$theme2bodyColor :#e46966;
+
+$theme3sidebarimg  : url('#{$images-background-path}eid.jpg'); 
+$theme3sidebargrad: linear-gradient(to bottom,rgba(136, 1, 0, 0.72), rgba(243, 67, 62, 0.75));  
+$theme3primaryColor: #df6560; 
+$theme3primaryhover: #c22e2c;
+$theme3cardBackground:linear-gradient(to left, rgba(139, 3, 2, 0.8), #dd573c);
+$theme3bodyColor :#d6b792;
+
+
+
+
+.pagetheme-settings{
+    z-index: 999;
+    position: fixed;
+    overflow: auto;
+    top: 0px;
+    padding: 20px 15px;
+    background-color: white;
+    right: -280px;
+    width: 260px;
+   
+    box-shadow: 0 0 10px rgba(0,0,0,0.2);
+    border-radius: 10px 0 0 10px;
+    text-align: left;
+    height: 100vh;
+    transition: all 0.4s ease;
+    &.active{
+        right:0; 
+    }
+    @media (max-width:767px) {
+        padding:70px 15px;
+        position: static;
+        height: auto;
+        border-radius:none;
+        margin-top:0px;
+        width: 100%;
+      }
+      
+}
+
+.pagetheme-settings .color-list {
+    padding:0; margin:0; 
+
+}
+
+.pagetheme-settings h6{
+    margin-right: 10px;
+    font-weight: bold;
+    margin-bottom: 10px;display:inline-block; 
+    
+    vertical-align: middle;
+}
+.pagetheme-settings .color-list li{
+    border: 2px solid white;
+    border-radius: 100px; 
+    padding:1px; margin-right: 5px;
+    display:inline-block;
+}
+.pagetheme-settings .color-list li span{
+    cursor: pointer;
+    height: 32px;
+    width: 32px;
+    display:block;
+    border-radius:100px; 
+   
+  
+}
+.pagetheme-settings .background-list li span , .pagetheme-settings .theme-list li span{
+    height: 35px;
+    width: 35px;
+    display: block;
+    border-radius: 5px;
+    background-size: contain;
+    cursor: pointer;
+  
+}
+.pagetheme-settings .background-list li , .pagetheme-settings .theme-list li{
+    border: 2px solid white;
+    border-radius: 5px; 
+    padding:1px; margin-right: 5px;
+    display:inline-block;
+    height: auto;
+    width: auto;
+}
+
+.background-check{
+    position:relative; 
+    display: inline-block;
+    vertical-align: middle;
+}
+.background-check label{
+    width: 40px;
+    height: 22px;
+    border: 1px solid gray;
+    border-radius: 100px;
+    position: relative;
+    background-color: #a0a0a0;
+    margin:0; 
+}
+.background-check input{
+    position:absolute;
+    height:100%; width:100%; z-index: 99;
+    opacity: 0;
+}
+.background-check label:after{
+    transition: all 0.5s ease;
+    content: '';
+    position: absolute;
+    height: 18px;
+    width: 18px;
+    border-radius: 100px;
+    background-color: #ffffff;
+    top: 1px;
+    left: 1px;
+}
+.background-check input:checked ~ label:after{
+
+    left: 18px;
+}
+.background-check input:checked ~ label{
+
+    background-color: #127ddc;
+}
+
+.pagetheme-settings .background-list li.active{
+    border:2px solid #9e8e8e;
+}
+.pagetheme-settings .theme-list li.active{
+    border:2px solid #9e8e8e;
+}
+.pagetheme-settings .color-list li.active{
+    border:2px solid #9e8e8e;
+}
+.pagetheme-settings .color-list li.red span{
+    background-image: linear-gradient(to left, rgba(58, 4, 110, 0.9), rgba(203, 33, 81, 0.9));
+}
+.pagetheme-settings .color-list li.blue span{
+    background-image: linear-gradient(to left, rgba(6, 37, 138, 0.9), rgba(33, 143, 240, 0.9));
+}

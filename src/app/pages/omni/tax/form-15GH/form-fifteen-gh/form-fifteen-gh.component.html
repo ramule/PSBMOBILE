@@ -1,0 +1,570 @@
+<div class="main bg-m">
+	<div class="right-main-column ">
+		<div class="right-col-container pad-b full-width">
+			<!-- ======== body page content start from here ======== -->
+			<div class="body-page-container main-dashborad manage-payee">
+				<div class="container-fluid">
+					<div class="row">
+						<div class="col-12 p-0">
+							<div class="breadcrumb">
+								<ul class="lst-breadcrumb">
+									<li *ngFor="let name of DataService.breadcrumblist"> <a
+											(click)="DataService.breadcrumroute(name.routeName)">{{name.currentRoute |
+											translate}}</a> </li>
+								</ul>
+							</div>
+						</div>
+					</div>
+					<!--.row -->
+					<div class="vspacer15 customize d-none d-md-block d-lg-block d-xl-block"></div>
+					<div class="row no-gutters">
+						<div class="col-12">
+							<div class="row1">
+								<div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-9">
+									<!-- Greencard2 Start here -->
+									<div class="greencard2">
+										<div class="row1 hide-m">
+											<div class="col-md-8 col-12">
+												<h4>Form {{fifteenGHValue}}</h4>
+											</div>
+											<div class="col-md-4 col-12"> </div>
+										</div>
+										<form [formGroup]="fifteenGHForm">
+											<div class="row1">
+												<div class="col-12 col-md-12">
+													<div class="widget-box5 mb-3">
+														<div class="bg-white1 pad-custom">
+															<div class="row1">
+																<div class="col-md-6 col-lg-4 col-xl-4 col-12">
+																	<div class="ux-input ux-disabled">
+																		<label>Customer Name</label>
+																		<input type="text"
+																			placeholder="Enter Customer Name"
+																			value="RavindraKumar Mishra" disabled
+																			formControlName="customerName">
+																		<p class="error-message"></p>
+																	</div>
+																</div>
+																<div class="col-md-6 col-lg-4 col-xl-4 col-12">
+																	<div class="ux-input ux-disabled">
+																		<label>Date of Birth</label>
+																		<input type="text"
+																			placeholder="Enter Date of Birth"
+																			value="30 Aug 1988" disabled
+																			formControlName="dateOfBirth">
+																		<p class="error-message"></p>
+																	</div>
+																</div>
+																<div class="col-md-6 col-lg-4 col-xl-4 col-12">
+																	<div class="ux-input ux-disabled">
+																		<label>Pan Number</label>
+																		<input type="text"
+																			placeholder="Enter Pan Number"
+																			value="DTXXXXXX0Q" disabled
+																			formControlName="panNumber">
+																		<p class="error-message"></p>
+																	</div>
+																</div>
+															</div>
+															<div class="row1">
+																<div class="col-md-6 col-lg-4 col-xl-4 col-12">
+																	<div class="ux-input ux-disabled">
+																		<label>TDS Exemption Date</label>
+																		<input type="text"
+																			placeholder="Enter TDS Exemption Date"
+																			value="2021-2020" disabled
+																			formControlName="tds">
+																		<p class="error-message"></p>
+																	</div>
+																</div>
+																<div class="col-md-6 col-lg-4 col-xl-4 col-12">
+																	<div class="ux-input ux-disabled">
+																		<label>Form Type</label>
+																		<select formControlName="formType" disabled>
+																			<option value="">Select</option>
+																			<option value="Form 15G" selected>Form 15G
+																			</option>
+																		</select>
+																		<p class="error-message"></p>
+																	</div>
+																</div>
+																<div class="col-md-6 col-lg-4 col-xl-4 col-12">
+																	<div class="ux-input ux-disabled">
+																		<label>Constitution</label>
+																		<input type="text"
+																			placeholder="Enter Constitution"
+																			value="Individual" disabled
+																			formControlName="constitution">
+																		<p class="error-message"></p>
+																	</div>
+																</div>
+															</div>
+															<div class="row1">
+																<div class="col-md-6 col-lg-4 col-xl-4 col-12">
+																	<div class="ux-input ux-disabled">
+																		<label>Address Line 1</label>
+																		<input type="text"
+																			placeholder="Enter Address Line 1"
+																			value="Lorum Ipsum" disabled
+																			formControlName="address1">
+																		<p class="error-message"></p>
+																	</div>
+																</div>
+																<div class="col-md-6 col-lg-4 col-xl-4 col-12">
+																	<div class="ux-input ux-disabled">
+																		<label>Address Line 2</label>
+																		<input type="text"
+																			placeholder="Enter Address Line 2"
+																			value="Lorum Ipsum" disabled
+																			formControlName="address2">
+																		<p class="error-message"></p>
+																	</div>
+																</div>
+																<div class="col-md-6 col-lg-4 col-xl-4 col-12">
+																	<div class="ux-input ux-disabled">
+																		<label>State</label>
+																		<select formControlName="state" disabled>
+																			<option value="">Select State</option>
+																			<option value="Maharashtra" selected>
+																				Maharashtra</option>
+																		</select>
+																		<p class="error-message"></p>
+																	</div>
+																</div>
+															</div>
+															<div class="row1">
+																<div class="col-md-6 col-lg-4 col-xl-4 col-12">
+																	<div class="row1">
+																		<div class="col-6">
+																			<div class="ux-input ux-disabled">
+																				<label>City</label>
+																				<select formControlName="city" disabled
+																					class="pr-4">
+																					<option value="">Select City
+																					</option>
+																					<option value="Mumbai" selected>
+																						Mumbai</option>
+																				</select>
+																				<p class="error-message"></p>
+																			</div>
+																		</div>
+																		<div class="col-6">
+																			<div class="ux-input ux-disabled">
+																				<label>Pin</label>
+																				<input type="text"
+																					placeholder="Enter Pin"
+																					value="400008" disabled
+																					formControlName="pin" numbersOnly>
+																				<p class="error-message"></p>
+																			</div>
+																		</div>
+																	</div>
+																</div>
+																<div class="col-md-6 col-lg-4 col-xl-4 col-12">
+																	<div class="ux-input ux-disabled">
+																		<label>Mobile Number</label>
+																		<input type="text"
+																			placeholder="Enter Mobile Number"
+																			value="9595957392" disabled
+																			formControlName="mobileNumber" numbersOnly>
+																		<p class="error-message"></p>
+																	</div>
+																</div>
+																<div class="col-md-6 col-lg-4 col-xl-4 col-12">
+																	<div class="ux-input ux-disabled">
+																		<label>Email ID</label>
+																		<input type="text" placeholder="Enter Email ID"
+																			value="lorumipsum@gmail.com" disabled
+																			formControlName="email">
+																		<p class="error-message"></p>
+																	</div>
+																</div>
+															</div>
+															<div class="row1">
+																<div class="col-md-6 col-lg-4 col-xl-4 col-12">
+																	<div class="ux-input ">
+																		<label>Branch Name</label>
+																		<select formControlName="branchName">
+																			<option value="">Select Branch Name</option>
+																			<option value="Navi-mumbai">Navi-Mumbai
+																			</option>
+																		</select>
+																		<p class="error-message"
+																			*ngIf="fifteenGHForm.controls['branchName'].hasError('required') && (fifteenGHForm.controls['branchName'].dirty || fifteenGHForm.controls['branchName'].touched)">
+																			This field is required </p>
+
+																	</div>
+																</div>
+																<div class="col-md-6 col-lg-4 col-xl-4 col-12">
+																	<div class="ux-input ">
+																		<label>Estimated Income under which declaration
+																			is made
+																			<a class="income-info-btn info-icon-img"
+																				(click)="infoPopup('taxIncome')"> <img
+																					src="assets/images/svg/information.svg">
+																			</a>
+																		</label>
+																		<input type="text"
+																			placeholder="Enter Estimated Income"
+																			formControlName="estimatedIncomeDeclaration"
+																			numbersOnly>
+																		<!-- <p class="info-message">Other Income - Investment under Chapter VI A - Loss from property</p> -->
+																		<p class="error-message"
+																			*ngIf="fifteenGHForm.controls['estimatedIncomeDeclaration'].hasError('required') && (fifteenGHForm.controls['estimatedIncomeDeclaration'].dirty || fifteenGHForm.controls['estimatedIncomeDeclaration'].touched)">
+																			This field is required </p>
+																		<p class="error-message"
+																			*ngIf="fifteenGHForm.controls['estimatedIncomeDeclaration'].hasError('min') && (fifteenGHForm.controls['estimatedIncomeDeclaration'].dirty || fifteenGHForm.controls['estimatedIncomeDeclaration'].touched)">
+																			This field is required </p>
+
+																	</div>
+																</div>
+															</div>
+															<div class="row1">
+																<div class="col-md-6 col-lg-4 col-xl-4 col-12">
+																	<div class="ux-input ">
+																		<label>Estimated Total Income
+																			<a class="total-income-info-btn info-icon-img"
+																				(click)="infoPopup('totalIncomeInfo')">
+																				<img
+																					src="assets/images/svg/information.svg">
+																			</a>
+																		</label>
+																		<input type="text"
+																			placeholder="Enter Estimated Total Income"
+																			formControlName="estimatedTotalIncome"
+																			numbersOnly>
+																		<!-- <p class="info-message">Other Income - Investment under Chapter VI A - Loss from property</p> -->
+																		<p class="error-message"
+																			*ngIf="fifteenGHForm.controls['estimatedTotalIncome'].hasError('required') && (fifteenGHForm.controls['estimatedTotalIncome'].dirty || fifteenGHForm.controls['estimatedTotalIncome'].touched)">
+																			This field is required </p>
+																		<p class="error-message"
+																			*ngIf="fifteenGHForm.controls['estimatedTotalIncome'].hasError('min') && (fifteenGHForm.controls['estimatedTotalIncome'].dirty || fifteenGHForm.controls['estimatedTotalIncome'].touched)">
+																			This field is required </p>
+
+																	</div>
+																</div>
+																<div class="col-md-6 col-lg-4 col-xl-4 col-12">
+																	<div class="ux-input ux-disabled">
+																		<label>Total Income</label>
+																		<input type="text"
+																			placeholder="Enter Total Income"
+																			value="12,000" disabled
+																			formControlName="totalIncome" numbersOnly>
+																		<p class="error-message"></p>
+																	</div>
+																</div>
+															</div>
+															<div
+																class="vspacer20 customize d-none d-md-block d-lg-block d-xl-block">
+															</div>
+															<div class="row1 mt-3">
+																<div class="col-12">
+																	<div class="ux-input">
+																		<label>Weather assessed to Tax
+																			<a class="tax-info-btn info-icon-img"
+																				(click)="infoPopup('taxInfo')"> <img
+																					src="assets/images/svg/information.svg">
+																			</a>
+																		</label>
+																	</div>
+																</div>
+																<div class="col-12">
+																	<div class="ux-selection">
+																		<label class="ux-selection2">Yes
+																			<input type="radio"
+																				[(ngModel)]="assessedTaxModel"
+																				[checked]="assessedTaxModel == 'yes' "
+																				value="yes" name="taxAssessed"
+																				formControlName="taxAssessed"> <span
+																				class="checkmark"></span> </label>
+																	</div>
+																	<div class="ux-selection">
+																		<label class="ux-selection2">No
+																			<input type="radio"
+																				[(ngModel)]="assessedTaxModel"
+																				[checked]="assessedTaxModel == 'no' "
+																				value="no" name="taxAssessed"
+																				formControlName="taxAssessed"> <span
+																				class="checkmark"></span> </label>
+																	</div>
+																</div>
+																<div class="col-12">
+																	<div class="ux-input mt-0 mb-0">
+																		<p class="error-message"
+																			*ngIf="fifteenGHForm.controls['taxAssessed'].hasError('required') && (fifteenGHForm.controls['taxAssessed'].dirty || fifteenGHForm.controls['taxAssessed'].touched)">
+																			This field is required </p>
+																	</div>
+																</div>
+															</div>
+															<div class="row1 mt-3">
+																<div class="col-md-6 col-lg-4 col-xl-4 col-12">
+																	<div class="ux-input">
+																		<label>Last Assessment Year</label>
+																		<select formControlName="lastAssessment">
+																			<option value="">Select Year</option>
+																			<option value="2021-2022">2021-2022</option>
+																		</select>
+																		<p class="error-message"
+																			*ngIf="fifteenGHForm.controls['lastAssessment'].hasError('required') && (fifteenGHForm.controls['lastAssessment'].dirty || fifteenGHForm.controls['lastAssessment'].touched)">
+																			This field is required </p>
+
+																	</div>
+																</div>
+																<div class="col-md-6 col-lg-4 col-xl-4 col-12">
+																	<div class="ux-input ux-disabled">
+																		<label>Taxable Income</label>
+																		<input type="text"
+																			placeholder="Enter Taxable Income"
+																			value="12,000" disabled
+																			formControlName="taxableIncome">
+																		<p class="error-message"></p>
+																	</div>
+																</div>
+															</div>
+															<div class="row1">
+																<div class="col-md-6 col-lg-4 col-xl-4 col-12">
+																	<div class="ux-input">
+																		<label>Total Number of form 15G/H filed During
+																			Current FY</label>
+																		<input type="text"
+																			placeholder="Enter Number of form"
+																			formControlName="totalForm" numbersOnly>
+																		<p class="error-message"
+																			*ngIf="fifteenGHForm.controls['totalForm'].hasError('required') && (fifteenGHForm.controls['totalForm'].dirty || fifteenGHForm.controls['totalForm'].touched)">
+																			This field is required </p>
+
+																	</div>
+																</div>
+																<div class="col-md-6 col-lg-4 col-xl-4 col-12">
+																	<div class="ux-input">
+																		<label>Agreegate Amount of 15G/H
+																			Submitted</label>
+																		<input type="text" placeholder="Enter Amount"
+																			formControlName="amount" numbersOnly>
+																		<p class="error-message"
+																			*ngIf="fifteenGHForm.controls['amount'].hasError('required') && (fifteenGHForm.controls['amount'].dirty || fifteenGHForm.controls['amount'].touched)">
+																			This field is required </p>
+																		<p class="error-message"
+																			*ngIf="fifteenGHForm.controls['amount'].hasError('min') && (fifteenGHForm.controls['amount'].dirty || fifteenGHForm.controls['amount'].touched)">
+																			Amount can't be 0 </p>
+
+																	</div>
+																</div>
+															</div>
+															<div class="row1 mt-2">
+																<div class="col-md-12 col-12">
+																	<div class="ux-selection">
+																		<div class="ux-selection1 mar-rcustom p-0">
+																			<label>I accept <a>Terms and Conditions</a>
+																				<input type="checkbox" name="accept"
+																					formControlName="termsCondition"
+																					required> <span
+																					class="checkmark"></span> </label>
+																		</div>
+																	</div>
+																</div>
+																<div class="col-md-12 col-12">
+																	<div class="ux-input m-0">
+																		<p class="error-message"
+																			*ngIf="fifteenGHForm.controls['termsCondition'].hasError('required') && (fifteenGHForm.controls['termsCondition'].dirty || fifteenGHForm.controls['termsCondition'].touched)">
+																			This field is required </p>
+																	</div>
+																</div>
+															</div>
+														</div>
+													</div>
+												</div>
+												<div class="col-12 col-md-12">
+													<ul class="bottom-footer1">
+														<li>
+															<div class="btn-div">
+																<button class=" ux-button secondary sm-mob"
+																	type="button">Cancel</button>
+															</div>
+															<div class="btn-div">
+																<button class=" ux-button primary sm-mob submit-btn"
+																	type="submit" (click)="submitForm()">Submit</button>
+															</div>
+														</li>
+													</ul>
+												</div>
+											</div>
+										</form>
+									</div>
+									<!-- Greencard2 End here -->
+								</div>
+								<!-- Right Column Ads Start -->
+								<div class="col-12 col-md-12 col-lg-12 col-xl-3 d-none d-xl-block">
+									<div class="right-ads">
+										<a> <img src="assets/images/banner/my-card-banner.jpg"> </a>
+									</div>
+									<div class="vspacer30"></div>
+								</div>
+								<!-- Right Column Ads Ends -->
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!--.right-col-container-->
+	</div>
+	<!--.right-main-column-->
+</div>
+<!-- main -->
+<!-- Income Info Popup Start-->
+<div class="popup-bottom md-popup income-info-popup">
+	<div class="row1">
+		<div class="col-12 text-center">
+			<h4 class="text-center">Select 'Yes' for the three scenarios mentioned below</h4>
+		</div>
+	</div>
+	<div class="row1">
+		<div class="col-12 mt-2">
+			<ol class="orderlist3">
+				<li>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</li>
+				<li> Pellentesque quis magna quis augue maximus vestibulum vel eu mi.</li>
+				<li>Fusce non est eu nisl fermentum scelerisque.</li>
+			</ol>
+		</div>
+	</div>
+	<div class="row1 mt-2">
+		<div class="col-12 col-md-12 text-center">
+			<button class="ux-button primary ok-btn sm-mob" (click)="closePopup()">OK</button>
+		</div>
+	</div>
+</div>
+<!--  Income Info Popup  End-->
+<!-- Total Income Info Popup Start-->
+<div class="popup-bottom md-popup total-income-info-popup">
+	<div class="row1">
+		<div class="col-12 text-center">
+			<h4 class="text-center">Select 'Yes' for the three scenarios mentioned below</h4>
+		</div>
+	</div>
+	<div class="row1">
+		<div class="col-12 mt-2">
+			<ol class="orderlist3">
+				<li>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</li>
+				<li> Pellentesque quis magna quis augue maximus vestibulum vel eu mi.</li>
+				<li>Fusce non est eu nisl fermentum scelerisque.</li>
+			</ol>
+		</div>
+	</div>
+	<div class="row1 mt-2">
+		<div class="col-12 col-md-12 text-center">
+			<button class="ux-button primary ok-btn sm-mob" (click)="closePopup()">OK</button>
+		</div>
+	</div>
+</div>
+<!--  Total Income Info Popup  End-->
+<!-- Tax Info Popup Start-->
+<div class="popup-bottom md-popup tax-info-popup">
+	<div class="row1">
+		<div class="col-12 text-center">
+			<h4 class="text-center">Whether assessed to Tax?</h4>
+		</div>
+	</div>
+	<div class="row1">
+		<div class="col-12 mt-2">
+			<ol class="orderlist3">
+				<li>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</li>
+				<li> Pellentesque quis magna quis augue maximus vestibulum vel eu mi.</li>
+				<li>Fusce non est eu nisl fermentum scelerisque.</li>
+				<li>Aliquam faucibus odio a erat cursus convallis.</li>
+				<li>Suspendisse sit amet ex eu lectus fringilla efficitur nec non sapien.</li>
+			</ol>
+		</div>
+	</div>
+	<div class="row1 mt-2">
+		<div class="col-12 col-md-12 text-center">
+			<button class="ux-button primary ok-btn sm-mob" (click)="closePopup()">OK</button>
+		</div>
+	</div>
+</div>
+<!--  Tax Info Popup  End-->
+<!-- OTP Popup Start -->
+<div class="popup-bottom md-popup otp-popup">
+	<div class="row1">
+		<div class="col-12">
+			<h4 class="text-center">OTP Verification</h4>
+		</div>
+		<!-- <div class="col-2">
+			<button class="ux-button-icon close-btn"> <img src="assets/images/svg/close-b.svg" alt="cross-icon" class="img-vsmall" (click)="closePopup()"> </button>
+		</div> -->
+	</div>
+	<div class="row1">
+		<div class="col-12 col-md-8 col-lg-8 col-xl-8 m-auto">
+			<div class="mob-icon"> <img src="assets/images/icons/mobile.svg" alt="mobile-icon"> </div>
+			<h4 class="text-center ">Mobile OTP</h4>
+		</div>
+	</div>
+	<div class="row1">
+		<div class="col-12 col-md-8 col-lg-8 col-xl-8  m-auto">
+			<div class="row1">
+				<div class="col-12 col-md-12">
+					<form [formGroup]="otpForm">
+						<div class="row4">
+							<div class="col-sm-2 col-2 col-md-2" *ngFor="let otp of otpInput | slice:0:6; index as i">
+								<div class="ux-input password1 mb-1">
+									<input id="mobile{{i}}" #otpRow type="password" maxlength="1" placeholder="●"
+										(keyup)="onKeyUpEvent(i, $event, 'otp')" formControlName="{{otp}}"
+										pattern="\d*">
+								</div>
+							</div>
+							<!-- <div class="col-sm-2 col-2 col-md-2">
+							<div class="ux-input password1 mb-1">
+								<input id="mobile2" type="password" maxlength="1" placeholder="●" onkeyup="onKeyUpEventforAll(2, event,'mobile')" onfocus="onFocusEventAll(2,'mobile')"> </div>
+						</div>
+						<div class="col-sm-2 col-2 col-md-2">
+							<div class="ux-input password1 mb-1">
+								<input id="mobile3" type="password" maxlength="1" placeholder="●" onkeyup="onKeyUpEventforAll(3, event,'mobile')" onfocus="onFocusEventAll(3,'mobile')"> </div>
+						</div>
+						<div class="col-sm-2 col-2 col-md-2">
+							<div class="ux-input password1 mb-1">
+								<input id="mobile4" type="password" maxlength="1" placeholder="●" onkeyup="onKeyUpEventforAll(4, event,'mobile')" onfocus="onFocusEventAll(4 ,'mobile')"> </div>
+						</div>
+						<div class="col-sm-2 col-2 col-md-2">
+							<div class="ux-input password1  mb-1">
+								<input id="mobile5" type="password" maxlength="1" placeholder="●" onkeyup="onKeyUpEventforAll(5, event,'mobile')" onfocus="onFocusEventAll(5 ,'mobile')"> </div>
+						</div>
+						<div class="col-sm-2 col-2 col-md-2">
+							<div class="ux-input password1 mb-1">
+								<input id="mobile6" type="password" maxlength="1" placeholder="●" onkeyup="onKeyUpEventforAll(6, event,'mobile')" onfocus="onFocusEventAll(6,'mobile')"> </div>
+						</div> -->
+						</div>
+					</form>
+					<div class="row1">
+						<div class="col-12">
+							<div class="ux-input password1 mt-0 mb-0">
+								<p class="error-message"></p>
+							</div>
+						</div>
+					</div>
+					<div class="row4">
+						<div class="col-6 col-md-6">
+							<div class="text-left">
+								<p class="text-left"> <span class="success-text">00.20</span> </p>
+							</div>
+						</div>
+						<div class="col-6 col-md-6">
+							<div class="text-right">
+								<button class="ux-linkbutton default-underline mt-3">Resend</button>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="row1 mt-2">
+		<div class="col-12 col-md-8 col-lg-8 col-xl-8  m-auto">
+			<div class="row1">
+				<div class="col-12 text-center">
+					<button class="ux-button primary otp-submit" (click)="otpSubmit()">Submit</button>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- OTP Popup End-->

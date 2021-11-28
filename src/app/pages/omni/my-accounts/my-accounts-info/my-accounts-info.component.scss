@@ -1,0 +1,21 @@
+#test.active a img{
+    height: 15px;
+    transform: rotate(90deg);
+}
+
+#test a img{
+    height: 15px;
+    transform: rotate(270deg);
+}
+
+.commingSoon{
+    position: absolute;
+    background: #ad1c29;
+    color: #ffffff;
+    font-size: .5rem;
+    padding: 1px 5px;
+    border-radius: 10px;
+    top: 9px;
+    // left: 62px;
+    text-transform: capitalize;
+}

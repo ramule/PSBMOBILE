@@ -1,0 +1,160 @@
+<div class="main bg-m">
+	<div class="nav-overlay"></div>
+	<div class="right-main-column ">
+		<div class="right-col-container pad-b full-width">
+			<!-- ======== body page content start from here ======== -->
+			<div class="body-page-container main-dashborad manage-payee">
+				<div class="container-fluid">
+					<div class="row">
+						<div class="col-12 p-0">
+							<div class="breadcrumb">
+								<ul class="lst-breadcrumb">
+									<!-- <li  [routerLink]="['/myAccount']"> <a >My Accounts</a> </li>
+									<li  [routerLink]="['/loanList']"> <a >My Borrowings</a> </li>
+									<li  [routerLink]="['/loanDetails']"> <a > Loan Account Details</a> </li>
+									<li> Loan Repayment Schedule </li> -->
+									<li *ngFor="let name of dataService.breadcrumblist">
+										<a (click)="dataService.breadcrumroute(name.routeName)">{{name.currentRoute | translate}}</a>
+								</li>
+
+								</ul>
+							</div>
+						</div>
+					</div>
+					<!--.row -->
+					<div class="vspacer15 customize d-none d-md-block d-lg-block d-xl-block"></div>
+					<div class="row no-gutters">
+						<div class="col-12">
+							<div class="row1">
+								<div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-9">
+									<!-- Greencard2 Start here -->
+									<div class="greencard2">
+										<div class="row1 hide-m">
+											<div class="col-md-8 col-12">
+												<h4>Loan Repayment Schedule</h4> </div>
+											<div class="col-md-4 col-12"> </div>
+										</div>
+										<div class="row1">
+											<div class="col-sm-12 col-12 col-md-12">
+												<div class="white-box2 mb-2 mt-0 p-0">
+													<div class="info-bottom pad-custom">
+														<div class="info-details">
+															<div class="row">
+																<h6>Account Number</h6>
+																<h5>{{dataService.selLoanAccDtlNo.accountNo}}</h5> </div>
+														</div>
+														<div class="info-details">
+															<div class="row">
+																<h6>Loan Amount</h6>
+																<h5>{{dataService.loanUserDtl.loanAmount | customcurrency}}</h5> </div>
+														</div>
+														<div class="info-details">
+															<div class="row">
+																<h6>Balance Outstanding</h6>
+																<h5>{{dataService.loanUserDtl.accountLiability | customcurrency}}</h5> </div>
+														</div>
+														<div class="info-details">
+															<div class="row">
+																<h6>Overdue Amount</h6>
+																<h5>{{overdueAmt | customcurrency}}</h5> </div>
+														</div>
+														<div class="info-details">
+															<div class="row">
+																<h6>EMI Amount</h6>
+																<h5>{{loanRepayemtDtl?.flowAmount | customcurrency}}</h5> </div>
+														</div>
+														<div class="info-details">
+															<div class="row">
+																<h6>EMI Start Date</h6>
+																<h5>{{loanRepayemtDtl?._flowStartDate}}</h5> </div>
+														</div>
+														<div class="info-details">
+															<div class="row">
+																<h6>Total Number of Installment</h6>
+																<h5>{{loanRepayemtDtl?.numberOfFlows}}</h5> </div>
+														</div>
+													</div>
+												</div>
+											</div>
+											<div class="col-sm-12 col-12 col-md-12">
+												<div class="white-box2 mb-3 p-0">
+													<div class="info-bottom pad-custom">
+														<div class="info-details mt-3 col-12 p-0">
+															<div class="row">
+																<h5>Loan Payment Schedule</h5> </div>
+														</div>
+														<div class="info-details">
+															<div class="row">
+																<h6>First Installment Date</h6>
+																<h5>{{loanRepayemtDtl?._flowStartDate}}</h5> </div>
+														</div>
+														<div class="info-details">
+															<div class="row">
+																<h6>Installment Amount</h6>
+																<h5>{{loanRepayemtDtl?.flowAmount | customcurrency}}</h5> </div>
+														</div>
+														<div class="info-details">
+															<div class="row">
+																<h6>Number of Installment to be paid</h6>
+																<h5>{{installmentDue}}</h5> </div>
+														</div>
+														<div class="info-details">
+															<div class="row">
+																<h6>Next Demand Date</h6>
+																<h5>{{loanRepayemtDtl?._nextDemandDate}}</h5> </div>
+														</div>
+														<div class="info-details">
+															<div class="row">
+																<h6>Repayment Frequency</h6>
+																<h5>{{loanRepayemtDtl?.repaymentFrequencyType}}</h5> </div>
+														</div>
+													</div>
+												</div>
+											</div>
+											<div class="col-12 col-md-12">
+												<ul class="bottom-footer1">
+													<li>
+														<div class="btn-div w100">
+															<button class="ux-button secondary sm-mob" (click)="goToPage('loanDetails')">Back</button>
+														</div>
+													</li>
+												</ul>
+											</div>
+										</div>
+									</div>
+									<!-- Greencard2 End here -->
+								</div>
+								<!-- Right Column Ads Start -->
+								<div class="col-12 col-md-12 col-lg-12 col-xl-3 d-none d-xl-block">
+									<div class="right-ads">
+										<a > <img src="assets/images/banner/my-card-banner.jpg"> </a>
+									</div>
+									<div class="vspacer30"></div>
+									<!-- <div class="offers-card">
+											<div class="header-block clearfix">
+												<h5>Offers on your card</h5>
+											</div>
+
+											<div class="panel-body">
+												<div class="recentpayment-control">
+													<ul>
+													    <li>
+															<img src="assets/images/banner/offer-banner.png">
+														</li>
+													</ul>
+												</div>
+											 </div>
+										</div>  --></div>
+								<!-- Right Column Ads Ends -->
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!--.right-col-container-->
+	</div>
+	<!--.right-main-column-->
+
+</div>
+<!-- main -->

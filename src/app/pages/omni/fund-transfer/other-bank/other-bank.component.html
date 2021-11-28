@@ -1,0 +1,186 @@
+<div class="main">
+
+    <div class="nav-overlay"></div>
+
+
+    <div class="right-main-column">
+        <div class="right-col-container full-width">
+            <div class="body-page-container main-dashborad">
+                <div class="container-fluid">
+
+                  <div class="row">
+                        <div class="col-12 p-0">
+                            <div class="breadcrumb">
+                                <ul class="lst-breadcrumb">
+                                  <li>
+                                        <a routerLink="/otherBanks">{{"FUND_TRANSFER" | translate }}</a>
+                                    </li>
+                                    <li>
+                                        {{'OTHER_BANK' | translate}}
+                                   </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                 <!--.row -->
+                 <div class="vspacer30"></div>
+                    <div class="row no-gutters">
+                        <div class="col-12">
+                           <div class="row1">
+                               <div class="col-12">
+                                <form [formGroup]="transferFund" (ngSubmit)="fundTransfer()">
+                                <div class="ux-acc-container" style="margin: 0">
+                                    <div class="acc-slide ">
+                                        <a href="javascript:;" class="arrow-toggle">
+                                            <div class="row1">
+                                               <div class="col-12 col-xl-3 col-lg-4 col-md-6">
+                                                <div class="ux-input">
+                                                    <label>{{"TRANSFER_TO" | translate }}</label>
+                                                       <select id="transferTo"  formControlName="transferTo" (change)="selectAccount($event.target.value)" >
+                                                            <option value="">{{"SELECT" | translate }}</option>
+                                                            <option *ngFor="let benificary of benificiaryList" [value]="benificary.value">{{benificary.value}}</option>
+                                                       </select>
+                                                       <span class="errormsg" *ngIf="formErrors.transferTo">{{ formErrors.transferTo }}</span>
+                                                       <p></p>
+                                                  </div>
+                                               </div>
+                                               <div class="col-12 col-xl-1 col-lg-1 col-md-1">
+                                                <div class="ux-input">
+                                                    <label class=" text1">{{"OR" | translate }}</label>
+                                                  </div>
+                                               </div>
+                                               <div class="col-12 col-xl-4 col-lg-4 col-md-4">
+                                                <div class="ux-input">
+                                                    <button class="ux-button sm primary btn1" type="button" (click)="addPayee('')">{{"ADD_NEW_PAYEE" | translate }}</button>
+                                                  </div>
+                                               </div>
+                                            </div>
+                                         <!-- <i></i> -->
+                                        </a> <!-- arrow-toggle -->
+                                        <div class="acc-slide-content" id="selectAccount" >
+                                            <div class="slide-body">
+                                                <div class="row1">
+                                                    <div class="col-12 col-xl-3 col-lg-4 col-md-6">
+                                                        <div class="ux-input">
+                                                            <label>{{"TRANSFER_FROM" | translate }}</label>
+                                                               <select id="transferFrom" (change)="onAccountNoChange($event.target.value)" formControlName="transferFrom">
+                                                                <option value="">{{"SELECT" | translate }}</option>
+                                                                <option  *ngFor="let account of accountList" [value]="account.accountNumber">{{account.sbAccount}}</option>
+                                                               </select>
+                                                               <span class="errormsg" *ngIf="formErrors.transferFrom">{{ formErrors.transferFrom }}</span>
+
+                                                               <p></p>
+                                                                  <div class="text-right" *ngIf="isAccountSelected">
+                                                                    <em class="message">{{"TOTAL_AVL_BAL_IS" | translate }} {{selectedAccBal | customcurrency:"symbol"}}</em>
+                                                             </div>
+                                                          </div>
+                                                       </div>
+                                                       <div class="col-12 col-xl-3 col-lg-4 col-md-6">
+                                                        <div class="ux-input">
+                                                            <label>{{"AMOUNT" | translate }}</label>
+
+                                                            <input type="text" placeholder='{{"ENTER_AMOUNT" | translate }}' formControlName="amount" numbersOnly limit-to="15" (input)="onInput($event.target.value)">
+                                                            <span *ngIf="amountInWords != ''">
+                                                                {{amountInWords}}
+                                                            </span>
+                                                            <span class="errormsg" *ngIf="formErrors.amount">{{ formErrors.amount }}</span>
+                                                            <p></p>
+                                                         </div>
+                                                       </div>
+                                                       <div class="col-12 col-xl-3 col-lg-4 col-md-6">
+                                                        <div class="ux-input">
+                                                            <label>{{"REMARKS" | translate }} ({{"OPTIONAL" | translate }})</label>
+                                                            <input type="text" placeholder='{{"ENTER_REMARKS" | translate }}'  formControlName="remark" limit-to="30">
+                                                            <span class="errormsg" *ngIf="formErrors.remark">{{ formErrors.remark }}</span>
+                                                            <p></p>
+                                                         </div>
+                                                       </div>
+                                                </div>
+                                                <div class="row1 pb-3" style="position:relative">
+                                                    <div class="col-12 col-xl-12 col-lg-12 col-md-12">
+                                                        <div class="ux-input">
+                                                            <label>{{"PAYMENT_METHOD" | translate }}</label>
+                                                          </div>
+                                                    </div>
+                                                    <div class="col-4 col-xl-3 col-lg-4 col-md-6" *ngFor="let item of paymentMethod">
+                                                        <div class="ux-selection dis-b">
+                                                            <label class="ux-selection2">{{item.type}}
+                                                                <input type="radio" name="paymentType" [checked]="item.checked"  [value]="item.type" formControlName="paymentType">
+                                                                <span class="checkmark"></span>
+                                                              </label>
+                                                              <div>
+                                                                <small class="message d-none d-xl-block d-lg-block d-md-block d-sm-none" >{{item.desc}}</small>
+                                                              </div>
+                                                          </div>
+                                                    </div>
+
+                                                    <span class="errormsg" *ngIf="formErrors.paymentType">{{ formErrors.paymentType }}</span>
+                                                </div>
+                                              </div><!--.slide-body-->
+                                         </div><!--.acc-slide-content-->
+                                    </div><!--.acc-slide-->
+
+                                    <div class="acc-slide">
+                                        <a href="javascript:;" class="arrow-toggle">
+                                            <h6 class="panel-title">
+                                                <div class="row1">
+                                                    <div class="col-12 col-xl-3 col-lg-4 col-md-6">
+                                                        <div class="ux-selection dis-b">
+                                                            <label class="ux-selection1">{{"SCHEDULE_PAYMENT" | translate }}
+                                                                <input type="checkbox"  name="schedulecheck" (change)="schedule($event.target.checked)">
+                                                                <span class="checkmark"></span>
+                                                              </label>
+                                                              <div>
+                                                                <small class="message">({{"SCHEDULE_PAYMENT_SPECIFIC_DATE" | translate }})</small>
+                                                              </div>
+                                                          </div>
+                                                      </div>
+                                                 </div>
+                                            </h6>
+                                            <!-- <i></i> -->
+                                        </a> <!-- arrow-toggle -->
+                                        <div class="acc-slide-content" id="paymentSchedule">
+                                            <div class="slide-body">
+                                                <div class="row1">
+                                                    <div class="col-12 col-xl-3 col-lg-4 col-md-6">
+                                                        <div class="ux-input">
+                                                            <label>{{"SELECT_DATE" | translate }}</label>
+                                                            <input type="text" class="datepicker1" placeholder="DD/MM/YYYY" formControlName='schedule'>
+                                                            <em class=" calendar-ic cal-top"></em>
+                                                         </div>
+                                                         <span class="errormsg" *ngIf="formErrors.schedule">{{ formErrors.schedule }}</span>
+                                                      </div>
+                                                 </div>
+                                          </div>
+                                     </div><!--.acc-slide-content-->
+                                    </div><!--.acc-slide-->
+                               </div>
+                               <div class="ux-footer border-n p-0">
+                                <div class="row1">
+                                    <div class="col-6 col-lg-6 col-md-6 col-sm-6">
+                                        <button class="ux-button secondary w-100 d-block d-sm-block d-xl-none d-lg-none d-md-none"  type="button" (click)="cancel()" >{{"CANCEL" | translate }}</button>
+                                      </div>
+                                    <div class="col-6 col-lg-6 col-md-6 col-sm-6">
+                                        <button class="ux-button primary  w-100 d-block d-sm-block d-xl-none d-lg-none d-md-none" type="submit" >{{"SEND" | translate }}</button>
+                                     </div>
+                                   </div>
+                                  <div class="row  d-none d-sm-none d-xl-block d-lg-block d-md-block">
+                                    <div class="col-12 col-lg-12 col-md-12 col-sm-12 p-0">
+                                        <button class="ux-button primary float-right ml-4" type="submit" >{{"SEND" | translate }}</button>
+
+                                        <button class="ux-button secondary float-right" type="button" (click)="cancel()">{{"CANCEL" | translate }}</button>
+                                      </div>
+                                   </div>
+                               </div>
+                               </form>
+                             </div>
+                          </div>
+                        </div>
+
+                    </div>
+                </div><!--.container-fluid-->
+            </div><!--.body-page-container-->
+
+        </div>
+    </div>
+</div>

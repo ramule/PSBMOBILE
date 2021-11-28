@@ -1,0 +1,494 @@
+<main  *ngIf="dataService.omniUPIFlow">
+  <div class="nav-overlay"></div>
+  <div class="right-main-column">
+    <div class="right-col-container full-width">
+      <div class="body-page-container main-dashborad fundtransfer">
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col-12 p-0">
+              <div class="breadcrumb">
+                <ul class="lst-breadcrumb">
+                  <!-- <li *ngIf="dataService.screenType != 'freezeAccount'">
+                    <a>{{ "SEND_MONEY" | translate }}</a>
+                  </li>
+                  <li>
+                    <a (click)="prevOtpSessionPage()">{{
+                      dataService.authorizeHeader
+                    }}</a>
+                  </li>
+                  <li>
+                    {{ "AUTHORIZATION" | translate }}
+                  </li> -->
+                  <li *ngFor="let name of dataService.breadcrumblist">
+                    <a (click)="dataService.breadcrumroute(name.routeName)">{{name.currentRoute | translate}}</a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <!--.row -->
+          <div class="vspacer15 customize d-none d-md-block d-lg-block d-xl-block"></div>
+
+          <div class="row no-gutters">
+            <div class="col-12">
+              <div class="row1">
+                <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-9">
+                  <form
+                    [formGroup]="enterPinForm"
+                    (ngSubmit)="validateUPIPIN()"
+                  >
+                    <div class="ux-acc-container" style="margin: 0">
+                      <div class="greenCard sendMoney">
+                        <h4>{{ "ENTER_TPIN" | translate }}</h4>
+                      </div>
+                      <div class="fund-transfer-wrapp overlap otp">
+                        <div class="tab-container">
+                          <div class="row1">
+                            <div class="col-md-12">
+                              <div class="otp-container" style="text-align: center;">
+                                <div class="otp-control">
+                                  <!-- <label *ngIf="dataService.profileEmailEdit == ''" > {{ "OTP_REGISTER_NO" | translate }} ******{{mobNumber.slice(mobNumber.length - 4)}}</label>
+                                  <label *ngIf="dataService.profileEmailEdit != ''" > OTP Sent To Your New EmailId {{ emailId }}</label> -->
+                                  <div class="otp-input">
+                                    <div class="row1">
+                                      <!-- <div class="col-12"> -->
+                                        <div 
+                                        *ngFor="let pinInput of formInput | slice:0:6; index as i">
+                                        <!-- <div class="col-sm-2 col-2 col-md-2" *ngFor="let pinInput of formInput | slice:0:4; index as i"> -->
+                                        <div class="ux-input expiry-input card-pin mx-1 password1">
+                                          <input #pinformRow numbersOnly id="spassword{{i}}" type="tel" maxlength="1"
+                                            placeholder="&#9679;" formControlName="{{pinInput}}" pattern="\d*" (keyup)="onKeyUpEvent(i, $event)" />
+                                        </div>
+                                      <!-- </div> -->
+                                        <!-- <div class="ux-input expiry-input card-pin mx-1 password1">
+                                        <input
+                                          id="spassword1"
+                                          type="tel"
+                                          maxlength="1"
+                                          autocomplete="off"
+                                          numbersOnly
+                                          placeholder="●"
+                                          (input)="onSearchChange($event.target.value,1)"
+                                          formControlName="tpin1"
+                                        />
+                                      </div>
+                                      <div class="ux-input expiry-input card-pin mx-1 password1">
+                                        <input
+                                          id="spassword2"
+                                          type="tel"
+                                          maxlength="1"
+                                          autocomplete="off"
+                                          numbersOnly
+                                          placeholder="●"
+                                          (input)="onSearchChange($event.target.value,2)"
+                                          formControlName="tpin2"
+                                        />
+                                      </div>
+                                      <div class="ux-input expiry-input card-pin mx-1 password1">
+                                        <input
+                                          id="spassword3"
+                                          type="tel"
+                                          maxlength="1"
+                                          autocomplete="off"
+                                          numbersOnly
+                                          placeholder="●"
+                                          (input)="onSearchChange($event.target.value,3)"
+                                          formControlName="tpin3"
+                                        />
+                                      </div>
+                                      <div class="ux-input expiry-input card-pin mx-1 password1">
+
+                                        <input
+                                          id="spassword4"
+                                          type="tel"
+                                          maxlength="1"
+                                          autocomplete="off"
+                                          numbersOnly
+                                          placeholder="●"
+                                          (input)="onSearchChange($event.target.value,4)"
+                                          formControlName="tpin4"
+                                        />
+                                      </div>
+                                      <div class="ux-input expiry-input card-pin mx-1 password1">
+                                        <input
+                                          id="spassword5"
+                                          type="tel"
+                                          maxlength="1"
+                                          autocomplete="off"
+                                          numbersOnly
+                                          placeholder="●"
+                                          (input)="onSearchChange($event.target.value,5)"
+                                          formControlName="tpin5"
+                                        />
+                                      </div>
+                                      <div class="ux-input expiry-input card-pin mx-1 password1">
+                                        <input
+                                          id="spassword6"
+                                          type="tel"
+                                          maxlength="1"
+                                          autocomplete="off"
+                                          numbersOnly
+                                          placeholder="●"
+                                          (input)="onSearchChange($event.target.value,6)"
+                                          formControlName="tpin6"
+                                        />
+                                        </div> -->
+                                      </div>
+                                    </div>
+                                  </div>
+                                  <div class="rstm-control">
+                                    <!-- <div class="row1">
+                                      <div class="col-12">
+                                        {{counter| formatTimer }}
+                                        <span
+                                          (click)="resendOTP(2)"
+                                          [ngClass]="counter > 0 ? 'rsnd-lnk mydisabled' : 'rsnd-lnk resendActive'"
+                                          >{{ "RESEND" | translate }}</span
+                                        >
+                                      </div>
+                                    </div> -->
+                                    <div class="row1">
+                                      <div class="col-12">
+                                        <span *ngIf="invalidTpin" style="color:red">Please enter valid TPIN</span>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+
+                                <div class="mobile-img">
+                                  <img src="assets/images/icons/mobile.svg" />
+                                </div>
+                              </div>
+                              <!-- otp-container -->
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="action-btns">
+                        <!-- <button class=" ux-button secondary backbutton sm"><i></i>Back</button> -->
+                        <div class="text-right">
+                          <button
+                            class="ux-button secondary sm"
+                            type="button"
+                            (click)="cancel()"
+                          >
+                            {{ "CANCEL" | translate }}
+                          </button>
+                          <button class="ux-button primary sm" type="submit" [disabled]="!enterPinForm.valid">
+                            {{ "CONFIRM" | translate }}
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                  </form>
+                </div>
+                <div
+                  class="col-12 col-md-12 col-lg-12 col-xl-3 d-none d-xl-block"
+                >
+                  <div class="right-ads">
+                    <a>
+                      <img src="assets/images/banner/Banner-ad.png" />
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!--.container-fluid-->
+      </div>
+    </div>
+  </div>
+</main>
+
+
+<div class="main" *ngIf="!dataService.omniUPIFlow">
+  <div class="right-main-column minus-rt-col mar-custom">
+    <div class="right-col-container cust-padb">
+      <div class="body-page-container">
+        <div class="container-fluid">
+          <div class="row">
+            <div class="bg-section">
+              <div class="col-12">
+                <div class="row1">
+                  <form [formGroup]="enterPinForm">
+                    <div class="col-sm-12 col-12 col-md-12">
+
+
+                      <div class="green-bg">
+                        <div class="full-container">
+                          <div class="row1">
+                            <div class="col-7 col-md-6">
+                              <div class="left-info">
+                                <h6>{{dataService.preApprovedBankName}}</h6>
+                                <h5>{{dataService.preApprovedAccNo}}</h5>
+                              </div>
+                            </div>
+                            <div class="col-5 col-md-6">
+                              <div class="right-info">
+                                <h6>
+                                  <!-- <img src="assets/images/svg/rupee-w.svg"
+                                                                        alt="rupees-icon"> -->
+                                  {{dataService.preApprovedAmount | customcurrency:'symbol'}}</h6>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+
+                      <div class="white-bg1 mar-b">
+                        <div class="row">
+                          <div class="col-sm-12 col-12 col-md-12">
+                            <div class="row">
+                              <div class="col-12">
+                                <div class="ux-input password1 p1 mt-0 mb-0">
+                                  <label for="spassword" class="mb0">
+                                    {{ 'ENTER_UPI_PIN' | translate }}
+                                  </label>
+                                </div>
+                              </div>
+                            </div>
+
+                            <div class="row3 pin-login mt-4">
+                              <!--id="mainPinLogin"-->
+                              <div class="col-sm-2 col-2 col-md-2"
+                                *ngFor="let pinInput of formInput | slice:0:6; index as i">
+                                <!-- <div class="col-sm-2 col-2 col-md-2" *ngFor="let pinInput of formInput | slice:0:4; index as i"> -->
+                                <div class="ux-input password1 p1 mb-1">
+                                  <input #pinformRow numbersOnly id="spassword{{i}}" type="tel" maxlength="1"
+                                    placeholder="&#9679;" formControlName="{{pinInput}}" pattern="\d*" readonly />
+                                </div>
+                              </div>
+
+                              <!-- (keyup)="onKeyUpEvent(i, $event)"
+                                                            (focus)="onFocusEvent(i)" -->
+
+
+                              <!-- <div class="col-sm-2 col-2 col-md-2">
+                                                                <div class="ux-input password1 p1 mb-0">
+                                                                    <input id="spassword1" type="password" maxlength="1" placeholder="&#9679;" onkeyup="onKeyUpEvent(1, event)" onfocus="onFocusEvent(1)" />
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-sm-2 col-2 col-md-2">
+                                                                <div class="ux-input password1 p1 mb-0">
+                                                                    <input id="spassword2" type="password" maxlength="1" placeholder="&#9679;" onkeyup="onKeyUpEvent(2, event)" onfocus="onFocusEvent(2)" />
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-sm-2 col-2 col-md-2">
+                                                                <div class="ux-input password1 p1 mb-0">
+                                                                    <input id="spassword3" type="password" maxlength="1" placeholder="&#9679;" onkeyup="onKeyUpEvent(3, event)" onfocus="onFocusEvent(3)" />
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-sm-2 col-2 col-md-2">
+                                                                <div class="ux-input password1 p1 mb-0">
+                                                                    <input id="spassword4" type="password" maxlength="1" placeholder="&#9679;" onkeyup="onKeyUpEvent(4, event)" onfocus="onFocusEvent(4)" />
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-sm-2 col-2 col-md-2">
+                                                                <div class="ux-input password1 p1 mb-0">
+                                                                    <input id="spassword5" type="password" maxlength="1" placeholder="&#9679;" onkeyup="onKeyUpEvent(5, event)" onfocus="onFocusEvent(5)" />
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-sm-2 col-2 col-md-2">
+                                                                <div class="ux-input password1 p1 mb-0">
+                                                                    <input id="spassword6" type="password" maxlength="1" placeholder="&#9679;" onkeyup="onKeyUpEvent(6, event)" onfocus="onFocusEvent(6)" />
+                                                                </div>
+                                                            </div>
+                                                            <div class="pin-login__numpad"></div> -->
+                            </div>
+                            <div class="row mb-4">
+                              <div class="col-12">
+                                <div class="ux-input password1 p1 mt-0 mb-0">
+                                  <p class="error-message text-center"></p>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+
+                        </div>
+                      </div>
+                    </div>
+                  </form>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Numpad Section Start -->
+
+      <div class="numpad-section">
+        <div class="col-sm-12 col-12 col-md-12">
+          <div class="custom-keyboard">
+            <ul class="numpad-list">
+              <li>
+                <button class="btn-rounded" type="button" name='1' value='1' id='1'
+                  (click)="keyBoardEvent($event)">1</button>
+              </li>
+              <li>
+                <button class="btn-rounded" type="button" name='2' value='2' id='2'
+                  (click)="keyBoardEvent($event)">2</button>
+              </li>
+              <li>
+                <button class="btn-rounded" type="button" name='3' value='3' id='3'
+                  (click)="keyBoardEvent($event)">3</button>
+              </li>
+              <li>
+                <button class="btn-rounded" type="button" name='4' value='4' id='4'
+                  (click)="keyBoardEvent($event)">4</button>
+              </li>
+              <li>
+                <button class="btn-rounded" type="button" name='5' value='5' id='5'
+                  (click)="keyBoardEvent($event)">5</button>
+              </li>
+              <li>
+                <button class="btn-rounded" type="button" name='6' value='6' id='6'
+                  (click)="keyBoardEvent($event)">6</button>
+              </li>
+              <li>
+                <button class="btn-rounded" type="button" name='7' value='7' id='7'
+                  (click)="keyBoardEvent($event)">7</button>
+              </li>
+              <li>
+                <button class="btn-rounded" type="button" name='8' value='8' id='8'
+                  (click)="keyBoardEvent($event)">8</button>
+              </li>
+              <li>
+                <button class="btn-rounded" type="button" name='9' value='9' id='9'
+                  (click)="keyBoardEvent($event)">9</button>
+              </li>
+              <li>
+                <button class="btn-rounded" type="button" name='-' value='clear' id='-'
+                  (click)="keyBoardEvent($event,'clear')">
+                  <img src="assets/images/svg/backspace.svg" alt="backspace-icon" />
+                </button>
+              </li>
+              <li>
+                <button class="btn-rounded" type="button" name='0' value='0' id='0'
+                  (click)="keyBoardEvent($event)">0</button>
+              </li>
+              <li>
+                <button class="btn-rounded submit-btn" type="button" value='submit'
+                  (click)="keyBoardEvent($event,'submit')">
+                  <img src="assets/images/svg/thick-check.svg" alt="check-icon" />
+                </button>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- Numpad Section End -->
+      <div class="footer-container sticky-actions">
+        <div class="footer-inactions minus-rt-col">
+          <div class="container-fluid">
+            <div class="row">
+              <div class="col-12 col-md-12 col-lg-12 text-center">
+                <div class="powered-logo mt-0">
+                  <img src="assets/images/logo/powered-upi-logo.svg" alt="powered-upi-logo">
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- footer section end -->
+
+
+    </div>
+  </div>
+
+</div>
+
+<!-- main -->
+
+
+
+<!-- =========== modal popup start ===============  -->
+
+
+<!-- MPIN Success Popup Start -->
+
+<!-- <div class="popup-bottom mpin-success">
+    <form action="#" id="success-form">
+        <div class="row1 mt-3">
+            <div class="success">
+                <img src="assets/images/svg/check.svg" alt="success-icon">
+                <h3>Success</h3>
+                <h5>Login MPIN Reset Successfully</h5>
+            </div>
+        </div>
+        <div class="row1 mt-3">
+            <div class="col-12 text-center">
+                <button class="ux-button primary md " (click)="goToPage('upiLogin')">Ok</button>
+            </div>
+        </div>
+    </form>
+</div> -->
+
+<!-- MPIN Success Popup End -->
+
+<!-- Revoke Mandate Success Popup Start -->
+<div class="popup-bottom revoke-success">
+  <div class="row mt-3">
+    <div class="success">
+      <img src="assets/images/svg/check.svg" alt="success-icon">
+      <h3>{{'SUCCESS' | translate}}</h3>
+      <h5>{{mandateRevokeMsg}}</h5>
+    </div>
+  </div>
+  <div class="row1 mt-3">
+    <div class="col-12 text-center">
+      <button class="ux-button primary md" (click)="closePopup('revoke-success')">{{'OK' | translate}}</button>
+    </div>
+  </div>
+</div>
+<!-- Revoke Mandate Success Popup End -->
+
+<!-- Pause/ Unpause Mandate Success Popup Start -->
+<div class="popup-bottom pauseUnpause-success">
+  <div class="row mt-3">
+    <div class="success">
+      <img src="assets/images/svg/check.svg" alt="success-icon">
+      <h3>{{'SUCCESS' | translate}}</h3>
+      <h5>{{pauseUnpauseMsg}}</h5>
+    </div>
+  </div>
+  <div class="row1 mt-3">
+    <div class="col-12 text-center">
+      <button class="ux-button primary md" (click)="closePopup('pauseUnpause-success')">{{'OK' |
+                translate}}</button>
+    </div>
+  </div>
+</div>
+<!-- Pause/ Unpause Mandate Success Popup End -->
+
+
+<div class="popup-bottom retryMsg">
+  <div class="row">
+    <div class="col-12">
+      <h4 class="text-center"> <img src="./assets/images/svg/error.svg" alt="error-icon"> {{'ERROR' | translate}}
+      </h4>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-12">
+      <p>
+        {{ payErrorMsg | translate}}
+      </p>
+    </div>
+  </div>
+  <div class="row1 mt-2">
+    <div class="col-6 text-center">
+      <button class="ux-button secondary no md close-btn" (click)="cancel()">{{ 'CANCEL' |
+                translate}}</button>
+    </div>
+    <div class="col-6 text-center">
+      <button class="logout-btn ux-button primary md" (click)="closePopup('retryMsg')">{{'RETRY' |
+                translate}}</button>
+    </div>
+  </div>
+</div>
+<!-- <div class="ios-nav-overlay"></div> -->

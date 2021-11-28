@@ -1,0 +1,277 @@
+<div class="row">
+    <div class="col-12 col-lg-12 col-md-12 col-sm-12 position-static">
+       
+        <div class="row1">
+            <div class="col-12">
+                <ul class="step-list">
+                    <li class="step-matched">
+                        <em> <span class="primary">{{'STEP' | translate }} 4 </span> <span class="secondary">{{'OF_STEP' | translate }} 6</span> </em>
+                     </li>
+                </ul>
+               <div class="tab-header">
+                    <h4>{{'NOMINEE_DETAILS' | translate }}</h4> 
+                    <div class="ux-selection mb-2">
+                        <label class="ux-selection1">{{'DONT_AVAIL_NOMINATION' | translate }}
+                            <input type="checkbox" [checked]="!isNomineeAvailable" name="radioboxdemo" (change)="dontAvailNominee($event)" >
+                            <span class="checkmark"></span>
+                        </label>
+                        </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-12 col-lg-12 col-md-12 col-sm-12 position-static">
+       <form [formGroup]="nomineeForm" (ngSubmit)="submit()">
+        <div class="row1">
+            <div class="col-12">
+                <div class="details-section">
+                    <div class="row1">
+                        <div Class="col-12 ">
+                            
+                        </div>
+                        <div Class="col-12 col-md-6 col-lg-6 col-xl-6">
+                            <div class="ux-input pb-0" [ngClass]="{'ux-disabled': isNomineeAvailable === false }" >
+                                <label for="upiId">{{'NOMINEE_NAME' | translate }}</label>
+                                  <input type="text" name="nomineeName"  placeholder="{{'ENTER_NOMINEE_NAME' | translate }}" formControlName="nomineeName" limit-to="80">
+                                  <span class="errormsg"
+                                  *ngIf="nomineeForm.controls['nomineeName'].hasError('required')  && nomineeForm.controls['nomineeName'].touched">
+                                  {{ 'PLEASE_ENTER_NOMINEE_NAME' | translate }}
+                                    </span>
+                                    <span class="errormsg"
+                                  *ngIf="nomineeForm.controls['nomineeName'].hasError('pattern') && nomineeForm.controls['nomineeName'].touched">
+                                  {{ 'INVALID_NOMINEE_NAME' | translate }}</span>
+                                  
+                            </div>
+                        </div> 
+                        <div Class="col-12 col-md-6 col-lg-6 col-xl-6">
+                            <div class="ux-input" [ngClass]="{'ux-disabled': isNomineeAvailable === false }"  >
+                                <label>{{'RELATIONSHIP_WITH_NOMINEE' | translate }}</label>
+                                <select name= 'nomineeRelation' formControlName="nomineeRelation">
+                                    <option value="">{{'SELECT_RELATION' | translate }}</option>
+                                    <option *ngFor="let relationShip of relationShipList" [value]="relationShip.ref_code">{{relationShip.DESCRIPTION}}</option>
+                                </select>
+                                <span class="errormsg"
+                                  *ngIf="nomineeForm.controls['nomineeRelation'].hasError('required')  && nomineeForm.controls['nomineeRelation'].touched">
+                                  {{ 'SELECT_NOMINEE_RELATION' | translate }}
+                                    </span>
+                                    
+                            </div>
+                        </div> 
+                        
+                   
+                        <div Class="col-12 col-md-6 col-lg-6 col-xl-6">
+                            <h4 >{{'COMMUNICATION_ADDRESS' | translate }}</h4>
+                                <div class="ux-input"  [ngClass]="{'ux-disabled': isNomineeAvailable === false }"  >
+                                    <label class="ux-selection1">{{'SAME_AS_PERMANENT' | translate }}
+                                        <input type="checkbox" name="address" (change)="changeAddress($event)" formControlName="address">
+                                        <span class="checkmark"></span>
+                                    </label>
+                                
+                                </div>
+                        </div>
+
+                        <div Class="col-12 col-md-6 col-lg-6 col-xl-6">
+                            <div class="ux-input" [ngClass]="{'ux-disabled': isNomineeAvailable === false }"  >
+                                <label>{{'DATE_OF_BIRTH' | translate }}</label>
+                                <!-- <input type="text" class="datepicker1" placeholder="DD/MM/YYYY" (click)="openDatePicker()" readonly  formControlName="dob" [disabled]="!isNomineeAvailable"  > -->
+                                
+                                <input type="text" [owlDateTime]="dt1" [owlDateTimeTrigger]="dt1" placeholder="Date Time" readonly  formControlName="dob" [max]="max" (ngModelChange)="onDateChange($event)">
+                                <owl-date-time [pickerType]="'calendar'" #dt1></owl-date-time><em class=" calendar-ic cal-top" [owlDateTimeTrigger]="dt1" ></em>
+                                 <span class="errormsg"  *ngIf="nomineeAge < 18" >{{'NOMINEE_IS_MINOR' | translate }}</span> 
+                                 <span class="errormsg"
+                                          *ngIf="nomineeForm.controls['dob'].hasError('required')  && nomineeForm.controls['dob'].touched">
+                                          {{ 'ENTER_DOB' | translate }}
+                                            </span>
+                             </div>
+                        </div>
+                        <div class="col-12">
+                            <div class="row1" id="nomAddress" >
+                                <div Class="col-12 col-md-6 col-lg-6 col-xl-6">
+                                
+                                    <div class="ux-input pb-0" [ngClass]="{'ux-disabled': isNomineeAvailable === false }"  >
+                                        <label for="upiId">{{'ADDRESS_LINE_1' | translate }}</label>
+                                          <input type="text" name="NomcommAddLine1" placeholder="Enter Address"  formControlName="NomcommAddLine1">
+                                         
+                                          <span class="errormsg"
+                                          *ngIf="nomineeForm.controls['NomcommAddLine1'].hasError('required')  && nomineeForm.controls['NomcommAddLine1'].touched">
+                                          {{ 'ENTER_ADDRESS' | translate }}
+                                            </span>
+                                            
+                                    </div>
+                                </div> 
+                                <div Class="col-12 col-md-6 col-lg-6 col-xl-6">
+                                    <div class="ux-input pb-0"  [ngClass]="{'ux-disabled': isNomineeAvailable === false }"  >
+                                        <label for="upiId">{{'ADDRESS_LINE_2' | translate }}</label>
+                                          <input type="text" name="NomcommAddLine2" placeholder="Enter Address 2"  formControlName="NomcommAddLine2">
+                                          <span class="errormsg"
+                                          *ngIf="nomineeForm.controls['NomcommAddLine2'].hasError('required')  && nomineeForm.controls['NomcommAddLine2'].touched">
+                                          {{ 'ENTER_ADDRESS' | translate }}
+                                            </span>
+                                    </div>
+                                </div> 
+
+                                <div Class="col-12 col-md-6 col-lg-6 col-xl-6">
+                                    <div class="ux-input" [ngClass]="{'ux-disabled': isNomineeAvailable === false }"  >
+                                        <label>{{'STATE' | translate }}</label>
+                                        <select name="nomineeState" formControlName="nomineeState" (change)="getNomineeCity($event.target.value)">
+                                            <option value="">{{'SELECT_STATE' | translate }}</option>
+                                            <option *ngFor="let stateDtl of stateNomineeList" [value]="stateDtl.ID" >{{stateDtl.state}}</option>
+                                        </select>
+                                        <span class="errormsg"
+                                        *ngIf="nomineeForm.controls['nomineeState'].hasError('required')  && nomineeForm.controls['nomineeState'].touched">
+                                        {{ 'SELECT_STATE' | translate }}
+                                          </span>
+                                    </div>
+                                </div> 
+                                <div Class="col-12 col-md-3 col-lg-3 col-xl-3">
+                                    <div class="ux-input" [ngClass]="{'ux-disabled': isNomineeAvailable === false }"  >
+                                        <label>{{'CITY' | translate }}</label>
+                                        <select name="nomineeCity" formControlName="nomineeCity" >
+                                            <option value="">{{'SELECT_CITY' | translate }}</option>
+                                            <option *ngFor="let cityDtl of nomineeCityList" [value]="cityDtl.ID" >{{cityDtl.city}}</option>
+                                        </select>
+                                        <span class="errormsg"
+                                        *ngIf="nomineeForm.controls['nomineeCity'].hasError('required')  && nomineeForm.controls['nomineeCity'].touched">
+                                        {{ 'SELECT_CITY' | translate }}
+                                          </span>
+                                    </div>
+                                </div>  
+                                <div Class="col-12 col-md-3 col-lg-3 col-xl-3">
+                                    <div class="ux-input pb-0" [ngClass]="{'ux-disabled': isNomineeAvailable === false }"  >
+                                        <label for="upiId">{{'PINCODE' | translate }}</label>
+                                          <input type="tel" name="nomineePincode" placeholder="Enter Pincode"  formControlName="nomineePincode"  limit-to="6" numbersOnly >
+                                          <span class="errormsg"
+                                          *ngIf="nomineeForm.controls['nomineePincode'].hasError('required')  && nomineeForm.controls['nomineePincode'].touched">
+                                          {{ 'ENTER_PINCODE' | translate }}
+                                            </span>
+                                            <span class="errormsg"
+                                          *ngIf="nomineeForm.controls['nomineePincode'].hasError('pattern') && nomineeForm.controls['nomineePincode'].touched">
+                                          {{ 'INVALID_PINCODE' | translate }}</span>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class=" row" id="guardian" style="display:none;">
+                            <div class="col-12">
+                                <label>{{'GARDIAN_DETAILS' | translate }}</label>    
+                            </div>
+                            <div Class="col-12 col-md-6 col-lg-6 col-xl-6">
+                                <div class="ux-input pb-0">
+                                    <label for="upiId">{{'GARDIAN_NAME' | translate }}</label>
+                                    <input type="text" name="guardianName"  placeholder="{{'ENTER_GUARDIAN_NAME' | translate }}"  formControlName="guardianName" limit-to="80">
+                                    <span class="errormsg"
+                                    *ngIf="nomineeForm.controls['guardianName'].hasError('required')  && nomineeForm.controls['guardianName'].touched">
+                                    {{ 'ENTER_GUARDIAN_NAME_ERROR' | translate }}
+                                        </span>
+                                        <span class="errormsg"
+                                    *ngIf="nomineeForm.controls['guardianName'].hasError('pattern') && nomineeForm.controls['guardianName'].touched">
+                                    {{ 'INVALID_NAME' | translate }}</span>
+                                </div>
+                            </div>
+                            <div Class="col-12 col-md-6 col-lg-6 col-xl-6">
+                                <div class="ux-input">
+                                    <label>{{'GUARDIAN_TYPE' | translate }}</label>
+                                    <select  formControlName="guardianType" >
+                                        <option value="">{{'SELECT_GUARDIAN_TYPE' | translate }}</option>
+                                        <option *ngFor="let gardian of gardianTypeList" [value]="gardian.ref_code">{{gardian.DESCRIPTION}}</option>
+                                    </select>
+                                    <span class="errormsg"
+                                    *ngIf="nomineeForm.controls['guardianType'].hasError('required')  && nomineeForm.controls['guardianType'].touched">
+                                    {{ 'SELECT_GUARDIAN_TYPE' | translate }}
+                                        </span>
+                                </div>
+                            </div> 
+                            <div class="col-12">
+                                <h4>{{'COMMUNICATION_ADDRESS' | translate }}</h4>
+                            </div>
+                            <div Class="col-12 col-md-6 col-lg-6 col-xl-6">
+                                
+                                <div class="ux-input pb-0">
+                                    <label for="upiId">{{'ADDRESS_LINE_1' | translate }}</label>
+                                    <input type="text" name="commAddLine1" placeholder="Enter Address"  formControlName="commAddLine1" >
+                                    
+                                    <span class="errormsg"
+                                    *ngIf="nomineeForm.controls['commAddLine1'].hasError('required')  && nomineeForm.controls['commAddLine1'].touched">
+                                    {{ 'ENTER_ADDRESS' | translate }}
+                                        </span>
+                                        
+                                </div>
+                            </div> 
+                            <div Class="col-12 col-md-6 col-lg-6 col-xl-6">
+                                <div class="ux-input pb-0">
+                                    <label for="upiId">{{'ADDRESS_LINE_2' | translate }}</label>
+                                    <input type="text" name="commAddLine2" placeholder="Enter Address 2"  formControlName="commAddLine2" >
+                                    <span class="errormsg"
+                                    *ngIf="nomineeForm.controls['commAddLine2'].hasError('required')  && nomineeForm.controls['commAddLine2'].touched">
+                                    {{ 'ENTER_ADDRESS' | translate }}
+                                        </span>
+                                </div>
+                            </div> 
+                        
+                            <div Class="col-12 col-md-6 col-lg-6 col-xl-6">
+                                <div class="ux-input"   >
+                                    <label>{{'STATE' | translate }}</label>
+                                    <select  formControlName="state" (change)="getCity($event.target.value)" >
+                                        <option value="">{{'SELECT_STATE' | translate }}</option>
+                                        <option *ngFor="let stateDtl of stateList" [value]="stateDtl.ID" >{{stateDtl.state}}</option>
+                                    </select>
+                                    <span class="errormsg"
+                                    *ngIf="nomineeForm.controls['state'].hasError('required')  && nomineeForm.controls['state'].touched">
+                                    {{ 'SELECT_STATE' | translate }}
+                                    </span>
+                                </div>
+                            </div> 
+                            <div Class="col-12 col-md-3 col-lg-3 col-xl-3">
+                                <div class="ux-input">
+                                    <label>{{ 'CITY' | translate }}</label>
+                                    <select  formControlName="city" >
+                                        <option value="">Select City</option>
+                                        <option *ngFor="let cityDtl of cityList" [value]="cityDtl.ID" >{{cityDtl.city}}</option>
+                                    </select>
+                                    <span class="errormsg"
+                                    *ngIf="nomineeForm.controls['city'].hasError('required')  && nomineeForm.controls['city'].touched">
+                                    {{ 'SELECT_CITY' | translate }}
+                                    </span>
+                                </div>
+                            </div>  
+                            <div Class="col-12 col-md-3 col-lg-3 col-xl-3">
+                                <div class="ux-input pb-0">
+                                    <label for="upiId">{{ 'PNCODE' | translate }}</label>
+                                    <input type="tel" name="pincode" placeholder="Enter Pincode"  formControlName="pincode"  limit-to="6" numbersOnly >
+                                    <span class="errormsg"
+                                    *ngIf="nomineeForm.controls['pincode'].hasError('required')  && nomineeForm.controls['pincode'].touched">
+                                    {{ 'ENTER_PINCODE' | translate }}
+                                        </span>
+                                        <span class="errormsg"
+                                    *ngIf="nomineeForm.controls['pincode'].hasError('pattern') && nomineeForm.controls['pincode'].touched">
+                                    {{ 'INVALID_PINCODE' | translate }}</span>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-lg-10 col-md-12 col-sm-12 position-static">
+                <div class="ux-footer border-n">
+                    <div class="row1">
+                        <div class="col-12 col-lg-6 col-md-6 col-sm-6">
+                            
+                        </div>
+                        <div class="col-12 col-lg-6 col-md-6 col-sm-6 text-right">
+                            <!-- <button class="ux-button secondary sm  cancel-btn" type="button" (click)="cancelbtn()" *ngIf="DataService.isFromOmniReg.isStepIII" >{{'PREVIOUS' | translate}}</button>
+                            <button class="ux-button primary sm  ml-2" type="submit">{{'NEXT' | translate}}</button> -->
+                            <button class="ux-button sm secondary cancel-btn" type="button" (click)="prevtab()"  >{{ 'PREVIOUS' | translate }}</button>
+                            <button class="ux-button sm primary  ml-2" type="submit">{{ 'NEXT' | translate }}</button>
+                        </div>
+                    </div>
+                </div> 
+            </div>
+        </div>
+        </form>
+    </div>
+    <div class="col-12 col-lg-6 col-md-6 col-sm-12">
+      
+    </div>
+</div>

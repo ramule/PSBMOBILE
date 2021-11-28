@@ -1,0 +1,427 @@
+<div class="main bg-m">
+	<!-- Start Global Nav -->
+	<div class="nav-overlay"></div>
+	<!-- End Global Nav -->
+	<div class="right-main-column ">
+		<div class="right-col-container pad-b full-width">
+			<!-- ======== body page content start from here ======== -->
+			<div class="body-page-container main-dashborad">
+				<div class="container-fluid">
+					<div class="row">
+						<div class="col-12 p-0">
+							<div class="breadcrumb">
+								<ul class="lst-breadcrumb">
+									<!-- <li> <a>My Accounts</a> </li>
+									<li> My Deposits </li> -->
+									<li *ngFor="let name of dataService.breadcrumblist">
+                                        <a (click)="dataService.breadcrumroute(name.routeName)">{{name.currentRoute | translate}}</a>
+                                	</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+					<!--.row -->
+					<div class="vspacer15 customize d-none d-md-block d-lg-block d-xl-block"></div>
+					<div class="row no-gutters">
+						<div class="col-12">
+							<div class="row1">
+								<div class="col-12 col-sm-12 col-md-12 col-lg-12  col-xl-9">
+									<div class="greencard2 mycard">
+										<div class="info-box" *ngIf="totalFixedAcc != '00' || totalRecuringAcc!= '00' " >
+											<div class="flex-container no-bg">
+												<div class="full-info">
+													<div class="row1">
+														<div class="col-12 col-md-12 col-lg-9 col-xl-10">
+															<div class="ac-info">
+																<div class="greenbg-input ux-input">
+																	<label for="fromaccount " class="largeview-enable">{{"MY_DEPOSITS" | translate}}</label>
+																</div>
+															</div>
+															<div class="ac-info" *ngIf="!dataService.isNRENRO || (dataService.isNRENRO && !isDepositeSingleCurrency) "   >
+																<div class="greenbg-input ux-input">
+																	<p class="info-message2 with-bg"> <i>{{"TOTAL_ACC_BAL" | translate}}.</i> <span> {{totalFixedAmt+totalRecuringAmt | customcurrency}}</span></p>
+																</div>
+															</div>
+															<div class="ac-info hide-m" *ngIf="!dataService.isNRENRO || (dataService.isNRENRO && !isDepositeSingleCurrency) "   >
+																<!-- <button class="refresh-btn" (click)="refreshDetails()"><img src="assets/images/svg/refresh.svg" alt="refresh-icon"></button> <span class="refresh-text"> Last refreshed on {{refreshedTime}}</span> </div> -->
+																<button class="refresh-btn" (click)="refreshDetails()"><img src="assets/images/svg/refresh.svg" alt="refresh-icon"></button> <span class="refresh-text">{{"LAST_LOGIN" | translate}} {{refreshDate }}</span> 
+															</div>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+										<div class="card-scrollbox">
+											<!-- Qwl Carousel -->
+											<owl-carousel-o [options]="accountCarouselOptions" #cardsCarousel>
+												<ng-container *ngIf="totalFixedAcc != '00' ">
+													<ng-template carouselSlide class="item" role="listitem" [width]="300">
+														<div class="item" role="listitem">
+															<div class="ux-component5 no-margin">
+																<div class="ux-dropdown">
+																	<div class="drp-box">
+																		<a class="drp-enterdata" (click)="activeTab='fixed';" [ngClass]="{'active' : activeTab == 'fixed'}">
+																			<div class="card-section">
+																				<div class="card-info">
+																					<div class="card-actions">
+																						<h4> {{"FIXED_DEPOSIT" | translate}} <span>({{totalFixedAcc}})</span></h4> <span class="d-block d-md-none d-lg-none d-xl-none text-left">001184918391</span> </div>
+																					<div class="show-btn">
+																						<button class="refresh-btn"> <img src="assets/images/svg/eye-g.svg" alt="eye-icon"> </button>
+																					</div>
+																				</div>
+																				<div class="card-info" *ngIf="!dataService.isNRENRO || (dataService.isNRENRO && !isFixedDepositingleCurrency) " >
+																					<div class="card-actions"> <span class="account-balance disable-status">
+																				<em class="entered-data " amt="{{totalFixedAmt}}">
+																					<b>{{totalFixedAmt | customcurrency}}</b>
+																				</em>
+																			</span>
+																						<div class="total-target"> <small> {{"TOTAL_FD_AMOUNT" | translate}}</small> </div>
+																					</div>
+																					<div class="ref-btn">
+																						<button class="refresh-btn"> <img src="assets/images/svg/refresh-g.svg" alt="refresh-icon"> </button>
+																					</div>
+																				</div>
+																				<!-- <div class="card-info" *ngIf="dataService.isNRENRO && isFixedDepositingleCurrency" >
+																					<h6 class="light-t">{{"VIEW_DETAILS" | translate}}</h6>
+																				</div> -->
+
+																				<div class="card-info2"  *ngIf="dataService.isNRENRO && isFixedDepositingleCurrency">
+																					<div class="card-actions3">
+																						<div class="text-right">
+																							<button class="ux-linkbutton primary link-text mt-4">{{"VIEW_DETAILS" | translate}}</button>
+																						</div>
+																					</div>
+																				</div>
+																			</div>
+																		</a>
+																	</div>
+																</div>
+															</div>
+														</div>
+													</ng-template>
+												</ng-container>
+												<ng-container *ngIf="totalRecuringAcc != '00' ">
+													<ng-template carouselSlide class="item" role="listitem" [width]="300">
+														<div class="item" role="listitem">
+															<div class="ux-component5 no-margin">
+																<div class="ux-dropdown">
+																	<div class="drp-box">
+																		<a class="drp-enterdata" (click)="activeTab='recurring';" [ngClass]="{'active' : activeTab == 'recurring'}">
+																			<div class="card-section">
+																				<div class="card-info">
+																					<div class="card-actions">
+																						<h4>  {{"RECURRING_DEPOSIT" | translate}} <span>({{totalRecuringAcc}})</span> </h4> <span class="d-block d-md-none d-lg-none d-xl-none text-left">001184918391</span> </div>
+																					<div class="show-btn">
+																						<button class="refresh-btn"> <img src="assets/images/svg/eye-g.svg" alt="eye-icon"> </button>
+																					</div>
+																				</div>
+																				<div class="card-info" *ngIf="!dataService.isNRENRO || (dataService.isNRENRO && !isRecuringDepositeSingleCurrency) "  >
+																					<div class="card-actions"> <span class="account-balance disable-status">
+																				<em class="entered-data " amt="25,000.00"> <b>{{totalRecuringAmt | customcurrency}}</b>
+																				</em>
+																			</span>
+																						<!-- <div class="total-target"> <small>Total FD Amount</small> </div> -->
+																						<!-- modified by USER PSB1-->
+																						<div class="total-target"> <small> {{"TOTAL_RD_AMOUNT" | translate}}</small> </div>
+																						<!-- modified by USER PSB1 Ends-->
+																					</div>
+																					<div class="ref-btn">
+																						<button class="refresh-btn"> <img src="assets/images/svg/refresh-g.svg" alt="refresh-icon"> </button>
+																					</div>
+																				</div>
+																				<!-- <div class="card-info" *ngIf="dataService.isNRENRO && isRecuringDepositeSingleCurrency" >
+																					<h6 class="light-t">{{"VIEW_DETAILS" | translate}}</h6>
+																				</div> -->
+																				<div class="card-info2"  *ngIf="dataService.isNRENRO && isRecuringDepositeSingleCurrency">
+																					<div class="card-actions3">
+																						<div class="text-right">
+																							<button class="ux-linkbutton primary link-text mt-4">{{"VIEW_DETAILS" | translate}}</button>
+																						</div>
+																					</div>
+																				</div>
+																			</div>
+																		</a>
+																	</div>
+																</div>
+															</div>
+														</div>
+													</ng-template>
+												</ng-container>
+											</owl-carousel-o>
+											<!-- Owl Carosel -->
+										</div>
+										<div class="no-accounts text-center statement-table widget-box5	 mb-0 py-5" *ngIf="showNoRecords"  >
+											<img src="assets/images/svg/no-rec-found.svg" class="mb-3">
+											<h5 class="mb-5">You have no deposits with us.</h5>
+											<!-- <button class="ux-button primary submit-btn " (click)="goToPage('/openDeposit')">Open FD/RD</button> -->
+										</div>
+										<div class="statement-table dt-accounts transparent-bg w-100 mb-0">
+											<div class="tab-container">
+												<div id="savings" class="tab-panel" *ngIf="activeTab == 'fixed' && totalFixedAcc != '00'" [ngClass]="{'active' : activeTab == 'fixed'}">
+													<div class="row1">
+														<div class="col-sm-12 col-12 col-md-12">
+															<div class="widget-box5 mb-0">
+																<div class="component-title6 custom-pad">
+																	<div class="row1">
+																		<div class="col-7 col-md-6 col-lg-8 col-xl-8">
+																			<h4 class="default-grey">{{"MY_DEPOSITS" | translate}}</h4> </div>
+																		<div class="col-5 col-md-6 col-lg-4 col-xl-4">
+																			<div class="full-info text-right">
+																				<button class="ux-button sm-mob primary" (click)="goToPage('openDeposit', 'fixed')"> {{"OPEN_FD" | translate}}</button>
+																				<!-- <button (click)="DepositeAccountEnquery()">submit</button> -->
+																			</div>
+																		</div>
+																	</div>
+																</div>
+																<div class="bg-white1 pt-0">
+																	<div class="row">
+																		<ul class="grid-list2">
+																			<li class="grey-th">
+																				<div class="grid-info ">
+																					<div class="full-info">
+																						<h6>{{"ACCOUNT_NUMBER" | translate}}</h6> </div>
+																				</div>
+																				<div class="grid-info ">
+																					<div class="full-info">
+																						<h6> {{"FD_TYPE" | translate}}</h6> </div>
+																				</div>
+																				<div class="grid-info ">
+																					<div class="full-info">
+																						<h6>{{"MODE_OPERATION" | translate}}</h6> </div>
+																				</div>
+																				<div class="grid-info ">
+																					<div class="full-info">
+																						<h6>{{"AVAILABLE_BALANCE" | translate}}</h6> </div>
+																				</div>
+																				<div class="grid-info ">
+																					<div class="full-info">
+																						<h6>{{"BRANCH" | translate}}</h6> </div>
+																				</div>
+																				<!-- <div class="grid-info ">
+																					<div class="full-info">
+																						<h6></h6> </div>
+																				</div> -->
+																				<div class="grid-info ">
+																					<div class="full-info"> </div>
+																				</div>
+																			</li>
+																			<li *ngFor="let item of myFixedAccount | paginate:config1, let i= index" (click)="selectedAccount(item)">
+																			<!-- <li *ngFor="let item of myFixedAccount " (click)="selectedAccount(item)"> -->
+																				<div class="grid-info  view-small">
+																					<div class="full-info ">
+																						<div class="display-mt">
+																							<h5>{{item.sbAccount}}</h5> <em class="d-block d-md-none">{{item?.branch_name}}</em> </div> <em></em> </div>
+																				</div>
+																				<div class="grid-info  d-none d-md-block">
+																					<div class="full-info">
+																						<h5  >{{item?.schemeDescription | titlecase }} </h5> </div>
+																				</div>
+																				<div class="grid-info  d-none d-md-block">
+																					<div class="full-info">
+																						<h5  >{{item?.modeTypeValue | titlecase }} </h5> </div>
+																				</div>
+																				<div class="grid-info  view-small bal-view">
+																					<div class="full-info text-right">
+																						<h5 >{{item.acctBalance | customcurrency : 'symbol' : item.currency }}</h5> <em class="d-block d-md-none text-right">{{"TOTAL_ACC_BAL" | translate}}</em> </div>
+																				</div>
+																				<div class="grid-info  d-none d-md-block">
+																					<div class="full-info">
+																						<h5>{{item?.branch_name}}</h5> </div>
+																				</div>
+																				<!-- <div class="grid-info  d-none d-md-block">
+																					<div class="full-info text-right"> <span class="lastrefreshed "><img src="assets/images/svg/last-refreshed.svg" class="refresh" alt="refresh-icon"> <b>Last Refreshed</b> <i>{{refreshDate }}</i> </span> </div>
+																				</div> -->
+																				<div class="grid-info ">
+																					<div class="full-info text-right">
+																						<button class="ux-button sm primary-custom md" (click)="gotoMyAccount(item, 'fixedDeposit')">{{"MORE_DETAILS" | translate}}</button>
+																					</div>
+																				</div>
+																			</li>
+																			<li class="d-none d-md-block d-lg-block d-xl-block">
+																				<div class="col-12">
+																					<div class="row mt-3 mb-2">
+																						<div class="col-12 col-lg-6 col-md-6 col-sm-6 px-0 d-none d-sm-none d-xl-block d-lg-block d-md-block">
+																							<div id="dt-sample_wrapper" class="dataTables_wrapper dt-bootstrap4 no-footer">
+																								<div class="dataTables_info pt-2" id="dt-sample_info" role="status" aria-live="polite">Showing {{this.myFixedAccount.length > 0 ? ((this.config1.currentPage -1) * this.config1.itemsPerPage) +1 : 0}} to {{this.myFixedAccount.length > (this.config1.currentPage * this.config1.itemsPerPage) ? (this.config1.currentPage * this.config1.itemsPerPage) : this.myFixedAccount.length}} of <b>{{this.myFixedAccount.length}}</b> entries</div>
+																							</div>
+																						</div>
+																						<div class="col-12 col-lg-6 col-md-6 px-0 d-none d-sm-none d-xl-block d-lg-block d-md-block text-right">
+																								<div class="pagination-container pull-right" *ngIf="this.myFixedAccount.length > this.config1.itemsPerPage">
+																								<pagination-controls id='basicPaginate1' (pageChange)="pageChanged1($event)" class="my-pagination"></pagination-controls>
+																							</div>
+																						</div>
+																					</div>
+																				</div>
+
+																			</li>
+																		</ul>
+																	</div>
+																</div>
+															</div>
+														</div>
+													</div>
+													<div class="vspacer10 d-block d-md-none"></div>
+													<div class="row1  d-block d-md-none">
+														<div class="col-12 col-md-12">
+															<ul class="bottom-footer1">
+																<li>
+																	<div class="btn-div">
+																		<button class=" ux-button secondary sm-mob">{{'CANCEL' | translate}}</button>
+																	</div>
+																	<div class="btn-div">
+																		<button class=" ux-button primary sm-mob">{{ 'SUBMIT' | translate }}</button>
+																	</div>
+																</li>
+															</ul>
+														</div>
+													</div>
+												</div>
+												<div id="current" class="tab-panel" *ngIf="activeTab == 'recurring' && totalRecuringAcc != '00'" [ngClass]="{'active' : activeTab == 'recurring'}">
+													<div class="row1">
+														<div class="col-sm-12 col-12 col-md-12">
+															<div class="widget-box5 mb-0">
+																<div class="component-title6 custom-pad">
+																	<div class="row1">
+																		<div class="col-7 col-md-6 col-lg-8 col-xl-8">
+																			<h4 class="default-grey">My Recurring Deposit Accounts</h4> </div>
+																		<div class="col-5 col-md-6 col-lg-4 col-xl-4">
+																			<div class="full-info text-right">
+																				<button class="ux-button sm-mob primary" (click)="goToPage('openDeposit', 'recurring')">Open RD</button>
+																			</div>
+																		</div>
+																	</div>
+																</div>
+																<div class="bg-white1 pt-0">
+																	<div class="row">
+																		<ul class="grid-list2">
+																			<li class="grey-th">
+																				<div class="grid-info">
+																					<div class="full-info">
+																						<h6>Account Number</h6>
+                                          </div>
+																				</div>
+																				<div class="grid-info">
+																					<div class="full-info">
+																						<h6 >RD Type</h6>
+                                          </div>
+																				</div>
+																				<div class="grid-info">
+																					<div class="full-info">
+																						<h6 >Mode Of Operation</h6>
+                                          </div>
+																				</div>
+																				<div class="grid-info">
+																					<div class="full-info">
+																						<h6 >Account Balance</h6>
+                                          </div>
+																				</div>
+																				<div class="grid-info">
+																					<div class="full-info">
+																						<h6>Branch</h6> </div>
+																				</div>
+																				<!-- <div class="grid-info ">
+																					<div class="full-info">
+																						<h6></h6> </div>
+																				</div> -->
+																				<div class="grid-info">
+																					<div class="full-info"></div>
+																				</div>
+																			</li>
+																			<li *ngFor="let item of myRecurringAccount | paginate:config2, let i= index" (click)="selectedAccount(item)" >
+																				<div class="grid-info view-small">
+																					<div class="full-info">
+																						<div class="display-mt">
+																							<h5>{{item.sbAccount}}</h5> <em class="d-block d-md-none">{{item?.branch_name}}</em> </div> <em></em>
+                                            </div>
+																				</div>
+																				<div class="grid-info d-none d-md-block">
+																					<div class="full-info">
+																						<h5 >{{item?.schemeDescription | titlecase }} </h5>
+                                          </div>
+																				</div>
+																				<div class="grid-info d-none d-md-block">
+																					<div class="full-info">
+																						<h5 >{{item?.modeTypeValue | titlecase }} </h5>
+                                          </div>
+																				</div>
+
+																				<div class="grid-info view-small bal-view">
+																					<div class="full-info ">
+																						<h5  >{{item.acctBalance | customcurrency : 'symbol' : item.currency }}</h5> <em class="d-block d-md-none text-right">Available Balance</em>
+                                          </div>
+																				</div>
+																				<div class="grid-info d-none d-md-block">
+																					<div class="full-info">
+																						<h5>{{item?.branch_name}}</h5>
+                                          </div>
+																				</div>
+																				<!-- <div class="grid-info  d-none d-md-block">
+																					<div class="full-info "> <span class="lastrefreshed "><img src="assets/images/svg/last-refreshed.svg" class="refresh" alt="refresh-icon"> <b>Last Refreshed</b> <i>{{refreshDate }}</i> </span> </div>
+																				</div> -->
+																				<div class="grid-info">
+																					<div class="full-info text-right">
+																						<button class="ux-button sm primary-custom md" (click)="gotoMyAccount(item, 'recurringDeposit')">More details</button>
+																					</div>
+																				</div>
+																			</li>
+																			<li class="d-none d-md-block d-lg-block d-xl-block">
+                                      	<div class="col-12">
+																					<div class="row mt-3 mb-2">
+																						<div class="col-12 col-lg-6 col-md-6 col-sm-6 px-0 d-none d-sm-none d-xl-block d-lg-block d-md-block">
+																							<div id="dt-sample_wrapper" class="dataTables_wrapper dt-bootstrap4 no-footer">
+																								<div class="dataTables_info pt-2" id="dt-sample_info" role="status" aria-live="polite"> {{"SHOWING" | translate}} {{this.myRecurringAccount.length > 0 ? ((this.config2.currentPage -1) * this.config2.itemsPerPage) +1 : 0}} to {{this.myRecurringAccount.length > (this.config2.currentPage * this.config2.itemsPerPage) ? (this.config2.currentPage * this.config2.itemsPerPage) : this.myRecurringAccount.length}} of <b>{{this.myRecurringAccount.length}}</b> entries</div>
+																							</div>
+																						</div>
+																						<div class="col-12 col-lg-6 col-md-6 px-0 d-none d-sm-none d-xl-block d-lg-block d-md-block text-right">
+                                              <div class="pagination-container pull-right" *ngIf="this.myRecurringAccount.length > this.config2.itemsPerPage">
+                                              <pagination-controls id='basicPaginate2' (pageChange)="pageChanged2($event)" class="my-pagination"></pagination-controls>
+																						  </div>
+																						</div>
+																					</div>
+																				</div>
+																			</li>
+																		</ul>
+																	</div>
+																</div>
+															</div>
+														</div>
+													</div>
+													<div class="vspacer10 d-block d-md-none"></div>
+													<div class="row1  d-block d-md-none">
+														<div class="col-12 col-md-12">
+															<ul class="bottom-footer1">
+																<li>
+																	<div class="btn-div">
+																		<button class=" ux-button secondary sm-mob">{{'CANCEL' | translate}}</button>
+																	</div>
+																	<div class="btn-div">
+																		<button class=" ux-button primary sm-mob">{{ 'SUBMIT' | translate }}</button>
+																	</div>
+																</li>
+															</ul>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="col-12 col-md-12 col-lg-12 col-xl-3 d-none d-xl-block">
+									<div class="right-ads">
+										<a > <img src="assets/images/banner/my-card-banner.jpg"> </a>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!--.container-fluid-->
+			</div>
+			<!--.body-page-container-->
+		</div>
+		<!--.right-col-container-->
+	</div>
+	<!--.right-main-column-->
+</div>
+<!-- main -->
+

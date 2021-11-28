@@ -1,0 +1,271 @@
+<div class="main bg-m">
+	<header class="global-header success-bg minus-nav" *ngIf="dataService.isCordovaAvailable">
+		<div class="in-header">
+		  <div class="header-icons-lft ">
+			<div class="header-actions">
+			  <button class="ux-button-header">
+				<img src="assets/images/svg/close-w.svg" (click)="goToPage('/dashboardMobile')" alt="left-arrow-icon"
+				  class="img-vsmall" />
+			  </button>
+			</div>
+		  </div>
+		  <div class="brand-logo">
+		  </div>
+		  <div class="header-icons-rit">
+			<div class="header-actions">
+	
+			  <button class="ux-button-header mr-2" (click)="downloadPdfReceipt('N')">
+				<img src="assets/images/svg/download1-w.svg" alt="download-icon" class="img-small" />
+			  </button>
+			  <button class="ux-button-header mr-2" (click)="downloadPdfReceipt('Y')">
+				<img src="assets/images/svg/share1-w.svg" alt="share-icon" class="img-small" />
+			  </button>
+			  <!-- <button class="ux-button-header mr-2" (click)="openPopup('fav-popup')" *ngIf="dataService.screenType != 'addPayee'">
+				<img [src]="isFavourite ? 'assets/images/svg/star1-active.svg': 'assets/images/svg/star1-w.svg'"
+				  alt="star-icon" class="img-small" />
+			  </button> -->
+		
+			</div>
+		  </div>
+		</div>
+	
+	  </header>
+	<div class="right-main-column ">
+		<div class="right-col-container pad-b full-width">
+			<!-- ======== body page content start from here ======== -->
+			<div class="body-page-container main-dashborad manage-payee">
+				<div class="container-fluid">
+					<div class="row">
+						<div class="col-12 p-0">
+							<div class="breadcrumb">
+								<ul class="lst-breadcrumb">
+									<!-- <li> <a [routerLink]="['/myAccount']">My Accounts</a> </li>
+									<li> <a [routerLink]="['/myBorrowings']">My Borrowings</a> </li>
+									<li> <a [routerLink]="['/loanDetails']">Loan Account Details</a> </li>
+									<li> Standing Instruction </li> -->
+									<li *ngFor="let name of dataService.breadcrumblist">
+										<a (click)="dataService.breadcrumroute(name.routeName)">{{name.currentRoute | translate}}</a>
+								</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+					<!--.row -->
+					<div class="vspacer15 customize d-none d-md-block d-lg-block d-xl-block"></div>
+					<div class="row no-gutters">
+						<div class="col-12">
+							<div class="row1">
+								<div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-9">
+									<!-- Greencard2 Start here -->
+									<div class="greencard2">
+										<div class="row1 hide-m">
+											<div class="col-md-8 col-12">
+												<h4>Receipt</h4> </div>
+											<div class="col-md-4 col-12"> </div>
+										</div>
+										<div class="row1">
+											<div class="col-sm-12 col-12 col-md-12">
+												<div class="white-box2 mar-t pad-custom custom-bor">
+													<div class="row">
+														<div class="success"  *ngIf="dataService.siReceiptObj.response === 'Successful'">
+															<h5> <img src="assets/images/svg/success-arrow.svg" alt="success-icon"> {{dataService.siReceiptObj.response}}</h5> 
+															
+															<small *ngIf="dataService.screenType != 'deleteStandingInstruction'">Your request has been submitted successfully</small>
+															<small *ngIf="dataService.screenType == 'deleteStandingInstruction'">Your Standing Instruction Deleted Successfully</small>
+
+															<h4 *ngIf="dataService.screenType != 'deleteStandingInstruction'"><!--<img src="assets/images/svg/rupee2.svg" alt="rupees-icon">-->{{standingInstructionDtl?.amount}}</h4>
+															 
+															<small class="mt-3">
+																	  <span>
+																		 Transaction ID {{dataService.siReceiptObj.rrn}}
+																	</span>  
+															 </small> </div>
+
+															 <div class="success" *ngIf="dataService.siReceiptObj.response !== 'Successful'">
+																<h5 class="error"> <img src="assets/images/svg/fail.svg" alt="success-icon"> {{dataService.siReceiptObj.response}}</h5> 
+																<small  *ngIf="dataService.screenType != 'deleteStandingInstruction'">Your Request for SI failed </small>
+																<small *ngIf="dataService.screenType == 'deleteStandingInstruction'">Failed to delete Standing Instruction </small>
+																
+																<h4 *ngIf="dataService.screenType != 'deleteStandingInstruction'"><!--<img src="assets/images/svg/rupee2.svg" alt="rupees-icon">-->{{standingInstructionDtl?.amount}}</h4>
+																
+																<small class="mt-3">
+																		  <span>
+																			 Transaction ID {{dataService.siReceiptObj.rrn}}
+																		</span>  
+																 </small> </div>
+
+
+													</div>
+													<div class="bg-img"> <img src="assets/images/svg/psb-receipt icon.svg" alt="success-bg" /> </div>
+												</div>
+											</div>
+											<div class="col-sm-12 col-12 col-md-12"  *ngIf="dataService.screenType == 'addStandingInstruction' || dataService.screenType == 'modifyStandingInstruction' ">
+												<div class="result-container1 mar-top">
+													<div class="info-bottom pad-custom">
+														<div class="info-details mt-3">
+															<div class="row">
+																<h6>Debit Account</h6>
+																<h5>{{standingInstructionDtl?.debitAccount}}</h5>
+																</div>
+														</div>
+														<div class="info-details">
+															<div class="row">
+																<h6>Credit Account</h6>
+																<h5>{{standingInstructionDtl?.creditAccount}}</h5> </div>
+														</div>
+														<div class="info-details">
+															<div class="row">
+																<h6>Next EMI Date</h6>
+																<h5>{{standingInstructionDtl?.datepicker1}}</h5> </div>
+														</div>
+													
+														<div class="info-details">
+															<div class="row">
+																<h6>Total Number of Payments</h6>
+																<h5>{{standingInstructionDtl?.installmentNumber}}</h5> </div>
+														</div>
+														<div class="info-details">
+															<div class="row">
+																<h6>Payment Frequency</h6>
+																<!-- <h5>{{standingInstructionDtl?.paymentFrequency}}</h5> </div> -->
+																<h5>{{standingInstructionDtl.paymentFrequency == 'W' ? 'Weekly' : standingInstructionDtl.paymentFrequency == 'M' ? 'Monthly' :  standingInstructionDtl.paymentFrequency == 'H' ? 'Half yearly' : standingInstructionDtl.paymentFrequency == 'Q' ? 'Quartely' : standingInstructionDtl.paymentFrequency == 'Y' ? 'Yearly' : standingInstructionDtl.paymentFrequency == 'D' ? 'Daily' : '-'}}</h5> </div>
+
+														</div>
+												
+														<div class="info-details">
+															<div class="row">
+																<h6>SI Installment Amount</h6>
+																<h5><!--<img src="assets/images/svg/rupee-bl.svg" alt="rupees-icon">-->{{standingInstructionDtl?.amount}}</h5> </div>
+														</div>
+
+														<div class="info-details">
+															<div class="row">
+																<h6>Remark</h6>
+																<h5>{{standingInstructionDtl.remarks ? standingInstructionDtl.remarks : '-'}}</h5> </div>
+														</div>
+													</div>
+												</div>
+											</div>
+
+
+											<div class="col-sm-12 col-12 col-md-12"  *ngIf="dataService.screenType == 'deleteStandingInstruction'  ">
+												<div class="result-container1 mar-top">
+													<div class="info-bottom pad-custom">
+														<div class="info-details mt-3">
+															<div class="row">
+																<h6>Credit Account Name</h6>
+																<h5>{{standingInstructionDtl?.crAcctName}}</h5>
+																</div>
+														</div>
+														<div class="info-details">
+															<div class="row">
+																<h6>Debit Account </h6>
+																<h5>{{standingInstructionDtl?.drAccountNumber}}</h5> </div>
+														</div>
+														<div class="info-details">
+															<div class="row">
+																<h6>Credit Account </h6>
+																<h5>{{standingInstructionDtl?.crForacid}}</h5> </div>
+														</div>
+														<div class="info-details">
+															<div class="row">
+																<h6>Next EMI Date</h6>
+																<h5>{{standingInstructionDtl?.nextDate}}</h5> </div>
+														</div>
+														<div class="info-details">
+															<div class="row">
+																<h6>Start Date</h6>
+																<!-- <h5>{{standingInstructionDtl.siStartDate != '' ? standingInstructionDtl.siStartDate : '-' }}</h5> </div> -->
+																<h5>{{dataService.noSIPeriod ? dataService.noSIPeriod : '-'}} </h5></div>
+															</div>
+														<div class="info-details">
+															<div class="row">
+																<h6>Total Number of Payments</h6>
+																<h5>{{standingInstructionDtl?.numOfTimeSiExe}}</h5> </div>
+														</div>
+														<div class="info-details">
+															<div class="row">
+																<h6>Payment Frequency</h6>
+																<h5>{{standingInstructionDtl.siFreq == 'W' ? 'Weekly' : standingInstructionDtl.siFreq == 'M' ? 'Monthly' :  standingInstructionDtl.siFreq == 'H' ? 'Half yearly' : standingInstructionDtl.siFreq == 'Q' ? 'Quartely' : standingInstructionDtl.siFreq == 'Y' ? 'Yearly' : standingInstructionDtl.siFreq == 'D' ? 'Daily' : '-'}}</h5> </div>
+														</div>
+												
+														<div class="info-details">
+															<div class="row">
+																<h6>SI Installment Amount</h6>
+																<h5><!--<img src="assets/images/svg/rupee-bl.svg" alt="rupees-icon">-->{{standingInstructionDtl?.flowAmount }}</h5> </div>
+														</div>
+													</div>
+												</div>
+											</div>
+
+
+
+
+
+											<div class="col-12 col-md-12"  >
+												<div class="row1">
+													<div class="col-md-12 col-lg-6 col-12" >
+														<ul class="link-list hide-m">
+															<li (click)="shareDetails()">
+																<a ><img src="assets/images/svg/share.svg" alt="share-icon">Share</a>
+															</li>
+
+															<li (click)="downloadPdfReceipt('N')">
+																<a ><img src="assets/images/svg/download.svg" alt="download-icon">{{'DOWNLOAD' | translate}}</a>
+															</li>
+
+															<li (click)="downloadPdfReceipt('Y')">
+																<a> <img src="assets/images/svg/print.svg" alt="print-icon">{{'PRINT' | translate}}</a>
+															</li>
+														</ul>
+													</div>
+													<div class="col-md-12 col-lg-6 col-12">
+														<ul class="bottom-footer1">
+															<li>
+																<!-- <div class="btn-div">
+																	<button class=" ux-button secondary sm-mob" >Feedback</button>
+																</div> -->
+																<div class="btn-div w-100">
+																	<button class=" ux-button primary sm-mob" (click)="goToPage('standingInstructionList')">{{'HOME' | translate }}</button>
+																</div>
+															</li>
+														</ul>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+									<!-- Greencard2 End here -->
+								</div>
+								<!-- Right Column Ads Start -->
+								<div class="col-12 col-md-12 col-lg-12 col-xl-3 d-none d-xl-block">
+									<div class="right-ads">
+										<a > <img src="assets/images/banner/my-card-banner.jpg"> </a>
+									</div>
+									<div class="vspacer30"></div>
+									<!-- Offercard Start-->
+									<!-- <div class="offers-card">
+										<div class="header-block clearfix">
+											<h5>Offers on your card</h5> </div>
+										<div class="panel-body">
+											<div class="recentpayment-control">
+												<ul>
+													<li> <img src="assets/images/banner/offer-banner.png"> </li>
+												</ul>
+											</div>
+										</div>
+									</div> -->
+									<!-- Offercard Ends-->
+								</div>
+								<!-- Right Column Ads Ends -->
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!--.right-col-container-->
+	</div>
+	<!--.right-main-column-->
+</div>
+<!-- main -->

@@ -1,0 +1,303 @@
+<div class="main bg-m">
+	<div class="right-main-column ">
+		<div class="right-col-container pad-b full-width">
+			<!-- ======== body page content start from here ======== -->
+			<div class="body-page-container main-dashborad mycards bill-wrapper">
+				<div class="container-fluid">
+					<div class="row">
+						<div class="col-12 p-0">
+							<div class="breadcrumb">
+								<ul class="lst-breadcrumb">
+									<li *ngFor="let name of DataService.breadcrumblist">
+                                        <a (click)="DataService.breadcrumroute(name.routeName)">{{name.currentRoute | translate}}</a>
+                                </li>
+								</ul>
+							</div>
+						</div>
+					</div>
+					<!--.row -->
+					<div class="vspacer15 customize d-none d-xl-block d-lg-block d-md-none d-sm-none "></div>
+					<div class="row no-gutters">
+						<div class="col-12">
+							<div class="row1">
+								<div class="col-12 col-sm-12 col-md-12 col-lg-12  col-xl-9">
+									<div class="greencard2 tracklist">
+										<div class="row1 hide-m">
+											<div class="col-md-8 col-12">
+												<h4>Payment History</h4> </div>
+											<div class="col-md-4 col-12">
+												<div class="header-actions">
+													<a class="filter-history" (click)="openFilter()"> <img src="assets/images/svg/filter.svg" alt="filter-icon"> Filter </a> <img src="assets/images/icons/billpay.png" alt="billpay-img" class="small-img"> </div>
+											</div>
+										</div>
+										<div class="row1">
+											<div class="col-12 col-sm-12 col-md-12 col-lg-12">
+												<div class="widget-box5 mb-3">
+													<div class="bg-white1 pad-custom p-0">
+														<ul class="bill-reminder-list payment-history-grid">
+															<li class="grey-th">
+																<div class="grid-info">
+																	<div class="full-info">
+																		<h6>Biller Name</h6> </div>
+																</div>
+																<div class="grid-info">
+																	<div class="full-info">
+																		<h6>Due Date</h6> </div>
+																</div>
+																<div class="grid-info">
+																	<div class="full-info">
+																		<h6>Status</h6> </div>
+																</div>
+																<div class="grid-info">
+																	<div class="full-info">
+																		<h6>Amount</h6> </div>
+																</div>
+															</li>
+															<li>
+																<div class="grid-info">
+																	<div class="full-info">
+																		<div class="list-full">
+																			<div class="icon1"> <img src="assets/images/icons/airtel.png" alt="airtel-logo"> </div>
+																			<h5>Monthly Mobile Bill</h5>
+																			<h6 class="display-mt">Bill Payment due on <span>25 March 2020</span> </h6> </div>
+																	</div>
+																</div>
+																<div class="grid-info d-none d-sm-block">
+																	<div class="full-info">
+																		<h5>25 March 2020</h5> </div>
+																</div>
+																<div class="grid-info">
+																	<div class="full-info text-status"> <em class="text-reject">Payment Failed</em> </div>
+																</div>
+																<div class="grid-info">
+																	<div class="full-info">
+																		<h5><img src="assets/images/svg/rupee-bl.svg" alt="rupee-icon">900</h5> </div>
+																</div>
+															</li>
+															<li>
+																<div class="grid-info">
+																	<div class="full-info">
+																		<div class="list-full">
+																			<div class="icon1"> <img src="assets/images/icons/tata-sky.png" alt="airtel-logo"> </div>
+																			<h5>Monthly DTH Bill</h5>
+																			<h6 class="display-mt">Bill Payment due on <span>25 March 2020</span> </h6> </div>
+																	</div>
+																</div>
+																<div class="grid-info d-none d-sm-block">
+																	<div class="full-info">
+																		<h5>25 March 2020</h5> </div>
+																</div>
+																<div class="grid-info">
+																	<div class="full-info text-status"> <em class="text-success">Payment Successful</em> </div>
+																</div>
+																<div class="grid-info">
+																	<div class="full-info">
+																		<h5><img src="assets/images/svg/rupee-bl.svg" alt="rupee-icon">900</h5> </div>
+																</div>
+															</li>
+															<li>
+																<div class="grid-info">
+																	<div class="full-info">
+																		<div class="list-full">
+																			<div class="icon1"> <img src="assets/images/icons/mahanagar-gas.png" alt="airtel-logo"> </div>
+																			<h5>Monthly Gas Bill</h5>
+																			<h6 class="display-mt">Bill Payment due on <span>25 March 2020</span> </h6> </div>
+																	</div>
+																</div>
+																<div class="grid-info d-none d-sm-block">
+																	<div class="full-info">
+																		<h5>25 March 2020</h5> </div>
+																</div>
+																<div class="grid-info">
+																	<div class="full-info text-status"> <em class="text-reject">Payment Failed</em> </div>
+																</div>
+																<div class="grid-info">
+																	<div class="full-info">
+																		<h5><img src="assets/images/svg/rupee-bl.svg" alt="rupee-icon">900</h5> </div>
+																</div>
+															</li>
+															<li>
+																<div class="col-12">
+																	<div class="row  mt-3 mb-2">
+																		<div class="col-12 col-lg-6 col-md-6 col-sm-6 px-0 d-none d-sm-none d-xl-block d-lg-block d-md-block">
+																			<div id="dt-sample_wrapper" class="dataTables_wrapper dt-bootstrap4 no-footer">
+																				<div class="dataTables_info pt-2" id="dt-sample_info" role="status" aria-live="polite">Showing 1 to 2 of <b>2</b> entries</div>
+																			</div>
+																		</div>
+																		<div class="col-12 col-lg-6 col-md-6 px-0 d-none d-sm-none d-xl-block d-lg-block d-md-block text-right">
+																			<div class="custom-paging">
+																				<div class="dataTables_wrapper">
+																					<div class="dataTables_paginate">
+																						<ul class="pagination">
+																							<li class="page-item previous disabled"> <a href="javascript:;" class="page-link">Previous</a> </li>
+																							<li class="page-item active"> <a href="javascript:;" class="page-link">1</a> </li>
+																							<li class="page-item"> <a href="javascript:;" class="page-link">2</a> </li>
+																							<li class="page-item next"> <a href="javascript:;" class="page-link">Next</a> </li>
+																						</ul>
+																						<!--.pagination-->
+																					</div>
+																					<!--.dataTables_paginate-->
+																				</div>
+																				<!--.dataTables_wrapper-->
+																			</div>
+																		</div>
+																	</div>
+																</div>
+															</li>
+														</ul>
+													</div>
+												</div>
+											</div>
+											<div class="col-12 col-md-12 hide-m">
+												<ul class="bottom-footer1">
+													<li>
+														<div class="btn-div w100">
+															<button class="ux-button primary sm-mob" >Add Bill Reminder</button>
+														</div>
+													</li>
+												</ul>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="col-12 col-md-12 col-lg-12 col-xl-3 d-none d-xl-block">
+									<div class="right-ads">
+										<a > <img src="assets/images/banner/my-card-banner.jpg"> </a>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!--.container-fluid-->
+			</div>
+			<!--.body-page-container-->
+		</div>
+		<!--.right-col-container-->
+	</div>
+	<!--.right-main-column-->
+
+</div>
+<!-- main -->
+
+<!-- Filter Popup Start -->
+<div class="popup-bottom filter1 sm-popup">
+	<div class="row1">
+		<div class="col-10">
+			<h4>Track Complaint</h4> </div>
+		<div class="col-2">
+			<button class="ux-button-icon close-btn" (click)="closePopup()"> <img src="assets/images/svg/close-b.svg" alt="cross-icon" class="img-vsmall"> </button>
+		</div>
+	</div>
+	<div class="row1 mt-2">
+		<div class="col-12">
+			<div class="ux-input pb-0">
+				<label>Search by</label>
+			</div>
+		</div>
+		<div class="col-12 col-xl-12 col-lg-12 col-md-12 col-sm-12">
+			<div class="row1">
+				<div class="col-5 col-md-5">
+					<div class="ux-selection mar-custom">
+						<label class="ux-selection2">Duration
+							<input type="radio" value="duration" name="search1" [(ngModel)]="searchOptions" [checked]="searchOptions == 'duration' " > <span class="checkmark"></span> </label>
+						<div> </div>
+					</div>
+				</div>
+				<div class="col-7 col-md-7">
+					<div class="ux-selection mar-custom">
+						<label class="ux-selection2">Transaction Number
+							<input type="radio"  value="transaction" name="search1" [(ngModel)]="searchOptions" [checked]="searchOptions == 'transaction' " > <span class="checkmark"></span> </label>
+						<div> </div>
+					</div>
+				</div>
+			</div>
+        
+			<div id="transaction1" *ngIf="searchOptions == 'transaction' ">
+                <form [formGroup]="transactionForm">
+				<div class="row1 mt-3">
+					<div class="col-sm-12 col-12 col-md-12">
+						<div class="ux-input">
+							<label for="transactionNumber">Transaction Number</label>
+							<input type="text" placeholder="" formControlName="transactionNumber" numbersOnly>
+                            <p class="error-message mb-0" *ngIf="transactionForm.controls['transactionNumber'].hasError('required') && (transactionForm.controls['transactionNumber'].dirty || transactionForm.controls['transactionNumber'].touched)"> {{"REQUIRED_MSG" | translate}} </p>
+
+						</div>
+					</div>
+				</div>
+				<div class="row1 mt-2">
+					<div class="col-6 text-center">
+						<button class="ux-button secondary no md close-btn" (click)="reset()" >Reset</button>
+					</div>
+					<div class="col-6 text-center">
+						<button class="ux-button primary md" type="submit" (click)="trackFilterSubmit('transaction')" >Apply</button>
+					</div>
+				</div>
+            </form>
+			</div>
+			<div id="duration1" *ngIf="searchOptions == 'duration' ">
+                <form [formGroup]="durationForm">
+				<div class="row1">
+					<div class="col-12">
+						<div class="ux-input">
+							<label>State</label>
+							<select formControlName="state">
+								<option value="">Select</option>
+								<option value="Abc">Abc</option>
+								<option value="Def">Def</option>
+								<option value="Ghi">Ghi</option>
+							</select>
+                            <p class="error-message mb-0" *ngIf="durationForm.controls['state'].hasError('required') && (durationForm.controls['state'].dirty || durationForm.controls['state'].touched)"> {{"REQUIRED_MSG" | translate}} </p>
+
+						</div>
+					</div>
+					<div class="col-12">
+						<div class="ux-input">
+							<label>Board Name</label>
+							<select formControlName="boardName">
+								<option value="">Select</option>
+								<option value="Abc">Abc</option>
+								<option value="Def">Def</option>
+								<option value="Ghi">Ghi</option>
+							</select>
+                            <p class="error-message mb-0" *ngIf="durationForm.controls['boardName'].hasError('required') && (durationForm.controls['boardName'].dirty || durationForm.controls['boardName'].touched)"> {{"REQUIRED_MSG" | translate}} </p>
+
+						</div>
+					</div>
+				</div>
+				<div class="row1 mt-3">
+					<div class="col-sm-6 col-6 col-md-6">
+						<div class="ux-input">
+							<label>Start Date</label>
+							<!-- <input type="text" class="datepicker1" placeholder="DD/MM/YYYY"> <em class="calendar-ic cal-top"></em> -->
+                            <input type="text" [owlDateTime]="dt1" [owlDateTimeTrigger]="dt1" placeholder="DD/MM/YYYY"   formControlName="startDate"  >
+                            <owl-date-time [pickerType]="'calendar'" #dt1></owl-date-time><em class=" calendar-ic cal-top" [owlDateTimeTrigger]="dt1"></em>
+                            <p class="error-message mb-0" *ngIf="durationForm.controls['startDate'].hasError('required') && (durationForm.controls['startDate'].dirty || durationForm.controls['startDate'].touched)"> {{"REQUIRED_MSG" | translate}} </p>
+
+						</div>
+					</div>
+					<div class="col-sm-6 col-6 col-md-6">
+						<div class="ux-input">
+							<label>End Date</label>
+							<!-- <input type="text" class="datepicker1" placeholder="DD/MM/YYYY"> <em class="calendar-ic cal-top"></em> -->
+                            <input type="text" [owlDateTime]="dt2" [owlDateTimeTrigger]="dt2" placeholder="DD/MM/YYYY"   formControlName="endDate"  >
+                            <owl-date-time [pickerType]="'calendar'" #dt2></owl-date-time><em class=" calendar-ic cal-top" [owlDateTimeTrigger]="dt2"></em>
+                            <p class="error-message mb-0" *ngIf="durationForm.controls['endDate'].hasError('required') && (durationForm.controls['endDate'].dirty || durationForm.controls['endDate'].touched)"> {{"REQUIRED_MSG" | translate}} </p>
+
+						</div>
+					</div>
+				</div>
+				<div class="row1 mt-2">
+					<div class="col-6 text-center">
+						<button class="ux-button secondary no md close-btn"(click)="reset()" >Reset</button>
+					</div>
+					<div class="col-6 text-center">
+						<button class="duration-filter ux-button primary md"  (click)="trackFilterSubmit('duration')">Apply</button>
+					</div>
+				</div>
+            </form>
+			</div>
+		</div>
+	</div>
+</div>
+<!--  Filter Popup End -->

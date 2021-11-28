@@ -1,0 +1,46 @@
+<?xml version='1.0' encoding='utf-8'?>
+<plugin id="com.cordova.simdetect" version="1.0.0" xmlns="http://apache.org/cordova/ns/plugins/1.0"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+  <name>simdetect</name>
+  <js-module name="simdetect" src="www/simdetect.js">
+    <clobbers target="cordova.plugins.simdetect" />
+  </js-module>
+  <platform name="android">
+    <config-file parent="/*" target="res/xml/config.xml">
+      <feature name="simdetect">
+        <param name="android-package" value="com.cordova.SDCP.SDCP" />
+      </feature>
+    </config-file>
+    
+    <config-file target="AndroidManifest.xml" parent="application">
+      <activity
+          android:name="com.cordova.SDCP.SCDA"
+          android:exported="false"
+          android:screenOrientation="portrait"
+          android:theme="@style/Theme.Transparent"
+          android:exported="true" />
+    </config-file>
+    <config-file parent="/*" target="AndroidManifest.xml"></config-file>
+    <resource-file src="src/android/res/activity_sim_change_dialog.xml" target="res/layout/activity_sim_change_dialog.xml" />
+    <resource-file src="src/android/res/styles.xml" target="res/values/sim_change_styles.xml" />
+    <source-file src="src/android/SDCP.java" target-dir="src/com/cordova/SDCP" />
+    <source-file src="src/android/SCDA.java" target-dir="src/com/cordova/SDCP" />
+    <source-file src="src/android/SCRCP.java" target-dir="src/com/cordova/SDCP" />
+    <source-file src="src/android/BuildConfig.java" target-dir="src/com/cordova/SDCP" />
+    <source-file src="src/android/SCDCP.java" target-dir="src/com/cordova/SDCP" />
+    <source-file src="src/android/SimModule.java" target-dir="src/com/cordova/SDCP" />
+    <source-file src="src/android/SmsHandler.java" target-dir="src/com/cordova/SDCP" />
+    <source-file src="src/android/SubscriptionInfoModel.java" target-dir="src/com/cordova/SDCP" />
+    <source-file src="src/android/TINF.java" target-dir="src/com/cordova/SDCP" />
+    <source-file src="src/android/TMR.java" target-dir="src/com/cordova/SDCP" />
+  </platform>
+  <platform name="ios">
+    <config-file target="config.xml" parent="/*">
+      <feature name="SimDetector">
+        <param name="ios-package" value="SimDetector"/>
+      </feature>
+    </config-file>
+    <header-file src="src/ios/SimDetector.h"/>
+    <source-file src="src/ios/SimDetector.m"/>
+  </platform>
+</plugin>

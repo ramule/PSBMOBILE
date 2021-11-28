@@ -1,0 +1,172 @@
+<div class="main main-bg2">
+
+
+  <div class="right-main-column mar-custom">
+    <div class="right-col-container pad-b pb-0">
+
+      <div class="body-page-container">
+        <div class="vspacer5 d-sm-block d-none"></div>
+        <div class="container-fluid">
+          <form [formGroup]="collectAmountForm" (ngSubmit)="collectAmount($event)">
+            <div class="row">
+              <div class="bg-section2">
+                <div class="col-12">
+                  <div class="row1">
+                    <div class="payee-info1">
+                      <div class="row">
+                        <div class="info-inner">
+                          <div class="info-lft">
+                            <span class="yellow">
+                              <!-- <img src="assets/images/icons/user1.png" alt="user-img"> -->
+                              <h6>{{DataService.selectedVpaDetailsCollect.accountDetails.custName | firstLastChar}}</h6>
+
+                            </span>
+                          </div>
+                          <div class="info-center">
+                            <a href="javascript:;"> <img src="assets/images/svg/double-left-arrows.svg"
+                                alt="double-left-arrows-icon"> </a>
+                          </div>
+                          <div class="info-rit">
+                            <span class="yellow">
+                              <h6>{{DataService.validateAddressResp.MASKNAME | firstLastChar}}</h6>
+                              <!-- <img src="assets/images/icons/user5.png" alt="user-img"> -->
+                            </span>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col-12 col-md-12">
+                          <h5>{{'COLLECT_FROM' | translate}} {{DataService.validateAddressResp.MASKNAME}}</h5>
+                          <h6>{{'UPI_ID' | translate }} : {{DataService.validateAddressResp.validatedVpa}}</h6>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row1">
+                    <div class="col-sm-5 col-8 col-md-3 m-auto">
+                      <div class="ux-input white-input mar-tb">
+                        <!-- Android Keyboad start -->
+                        <!-- <input type="tel" placeholder="₹ 0" autocomplete="off" formControlName="amount" limit-to="12" (blur)="formatCurrency($event.target.value)" id="amt" data-a-sign="Rs."> -->
+                        <!-- Android Keyboad end -->
+                        <!-- iOS Keyboad start -->
+                        <input type="text" inputmode="decimal" placeholder="₹ 0" autocomplete="off"
+                          formControlName="amount" limit-to="12" (blur)="formatCurrency($event.target.value)" id="amt"
+                          data-a-sign="Rs.">
+                        <!-- iOS Keyboad end -->
+                        <!-- <div class="text-center"> <span class="errormsg" style="top:48px;"
+                            *ngIf="collectAmountForm.controls['amount'].hasError('required')  && collectAmountForm.controls['amount'].touched">
+                            {{ 'ENTER_AMOUNT_ERROR' | translate }}
+                          </span></div> -->
+
+                        <p class="text-center error-message" style="color: #c51523;"
+                          *ngIf="collectAmountForm.controls['amount'].hasError('required')  && collectAmountForm.controls['amount'].touched">
+                          {{ 'ENTER_AMOUNT_ERROR' | translate }}
+                        </p>
+                        <p class="text-center error-message"
+                          *ngIf="collectAmountForm.controls['amount'].hasError('pattern')">
+                          {{ 'ENTER_NUMBER_ERROR' | translate}}</p>
+                        <!-- <p class="text-center error-message"></p> -->
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row1">
+                    <div class="col-sm-5 col-5 col-md-3 m-auto">
+                      <div class="ux-input dark-input mar-tb">
+                        <input type="text" formControlName="remarks" autocomplete="off" limit-to="100"
+                          placeholder="{{'REMARKS' | translate}}">
+                        <p class="text-center error-message"
+                          *ngIf="collectAmountForm.controls['remarks'].hasError('pattern')">
+                          {{ 'ENTER_SPECIAL_CHARACTOR_ERROR' | translate}}</p>
+                        <p class="text-center error-message"> </p>
+                      </div>
+                    </div>
+                  </div>
+
+
+                  <!-- Info Bottom Container Start -->
+                  <div class="info-bottom-container">
+                    <div class="row1">
+                      <div class="col-sm-12 col-12 col-md-12 m-auto">
+                        <!-- Info Bottom Start -->
+                        <div class="info-section2">
+                          <div class="row1">
+                            <div class="col-6 col-xl-6 col-lg-6 col-md-6">
+                              <h6>{{'VALIDITY_SET' | translate}}</h6>
+                              <!-- <h6>{{collectDate | date :'dd/MM/yyyy'}}, {{collectTime | date:'hh:mm a'}}</h6> -->
+                              <h6>{{collectDate}}, {{collectTime}}</h6>
+                            </div>
+                            <div class="col-6 col-xl-6 col-lg-6 col-md-6">
+                              <a (click)="routePage('collectSetValidity')" class="reg-txt">{{'EDIT_VALIDITY' |
+                                translate}}</a>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <!-- Info Bottom End -->
+                    <div class="row1">
+                      <div class="col-sm-12 col-12 col-md-12 m-auto">
+                        <div *ngIf="DataService.upiCollectVpaList.length > 0">
+                          <!-- Deposit Popup Start -->
+                          <!-- <div class="popup-bottom2 deposit focusCloseable  popup-active" *ngFor="let vpaDetails of DataService.upiCollectVpaList" [hidden]="!vpaDetails?.isSelected"> -->
+                          <div class="bottom-info deposit focusCloseable"
+                            *ngFor="let vpaDetails of DataService.upiCollectVpaList" [hidden]="!vpaDetails?.isSelected">
+
+                            <div class="row1">
+                              <div class="col-12">
+                                <h4>{{'DEPOSIT_TO_ACCOUNT' | translate }} </h4>
+                              </div>
+                            </div>
+                            <div *ngIf="vpaDetails.isSelected">
+                              <div class="row1 mt-2" *ngFor="let accDetails of vpaDetails.accounts"
+                                [hidden]="!accDetails?.isSelected">
+                                <div class="col-12">
+                                  <h5>{{'UPI_ID' | translate }} : {{vpaDetails.paymentAddress}}</h5>
+                                  <h6>{{accDetails.accType}} {{accDetails.maskedAccountNumber}}</h6>
+                                  <em>{{accDetails.bankName}}</em>
+                                  <br />
+                                  <!-- <em style="color: red;" *ngIf="accDetails.mbeba == 'N'">{{ 'UPI_PIN_IS_NOT_SET_FOR_THIS_ACCOUNT' | translate}}</em> -->
+                                </div>
+                                <div class="col-12 mt-1 ">
+                                  <div>
+                                    <a (click)="routePage('collectUpiIdList')" class="reg-txt">{{'CHANGE_AC' |
+                                      translate}}</a>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="row1 mt-2">
+                              <div class="col-12 text-center">
+                                <button type="submit" class="ux-button primary submit md"
+                                  [disabled]="collectAmountForm.invalid">{{'COLLECT_NOW' |
+                                  translate}}</button>
+                              </div>
+                            </div>
+
+                            <div class="row1">
+                              <div class="col-12 text-center mt-4">
+                                <div class="powered-logo">
+                                  <img src="assets/images/logo/powered-upi-logo.svg" alt="powered-upi-logo">
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                          <!-- Deposit Popup End -->
+                        </div>
+                      </div>
+                    </div>
+                    <!-- <div class="col-12 mt-1 ">
+                      <div>
+                        <a (click)="routePage('collectUpiIdList')" class="reg-txt">{{'CHANGE_AC' | translate}}</a>
+                      </div>
+                    </div> -->
+                  </div>
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+
+	<html>
+	
+	<head>
+		<meta charset="UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+	    <title>Create Mandate</title>
+		<link href="../css/lib/bootstrap.min.css" rel="stylesheet">
+	    <link href="../css/lib/jquery-ui.min.css" rel="stylesheet">
+	 	<link href="../css/lib/jquery.mCustomScrollbar.min.css" rel="stylesheet">
+		<link href="../css/main.css" rel="stylesheet">
+		
+	</head>	
+
+<body>
+ 
+    
+	<div class="main">
+
+  <!--  Header Section Start -->
+                
+		<header class="global-header brand-bg2 minus-nav">
+			<div class="in-header">
+				<div class="header-icons-lft ">   
+					<div class="header-actions">
+						<button class="ux-button-header">
+							<img src="../assets/images/svg/left-arrow.svg"  alt="left-arrow-icon" class="img-small"/>
+						</button>
+				   </div> 
+				</div>  
+				 <div class="brand-logo">
+				    <h3>Create Mandate</h3>
+				 </div> 
+			   <div class="header-icons-rit">
+					<div class="header-actions">
+					 </div> 
+				</div> 
+			</div> 
+		</header> 
+
+<!-- Header Section End -->
+ 
+ <div class="right-main-column minus-rt-col mar-custom">
+   <div class="right-col-container">
+                
+    <div class="body-page-container">
+		<div class="container-fluid">
+		      <div class="row">
+				<div class="bg-section">
+				   <div class="col-12">
+				 	  <div class="row1">
+						   <div class="col-sm-12 col-12 col-md-12">
+								 <div class="white-bg1">
+                                    <div class="upiId"> 
+									  <div class="row1">	
+									    <div class="col-12 col-sm-12 col-md-12">
+										  <div class="custom-input2 ux-input">
+											  <label for="upiId">UPI ID/Mobile Number</label>
+												<input type="text" name="upiId" placeholder="Enter UPI ID/Mobile Number" required>
+												   <a href="#"><em class="show-phonebook2"></em></a>
+												   <a href="scan-qr.html"> <em class="show-qr2"></em> </a>
+												  <p class="info-message">e.g. name@psb/9820000000</p>
+											  </div>
+											 </div>
+										  </div> 
+									 <div class="mt-2">
+									  <div class="row1">	
+											<div class="col-6 col-sm-6 col-md-6">
+											 </div> 
+											<div class="col-6 col-sm-6 col-md-6">
+												  <button  class="verify ux-button sm2 primary float-right" onclick="window.location.href = '#'">Verify</button>  
+											</div> 
+										  </div>
+										</div>
+									</div>	
+										<div class="userinfo" style="display:none;"> 
+											<div class="payee-info mt-4 mb-4">
+												<div class="info-lft">
+													 <span class="green1">
+														   <img src="../assets/images/icons/user14.png" alt="user-img">
+													 </span>
+												 </div>
+												 <div class="info-rit">
+													 <h5>Ronak Khanna</h5>
+													 <h6>ronakk@psb</h6>
+													 <!-- <em>9875142547</em> -->
+												 </div>
+											 </div>
+										  <div class="mt-2">
+											  <div class="row1">	
+													 <div class="col-6 col-sm-6 col-md-6">
+													   <button  class="cancel ux-button sm2 secondary" onclick="window.location.href = '#'">Cancel</button>  
+													</div> 
+													<div class="col-6 col-sm-6 col-md-6">
+														<button  class="proceed ux-button sm2 primary" onclick="window.location.href = 'create-mandate-payment.html'">Proceed</button>  
+													</div> 
+												 </div>
+											 </div>
+										  </div>
+									 </div>
+                                   </div>
+
+								   <div class="col-sm-12 col-12 col-md-12">
+									<div class="ux-nav-tabs" style="margin:0">
+									 <div class="responsive3"> 
+									   <ul class="nav nav-tabs nav-justified bor-n" role="tablist">
+											  <li class="nav-item">
+												  <a class="nav-link active" data-toggle="tab" href="#recent">Recent Payee</a>
+											  </li>
+											  <li class="nav-item">
+												  <a class="nav-link" data-toggle="tab" href="#favorite">Favorite Payee</a>
+											  </li>
+										  </ul>
+	  
+										  <!-- Tab panes -->
+										  <div class="tab-content custom-tab-content">
+											  <div id="recent" class=" tab-pane active">
+											   <div class="row"> 
+												<div class="col-sm-12 col-12 col-md-12">
+												    <ul class="payee-list1">
+														<li>
+															<a href="#">
+																<span class="green1">
+																	<img src="../assets/images/icons/user3.png" alt="user-img">
+																  </span>
+																  <em>Aarti</em>
+															   </a>
+														</li>
+														<li>
+															<a href="#">
+																<span class="green1">
+																	<img src="../assets/images/icons/user2.png" alt="user-img">
+																  </span>
+																  <em>Sohan</em>
+															   </a>
+														</li>
+														<li>
+															<a href="#">  
+																<span class="green1">
+																	<img src="../assets/images/icons/user4.png" alt="user-img">
+																  </span>
+																  <em>Jyoti</em>
+															   </a>
+														</li>
+														<li>
+															<a href="#">
+																<span class="green1">
+																	<h6>RS</h6>
+																</span>
+																<em>Rohan Singh</em>	  
+															</a>	
+														</li>
+														<li>
+															<a href="#">
+                                                                <span class="yellow">
+																  <h6>N</h6>
+															  </span>
+															  <em>Nivedita </em>
+															</a>	
+														</li>
+														<li>
+															<a href="#">
+																<span class="green1">
+																	 <h6>MJ</h6>
+																  </span>
+																  <em>Manoj Jain</em>
+															   </a>
+														</li>
+														<li>
+															<a href="#">  
+																<span class="blue1">
+																	<h6>BP</h6> 
+																  </span>
+																  <em>Bonney</em>
+															   </a>
+														</li>
+														<li>
+															<a href="search-payee.html">
+																<span class="white1">
+																	<img src="../assets/images/svg/more.svg" alt="more-icon">
+																</span>
+																<em>View More</em>	  
+															</a>	
+														</li>
+													</ul>
+										        </div> 
+										     </div>
+										 </div>
+										  <div id="favorite" class="tab-pane fade">
+												<div class="row"> 
+													<div class="col-sm-12 col-12 col-md-12">
+														<ul class="payee-list">
+															<li>
+																<a href="#">
+																	<span class="green1">
+																		<img src="../assets/images/icons/user3.png" alt="user-img">
+																	  </span>
+																	  <em>Aarti</em>
+																   </a>
+															</li>
+															<li>
+																<a href="#">
+																	<span class="green1">
+																		<img src="../assets/images/icons/user2.png" alt="user-img">
+																	  </span>
+																	  <em>Sohan</em>
+																   </a>
+															</li>
+															<li>
+																<a href="#">  
+																	<span class="green1">
+																		<img src="../assets/images/icons/user4.png" alt="user-img">
+																	  </span>
+																	  <em>Jyoti</em>
+																   </a>
+															</li>
+															<li>
+																<a href="#">
+																	<span class="green1">
+																		<h6>RS</h6>
+																	</span>
+																	<em>Rohan Singh</em>	  
+																</a>	
+															</li>
+															<li>
+																<a href="#">
+																	<span class="yellow">
+																	  <h6>N</h6>
+																  </span>
+																  <em>Nivedita </em>
+																</a>	
+															</li>
+															<li>
+																<a href="#">
+																	<span class="green1">
+																		<img src="../assets/images/icons/user11.png" alt="user-img">
+																	  </span>
+																	  <em>Anuraag</em>
+																   </a>
+															</li>
+															<li>
+																<a href="#">
+																	<span class="green1">
+																		 <h6>MJ</h6>
+																	  </span>
+																	  <em>Manoj Jain</em>
+																   </a>
+															</li>
+															<li>
+																<a href="#">  
+																	<span class="blue1">
+																		<h6>BP</h6> 
+																	  </span>
+																	  <em>Bonney</em>
+																   </a>
+															</li>
+															<li>
+																<a href="#">
+																	<span class="red1">
+																		<h6>BS</h6>
+																	</span>
+																	<em>Bharat</em>	  
+																</a>	
+															</li>
+                                                            <li>
+																<a href="search-favorite-payee.html">
+																	<span class="white1">
+																	   <img src="../assets/images/svg/more.svg" alt="more-icon">
+																	</span>
+																	<em>View More</em>	  
+																</a>	
+															</li>
+														</ul>
+												   </div> 
+											 </div>
+										  </div>
+									  </div> 
+								   </div>  
+								 </div>  
+							   </div> 
+
+						      </div> 
+                           </div> 
+                          
+				 	      <!-- <div class="col-12 text-center">
+							<div class="powered-logo">
+								<img src="../assets/images/logo/powered-upi-logo.svg" alt="powered-upi-logo">
+							</div>
+						 </div> -->
+						 
+                    </div>	 
+				  </div> 
+			 	</div> 
+			  </div> 
+
+			   <!-- footer section start -->
+	
+		  <!-- <div class="footer-container sticky-actions">
+			<div class="footer-inactions minus-rt-col">
+				<div class="container-fluid">
+					 <div class="row">
+					 	<div class="col-12 col-md-12 col-lg-12 text-center">
+							<div class="powered-logo">
+								<img src="../assets/images/logo/powered-upi-logo.svg" alt="powered-upi-logo">
+							</div>
+						 </div>
+					</div> 
+				</div> 
+			</div> 
+		</div>  -->
+		 
+	   <!-- footer section end -->
+
+		  </div>  
+        </div> 
+        
+    </div> 
+    
+  <!-- main -->
+	
+     
+
+
+
+<script src="../js/lib/jquery.min.js"></script>
+<script src="../js/lib/bootstrap.min.js"></script>
+<script src="../js/lib/jquery-ui.min.js"></script>
+<script src="../js/lib/popper.min.js"></script>
+<script src="../js/lib/jquery.mousewheel.min.js"></script>
+<script src="../js/lib/jquery.mCustomScrollbar.js"></script>
+<script src="../js/lib/datatables.min.js"></script>
+<script src="../js/common.js"></script>
+
+<script type="text/javascript">
+	//  createGlobalNavMore();
+ 
+
+
+
+//  $(document).ready(function () {
+//     size_li = $("ul.payee-list li").size();
+//     x=9;
+//    $('ul.payee-list li:last-child').show();
+//    $('ul.payee-list li:lt('+x+')').show();
+// 	  $('button#loadMore').click(function () {
+//         x= (x+5 <= size_li) ? x+5 : size_li;
+//         $('ul.payee-list li:lt('+x+')').show();
+//          $('button#showLess').show();
+//         if(x == size_li){
+//             $('button#loadMore').hide();
+// 		}
+// 	  else{
+// 			$('button#loadMore').show();
+// 		}
+//     });
+// //   $('button#showLess').click(function () {
+// //         x=(x-4<0) ? 3 : x-4;
+// //         $('.payee-list li').not(':lt('+x+')').hide();
+// //         $('button#loadMore').show();
+// //          $('button#showLess').show();
+// //         if(x == 16){
+// //             $('button#showLess').hide();
+// //         }
+// //     }); 
+
+//   });	
+ 
+/* Button Disable and Enable */
+
+$('button.verify').attr('disabled', true);
+$('button.verify').addClass('disable');
+	$("input[name='upiId']").on('keyup',function() {
+		if($(this).val() != '') {
+			$('button.verify').attr('disabled' , false);
+			$('button.verify').removeClass('disable');
+	   }else{
+			$('button.verify').attr('disabled' , true);
+			$('button.verify').addClass('disable');
+		}
+});
+
+
+$('button.proceed1').attr('disabled', true);
+$('button.proceed1').addClass('disable');
+$('button.cancel1').attr('disabled', true);
+$('button.cancel1').addClass('disable');
+ 
+ 
+$('button.verify').click(function() {
+        console.log("Working!");
+        if ($(this).hasClass('disable')) {
+			$('button.verify').attr('disabled' , true);
+			$('div.userinfo').hide();
+			$('div.upiId').show();
+          } else {
+			$('button.verify').attr('disabled' , false);
+			$('div.userinfo').show();
+			$('div.upiId').hide(); 
+        }
+    });
+ 
+</script>
+
+</body>
+</html>

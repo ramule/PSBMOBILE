@@ -1,0 +1,751 @@
+<div class="main">
+    <div class="right-main-column minus-rt-col mar-custom">
+        <div class="right-col-container cust-pb">
+            <div class="body-page-container">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="bg-section">
+                            <div class="col-12">
+                                <div class="row1">
+                                    <div class="col-sm-12 col-12 col-md-12">
+                                        <!-- <div class="white-bg1"> -->
+                                        <!-- <div class="row">
+                      <h4 class="white-h4">{{'PAYMENT_MODE' | translate}}</h4>
+                    </div> -->
+                                        <div class="col-sm-12 col-12 col-md-12 mt-2 p-0">
+                                            <div class="ux-nav-tabs" style="margin:0">
+                                                <div class="responsive1 custom-card">
+                                                    <ul class="nav nav-tabs nav-justified bor-n" role="tablist">
+                                                        <li class="nav-item2">
+                                                            <a class="nav-link" [class.active]="defaultTab === 'upi'" data-toggle="tab" id="upiHeader" href="#upi" (click)="resetForm('VPA')">{{
+                                'UPI_ID' | translate}}</a>
+                                                        </li>
+                                                        <li class="nav-item2">
+                                                            <a class="nav-link" [class.active]="defaultTab === 'acc'" data-toggle="tab" id="accountHeader" href="#account" (click)="getBankListRequest(); resetForm('ACCOUNT')">{{ 'ACCOUNT_AND_IFSC' |
+                                translate}}</a>
+                                                        </li>
+                                                        <!-- <li class="nav-item2">
+                              <a class="nav-link mr-0" data-toggle="tab" id="mmidHeader" href="#mmid"
+                                (click)="resetForm('MMID')">{{
+                                'MMID' | translate}} </a>
+                            </li> -->
+                                                        <li class="nav-item2">
+                                                            <a class="nav-link" [class.active]="defaultTab === 'self'" data-toggle="tab" id="selftHeader" href="#selft" (click)="upiAccountList(); resetForm('SELF_TRANSFER')">{{
+                                'SELF_TRANSFER' |
+                                translate}}</a>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                                <!-- Tab panes -->
+                                                <div class="tab-content bg-transparent">
+                                                    <div id="upi" class=" tab-pane" [ngClass]="defaultTab == 'upi'?'active':'fade'">
+                                                        <div class="white-bg1">
+                                                            <div class="row1">
+                                                                <div class="col-sm-12 col-12 col-md-12">
+                                                                    <div>
+                                                                        <form [formGroup]="payRecentReqForm">
+                                                                            <div class="upiId" *ngIf="!showUserInfo">
+                                                                                <div class="ux-input">
+                                                                                    <label for="upiId">{{'UPI_ID_MOBILE_NUMBER' | translate}}</label>
+                                                                                    <input type="text" name="upiId" autocomplete="off" autocapitalize="off" formControlName="upiIdOrMobNo" placeholder="{{'ENTER_UPI_ID_MOBILE_NUMBER' | translate}}" limit-to="40" required>
+                                                                                    <a (click)="goToPage('searchContactList')"><em
+                                              class="show-phonebook"></em></a>
+                                                                                    <!-- <em class="message">e.g. name@upi</em> -->
+                                                                                    <p class="info-message">e.g. name@psb/9820000000</p>
+                                                                                    <p class="error-message" *ngIf="payRecentReqForm.controls['upiIdOrMobNo'].hasError('required')  && payRecentReqForm.controls['upiIdOrMobNo'].touched">
+                                                                                        {{ 'ENTER_UPI_ID_MOBILE_NUMBER_ERROR' | translate }}
+                                                                                    </p>
+                                                                                </div>
+                                                                                <div class="mt-2">
+                                                                                    <div class="row1">
+                                                                                        <div class="col-6 col-sm-6 col-md-6">
+                                                                                        </div>
+                                                                                        <div class="col-6 col-sm-6 col-md-6">
+                                                                                            <button class="verify ux-button sm2 primary float-right" (click)="onVerifyClick('UPI_ID')" [disabled]="payRecentReqForm.invalid">{{ 'VERIFY' |
+                                                translate}}</button>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+
+                                                                            <!-- code added for  U040 need to integrate when design avilable-->
+                                                                            <div class="row" *ngIf="false">
+                                                                                <div class="col-12">
+                                                                                    <div class="white-bg">
+                                                                                        <div class="row1">
+                                                                                            <div class="col-sm-12 col-12 col-md-12">
+                                                                                                <ul class="list4">
+                                                                                                    <li>
+                                                                                                        {{ 'AVAILABLE_UPI_ID' | translate }}
+                                                                                                        <!-- Available UPI ID -->
+                                                                                                    </li>
+                                                                                                    <li *ngFor="let contact of DataService.mobileContacts  | searchFilter : 'number' : searchUPIId">
+                                                                                                        <a>{{contact.number}}</a>
+                                                                                                    </li>
+                                                                                                </ul>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+
+
+
+                                                                            <div class="userinfo" *ngIf="showUserInfo">
+                                                                                <div class="payee-info">
+                                                                                    <div class="info-lft">
+                                                                                        <span class="green1">
+                                              <h6>{{DataService.verifyAddressResp.MASKNAME | firstLastChar}}</h6>
+                                              <!-- <img src="assets/images/icons/user5.png" alt="user-img"> -->
+                                            </span>
+                                                                                    </div>
+                                                                                    <div class="info-rit">
+                                                                                        <h5>{{DataService.verifyAddressResp.MASKNAME}}</h5>
+                                                                                        <h6>{{'UPI_ID' | translate }} : {{DataService.verifyAddressResp.validatedVpa}}
+                                                                                        </h6>
+                                                                                        <em *ngIf="DataService.verifyAddressResp?.mobileNumber">{{DataService.verifyAddressResp?.mobileNumber}}</em>
+                                                                                    </div>
+                                                                                </div>
+                                                                                <div class="mt-2">
+                                                                                    <div class="row1">
+                                                                                        <div class="col-6 col-sm-6 col-md-6">
+                                                                                            <button class="cancel ux-button sm2 secondary" (click)="cancel('UPI_ID')">{{ 'CANCEL' | translate}}</button>
+                                                                                        </div>
+                                                                                        <div class="col-6 col-sm-6 col-md-6">
+                                                                                            <button class="proceed ux-button sm2 primary" (click)="proceed('UPI_ID')" [disabled]="payRecentReqForm.invalid">{{
+                                                'PROCEED' |
+                                                translate}}</button>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </form>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div id="account" class="tab-pane" [ngClass]="defaultTab == 'acc'?'active':'fade'">
+                                                        <div class="white-bg1">
+                                                            <div class="row1">
+                                                                <div class="col-sm-12 col-12 col-md-12">
+                                                                    <form [formGroup]="payBankActForm" (keydown.enter)="$event.preventDefault()">
+                                                                        <div class="row1">
+                                                                            <div class="col-md-6 col-12">
+                                                                                <div class="ux-input">
+                                                                                    <label for="accountNum">{{ 'ACCOUNT_NUMBER' | translate}}</label>
+                                                                                    <input type="password" name="accountNum" formControlName="acctNum" maxlength="30" placeholder="{{ 'ENTER_ACCOUNT_NUMBER' | translate}}" (blur)="compActNo()" required>
+                                                                                    <p></p>
+                                                                                    <p class="error-message" *ngIf="payBankActForm.controls['acctNum'].hasError('required')  && payBankActForm.controls['acctNum'].touched">
+                                                                                        {{ 'ENTER_ACCOUNT_NUMBER_ERROR' | translate }}
+                                                                                    </p>
+                                                                                </div>
+                                                                            </div>
+
+                                                                            <div class="col-md-6 col-12">
+                                                                                <div class="ux-input">
+                                                                                    <label for="reaccountNum">{{ 'REENTER_ACCOUNT_NUMBER' | translate}}</label>
+                                                                                    <input type="text" name="reaccountNum" formControlName="reActNum" maxlength="30" placeholder="{{ 'ENTER_REENTER_ACCOUNT_NUMBER' | translate }}" (blur)="compActNo()" required>
+                                                                                    <p></p>
+                                                                                    <p class="error-message" *ngIf="payBankActForm.controls['reActNum'].hasError('required')  && payBankActForm.controls['reActNum'].touched">
+                                                                                        {{ 'REENTER_UPI_ID_ACCOUNT_NUMBER_ERROR' | translate }}
+                                                                                    </p>
+                                                                                </div>
+                                                                            </div>
+
+                                                                            <div class="col-md-6 col-12">
+                                                                                <div class="ux-input" (click)="navigate($event,'payBankList')">
+                                                                                    <label for="selectBank">{{ 'SELECT_BANK' | translate}}</label>
+                                                                                    <select class="sBank bankSelectClass" formControlName="bankIin" [(ngModel)]="actAndIfscPay.bankIin" required>
+                                            <option value="">{{ 'SELECT' | translate}}</option>
+                                            <option [value]="bankIin">
+                                              {{ bankName }}
+                                            </option>
+                                            <!-- <option value="Punjab & Sind Bank">Punjab & Sind Bank</option>
+                                              <option value="State Bank of India">State Bank of India</option> -->
+                                          </select>
+                                                                                    <p></p>
+                                                                                    <p class="error-message" *ngIf="payBankActForm.controls['bankIin'].hasError('required')  && payBankActForm.controls['bankIin'].touched">
+                                                                                        {{ 'SELECT_BANK' | translate }}
+                                                                                    </p>
+                                                                                </div>
+                                                                            </div>
+
+
+                                                                            <div class="col-md-6 col-12">
+                                                                                <div class="custom-input3 ux-input">
+                                                                                    <label for="ifsc">{{ 'IFSC_CODE' | translate}}</label>
+                                                                                    <input type="text" name="ifsc" formControlName="bankIfsc" autocomplete="off" autocapitalize="on" limit-to="7" placeholder="{{ 'IFSC_CODE' | translate}}" (change)="isBranchVerified=false;showVerifyButton=true;" required>
+                                                                                    <!-- Note : initial of ifsc code for respetive bank -->
+                                                                                    <span class="show-bankinfo">{{bankIfsCode}}</span>
+                                                                                    <!-- <a class="show-link" (click)="verifyBranch()" >{{ 'VERIFY_BRANCH' | translate}}</a>
+                                                                                    <div class="info" *ngIf="isBranchVerified">
+                                              <em class="message">{{ 'BRANCH_NAME' | translate}}: <span class="success">Sector 26, Vashi, Navi Mumbai, MH 400703</span></em>
+                                            </div> -->
+                                                                                    <p></p>
+                                                                                    <p class="error-message" *ngIf="payBankActForm.controls['bankIfsc'].hasError('required') && payBankActForm.controls['bankIfsc'].touched">
+                                                                                        {{ 'ENTER_BANK_IFSC' | translate }}
+                                                                                    </p>
+                                                                                </div>
+                                                                            </div>
+
+                                                                            <!-- <div class="col-md-6 col-12">
+                                                                                <div class="ux-input" *ngIf="payBankActForm.get('bankPayeeName').value"> -->
+                                                                            <div class="col-md-6 col-12">
+                                                                                <div class="ux-input" *ngIf="bankPayeeNameExists">
+                                                                                    <label for="bankPayeeName">{{ 'PAYEE_NAME' | translate}}</label>
+                                                                                    <input type="text" name="bankPayeeName" formControlName="bankPayeeName" placeholder="{{ 'ENTER_PAYEE_NAME' | translate}}" [disabled]="payeeDisabled" required>
+                                                                                    <p></p>
+                                                                                    <p class="error-message" *ngIf="payBankActForm.controls['bankPayeeName'].hasError('required') && payBankActForm.controls['bankPayeeName'].touched">
+                                                                                        {{ 'ENTER_PAYEE_NAME' | translate }}
+                                                                                    </p>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+
+                                                                        <div class="mt-2">
+                                                                            <div class="row1">
+                                                                                <div class="col-6 col-sm-6 col-md-6">
+                                                                                    <button class="cancel ux-button sm2 secondary" (click)="cancel('BNK_ACT')">{{
+                                            'CANCEL' | translate}}</button>
+                                                                                </div>
+                                                                                <!-- <div class="col-6 col-sm-6 col-md-6" *ngIf="!payBankActForm.get('bankPayeeName').value"> -->
+                                                                                <div class="col-6 col-sm-6 col-md-6" *ngIf="showVerifyButton">
+                                                                                    <!-- <button class="verify ux-button sm2 primary float-right" (click)="onVerifyClick('BNK_ACT')" [disabled]="payBankActForm.get('bankIfsc').value && payBankActForm.get('bankIin').value && payBankActForm.get('reActNum').value">{{ 'VERIFY' |
+                                            translate}}</button> -->
+                                                                                    <button class="verify ux-button sm2 primary float-right" (click)="onVerifyClick('BNK_ACT')" [disabled]="payBankActForm.invalid && !isBranchVerified">{{ 'VERIFY' |
+                                            translate}}</button>
+                                                                                </div>
+                                                                                <!-- <div class="col-6 col-sm-6 col-md-6" *ngIf="payBankActForm.get('bankPayeeName').value"> -->
+                                                                                <div class="col-6 col-sm-6 col-md-6" *ngIf="!showVerifyButton">
+                                                                                    <button class="proceed1 ux-button sm2 primary" (click)="proceed('BNK_ACT')" [disabled]="payBankActForm.invalid || showVerifyButton">{{
+                                            'PROCEED' | translate}}</button>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                        <!-- </div> -->
+                                                                        <!-- </div> -->
+                                                                    </form>
+
+
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div id="mmid" class="tab-pane fade">
+                                                        <div class="white-bg1">
+                                                            <div class="row1">
+                                                                <div class="col-sm-12 col-12 col-md-12">
+                                                                    <form [formGroup]="mmidForm">
+                                                                        <div class="row1">
+                                                                            <div class="col-md-6 col-12">
+                                                                                <div class="ux-input">
+                                                                                    <label for="mobile">{{ 'MOBILE_NUMBER' | translate}}</label>
+                                                                                    <input type="text" name="mobile" formControlName="mobileNumber" limit-to="10" placeholder="{{'ENTER_MOBILE_NUMBER' | translate}}" numbersOnly required>
+                                                                                    <p></p>
+                                                                                    <p class="error-message" *ngIf="mmidForm.controls['mobileNumber'].hasError('required') && mmidForm.controls['mobileNumber'].touched">
+                                                                                        {{ 'ENTER_MOBILE_NUMBER' | translate }}
+                                                                                    </p>
+                                                                                </div>
+                                                                            </div>
+
+                                                                            <div class="col-md-6 col-12">
+                                                                                <div class="ux-input">
+                                                                                    <label for="mmid">{{'MMID' | translate}}</label>
+                                                                                    <input type="text" name="mmid" formControlName="enterMmid" placeholder="{{'ENTER_MMID' | translate}}" limit-to="7" required>
+                                                                                    <p></p>
+                                                                                    <p class="error-message" *ngIf="mmidForm.controls['enterMmid'].hasError('required') && mmidForm.controls['enterMmid'].touched">
+                                                                                        {{ 'ENTER_MMID' | translate }}
+                                                                                    </p>
+                                                                                </div>
+                                                                            </div>
+
+                                                                            <div class="col-md-6 col-12">
+                                                                                <div class="ux-input">
+                                                                                    <label for="payeeName">{{ 'PAYEE_NAME' | translate}}</label>
+                                                                                    <input type="text" name="payeName" formControlName="mmidPayeeName" placeholder="{{'ENTER_PAYEE_NAME' | translate}}" limit-to="100" required>
+                                                                                    <p></p>
+                                                                                    <p class="error-message" *ngIf="mmidForm.controls['mmidPayeeName'].hasError('required') && mmidForm.controls['mmidPayeeName'].touched">{{ 'ENTER_PAYEE_NAME' | translate }}
+                                                                                    </p>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+
+                                                                        <div class="mt-2">
+                                                                            <div class="row1">
+                                                                                <div class="col-6 col-sm-6 col-md-6">
+                                                                                    <button class="cancel ux-button sm2 secondary" (click)="cancel('MMID')">{{
+                                            'CANCEL' | translate}}</button>
+                                                                                </div>
+                                                                                <div class="col-6 col-sm-6 col-md-6">
+                                                                                    <button class="proceed1 ux-button sm2 primary" (click)="proceed('MMID')" [disabled]="mmidForm.invalid">{{ 'PROCEED' | translate}}</button>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </form>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div id="selft" class=" tab-pane" [ngClass]="defaultTab == 'self'?'active':'fade'">
+                                                        <div class="row1">
+                                                            <div class="col-sm-12 col-12 col-md-12" *ngIf="transferActList.length > 0">
+                                                                <div class="white-bg1  mt-2">
+                                                                    <div class="row" *ngIf="depositActList.length > 0">
+                                                                        <h4>{{'TRANSFER_FROM' | translate}}</h4>
+                                                                    </div>
+                                                                    <div class="col-sm-12 col-12 col-md-12 p-0">
+                                                                        <ul class="radio-list mt-0 mb-0">
+                                                                            <li *ngFor="let transferAct of transferActList; index as t">
+                                                                                <div class="ux-selection w-100 ">
+                                                                                    <label class="ux-selection6  pad-custom1 mb-0">
+                                            <input type="radio" [checked]="transferAct.isSelected" name="radioboxdemo"
+                                              (change)="getAccountSelected('TRNS',t)">
+                                            <span class="checkmark"></span>
+                                            <span *ngIf="transferAct.bankName == 'Punjab & Sind Bank'"> <img
+                                                src="assets/images/icons/psb-icon-yellow.png" alt="psb-icon"></span>
+                                            <span *ngIf="transferAct.bankName != 'Punjab & Sind Bank'"> <img
+                                                src="assets/images/svg/bank-icon.svg" alt="psb-icon"></span>
+                                            <span class="fs-1">{{transferAct.bankName}} </span>
+                                            <br />
+                                            <span class="fs-2">{{transferAct.accType}}
+                                              {{transferAct.maskedAccountNumber}}</span>
+                                            <br />
+                                            <p class="fs-2" style="color: red;" *ngIf="transferAct.mbeba == 'N'">{{
+                                              'UPI_PIN_IS_NOT_SET_FOR_THIS_ACCOUNT' | translate}}</p>
+                                          </label>
+                                                                                </div>
+                                                                            </li>
+                                                                        </ul>
+                                                                    </div>
+                                                                    <div class="col-12 col-md-12 mt-3">
+                                                                        <div class=" text-center" *ngIf="depositActList.length > 0">
+                                                                            <a class="link-txt" (click)="goToPage('createUpi')">{{ 'ADD_MORE_ACCOUNTS' |
+                                        translate}}</a>
+                                                                        </div>
+                                                                        <div class=" text-center" *ngIf="depositActList.length == 0">
+                                                                            <a class="link-txt" (click)="goToPage('createUpi')">{{ 'KINDLY_ADD_ACCOUNT' |
+                                        translate}}</a>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="col-sm-12 col-12 col-md-12" *ngIf="depositActList.length > 0">
+                                                                <div class="grey-bg3 mar-custom pb-0 mb-4">
+                                                                    <div class="row">
+                                                                        <h4>{{'DEPOSIT_TO_ACCOUNT' | translate}}</h4>
+                                                                    </div>
+                                                                    <div class="col-sm-12 col-12 col-md-12 p-0">
+                                                                        <ul class="radio-list mt-0 mb-0">
+                                                                            <li *ngFor="let depositAct of depositActList; index as d;">
+                                                                                <div class="ux-selection w-100 ">
+                                                                                    <label class="ux-selection6  pad-custom1 mb-0">
+                                            <input type="radio" [checked]="depositAct.isDeposit" name="radioboxdemo1"
+                                              (change)="getAccountSelected('DPST',d)">
+                                            <span class="checkmark"></span>
+                                            <span *ngIf="depositAct.bankName == 'Punjab & Sind Bank'"> <img
+                                                src="assets/images/icons/psb-icon-yellow.png" alt="psb-icon"></span>
+                                            <span *ngIf="depositAct.bankName != 'Punjab & Sind Bank'"> <img
+                                                src="assets/images/svg/bank-icon.svg" alt="psb-icon"></span>
+                                            <span class="fs-1">{{depositAct.bankName}} </span>
+                                            <br />
+                                            <span class="fs-2">{{depositAct.accType}}
+                                              {{depositAct.maskedAccountNumber}}</span>
+                                            <br />
+                                          </label>
+                                                                                </div>
+                                                                            </li>
+                                                                        </ul>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+
+                                                            <!-- Shridhar Self Transfer Code -->
+                                                            <!-- 
+                              <div class="col-12 col-md-12">
+                                <div class="mt-2">
+                                  <div class="row1">
+                                    <div class=" text-center"> -->
+                                                            <!-- <a class="link-txt" (click)="goToPage('manageAccounts')">{{ 'ADD_MORE_ACCOUNTS' |
+                                    translate}}</a> -->
+                                                            <!-- <button class="ux-button primary md" (click)="goToPage('selfTransferPayment')"
+                                        [disabled]="proceedEnable">{{'PROCEED' | translate}}</button>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div> -->
+
+
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-sm-12 col-12 col-md-12">
+                                        <div class="ux-nav-tabs" style="margin:0">
+                                            <div class="responsive3" *ngIf="activeTabName != 'SELF_TRANSFER'">
+                                                <ul class="nav nav-tabs nav-justified bor-n" role="tablist">
+                                                    <li class="nav-item">
+                                                        <a class="nav-link active" data-toggle="tab" href="#recent">{{ 'RECENT_PAYEE' |
+                              translate}}</a>
+                                                    </li>
+                                                    <li class="nav-item">
+                                                        <!-- <a class="nav-link" data-toggle="tab" href="#favorite" >Favorite Payee</a> -->
+                                                        <a class="nav-link " data-toggle="tab" href="#favorite">{{ 'FAVORITE_PAYEE' |
+                              translate}}</a>
+
+                                                    </li>
+                                                </ul>
+
+                                                <!-- Tab panes -->
+                                                <div class="tab-content custom-tab-content">
+                                                    <div id="recent" class=" tab-pane active">
+                                                        <div class="row">
+                                                            <div class="col-sm-12 col-12 col-md-12">
+                                                                <div class="unfound-info" *ngIf="recentPayeeReqList.length == 0">
+                                                                    <h6> {{'NO_RECENT_PAYEE_FOUND' | translate}}</h6>
+                                                                </div>
+                                                                <ul class="payee-list1" *ngIf="recentPayeeReqList.length > 0">
+
+                                                                    <li *ngFor="let recentPayee of recentPayeeReqList; index as i">
+                                                                        <a (click)="validatePayee('recent',recentPayee)">
+                                                                            <span class="green1">
+                                        <img *ngIf="recentPayee.beneImageUrl" [src]="recentPayee.beneImageUrl"
+                                          alt="user-img">
+                                        <h6 *ngIf="!recentPayee.beneImageUrl">{{recentPayee.nickName | firstLastChar}}
+                                        </h6>
+                                      </span>
+                                                                            <em>{{recentPayee.nickName | truncate}}</em>
+                                                                        </a>
+                                                                    </li>
+
+                                                                    <!-- <li>
+                                    <a href="#">
+                                      <span class="green1">
+                                        <img src="assets/images/icons/user2.png" alt="user-img">
+                                      </span>
+                                      <em>Sohan</em>
+                                    </a>
+                                  </li>
+                                  <li>
+                                    <a href="#">
+                                      <span class="green1">
+                                        <img src="assets/images/icons/user7.png" alt="user-img">
+                                      </span>
+                                      <em>Jyoti</em>
+                                    </a>
+                                  </li>
+                                  <li>
+                                    <a href="#">
+                                      <span class="green1">
+                                        <h6>RS</h6>
+                                      </span>
+                                      <em>Rohan Singh</em>
+                                    </a>
+                                  </li>
+                                  <li>
+                                    <a href="#">
+                                      <span class="yellow">
+                                        <h6>N</h6>
+                                      </span>
+                                      <em>Nivedita </em>
+                                    </a>
+                                  </li> -->
+
+
+                                                                    <!-- Old Tag for View More -->
+                                                                    <!-- <li *ngIf="showMoreRecentRequest" (click)="showMore('recent')">
+                                    <button id="loadMore" class="ux-linkbutton primary1 md custom-pad"> <img
+                                        src="assets/images/svg/more.svg" alt="more-icon"></button>
+                                  </li> -->
+
+
+                                                                    <li *ngIf="recentPayeeReqList.length > 0">
+                                                                        <a (click)="searchContact('recent')">
+                                                                            <span class="white1">
+                                        <img src="assets/images/svg/more.svg" alt="more-icon">
+                                      </span>
+                                                                            <em>{{'VIEW_MORE' | translate}}</em>
+                                                                        </a>
+                                                                    </li>
+
+
+                                                                </ul>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div id="favorite" class="tab-pane fade">
+                                                        <div class="row">
+                                                            <div class="col-sm-12 col-12 col-md-12">
+
+                                                                <div class="unfound-info" *ngIf="favPayeeList.length == 0">
+                                                                    <h6> {{'NO_FAVORITE_PAYEE_FOUND' | translate}}</h6>
+                                                                </div>
+                                                                <ul class="payee-list1">
+                                                                    <li *ngFor="let favPayee of favPayeeList; index as i;">
+                                                                        <a (click)="validatePayee('fav',favPayee)">
+                                                                            <span class="green1">
+                                        <!-- <img [src]="assets/images/icons/user3.png" alt="user-img"> -->
+                                        <h6>{{favPayee.nickName | firstLastChar}}</h6>
+                                      </span>
+                                                                            <em>{{favPayee.nickName | truncate}}</em>
+                                                                        </a>
+                                                                    </li>
+                                                                    <!-- <li>
+                                    <a href="#">
+                                      <span class="green1">
+                                        <img src="assets/images/icons/user2.png" alt="user-img">
+                                      </span>
+                                      <em>Sohan</em>
+                                    </a>
+                                  </li>
+                                  <li>
+                                    <a href="#">
+                                      <span class="green1">
+                                        <img src="assets/images/icons/user7.png" alt="user-img">
+                                      </span>
+                                      <em>Jyoti</em>
+                                    </a>
+                                  </li>
+                                  <li>
+                                    <a href="#">
+                                      <span class="green1">
+                                        <h6>RS</h6>
+                                      </span>
+                                      <em>Rohan Singh</em>
+                                    </a>
+                                  </li>
+                                  <li>
+                                    <a href="#">
+                                      <span class="yellow">
+                                        <h6>N</h6>
+                                      </span>
+                                      <em>Nivedita </em>
+                                    </a>
+                                  </li>
+                                  <li>
+                                    <a href="#">
+                                      <span class="green1">
+                                        <img src="assets/images/icons/user11.png" alt="user-img">
+                                      </span>
+                                      <em>Anuraag</em>
+                                    </a>
+                                  </li>
+                                  <li>
+                                    <a href="#">
+                                      <span class="green1">
+                                        <h6>MJ</h6>
+                                      </span>
+                                      <em>Manoj Jain</em>
+                                    </a>
+                                  </li>
+                                  <li>
+                                    <a href="#">
+                                      <span class="blue1">
+                                        <h6>B</h6>
+                                      </span>
+                                      <em>Bonney</em>
+                                    </a>
+                                  </li>
+                                  <li>
+                                    <a href="#">
+                                      <span class="red1">
+                                        <h6>B</h6>
+                                      </span>
+                                      <em>Bharat</em>
+                                    </a>
+                                  </li>
+
+                                  <li>
+                                    <a href="#">
+                                      <span class="green1">
+                                        <img src="assets/images/icons/user3.png" alt="user-img">
+                                      </span>
+                                      <em>Sohan</em>
+                                    </a>
+                                  </li>
+                                  <li>
+                                    <a href="#">
+                                      <span class="green1">
+                                        <img src="assets/images/icons/user2.png" alt="user-img">
+                                      </span>
+                                      <em>Jyoti</em>
+                                    </a>
+                                  </li>
+                                  <li>
+                                    <a href="#">
+                                      <span class="green1">
+                                        <h6>RS</h6>
+                                      </span>
+                                      <em>Rohan Singh</em>
+                                    </a>
+                                  </li>
+                                  <li>
+                                    <a href="#">
+                                      <span class="green1">
+                                        <h6>MJ</h6>
+                                      </span>
+                                      <em>Manoj Jain</em>
+                                    </a>
+                                  </li>
+                                  <li>
+                                    <a href="#">
+                                      <span class="blue1">
+                                        <h6>B</h6>
+                                      </span>
+                                      <em>Bonney</em>
+                                    </a>
+                                  </li>
+                                  <li>
+                                    <a href="#">
+                                      <span class="red1">
+                                        <h6>B</h6>
+                                      </span>
+                                      <em>Bharat</em>
+                                    </a>
+                                  </li> -->
+
+                                                                    <!-- Old Code -->
+                                                                    <!-- <li *ngIf="showMoreFav" (click)="showMore('fav')">
+                                    <button id="loadMore" class="ux-linkbutton primary1 md custom-pad"> <img
+                                        src="assets/images/svg/more.svg" alt="more-icon"></button>
+                                  </li> -->
+
+
+                                                                    <li *ngIf="favPayeeList.length > 0">
+                                                                        <a (click)="searchContact('favorite')">
+                                                                            <span class="white1">
+                                        <img src="assets/images/svg/more.svg" alt="more-icon">
+                                      </span>
+                                                                            <em>{{'VIEW_MORE' | translate}}</em>
+                                                                        </a>
+                                                                    </li>
+
+                                                                </ul>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- 
+                  <div class="col-12 text-center">
+                    <div class="powered-logo">
+                      <img src="assets/images/logo/powered-upi-logo.svg" alt="powered-upi-logo">
+                    </div>
+                  </div> -->
+
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+            <!-- footer section start -->
+
+            <div class="footer-container sticky-actions">
+                <div class="footer-inactions minus-rt-col">
+                    <div class="container-fluid">
+                        <div class="row" *ngIf="activeTabName == 'SELF_TRANSFER' && depositActList.length > 0">
+                            <div class="col-12 col-lg-12 col-md-12 text-center">
+                                <!-- Self Transfer Btn  -->
+                                <button class="proceed-btn ux-button primary md" id="selft" [disabled]="proceedEnable || mbebaFlag == 'N'" (click)="goToPage('selfTransferPayment')">{{'PROCEED' |
+                  translate}}</button>
+                                <!-- style="display:none;" -->
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-12 col-md-12 col-lg-12 text-center">
+                                <div class="powered-logo">
+                                    <img src="assets/images/logo/powered-upi-logo.svg" alt="powered-upi-logo">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- footer section end -->
+
+        </div>
+
+    </div>
+</div>
+
+<!-- main -->
+
+
+<!-- footer section start -->
+
+<!-- <div class="footer-container sticky-actions bg-transparent">
+  <div class="footer-inactions minus-rt-col">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-12 col-md-3 col-lg-4">
+        </div>
+        <div class="col-12 col-md-6 col-lg-4">
+          <div class="row">
+            <button class="ux-button secondary sm2" (click)="onSelfTrnsClick()"> <img
+                src="assets/images/svg/transfer.svg" alt="transfer-icon"> {{ 'SELF_TRANSFER' | translate}}</button>
+          </div>
+        </div>
+        <div class="col-12 col-md-3 col-lg-4">
+        </div>
+      </div>
+    </div>
+  </div>
+</div> -->
+
+<div class="popup-bottom alert1 noAccountAvailable">
+    <div class="row">
+        <div class="col-12">
+            <h4 class="text-center">{{'NO_ACCOUNT_AVAILABLE' | translate }}</h4>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12">
+            <p>
+                {{ 'ATLEAST_SET_ONE_ACCOUNT_AND_PROCEED' | translate }}
+            </p>
+        </div>
+    </div>
+    <div class="row1 mt-2">
+        <div class="col-12 text-center">
+            <button class="ux-button primary md" (click)="goToPage('upiDashboard')">{{'OK' | translate}}</button>
+        </div>
+    </div>
+</div>
+
+<div class="popup-bottom selfTransferAlert">
+    <div class="row">
+        <div class="col-12">
+            <h4 class="text-center">{{ 'ALERT' | translate }}</h4>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12">
+            <p>
+                {{ 'ONLY_ONE_ACCOUNT_LINKED_TO_YOUR_ACCOUNT_KINDLY_ADD_MORE_ACCOUNT_TO_PROCEED_WITH_SELF_TRANSFER' | translate }}
+            </p>
+        </div>
+    </div>
+    <div class="row1 mt-2">
+        <div class="col-6 text-center">
+            <button class="ux-button secondary no md close-btn" (click)="closePopup('selfTransferAlert')">{{'NO' |
+        translate}}</button>
+        </div>
+        <div class="col-6 text-center">
+            <button class="ux-button primary md" (click)="goToPage('createUpi'); closePopup('selfTransferAlert')">{{'ADD_NEW_ACCOUNT' |
+        translate}}</button>
+        </div>
+    </div>
+</div>
+
+<!-- footer section end -->

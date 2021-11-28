@@ -1,0 +1,1542 @@
+<div class="main bg-m">
+	<!-- Start Global Nav -->
+	<div class="nav-overlay"></div>
+	<!-- End Global Nav -->
+	<div class="right-main-column ">
+		<div class="right-col-container pad-b full-width">
+			<!-- ======== body page content start from here ======== -->
+			<div class="body-page-container main-dashborad manage-payee">
+				<div class="container-fluid">
+					<div class="row">
+						<div class="col-12 p-0">
+							<div class="breadcrumb">
+								<ul class="lst-breadcrumb">
+									<!-- <li> <a>{{"SEND_MONEY" | translate }}</a> </li>
+									<li> {{"MANAGE_PAYEE" | translate }} </li> -->
+									<li *ngFor="let name of DataService.breadcrumblist">
+                                        <a (click)="DataService.breadcrumroute(name.routeName)">{{name.currentRoute | translate}}</a>
+                                	</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+					<!--.row -->
+					<div class="vspacer15 customize d-none d-md-block d-lg-block d-xl-block"></div>
+					<div class="row no-gutters">
+						<div class="col-12">
+							<div class="row1">
+								<div class="col-12 col-sm-12 col-md-12 col-lg-12  col-xl-9">
+									<!-- <div class="ux-acc-container" style="margin: 0"> -->
+									<div class="greencard2">
+										<div class="row1 hide-m">
+											<div class="col-md-8 col-12">
+												<h4>{{"MANAGE_PAYEE" | translate }}</h4> </div>
+											<div class="col-md-4 col-12">
+												<div class="white-link float-right" (click)="goToFavourite()">
+													<a class="link-text "> <img src="assets/images/svg/star-active.svg" alt="star-icon" > {{"FAVOURITE_PAYEE" | translate }} </a>
+												</div>
+											</div>
+										</div>
+										<div class="row1">
+											<div class="col-sm-12 col-12 col-md-12">
+												<div class="ux-nav-tabs" style="margin:0">
+													<div class="responsive6 custom-card pad-custom mar-custom2">
+														<div class="custom-width">
+															<ul class="nav nav-tabs nav-justified bor-n" role="tablist">
+																<li  class="nav-item2"> <a (click)="changeBank('within')" class="nav-link "  data-toggle="tab" href="#within" [ngClass]="{'active' : bankSelection === 'within' }">{{"WITHIN_BANK" | translate }}</a> </li>
+																<li  class="nav-item2"> <a (click)="changeBank('outside')" class="nav-link " data-toggle="tab" href="#outsidebank" [ngClass]="{'active' :bankSelection === 'outside' }" >{{"OUTSIDE_BANK" | translate }}</a> </li>
+																<li class="nav-item2"> <a (click)="changeBank('mmid')" class="nav-link" data-toggle="tab" href="#mmid" [ngClass]="{'active' :bankSelection === 'mmid' }">{{"MMID" | translate }}</a> </li>
+																<li  class="nav-item2"> <a  (click)="changeBank('Vpa')"class="nav-link" data-toggle="tab" href="#Vpa" [ngClass]="{'active' : bankSelection === 'Vpa' }">{{"VPA" | translate }} ({{"UPI" | translate }})</a> </li>
+															</ul>
+														</div>
+													</div>
+												</div>
+											</div>
+											<!-- </div> -->
+											<!-- <div class="fund-transfer-wrapp bg-width bg-none overlap2 statement-table"> -->
+											<div class="col-12 col-md-12">
+												<div class="tab-content bg-transparent mt-2">
+													<div id="within" class=" tab-pane" [ngClass]="{'active' : bankSelection === 'within' }">
+														<!-- modified by USER PSB1-->
+														<!--<div class="row1">-->
+														<div class="row1" *ngIf="this.withinBankPendingPayeeDetails.length > 0">
+														<!-- modified by USER PSB1 Ends-->
+															<div class="col-sm-12 col-12 col-md-12">
+																<!-- Accordion Start here-->
+																<div id="accordion" class="accordion-container">
+																	<div class="card mar-b border-n">
+																		<a class="card-link collapsed" data-toggle="collapse" href="#payee1" aria-expanded="false">
+																			<div class="card-header cust-p">
+																				<div class="panel-title2">
+																					<h4 class="default-grey">
+																							<span>
+																							<img src="assets/images/svg/bell-g.svg" alt="bell-icon">
+																							<div class="red-dot"></div>
+																						</span>{{"PENDING_PAYEE_LIST" | translate }} ({{withinBankPendingPayeeDetails.length}})
+																					</h4></div><em></em>  </div>
+																			<!--card-header-->
+																		</a>
+																		<div id="payee1" class="collapse" data-parent="#accordion">
+																			<div class="card-body bg-lg4">
+																				<div class="row">
+																					<ul class="grid-list1">
+																						<li class="grey-th">
+																							<div class="grid-info">
+																								<div class="full-info">
+																									<h6> {{"PAYEE_NAME" | translate }}  </h6> </div>
+																							</div>
+																							<div class="grid-info">
+																								<div class="full-info">
+																									<h6> {{"NICK_NAME" | translate }}</h6> </div>
+																							</div>
+																							<div class="grid-info">
+																								<div class="full-info">
+																									<h6> {{"ACCOUNT_NUMBER" | translate }} </h6> </div>
+																							</div>
+																							<div class="grid-info">
+																								<div class="full-info">
+																									<h6>{{"BANK_NAME" | translate }}</h6> </div>
+																							</div>
+																							<div class="grid-info">
+																								<div class="full-info">
+																									<h6> {{"TRANSACTION_LIMIT" | translate }}</h6> </div>
+																							</div>
+																							<div class="grid-info">
+																								<div class="full-info"> </div>
+																							</div>
+																						</li>
+																						<li *ngFor="let pendingPayeeList of withinBankPendingPayeeDetails ; index as i" [class.active]="clicked === i" (click)="clicked = (clicked === i ? null : i )">
+																							<div class="grid-info">
+																								<div class="full-info">
+																									<div class="left-info">
+																										<h5>{{pendingPayeeList.benefName}}</h5>
+																										<div class="user-info"> <span class="blue">
+																													<h6>{{pendingPayeeList.benefName | firstLastChar |  uppercase  }}</h6>
+																												</span> </div>
+																									</div> <em></em> </div>
+																							</div>
+																							<div class="grid-info">
+																								<div class="full-info">
+																									<h6 class="display-mt">{{"NICK_NAME" | translate }}</h6>
+																									<h5>{{pendingPayeeList.beneficiary_nick_name}}</h5> </div>
+																							</div>
+																							<div class="grid-info">
+																								<div class="full-info">
+																									<h6 class="display-mt"> {{"ACCOUNT_NUMBER" | translate }}</h6>
+																									<h5>{{pendingPayeeList.beneficiary_account_no}}</h5> </div>
+																							</div>
+																							<div class="grid-info">
+																								<div class="full-info">
+																									<h6 class="display-mt">{{"BANK_NAME" | translate }}</h6>
+																									<h5>{{pendingPayeeList.beneficiary_bank_name}}</h5> </div>
+																							</div>
+																							<div class="grid-info">
+																								<div class="full-info">
+																									<h6 class="display-mt">{{"TRANSACTION_LIMIT" | translate }}</h6>
+																									<h5>{{pendingPayeeList.maxAmount | customcurrency}}</h5> </div>
+																							</div>
+																							<div class="grid-info">
+																								<div class="full-info text-right">
+																									<button (click)="deletePayee(pendingPayeeList)" class="icon-btn mr"><img src="assets/images/svg/delete-g.svg" alt="delete-icon" data-target="#logoutModal" ></button>
+																									<!-- <button class="ux-regbutton sm primary-custom md" (click)="withinBankPendingPayeeOnConfirm(pendingPayeeList ,withinBankPendingPayeeDetails)"> Confirm</button> -->
+																								</div>
+																							</div>
+																						</li>
+
+																						<li>
+                                              <div class="col-12">
+                                                <div class="row mt-3 mb-2">
+                                                  <div class="col-12 col-lg-6 col-md-6 col-sm-6 px-0 d-none d-sm-none d-xl-block d-lg-block d-md-block" *ngIf="this.withinBankPendingPayeeDetails.length > 0">
+                                                    <div id="dt-sample_wrapper" class="dataTables_wrapper dt-bootstrap4 no-footer">
+                                                      <!-- <div class="dataTables_info pt-2" id="dt-sample_info" role="status" aria-live="polite">Showing 1 to {{this.withinBankPendingPayeeDetails.length}} of <b>{{this.config5.itemsPerPage}}</b> entries</div> -->
+
+													  	<!-- modified by USER PSB1-->
+													  	<div class="dataTables_info pt-2" id="dt-sample_info" role="status" aria-live="polite">Showing {{ this.withinBankPendingPayeeDetails.length > 0 ? ((this.config5.currentPage -1) * this.config5.itemsPerPage) +1 : 0}} to {{this.withinBankPendingPayeeDetails.length > (this.config1.currentPage * this.config1.itemsPerPage) ? (this.config5.currentPage * this.config5.itemsPerPage) : this.withinBankPendingPayeeDetails.length}} of <b>{{this.withinBankPendingPayeeDetails.length}}</b> entries</div>
+														<!-- modified by USER PSB1 Ends-->
+													</div>
+                                                  </div>
+                                                  <div class="col-12 col-lg-6 col-md-6 px-0 d-none d-sm-none d-xl-block d-lg-block d-md-block text-right">
+													  <!-- modified by USER PSB1 -->
+                                                  	<div class="pagination-container pull-right"  *ngIf="this.withinBankPendingPayeeDetails.length > this.config5.itemsPerPage">
+														<!-- modified by USER PSB1 Ends-->
+													<pagination-controls id='basicPaginate5' (pageChange)="pageChanged5($event)" class="my-pagination"></pagination-controls>
+                                                    </div>
+                                                  </div>
+                                                </div>
+                                              </div>
+																						</li>
+																					</ul>
+																				</div>
+																			</div>
+																		</div>
+																	</div>
+																	<!--card-->
+																</div>
+																<!-- Accordion End here-->
+															</div>
+														</div>
+														<div class="row1">
+															<div class="col-sm-12 col-12 col-md-12 mt-4">
+																<div class="widget-box5">
+																	<div class="component-title6 custom-pad">
+																		<div class="row1">
+																			<div class="col-12 col-md-4 col-lg-4 col-xl-4">
+																				<h4 class="default-grey">{{"PAYEE_LIST" | translate }} ({{withinBankPayeeDetailsList.length}})</h4> </div>
+																			<div class="col-12 col-md-8 col-lg-8 col-xl-8">
+																				<div class="row1">
+																					<div class="col-4 col-md-5 hide-m text-right">
+																						<button (click)="addPayee('within')" class="ux-button sm primary md" ><img src="assets/images/svg/user-profile-w.svg" alt="add-icon">  {{"ADD_PAYEE" | translate }}</button>
+																					</div>
+																					<div class="col-12 col-md-7">
+																						<div class="search-input ux-input  mt-0 mb-0">
+																							<input type="text" [(ngModel)]="searchText" (ngModelChange)="searchAccount($event)"  name="search" placeholder='{{"SEARCH_HERE" | translate}}'>  <em class="show-searchicon"></em>
+																							<p class="error-message"></p>
+																						</div>
+																					</div>
+																				</div>
+																			</div>
+																		</div>
+																	</div>
+																	<div class="grey-container">
+																		<div class="row1">
+																			<div class="col-6 col-md-6 text-left">
+																				<button class="ux-linkbutton link-text primary"(click)="addPayee('within')"> <img src="assets/images/svg/user-profile.svg" alt="star-icon">  {{"ADD_PAYEE" | translate }}</button>
+																			</div>
+																			<div class="col-6 col-md-6 text-right">
+																				<button class="ux-linkbutton link-text primary active" (click)="goToFavourite()"> <img src="assets/images/svg/deactivate-star.svg" alt="star-icon"> {{"FAVOURITE_PAYEE" | translate }}</button>
+																			</div>
+																		</div>
+																	</div>
+																	<div class="bg-white1">
+																		<div class="row">
+																			<ul class="grid-list1">
+																				<li class="grey-th">
+																					<div class="grid-info">
+																						<div class="full-info">
+																							<h6> {{"PAYEE_NAME" | translate }}</h6> </div>
+																					</div>
+																					<div class="grid-info">
+																						<div class="full-info">
+																							<h6>{{"NICK_NAME" | translate }}</h6> </div>
+																					</div>
+																					<div class="grid-info">
+																						<div class="full-info">
+																							<h6> {{"ACCOUNT_NUMBER" | translate }}</h6> </div>
+																					</div>
+																					<div class="grid-info">
+																						<div class="full-info">
+																							<h6>{{"BANK_NAME" | translate }}</h6> </div>
+																					</div>
+																					<div class="grid-info">
+																						<div class="full-info">
+																							<h6>{{"TRANSACTION_LIMIT" | translate }}</h6> </div>
+																					</div>
+																					<div class="grid-info">
+																						<div class="full-info"> </div>
+																					</div>
+																				</li>
+																				<!-- Within bank Payee -->
+																				<!-- modified by USER PSB1-->
+																				<li *ngIf="this.withinBankPayeeDetailsList.length == 0">
+																					<div class="col-12">
+																						<div class="row mt-3 mb-2">
+																							<div class="col-12 col-lg-12 col-md-12 col-sm-12 px-0 d-none d-sm-none d-xl-block d-lg-block d-md-block">
+																								<div class="dataTables_info text-center">
+																									{{"NO_PAYEE_FOUND" | translate}}
+																								</div>
+																							</div>
+																						</div>
+																					</div>
+																				</li>
+																				<!-- modified by USER PSB1 Ends-->
+																				<li *ngFor="let payeeList of withinBankPayeeDetailsList ; index as i" [class.active]="clicked === i" (click)="clicked = (clicked === i ? null : i )">
+																					<div class="grid-info">
+																						<div class="full-info">
+																							<div class="left-info">
+																								<h5>{{payeeList.benefName}}</h5>
+																								<div class="user-info"> <span class="blue">
+																										   <h6>{{payeeList.benefName | firstLastChar |  uppercase  }}</h6>
+																									   </span> </div>
+																							</div> <em></em> </div>
+																					</div>
+																					<div class="grid-info">
+																						<div class="full-info">
+																							<h6 class="display-mt">{{"NICK_NAME" | translate }}</h6>
+																							<h5>{{payeeList.beneficiary_nick_name}} </h5> </div>
+																					</div>
+																					<div class="grid-info">
+																						<div class="full-info">
+																							<h6 class="display-mt"> {{"ACCOUNT_NUMBER" | translate }}</h6>
+																							<h5>{{payeeList.beneficiary_account_no}}</h5> </div>
+																					</div>
+																					<div class="grid-info">
+																						<div class="full-info">
+																							<h6 class="display-mt">{{"BANK_NAME" | translate }}</h6>
+																							<h5>{{payeeList.beneficiary_bank_name}}</h5> </div>
+																					</div>
+																					<div class="grid-info">
+																						<div class="full-info">
+																							<h6 class="display-mt">{{"TRANSACTION_LIMIT" | translate }}</h6>
+																							<h5>{{payeeList.maxAmount | customcurrency}}</h5> </div>
+																					</div>
+																					<div class="grid-info">
+																						<div class="full-info text-right">
+																							<button (click)="editPayee(payeeList,'within')" class="icon-btn mr"><img src="assets/images/svg/edit.svg" alt="edit-icon"></button>
+																							<button (click)="deletePayee(payeeList)" class="icon-btn mr"><img src="assets/images/svg/delete-g.svg" alt="delete-icon"></button>
+																							<button class="star-btn mr " [ngClass]="{'active' : payeeList.isFavoriteTransaction == 'Y' }" (click)="addFavourite(payeeList)"> </button>
+																							<button  (click)="sendMoneyy(payeeList)" class="ux-button sm primary-custom md">Send Money</button>
+																						</div>
+																					</div>
+																				</li>
+																				<li>
+                                        <div class="col-12">
+                                        <div class="row mt-3 mb-2">
+                                          <div class="col-12 col-lg-6 col-md-6 col-sm-6 px-0 d-none d-sm-none d-xl-block d-lg-block d-md-block"  *ngIf="this.withinBankPayeeDetailsList.length > 0">
+                                            <div id="dt-sample_wrapper" class="dataTables_wrapper dt-bootstrap4 no-footer">
+												<!-- <div class="dataTables_info pt-2" id="dt-sample_info" role="status" aria-live="polite">Showing 1 to {{this.withinBankPayeeDetailsList.length}} of <b>{{this.config1.itemsPerPage}}</b> entries</div> -->
+												<!-- modified by USER PSB1-->
+                                                <div class="dataTables_info pt-2" id="dt-sample_info" role="status" aria-live="polite">Showing {{this.withinBankPayeeDetailsList.length > 0 ? ((this.config1.currentPage -1) * this.config1.itemsPerPage) +1 : 0}} to {{this.withinBankPayeeDetailsList.length > (this.config1.currentPage * this.config1.itemsPerPage) ? (this.config1.currentPage * this.config1.itemsPerPage) : this.withinBankPayeeDetailsList.length}} of <b>{{this.withinBankPayeeDetailsList.length}}</b> entries</div>
+												<!-- modified by USER PSB1 Ends-->
+											</div>
+                                          </div>
+                                           <div class="col-12 col-lg-6 col-md-6 px-0 d-none d-sm-none d-xl-block d-lg-block d-md-block text-right">
+											<!-- modified by USER PSB1 -->
+											<div class="pagination-container pull-right"  *ngIf="this.withinBankPayeeDetailsList.length > this.config1.itemsPerPage">
+											<!-- modified by USER PSB1 Ends-->
+                                            <pagination-controls id='basicPaginate1' (pageChange)="pageChanged1($event)" class="my-pagination"></pagination-controls>
+                                            </div>
+                                          </div>
+                                        </div>
+                                      </div>
+
+																				</li>
+																			</ul>
+																		</div>
+																	</div>
+																</div>
+															</div>
+														</div>
+													</div>
+													<!-- Outside Bank Section -->
+													<div id="outsidebank" class="tab-pane"  [ngClass]="{'active' :bankSelection === 'outside' }">
+														<!-- modified by USER PSB1-->
+														<!--<div class="row1">-->
+														<div class="row1" *ngIf="this.outsideBankPendingPayeeDetails.length > 0">
+														<!-- modified by USER PSB1 Ends-->
+
+															<div class="col-sm-12 col-12 col-md-12">
+																<!-- Accordion Start here-->
+																<div id="accordion" class="accordion-container">
+																	<div class="card mar-b border-n">
+																		<a class="card-link collapsed" data-toggle="collapse" href="#payee2" aria-expanded="false">
+																			<div class="card-header cust-p">
+																				<div class="panel-title2">
+																					<h4 class="default-grey">
+																							 <span>
+																							 <img src="assets/images/svg/bell-g.svg" alt="bell-icon">
+																							 <div class="red-dot"></div>
+																						 </span>{{"PENDING_PAYEE_LIST" | translate }} ({{outsideBankPendingPayeeDetails.length}})
+																					   </h4> </div> <em></em> </div>
+																			<!--card-header-->
+																		</a>
+																		<div id="payee2" class="collapse" data-parent="#accordion">
+																			<div class="card-body bg-lg4">
+																				<div class="row">
+																					<ul class="grid-list1">
+																						<li class="grey-th">
+																							<div class="grid-info">
+																								<div class="full-info">
+																									<h6> {{"PAYEE_NAME" | translate }}</h6> </div>
+																							</div>
+																							<div class="grid-info">
+																								<div class="full-info">
+																									<h6>{{"NICK_NAME" | translate }}</h6> </div>
+																							</div>
+																							<div class="grid-info">
+																								<div class="full-info">
+																									<h6> {{"ACCOUNT_NUMBER" | translate }}</h6> </div>
+																							</div>
+																							<div class="grid-info">
+																								<div class="full-info">
+																									<h6>{{"BANK_NAME" | translate }}</h6> </div>
+																							</div>
+																							<div class="grid-info">
+																								<div class="full-info">
+																									<h6>{{"TRANSACTION_LIMIT" | translate }}</h6> </div>
+																							</div>
+																							<div class="grid-info">
+																								<div class="full-info"> </div>
+																							</div>
+																						</li>
+																						<!-- Outside bank pending payee -->
+																						<li *ngFor="let pendingPayeeList of outsideBankPendingPayeeDetails; index as i" [class.active]="clicked === i" (click)="clicked = (clicked === i ? null : i )">
+																							<div class="grid-info">
+																								<div class="full-info">
+																									<div class="left-info">
+																										<h5>{{pendingPayeeList.benefName}}</h5>
+																										<div class="user-info"> <span class="blue">
+																													 <h6>{{pendingPayeeList.benefName | firstLastChar |  uppercase  }}</h6>
+																												 </span> </div>
+																									</div> <em></em> </div>
+																							</div>
+																							<div class="grid-info">
+																								<div class="full-info">
+																									<h6 class="display-mt">{{"NICK_NAME" | translate }}</h6>
+																									<h5>{{pendingPayeeList.beneficiary_nick_name}}</h5> </div>
+																							</div>
+																							<div class="grid-info">
+																								<div class="full-info">
+																									<h6 class="display-mt"> {{"ACCOUNT_NUMBER" | translate }}</h6>
+																									<h5>{{pendingPayeeList.beneficiary_account_no}}</h5> </div>
+																							</div>
+																							<div class="grid-info">
+																								<div class="full-info">
+																									<h6 class="display-mt">{{"BANK_NAME" | translate }}</h6>
+																									<h5>{{pendingPayeeList.beneficiary_bank_name}}</h5> </div>
+																							</div>
+																							<div class="grid-info">
+																								<div class="full-info">
+																									<h6 class="display-mt">{{"TRANSACTION_LIMIT" | translate }}</h6>
+																									<h5>{{pendingPayeeList.maxAmount  | customcurrency}}</h5> </div>
+																							</div>
+																							<div class="grid-info">
+																								<div class="full-info text-right">
+																									<button  (click)="deletePayee(pendingPayeeList)"  class="icon-btn mr"><img src="assets/images/svg/delete-g.svg" alt="delete-icon"></button>
+																									<!-- <button class="ux-button sm primary-custom md" (click)="withinBankPendingPayeeOnConfirm(pendingPayeeList , outsideBankPendingPayeeDetails)"> Confirm</button> -->
+																								</div>
+																							</div>
+																						</li>
+																						<!-- <li>
+																						<div class="grid-info">
+																							<div class="full-info">
+																								<div class="left-info">
+																									<h5>John</h5>
+																									<div class="user-info"> <span class="red">
+																													 <h6>J</h6>
+																												 </span> </div>
+																								</div> <em></em> </div>
+																						</div>
+																						<div class="grid-info">
+																							<div class="full-info">
+																								<h6 class="display-mt">{{"NICK_NAME" | translate }}</h6>
+																								<h5>John</h5> </div>
+																						</div>
+																						<div class="grid-info">
+																							<div class="full-info">
+																								<h6 class="display-mt"> {{"ACCOUNT_NUMBER" | translate }}</h6>
+																								<h5>9607 9594 7473</h5> </div>
+																						</div>
+																						<div class="grid-info">
+																							<div class="full-info">
+																								<h6 class="display-mt">{{"BANK_NAME" | translate }}</h6>
+																								<h5>Punjab & Sind Bank</h5> </div>
+																						</div>
+																						<div class="grid-info">
+																							<div class="full-info">
+																								<h6 class="display-mt">{{"TRANSACTION_LIMIT" | translate }}</h6>
+																								<h5><img src="assets/images/svg/rupee-bl.svg" alt="rupees-icon"> 20,000.00</h5> </div>
+																						</div>
+																						<div class="grid-info">
+																							<div class="full-info text-right">
+																								<button class="icon-btn mr"><img src="assets/images/svg/delete-g.svg" alt="delete-icon"></button>
+																								<button class="ux-button sm primary-custom md"> Confirm</button>
+																							</div>
+																						</div>
+																					</li> -->
+																						<li>
+                                              <div class="col-12">
+                                                <div class="row mt-3 mb-2">
+                                                  <div class="col-12 col-lg-6 col-md-6 col-sm-6 px-0 d-none d-sm-none d-xl-block d-lg-block d-md-block">
+                                                    <div id="dt-sample_wrapper" class="dataTables_wrapper dt-bootstrap4 no-footer">
+                                                      <!-- <div class="dataTables_info pt-2" id="dt-sample_info" role="status" aria-live="polite">Showing 1 to {{this.outsideBankPendingPayeeDetails.length}} of <b>{{this.config6.itemsPerPage}}</b> entries</div> -->
+													  	<!-- modified by USER PSB1-->
+														<div class="dataTables_info pt-2" id="dt-sample_info" role="status" aria-live="polite">Showing {{this.outsideBankPendingPayeeDetails.length > 0 ? ((this.config6.currentPage -1) * this.config6.itemsPerPage) +1 : 0}} to {{this.outsideBankPendingPayeeDetails.length > (this.config6.currentPage * this.config6.itemsPerPage) ? (this.config6.currentPage * this.config6.itemsPerPage) : this.outsideBankPendingPayeeDetails.length}} of <b>{{this.outsideBankPendingPayeeDetails.length}}</b> entries</div>
+														<!-- modified by USER PSB1 Ends-->
+
+                                                    </div>
+                                                  </div>
+                                                  <div class="col-12 col-lg-6 col-md-6 px-0 d-none d-sm-none d-xl-block d-lg-block d-md-block text-right">
+													<!-- modified by USER PSB1 -->
+													<div class="pagination-container pull-right" *ngIf="this.outsideBankPendingPayeeDetails.length > this.config6.itemsPerPage">
+                                                    <!-- modified by USER PSB1 Ends-->
+													<pagination-controls id="basicPaginate6" (pageChange)="pageChanged6($event)" class="my-pagination"></pagination-controls>
+                                                    </div>
+                                                  </div>
+                                                </div>
+                                              </div>
+																							<!-- <div class="col-12">
+																								<div class="row  mt-3 mb-2">
+																									<div class="col-12 col-lg-6 col-md-6 col-sm-6 px-0 d-none d-sm-none d-xl-block d-lg-block d-md-block">
+																										<div id="dt-sample_wrapper" class="dataTables_wrapper dt-bootstrap4 no-footer">
+																											<div class="dataTables_info pt-2" id="dt-sample_info" role="status" aria-live="polite">Showing 1 to 2 of <b>2</b> entries</div>
+																										</div>
+																									</div>
+																									<div class="col-12 col-lg-6 col-md-6 px-0 d-none d-sm-none d-xl-block d-lg-block d-md-block text-right">
+																										<div class="custom-paging">
+																											<div class="dataTables_wrapper">
+																												<div class="dataTables_paginate">
+																													<ul class="pagination">
+																														<li class="page-item previous disabled"> <a href="javascript:;" class="page-link">Previous</a> </li>
+																														<li class="page-item active"> <a href="javascript:;" class="page-link">1</a> </li>
+																														<li class="page-item"> <a href="javascript:;" class="page-link">2</a> </li>
+																														<li class="page-item next"> <a href="javascript:;" class="page-link">Next</a> </li>
+																													</ul>
+																												</div>
+																											</div>
+																										</div>
+																									</div>
+																								</div>
+																							</div> -->
+																						</li>
+																					</ul>
+																				</div>
+																			</div>
+																		</div>
+																	</div>
+																	<!--card-->
+																</div>
+																<!-- Accordion End here-->
+															</div>
+														</div>
+														<div class="row1">
+															<div class="col-sm-12 col-12 col-md-12 mt-4">
+																<div class="widget-box5">
+																	<div class="component-title6 custom-pad">
+																		<div class="row1">
+																			<div class="col-12 col-md-4 col-lg-4 col-xl-4">
+																				<h4 class="default-grey"> {{"PAYEE_LIST" | translate }} ({{outsideBankPayeeDetailsList.length}})</h4> </div>
+																			<div class="col-12 col-md-8 col-lg-8 col-xl-8">
+																				<div class="row1">
+																					<div class="col-4 col-md-5 hide-m text-right">
+																						<button class="ux-button sm primary md" (click)="addPayee('outside')"><img src="assets/images/svg/user-profile-w.svg" alt="add-icon" >  {{"ADD_PAYEE" | translate }}  </button>
+																					</div>
+																					<div class="col-12 col-md-7">
+																						<div class="search-input ux-input  mt-0 mb-0">
+																							<input type="text"  name="search" [(ngModel)]="searchText" (ngModelChange)="searchAccount($event)" placeholder=  '{{"SEARCH_HERE" | translate}}'> <em class="show-searchicon"></em>
+																							<p class="error-message"></p>
+																						</div>
+																					</div>
+																				</div>
+																			</div>
+																		</div>
+																	</div>
+																	<div class="grey-container">
+																		<div class="row1">
+																			<div class="col-6 col-md-6 text-left">
+																				<button class="ux-linkbutton link-text primary" (click)="addPayee('outside')"> <img src="assets/images/svg/user-profile.svg" alt="star-icon">  {{"ADD_PAYEE" | translate }}</button>
+																			</div>
+																			<div class="col-6 col-md-6 text-right">
+																				<button class="ux-linkbutton link-text primary active" (click)="goToFavourite()"> <img src="assets/images/svg/deactivate-star.svg" alt="star-icon"> {{"FAVOURITE_PAYEE" | translate }}</button>
+																			</div>
+																		</div>
+																	</div>
+																	<div class="bg-white1">
+																		<div class="row">
+																			<ul class="grid-list1">
+																				<li class="grey-th">
+																					<div class="grid-info grid-col-6">
+																						<div class="full-info ">
+																							<h6> {{"PAYEE_NAME" | translate }}</h6> </div>
+																					</div>
+																					<div class="grid-info grid-col-6">
+																						<div class="full-info ">
+																							<h6>{{"NICK_NAME" | translate }}</h6> </div>
+																					</div>
+																					<div class="grid-info grid-col-6">
+																						<div class="full-info ">
+																							<h6> {{"ACCOUNT_NUMBER" | translate }}</h6> </div>
+																					</div>
+																					<div class="grid-info grid-col-6">
+																						<div class="full-info ">
+																							<h6>{{"BANK_NAME" | translate }}</h6> </div>
+																					</div>
+																					<div class="grid-info grid-col-6">
+																						<div class="full-info">
+																							<h6>{{"IFSC_CODE" | translate }}</h6> </div>
+																					</div>
+																					<div class="grid-info grid-col-6">
+																						<div class="full-info">
+																							<h6>{{"TRANSACTION_LIMIT" | translate }}</h6> </div>
+																					</div>
+																					<div class="grid-info grid-col-6">
+																						<div class="full-info"> </div>
+																					</div>
+																				</li>
+																				<!-- modified by USER PSB1-->
+																				<li *ngIf="this.outsideBankPayeeDetailsList.length == 0">
+																					<div class="col-12">
+																						<div class="row mt-3 mb-2">
+																							<div class="col-12 col-lg-12 col-md-12 col-sm-12 px-0 d-none d-sm-none d-xl-block d-lg-block d-md-block">
+																								<div class="dataTables_info text-center">
+																									{{"NO_PAYEE_FOUND" | translate}}
+																								</div>
+																							</div>
+																						</div>
+																					</div>
+																				</li>
+																				<!-- modified by USER PSB1 Ends-->
+																				<li *ngFor="let payeeList of outsideBankPayeeDetailsList ; index as i" [class.active]="clicked === i" (click)="clicked = (clicked === i ? null : i )">
+																					<div class="grid-info grid-col-6">
+																						<div class="full-info">
+																							<div class="left-info">
+																								<h5>{{payeeList.benefName}}</h5>
+																								<div class="user-info"> <span class="blue">
+																											<h6>{{payeeList.benefName | firstLastChar |  uppercase  }}</h6>
+																										</span> </div>
+																							</div> <em></em> </div>
+																					</div>
+																					<div class="grid-info grid-col-6">
+																						<div class="full-info">
+																							<h6 class="display-mt">{{"NICK_NAME" | translate }}</h6>
+																							<h5>{{payeeList.beneficiary_nick_name}} </h5> </div>
+																					</div>
+																					<div class="grid-info grid-col-6">
+																						<div class="full-info">
+																							<h6 class="display-mt"> {{"ACCOUNT_NUMBER" | translate }}</h6>
+																							<h5>{{payeeList.beneficiary_account_no}} </h5> </div>
+																					</div>
+																					<div class="grid-info grid-col-6">
+																						<div class="full-info">
+																							<h6 class="display-mt">{{"BANK_NAME" | translate }}</h6>
+																							<h5>{{payeeList.beneficiary_bank_name}} </h5> </div>
+																					</div>
+																					<div class="grid-info grid-col-6">
+																						<div class="full-info">
+																							<h6 class="display-mt">{{"IFSC_CODE" | translate }}</h6>
+																							<h5>{{payeeList.ifsc_code}} </h5> </div>
+																					</div>
+																					<div class="grid-info grid-col-6">
+																						<div class="full-info">
+																							<h6 class="display-mt">{{"TRANSACTION_LIMIT" | translate }}</h6>
+																							<h5>{{payeeList.maxAmount  | customcurrency}} </h5> </div>
+																					</div>
+																					<div class="grid-info grid-col-6">
+																						<div class="full-info text-right">
+																							<button (click)="editPayee(payeeList,'outside')" class="icon-btn mr"><img src="assets/images/svg/edit.svg" alt="edit-icon"></button>
+																							<button (click)="deletePayee(payeeList)" class="icon-btn mr"><img src="assets/images/svg/delete-g.svg" alt="delete-icon"></button>
+																							<button   [ngClass]="{'active' : payeeList.isFavoriteTransaction == 'Y' }" (click)="addFavourite(payeeList)" class="star-btn mr"> </button>
+																							<button (click)="sendMoneyy(payeeList)" class="ux-button sm primary-custom md">Send Money</button>
+																						</div>
+																					</div>
+																				</li>
+																				<!-- <li>
+																				<div class="grid-info">
+																					<div class="full-info">
+																						<div class="left-info">
+																							<h5>Ashmita Gosavi</h5>
+																							<div class="user-info"> <span class="red">
+																											<h6>AG</h6>
+																										</span> </div>
+																						</div> <em></em> </div>
+																				</div>
+																				<div class="grid-info">
+																					<div class="full-info">
+																						<h6 class="display-mt">{{"NICK_NAME" | translate }}</h6>
+																						<h5>Ash</h5> </div>
+																				</div>
+																				<div class="grid-info">
+																					<div class="full-info">
+																						<h6 class="display-mt"> {{"ACCOUNT_NUMBER" | translate }}</h6>
+																						<h5>9094 3930 2025</h5> </div>
+																				</div>
+																				<div class="grid-info">
+																					<div class="full-info">
+																						<h6 class="display-mt">{{"BANK_NAME" | translate }}</h6>
+																						<h5>Punjab & Sind Bank</h5> </div>
+																				</div>
+																				<div class="grid-info">
+																					<div class="full-info">
+																						<h6 class="display-mt">{{"TRANSACTION_LIMIT" | translate }}</h6>
+																						<h5><img src="assets/images/svg/rupee-bl.svg" alt="rupees-icon"> 20,000.00</h5> </div>
+																				</div>
+																				<div class="grid-info">
+																					<div class="full-info text-right">
+																						<button class="icon-btn mr"><img src="assets/images/svg/delete-g.svg" alt="delete-icon"></button>
+																						<button class="star-btn mr"> </button>
+																						<button class="ux-button sm primary-custom md">Send Money</button>
+																					</div>
+																				</div>
+																			</li> -->
+																				<li>
+																					<div class="col-12">
+                                            <div class="row mt-3 mb-2">
+                                              <div class="col-12 col-lg-6 col-md-6 col-sm-6 px-0 d-none d-sm-none d-xl-block d-lg-block d-md-block" *ngIf="this.outsideBankPayeeDetailsList.length > 0">
+                                                <div id="dt-sample_wrapper" class="dataTables_wrapper dt-bootstrap4 no-footer">
+                                                  <!-- <div class="dataTables_info pt-2" id="dt-sample_info" role="status" aria-live="polite">Showing 1 to {{this.outsideBankPayeeDetailsList.length}} of <b>{{this.config2.itemsPerPage}}</b> entries</div> -->
+													<!-- modified by USER PSB1-->
+													<div class="dataTables_info pt-2" id="dt-sample_info" role="status" aria-live="polite">Showing {{this.outsideBankPayeeDetailsList.length > 0 ? ((this.config2.currentPage -1) * this.config2.itemsPerPage) +1 : 0}} to {{this.outsideBankPayeeDetailsList.length > (this.config2.currentPage * this.config2.itemsPerPage) ? (this.config2.currentPage * this.config2.itemsPerPage) : this.outsideBankPayeeDetailsList.length}} of <b>{{this.outsideBankPayeeDetailsList.length}}</b> entries</div>
+													<!-- modified by USER PSB1 Ends-->
+												</div>
+                                              </div>
+                                              <div class="col-12 col-lg-6 col-md-6 px-0 d-none d-sm-none d-xl-block d-lg-block d-md-block text-right">
+                                              <!-- modified by USER PSB1 -->
+												<div class="pagination-container pull-right" *ngIf="this.outsideBankPayeeDetailsList.length > this.config2.itemsPerPage">
+                                              <!-- modified by USER PSB1 Ends-->
+												<pagination-controls id="basicPaginate2" (pageChange)="pageChanged2($event)" class="my-pagination"></pagination-controls>
+                                                </div>
+                                              </div>
+                                            </div>
+                                          </div>
+																				</li>
+																			</ul>
+																		</div>
+																	</div>
+																</div>
+															</div>
+														</div>
+													</div>
+													<!-- Ouside Bank Section End -->
+													<div id="mmid" class="tab-pane" [ngClass]="{'active' :bankSelection === 'mmid' }">
+														<div class="row1" *ngIf="this.mmidBankPendingPayeeDetails.length > 0">
+															<div class="col-sm-12 col-12 col-md-12">
+																<!-- Accordion Start here-->
+																<div id="accordion" class="accordion-container">
+																	<div class="card mar-b border-n">
+																		<a class="card-link collapsed" data-toggle="collapse" href="#payee3" aria-expanded="false">
+																			<div class="card-header cust-p">
+																				<div class="panel-title2">
+																					<h4 class="default-grey">
+																						 <span>
+																						 <img src="assets/images/svg/bell-g.svg" alt="bell-icon">
+																						 <div class="red-dot"></div>
+																					 </span>{{"PENDING_PAYEE_LIST" | translate }} ({{mmidBankPendingPayeeDetails.length}})
+																				   </h4> </div> <em></em> </div>
+																			<!--card-header-->
+																		</a>
+																		<div id="payee3" class="collapse" data-parent="#accordion">
+																			<div class="card-body bg-lg4">
+																				<div class="row">
+																					<ul class="grid-list1">
+																						<li class="grey-th">
+																							<div class="grid-info">
+																								<div class="full-info">
+																									<h6> {{"PAYEE_NAME" | translate }}</h6> </div>
+																							</div>
+																							<div class="grid-info">
+																								<div class="full-info">
+																									<h6>{{"NICK_NAME" | translate }}</h6> </div>
+																							</div>
+																							<div class="grid-info">
+																								<div class="full-info">
+																									<h6> {{"MMID" | translate}}</h6> </div>
+																							</div>
+																							<!-- <div class="grid-info">
+																								<div class="full-info">
+																									<h6>{{"BANK_NAME" | translate }}</h6> </div>
+																							</div> -->
+																							<div class="grid-info">
+																								<div class="full-info">
+																									<h6>{{"TRANSACTION_LIMIT" | translate }}</h6> </div>
+																							</div>
+																							<div class="grid-info">
+																								<div class="full-info"> </div>
+																							</div>
+																						</li>
+																						<li *ngFor="let payeeList of mmidBankPendingPayeeDetails ; index as i" [class.active]="clicked === i" (click)="clicked = (clicked === i ? null : i )" >
+																							<div class="grid-info">
+																								<div class="full-info">
+																									<div class="left-info">
+																										<h5>{{payeeList.benefName}}</h5>
+																										<div class="user-info"> <span class="blue">
+																												 <h6>{{payeeList.benefName | firstLastChar |  uppercase  }}</h6>
+																											 </span> </div>
+																									</div> <em></em> </div>
+																							</div>
+																							<div class="grid-info">
+																								<div class="full-info">
+																									<h6 class="display-mt">{{"NICK_NAME" | translate }}</h6>
+																									<h5>{{payeeList.beneficiary_nick_name}}</h5> </div>
+																							</div>
+																							<div class="grid-info">
+																								<div class="full-info">
+																									<h6 class="display-mt"> {{"MMID" | translate}}</h6>
+																									<h5>{{payeeList.MMID}}</h5> </div>
+																							</div>
+																							<!-- <div class="grid-info">
+																								<div class="full-info">
+																									<h6 class="display-mt">{{"BANK_NAME" | translate }}</h6>
+																									<h5>{{payeeList.beneficiary_bank_name}}</h5> </div>
+																							</div> -->
+																							<div class="grid-info">
+																								<div class="full-info">
+																									<h6 class="display-mt">{{"TRANSACTION_LIMIT" | translate }}</h6>
+																									<h5>{{payeeList.maxAmount  | customcurrency}}</h5> </div>
+																							</div>
+																							<div class="grid-info">
+																								<div class="full-info text-right">
+																									<button (click)="deletePayee(payeeList)" class="icon-btn mr"><img src="assets/images/svg/delete-g.svg" alt="delete-icon"></button>
+																									<!-- <button class="ux-button sm primary-custom md" (click)="withinBankPendingPayeeOnConfirm(payeeList , mmidBankPendingPayeeDetails)"> Confirm</button> -->
+																								</div>
+																							</div>
+																						</li>
+																						<!-- <li>
+																							<div class="grid-info">
+																								<div class="full-info">
+																									<div class="left-info">
+																										<h5>John</h5>
+																										<div class="user-info"> <span class="red">
+																												 <h6>J</h6>
+																											 </span> </div>
+																									</div> <em></em> </div>
+																							</div>
+																							<div class="grid-info">
+																								<div class="full-info">
+																									<h6 class="display-mt">{{"NICK_NAME" | translate }}</h6>
+																									<h5>John</h5> </div>
+																							</div>
+																							<div class="grid-info">
+																								<div class="full-info">
+																									<h6 class="display-mt"> {{"ACCOUNT_NUMBER" | translate }}</h6>
+																									<h5>9607 9594 7473</h5> </div>
+																							</div>
+																							<div class="grid-info">
+																								<div class="full-info">
+																									<h6 class="display-mt">{{"BANK_NAME" | translate }}</h6>
+																									<h5>Punjab & Sind Bank</h5> </div>
+																							</div>
+																							<div class="grid-info">
+																								<div class="full-info">
+																									<h6 class="display-mt">{{"TRANSACTION_LIMIT" | translate }}</h6>
+																									<h5><img src="assets/images/svg/rupee-bl.svg" alt="rupees-icon"> 20,000.00</h5> </div>
+																							</div>
+																							<div class="grid-info">
+																								<div class="full-info text-right">
+																									<button class="icon-btn mr"><img src="assets/images/svg/delete-g.svg" alt="delete-icon"></button>
+																									<button class="ux-button sm primary-custom md"> Confirm</button>
+																								</div>
+																							</div>
+																						</li> -->
+																						<li>
+                                              <div class="col-12">
+                                                <div class="row mt-3 mb-2">
+                                                  <div class="col-12 col-lg-6 col-md-6 col-sm-6 px-0 d-none d-sm-none d-xl-block d-lg-block d-md-block">
+                                                    <div id="dt-sample_wrapper" class="dataTables_wrapper dt-bootstrap4 no-footer">
+                                                      <!-- <div class="dataTables_info pt-2" id="dt-sample_info" role="status" aria-live="polite">Showing 1 to {{this.mmidBankPendingPayeeDetails.length}} of <b>{{this.config7.itemsPerPage}}</b> entries</div> -->
+														<!-- modified by USER PSB1-->
+														<div class="dataTables_info pt-2" id="dt-sample_info" role="status" aria-live="polite">Showing {{this.mmidBankPendingPayeeDetails.length > 0 ? ((this.config7.currentPage -1) * this.config7.itemsPerPage) +1 : 0}} to {{this.mmidBankPendingPayeeDetails.length > (this.config7.currentPage * this.config7.itemsPerPage) ? (this.config7.currentPage * this.config7.itemsPerPage) : this.mmidBankPendingPayeeDetails.length}} of <b>{{this.mmidBankPendingPayeeDetails.length}}</b> entries</div>
+														<!-- modified by USER PSB1 Ends-->
+													</div>
+                                                  </div>
+                                                  <div class="col-12 col-lg-6 col-md-6 px-0 d-none d-sm-none d-xl-block d-lg-block d-md-block text-right">
+                                                  <!-- modified by USER PSB1 -->
+													<div class="pagination-container pull-right" *ngIf="this.mmidBankPendingPayeeDetails.length > this.config7.itemsPerPage">
+                                                    <!-- modified by USER PSB1 Ends-->
+													<pagination-controls id="basicPaginate7" (pageChange)="pageChanged7($event)" class="my-pagination"></pagination-controls>
+                                                    </div>
+                                                  </div>
+                                                </div>
+                                              </div>
+																							<!-- <div class="col-12">
+																								<div class="row  mt-3 mb-2">
+																									<div class="col-12 col-lg-6 col-md-6 col-sm-6 px-0 d-none d-sm-none d-xl-block d-lg-block d-md-block">
+																										<div id="dt-sample_wrapper" class="dataTables_wrapper dt-bootstrap4 no-footer">
+																											<div class="dataTables_info pt-2" id="dt-sample_info" role="status" aria-live="polite">Showing <span *ngIf="mmidBankPendingPayeeDetails.length == 0" >0</span> <span *ngIf="mmidBankPendingPayeeDetails.length != 0" >1</span> to 1 of <b>1</b> entries</div>
+																										</div>
+																									</div>
+																									<div class="col-12 col-lg-6 col-md-6 px-0 d-none d-sm-none d-xl-block d-lg-block d-md-block text-right">
+																										<div class="custom-paging">
+																											<div class="dataTables_wrapper">
+																												<div class="dataTables_paginate">
+																													<ul class="pagination">
+																														<li class="page-item previous disabled"> <a href="javascript:;" class="page-link">Previous</a> </li>
+																														<li class="page-item active"> <a href="javascript:;" class="page-link"><span *ngIf="mmidBankPendingPayeeDetails.length == 0" >0</span> <span *ngIf="mmidBankPendingPayeeDetails.length != 0" >1</span></a> </li>
+																														<li class="page-item"> <a href="javascript:;" class="page-link" *ngIf="mmidBankPendingPayeeDetails.length>5" >{{mmidBankPendingPayeeDetails.length%5 - 1}}</a> </li>
+																														<li class="page-item next"> <a href="javascript:;" class="page-link">Next</a> </li>
+																													</ul>
+																												</div>
+																											</div>
+																										</div>
+																									</div>
+																								</div>
+																							</div> -->
+																						</li>
+																					</ul>
+																				</div>
+																			</div>
+																		</div>
+																	</div>
+																	<!--card-->
+																</div>
+																<!-- Accordion End here-->
+															</div>
+														</div>
+														<div class="row1">
+															<div class="col-sm-12 col-12 col-md-12 mt-4">
+																<div class="widget-box5" >
+																	<div class="component-title6 custom-pad">
+																		<div class="row1">
+																			<div class="col-12 col-md-4 col-lg-4 col-xl-4">
+																				<h4 class="default-grey">{{"PAYEE_LIST" | translate }} ({{mmidBankPayeeDetailsList.length}})</h4> </div>
+																			<div class="col-12 col-md-8 col-lg-8 col-xl-8">
+																				<div class="row1">
+																					<div class="col-4 col-md-5 hide-m text-right">
+																						<button class="ux-button sm primary md" (click)="addPayee('mmid')"><img src="assets/images/svg/user-profile-w.svg" alt="add-icon">  {{"ADD_PAYEE" | translate }}</button>
+																					</div>
+																					<div class="col-12 col-md-7">
+																						<div class="search-input ux-input  mt-0 mb-0">
+																							<input type="text" name="search"  [(ngModel)]="searchText" (ngModelChange)="searchAccount($event)" placeholder='{{"SEARCH_HERE" | translate}}'>  <em class="show-searchicon"></em>
+																							<p class="error-message"></p>
+																						</div>
+																					</div>
+																				</div>
+																			</div>
+																		</div>
+																	</div>
+																	<div class="grey-container">
+																		<div class="row1">
+																			<div class="col-6 col-md-6 text-left">
+																				<button class="ux-linkbutton link-text primary"  (click)="addPayee('mmid')"> <img src="assets/images/svg/user-profile.svg" alt="star-icon">  {{"ADD_PAYEE" | translate }}</button>
+																			</div>
+																			<div class="col-6 col-md-6 text-right">
+																				<button class="ux-linkbutton link-text primary active" (click)="goToFavourite()"> <img src="assets/images/svg/deactivate-star.svg" alt="star-icon"> {{"FAVOURITE_PAYEE" | translate }}</button>
+																			</div>
+																		</div>
+																	</div>
+																	<div class="bg-white1">
+																		<div class="row">
+																			<ul class="grid-list1">
+																				<li class="grey-th">
+																					<div class="grid-info">
+																						<div class="full-info">
+																							<h6> {{"PAYEE_NAME" | translate }}</h6> </div>
+																					</div>
+																					<div class="grid-info">
+																						<div class="full-info">
+																							<h6>{{"NICK_NAME" | translate }}</h6> </div>
+																					</div>
+																					<div class="grid-info">
+																						<div class="full-info">
+																							<h6> {{"MMID" | translate}}</h6> </div>
+																					</div>
+																					<!-- <div class="grid-info">
+																						<div class="full-info">
+																							<h6>{{"BANK_NAME" | translate }}</h6> </div>
+																					</div> -->
+																					<div class="grid-info">
+																						<div class="full-info">
+																							<h6>{{"TRANSACTION_LIMIT" | translate }}</h6> </div>
+																					</div>
+																					<div class="grid-info">
+																						<div class="full-info"> </div>
+																					</div>
+																				</li>
+																				<!-- modified by USER PSB1-->
+																				<li *ngIf="this.mmidBankPayeeDetailsList.length == 0">
+																					<div class="col-12">
+																						<div class="row mt-3 mb-2">
+																							<div class="col-12 col-lg-12 col-md-12 col-sm-12 px-0 d-none d-sm-none d-xl-block d-lg-block d-md-block">
+																								<div class="dataTables_info text-center">
+																									{{"NO_PAYEE_FOUND" | translate}}
+																								</div>
+																							</div>
+																						</div>
+																					</div>
+																				</li>
+																				<!-- modified by USER PSB1 Ends-->
+																				<li  *ngFor="let payeeList of mmidBankPayeeDetailsList ; index as i" [class.active]="clicked === i" (click)="clicked = (clicked === i ? null : i )" >
+																					<div class="grid-info">
+																						<div class="full-info">
+																							<div class="left-info">
+																								<h5>{{payeeList.benefName}}</h5>
+																								<div class="user-info"> <span class="blue">
+																										<h6>{{payeeList.benefName | firstLastChar |  uppercase  }}</h6>
+																									</span> </div>
+																							</div> <em></em> </div>
+																					</div>
+																					<div class="grid-info">
+																						<div class="full-info">
+																							<h6 class="display-mt">{{"NICK_NAME" | translate}} {{"NICK_NAME" | translate}}</h6>
+																							<h5>{{payeeList.beneficiary_nick_name}} </h5> </div>
+																					</div>
+																					<div class="grid-info">
+																						<div class="full-info">
+																							<h6 class="display-mt"> {{"MMID" | translate}}</h6>
+																							<h5>{{payeeList.MMID}}</h5> </div>
+																					</div>
+																					<!-- <div class="grid-info">
+																						<div class="full-info">
+																							<h6 class="display-mt">{{"BANK_NAME" | translate }}</h6>
+																							<h5>{{payeeList.beneficiary_bank_name}}</h5> </div>
+																					</div> -->
+																					<div class="grid-info">
+																						<div class="full-info">
+																							<h6 class="display-mt">{{"TRANSACTION_LIMIT" | translate }}</h6>
+																							<h5>{{payeeList.maxAmount  | customcurrency}}</h5> </div>
+																					</div>
+																					<div class="grid-info">
+																						<div class="full-info text-right">
+																							<button (click)="editPayee(payeeList,'mmid')" class="icon-btn mr"><img src="assets/images/svg/edit.svg" alt="edit-icon"></button>
+																							<button (click)="deletePayee(payeeList)" class="icon-btn mr"><img src="assets/images/svg/delete-g.svg" alt="delete-icon"></button>
+																							<button  class="star-btn mr"  [ngClass]="{'active' : payeeList.isFavoriteTransaction == 'Y' }" (click)="addFavourite(payeeList)"> </button>
+																							<button (click)="sendMoneyy(payeeList)" class="ux-button sm primary-custom md">Send Money</button>
+																						</div>
+																					</div>
+																				</li>
+
+																				<li>
+																					<div class="col-12">
+                                            <div class="row mt-3 mb-2">
+                                              <div class="col-12 col-lg-6 col-md-6 col-sm-6 px-0 d-none d-sm-none d-xl-block d-lg-block d-md-block"  *ngIf="this.mmidBankPayeeDetailsList.length > 0">
+                                                <div id="dt-sample_wrapper" class="dataTables_wrapper dt-bootstrap4 no-footer">
+                                                  <!-- <div class="dataTables_info pt-2" id="dt-sample_info" role="status" aria-live="polite">Showing 1 to {{this.mmidBankPayeeDetailsList.length}} of <b>{{this.config3.itemsPerPage}}</b> entries</div> -->
+												  <!-- modified by USER PSB1-->
+													<div class="dataTables_info pt-2" id="dt-sample_info" role="status" aria-live="polite">Showing {{this.mmidBankPayeeDetailsList.length > 0 ? ((this.config3.currentPage -1) * this.config3.itemsPerPage) +1 : 0}} to {{this.mmidBankPayeeDetailsList.length > (this.config3.currentPage * this.config3.itemsPerPage) ? (this.config3.currentPage * this.config3.itemsPerPage) : this.mmidBankPayeeDetailsList.length}} of <b>{{this.mmidBankPayeeDetailsList.length}}</b> entries</div>
+													<!-- modified by USER PSB1 Ends-->
+                                                </div>
+                                              </div>
+                                              <div class="col-12 col-lg-6 col-md-6 px-0 d-none d-sm-none d-xl-block d-lg-block d-md-block text-right">
+                                               <!-- modified by USER PSB1 -->
+												<div class="pagination-container pull-right" *ngIf="this.mmidBankPayeeDetailsList.length > this.config3.itemsPerPage">
+                                                <!-- modified by USER PSB1 Ends-->
+													<pagination-controls id="basicPaginate3" (pageChange)="pageChanged3($event)" class="my-pagination"></pagination-controls>
+                                                </div>
+                                              </div>
+                                            </div>
+                                          </div>
+																				</li>
+																			</ul>
+																		</div>
+																	</div>
+																</div>
+															</div>
+														</div>
+													</div>
+													<div id="Vpa" class=" tab-pane" [ngClass]="{'active' : bankSelection === 'Vpa' }">
+														<div class="row1" *ngIf="this.vpaBankPendingPayeeDetails.length > 0 && DataService.vpaAddressList.length > 0">
+															<div class="col-sm-12 col-12 col-md-12">
+																<!-- Accordion Start here-->
+																<div id="accordion" class="accordion-container">
+																	<div class="card mar-b border-n">
+																		<a class="card-link collapsed" data-toggle="collapse" href="#payee4" aria-expanded="false">
+																			<div class="card-header cust-p">
+																				<div class="panel-title2">
+																					<h4 class="default-grey">
+																							 <span>
+																							 <img src="assets/images/svg/bell-g.svg" alt="bell-icon">
+																							 <div class="red-dot"></div>
+																						 </span> {{"PENDING_PAYEE_LIST" | translate }} ({{vpaBankPendingPayeeDetails.length}})
+																					   </h4> </div> <em></em> </div>
+																			<!--card-header-->
+																		</a>
+																		<div id="payee4" class="collapse" data-parent="#accordion">
+																			<div class="card-body bg-lg4">
+																				<div class="row">
+																					<ul class="grid-list1">
+																						<li class="grey-th">
+																							<div class="grid-info">
+																								<div class="full-info">
+																									<h6> {{"PAYEE_NAME" | translate }}</h6> </div>
+																							</div>
+																							<div class="grid-info">
+																								<div class="full-info">
+																									<h6>{{"NICK_NAME" | translate}}</h6> </div>
+																							</div>
+																							<div class="grid-info">
+																								<div class="full-info">
+																									<h6>VPA</h6> </div>
+																							</div>
+																							<!-- <div class="grid-info">
+																								<div class="full-info">
+																									<h6>{{"BANK_NAME" | translate }}</h6> </div>
+																							</div> -->
+																							<div class="grid-info">
+																								<div class="full-info">
+																									<h6>{{"TRANSACTION_LIMIT" | translate }}</h6> </div>
+																							</div>
+																							<div class="grid-info">
+																								<div class="full-info"> </div>
+																							</div>
+																						</li>
+																						<li *ngFor="let payeeList of vpaBankPendingPayeeDetails ; index as i" [class.active]="clicked === i" (click)="clicked = (clicked === i ? null : i )">
+																							<div class="grid-info">
+																								<div class="full-info">
+																									<div class="left-info">
+																										<h5>{{payeeList.benefName}}</h5>
+																										<div class="user-info"> <span class="blue">
+																													 <h6>{{payeeList.benefName | firstLastChar |  uppercase  }}</h6>
+																												 </span> </div>
+																									</div> <em></em> </div>
+																							</div>
+																							<div class="grid-info">
+																								<div class="full-info">
+																									<h6 class="display-mt">{{"NICK_NAME" | translate}}</h6>
+																									<h5>{{payeeList.beneficiary_nick_name}}</h5> </div>
+																							</div>
+																							<div class="grid-info">
+																								<div class="full-info">
+																									<h6 class="display-mt">VPA</h6>
+																									<h5>{{payeeList.VPA}}</h5> </div>
+																							</div>
+																							<!-- <div class="grid-info">
+																								<div class="full-info">
+																									<h6 class="display-mt">{{"BANK_NAME" | translate }}</h6>
+																									<h5>{{payeeList.beneficiary_bank_name}}</h5> </div>
+																							</div> -->
+																							<div class="grid-info">
+																								<div class="full-info">
+																									<h6 class="display-mt">{{"TRANSACTION_LIMIT" | translate }}</h6>
+																									<h5>{{payeeList.maxAmount  | customcurrency}}</h5> </div>
+																							</div>
+																							<div class="grid-info">
+																								<div class="full-info text-right">
+																									<button (click)="deletePayee(payeeList)" class="icon-btn mr"><img src="assets/images/svg/delete-g.svg" alt="delete-icon"></button>
+																									<!-- <button class="ux-button sm primary-custom md" (click)="withinBankPendingPayeeOnConfirm(payeeList , vpaBankPendingPayeeDetails)"> Confirm</button> -->
+																								</div>
+																							</div>
+																						</li>
+																						<!-- <li>
+																							<div class="grid-info">
+																								<div class="full-info">
+																									<div class="left-info">
+																										<h5>John</h5>
+																										<div class="user-info"> <span class="red">
+																													 <h6>J</h6>
+																												 </span> </div>
+																									</div> <em></em> </div>
+																							</div>
+																							<div class="grid-info">
+																								<div class="full-info">
+																									<h6 class="display-mt">{{"NICK_NAME" | translate}}</h6>
+																									<h5>John</h5> </div>
+																							</div>
+																							<div class="grid-info">
+																								<div class="full-info">
+																									<h6 class="display-mt"> {{"ACCOUNT_NUMBER" | translate }}</h6>
+																									<h5>9607 9594 7473</h5> </div>
+																							</div>
+																							<div class="grid-info">
+																								<div class="full-info">
+																									<h6 class="display-mt">Bank Name</h6>
+																									<h5>Punjab & Sind Bank</h5> </div>
+																							</div>
+																							<div class="grid-info">
+																								<div class="full-info">
+																									<h6 class="display-mt">{{"TRANSACTION_LIMIT" | translate }}</h6>
+																									<h5><img src="assets/images/svg/rupee-bl.svg" alt="rupees-icon"> 20,000.00</h5> </div>
+																							</div>
+																							<div class="grid-info">
+																								<div class="full-info text-right">
+																									<button class="icon-btn mr"><img src="assets/images/svg/delete-g.svg" alt="delete-icon"></button>
+																									<button class="ux-button sm primary-custom md"> Confirm</button>
+																								</div>
+																							</div>
+																						</li> -->
+																						<li>
+																							<div class="col-12">
+                                                <div class="row mt-3 mb-2">
+                                                  <div class="col-12 col-lg-6 col-md-6 col-sm-6 px-0 d-none d-sm-none d-xl-block d-lg-block d-md-block">
+                                                    <div id="dt-sample_wrapper" class="dataTables_wrapper dt-bootstrap4 no-footer">
+                                                      <!-- <div class="dataTables_info pt-2" id="dt-sample_info" role="status" aria-live="polite">Showing 1 to {{this.vpaBankPendingPayeeDetails.length}} of <b>{{this.config8.itemsPerPage}}</b> entries</div> -->
+													  <!-- modified by USER PSB1-->
+														<div class="dataTables_info pt-2" id="dt-sample_info" role="status" aria-live="polite">Showing {{this.vpaBankPendingPayeeDetails.length > 0 ? ((this.config8.currentPage -1) * this.config8.itemsPerPage) +1 : 0}} to {{this.vpaBankPendingPayeeDetails.length > (this.config8.currentPage * this.config8.itemsPerPage) ? (this.config8.currentPage * this.config8.itemsPerPage) : this.vpaBankPendingPayeeDetails.length}} of <b>{{this.vpaBankPendingPayeeDetails.length}}</b> entries</div>
+														<!-- modified by USER PSB1 Ends-->
+                                                    </div>
+                                                  </div>
+                                                  <div class="col-12 col-lg-6 col-md-6 px-0 d-none d-sm-none d-xl-block d-lg-block d-md-block text-right">
+                                                  	<!-- modified by USER PSB1 -->
+													<div class="pagination-container pull-right" *ngIf="this.vpaBankPendingPayeeDetails.length > this.config8.itemsPerPage">
+                                                    <!-- modified by USER PSB1 Ends-->
+													<pagination-controls id="basicPaginate8" (pageChange)="pageChanged8($event)" class="my-pagination"></pagination-controls>
+                                                    </div>
+                                                  </div>
+                                                </div>
+                                              </div>
+																						</li>
+																					</ul>
+																				</div>
+																			</div>
+																		</div>
+																	</div>
+																	<!--card-->
+																</div>
+																<!-- Accordion End here-->
+															</div>
+														</div>
+														<div class="row1" *ngIf="DataService.vpaAddressList.length > 0">
+															<div class="col-sm-12 col-12 col-md-12 mt-4">
+																<div class="widget-box5">
+																	<div class="component-title6 custom-pad">
+																		<div class="row1">
+																			<div class="col-12 col-md-4 col-lg-4 col-xl-4">
+																				<h4 class="default-grey">{{"PAYEE_LIST" | translate }} ({{vpaBankPayeeDetailsList.length}})</h4> </div>
+																			<div class="col-12 col-md-8 col-lg-8 col-xl-8">
+																				<div class="row1">
+																					<div class="col-4 col-md-5 hide-m text-right">
+																						<button class="ux-button sm primary md" (click)="addPayee('Vpa')" ><img src="assets/images/svg/user-profile-w.svg" alt="add-icon">  {{"ADD_PAYEE" | translate }}</button>
+																					</div>
+																					<div class="col-12 col-md-7">
+																						<div class="search-input ux-input  mt-0 mb-0">
+																							<input type="text"  [(ngModel)]="searchText" (ngModelChange)="searchAccount($event)" name="search" placeholder='{{"SEARCH_HERE" | translate}}'>  <em class="show-searchicon"></em>
+																							<p class="error-message"></p>
+																						</div>
+																					</div>
+																				</div>
+																			</div>
+																		</div>
+																	</div>
+																	<div class="grey-container">
+																		<div class="row1">
+																			<div class="col-6 col-md-6 text-left">
+																				<button class="ux-linkbutton link-text primary" (click)="addPayee('Vpa')"> <img src="assets/images/svg/user-profile.svg" alt="star-icon">  {{"ADD_PAYEE" | translate }}</button>
+																			</div>
+																			<div class="col-6 col-md-6 text-right">
+																				<button class="ux-linkbutton link-text primary" (click)="goToFavourite()"> <img src="assets/images/svg/deactivate-star.svg" alt="star-icon"> {{"FAVOURITE_PAYEE" | translate }}</button>
+																			</div>
+																		</div>
+																	</div>
+																	<div class="bg-white1">
+																		<div class="row">
+																			<ul class="grid-list1">
+																				<li class="grey-th">
+																					<div class="grid-info">
+																						<div class="full-info">
+																							<h6> {{"PAYEE_NAME" | translate }}</h6> </div>
+																					</div>
+																					<div class="grid-info">
+																						<div class="full-info">
+																							<h6>{{"NICK_NAME" | translate}}</h6> </div>
+																					</div>
+																					<div class="grid-info">
+																						<div class="full-info">
+																							<h6>{{"VPA" | translate}}</h6> </div>
+																					</div>
+																					<!-- <div class="grid-info">
+																						<div class="full-info">
+																							<h6>Bank Name</h6> </div>
+																					</div> -->
+																					<div class="grid-info">
+																						<div class="full-info">
+																							<h6>{{"TRANSACTION_LIMIT" | translate }}</h6> </div>
+																					</div>
+																					<div class="grid-info">
+																						<div class="full-info"> </div>
+																					</div>
+																				</li>
+
+																				<!-- modified by USER PSB1-->
+																				<li *ngIf="this.vpaBankPayeeDetailsList.length == 0">
+																					<div class="col-12">
+																						<div class="row mt-3 mb-2">
+																							<div class="col-12 col-lg-12 col-md-12 col-sm-12 px-0 d-none d-sm-none d-xl-block d-lg-block d-md-block">
+																								<div class="dataTables_info text-center">
+																									{{"NO_PAYEE_FOUND" | translate}}
+																								</div>
+																							</div>
+																						</div>
+																					</div>
+																				</li>
+																				<!-- modified by USER PSB1 Ends-->
+																				<!-- <li *ngFor="let payeeList of vpaBankPendingPayeeDetails | paginate:config4 ; index as i" [class.active]="clicked === i" (click)="clicked = (clicked === i ? null : i )"> -->
+																				<!-- modified by USER PSB1-->
+																				<li *ngFor="let payeeList of vpaBankPayeeDetailsList ; index as i" [class.active]="clicked === i" (click)="clicked = (clicked === i ? null : i )">
+																				<!-- modified by USER PSB1 Ends-->
+																					<div class="grid-info">
+																						<div class="full-info">
+																							<div class="left-info">
+																								<h5>{{payeeList.benefName}}</h5>
+																								<div class="user-info"> <span class="blue">
+																											<h6>{{payeeList.benefName | firstLastChar |  uppercase  }}</h6>
+																										</span> </div>
+																							</div> <em></em> </div>
+																					</div>
+																					<div class="grid-info">
+																						<div class="full-info">
+																							<h6 class="display-mt">{{"NICK_NAME" | translate}}</h6>
+																							<h5>{{payeeList.beneficiary_nick_name}} </h5> </div>
+																					</div>
+																					<div class="grid-info">
+																						<div class="full-info">
+																							<h6 class="display-mt">{{"VPA" | translate}}</h6>
+																							<h5>{{payeeList.VPA}}</h5> </div>
+																					</div>
+																					<!-- <div class="grid-info">
+																						<div class="full-info">
+																							<h6 class="display-mt">Bank Name</h6>
+																							<h5>{{payeeList.beneficiary_bank_name}}</h5> </div>
+																					</div> -->
+																					<div class="grid-info">
+																						<div class="full-info">
+																							<h6 class="display-mt">{{"TRANSACTION_LIMIT" | translate }}</h6>
+																							<h5>{{payeeList.maxAmount  | customcurrency}}</h5> </div>
+																					</div>
+																					<div class="grid-info">
+																						<div class="ful l-info text-right">
+																							<button (click)="editPayee(payeeList,'Vpa')" class="icon-btn mr"><img src="assets/images/svg/edit.svg" alt="edit-icon"></button>
+																							<!-- <button (click)="deletePayee(payeeList , vpaBankPendingPayeeDetails)"  class="icon-btn mr"><img src="assets/images/svg/delete-g.svg" alt="delete-icon"></button> -->
+																							<!-- modified by USER PSB1-->
+																							<button (click)="deletePayee(payeeList)"  class="icon-btn mr"><img src="assets/images/svg/delete-g.svg" alt="delete-icon"></button>
+																							<!-- modified by USER PSB1 Ends-->
+																							<button class="star-btn mr active"  [ngClass]="{'active' : payeeList.isFavoriteTransaction == 'Y' }" (click)="addFavourite(payeeList)"> </button>
+																							<button (click)="sendMoneyy(payeeList)"class="ux-button sm primary-custom md">Send Money</button>
+																						</div>
+																					</div>
+																				</li>
+
+																				<li>
+																					<div class="col-12">
+                                            <div class="row mt-3 mb-2">
+                                              <div class="col-12 col-lg-6 col-md-6 col-sm-6 px-0 d-none d-sm-none d-xl-block d-lg-block d-md-block" *ngIf="this.vpaBankPayeeDetailsList.length > 0">
+                                                <div id="dt-sample_wrapper" class="dataTables_wrapper dt-bootstrap4 no-footer">
+                                                  <!-- <div class="dataTables_info pt-2" id="dt-sample_info" role="status" aria-live="polite">Showing 1 to {{this.vpaBankPendingPayeeDetails.length}} of <b>{{this.config4.itemsPerPage}}</b> entries</div> -->
+													<!-- modified by USER PSB1-->
+													<div class="dataTables_info pt-2" id="dt-sample_info" role="status" aria-live="polite">Showing {{this.vpaBankPayeeDetailsList.length > 0 ? ((this.config4.currentPage -1) * this.config4.itemsPerPage) +1 : 0}} to {{this.vpaBankPayeeDetailsList.length > (this.config4.currentPage * this.config4.itemsPerPage) ? (this.config4.currentPage * this.config4.itemsPerPage) : this.vpaBankPayeeDetailsList.length}} of <b>{{this.vpaBankPayeeDetailsList.length}}</b> entries</div>
+													<!-- modified by USER PSB1 Ends-->
+												</div>
+                                              </div>
+                                              <div class="col-12 col-lg-6 col-md-6 px-0 d-none d-sm-none d-xl-block d-lg-block d-md-block text-right">
+												  <!-- modified by USER PSB1-->
+                                              		<div class="pagination-container pull-right" *ngIf="this.vpaBankPayeeDetailsList.length > this.config4.itemsPerPage">
+													<!-- modified by USER PSB1 Ends-->
+													<pagination-controls id="basicPaginate4" (pageChange)="pageChanged4($event)" class="my-pagination"></pagination-controls>
+                                                </div>
+                                              </div>
+                                            </div>
+                                          </div>
+																				</li>
+																			</ul>
+																		</div>
+																	</div>
+																</div>
+															</div>
+														</div>
+														<div class="row1" *ngIf="DataService.vpaAddressList.length == 0">
+															<div class="col-sm-12 col-12 col-md-12">
+															  <div class="widget-box5 overflow mb-3">
+																<div class="bg-white1 bor-rad pad-custom">
+																  <div>
+																	To avail UPI Services, please register
+																  </div>
+																  </div>
+															  </div>
+															  </div>
+														 </div>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+									<!-- Greencard2 End here -->
+								</div>
+								<!-- Right Column Ads Start -->
+								<div class="col-12 col-md-12 col-lg-12 col-xl-3 d-none d-xl-block">
+									<div class="right-ads">
+										<a> <img src="assets/images/banner/my-card-banner.jpg"> </a>
+									</div>
+									<div class="vspacer30"></div>
+									<!-- <div class="offers-card">
+										<div class="header-block clearfix">
+											<h5> {{"OFFERS_ON_CARD" | translate}}</h5> </div>
+										<div class="panel-body">
+											<div class="recentpayment-control">
+												<ul>
+													<li> <img src="assets/images/banner/offer-banner.png"> </li>
+												</ul>
+											</div>
+										</div>
+									</div> -->
+								</div>
+								<!-- Right Column Ads Ends -->
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!--.right-col-container-->
+	</div>
+	<!--.right-main-column-->
+	<!-- main -->
+
+
+<!-- Search IFSC text Start 1 -->
+<div class="popup-bottom search-ifsc2">
+	<div class="row1">
+		<div class="col-10">
+			<h4>Search IFSC</h4> </div>
+		<div class="col-2">
+			<button class="ux-button-icon close-btn"> <img src="assets/images/svg/close-b.svg" alt="cross-icon" class="img-vsmall"> </button>
+		</div>
+	</div>
+	<form action="#" id="search-ifsc-form">
+		<div class="row1">
+			<div class="col-12">
+				<div class="ux-input">
+					<label>Bank Name</label>
+					<input type="text" placeholder="Enter Bank Name"> </div>
+			</div>
+		</div>
+		<div class="row1">
+			<div class="col-12">
+				<div class="ux-input">
+					<label>Branch Name</label>
+					<input type="text" placeholder="Enter Branch Name"> </div>
+			</div>
+		</div>
+		<div class="row1 mt-2">
+			<div class="col-12 text-center">
+				<button class="ux-button secondary md">Continue </button>
+			</div>
+		</div>
+	</form>
+</div>
+<!-- Search IFSC text End 1 -->
+
+<!-- Search IFSC 2 -->
+<div class="popup-bottom search-ifsc">
+	<div class="row1">
+		<div class="col-10">
+			<h4>Search IFSC</h4> </div>
+		<div class="col-2">
+			<button class="ux-button-icon close-btn"> <img src="assets/images/svg/close-b.svg" alt="cross-icon" class="img-vsmall"> </button>
+		</div>
+	</div>
+	<div class="row1">
+		<div class="col-12">
+			<div class="row1">
+				<div class="col-12 col-md-12">
+					<div class="ux-selection mar-custom">
+						<label class="ux-selection2">HDFC Bank
+							<br/> <span>Sion East</span>
+							<br/> <span>HDFC0000163</span>
+							<input type="radio" checked="checked" value="HDFC0000163" name="search-ifsc"> <span class="checkmark"></span> </label>
+						<div> </div>
+					</div>
+				</div>
+				<div class="col-12 col-md-12">
+					<div class="ux-selection mar-custom">
+						<label class="ux-selection2">HDFC Bank
+							<br/> <span>Sion Trombay</span>
+							<br/> <span>HDFC0000425</span>
+							<input type="radio" checked="checked" value="HDFC0000425" name="search-ifsc"> <span class="checkmark"></span> </label>
+						<div> </div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="row mt-2">
+		<div class="col-12 text-center">
+			<button class="ux-button primary submit-btn">Submit</button>
+		</div>
+	</div>
+</div>
+<!-- Search IFSC End 2-->
+
+<!-- Confirmation Popup Start -->
+<div class="popup-bottom confirm sm-popup">
+	<div class="row">
+		<div class="col-12">
+			<h4 class="text-center">Confirmation</h4>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-12">
+			<p>
+				Are you sure you want delete payee?
+			</p>
+		</div>
+	</div>
+	<div class="row1 mt-2">
+		<div class="col-6 text-center">
+			<button class="ux-button secondary no md close-btn" (click)="closePopup('div.popup-bottom.confirm')">No</button>
+		</div>
+		<div class="col-6 text-center">
+			<button class="ux-button primary md" (click)="deleteSelPayee(this.DataService.request)">Yes</button>
+		</div>
+	</div>
+</div>
+<!-- Confirmation Popup End -->
+
+	<aside class="notification-panel sticky-panel ">
+		<div class="notp-header">
+			<a href="javascript:;" class="btn-closenoty"></a>
+			<h5>Theme Customizer</h5> </div>
+		<div class="notp-content">
+			<div class="notp-innercontent">
+				<div class="notp-nodatafound">
+					<div class="col-12">
+						<h5>Navigation</h5>
+						<div>
+							<label class="ux-selection2">Vertical
+								<input type="radio" checked="checked" name="radioboxdemo"> <span class="checkmark"></span> </label>
+							<label class="ux-selection2">Horizontal
+								<input type="radio" name="radioboxdemo"> <span class="checkmark"></span> </label>
+						</div>
+						<div class="vspacer20"></div>
+						<h5>Theam Color</h5>
+						<div class="row1 mb-1">
+							<div class="col-12">
+								<ul class="theme-list">
+									<li class="blue"></li>
+									<li class="green"></li>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="vspacer20"></div>
+				<div class="vspacer20"></div>
+				<div class="row1">
+					<div class="col-12 col-xl-12 col-lg-12 col-md-12 ">
+						<div class="ux-footer">
+							<button class="ux-button sm primary float-right">Submit</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- <div class="notp-footer">
+			<p>Test</p>
+		</div>  -->
+		<!-- <div class="page-tools">
+			<div class="lst-page-tools">
+				  <a href="#" class="rightpannel">
+					  <img src="assets/images/svg/adjust.svg" alt="adjust-icon">
+					</a>
+			 </div>
+		 </div> -->
+	</aside>
+	<div class="notpanel-overlay"></div>
+
+
+  <!-- [ngClass]="selectedStar ? 'active': '' "  -->
+
+  <div class="popup-bottom si-warning sm-popup">
+	<div class="row">
+		<div class="col-12">
+			<h4 class="text-center">Confirmation</h4>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-12">
+			<p *ngIf="DataService.managePayeeToAddpayee == 'within'" >All SI set towards the account shall be deleted upon change</p>
+			<p *ngIf="DataService.managePayeeToAddpayee == 'outside'" >Delete all existing Schedule payment, post which only the  {{"TRANSACTION_LIMIT" | translate }}can be modified</p>
+		</div>
+	</div>
+	<div class="row1 mt-2">
+		<div class="col-6 text-center">
+			<button class="ux-button secondary no md close-btn" (click)="closePopup('div.popup-bottom.si-warning')">No</button>
+		</div>
+		<div class="col-6 text-center">
+			<button class="ux-button primary md" (click)="confirmEditPayee()">Yes</button>
+		</div>
+	</div>
+</div>
+
+<div class="popup-bottom pop sm-popup">
+	<div class="row">
+		<div class="col-12">
+			<h4 class="text-center">Success</h4>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-12">
+			<p>{{favoritePayeeResult}}</p>
+		</div>
+	</div>
+	<div class="row1 mt-2">
+		<div class="col-6 offset-3 text-center">
+			<button class="ux-button secondary primary md" (click)="closePopup('div.popup-bottom.pop')">Ok</button>
+		</div>
+	</div>
+</div>

@@ -1,0 +1,184 @@
+{
+  "prepare_queue": {
+    "installed": [],
+    "uninstalled": []
+  },
+  "config_munge": {
+    "files": {}
+  },
+  "installed_plugins": {
+    "cordova-plugin-customurlscheme": {
+      "URL_SCHEME": "upi",
+      "PACKAGE_NAME": "com.infrasofttech.psb"
+    },
+    "cordova-plugin-device": {
+      "PACKAGE_NAME": "com.infrasofttech.psb"
+    },
+    "cordova-plugin-iroot": {
+      "PACKAGE_NAME": "com.infrasofttech.psb"
+    }
+  },
+  "dependent_plugins": {
+    "com.cordova.simdetect": {
+      "PACKAGE_NAME": "com.infrasofttech.psb"
+    },
+    "com.darktalker.cordova.screenshot": {
+      "PACKAGE_NAME": "com.infrasofttech.psb"
+    },
+    "com.infrasoft.qrScanIos": {
+      "PACKAGE_NAME": "com.infrasofttech.psb"
+    },
+    "cordova-open-native-settings": {
+      "PACKAGE_NAME": "com.infrasofttech.psb"
+    },
+    "cordova-pdf-generator": {
+      "PACKAGE_NAME": "com.infrasofttech.psb"
+    },
+    "cordova-plugin-actionsheet": {
+      "PACKAGE_NAME": "com.infrasofttech.psb"
+    },
+    "cordova-plugin-add-swift-support": {
+      "PACKAGE_NAME": "com.infrasofttech.psb"
+    },
+    "cordova-plugin-android-permissions": {
+      "PACKAGE_NAME": "com.infrasofttech.psb"
+    },
+    "cordova-plugin-androidx": {
+      "PACKAGE_NAME": "com.infrasofttech.psb"
+    },
+    "cordova-plugin-androidx-adapter": {
+      "PACKAGE_NAME": "com.infrasofttech.psb"
+    },
+    "cordova-plugin-camera": {
+      "PACKAGE_NAME": "com.infrasofttech.psb"
+    },
+    "cordova-plugin-contacts-phonenumbers": {
+      "CONTACTS_USAGE_DESCRIPTION": "This app needs contacts access",
+      "PACKAGE_NAME": "com.infrasofttech.psb"
+    },
+    "cordova-plugin-cors": {
+      "PACKAGE_NAME": "com.infrasofttech.psb"
+    },
+    "cordova-plugin-crop": {
+      "PACKAGE_NAME": "com.infrasofttech.psb"
+    },
+    "cordova-plugin-dialogs": {
+      "PACKAGE_NAME": "com.infrasofttech.psb"
+    },
+    "cordova-plugin-file": {
+      "PACKAGE_NAME": "com.infrasofttech.psb"
+    },
+    "cordova-plugin-file-opener2": {
+      "PACKAGE_NAME": "com.infrasofttech.psb"
+    },
+    "cordova-plugin-file-transfer": {
+      "PACKAGE_NAME": "com.infrasofttech.psb"
+    },
+    "cordova-plugin-fingerprint-aio": {
+      "FACEID_USAGE_DESCRIPTION": " ",
+      "PACKAGE_NAME": "com.infrasofttech.psb"
+    },
+    "cordova-plugin-firebasex": {
+      "FIREBASE_ANALYTICS_COLLECTION_ENABLED": "true",
+      "FIREBASE_PERFORMANCE_COLLECTION_ENABLED": "true",
+      "FIREBASE_CRASHLYTICS_COLLECTION_ENABLED": "true",
+      "PACKAGE_NAME": "com.infrasofttech.psb"
+    },
+    "cordova-plugin-geolocation": {
+      "PACKAGE_NAME": "com.infrasofttech.psb"
+    },
+    "cordova-plugin-imei": {
+      "PACKAGE_NAME": "com.infrasofttech.psb"
+    },
+    "cordova-plugin-inappbrowser": {
+      "PACKAGE_NAME": "com.infrasofttech.psb"
+    },
+    "cordova-plugin-ip-mac-address": {
+      "PACKAGE_NAME": "com.infrasofttech.psb"
+    },
+    "cordova-plugin-media": {
+      "KEEP_AVAUDIOSESSION_ALWAYS_ACTIVE": "NO",
+      "PACKAGE_NAME": "com.infrasofttech.psb"
+    },
+    "cordova-plugin-nativegeocoder": {
+      "LOCATION_WHEN_IN_USE_DESCRIPTION": "Use geocoder service",
+      "PACKAGE_NAME": "com.infrasofttech.psb"
+    },
+    "cordova-plugin-network-information": {
+      "PACKAGE_NAME": "com.infrasofttech.psb"
+    },
+    "cordova-plugin-networkinterface": {
+      "PACKAGE_NAME": "com.infrasofttech.psb"
+    },
+    "cordova-plugin-npci-android": {
+      "PACKAGE_NAME": "com.infrasofttech.psb"
+    },
+    "cordova-plugin-npci-ios": {
+      "PACKAGE_NAME": "com.infrasofttech.psb"
+    },
+    "cordova-plugin-privacyscreen": {
+      "PACKAGE_NAME": "com.infrasofttech.psb"
+    },
+    "cordova-plugin-proguard": {
+      "PACKAGE_NAME": "com.infrasofttech.psb"
+    },
+    "cordova-plugin-qrcodejs": {
+      "PACKAGE_NAME": "com.infrasofttech.psb"
+    },
+    "cordova-plugin-request-location-accuracy": {
+      "PACKAGE_NAME": "com.infrasofttech.psb"
+    },
+    "cordova-plugin-screen-mirror-detect-ios": {
+      "PACKAGE_NAME": "com.infrasofttech.psb"
+    },
+    "cordova-plugin-sim": {
+      "PACKAGE_NAME": "com.infrasofttech.psb"
+    },
+    "cordova-plugin-simple-image-resizer": {
+      "PACKAGE_NAME": "com.infrasofttech.psb"
+    },
+    "cordova-plugin-splashscreen": {
+      "PACKAGE_NAME": "com.infrasofttech.psb"
+    },
+    "cordova-plugin-sslcertificatechecker": {
+      "PACKAGE_NAME": "com.infrasofttech.psb"
+    },
+    "cordova-plugin-statusbar": {
+      "PACKAGE_NAME": "com.infrasofttech.psb"
+    },
+    "cordova-plugin-telerik-imagepicker": {
+      "PHOTO_LIBRARY_USAGE_DESCRIPTION": " ",
+      "PACKAGE_NAME": "com.infrasofttech.psb"
+    },
+    "cordova-plugin-touch-id": {
+      "FACEID_USAGE_DESCRIPTION": " ",
+      "PACKAGE_NAME": "com.infrasofttech.psb"
+    },
+    "cordova-plugin-upi-qrcodescanner": {
+      "PACKAGE_NAME": "com.infrasofttech.psb"
+    },
+    "cordova-plugin-whitelist": {
+      "PACKAGE_NAME": "com.infrasofttech.psb"
+    },
+    "es6-promise-plugin": {
+      "PACKAGE_NAME": "com.infrasofttech.psb"
+    },
+    "cordova-plugin-x-socialsharing": {
+      "PHOTO_LIBRARY_ADD_USAGE_DESCRIPTION": "This app requires photo library access to function properly.",
+      "PHOTO_LIBRARY_USAGE_DESCRIPTION": "This app requires photo library access to function properly.",
+      "PACKAGE_NAME": "com.infrasofttech.psb"
+    },
+    "cordova-sms-plugin": {
+      "PACKAGE_NAME": "com.infrasofttech.psb"
+    },
+    "cordova.plugins.diagnostic": {
+      "PACKAGE_NAME": "com.infrasofttech.psb"
+    },
+    "nl.madebymark.share": {
+      "PACKAGE_NAME": "com.infrasofttech.psb"
+    },
+    "skwas-cordova-plugin-datetimepicker": {
+      "PACKAGE_NAME": "com.infrasofttech.psb"
+    }
+  }
+}

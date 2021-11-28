@@ -1,0 +1,143 @@
+ <div class="prelogin-page">
+  
+        <div class="full-container full full1">
+            <div class="login-container ">
+                <div class="central-box">
+
+            <!-- Loginform Container Start -->
+                    <div class="radius loginform-container">
+                       <div class="radius1 login-form1">
+                        <registration-header></registration-header>
+
+                      <div class="vspacer10"></div>
+                     <div class="row">
+                           <div class="col-12 col-lg-6 col-md-10 col-sm-12 m-auto">
+                            <form [formGroup]="registrationFormstep4" (ngSubmit)="submitStep4()">
+                             <div class="row1">
+                              <div class="col-12">
+                                <ul class="step-list">
+                                  <li class="step-matched">
+                                    <em>{{'STEP_4' | translate}} <span> {{'OF_STEP_6' | translate}}</span></em>
+
+                                    <h4>{{'SET_SECURITY_QUESTIONS' | translate}}</h4>
+                                  </li>
+                                </ul>
+                              </div>
+                              <div class="col-12">
+                                <div class="details-section">
+                                   <div class="row1">
+                                    <div Class="col-12 col-md-12">
+                                      <div class="ux-input">
+                                            <label>{{'1' | translate}}. {{'SECURITY_QUESTION' | translate}}</label>
+                                            <select id="1" required formControlName="quest1"  (change)="getUniqueSecQues($event.target.value)">
+                                                <option value="">{{'SELECT' | translate}}</option>
+                                                <option *ngFor="let secQues of securityQuesList" [value]="secQues.ID" [hidden]="secQues?.selected">{{secQues.QUESTION}}</option>
+
+                                             </select> 
+                                             <span class="errormsg" *ngIf="registrationFormstep4.controls['quest1'].touched && registrationFormstep4.controls['quest1'].hasError('required')">{{"PLEASE_ENTER_SECURITY_QUESTION" | translate }}</span>
+                                            <p></p>
+                                          </div>
+                                       </div>
+                                    <div Class="col-12 col-md-12">
+                                      <div class="ux-input pt-0">
+                                            <label>{{'ANSWER' | translate}}</label>
+                                              <input type="text" placeholder='{{"ENTER_SECURITY_ANSWER"| translate}}' required formControlName="ans1">
+                                              <span class="errormsg" *ngIf="registrationFormstep4.controls['ans1'].touched && registrationFormstep4.controls['ans1'].hasError('required')">{{"PLEASE_ENTER_SECURITY_ANSWER" | translate }}</span>
+                                            <p></p>
+                                          </div>
+                                       </div> 
+                                         <div class="col-12 col-md-12">
+                                             <div class="ux-input pt-0 ">
+                                                <label class="message1 text-right">{{'SECURITY_ANS_CASE_SENSITIVE' | translate}}</label> 
+                                             </div>
+                                         </div>
+                                    </div>
+                                </div>
+                                <div class="details-section">
+                                <div class="row1">
+                                 <div Class="col-12 col-md-12">
+                                   <div class="ux-input">
+                                         <label>{{'2' | translate}}. {{'SECURITY_QUESTION' | translate}}</label>
+                                         <select id="2"  required  formControlName="quest2" (change)="getUniqueSecQues($event.target.value)">
+                                             <option value="">{{'SELECT' | translate}}</option>
+                                             <option *ngFor="let secQues of securityQuesList" [value]="secQues.ID" [hidden]="secQues?.selected">{{secQues.QUESTION}}</option>
+                                            </select> 
+                                          <span class="errormsg" *ngIf="registrationFormstep4.controls['quest2'].touched && registrationFormstep4.controls['quest2'].hasError('required')">{{"PLEASE_ENTER_SECURITY_QUESTION" | translate }}</span>
+                                         <p></p>
+                                       </div>
+                                    </div>
+                                 <div Class="col-12 col-md-12">
+                                   <div class="ux-input pt-0">
+                                         <label>{{'ANSWER'}}</label>
+                                           <input type="text" placeholder='{{"ENTER_SECURITY_ANSWER"| translate}}' required formControlName="ans2">
+                                           <span class="errormsg" *ngIf="registrationFormstep4.controls['ans2'].touched && registrationFormstep4.controls['ans2'].hasError('required')">{{"PLEASE_ENTER_SECURITY_ANSWER" | translate }}</span>
+                                         <p></p>
+                                       </div>
+                                    </div> 
+                                      <div class="col-12 col-md-12">
+                                          <div class="ux-input pt-0">
+                                             <label class="message1 text-right">{{'SECURITY_ANS_CASE_SENSITIVE' | translate}}</label> 
+                                          </div>
+                                      </div>
+                                 </div>
+                             </div>
+                             <div class="details-section">
+                                   <div class="row1">
+                                    <div Class="col-12 col-md-12">
+                                      <div class="ux-input">
+                                            <label>{{'3' | translate}}. {{'SECURITY_QUESTION' | translate}}</label>
+                                            <select id="3"  required formControlName="quest3"  (change)="getUniqueSecQues($event.target.value)">
+                                                <option value="">{{'SELECT' | translate}}</option>
+                                                <option *ngFor="let secQues of securityQuesList" [value]="secQues.ID" [hidden]="secQues?.selected">{{secQues.QUESTION}}</option>
+                                             </select> 
+                                             <span class="errormsg" *ngIf="registrationFormstep4.controls['quest3'].touched && registrationFormstep4.controls['quest3'].hasError('required')">{{"PLEASE_ENTER_SECURITY_QUESTION" | translate }}</span>
+                                            <p></p>
+                                          </div>
+                                       </div>
+                                    <div Class="col-12 col-md-12">
+                                      <div class="ux-input pt-0">
+                                            <label>{{'ANSWER' | translate}}</label>
+                                              <input type="text" placeholder='{{"ENTER_SECURITY_ANSWER"| translate}}' required formControlName="ans3">
+                                              <span class="errormsg" *ngIf="registrationFormstep4.controls['ans3'].touched && registrationFormstep4.controls['ans3'].hasError('required')">{{"PLEASE_ENTER_SECURITY_ANSWER" | translate }}</span>
+                                            <p></p>
+                                          </div>
+                                       </div> 
+                                         <div class="col-12 col-md-12">
+                                             <div class="ux-input pt-0">
+                                                <label class="message1 text-right">{{'SECURITY_ANS_CASE_SENSITIVE' | translate}}</label> 
+                                             </div>
+                                         </div>
+                                    </div>
+                                </div>
+                            </div>
+                              <div class="col-12 col-lg-10 col-md-12 col-sm-12 m-auto">
+                                <div class="ux-footer border-n">
+                                  <div class="row1">
+                                    <div class="col-6 col-lg-6 col-md-6 col-sm-6">
+                                        <button class="ux-button secondary" type="button" routerLink="/registrationUsername" *ngIf="DataService.isFromOmniReg.isStepIV" >{{'PREVIOUS' | translate}}</button>
+                                      </div>
+                                    <div class="col-6 col-lg-6 col-md-6 col-sm-6">
+                                      <button class="ux-button primary" type="submit">{{'SUBMIT_BTN' | translate}}</button>
+                                     </div>
+                                     </div>
+                                  </div> 
+                              </div>
+                             </div> 
+                             </form>
+
+                           </div>
+                          
+                            
+                        </div>
+ 
+                    </div>
+                   </div> 
+                 <!-- Loginform Container End -->
+               </div>
+              
+            </div>
+            
+         </div>
+        <!-- .full-container -->
+ 
+    </div>

@@ -1,0 +1,250 @@
+<div class="main bg-m">
+	<!-- Start Global Nav -->
+	<div class="nav-overlay"></div>
+	<!-- End Global Nav -->
+	<div class="right-main-column ">
+		<div class="right-col-container pad-b full-width">
+			<!-- ======== body page content start from here ======== -->
+			<div class="body-page-container main-dashborad manage-payee">
+				<div class="container-fluid">
+					<div class="row">
+						<div class="col-12 p-0">
+							<div class="breadcrumb">
+								<ul class="lst-breadcrumb">
+									<li> <a (click)="goToPage('sendMoney')">{{"SEND_MONEY " | translate }}</a> </li>
+									<li> <a (click)="goToPage('managePayee')">{{"MANAGE_PAYEE" | translate}}</a> </li>
+									<li> <a (click)="goToPage('addPayee')">{{"ADD_PAYEE" | translate}}</a> </li>
+									<li>{{"AUTHORIZED" | translate }} </li>
+								</ul>
+							</div>
+						</div>
+					</div>
+					<!--.row -->
+					<div class="vspacer15 customize d-none d-md-block d-lg-block d-xl-block"></div>
+					<div class="row no-gutters">
+						<div class="col-12">
+							<div class="row1">
+								<div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-9">
+									<!-- Greencard2 Start here -->
+									<div class="greencard2">
+										<div class="row1 hide-m">
+											<div class="col-md-8 col-12" >
+												<h4  id="otp-headline"  style="visibility: hidden;">{{"ENTER_OTP" | translate}}</h4> </div>
+											<div class="col-md-4 col-12"> </div>
+										</div>
+										<div class="row1">
+											<div class="col-sm-12 col-12 col-md-12" id="otp-screen"  style="display: none;" >
+												<div class="white-box2 mar-t pad-custom custom-bor">
+													<div class="row1">
+														<div class="col-12 col-md-8 col-lg-9 col-xl-9">
+															<div class="row1">
+																<div class="col-12 col-md-12">
+																	<div class="ux-input"> <em class="info-message2">{{"OTP_SEND_MSG" | translate}}</em> </div>
+																</div>
+																<div class="col-12 col-md-8 col-lg-8 col-xl-7">
+																	<div class="row">
+																		<div class="col-12 pl-2 pr-2">
+																			<div class="row3">
+																				<div class="col-sm-2 col-2 col-md-2">
+																					<div class="ux-input password1 mb-1">
+																						<input id="otppassword1" type="password" maxlength="1" placeholder="●" onkeyup="onKeyupEvent(1, event)" onfocus="onfocusEvent(1)"> </div>
+																				</div>
+																				<div class="col-sm-2 col-2 col-md-2">
+																					<div class="ux-input password1 mb-1">
+																						<input id="otppassword2" type="password" maxlength="1" placeholder="●" onkeyup="onKeyupEvent(2, event)" onfocus="onfocusEvent(2)"> </div>
+																				</div>
+																				<div class="col-sm-2 col-2 col-md-2">
+																					<div class="ux-input password1 mb-1">
+																						<input id="otppassword3" type="password" maxlength="1" placeholder="●" onkeyup="onKeyupEvent(3, event)" onfocus="onfocusEvent(3)"> </div>
+																				</div>
+																				<div class="col-sm-2 col-2 col-md-2">
+																					<div class="ux-input password1 mb-1">
+																						<input id="otppassword4" type="password" maxlength="1" placeholder="●" onkeyup="onKeyupEvent(4, event)" onfocus="onfocusEvent(4)"> </div>
+																				</div>
+																				<div class="col-sm-2 col-2 col-md-2">
+																					<div class="ux-input password1  mb-1">
+																						<input id="otppassword5" type="password" maxlength="1" placeholder="●" onkeyup="onKeyupEvent(5, event)" onfocus="onfocusEvent(5)"> </div>
+																				</div>
+																				<div class="col-sm-2 col-2 col-md-2">
+																					<div class="ux-input password1 mb-1">
+																						<input id="otppassword6" type="password" maxlength="1" placeholder="●" onkeyup="onKeyupEvent(6, event)" onfocus="onfocusEvent(6)"> </div>
+																				</div>
+																			</div>
+																			<div class="row1">
+																				<div class="col-12">
+																					<div class="ux-input password1 mt-0 mb-0">
+																						<p class="error-message"></p>
+																					</div>
+																				</div>
+																			</div>
+																			<div class="row3">
+																				<div class="col-6 col-md-6">
+																					<div class="text-left">
+																						<p class="text-left"> <span class="success-text">00.20</span> </p>
+																					</div>
+																				</div>
+																				<div class="col-6 col-md-6">
+																					<div class="text-right">
+																						<button class="ux-linkbutton default-underline mt3">{{"RESEND" | translate}}</button>
+																					</div>
+																				</div>
+																			</div>
+																		</div>
+																	</div>
+																</div>
+															</div>
+														</div>
+														<div class="col-12 col-md-4 col-lg-3 col-xl-3 text-right hide-m">
+															<div class="mobile-img"> <img src="assets/images/icons/mobile.svg" alt="mobile-icon"> </div>
+														</div>
+													</div>
+												</div>
+											</div>
+											<div class="col-sm-12 col-12 col-md-12">
+												<div class="result-container1 mar-top">
+													<div class="info-bottom pad-custom">
+														<div class="info-details mt-3">
+															<div class="row">
+																<h6>Payee Name</h6>
+																<h5>Anand Kumar</h5>
+																<!-- <h5><span>Biller ID MGAs2099832</span></h5> --></div>
+														</div>
+														<div class="info-details">
+															<div class="row">
+																<h6>Payee Nick Name</h6>
+																<h5>Anand</h5> </div>
+														</div>
+														<div class="info-details">
+															<div class="row">
+																<h6>Customer ID</h6>
+																<h5>8654136412</h5> </div>
+														</div>
+														<div class="info-details">
+															<div class="row">
+																<h6>Customer Mobile Number</h6>
+																<h5>9876755344</h5> </div>
+														</div>
+														<div class="info-details">
+															<div class="row">
+																<h6>Payee Bank</h6>
+																<h5>HDFC Bank</h5> </div>
+														</div>
+														<div class="info-details">
+															<div class="row">
+																<h6>IFSC</h6>
+																<h5>HDFCB000005</h5> </div>
+														</div>
+														<div class="info-details">
+															<div class="row">
+																<h6>Amount</h6>
+																<h5><img src="assets/images/svg/rupee-bl.svg" alt="rupees-icon"> 12,000.00</h5> </div>
+														</div>
+														<div class="info-details">
+															<div class="row">
+																<h6>Date & Time</h6>
+																<h5>05 OCT 2020</h5> </div>
+														</div>
+														<div class="info-details">
+															<div class="row">
+																<h6>Remarks</h6>
+																<h5>Payment 2020</h5> </div>
+														</div>
+													</div>
+												</div>
+											</div>
+											<div class="col-12 col-md-12">
+												<ul class="bottom-footer1">
+													<li>
+														<div class="btn-div">
+															<button class=" ux-button secondary sm-mob" >{{"CANCEL" | translate}}</button>
+														</div>
+														<div class="btn-div">
+															<button class=" ux-button primary sm-mob" onClick="addPayeAuth()">{{"CONFIRM" | translate}}</button>
+														</div>
+													</li>
+												</ul>
+											</div>
+										</div>
+									</div>
+									<!-- Greencard2 End here -->
+								</div>
+								<!-- Right Column Ads Start -->
+								<div class="col-12 col-md-12 col-lg-12 col-xl-3 d-none d-xl-block">
+									<div class="right-ads">
+										<a> <img src="assets/images/banner/my-card-banner.jpg"> </a>
+									</div>
+									<div class="vspacer30"></div>
+									<!-- <div class="offers-card">
+										<div class="header-block clearfix">
+											<h5>{{{"OFFERS_ON_CARD" | translate}}</h5> </div>
+										<div class="panel-body">
+											<div class="recentpayment-control">
+												<ul>
+													<li> <img src="assets/images/banner/offer-banner.png"> </li>
+												</ul>
+											</div>
+										</div>
+									</div> -->
+								</div>
+								<!-- Right Column Ads Ends -->
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!--.right-col-container-->
+	</div>
+	<!--.right-main-column-->
+</div>
+<!-- main -->
+<aside class="notification-panel sticky-panel ">
+	<div class="notp-header">
+		<a href="javascript:;" class="btn-closenoty"></a>
+		<h5>{{"THEME_CUTOMIZER " | translate }}</h5> </div>
+	<div class="notp-content">
+		<div class="notp-innercontent">
+			<div class="notp-nodatafound">
+				<div class="col-12">
+					<h5>{{"NAVIGATION " | translate}}</h5>
+					<div>
+						<label class="ux-selection2">{{"VERTICAL" | translate}}
+							<input type="radio" checked="checked" name="radioboxdemo"> <span class="checkmark"></span> </label>
+						<label class="ux-selection2">{{"HORIZONTAL" | translate}}
+							<input type="radio" name="radioboxdemo"> <span class="checkmark"></span> </label>
+					</div>
+					<div class="vspacer20"></div>
+					<h5>{{"THEME_COLOR" | translate}}</h5>
+					<div class="row1 mb-1">
+						<div class="col-12">
+							<ul class="theme-list">
+								<li class="blue"></li>
+								<li class="green"></li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="vspacer20"></div>
+			<div class="vspacer20"></div>
+			<div class="row1">
+				<div class="col-12 col-xl-12 col-lg-12 col-md-12 ">
+					<div class="ux-footer">
+						<button class="ux-button sm primary float-right">{{"SUBMIT" | translate}}</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- <div class="notp-footer">
+			<p>Test</p>
+		</div>  -->
+	<!-- <div class="page-tools">
+			<div class="lst-page-tools">
+				  <a href="#" class="rightpannel">
+					  <img src="assets/images/svg/adjust.svg" alt="adjust-icon">
+					</a>
+			 </div>
+		 </div> -->
+</aside>
+<div class="notpanel-overlay"></div>

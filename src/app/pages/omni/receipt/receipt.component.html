@@ -1,0 +1,1056 @@
+<div class="main bg-m">
+  <header class="global-header success-bg minus-nav" *ngIf="dataService.isCordovaAvailable">
+    <div class="in-header">
+      <div class="header-icons-lft ">
+        <div class="header-actions">
+          <button class="ux-button-header">
+            <img src="assets/images/svg/close-w.svg" (click)="navigate('/dashboardMobile')" alt="left-arrow-icon"
+              class="img-vsmall" />
+          </button>
+        </div>
+      </div>
+      <div class="brand-logo">
+      </div>
+      <div class="header-icons-rit">
+        <div class="header-actions">
+
+          <button class="ux-button-header mr-2" (click)="downloadPdfReceipt('N')">
+            <img src="assets/images/svg/download1-w.svg" alt="download-icon" class="img-small" />
+          </button>
+          <button class="ux-button-header mr-2" (click)="downloadPdfReceipt('Y')">
+            <img src="assets/images/svg/share1-w.svg" alt="share-icon" class="img-small" />
+          </button>
+          <button class="ux-button-header mr-2" (click)="openPopup('fav-popup')" *ngIf="dataService.screenType != 'addPayee'">
+            <img [src]="isFavourite ? 'assets/images/svg/star1-active.svg': 'assets/images/svg/star1-w.svg'"
+              alt="star-icon" class="img-small" />
+          </button>
+          <!-- <button class="ux-button-header" >
+                        <img src="assets/images/svg/scan-qr-w.svg"  alt="scan-icon" class="img-small"/>
+                    </button>   -->
+        </div>
+      </div>
+    </div>
+
+  </header>
+  <!-- <div class="nav-overlay"></div> -->
+  <div class="right-main-column ">
+    <div class="right-col-container pad-b full-width">
+      <!-- ======== body page content start from here ======== -->
+      <div class="body-page-container main-dashborad manage-payee">
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col-12 p-0">
+              <div class="breadcrumb">
+                <ul class="lst-breadcrumb">
+                  <li *ngIf="dataService.screenType == 'fundTransfer' || dataService.screenType == 'instaPay'"> <a
+                      routerLink="/sendMoney">{{"SEND_MONEY" | translate }}</a> </li>
+                  <li *ngIf="dataService.screenType == 'fundTransfer'"> <a
+                      routerLink="/sendMoney">{{"INITIATE_SEND_MONEY" | translate }}</a> </li>
+                  <li *ngIf="dataService.screenType == 'chequeBookRequest'"> <a
+                      routerLink="/chequeBookRequest">{{"SERVICE_REQUEST" | translate}}</a> </li>
+                  <li *ngIf="dataService.screenType == 'chequeBookRequest'"> <a
+                      routerLink="/chequeBookRequest">{{"CHEQUE_BOOK_REQUEST" | translate}}</a> </li>
+                  <li *ngIf="dataService.screenType == 'stopCheque'"> <a
+                      routerLink="/stopcheques">{{"SERVICE_REQUEST" | translate}}</a> </li>
+                  <li *ngIf="dataService.screenType == 'stopCheque'"> <a
+                      routerLink="/stopcheques">{{"STOP_CHEQUE" | translate}}</a> </li>
+                  <li *ngIf="dataService.screenType == 'addPayee' &&  dataService.beneficiaryType=='1'"> <a
+                      routerLink="/addPayee">{{"SEND_MONEY" | translate }}</a> </li>
+                  <li> {{"RECEIPT" | translate }} </li>
+                </ul>
+              </div>
+            </div>
+
+          </div>
+          <!--.row -->
+          <div class="vspacer15 customize d-none d-md-block d-lg-block d-xl-block"></div>
+          <div class="row no-gutters">
+            <div class="col-12">
+              <div class="row1">
+                <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-9" id="receiptPDF">
+                  <!-- Greencard2 Start here -->
+                  <div class="greencard2">
+                    <div class="row1 hide-m" *ngIf="dataService.screenType != 'addPayee'">
+                      <div class="col-md-8 col-12">
+                        <h4>{{"RECEIPT" | translate }}</h4>
+                      </div>
+                      <div class="col-md-4 col-12"> </div>
+                    </div>
+                    <div class="row1">
+                      <!-- Result -->
+                      <div class="col-sm-12 col-12 col-md-12">
+                        <div class="white-box2 mar-t pad-custom custom-bor">
+                          <div class="row">
+                            <div class="success">
+                              <!-- <small *ngIf="receiptType == 'successful'">Your Request has been submitted Successfully</small> <small *ngIf="receiptType != 'successful'">Your Request has not not been submitted Successfully</small> -->
+                              <!-- <h5 class="pl-0" *ngIf="(dataService.endPoint != constant.serviceName_SCHEDULARTRANSMASTER)"
+                                [ngClass]="{'success': receiptType === constant.val_Successful, 'error' : receiptType != constant.val_Successful }">
+                                <img [src]="receiptType == constant.val_Successful ? 'assets/images/svg/success-arrow.svg' :  'assets/images/svg/fail.svg'"
+                                  alt="success-icon"> {{receiptType}}</h5>
+                              <h5 class="pl-0" *ngIf="(dataService.endPoint == constant.serviceName_SCHEDULARTRANSMASTER)" [ngClass]="{'success': receiptType === constant.val_Successful, 'error' : receiptType != constant.val_Successful }">
+                                <img [src]="receiptType == constant.val_Successful ? 'assets/images/svg/success-arrow.svg' :  'assets/images/svg/fail.svg'" alt="success-icon"> {{dataService.receiptmsg}}</h5>
+                              <small  *ngIf="(dataService.endPoint == constant.serviceName_SCHEDULARTRANSMASTER && receiptType === constant.val_Successful)">Transaction Scheduled Successfully</small>
+                              <small  *ngIf="(dataService.endPoint != constant.serviceName_SCHEDULARTRANSMASTER && receiptType === constant.val_Successful )">Transaction Successfull</small> -->
+
+                              <h5 class="pl-0" [ngClass]="{'success': receiptType === constant.val_Successful, 'error' : receiptType != constant.val_Successful }">
+                              <img [src]="receiptType == constant.val_Successful ? 'assets/images/svg/success-arrow.svg' :  'assets/images/svg/fail.svg'" alt="success-icon"> {{receiptType}}</h5>
+                              <!-- <h5 class="pl-0" *ngIf="(dataService.endPoint != constant.serviceName_SCHEDULARTRANSMASTER)" [ngClass]="{'success': receiptType === constant.val_Successful, 'error' : receiptType != constant.val_Successful }">
+                                <img [src]="receiptType == constant.val_Successful ? 'assets/images/svg/success-arrow.svg' :  'assets/images/svg/fail.svg'" alt="success-icon"> {{dataService.receiptmsg}}</h5> -->
+
+                              <small  *ngIf="(dataService.endPoint != constant.serviceName_SCHEDULARTRANSMASTER)">{{dataService.receiptmsg}}</small>
+                              <small  *ngIf="(dataService.endPoint == constant.serviceName_SCHEDULARTRANSMASTER && receiptType === constant.val_Successful)"> {{"TRANSACTION_SCHEDULED_SUCCESSFULLY" | translate }}</small>
+                              <small  *ngIf="(dataService.endPoint == constant.serviceName_SCHEDULARTRANSMASTER && receiptType != constant.val_Successful )">{{dataService.receiptmsg}}</small>
+
+
+                              <h4 *ngIf="(dataService.screenType != 'freezeAccount' && dataService.screenType != 'addPayee') && dataService.screenType != 'donationTransfer'">
+                                {{receiptResp?.amount}}</h4>
+                              <small class="mt-3">
+                                <span *ngIf="dataService.screenType != 'addPayee'">
+                                   {{receiptResp?.type == "vpa" ? ("RRN No. : " | translate) : ("TRANSACTION_ID" | translate) }} {{receipdRefID}}
+                                </span>
+                              </small>
+                            </div>
+                          </div>
+                          <div class="bg-img " id="bank-logo"> <img src="assets/images/svg/psb-receipt icon.svg"
+                              alt="success-bg" data-html2canvas-ignore="false" /> </div>
+                        </div>
+                      </div>
+
+                      <!-- First : Fund Transfer -->
+                      <div class="col-sm-12 col-12 col-md-12" *ngIf="dataService.screenType == 'fundTransfer'">
+                        <div class="result-container1 mar-top">
+                          <div class="info-bottom pad-custom">
+                            <div class="info-details mt-3">
+                              <div class="row" *ngIf='receiptResp?.from_acc'>
+                                <h6>{{"FROM_ACCOUNT" | translate }}</h6>
+                                <h5>
+                                  {{receiptResp?.from_acc == 'NA' || receiptResp?.from_acc == '' ? '-' : receiptResp?.from_acc }}
+                                </h5>
+                              </div>
+
+                              <div class="row" *ngIf='!receiptResp?.from_acc && receiptResp?.type == "vpa"'>
+                                <h6>{{"UPI_ID" | translate }}</h6>
+                                <h5>{{receiptResp?.payerAddr}}</h5>
+                              </div>
+                            </div>
+                            <div class="info-details">
+                              <div class="row" *ngIf='receiptResp?.to_acc'>
+                                <h6>{{"TO_ACCOUNT" | translate }}</h6>
+                                <h5>
+                                  {{receiptResp?.to_acc == 'NA' || receiptResp?.to_acc == '' ? '-' : receiptResp?.to_acc }}
+                                </h5>
+                              </div>
+
+                              <div class="row" *ngIf='!receiptResp?.to_acc && receiptResp?.type == "vpa"'>
+                                <h6>{{"TO_PAYEE" | translate }}</h6>
+                                <h5>{{'UPI_ID' | translate }} : {{receiptResp?.payeeAddr}}</h5>
+                              </div>
+                            </div>
+                            <div class="info-details">
+                              <div class="row">
+                                <h6>{{"PAYEE_NAME" | translate }}</h6>
+                                <h5>
+                                  {{receiptResp?.payee_name == 'NA' || receiptResp?.payee_name == '' ? '-' : receiptResp?.payee_name }}
+                                </h5>
+                              </div>
+                            </div>
+                            <div class="info-details">
+                              <div class="row">
+                                <h6>{{"AMOUNT" | translate }} </h6>
+                                <h5>
+                                  <!--<img src="assets/images/svg/rupee-bl.svg" alt="rupees-icon">-->{{receiptResp?.amount == 'NA' || receiptResp?.amount == '' ? '-' : receiptResp?.amount }}
+                                </h5>
+                              </div>
+                            </div>
+                            <div class="info-details" *ngIf="receiptResp?.modeOfTransfer != ''" >
+															<div class="row">
+																<h6>  {{"TRANSACTION_MODE" | translate }} </h6>
+																<h5>  {{ receiptResp?.modeOfTransfer}}</h5> </div>
+														</div>
+														<div class="info-details" *ngIf="receiptResp?.modeOfTransfer != ''" >
+															<div class="row">
+																<h6> {{"PAYEE_BANK_NAME" | translate }}</h6>
+																<h5>{{ receiptResp?.benificaryBankName}}</h5> </div>
+														</div>
+														<div class="info-details" *ngIf="receiptResp?.modeOfTransfer != ''" >
+															<div class="row">
+																<h6> {{"IFSC_CODE" | translate }}</h6>
+																<h5>{{ receiptResp?.ifscCode}}</h5> </div>
+														</div>
+                            <div class="info-details">
+                              <div class="row">
+                                <h6>{{"REMARKS" | translate }}</h6>
+                                <h5>
+                                  {{receiptResp?.remarks == 'NA' || receiptResp?.remarks == '' ? '-' : receiptResp?.remarks}}
+                                </h5>
+                              </div>
+                            </div>
+                            <div class="info-details">
+                              <div class="row">
+                                <h6 *ngIf="!receiptResp?.isScheduled">{{ "TRANSACTION_DATE" | translate }}</h6>
+                                <h6 *ngIf="receiptResp?.isScheduled">{{ "TRANSACTION_INITIATED_DATE" | translate }}</h6>
+                                <h5>{{todayDateTimedisplay  }}</h5>
+                              </div>
+                            </div>
+                            <div class="info-details" *ngIf="receiptResp?.isScheduled">
+                              <div class="row">
+                                <h6>{{ "SCHEDULED_DATE" | translate }}</h6>
+                                <h5>{{ receiptResp?.scheduledDate | date: "dd MMM yyyy" }}</h5>
+                              </div>
+                            </div>
+                            <div class="info-details" *ngIf="receiptResp?.isScheduled">
+                              <div class="row">
+                                <h6>{{ "FREQUENCY" | translate }}</h6>
+                                <h5>{{ receiptResp?.scheduledType }}</h5>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <!-- End First : Fund Transfer -->
+
+                      <!-- Second : Freeze Account -->
+                      <div class="col-sm-12 col-12 col-md-12" *ngIf="dataService.screenType == 'freezeAccount'">
+                        <div class="result-container1 mar-top">
+                          <div class="info-bottom pad-custom">
+                            <div class="info-details mt-3">
+                              <div class="row">
+                                <h6>{{"ACCOUNT_NUMBER" | translate }}</h6>
+                                <h5>{{commonMethod.maskAccNo(receiptResp?.accountNumber)}}</h5>
+                              </div>
+                            </div>
+                            <div class="info-details">
+                              <div class="row" *ngIf="receiptResp?.typeOfFreeze == 'C'">
+                                <h6>{{"TYPE_OF_FREEZE" | translate }}</h6>
+                                <h5>Credit Freeze Only</h5>
+                              </div>
+                              <div class="row" *ngIf="receiptResp?.typeOfFreeze == 'D'">
+                                <h6>{{"TYPE_OF_FREEZE" | translate }}</h6>
+                                <h5>Debit Freeze Only</h5>
+                              </div>
+                              <div class="row" *ngIf="receiptResp?.typeOfFreeze == 'T'">
+                                <h6>{{"TYPE_OF_FREEZE" | translate }}</h6>
+                                <h5>Total Freeze Only</h5>
+                              </div>
+                            </div>
+                            <div class="info-details">
+                              <div class="row">
+                                <h6>{{"REMARKS" | translate }}</h6>
+                                <h5>{{receiptResp?.remarks}}</h5>
+                              </div>
+                            </div>
+                            <div class="info-details">
+                              <div class="row">
+                                <h6>{{"DATE" | translate }}</h6>
+                                <h5>{{todayDateTimedisplay  }}</h5>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <!--End Second : Freeze Account -->
+
+                      <!--Start : Donation -->
+                      <div class="col-sm-12 col-12 col-md-12" *ngIf="dataService.screenType == 'donationTransfer'">
+                        <div class="result-container1 mar-top">
+                          <div class="info-bottom pad-custom">
+                            <div class="info-details mt-3">
+                              <div class="row">
+                                <h6>{{"ACCOUNT_NUMBER" | translate }}</h6>
+                                <h5>{{commonMethod.maskAccNo(receiptResp?.accountNumber)}}</h5>
+                              </div>
+                            </div>
+                            <div class="info-details">
+                              <div class="row">
+                                <h6>{{ "PAYEE_NAME" | translate }}</h6>
+                                <h5>{{ receiptResp?.payeeName }}</h5>
+                              </div>
+                            </div>
+                            <div class="info-details">
+                              <div class="row">
+                                <h6>{{"TO_ACCOUNT" | translate }}</h6>
+                                <h5>{{ receiptResp?.to_acc }}</h5>
+                              </div>
+                            </div>
+                            <div class="info-details">
+                              <div class="row">
+                                <h6>{{"AMOUNT" | translate }}</h6>
+                                <h5>{{ receiptResp?.amount}}</h5>
+                              </div>
+                            </div>
+                            <div class="info-details">
+                              <div class="row">
+                                <h6>{{"REMARKS" | translate }}</h6>
+                                {{ receiptResp?.remarks }}
+                                <h5></h5>
+                              </div>
+                            </div>
+                            <div class="info-details">
+                              <div class="row">
+                                <h6>{{"DATE" | translate }}</h6>
+                                <h5>{{ todayDateTimedisplay  }}</h5>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <!--END : Donation -->
+                        				<!-- Chequebook Request starts -->
+
+				<div class="col-sm-12 col-12 col-md-12" *ngIf="dataService.screenType == 'chequeBookRequest'  ">
+					<div class="result-container1 mar-top">
+					  <div class="info-bottom pad-custom">
+						<div class="info-details mt-3">
+						  <div class="row">
+							<h6>{{ "ACCOUNT_NUMBER" | translate }} </h6>
+							<h5>{{ receiptResp?.accNumber }}</h5> </div>
+						</div>
+						<div class="info-details">
+						  <div class="row">
+							  <h6> {{"NUMBER_OF_LEAVES" | translate }}</h6>
+							  <h5>{{receiptResp?.checkPageNo}}</h5> </div>
+					  </div>
+						<div class="info-details">
+						  <div class="row">
+							<h6>{{ "DELIVERY_ADDRESS" | translate }} </h6>
+							<h5>{{ receiptResp?.commAddress }}</h5> </div>
+						</div>
+					  </div>
+					</div>
+				  </div>
+				<!-- Chequebook Request Ends -->
+
+                      <!-- Third : Add Payee & Beneficiary Type =1  -->
+                      <!-- <div class="col-sm-12 col-12 col-md-12" *ngIf="dataService.screenType == 'addPayee' && dataService.beneficiaryType == '1'">
+												<div class="result-container1 mar-top">
+													<div class="info-bottom pad-custom">
+														<div class="info-details mt-3">
+															<div class="row">
+																<h6>Payee Account Name</h6>
+																<h5>{{ receiptResp?.payeeAccName }}</h5> </div>
+														</div>
+														<div class="info-details">
+															<div class="row">
+																<h6>Payee Account Number</h6>
+																<h5>{{ receiptResp?.payeeAccNo }}</h5> </div>
+														</div>
+														<div class="info-details">
+															<div class="row">
+																<h6>Nick Name</h6>
+																<h5>{{ receiptResp?.payeeNickName }}</h5> </div>
+														</div>
+													</div>
+												</div>
+											</div> -->
+                      <!--End Third : Add Payee & Beneficiary Type -->
+
+                      <!-- Fourth : Add Payee & Beneficiary Type =1  -->
+                      <div class="col-sm-12 col-12 col-md-12"
+                        *ngIf="dataService.screenType == 'addPayee' && dataService.beneficiaryType == '1'">
+                        <div class="result-container1 mar-top">
+                          <div class="info-bottom pad-custom">
+                            <div class="info-details mt-3">
+                              <div class="row">
+                                <h6> {{"PAYEE_NAME" | translate }}</h6>
+                                <h5>{{ receiptResp?.payeeAccName }}</h5>
+                              </div>
+                            </div>
+                            <div class="info-details">
+                              <div class="row">
+                                <h6> {{"PAYEE_ACCOUNT_NUMBER" | translate }}</h6>
+                                <h5>{{ receiptResp?.payeeAccNo }}</h5>
+                              </div>
+                            </div>
+                            <div class="info-details">
+                              <div class="row">
+                                <h6> {{"NICK_NAME" | translate }}</h6>
+                                <h5>{{ receiptResp?.payeeNickName }}</h5>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <!--End Fourth : Add Payee & Beneficiary Type =1 -->
+
+                      <!-- Fifth : Add Payee & Beneficiary Type =2  -->
+                      <div class="col-sm-12 col-12 col-md-12"
+                        *ngIf="dataService.screenType == 'addPayee' && dataService.beneficiaryType == '2'">
+                        <div class="result-container1 mar-top">
+                          <div class="info-bottom pad-custom">
+                            <div class="info-details mt-3">
+                              <div class="row">
+                                <h6> {{"PAYEE_NAME" | translate }}</h6>
+                                <h5>{{ receiptResp?.payeeAccName }}</h5>
+                              </div>
+                            </div>
+                            <div class="info-details">
+                              <div class="row">
+                                <h6> {{"PAYEE_ACCOUNT_NUMBER" | translate }}</h6>
+                                <h5>{{ receiptResp?.payeeAccNo }}</h5>
+                              </div>
+                            </div>
+                            <div class="info-details">
+                              <div class="row">
+                                <h6> {{"NICK_NAME" | translate }}</h6>
+                                <h5>{{ receiptResp?.payeeNickName }}</h5>
+                              </div>
+                            </div>
+                            <div class="info-details">
+                              <div class="row">
+                                <h6> {{"IFSC_CODE" | translate }}</h6>
+                                <h5>{{ receiptResp?.payeeIfsc }}</h5>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <!--End Fifth : Add Payee & Beneficiary Type =2 -->
+
+                      <!-- Sixth : Add Payee & Beneficiary Type = 3 -->
+                      <div class="col-sm-12 col-12 col-md-12"
+                        *ngIf="dataService.screenType == 'addPayee' && dataService.beneficiaryType == '3'">
+                        <div class="result-container1 mar-top">
+                          <div class="info-bottom pad-custom">
+                            <div class="info-details mt-3">
+                              <div class="row">
+                                <h6> {{"PAYEE_MOBILE_NUMBER" | translate }}</h6>
+                                <h5>{{ receiptResp?.payeeMobileNo }}</h5>
+                              </div>
+                            </div>
+                            <div class="info-details">
+                              <div class="row">
+                                <h6> {{"MMID" | translate }}</h6>
+                                <h5>{{ receiptResp?.payeeMMID }}</h5>
+                              </div>
+                            </div>
+                            <div class="info-details">
+                              <div class="row">
+                                <h6>{{"PAYEE_NAME" | translate }}</h6>
+                                <h5>{{ receiptResp?.payeeAccName }}</h5>
+                              </div>
+                            </div>
+                            <div class="info-details">
+                              <div class="row">
+                                <h6> {{"NICK_NAME" | translate }}</h6>
+                                <h5>{{ receiptResp?.payeeNickName }}</h5>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <!--End Sixth : Add Payee & Beneficiary Type =3 -->
+
+                      <!-- Seventh : Add Payee & Beneficiary Type = 3 -->
+                      <div class="col-sm-12 col-12 col-md-12"
+                        *ngIf="dataService.screenType == 'addPayee' && dataService.beneficiaryType == '4'">
+                        <div class="result-container1 mar-top">
+                          <div class="info-bottom pad-custom">
+                            <div class="info-details mt-3">
+                              <div class="row">
+                                <h6>{{"PAYEE_VPA" | translate }}</h6>
+                                <h5>{{ receiptResp?.payeeVpa }}</h5>
+                              </div>
+                            </div>
+                            <div class="info-details">
+                              <div class="row">
+                                <h6>{{"PAYEE_NAME" | translate }}</h6>
+                                <h5>{{ receiptResp?.payeeAccName }}</h5>
+                              </div>
+                            </div>
+                            <div class="info-details">
+                              <div class="row">
+                                <h6>Nick Name</h6>
+                                <h5>{{ receiptResp?.payeeNickName }}</h5>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <!--End Seventh : Add Payee & Beneficiary Type =3 -->
+
+                      <!-- Eight : Positive Pay -->
+                      <div class="col-sm-12 col-12 col-md-12" *ngIf="dataService.screenType == 'positivePay' ">
+                        <div class="result-container1 mar-top">
+                          <div class="info-bottom pad-custom">
+                            <div class="info-details mt-3">
+															<div class="row">
+																<h6> {{"ACCOUNT_NUMBER" | translate }}</h6>
+																<h5>{{receiptResp?.selectAccount}}</h5>
+																<!-- <h5><span>Biller ID MGAs2099832</span></h5> --></div>
+														</div>
+														<div class="info-details">
+															<div class="row">
+																<h6> {{"ISSUER_NAME" | translate }}</h6>
+																<h5>{{receiptResp?.selectedName}}</h5> </div>
+														</div>
+														<div class="info-details">
+															<div class="row">
+																<h6> {{"PAYEE_NAME" | translate }}</h6>
+																<h5>{{receiptResp?.payeeName}}</h5> </div>
+														</div>
+														<div class="info-details">
+															<div class="row">
+																<h6> {{"CHEQUK_NUMBER" | translate }} </h6>
+																<h5>{{receiptResp?.chequeNumber}}</h5> </div>
+														</div>
+														<div class="info-details">
+															<div class="row">
+																<h6> {{"AMOUNT" | translate }}</h6>
+																<h5>{{receiptResp?.amount | customcurrency: "symbol"}}</h5> </div>
+														</div>
+														<div class="info-details">
+															<div class="row">
+																<h6>  {{"CHEQUE_ISSUE_DATE" | translate }}</h6>
+																<h5>{{receiptResp?.datepicker1}}</h5> </div>
+														</div>
+														<div class="info-details">
+															<div class="row">
+																<h6> {{"MICR" | translate }}</h6>
+																<h5>{{receiptResp?.micr}}</h5> </div>
+														</div>
+                          </div>
+                        </div>
+                      </div>
+                      <!--End Eight : Positive Pay -->
+
+                      <!-- Nine : physical card -->
+                      <div class="col-sm-12 col-12 col-md-12" *ngIf="dataService.screenType == 'getPhysicalCard' ">
+                        <div class="result-container1 mar-top">
+                          <div class="info-bottom pad-custom">
+                            <div class="info-details mt-3">
+                              <div class="row">
+                                <h6> {{"DEBIT_CARD_NUMBER" | translate }}</h6>
+                                <h5>{{ receiptResp?.MaskCardNumber }}</h5>
+                              </div>
+                            </div>
+                            <div class="info-details">
+                              <div class="row">
+                                <h6> {{"LINK_ACCOUNT" | translate }}</h6>
+                                <h5>{{ commonMethod.maskAccNo(receiptResp?.AccountNo )}}</h5>
+                              </div>
+                            </div>
+                            <div class="info-details">
+                              <div class="row">
+                                <h6>{{ "CARD_TYPE" | translate }}</h6>
+                                <h5>{{ receiptResp.cardApplyType}}</h5> </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <!-- End : physical card -->
+
+                      <!-- Ten : Reissue card -->
+                      <div class="col-sm-12 col-12 col-md-12" *ngIf="dataService.screenType == 'reissuecard' ">
+                        <div class="result-container1 mar-top">
+                          <div class="info-bottom pad-custom">
+                            <div class="info-details mt-3">
+                              <div class="row">
+                                <h6>  {{"OLD_DEBIT_CARD_NUMBER" | translate }}</h6>
+                                <h5>{{ receiptResp?.MaskCardNumber }}</h5>
+                              </div>
+                            </div>
+                            <div class="info-details">
+                              <div class="row">
+                                <h6>{{"LINK_ACCOUNT" | translate }} </h6>
+                                <h5>{{ commonMethod.maskAccNo(receiptResp?.AccountNo) }}</h5>
+                              </div>
+                            </div>
+                            <div class="info-details">
+                              <div class="row">
+                                <h6>{{"NEW_DEBIT_CARD_NUMBER" | translate }} </h6>
+                                <h5>{{ receiptResp?.newCardNo }}</h5>
+                              </div>
+                            </div>
+                            <div class="info-details">
+                              <div class="row">
+                                <h6>{{"CARD_MODE" | translate }} </h6>
+                                <h5>{{ receiptResp?.cardMode }}</h5>
+                              </div>
+                            </div>
+                            <div class="info-details">
+                              <div class="row">
+                                <h6>{{"CARD_TYPE" | translate }} </h6>
+                                <h5>{{ receiptResp?.cardApplyType }}</h5>
+                              </div>
+                            </div>
+                            <div class="info-details">
+                              <div class="row">
+                                <h6>{{"BLOCK_REASON" | translate }} </h6>
+                                <h5>{{ receiptResp?.blockReason }}</h5>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <!-- End : Reissue card -->
+
+                      <!-- Ten : Hostlist card -->
+                      <div class="col-sm-12 col-12 col-md-12" *ngIf="dataService.screenType == 'blockCard' ">
+                        <div class="result-container1 mar-top">
+                          <div class="info-bottom pad-custom">
+                            <div class="info-details mt-3">
+                              <div class="row">
+                                <h6> {{"OLD_DEBIT_CARD_NUMBER" | translate }}</h6>
+                                <h5>{{ receiptResp?.MaskCardNumber }}</h5>
+                              </div>
+                            </div>
+                            <div class="info-details">
+                              <div class="row">
+                                <h6> {{"LINK_ACCOUNT" | translate }}</h6>
+                                <h5>{{ commonMethod.maskAccNo(receiptResp?.AccountNo) }}</h5>
+                              </div>
+                            </div>
+                            <div class="info-details">
+                              <div class="row">
+                                <label> {{"REASON_FOR_HOTLISTING" | translate }}</label>
+                                <h4 style="text-align: left !important;">{{ receiptResp?.reason }}</h4>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <!-- End : Reissue card -->
+
+                      <!-- Ten : pay emi -->
+                      <div class="col-sm-12 col-12 col-md-12" *ngIf="dataService.screenType == 'payemi' ">
+                        <div class="result-container1 mar-top">
+                          <div class="info-bottom pad-custom">
+                            <div class="info-details mt-3">
+                              <div class="row">
+                                <h6> {{"FROM_ACCOUNT" | translate }}</h6>
+                                <h5>{{ receiptResp?.from_acc }}</h5>
+                              </div>
+                            </div>
+                            <div class="info-details">
+                              <div class="row">
+                                <h6> {{"TO_ACCOUNT" | translate }}</h6>
+                                <h5>{{ receiptResp?.to_acc }}</h5>
+                              </div>
+                            </div>
+                            <div class="info-details">
+                              <div class="row">
+                                <h6> {{"PAYEE_NAME" | translate }}</h6>
+                                <h5>{{ receiptResp?.payee_name }}</h5>
+                              </div>
+                            </div>
+                            <div class="info-details">
+                              <div class="row">
+                                <h6> {{"LOAN_TYPE" | translate }}</h6>
+                                <h5>{{ receiptResp?.loanType }}</h5>
+                              </div>
+                            </div>
+                            <!-- <div class="info-details">
+                              <div class="row">
+                                <h6>IFSC</h6>
+                                <h5>{{ receiptResp?.ifscCode }}</h5>
+                              </div>
+                            </div> -->
+                            <div class="info-details">
+                              <div class="row">
+                                <h6>  {{"EMI_AMOUNT" | translate }}</h6>
+                                <h5>{{ receiptResp?.amount  | customcurrency }}</h5>
+                              </div>
+                            </div>
+                            <div class="info-details">
+                              <div class="row">
+                                <h6>  {{"REMARKS" | translate }}</h6>
+                                <h5>
+                                  {{
+                                    receiptResp?.remarks == null || receiptResp?.remarks == ""
+                                      ? "-"
+                                      : receiptResp?.remarks
+                                  }}
+                                </h5>
+                              </div>
+                            </div>
+                            <div class="info-details">
+                              <div class="row">
+                                <h6>Date</h6>
+                                <h5>{{ todayDateTimedisplay }}</h5>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <!-- End : Reissue card -->
+
+                      <!-- APY start -->
+                      <div class="col-sm-12 col-12 col-md-12" *ngIf="dataService.screenType == 'apyOtpAuth'  ">
+                        <div class="result-container1 mar-top">
+                          <div class="info-bottom pad-custom">
+                            <div class="info-details mt-3">
+                              <div class="row">
+                                <h6> {{"SCHEME" | translate }} </h6>
+                                <h5>Atal Pension Yojna (APY) Scheme</h5>
+                              </div>
+                            </div>
+                            <div class="info-details">
+                              <div class="row">
+                                <h6> {{"NAME" | translate }}</h6>
+                                <h5>{{ receiptResp?.name }}</h5>
+                              </div>
+                            </div>
+                            <div class="info-details">
+                              <div class="row">
+                                <h6>  {{"DOB" | translate }}</h6>
+                                <h5>{{ receiptResp?.dob }}</h5>
+                              </div>
+                            </div>
+                            <div class="info-details">
+                              <div class="row">
+                                <h6> {{"NOMINEE_NAME" | translate }} </h6>
+                                <h5>{{ receiptResp?.nomineeName }}</h5>
+                              </div>
+                            </div>
+                            <div class="info-details">
+                              <div class="row">
+                                <h6> {{"DEBIT_AMOUNT" | translate }}</h6>
+                                <h5>{{ receiptResp?.debitAcc }}</h5>
+                              </div>
+                            </div>
+                            <div class="info-details">
+                              <div class="row">
+                                <h6> {{"PENSION_AMOUNT" | translate }}</h6>
+                                <h5>{{ receiptResp?.pensionAmt }}</h5>
+                              </div>
+                            </div>
+                            <!-- <div class="info-details">
+													  <div class="row">
+														<h6>Premium Amount </h6>
+														<h5></h5>
+														</div>
+													</div> -->
+                            <div class="info-details">
+                              <div class="row">
+                                <h6> {{"PREMIUM_FREQUENCY" | translate }}</h6>
+                                <h5>{{ receiptResp?.premiumFreq }}</h5>
+                              </div>
+                            </div>
+                            <div class="info-details">
+                              <div class="row">
+                                <h6> {{"POLICY_NUMBER" | translate }}</h6>
+                                <h5>{{ receiptResp?.pranNo }}</h5>
+                              </div>
+                            </div>
+                            <!-- <div class="info-details">
+														<div class="row">
+														  <h6>Date of Enrollment </h6>
+														  <h5></h5>
+														</div>
+													</div> -->
+                          </div>
+                        </div>
+                      </div>
+                      <!-- Apy end -->
+
+                      <!-- First : Insta Pay -->
+                      <div class="col-sm-12 col-12 col-md-12" *ngIf="dataService.screenType == 'instaPay'">
+                        <div class="result-container1 mar-top">
+                          <div class="info-bottom pad-custom">
+                            <div class="info-details mt-3">
+                              <div class="row" *ngIf='receiptResp?.from_acc'>
+                                <h6>{{"FROM_ACCOUNT" | translate }}</h6>
+                                <h5>
+                                  {{receiptResp?.from_acc == 'NA' || receiptResp?.from_acc == '' ? '-' : receiptResp?.from_acc }}
+                                </h5>
+                              </div>
+
+                              <div class="row" *ngIf='!receiptResp?.from_acc && receiptResp?.type == "vpa"'>
+                                <h6>{{"UPI_ID" | translate }}</h6>
+                                <h5>{{receiptResp?.payerAddr}}</h5>
+                              </div>
+                            </div>
+                            <div class="info-details">
+                              <div class="row" *ngIf='receiptResp?.to_acc'>
+                                <h6>{{"TO_ACCOUNT" | translate }}</h6>
+                                <h5>
+                                  {{receiptResp?.to_acc == 'NA' || receiptResp?.to_acc == '' ? '-' : receiptResp?.to_acc }}
+                                </h5>
+                              </div>
+
+                              <div class="row" *ngIf='!receiptResp?.to_acc && receiptResp?.type == "vpa"'>
+                                <h6>{{"TO_PAYEE" | translate }}</h6>
+                                <h5>{{'UPI_ID' | translate }} : {{receiptResp?.payeeAddr}}</h5>
+                              </div>
+                            </div>
+                            <div class="info-details">
+                              <div class="row">
+                                <h6>{{"PAYEE_NAME" | translate }}</h6>
+                                <h5>
+                                  {{receiptResp?.payee_name == 'NA' || receiptResp?.payee_name == '' ? '-' : receiptResp?.payee_name }}
+                                </h5>
+                              </div>
+                            </div>
+                            <div class="info-details">
+                              <div class="row">
+                                <h6>{{"AMOUNT" | translate }} </h6>
+                                <h5>
+                                  {{receiptResp?.amount == 'NA' || receiptResp?.amount == '' ? '-' : receiptResp?.amount }}
+                                </h5>
+                              </div>
+                            </div>
+
+                            <div class="info-details" *ngIf="receiptResp?.modeOfTransfer != ''" >
+															<div class="row">
+																<h6>{{"TRANSACTION_MODE" | translate }} </h6>
+																<h5> IMPS </h5> </div>
+														</div>
+														<div class="info-details" *ngIf="receiptResp?.modeOfTransfer != ''" >
+															<div class="row">
+																<h6>Payee Bank Name </h6>
+																<h5>{{ receiptResp?.benificaryBankName}}</h5> </div>
+														</div>
+														<div class="info-details" *ngIf="receiptResp?.modeOfTransfer != ''" >
+															<div class="row">
+																<h6>IFSC Code</h6>
+																<h5>{{ receiptResp?.ifscCode}}</h5> </div>
+														</div>
+
+                            <div class="info-details">
+                              <div class="row">
+                                <h6>{{"REMARKS" | translate }}</h6>
+                                <h5>
+                                  {{receiptResp?.remarks == 'NA' || receiptResp?.remarks == '' ? '-' : receiptResp?.remarks}}
+                                </h5>
+                              </div>
+                            </div>
+                            <div class="info-details">
+                              <div class="row">
+                                <h6 *ngIf="!receiptResp?.isScheduled">{{ "TRANSACTION_DATE" | translate }}</h6>
+                                <h6 *ngIf="receiptResp?.isScheduled">{{ "TRANSACTION_INITIATED_DATE" | translate }}</h6>
+                                <h5>{{todayDateTimedisplay  }}</h5>
+                              </div>
+                            </div>
+                            <div class="info-details" *ngIf="receiptResp?.isScheduled">
+                              <div class="row">
+                                <h6>{{ "SCHEDULED_DATE" | translate }}</h6>
+                                <h5>{{ receiptResp?.scheduledDate | date: "dd MMM yyyy" }}</h5>
+                              </div>
+                            </div>
+                            <div class="info-details" *ngIf="receiptResp?.isScheduled">
+                              <div class="row">
+                                <h6>{{ "FREQUENCY" | translate }}</h6>
+                                <h5>{{ receiptResp?.scheduledType }}</h5>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <!-- End First : Insta Pay -->
+
+
+                      <!-- Start :  -->
+                      <div class="col-sm-12 col-12 col-md-12" *ngIf="dataService.screenType == 'generatePin'">
+                        <div class="result-container1 mar-top">
+                          <div class="info-bottom pad-custom">
+                            <div class="info-details mt-3">
+                              <div class="row">
+                                <h6> {{ "CARD_NUMBER" | translate }} </h6>
+                                <h5>{{receiptResp?.MaskCardNumber}}</h5>
+                              </div>
+                            </div>
+                            <div class="info-details">
+                              <div class="row">
+                                <h6>{{ "ACCOUNT_NUMBER" | translate }}</h6>
+                                <h5>{{ commonMethod.maskAccNo(receiptResp?.accountNumber)}}</h5>
+                              </div>
+                            </div>
+                            <div class="info-details">
+                              <div class="row">
+                                <h6>{{ "CARD_TYPE" | translate }}</h6>
+                                <h5>{{receiptResp?.cardType}}</h5>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <!-- End : Insta Pay -->
+
+                      <!-- Start : Apply Card -->
+                      <div class="col-sm-12 col-12 col-md-12" *ngIf="dataService.screenType == 'CardDetails'">
+                        <div class="result-container1 mar-top">
+                          <div class="info-bottom pad-custom">
+                            <div class="info-details mt-3">
+                              <div class="row">
+                                <h6>{{ "CARD_VARIANT" | translate }}</h6>
+                                <h5>{{receiptResp?.cardVariant}}</h5>
+                              </div>
+                            </div>
+                            <div class="info-details">
+                              <div class="row">
+                                <h6>{{ "ACCOUNT_NUMBER" | translate }}</h6>
+                                <h5>{{ commonMethod.maskAccNo(receiptResp?.accountNumber)}}</h5>
+                              </div>
+                            </div>
+                            <div class="info-details">
+                              <div class="row">
+                                <h6> {{ "NAME_ON_CARD" | translate }}</h6>
+                                <h5>{{receiptResp?.name}}</h5>
+                              </div>
+                            </div>
+                            <div class="info-details">
+                              <div class="row">
+                                <h6> {{ "CARD_TYPE" | translate }}</h6>
+                                <h5>{{receiptResp?.cardApplyType}}</h5>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <!-- End : ApplyCard -->
+
+                      <!-- Start : Host list Card -->
+                      <div class="col-sm-12 col-12 col-md-12" *ngIf="dataService.screenType == 'debitCard'">
+                        <div class="result-container1 mar-top">
+                          <div class="info-bottom pad-custom">
+                            <div class="info-details mt-3">
+                              <div class="row">
+                                <h6>{{ "CARD_NUMBER" | translate }}</h6>
+                                <h5>{{receiptResp?.cardNo}}</h5>
+                              </div>
+                            </div>
+                            <div class="info-details">
+                              <div class="row">
+                                <h6> {{ "ACCOUNT_NO" | translate }}</h6>
+                                <h5>{{ commonMethod.maskAccNo(receiptResp?.accountNo) }}</h5></div>
+                              </div>
+                              <div class="info-details">
+                                <div class="row">
+                                  <h6> {{ "OPERATION" | translate }} </h6>
+                                  <h5>{{receiptResp?.operation}}</h5></div>
+                                </div>
+                          </div>
+                        </div>
+                      </div>
+                      <!-- End : Host list card -->
+
+
+
+                      <div class="col-12 col-md-12">
+                        <div class="row1" data-html2canvas-ignore="false">
+                          <div class="col-md-12 col-lg-6 col-12"
+                            [ngStyle]="{'visibility' : dataService.screenType != 'addPayee' ? 'none' : 'hidden'  }">
+                            <ul class="link-list hide-m">
+                              <li (click)="shareDetails()">
+                                <a><img src="assets/images/svg/share.svg" alt="share-icon"> {{'SHARE' | translate}}</a>
+                              </li>
+                              <li (click)="downloadPdfReceipt('N')">
+                                <a><img src="assets/images/svg/download.svg" alt="download-icon"> {{'DOWNLOAD' | translate}}</a>
+                              </li>
+                              <li (click)="downloadPdfReceipt('Y')">
+                                <a> <img src="assets/images/svg/print.svg" alt="print-icon"> {{'PRINT' | translate}}</a>
+                              </li>
+                              <li (click)="addAndDeleteFav()"
+                                *ngIf="dataService.screenType == 'fundTransfer' && receiptResp?.paymentType != 'self'">
+                                <a> <img src="assets/images/svg/star.svg" alt="star-icon" *ngIf="!isFavourite"> <img
+                                    src="assets/images/svg/star-active.svg" alt="star-icon" *ngIf="isFavourite">   {{'SAVE_AS_FAVOURITE' | translate}}</a>
+                              </li>
+                              <!-- <li (click)="goToAddPayee()"
+                                *ngIf="dataService.screenType == 'instaPay' && receiptResp?.paymentType != 'self'">
+                                <a> <img src="assets/images/svg/star.svg" alt="star-icon" *ngIf="!isFavourite"> <img
+                                    src="assets/images/svg/star-active.svg" alt="star-icon" *ngIf="isFavourite"> Do you want it add as Payee?</a>
+                              </li> -->
+                            </ul>
+                          </div>
+                          <div class="col-md-12 col-lg-6 col-12">
+                            <ul class="bottom-footer1">
+                             
+                              <li>
+                                <div class="btn-div"
+                                  [ngStyle]="{display : dataService.screenType != 'addPayee' && dataService.screenType != 'debitCard' && dataService.screenType != 'reissuecard' &&  dataService.screenType != 'getPhysicalCard' && dataService.screenType != 'generatePin' && dataService.screenType != 'CardDetails' && dataService.screenType != 'blockCard' ? 'block' : 'none'  }">
+                                  <button (click)="goTofeedback()" class=" ux-button secondary sm-mob"> {{'FEEDBACK' | translate}}</button>
+                                </div>
+                                <!-- <div class="btn-div">
+																	<button class=" ux-button primary sm-mob" (click)="gotoFundTransfer()">Repeat Payment</button>
+																</div> -->
+                                <div class="btn-div" [ngClass]="dataService.screenType == 'addPayee' ? 'w100' : '' "> 
+                                  <button class=" ux-button primary sm-mob" (click)="goBack()"> {{'HOME' | translate}}</button>
+                                </div>
+                              </li>
+                            </ul>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <!-- Greencard2 End here -->
+                </div>
+                <!-- Right Column Ads Start -->
+                <div class="col-12 col-md-12 col-lg-12 col-xl-3 d-none d-xl-block">
+                  <div class="right-ads">
+                    <a> <img src="assets/images/banner/my-card-banner.jpg"> </a>
+                  </div>
+                  <div class="vspacer30"></div>
+                  <!-- Offercard Start-->
+                  <!-- <div class="offers-card">
+                    <div class="header-block clearfix">
+                      <h5> {{'OFFERS_ON_CARD' | translate}}</h5>
+                    </div>
+                    <div class="panel-body">
+                      <div class="recentpayment-control">
+                        <ul>
+                          <li> <img src="assets/images/banner/offer-banner.png"> </li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div> -->
+                  <!-- Offercard Ends-->
+                </div>
+                <!-- Right Column Ads Ends -->
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!--.right-col-container-->
+  </div>
+  <!--.right-main-column-->
+</div>
+<!-- main -->
+
+<div class="popup-bottom sm-popup fav-popup">
+    <div class="row">
+        <div class="col-12">
+            <h4 class="text-center">{{'CONFIRMATION' | translate}}</h4>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12">
+            <p *ngIf="!isFavourite">
+                {{'WOULD_YOU_LIKE_TO_ADD' | translate}} {{receiptResp?.type == "vpa" ? dataService.validateAddressResp.MASKNAME : receiptResp?.payee_name}} {{'TO_FAVORITES' | translate}} ?
+            </p>
+            <p *ngIf="isFavourite">
+                {{'WOULD_YOU_LIKE_TO_REMOVE' | translate}} {{receiptResp?.type == "vpa" ? dataService.validateAddressResp.MASKNAME : receiptResp?.payee_name}} {{'FROM_FAVORITES' | translate}} ?
+            </p>
+        </div>
+    </div>
+    <div class="row1 mt-2">
+        <div class="col-6 text-center">
+            <button class="ux-button secondary no md close-btn" (click)="closePopup('fav-popup')">{{'NO' |
+        translate}}</button>
+        </div>
+        <div class="col-6 text-center">
+            <button class="logout-btn ux-button primary md" (click)="addAndDeleteFav()">{{'YES' | translate}}</button>
+        </div>
+    </div>
+</div>
+<div class="popup-bottom sm-popup show-fav-info">
+    <div class="row1">
+        <div class="col-12">
+            <h4 class="text-center"> <img src="./assets/images/svg/information.svg" alt="information-icon"> {{'INFORMATION' | translate}}
+            </h4>
+        </div>
+    </div>
+    <div class="row1">
+        <div class="col-12">
+            <p>{{ information}}</p>
+        </div>
+    </div>
+    <div class="row1  mt-2">
+        <div class="col-12 text-center" (click)="closePopup('show-fav-info')">
+            <button class="ux-button primary submit-btn" type="button">{{'OK' | translate}}</button>
+        </div>
+    </div>
+</div>
+<div class="notpanel-overlay"></div>

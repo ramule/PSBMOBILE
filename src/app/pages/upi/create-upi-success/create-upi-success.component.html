@@ -1,0 +1,117 @@
+<div class="main">
+    <!--  Header Section Start -->
+    <header class="global-header success-bg minus-nav">
+        <div class="in-header">
+            <div class="header-icons-lft ">
+                <div class="header-actions">
+                    <button class="ux-button-header" (click)="goToNextScreen()"> <img src="assets/images/svg/close-w.svg" alt="left-arrow-icon" class="img-vsmall" /> </button>
+                </div>
+            </div>
+            <div class="brand-logo">
+                <h3>{{'RECEIPT' | translate }}</h3>
+            </div>
+            <div class="header-icons-rit">
+                <div class="header-actions">
+                    <!-- <button class="ux-button-header mr-2">
+					<img src="assets/images/svg/download1-w.svg"  alt="download-icon" class="img-small" />
+				</button>
+				<button class="ux-button-header mr-2">
+					<img src="assets/images/svg/share1-w.svg"  alt="share-icon" class="img-small" />
+				</button>
+				 <button class="ux-button-header mr-2">
+					<img src="assets/images/svg/star1-w.svg"  alt="star-icon" class="img-small" />
+				</button>  
+				<button class="ux-button-header qr-btn">
+					<img src="assets/images/svg/scan-qr-w.svg"  alt="scan-icon" class="img-small"/>
+				</button>   -->
+                </div>
+            </div>
+        </div>
+    </header>
+    <!-- Header Section End -->
+    <div class="right-main-column mar-custom">
+        <div class="right-col-container">
+            <div class="body-page-container">
+                <div class="container-fluid">
+                    <div class="bg-section">
+                        <div class="col-12">
+                            <div class="row1">
+                                <div class="col-sm-12 col-12 col-md-12">
+                                    <div class="white-box2">
+                                        <div class="row">
+                                            <div class="success">
+                                                <h5> <img src="assets/images/svg/success-arrow1.svg" alt="success-icon"> {{'SUCCESSFUL' | translate }}</h5> <small> {{ 'UPI_ID_SUCCESS_MSG' | translate }}</small>
+                                                <!-- <h4><img src="assets/images/svg/rupee-g2.svg" alt="rupees-icon">1985.00</h4> --><small class="mt-3"> 
+												<span>
+                                                    {{ upiIdDetails.txnTime }}
+											</span> 
+										</small> </div>
+                                        </div>
+                                        <div class="bg-img">
+                                            <img src="assets/images/svg/psb-receipt icon.svg" alt="success-bg" /> 
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-12 col-12 col-md-12">
+                                    <div class="result-container1 mar-top">
+                                        <div class="info-bottom">
+                                            <div class="info-details mt-4">
+                                                <div class="row">
+                                                    <h6>{{ 'UPI_ID' | translate }}</h6>
+                                                    <h5> {{ upiIdDetails.paymentAddress }}</h5>
+                                                </div>
+                                            </div>
+                                            <div class="info-details">
+                                                <div class="row">
+                                                    <h6>{{ 'LINKED_ACCOUNT' | translate }}</h6>
+                                                    <h5> {{ upiIdDetails.accNum | maskAccountNo }}</h5>
+                                                </div>
+                                            </div>
+                                            <div class="info-details">
+                                                <div class="row">
+                                                    <h6> {{ 'CURRENT_LIMIT' | translate }}</h6>
+                                                    <h5>
+                                                        <!-- <img src="assets/images/svg/rupee-bl.svg" alt="rupees-icon">  -->
+                                                        {{ upiIdDetails.limit | customcurrency }}</h5>
+                                                </div>
+                                            </div>
+                                            <div class="info-details">
+                                                <div class="row">
+                                                    <h6>{{ 'REFERENCE_ID' | translate }}</h6>
+                                                    <h5>{{ upiIdDetails.REF_NO}}</h5>
+                                                </div>
+                                            </div>
+                                            <div class="info-details">
+                                                <div class="row">
+                                                    <h6> {{ 'DATE_TIME' | translate }}</h6>
+                                                    <h5>{{ upiIdDetails.txnTime }}</h5>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- footer section start -->
+            <div class="footer-container sticky-actions">
+                <div class="footer-inactions minus-rt-col">
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-12 col-md-12 col-lg-12 text-center">
+                                <button id="select-account" class="ux-button primary md" (click)="goToNextScreen()">{{'PROCEED' | translate}}</button>
+                            </div>
+                            <div class="col-12 col-md-12 col-lg-12 text-center">
+                                <div class="powered-logo"> <img src="assets/images/logo/powered-upi-logo.svg" alt="powered-upi-logo"> </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- footer section end -->
+        </div>
+    </div>
+</div>
+<!-- main -->

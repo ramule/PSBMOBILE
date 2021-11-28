@@ -1,0 +1,82 @@
+<div class="main">
+
+    <div class="right-main-column minus-rt-col mar-custom">
+        <div class="right-col-container">
+
+            <div class="body-page-container">
+                <div class="container-fluid">
+                    <div class="row">   
+                        <div class="bg-section">
+                            <div class="col-12">
+                                <div class="row1">
+                                    <div class="col-sm-12 col-12 col-md-12">
+                                        <div class="img-bg">
+                                            <img src="assets/images/svg/refer-friend-bg.svg" alt="bg-img" />
+                                        </div>
+                                        <div class="white-bg1 mar-top">
+                                            <div class="row1">
+                                                <div class="col-12 col-sm-12 col-md-12">
+                                                    <div class="ux-input">
+                                                        <em class="message1 text-center">
+                                                           {{'INVITE_FRIENDS_MSG' | translate}}
+                                                        </em>
+                                                    </div>
+                                                </div>
+                                                <div class="col-12 col-sm-12 col-md-12">
+                                                    <div class="ux-input custom-input1 mt-4">
+                                                        <label for="">{{'SHARE_YOUR_LINK' | translate}}</label>
+                                                        <div class="input-group">
+                                                            <input type="text" [(ngModel)]="link" class="form-control1" name="" placeholder="{{'ENTER_YOUR_LINK' | translate}}" required [disabled]="true">
+                                                            <div>
+                                                                <button class="btn btn-primary2" type="button" (click)="shareLink()">
+                                                                    <img src="assets/images/svg/share-2.svg"
+                                                                        alt="share-icon" />
+                                                                </button>
+                                                            </div>
+                                                            <p></p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+                </div>
+            </div>
+            <!-- footer section start -->
+
+            <div class="footer-container sticky-actions bg-transparent">
+                <div class="footer-inactions minus-rt-col">
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-12 col-lg-12 col-md-12 text-center">
+                                <div class="bottom-content">
+                                    <p>
+                                        {{'SHARE_INVITE_MSG' | translate}}
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-12 col-md-12 col-lg-12 text-center">
+                                <div class="mt-0">
+                                    <button type="button" class="ux-button primary md" (click)="goToPage('searchContactList')">{{'INVITE_CONTACT' | translate}}</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- footer section end -->
+        </div>
+    </div>
+
+</div>
+
+<!-- main -->

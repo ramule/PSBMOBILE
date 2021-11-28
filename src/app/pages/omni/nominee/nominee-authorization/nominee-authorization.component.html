@@ -1,0 +1,218 @@
+<div class="main bg-m">
+	<div class="right-main-column">
+		<div class="right-col-container pad-b full-width">
+			<!-- ======== body page content start from here ======== -->
+			<div class="body-page-container main-dashborad manage-payee">
+				<div class="container-fluid">
+					<div class="row">
+						<div class="col-12 p-0">
+							<div class="breadcrumb">
+								<ul class="lst-breadcrumb">
+									<li *ngFor="let name of DataService.breadcrumblist">
+										<a (click)="DataService.breadcrumroute(name.routeName)">{{name.currentRoute | translate}}</a>
+								</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+					<!--.row -->
+					<div class="vspacer15 customize d-none d-md-block d-lg-block d-xl-block"></div>
+					<div class="row no-gutters">
+						<div class="col-12">
+							<div class="row1">
+								<div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-9">
+									<!-- Greencard2 Start here -->
+									<div class="greencard2">
+										<div class="row1 hide-m">
+											<div class="col-md-8 col-12">
+												<h4 *ngIf="this.DataService.otpName == 'OTP'">OTP</h4>
+												<h4 *ngIf="this.DataService.otpName != 'OTP'">TPIN</h4>
+											 </div>
+											<div class="col-md-4 col-12"></div>
+										</div>
+										<div class="row1">
+											<div class="col-sm-12 col-12 col-md-12">
+												<div class="white-box2 mar-t pad-custom custom-bor">
+													<div class="row1">
+														<div class="col-12 col-md-8 col-lg-9 col-xl-9">
+															<div class="row1">
+																<!-- <div class="col-12">
+                                                                            <h4 class="black-h4">Enter TPIN</h4>
+                                                                        </div> -->
+																<div class="col-12 col-md-12">
+																	<div class="ux-input" *ngIf="this.DataService.otpName == 'OTP'"> <em class="info-message2">{{ "OTP_REGISTER_NO" | translate }} ******{{mobNumber.slice(mobNumber.length - 4)}}</em> </div>
+																	<div class="ux-input" *ngIf="this.DataService.otpName != 'OTP'"> <em class="info-message2"> Enter TPIN </em> </div>
+																</div>
+																<div class="col-12 col-md-8 col-lg-8 col-xl-7">
+																	<div class="row">
+																		<div class="col-12 pl-2 pr-2">
+																			<form [formGroup]="nomineeAuthForm">
+																			<div class="row3">
+																				<div class="col-sm-2 col-2 col-md-2">
+																					<div class="ux-input password1 mb-1">
+																						<input id="otppassword1" type="{{type}}" #nomineeOTPRow maxlength="1" placeholder="●" (keyup)="onKeyUpEvent(0, $event, 'otp')" formControlName="otp1"> </div>
+																				</div>
+																				<div class="col-sm-2 col-2 col-md-2">
+																					<div class="ux-input password1 mb-1">
+																						<input id="otppassword2" type="{{type}}"  #nomineeOTPRow   maxlength="1" placeholder="●" (keyup)="onKeyUpEvent(1, $event, 'otp')"  formControlName="otp2"> </div>
+																				</div>
+																				<div class="col-sm-2 col-2 col-md-2">
+																					<div class="ux-input password1 mb-1">
+																						<input id="otppassword3" type="{{type}}"  #nomineeOTPRow   maxlength="1" placeholder="●" (keyup)="onKeyUpEvent(2, $event, 'otp')" formControlName="otp3"> </div>
+																				</div>
+																				<div class="col-sm-2 col-2 col-md-2">
+																					<div class="ux-input password1 mb-1">
+																						<input id="otppassword4" type="{{type}}" #nomineeOTPRow  maxlength="1" placeholder="●" (keyup)="onKeyUpEvent(3, $event, 'otp')" formControlName="otp4"> </div>
+																				</div>
+																				<div class="col-sm-2 col-2 col-md-2">
+																					<div class="ux-input password1  mb-1">
+																						<input id="otppassword5" type="{{type}}"  #nomineeOTPRow  maxlength="1" placeholder="●" (keyup)="onKeyUpEvent(4, $event, 'otp')"  formControlName="otp5"> </div>
+																				</div>
+																				<div class="col-sm-2 col-2 col-md-2">
+																					<div class="ux-input password1 mb-1">
+																						<input id="otppassword6" type="{{type}}"  #nomineeOTPRow  maxlength="1" placeholder="●" (keyup)="onKeyUpEvent(5, $event, 'otp')"  formControlName="otp6"> </div>
+																				</div>
+																			</div>
+																			</form>
+																			<div class="row1">
+																				<div class="col-12">
+																					<div class="ux-input password1 mt-0 mb-0">
+																						<!-- <p class="error-message" *ngIf="invalidOtp"> Please enter valid OTP</p>
+																						 -->
+																					</div>
+																				</div>
+																			</div>
+																			<div class="row3" *ngIf="this.DataService.otpName == 'OTP'">
+																				<div class="col-6 col-md-6">
+																					<div class="text-left">
+																						<p class="text-left">
+																							<span class="success-text" *ngIf="counter > 0" >{{counter| formatTimer }}</span></p>
+																					</div>
+																				</div>
+																				<div class="col-6 col-md-6">
+																					<div class="text-right">
+																						<button class="ux-linkbutton default-underline mt3" (click)="resendOTP(2)" [ngClass]="counter > 0 ? 'mydisabled' : 'resendActive'">Resend Otp</button>
+																					</div>
+																				</div>
+																			</div>
+																		</div>
+																	</div>
+																</div>
+															</div>
+														</div>
+														<div class="col-12 col-md-4 col-lg-3 col-xl-3 text-right hide-m">
+															<div class="mobile-img"> <img src="assets/images/icons/mobile.svg" alt="otp-icon"> </div>
+														</div>
+													</div>
+												</div>
+											</div>
+											<div class="col-sm-12 col-12 col-md-12" >
+												<div class="result-container1 mar-top">
+													<div class="info-bottom pad-custom">
+														<div class="info-details mt-3">
+															<div class="row">
+																<h6>Nominee Name</h6>
+																<h5>{{DataService.nomineeReceiptObj.nomineeName}}</h5> </div>
+														</div>
+														<div class="info-details">
+															<div class="row">
+																<h6>Relationship with Nominee</h6>
+																<h5>{{DataService.nomineeReceiptObj.nomineeRelationship}}</h5> </div>
+														</div>
+														<div class="info-details">
+															<div class="row">
+																<h6>Date of Birth</h6>
+																<h5>{{ DataService.nomineeReceiptObj.dateOfBirth }}</h5> </div>
+														</div>
+														<div class="info-details"  *ngIf="DataService.minorFlagNominee == 'Y'">
+															<div class="row">
+																<h6>Guardian Name</h6>
+																<h5>{{DataService.nomineeReceiptObj.guardianName}}</h5> </div>
+														</div>
+														<!-- <div class="info-details">
+															<div class="row">
+																<h6>Relationship with Nominee</h6>
+																<h5>{{DataService.nomineeReceiptObj.nomineeName}}</h5> </div>
+														</div> -->
+														<div class="info-details"  *ngIf="DataService.minorFlagNominee == 'Y'">
+															<div class="row">
+																<h6>Guardian Address</h6>
+																<h5>{{DataService.nomineeReceiptObj.guardianAddress}}</h5> </div>
+														</div>
+														<div class="info-details">
+															<div class="row">
+																<h6>Address Line 1</h6>
+																<h5>{{DataService.nomineeReceiptObj.address1}}</h5> </div>
+														</div>
+														<div class="info-details">
+															<div class="row">
+																<h6>Address Line 2</h6>
+																<h5>{{DataService.nomineeReceiptObj.address2}}</h5> </div>
+														</div>
+														 <div class="info-details">
+															<div class="row">
+																<h6>State</h6>
+																<h5>{{ this.DataService.nomineeReceiptObj.state}} </h5> </div>
+														</div>
+														<div class="info-details">
+															<div class="row">
+																<h6>City</h6>
+																<h5>{{ this.DataService.nomineeReceiptObj.city}} </h5> </div>
+														</div>
+														<!-- <div class="info-details">
+															<div class="row">
+																<h6>PIN</h6>
+																<h5>400073</h5> </div>
+														</div> -->
+													</div>
+												</div>
+											</div>
+											<div class="col-12 col-md-12">
+												<ul class="bottom-footer1">
+													<li>
+														<div class="btn-div">
+															<button class="ux-button secondary sm-mob" (click)="goToPage('myAccountsInfo')">Cancel</button>
+														</div>
+														<div class="btn-div">
+															<button class="ux-button primary sm-mob" (click)="nomineeAuthSubmit()" [disabled]="!nomineeAuthForm.valid">Submit</button>
+														</div>
+													</li>
+												</ul>
+											</div>
+										</div>
+									</div>
+									<!-- Greencard2 End here -->
+								</div>
+								<!-- Right Column Ads Start -->
+								<div class="col-12 col-md-12 col-lg-12 col-xl-3 d-none d-xl-block">
+									<div class="right-ads">
+										<a> <img src="assets/images/banner/my-card-banner.jpg" /> </a>
+									</div>
+									<div class="vspacer30"></div>
+									<!-- <div class="offers-card">
+											<div class="header-block clearfix">
+												<h5>Offers on your card</h5>
+											</div>
+
+											<div class="panel-body">
+												<div class="recentpayment-control">
+													<ul>
+													    <li>
+															<img src="assets/images/banner/offer-banner.png">
+														</li>
+													</ul>
+												</div> 
+											 </div>
+										</div>  --></div>
+								<!-- Right Column Ads Ends -->
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!--.right-col-container-->
+	</div>
+	<!--.right-main-column-->
+</div>
+<!-- main -->

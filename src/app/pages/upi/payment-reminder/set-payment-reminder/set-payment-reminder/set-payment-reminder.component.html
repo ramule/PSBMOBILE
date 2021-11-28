@@ -1,0 +1,134 @@
+<div class="main">
+	<div class="right-main-column minus-rt-col mar-custom">
+		<div class="right-col-container cust-pb">
+			<div class="body-page-container">
+				<div class="container-fluid">
+					<div class="row">
+						<div class="bg-section">
+							<div class="col-12">
+								<div class="row1">
+									<div class="col-sm-12 col-12 col-md-12">
+										<div class="ux-nav-tabs" style="margin:0">
+											<div class="responsive1 custom-card">
+												<ul class="nav nav-tabs nav-justified bor-n" role="tablist">
+													<li class="nav-item2"> <a class="nav-link active" data-toggle="tab" href="#upi">UPI ID</a> </li>
+													<li class="nav-item2"> <a class="nav-link " data-toggle="tab" href="#account">Account & IFSC</a> </li>
+												</ul>
+											</div>
+											<!-- Tab panes -->
+											<div class="tab-content bg-transparent">
+												<div id="upi" class=" tab-pane active">
+													<div class="white-bg1">
+														<div class="row1">
+															<div class="col-sm-12 col-12 col-md-12">
+																<div>
+                                                                    <form [formGroup]="upidForm">
+																	<div class="upiId">
+																		<div class="row1">
+																			<div class="col-md-12 col-12">
+																				<div class="ux-input">
+																					<label for="upiId">UPI ID/Mobile Number</label>
+																					<input type="email" name="upiId" placeholder="Enter UPI ID/Mobile Number" formControlName="upId" [(ngModel)]="upidModel" > 
+                                                                                    <a href="pay-upi-select-account.html"><em class="show-phonebook "></em></a>
+																					<p class="info-message">e.g. name@upi/9820000000</p>
+                                                                                    <p class="error-message" *ngIf="upidForm.controls['upId'].hasError('required') && (upidForm.controls['upId'].dirty || upidForm.controls['upId'].touched)">Please select Value</p>
+                                                                                    <p class="error-message" *ngIf="upidForm.controls['upId'].hasError('email') && (upidForm.controls['upId'].dirty || upidForm.controls['upId'].touched)">Please enter correct email upid</p>
+
+																				</div>
+																			</div>
+																		</div>
+																		<div class="mt-2">
+																			<div class="row1">
+																				<div class="col-6 col-sm-6 col-md-6"> </div>
+																				<div class="col-6 col-sm-6 col-md-6">
+																					<button class="verify ux-button sm2 primary float-right" [disabled]="upidForm.invalid" (click)="setPaymentReminderSubmit('upid')">Verify</button>
+																				</div>
+																			</div>
+																		</div>
+																	</div>
+                                                                </form>
+																</div>
+															</div>
+														</div>
+													</div>
+												</div>
+												<div id="account" class="tab-pane fade">
+													<div class="white-bg1">
+                                                        <form [formGroup]="accountIfscForm">
+														<div class="row1">
+															<div class="col-sm-12 col-12 col-md-12">
+																<div class="row1">
+																	<div class="col-md-6 col-12">
+																		<div class="ux-input">
+																			<label for="accountNum">Account Number</label>
+																			<input type="text" numbersOnly name="accountNum" numbersOnly placeholder="Enter Account Number" formControlName="accountNum">
+																			<p class="error-message" *ngIf="accountIfscForm.controls['accountNum'].hasError('required') && (accountIfscForm.controls['accountNum'].dirty || accountIfscForm.controls['accountNum'].touched)">Please select Value</p>
+
+																		</div>
+																	</div>
+																	<!-- <div class="col-md-6 col-12">
+                                                                            <div class="ux-input">
+                                                                                <label for="reaccountNum">Re-enter Account Number</label>
+                                                                                <input type="text" name="reaccountNum" placeholder="Enter Re-enter Account Number" required>
+                                                                                <p class="error-message"></p>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="col-md-6 col-12">
+                                                                            <div class="ux-input">
+                                                                                <label>Select Bank</label>
+                                                                                <select required class="sBank">
+                                                                                    <option value="">Select</option>
+                                                                                    <option value="Punjab & Sind Bank">Punjab & Sind Bank</option>
+                                                                                    <option value="State Bank of India">State Bank of India</option>
+                                                                                </select>
+                                                                                <p class="error-message"></p>
+                                                                            </div>
+                                                                        </div> -->
+																	<div class="col-md-6 col-12">
+																		<div class="custom-input3 ux-input">
+																			<label for="ifsc">IFSC Code</label>
+																			<input type="text" name="ifsc" placeholder="Enter IFSC Code" formControlName="ifsc"> <span class="show-bankinfo">PSIB</span> 
+                                                                            <a class="show-link">Verify Branch</a>
+																			<div class="info"> <em class="message">Branch Name: <span class="success">Sector 26, Vashi, Navi Mumbai, MH 400703</span></em> </div>
+                                                                            <p class="error-message" *ngIf="accountIfscForm.controls['ifsc'].hasError('required') && (accountIfscForm.controls['ifsc'].dirty || accountIfscForm.controls['ifsc'].touched)">Please select Value</p>
+                                                                            <p class="error-message" *ngIf="accountIfscForm.controls['ifsc'].hasError('pattern') && (accountIfscForm.controls['ifsc'].dirty || accountIfscForm.controls['ifsc'].touched)">Not a IFSC code</p>
+
+																		</div>
+																	</div>
+																	<div class="col-md-6 col-12">
+																		<div class="ux-input">
+																			<label for="payeeName">Payee Name</label>
+																			<input type="text" name="payeeName" placeholder="Enter Payee Name" formControlName="payeeName">
+																			<p class="error-message" *ngIf="accountIfscForm.controls['payeeName'].hasError('required') && (accountIfscForm.controls['payeeName'].dirty || accountIfscForm.controls['payeeName'].touched)">Please select Value</p>
+                                                                            <p class="error-message" *ngIf="accountIfscForm.controls['payeeName'].hasError('pattern') && (accountIfscForm.controls['payeeName'].dirty || accountIfscForm.controls['payeeName'].touched)">Only Alphabets allowed</p>
+
+																		</div>
+																	</div>
+																</div>
+																<div class="mt-2">
+																	<div class="row1">
+																		<div class="col-6 col-sm-6 col-md-6">
+																			<button class="cancel1 ux-button sm2 secondary">Cancel</button>
+																		</div>
+																		<div class="col-6 col-sm-6 col-md-6">
+																			<button class="proceed1 ux-button sm2 primary" type="submit" (click)="setPaymentReminderSubmit('account')">Proceed</button>
+																		</div>
+																	</div>
+																</div>
+															</div>
+														</div>
+                                                    </form>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

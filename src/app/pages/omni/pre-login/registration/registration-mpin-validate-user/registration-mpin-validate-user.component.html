@@ -1,0 +1,84 @@
+<div  class="prelogin-page">
+  
+    <div class="full-container full">
+        <div class="login-container ">
+            <div class="central-box">
+
+        <!-- Loginform Container Start -->
+                <div class="radius loginform-container">
+                   <div class="radius1 login-form1">
+                    <div class="login-header d-none d-sm-none d-md-block d-lg-block d-xl-block">
+                        <div class="brand-logo">
+                            <img src="./assets/images/logo/logo1.png" alt="kiya-logo">  
+                        </div>
+                    </div>
+                  <div class="vspacer10"></div>
+                 <div class="row">
+                    <div class="col-12 col-lg-6 col-md-10 col-sm-12 m-auto">
+                        <form [formGroup]="registrationFormValidateUser" (ngSubmit)="submit()">
+                         <div class="row1">
+                          <div class="col-12">
+                            <div class="row1">
+                              <div class="col-12">
+                                <ul class="step-list">
+                                  <li class="step-matched">
+                                    <em>{{"STEP" | translate}} {{"1" | translate}} <span>{{"OF_STEP_2" | translate}}</span></em>
+                                    <h4>{{"INTERNET_BANKING_VALIDATION" |  translate}}</h4>
+                                  </li>
+                                </ul>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="col-12">
+                            <div class="details-section">
+                               <div class="row1">
+                                <div Class="col-12 col-md-12">
+                                  <div class="ux-input">
+                                    <label>{{"USERNAME" | translate }}</label>
+                                    <input type="text" placeholder='{{"ENTER_USER_NAME" | translate}}' formControlName="userName" limit-to="20">
+                                        <span class="errormsg" *ngIf="registrationFormValidateUser.controls['userName'].touched && registrationFormValidateUser.controls['userName'].hasError('required')">{{"PLEASE_ENTER_USERNAME" | translate }}</span>
+                                        <p></p>
+                                      </div>
+                                   </div> 
+                                     <div class="col-12 col-md-12">
+                                        <div class="ux-input">
+                                          <label>{{"PASSWORD" | translate }}</label>
+                                          <input type="password"  placeholder='{{"ENTER_PASSWORD" | translate}}' required formControlName="password" limit-to="20" >
+                                          <span class="errormsg" *ngIf="registrationFormValidateUser.controls['password'].touched && registrationFormValidateUser.controls['password'].hasError('required')">{{"PLEASE_ENTER_PASSWORD" | translate }}</span>
+                                          <p></p>
+                                        </div>
+                                     </div>
+                                </div>
+                            </div>
+                             
+                        </div>
+                          <div class="col-12 col-lg-10 col-md-12 col-sm-12 m-auto">
+                            <div class="ux-footer border-n">
+                              <div class="row1">
+                                <div class="col-6 col-lg-6 col-md-6 col-sm-6">
+                                    <button class="ux-button secondary"  routerLink="/login" >{{"PREVIOUS" | translate}}</button>
+                                  </div>
+                                <div class="col-6 col-lg-6 col-md-6 col-sm-6">
+                                  <button class="ux-button primary" type="submit">{{"NEXT" | translate}}</button>
+                                 </div>
+                                 </div>
+                              </div> 
+                          </div>
+                         </div> 
+                        </form>
+                       </div>
+                      
+                        
+                    </div>
+
+                </div>
+               </div> 
+             <!-- Loginform Container End -->
+           </div>
+          
+        </div>
+        
+     </div>
+    <!-- .full-container -->
+
+</div>

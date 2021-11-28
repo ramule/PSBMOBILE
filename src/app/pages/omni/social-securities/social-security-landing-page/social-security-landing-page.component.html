@@ -1,0 +1,330 @@
+<div class="main bg-m">
+	<div class="nav-overlay"></div>
+	<div class="right-main-column ">
+		<div class="right-col-container pad-b full-width">
+			<!-- ======== body page content start from here ======== -->
+			<div class="body-page-container main-dashborad manage-payee">
+				<div class="container-fluid">
+					<div class="row">
+						<div class="col-12 p-0">
+							<div class="breadcrumb">
+								<ul class="lst-breadcrumb">
+									<!-- <li> <a href="javascript:;">Social Security</a> </li>
+									<li> APY </li> -->
+									<li *ngFor="let name of DataService.breadcrumblist">
+										<a (click)="DataService.breadcrumroute(name.routeName)">{{name.currentRoute | translate}}</a>
+								</li>
+
+								</ul>
+							</div>
+							<!-- breadcrumb -->
+						</div>
+					</div>
+					<!--.row -->
+					<div class="vspacer15 customize d-none d-md-block d-lg-block d-xl-block"></div>
+					<div class="row no-gutters">
+						<div class="col-12">
+							<div class="row1">
+								<div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-9">
+									<!-- Greencard2 Start here -->
+									<div *ngIf="enrollmentExist" class="greencard2">
+										<div class="row1 hide-m">
+											<div class="col-md-8 col-12">
+												<h4>{{"ATAL_PENSION_YOJANA" | translate}}</h4>
+											</div>
+											<div class="col-md-4 col-12">
+
+											</div>
+										</div>
+
+
+										<div class="row1">
+											<div class="col-sm-12 col-12 col-md-12">
+												<div class="widget-box5 mb-3">
+													<div class="bg-white1 pad-custom py-2">
+														<div class="row1">
+															<div class="col-md-12 col-12">
+																<div id="accordion1" class="accordion-container parent-accordion">
+																	<div class="card4">
+																		<a class="card-link" data-toggle="collapse" href="#scheme" aria-expanded="false">
+																			<div class="card-header3">
+																				<div class="panel-title3">
+																					<h6 class="detail-heading"> {{"SCHEME_DETAILS" | translate}}</h6>
+																				</div>
+																				<em></em>
+																			</div>
+																			<!--card-header-->
+																		</a>
+
+																		<div id="scheme" class="collapse show" data-parent="#accordion1">
+																			<div class="white-box2 m-0 p-0 shadow-none">
+																				<div class="info-bottom pad-custom p-0">
+																					<div class="info-details">
+																						<div class="row">
+																							<h6>  {{"SCHEME" | translate}}</h6>
+																							<h5>{{"ATAL_PENSION_YOJANA" | translate}}</h5>
+																						</div>
+																					</div>
+																					<div class="info-details">
+																						<div class="row">
+																							<h6> {{"NAME" | translate}}</h6>
+																							<h5>{{profileDetailsData[0].custName}}</h5>
+																						</div>
+																					</div>
+																					<div class="info-details">
+																						<div class="row">
+																							<h6> {{"DOB" | translate}}</h6>
+																							<h5>{{profileDetailsData[0].custBirthDate}}</h5>
+																						</div>
+																					</div>
+																					<div class="info-details">
+																						<div class="row">
+																							<h6> {{"PAN_NUMBER" | translate}}</h6>
+																							<h5>{{apyInquiryResponseData[0].pranNo}}</h5>
+																						</div>
+																					</div>
+																					<div class="info-details">
+																						<div class="row">
+																							<h6> {{"MARTIAL_STATUS" | translate}}</h6>
+																							<h5>{{maritalStatus}}</h5>
+																						</div>
+																					</div>
+																					<div class="info-details">
+																						<div class="row">
+																							<h6> {{"SPOUSE_NAME" | translate}}</h6>
+																							<h5>{{apyInquiryResponseData[0].spouseName}}</h5>
+																						</div>
+																					</div>
+																					<div class="info-details">
+																						<div class="row">
+																							<h6> {{"PENSION_AMOUNT" | translate}}</h6>
+																							<h5>{{apyInquiryResponseData[0].pensionAAmount}}</h5>
+																						</div>
+																					</div>
+																					<div class="info-details">
+																						<div class="row">
+																							<h6> {{"PREMIUM_AMOUNT" | translate}}</h6>
+																							<h5>{{apyInquiryResponseData[0].premiumAmount}}</h5>
+																						</div>
+																					</div>
+																					<div class="info-details">
+																						<div class="row">
+																							<h6> {{"PREMIUM_FREQUENCY" | translate}}</h6>
+																							<h5>{{premiumFreq}}</h5>
+																						</div>
+																					</div>
+																					<div class="info-details">
+																						<div class="row">
+																							<h6> {{"DELINK_ACCOUNT" | translate}}</h6>
+																							<h5>{{apyInquiryResponseData[0].fromAccountNo}}</h5>
+																						</div>
+																					</div>
+																					<!-- <div class="info-details">
+																						<div class="row">
+																							<h6>Date of Enrollment</h6>
+																							<h5></h5>
+																						</div>
+																					</div> -->
+																					<div class="info-details">
+																						<div class="row">
+																							<h6> {{"MATURITY_DATE" | translate}}</h6>
+																							<h5>{{maturityDateVal}}</h5>
+																						</div>
+																					</div>
+
+																				</div>
+																			</div>
+																		</div>
+																	</div>
+																</div>
+															</div>
+														</div>
+													</div>
+												</div>
+											</div>
+
+											<div class="col-sm-12 col-12 col-md-12">
+												<div class="widget-box5 mb-3">
+													<div class="bg-white1 pad-custom py-2">
+														<div class="row1">
+															<div class="col-md-12 col-12">
+																<div id="accordion1" class="accordion-container parent-accordion">
+																	<div class="card4">
+																		<a class="card-link" data-toggle="collapse" href="#nominee" aria-expanded="false">
+																			<div class="card-header3">
+																				<div class="panel-title3">
+																					<h6 class="detail-heading"> {{"NOMINEE_DETAILS" | translate}}</h6>
+																				</div>
+																				<em></em>
+																			</div>
+																			<!--card-header-->
+																		</a>
+
+																		<div id="nominee" class="collapse show" data-parent="#accordion1">
+																			<div class="white-box2 m-0 p-0 shadow-none">
+																				<div class="info-bottom pad-custom p-0">
+																					<div class="info-details">
+																						<div class="row">
+																							<h6> {{"NOMINEE_NAME" | translate}}</h6>
+																							<h5>{{apyInquiryResponseData[0].nomineeName}}</h5>
+																						</div>
+																					</div>
+																					<div class="info-details">
+																						<div class="row">
+																							<h6> {{"RELATION_WITH_NOMINEE" | translate}}</h6>
+																							<h5>{{relationshipDesc}}</h5>
+																						</div>
+																					</div>
+																					<div class="info-details">
+																						<div class="row">
+																							<h6> {{"NOMINEE_AGE" | translate}}</h6>
+																							<h5>{{apyInquiryResponseData[0].nomineeDob}}</h5>
+																						</div>
+																					</div>
+																					<div class="info-details">
+																						<div class="row">
+																							<h6> {{"GUARDIAN_NAME" | translate}}</h6>
+																							<h5>{{apyInquiryResponseData[0].guardian}}</h5>
+																						</div>
+																					</div>
+																				</div>
+																			</div>
+																		</div>
+																	</div>
+																</div>
+															</div>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+
+
+										<div class="col-12 col-md-12">
+											<div class="row1">
+												<div class="col-md-12 col-lg-6 col-12">
+													<ul class="link-list hide-m">
+
+														<li (click)="shareDetails()">
+															<a ><img src="assets/images/svg/share.svg" alt="share-icon"> {{"SHARE" | translate}}</a>
+														</li>
+														<li (click)="downloadPdfReceipt(false)">
+															<a><img src="assets/images/svg/download.svg" alt="download-icon" > {{"DOWNLOAD" | translate}}</a>
+														</li>
+														<li (click)="downloadPdfReceipt(true)">
+															<a> <img src="assets/images/svg/print.svg"  alt="print-icon"> {{"PRINT" | translate}}</a>
+														</li>
+
+													</ul>
+												</div>
+
+											</div>
+										</div>
+
+									</div>
+									<!-- Greencard2 End here -->
+									<div *ngIf="!enrollmentExist" class="greencard2">
+										<div class="row1">
+											<div class="col-sm-12 col-12 col-md-12">
+
+												<div class="widget-box5 mb-3">
+													<div class="bg-white1 pad-custom">
+														<div class="row1">
+															<div class="col-12">
+
+																<owl-carousel-o [options]="customOptions">
+																	<ng-container >
+																	  <ng-template carouselSlide>
+																		<img src="assets/images/banner/apy-scheme-banner.png" alt="banner-img" />
+																	  </ng-template>
+																	</ng-container>
+																
+																  </owl-carousel-o>
+<!-- 
+																<div class="owl-carousel social-sec-scheme-owl" role="list">
+																	<div class="item" role="listitem">
+																		<div> <img src="assets/images/banner/apy-scheme-banner.png" alt="banner-img" /> </div>
+																	</div> -->
+																	<!-- <div class="item" role="listitem">
+																		<div> <img src="assets/images/banner/apy-scheme-banner.png" alt="banner-img" /> </div>
+																	</div>
+																	<div class="item" role="listitem">
+																		<div> <img src="assets/images/banner/apy-scheme-banner.png" alt="banner-img" /> </div>
+																	</div> -->
+																<!-- </div> -->
+															</div>
+														</div>
+														<div class="row1 text-center">
+															<div class="col-12 col-sm-8 col-xl-6 mx-auto text-center mt-3">
+																<div class="row1">
+																	<div class="col-6 text-center">
+																		<button  class="ux-button secondary md" (click)="onSchemeDetailsClick();"> {{"SCHEME_DETAILS" | translate}}</button>
+																	</div>
+																	<div class="col-6 text-center">
+																		<button id="pmjjby-enrollnow-submit" class="ux-button primary md" (click)="openPopUpss()"> {{"ENROLL_NOW" | translate}}</button>
+																	</div>
+																</div>
+															</div>
+
+															<!-- <div class="col-12 text-center mt-3">
+																<button id="pmjjby-enrollnow-submit" class="ux-button primary md" (click)="openPopUpss()">Enroll Now</button>
+															</div> -->
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+									<!-- Greencard2 End here -->
+								</div>
+								<!-- col-12 col-sm-12 col-md-12 col-lg-12 col-xl-9 -->
+								<!-- Right Column Ads Start -->
+								<div class="col-12 col-md-12 col-lg-12 col-xl-3 d-none d-xl-block">
+									<div class="right-ads">
+										<a> <img src="assets/images/banner/my-card-banner.jpg"> </a>
+									</div>
+									<div class="vspacer30"></div>
+								</div>
+								<!-- Right Column Ads Ends -->
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!--.right-col-container-->
+	</div>
+	<!--.right-main-column-->
+</div>
+<!-- main -->
+
+<!-- age-verification confirm Modal Starts-->
+<div class="popup-bottom sm-popup age-verification2ss">
+	<div class="row1">
+		<div class="col-10">
+			<h4 class="text-left"> {{"AGE_VERIFICATION" | translate}} </h4> </div>
+		<div class="col-2">
+			<button class="ux-button-icon close-btn" (click)="closePopup()"> <img src="assets/images/svg/close-b.svg" alt="cross-icon" class="img-vsmall"> </button>
+		</div>
+	</div>
+	<div class="row1">
+		<div class="col-12">
+			<!-- <div class="ux-input ux-disabled">
+				<label>Date of Birth</label>
+				<input type="text" placeholder="Enter Your Date of Birth" disabled [value]="dateOfBirth" >
+
+				<p class="error-message"></p>
+			</div> -->
+			<div class="ux-input mt-0 mb-0">
+				<p class="success-message"> {{"AGE_NOT_ELIGIBLE" | translate}}</p>
+			</div>
+		</div>
+	</div>
+	<div class="row1 mt-2">
+		<div class="col-12 text-center">
+			<button id="verify-submit" class="ux-button primary sm-mob" (click)="closePopup()"> {{"OK" | translate}}</button>
+		</div>
+	</div>
+</div>
+<!-- age-verification confirm Modal Starts-->
+<div class="ios-nav-overlay"></div>

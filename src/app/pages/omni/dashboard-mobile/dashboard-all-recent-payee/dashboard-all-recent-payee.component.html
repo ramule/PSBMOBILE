@@ -1,0 +1,82 @@
+<div class="main">
+  <div class="right-main-column minus-rt-col mar-custom">
+    <div class="right-col-container">
+      <div class="body-page-container">
+        <div class="container-fluid">
+          <div class="row">
+            <div class="bg-section">
+              <div class="col-12">
+                <div class="row1">
+                  <div class="col-sm-12 col-12 col-md-12">
+                    <div class="white-bg1" *ngIf="payeeList.length > 0">
+                      <div class="row">
+                        <div class="col-sm-12 col-12 col-md-12 p-0">
+                          <div class="ux-input">
+                            <input type="text" placeholder="{{'SEARCH' |translate}}" required
+                              [(ngModel)]="searchPayee" #searchContact="ngModel"
+                              [pattern]="constant.ALPHA_NUMERIC_SPACE_UPI_REGEX">
+                            <p class="text-center error-message" *ngIf="searchContact.errors?.pattern">
+                              {{ 'ENTER_ALPHABET_NUMBER_ERROR' | translate}}</p>
+                          </div>
+                        </div>
+                        <div class="innerbg-section2 mt-4">
+                          <div class="col-sm-12 col-12 col-md-12 p-0">
+                            <ul class="contact-list" *ngIf="payeeList.length > 0">
+                              <li
+                                *ngFor="let payee of payeeList  | searchFilter : 'benefName' : searchPayee ">
+                                <a (click)="transactiondetails(transaction)">
+                                  <!-- (click)="selectContact(payee)"-->
+                                  <div class="list-lft">
+                                    <span class="green1">
+                                      <h6 *ngIf="payee.benefName">{{payee.benefName | titlecase | firstLastChar}}</h6>
+                                    </span>
+                                  </div>
+                                  <div class="list-rit" style="overflow: hidden;">
+                                    <h5>
+                                      {{payee.benefName}}
+                                    </h5>
+                                    <h6 *ngIf="payee?.accountNo">
+                                        {{'ACCOUNT_NUMBER' | translate }} : {{payee.accountNo | maskAccountNo}}
+                                    </h6>
+                                    <!-- <button *ngIf="DataService.upiCollectsearchType != 'recent'" class="star-btn2" (click)="$event.stopPropagation();openPopup(payee,'fav-popup')"><img src="./assets/images/svg/star-active.svg" alt="star-icon"></button> -->
+                                  </div>
+
+                                </a>
+                              </li>
+                            </ul>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <!-- <div class="white-bg1 pad-custom">
+                                            <div class="unfound-info" *ngIf="payeeList.length==0">
+                                                <h6>{{'NO_FAVORITE_PAYEE_FOUND' | translate}}</h6>
+                                            </div>
+                                        </div> -->
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- footer section start -->
+
+      <!-- <div class="footer-container">
+        <div class="footer-inactions minus-rt-col">
+          <div class="container-fluid">
+            <div class="row">
+              <div class="col-12 col-md-12 col-lg-12 text-center">
+                <div class="powered-logo mt-0">
+                  <img src="assets/images/logo/powered-upi-logo.svg" alt="powered-upi-logo">
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div> -->
+
+      <!-- footer section end -->
+    </div>
+  </div>
+</div>

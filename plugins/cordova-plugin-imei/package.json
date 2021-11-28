@@ -1,0 +1,51 @@
+{
+  "_from": "cordova-plugin-imei@^1.1.0",
+  "_id": "cordova-plugin-imei@1.1.0",
+  "_inBundle": false,
+  "_integrity": "sha1-UpNg3t84JuCK0WfemVnZmeTK7tM=",
+  "_location": "/cordova-plugin-imei",
+  "_phantomChildren": {},
+  "_requested": {
+    "type": "range",
+    "registry": true,
+    "raw": "cordova-plugin-imei@^1.1.0",
+    "name": "cordova-plugin-imei",
+    "escapedName": "cordova-plugin-imei",
+    "rawSpec": "^1.1.0",
+    "saveSpec": null,
+    "fetchSpec": "^1.1.0"
+  },
+  "_requiredBy": [
+    "#USER",
+    "/"
+  ],
+  "_resolved": "https://registry.npmjs.org/cordova-plugin-imei/-/cordova-plugin-imei-1.1.0.tgz",
+  "_shasum": "529360dedf3826e08ad167de9959d999e4caeed3",
+  "_spec": "cordova-plugin-imei@^1.1.0",
+  "_where": "D:\\Sachin\\Office Projects\\PSB_Latest",
+  "author": {
+    "name": "Simon Visser for FLASH"
+  },
+  "bundleDependencies": false,
+  "deprecated": false,
+  "description": "A cordova plugin to retrive IMEI reliably on Android devices.",
+  "homepage": "https://bitbucket.org/flashcore/cordova-plugin-imei#readme",
+  "keywords": [
+    "Cordova",
+    "Android",
+    "IMEI",
+    "device",
+    "info"
+  ],
+  "license": "ISC",
+  "main": "index.js",
+  "name": "cordova-plugin-imei",
+  "repository": {
+    "type": "git",
+    "url": "git+https://drsatan1@bitbucket.org/flashcore/cordova-plugin-imei.git"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "version": "1.1.0"
+}

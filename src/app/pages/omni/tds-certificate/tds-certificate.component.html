@@ -1,0 +1,182 @@
+<div class="main bg-m">
+	<div class="nav-overlay"></div>
+	<div class="right-main-column ">
+		<div class="right-col-container pad-b full-width">
+			<!-- ======== body page content start from here ======== -->
+			<div class="body-page-container main-dashborad manage-payee">
+				<div class="container-fluid">
+					<div class="row">
+						<div class="col-12 p-0">
+							<div class="breadcrumb">
+								<ul class="lst-breadcrumb">
+									<!-- <li> <a (click)="onCancel()">Dashboard</a> </li>
+									<li> <a>Tax</a> </li>
+									<li> TDS Certificate / Form 16A </li> -->
+									<li *ngFor="let name of dataService.breadcrumblist">
+										<a (click)="dataService.breadcrumroute(name.routeName)">{{name.currentRoute | translate}}</a>
+								</li>
+
+								</ul>
+							</div>
+						</div>
+					</div>
+					<!--.row -->
+					<div class="vspacer15 customize d-none d-md-block d-lg-block d-xl-block"></div>
+					<div class="row no-gutters">
+						<div class="col-12">
+							<div class="row1">
+								<div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-9">
+									<!-- Greencard2 Start here -->
+									<div class="greencard2">
+										<div class="row1 hide-m">
+											<div class="col-12">
+												<h4> {{"TDS_CERTIFICATE_FORM_SIXTEEN_A" | translate}}</h4> </div>
+										</div>
+										<!-- row1 -->
+										<form [formGroup]="tdsCertificateForm" (ngSubmit)="onTdsSubmit(tdsCertificateForm)">
+											<div class="row1">
+												<div class="col-sm-12 col-12 col-md-12">
+													<div class="widget-box5 mb-3">
+														<div class="bg-white1 pad-custom">
+                                                            <div class="row1">
+                                                                <div class="col-12 col-md-12 col-lg-12 col-xl-12">
+                                                                    <div class="ux-selection">
+                                                                        <label class="ux-selection2"> {{"CUSTOMER_ID" | translate}}
+                                                                            <input type="radio"[(ngModel)]="tdsType" [checked]="tdsType" name="radioboxdemo" value="customerId" formControlName="selectOption" >
+                                                                            <span class="checkmark"></span>
+                                                                        </label>
+                                                                    </div>
+                                                                    <div class="ux-selection">
+                                                                        <label class="ux-selection2">  {{"ACCOUNT_NUMBER" | translate}}
+                                                                            <input type="radio" [(ngModel)]="tdsType" [checked]="!tdsType" name="radioboxdemo" value="accountNumber" formControlName="selectOption" >
+                                                                            <span class="checkmark"></span>
+                                                                        </label>
+                                                                    </div>
+																	<div class="ux-input">
+																		<p class="error-message" *ngIf="tdsCertificateForm.controls['selectOption'].hasError('required') && (tdsCertificateForm.controls['selectOption'].dirty || tdsCertificateForm.controls['selectOption'].touched)"> This field is required </p>
+																	</div>
+                                                                </div>
+                                                            </div>
+															<div class="row1">
+																<div class="ccol-12 col-md-6 col-lg-6 col-xl-4" *ngIf="tdsType == 'customerId' ">
+																	<div class="ux-input ux-disabled">
+																		<label> {{"CUSTOMER_ID" | translate}} </label>
+																		<input type="text" placeholder="Enter your Customer ID" disabled   formControlName="custId">
+																	</div>
+																	<!-- <div class="ux-input">
+																		<label>Customer ID </label>
+																		<select  formControlName="custId">
+																			<option value="">Select</option>
+																			<option *ngFor="let customer of customerId" [value]="customer.custId">{{customer.maskedCustId}}</option>
+																		</select>
+																		<p class="error-message" *ngIf="tdsCertificateForm.controls['custId'].hasError('required') && (tdsCertificateForm.controls['custId'].dirty || tdsCertificateForm.controls['custId'].touched)">{{"REQUIRED_MSG" | translate}}</p>
+																	</div> -->
+																</div>
+																<div class="ccol-12 col-md-6 col-lg-6 col-xl-4" *ngIf="tdsType == 'accountNumber' ">
+																	<div class="ux-input">
+																		<label> {{"ACCOUNT_NUMBER" | translate}} </label>
+																		<select  formControlName="accountNumber" (change)="onAccNoSelected($event)">
+																			<option value=""> {{"SELECT_ACCOUNT_NUMBER" | translate}}</option>
+																			<option *ngFor="let account of accountList" [value]="account.accountNo">{{account.SchemeCode}} {{account.sbAccount}}</option>
+																		</select>
+																		<p class="error-message" *ngIf="tdsCertificateForm.controls['accountNumber'].hasError('required') && (tdsCertificateForm.controls['accountNumber'].dirty || tdsCertificateForm.controls['accountNumber'].touched)">{{"REQUIRED_MSG" | translate}}</p>
+																	</div>
+																</div>
+															</div>
+															<!-- row1 -->
+															<div class="row1">
+																<div class="col-12 col-md-6 col-lg-6 col-xl-4">
+																	<div class="ux-input ux-disabled">
+																		<label> {{"PAN_NUMBER" | translate}}</label>
+																		<input type="text" placeholder="Enter your PAN number" formControlName="panNumber" disabled>
+																		<p class="error-message"></p>
+																	</div>
+																</div>
+																<p class="error-message"></p>
+															</div>
+															<!-- row1 -->
+															<div class="row1">
+                                <div class="col-12 col-md-6 col-lg-6 col-xl-4">
+																	<div class="ux-input">
+																		<label> {{"PERIOD" | translate}}</label>
+																		<select  formControlName="period" (change)="onPeriodSelect($event)">
+																			<option value="">  {{"SELECT_PERIOD" | translate}}</option>
+																			<option *ngFor="let item of filterPeriodList()" [value]="item.configVal">{{item.configVal}}</option>
+																		</select>
+																		<p class="error-message" *ngIf="tdsCertificateForm.controls['period'].hasError('required') && (tdsCertificateForm.controls['period'].dirty || tdsCertificateForm.controls['period'].touched)">{{"REQUIRED_MSG" | translate}}  </p>
+																	</div>
+																</div>
+                                <div *ngIf="selectedPeriod == 'QUARTERLY'" class="col-12 col-md-6 col-lg-6 col-xl-4">
+																	<div class="ux-input">
+																		<label> {{"QUARTER" | translate}}</label>
+																		<select  formControlName="quarter" (change)="onQuarterSelect($event)">
+																			<option value=""> {{"SELECT_QUATER" | translate}}</option>
+																			<option *ngFor="let item of quarterList" [value]="item.configVal">{{item.DESCRIPTION}}</option>
+																		</select>
+																		<p class="error-message" *ngIf="tdsCertificateForm.controls['quarter'].hasError('required') && (tdsCertificateForm.controls['quarter'].dirty || tdsCertificateForm.controls['quarter'].touched)">{{"REQUIRED_MSG" | translate}}</p>
+																	</div>
+																</div>
+																<div class="col-12 col-md-6 col-lg-6 col-xl-4">
+																	<div class="ux-input">
+																		<label> {{"FINANCIAL_YEAR" | translate}}</label>
+																		<select  formControlName="assestmentYear" (change)="onYearChange($event)">
+																			<option value=""> {{"SELECT_FINANCIAL_YEAR" | translate}}</option>
+																			<option *ngFor="let item of assessmentYearList" [value]="item.configVal">{{item.configVal}}</option>
+                                      <!-- <option value="2017-18">2017-18</option> -->
+																		</select>
+																		<p class="error-message" *ngIf="tdsCertificateForm.controls['assestmentYear'].hasError('required') && (tdsCertificateForm.controls['assestmentYear'].dirty || tdsCertificateForm.controls['assestmentYear'].touched)">{{"REQUIRED_MSG" | translate}}</p>
+																	</div>
+																</div>
+															</div>
+														</div>
+													</div>
+												</div>
+												<div class="col-12 col-md-12">
+													<ul class="bottom-footer1">
+														<li>
+															<div class="btn-div">
+																<button class="ux-button secondary sm-mob" (click)="onCancel()"> {{"CANCEL" | translate}}</button>
+															</div>
+															<div class="btn-div">
+																<button type="submit" class="ux-button primary sm-mob"> {{"GENERATE_PDF" | translate}}</button>
+															</div>
+														</li>
+													</ul>
+												</div>
+											</div>
+										</form>
+									</div>
+								</div>
+								<!-- Greencard2 End here -->
+								<!-- Right Column Ads Start -->
+								<div class="col-12 col-md-12 col-lg-12 col-xl-3 d-none d-xl-block">
+									<div class="right-ads">
+										<a href="#"> <img src="assets/images/banner/my-card-banner.jpg"> </a>
+									</div>
+									<div class="vspacer30"></div>
+									<!-- Offercard Start-->
+									<!-- <div class="offers-card">
+										<div class="header-block clearfix">
+											<h5> {{"OFFERS_ON_CARD" | translate}}</h5> </div>
+										<div class="panel-body">
+											<div class="recentpayment-control">
+												<ul>
+													<li> <img src="assets/images/banner/offer-banner.png"> </li>
+												</ul>
+											</div>
+										</div>
+									</div> -->
+									<!-- Offercard Ends-->
+								</div>
+								<!-- Right Column Ads Ends -->
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!--.right-col-container-->
+	</div>
+	<!--.right-main-column-->
+</div>
+<!-- main -->

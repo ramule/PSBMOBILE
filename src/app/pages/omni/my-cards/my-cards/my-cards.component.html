@@ -1,0 +1,365 @@
+<div class="main">
+    <div class="nav-overlay"></div>
+    <div class="right-main-column">
+        <div class="right-col-container full-width">
+
+				<div class="body-page-container main-dashborad mycards">
+					<div class="container-fluid">
+
+						<div class="row">
+							<div class="col-12 p-0">
+							    <div class="breadcrumb">
+									<ul class="lst-breadcrumb">
+										<!-- <li>
+											<a>{{"MY_ACCOUNTS" | translate }}</a>
+										</li>
+										<li>
+											{{"OPERATIVE_ACCOUNTS" | translate }}
+										</li> -->
+										<li *ngFor="let name of dataService.breadcrumblist">
+											<a (click)="dataService.breadcrumroute(name.routeName)">{{name.currentRoute | translate}}</a>
+									</li>
+
+									</ul>
+								</div>
+							</div>
+                        </div>
+					 <!--.row -->
+
+					 <div class="vspacer15 customize d-none d-xl-block d-lg-block d-md-none d-sm-none "></div>
+						<div class="row no-gutters">
+							<div class="col-12">
+                               <div class="row1">
+                                   <div class="col-12 col-sm-12 col-md-12 col-lg-12  col-xl-9">
+									<div class="ux-acc-container" style="margin: 0">
+										<div class="greenCard">
+											<h4>My Debit Cards</h4>
+											<div class="lnks-cards">
+												<ul>
+													<li  class="active"><a href="javascript:;">Debit Card</a></li>
+													<li><a href="javascript:;">Prepaid Card</a></li>
+													<li><a href="javascript:;">Credit Card</a></li>
+												</ul>
+											</div>
+											<div class="owl-carousel wc-cardlist tab-carousal" role="list">
+												<!-- LOOP through all cards :: Start -->
+													<div class="item" role="listitem">
+														<div class="ux-component5">
+															<div class="ux-dropdown">
+																<div class="drp-box">
+																	<a  href="#savings"  class="drp-enterdata active">
+																		<div class="card-actions">
+																			<div class="row1">
+																				<div class="col-12">
+																					<div class="card-title">
+																						<h4>Platinum Card</h4>
+																						<em>Active</em>
+																					</div>
+																				</div>
+																			</div>
+																		</div>
+																		<div class="vspacer10"></div>
+																		<div class="row1">
+
+																			<div class="col-12">
+																				<div class="acc-num">
+																					<small>2393 9505 8950 7581</small>
+																				</div>
+																			</div>
+																		</div>
+																		<div class="row1">
+																			<div class="col-6">
+																				<div class="valid-from">
+																					<span>Valid From</span>
+																					<h6>09/2020</h6>
+																				</div>
+																			</div>
+																			<div class="col-6">
+																				<div class="valid-to">
+																					<span>Valid Till</span>
+																					<h6>09/2030</h6>
+																				</div>
+																			</div>
+
+																		</div>
+																		<div class="row1">
+																			<div class="col-12">
+																				<div class="card-detail">
+																					<span>Shabari Shetty</span>
+																					<div><img src="assets/images/icons/visa-logo.svg"></div>
+																				</div>
+																			</div>
+
+																		</div>
+
+																		<div class="col-sm-12 col-12">
+
+																		</div>
+																	</a>
+																</div>
+															</div>
+														</div>
+													</div>
+													<div class="item" role="listitem">
+														<div class="ux-component5">
+															<div class="ux-dropdown">
+																<div class="drp-box">
+																	<a  href="#current"  class="drp-enterdata">
+																		<div class="card-actions">
+																			<div class="row1">
+																				<div class="col-12">
+																					<div class="card-title">
+																						<h4>Platinum Card</h4>
+																						<em>Active</em>
+																					</div>
+																				</div>
+																			</div>
+																		</div>
+																		<div class="vspacer10"></div>
+																		<div class="row1">
+
+																			<div class="col-12">
+																				<div class="acc-num">
+																					<small>2393 9505 8950 7581</small>
+																				</div>
+																			</div>
+																		</div>
+																		<div class="row1">
+																			<div class="col-6">
+																				<div class="valid-from">
+																					<span>Valid From</span>
+																					<h6>09/2020</h6>
+																				</div>
+																			</div>
+																			<div class="col-6">
+																				<div class="valid-to">
+																					<span>Valid Till</span>
+																					<h6>09/2030</h6>
+																				</div>
+																			</div>
+
+																		</div>
+																		<div class="row1">
+																			<div class="col-12">
+																				<div class="card-detail">
+																					<span>Shabari Shetty</span>
+																					<div><img src="assets/images/icons/visa-logo.svg"></div>
+																				</div>
+																			</div>
+
+																		</div>
+
+																		<div class="col-sm-12 col-12">
+
+																		</div>
+																	</a>
+																</div>
+															</div>
+														</div>
+													</div>
+											</div>
+
+										</div>
+
+											<div class="tab-container">
+												<div id="savings" class="tab-panel active">
+
+													<div class="mcinfo-container overlap">
+														<div class="ux-nav-tabs" style="margin:0">
+															<div class="responsive5">
+															  <ul class="nav nav-tabs nav-justified bor-n" role="tablist">
+																	 <li class="nav-item">
+																		 <a class="nav-link active" data-toggle="tab" href="#tab01">Account Detail</a>
+																	 </li>
+																	 <li class="nav-item">
+																		 <a class="nav-link" data-toggle="tab" href="#tab02">More Option</a>
+																	 </li>
+																 </ul>
+
+																 <!-- Tab panes -->
+																<div class="tab-content custom-tab-content">
+																	<div id="tab01" class=" tab-pane active">
+																		<div class="card-info">
+																			<ul>
+																				<li>
+																					<div class="ux-input checkbox-status">
+																						<label>CVV</label>
+																						<h4>950</h4>
+																						 <div class="el-switch-main">
+																							<em class="margin-r">Show</em>
+																							<label class="el-switch">
+																								<input type="checkbox" name="switch" checked="">
+																								<span class="el-switch-style"></span>
+																							</label>
+																						</div>
+																					 </div>
+
+																				</li>
+																				<li>
+																					<div class="ux-input checkbox-status">
+																						<label>Card Usage</label>
+																						<h4>Enable</h4>
+																						 <div class="el-switch-main">
+																							<em class="margin-r">Yes</em>
+																							<label class="el-switch">
+																								<input type="checkbox" name="switch" checked="">
+																								<span class="el-switch-style"></span>
+																							</label>
+																						</div>
+																					 </div>
+
+																				</li>
+
+
+																				<li>
+																					<div class="ux-input">
+																						  <label>Linked Account</label>
+																							 <h4>57557645667</h4>
+																					 </div>
+																				</li>
+																			</ul>
+																		</div><!-- .card-info -->
+
+																	</div>
+																 	<div id="tab02" class="tab-pane fade">
+																	  <div class="other-info">
+																			<ul>
+																					<li><button class="ux-button sm secondary md">Get Physical Card</button></li>
+																					<li><button class="ux-button sm secondary md">Block/Reuse Card</button></li>
+																					<li><button class="ux-button sm secondary md">Upgrade Card</button></li>
+																					<li><button class="ux-button sm secondary md">Re-generate PIN</button></li>
+																					<li><button class="ux-button sm secondary md">Hotlist PIN</button></li>
+																					<li><button class="ux-button sm secondary md">Manage Card</button></li>
+																			</ul>
+																		</div>
+																 	</div>
+															 	</div>
+														  	</div>
+														</div>
+
+
+
+													</div><!-- .mcinfo-container -->
+
+												</div>
+
+												<div id="current" class="tab-panel" style="display:none">
+													<div class="mcinfo-container overlap">
+														<div class="ux-nav-tabs" style="margin:0">
+															<div class="responsive5">
+															  <ul class="nav nav-tabs nav-justified bor-n" role="tablist">
+																	 <li class="nav-item">
+																		 <a class="nav-link active" data-toggle="tab" href="#tab01">Account Detail</a>
+																	 </li>
+																	 <li class="nav-item">
+																		 <a class="nav-link" data-toggle="tab" href="#tab02">More Option</a>
+																	 </li>
+																 </ul>
+
+																 <!-- Tab panes -->
+																<div class="tab-content custom-tab-content">
+																	<div id="tab01" class=" tab-pane active">
+																		<div class="card-info">
+																			<ul>
+																				<li>
+																					<div class="ux-input checkbox-status">
+																						<label>CVV</label>
+																						<h4>950</h4>
+																						 <div class="el-switch-main">
+																							<em class="margin-r">Show</em>
+																							<label class="el-switch">
+																								<input type="checkbox" name="switch" checked="">
+																								<span class="el-switch-style"></span>
+																							</label>
+																						</div>
+																					 </div>
+
+																				</li>
+																				<li>
+																					<div class="ux-input checkbox-status">
+																						<label>Card Usage</label>
+																						<h4>Enable</h4>
+																						 <div class="el-switch-main">
+																							<em class="margin-r">Yes</em>
+																							<label class="el-switch">
+																								<input type="checkbox" name="switch" checked="">
+																								<span class="el-switch-style"></span>
+																							</label>
+																						</div>
+																					 </div>
+
+																				</li>
+
+
+																				<li>
+																					<div class="ux-input">
+																						  <label>Linked Account</label>
+																							 <h4>57557645667</h4>
+																					 </div>
+																				</li>
+																			</ul>
+																		</div><!-- .card-info -->
+
+
+																	</div>
+																 	<div id="tab02" class="tab-pane fade">
+																	  <div class="other-info">
+																			<ul>
+																					<li><button class="ux-button sm secondary md">Get Physical Card</button></li>
+																					<li><button class="ux-button sm secondary md">Block/Reuse Card</button></li>
+																					<li><button class="ux-button sm secondary md">Upgrade Card</button></li>
+																					<li><button class="ux-button sm secondary md">Re-generate PIN</button></li>
+																					<li><button class="ux-button sm secondary md">Hotlist PIN</button></li>
+																					<li><button class="ux-button sm secondary md">Manage Card</button></li>
+																			</ul>
+																		</div>
+																 	</div>
+															 	</div>
+														  	</div>
+														</div>
+
+
+
+													</div><!-- .mcinfo-container -->
+
+												</div>
+											</div>
+											<div class="offers-card">
+												<div class="oc-header">
+													<div class="oc-title">
+														Offers on your card
+													</div>
+													<div class="link-all">View All</div>
+												</div>
+												<div class="oc-list">
+													<ul>
+														<li><img src="assets/images/banner/offer-banner.png"></li>
+														<li><img src="assets/images/banner/offer-banner.png"></li>
+
+													</ul>
+												</div>
+											</div>
+								   	</div>
+
+									</div>
+									<div class="col-12 col-md-12 col-lg-12 col-xl-3 d-none d-xl-block">
+										<div class="right-ads">
+											<a href="#">
+												<img src="assets/images/banner/my-card-banner.jpg">
+											</a>
+										</div>
+							  		 </div>
+							</div>
+
+                        </div>
+						</div>
+
+					</div><!--.container-fluid-->
+				</div><!--.body-page-container-->
+
+
+        </div>
+        <!--.right-col-container-->
+    </div>
+    <!--.right-main-column-->
+</div>

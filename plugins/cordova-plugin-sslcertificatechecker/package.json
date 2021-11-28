@@ -1,0 +1,70 @@
+{
+  "_from": "cordova-plugin-sslcertificatechecker",
+  "_id": "cordova-plugin-sslcertificatechecker@6.0.0",
+  "_inBundle": false,
+  "_integrity": "sha1-q5vbsoUcIjL1WexCkdTME+DxjbM=",
+  "_location": "/cordova-plugin-sslcertificatechecker",
+  "_phantomChildren": {},
+  "_requested": {
+    "type": "tag",
+    "registry": true,
+    "raw": "cordova-plugin-sslcertificatechecker",
+    "name": "cordova-plugin-sslcertificatechecker",
+    "escapedName": "cordova-plugin-sslcertificatechecker",
+    "rawSpec": "",
+    "saveSpec": null,
+    "fetchSpec": "latest"
+  },
+  "_requiredBy": [
+    "#USER",
+    "/"
+  ],
+  "_resolved": "https://registry.npmjs.org/cordova-plugin-sslcertificatechecker/-/cordova-plugin-sslcertificatechecker-6.0.0.tgz",
+  "_shasum": "ab9bdbb2851c2232f559ec4291d4cc13e0f18db3",
+  "_spec": "cordova-plugin-sslcertificatechecker",
+  "_where": "D:\\Sachin\\Office Projects\\PSB-Theme",
+  "author": {
+    "name": "Eddy Verbruggen",
+    "email": "eddyverbruggen@gmail.com",
+    "url": "https://github.com/EddyVerbruggen"
+  },
+  "bugs": {
+    "url": "https://github.com/EddyVerbruggen/SSLCertificateChecker-PhoneGap-Plugin/issues"
+  },
+  "bundleDependencies": false,
+  "cordova": {
+    "id": "cordova-plugin-sslcertificatechecker",
+    "platforms": [
+      "ios",
+      "android",
+      "windows"
+    ]
+  },
+  "deprecated": false,
+  "description": "This plugin allows allows you to check the SSL Certificate of the server you're connecting to. This can be useful for prevention of Man In The Middle attacks.",
+  "engines": [
+    {
+      "name": "cordova",
+      "version": ">=3.0.0"
+    }
+  ],
+  "homepage": "https://github.com/EddyVerbruggen/SSLCertificateChecker-PhoneGap-Plugin#readme",
+  "keywords": [
+    "Certificate",
+    "SSL",
+    "Pinning",
+    "Man in the Middle",
+    "MitM",
+    "ecosystem:cordova",
+    "cordova-ios",
+    "cordova-android",
+    "cordova-windows"
+  ],
+  "license": "MIT",
+  "name": "cordova-plugin-sslcertificatechecker",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/EddyVerbruggen/SSLCertificateChecker-PhoneGap-Plugin.git"
+  },
+  "version": "6.0.0"
+}

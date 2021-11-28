@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "843566346244",
+    "project_id": "psbdemoapp",
+    "storage_bucket": "psbdemoapp.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:843566346244:android:27488f800e0de5c3674551",
+        "android_client_info": {
+          "package_name": "com.infrasofttech.psb"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "843566346244-fs3rqvu7hdab9tm1jd710olp1j90p172.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBnjAPvfMZKxFGjkS_J3Y7gfeZxpt63efA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "843566346244-fs3rqvu7hdab9tm1jd710olp1j90p172.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

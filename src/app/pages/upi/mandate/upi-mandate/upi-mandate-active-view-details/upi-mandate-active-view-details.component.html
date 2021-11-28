@@ -1,0 +1,561 @@
+<div class="main">
+
+    <header class="global-header  brand-bg2  minus-nav">
+        <div class="in-header">
+            <div class="header-icons-lft">
+                <div class="header-actions">
+                    <button class="ux-button-header" (click)="goToBack()">
+            <img src="assets/images/svg/close-w.svg" alt="cross-icon" class="img-vsmall" />
+          </button>
+                </div>
+            </div>
+            <div class="brand-logo">
+                <h3>{{'VIEW_DETAILS' | translate}}</h3>
+            </div>
+            <div class="header-icons-rit" *ngIf="mandateDetails.umn != null && mandateDetails.umn != 'null'">
+                <div class="header-actions">
+                    <button class="ux-button-header">
+            <img src="assets/images/svg/scan-qr-w.svg" alt="scan-icon" class="img-small" (click)="generateQRCode()" />
+          </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="right-main-column minus-rt-col mar-custom">
+        <div class="right-col-container">
+
+            <div class="body-page-container">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="bg-section">
+                            <div class="col-12">
+                                <div class="row1">
+                                    <div class="col-sm-12 col-12 col-md-12">
+
+                                        <div class="white-bg1 pad-custom">
+                                            <ul class="complaint-list">
+                                                <li>
+                                                    <div class="full-container">
+                                                        <div class="row1">
+                                                            <div class="col-12 col-md-12">
+                                                                <div class="left-info" *ngIf="mandateDetails.initiatedBy == 'PAYER'">
+                                                                    <h6> {{'SEND_TO' | translate}} {{mandateDetails.payeeName}}</h6>
+                                                                    <h5>{{'UPI_ID' | translate }} : {{mandateDetails.payeeAddress}}</h5>
+                                                                </div>
+                                                                <div class="left-info" *ngIf="mandateDetails.initiatedBy == 'PAYEE'">
+                                                                    <h6> {{'REQUESTED_TO' | translate}} {{mandateDetails.payerName}}</h6>
+                                                                    <h5>{{'UPI_ID' | translate }} : {{mandateDetails.payerAddress}}</h5>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                                <li>
+                                                    <div class="full-container">
+                                                        <div class="row1">
+                                                            <div class="col-12 col-md-12">
+                                                                <div class="left-info" *ngIf="mandateDetails.initiatedBy == 'PAYER'">
+                                                                    <h6>{{'FROM_UPI_ID' | translate}}</h6>
+                                                                    <h5>{{'UPI_ID' | translate }} : {{mandateDetails.payerAddress}}</h5>
+                                                                </div>
+                                                                <div class="left-info" *ngIf="mandateDetails.initiatedBy == 'PAYEE'">
+                                                                    <h6>{{'DEPOSIT_TO_UPI_ID' | translate}}</h6>
+                                                                    <h5>{{'UPI_ID' | translate }} : {{mandateDetails.payeeAddress}}</h5>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                                <li>
+                                                    <div class="full-container">
+                                                        <div class="row1">
+                                                            <div class="col-12 col-md-12">
+                                                                <div class="left-info">
+                                                                    <h6>{{'LINKED_ACCOUNT' | translate}}</h6>
+                                                                    <!-- <h5>
+                                                                        {{VPAAccountDetails.accType}} {{VPAAccountDetails.maskedAccountNumber}}
+                                                                    </h5> -->
+                                                                    <h5 *ngIf="DataService.getMandateInciatedBy(mandateDetails) == 'PAYEE'">
+                                                                        {{mandateDetails.payeeAccount | maskAccountNo}}
+                                                                    </h5>
+                                                                    <h5 *ngIf="DataService.getMandateInciatedBy(mandateDetails) == 'PAYER'">
+                                                                        {{mandateDetails.payerAccount | maskAccountNo}}</h5>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                                <li>
+                                                    <div class="full-container">
+                                                        <div class="row1">
+                                                            <div class="col-12 col-md-12">
+                                                                <div class="left-info" *ngIf="DataService.getMandateInciatedBy(mandateDetails) == 'PAYEE'">
+                                                                    <h6>{{'PAYEE_NAME' | translate}}</h6>
+                                                                    <h5>
+                                                                        {{mandateDetails.payeeName}}
+                                                                    </h5>
+                                                                </div>
+                                                                <div class="left-info" *ngIf="DataService.getMandateInciatedBy(mandateDetails) == 'PAYER'">
+                                                                    <h6>{{'PAYER_NAME' | translate}}</h6>
+                                                                    <h5>
+                                                                        {{mandateDetails.payerName}}
+                                                                    </h5>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                                <li>
+                                                    <div class="full-container">
+                                                        <div class="row1">
+                                                            <div class="col-12 col-md-12">
+                                                                <div class="left-info">
+                                                                    <h6>{{'MANDATE_CREATED_ON' | translate}}</h6>
+                                                                    <h5>
+                                                                        {{mandateDetails.createdTime}}
+                                                                    </h5>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                                <li>
+                                                    <div class="full-container">
+                                                        <div class="row1">
+                                                            <div class="col-12 col-md-12">
+                                                                <div class="left-info">
+                                                                    <h6>{{'START_DATE' | translate}}</h6>
+                                                                    <h5>{{mandateDetails.validityStart | formatDate}}</h5>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                                <li>
+                                                    <div class="full-container">
+                                                        <div class="row1">
+                                                            <div class="col-12 col-md-12">
+                                                                <div class="left-info">
+                                                                    <h6>{{'END_DATE' | translate}}</h6>
+                                                                    <h5>{{mandateDetails.validityEnd | formatDate}}</h5>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                                <li>
+                                                    <div class="full-container">
+                                                        <div class="row1">
+                                                            <div class="col-12 col-md-12">
+                                                                <div class="left-info">
+                                                                    <h6>{{'AMOUNT' | translate}}</h6>
+                                                                    <h5>
+                                                                        <!-- <img src="assets/images/svg/rupee-bl.svg"
+                                                                            alt="rupees-icon"> -->
+                                                                        {{mandateDetails.amount | customcurrency:'symbol'}}
+                                                                    </h5>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                                <li>
+                                                    <div class="full-container">
+                                                        <div class="row1">
+                                                            <div class="col-12 col-md-12">
+                                                                <div class="left-info">
+                                                                    <h6>{{'DEBIT_FREQUENCY' | translate}}</h6>
+                                                                    <h5>{{mandateDetails.frequency}}</h5>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                                <li *ngIf="mandateDetails?.frequency != 'ONETIME' || mandateDetails.frequency != 'ASPRESENTED'">
+                                                    <div class="full-container">
+                                                        <div class="row1">
+                                                            <div class="col-12 col-md-12">
+                                                                <div class="left-info">
+                                                                    <h6>{{'NUMBER_OF_DEBITS' | translate}}</h6>
+                                                                    <h5>{{mandateDetails?.noOfDebits}}</h5>
+                                                                    <!--TODO Currently Not getting parameter for this in response-->
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                                <li *ngIf="mandateDetails.frequency != 'ONETIME'">
+                                                    <div class="full-container">
+                                                        <div class="row1">
+                                                            <div class="col-12 col-md-12">
+                                                                <div class="left-info">
+                                                                    <h6>{{'PENDING_DEBITS' | translate}}</h6>
+                                                                    <h5>{{mandateDetails?.completedDebits}}</h5>
+                                                                    <!--TODO Currently Not getting parameter for this in response-->
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                                <li>
+                                                    <div class="full-container">
+                                                        <div class="row1">
+                                                            <div class="col-12 col-md-12">
+                                                                <div class="left-info">
+                                                                    <h6>{{'UMN' | translate}}</h6>
+                                                                    <h5>{{mandateDetails.umn}}</h5>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                                <li>
+                                                    <div class="full-container">
+                                                        <div class="row1">
+                                                            <div class="col-12 col-md-12">
+                                                                <div class="left-info">
+                                                                    <h6>{{'REMARKS' | translate}}</h6>
+                                                                    <h5>{{mandateDetails.remarks ? mandateDetails.remarks : '-'}}</h5>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </li>
+
+                                                <li *ngIf="mandateDetails.frequency != 'ONETIME' && mandateDetails.initiatedBy == 'PAYER'">
+                                                    <div class="full-container">
+                                                        <div class="row1">
+                                                            <div class="col-9 col-md-10">
+                                                                <div class="left-info">
+                                                                    <h5>{{'PAUSE' | translate}}</h5>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-3 col-md-2">
+                                                                <div class="right-info pl-3">
+                                                                    <div class="custom-control2">
+                                                                        <div class="custom-control custom-switch pad-2">
+                                                                            <input type="checkbox" class="custom-control-input" id="customSwitch1" [(ngModel)]="mandatePause" (change)="showPopup('pauseMandate',$event)" [ngModelOptions]="{ standalone: true }">
+                                                                            <label class="custom-control-label md" for="customSwitch1"> </label>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                                <li *ngIf="mandateDetails?.payeeCode != 'null' && mandateDetails?.payeeCode != '0000'">
+                                                    <div class="full-container">
+                                                        <div class="row1">
+                                                            <div class="col-6">
+                                                                <div class="left-info1">
+                                                                    <h5>
+                                                                        <a (click)="viewInvoice(mandateDetails.refUrl)" class="reminder-btn set">
+                                                                            <img src="assets/images/svg/view-invoice.svg" alt="view-invoice-icon" class="big-img"> {{"VIEW_INVOICE" | translate}} </a>
+                                                                    </h5>
+                                                                </div>
+                                                            </div>
+                                                            <!-- <div class="col-6" *ngIf="mandateDetails.umn != null && mandateDetails.umn != 'null'">
+                                                                <div [ngClass]="mandateDetails?.payeeCode != '0000' ? 'right-info' : 'left-info1' ">
+                                                                    <h5>
+                                                                        <a (click)="generateQRCode()" class="QR-btn set"> <img src="assets/images/svg/scan-qr-g.svg" alt="qr-icon" class="big-img"> {{'GENERATED_QR' | translate}} </a>
+                                                                    </h5>
+                                                                </div>
+                                                            </div> -->
+                                                        </div>
+                                                    </div>
+                                                </li>
+
+                                                <li *ngIf="DataService.getMandateInciatedBy(mandateDetails) == 'PAYEE' && mandateDetails.frequency == 'ONETIME'">
+                                                    <div class="full-container">
+                                                        <div class="row1">
+                                                            <div class="col-12">
+                                                                <div class="left-info1">
+                                                                    <h5>
+                                                                        <a (click)="goToPage('modifyMandate')" class="reminder-btn set"> <img src="assets/images/svg/modify.svg" alt="modify-icon" class="big-img"> {{'MODIFY' | translate }} </a>
+                                                                    </h5>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </li>
+
+                                                <li *ngIf="(DataService.getMandateInciatedBy(mandateDetails) == 'PAYEE' || DataService.getMandateInciatedBy(mandateDetails) == 'PAYER') && mandateDetails.frequency != 'ONETIME'">
+                                                    <div class="full-container">
+                                                        <div class="row1">
+                                                            <div class="col-12">
+                                                                <div class="left-info1">
+                                                                    <h5>
+                                                                        <a (click)="goToPage('modifyMandate')" class="reminder-btn set"> <img src="assets/images/svg/modify.svg" alt="modify-icon" class="big-img"> {{'MODIFY' | translate }} </a>
+                                                                    </h5>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <div class="ux-footer border-n" *ngIf="DataService.getMandateInciatedBy(mandateDetails) == 'PAYER' && mandateDetails.frequency == 'ONETIME'">
+                <div class="row1">
+                    <div class="col-6 col-lg-6 col-md-6 col-sm-6 text-center">
+                        <button class="revoke-btn ux-button secondary" type="button" [disabled]="mandateDetails.isRevokable != 'Y'" (click)="openPopup('revokeMandate')">{{'REVOKE' | translate}}</button>
+                    </div>
+                    <div class="col-6 col-lg-6 col-md-6 col-sm-6 text-center">
+                        <button class="modify-btn ux-button primary" type="button" (click)="goToPage('modifyMandate')">{{'MODIFY' |
+              translate}}</button>
+                    </div>
+                </div>
+            </div>
+            <div class="ux-footer border-n" *ngIf="DataService.getMandateInciatedBy(mandateDetails) == 'PAYEE' && mandateDetails.frequency == 'ONETIME'">
+                <div class="row1">
+                    <div class="col-6 col-lg-6 col-md-6 col-sm-6 text-center">
+                        <button class="revoke-btn ux-button secondary" type="button" [disabled]="mandateDetails.isRevokable != 'Y'" (click)="openPopup('revokeMandate')">{{'REVOKE' | translate}}</button>
+                    </div>
+                    <div class="col-6 col-lg-6 col-md-6 col-sm-6 text-center">
+                        <button class="modify-btn ux-button primary" type="button" (click)="openPopup('executeMandate')" [disabled]="mandateDetails.executable == 'N'">{{'EXECUTE' | translate}}</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="ux-footer border-n" *ngIf="(DataService.getMandateInciatedBy(mandateDetails) == 'PAYEE' || DataService.getMandateInciatedBy(mandateDetails) == 'PAYER') && mandateDetails.frequency != 'ONETIME'">
+                <div class="row1">
+                    <!-- <div class="col-6 col-lg-6 col-md-6 col-sm-6 text-center">
+                        <button class="modify-btn ux-button " type="button" (click)="goToPage('modifyMandate')">{{'MODIFY' | translate}}</button>
+                    </div> -->
+                    <div class="col-12 col-lg-12 col-md-12 col-sm-12 text-center">
+                        <button class="revoke-btn ux-button primary" type="button" [disabled]="mandateDetails.isRevokable != 'Y'" (click)="openPopup('revokeMandate')">{{'REVOKE' | translate}}</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- <button (click)="generateQRCode(true,false)">
+            DOWNLOAD
+        </button>
+        <button (click)="generateQRCode(false,true)">
+            SHARE
+        </button> -->
+    </div>
+</div>
+
+<!-- main -->
+
+<!-- =========== modal popup start ===============  -->
+
+<!-- Revoke Mandate Popup Start -->
+
+<div class="popup-bottom revokeMandate">
+    <div class="row">
+        <div class="col-12">
+            <h4 class="text-center">{{'REVOKE_MANDATE' | translate}}</h4>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12">
+            <p>
+                {{'DO_YOU_WANT_TO_REVOKE_MANDATE_TO_PAYEE' | translate}} {{mandateDetails.payeeName}} ?
+            </p>
+        </div>
+    </div>
+    <div class="row1 mt-2">
+        <div class="col-6 text-center">
+            <button class="ux-button secondary md close-btn" type="button" (click)="closePopup('revokeMandate')">{{'NO' |
+        translate}}</button>
+        </div>
+        <div class="col-6 text-center">
+            <button class="ux-button primary md" type="button" (click)="revokeMandate()">{{'YES' | translate}}</button>
+        </div>
+    </div>
+</div>
+
+<!-- Revoke Mandate Popup End -->
+
+
+<div class="popup-bottom pauseMandate">
+    <div class="row">
+        <div class="col-12">
+            <h4 class="text-center">{{'CONFIRMATION' | translate}}</h4>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12">
+            <p *ngIf="mandatePause">
+                {{'DO_YOU_WANT_TO_PAUSE_MANDATE_TO_PAYEE' | translate}} {{mandateDetails.payeeName}} ?
+            </p>
+            <p *ngIf="!mandatePause">
+                {{'DO_YOU_WANT_TO_UNPAUSE_MANDATE_TO_PAYEE' | translate}} {{mandateDetails.payeeName}} ?
+            </p>
+        </div>
+    </div>
+    <div class="row1 mt-2">
+        <div class="col-6 text-center">
+            <button class="ux-button secondary md close-btn" type="button" (click)="hidePopup('pauseMandate')">{{'NO' |
+        translate}}</button>
+        </div>
+        <div class="col-6 text-center">
+            <button class="ux-button primary md" type="button" (click)="pauseUnPauseMandate()">{{'YES' | translate}}</button>
+        </div>
+    </div>
+</div>
+
+<div class="popup-bottom revoke-success">
+    <!-- <form action="#" id="success-form"> -->
+    <div class="row mt-3">
+        <div class="success">
+            <img src="assets/images/svg/check.svg" alt="success-icon">
+            <h3>{{'SUCCESS' | translate}}</h3>
+            <h5>{{mandateRevokeMsg}}</h5>
+        </div>
+    </div>
+    <div class="row1 mt-3">
+        <div class="col-12 text-center">
+            <button class="ux-button primary md" (click)="goToPage('upiMandate')">{{'OK' | translate}}</button>
+        </div>
+    </div>
+    <!-- </form> -->
+</div>
+
+<div class="popup-bottom pauseUnpause-success">
+    <!-- <form action="#" id="success-form"> -->
+    <div class="row mt-3">
+        <div class="success">
+            <img src="assets/images/svg/check.svg" alt="success-icon">
+            <h3>{{'SUCCESS' | translate}}</h3>
+            <h5>{{pauseUnpauseMsg}}</h5>
+        </div>
+    </div>
+    <div class="row1 mt-3">
+        <div class="col-12 text-center">
+            <button class="ux-button primary md" (click)="closePopup('pauseUnpause-success')">{{'OK' | translate}}</button>
+        </div>
+    </div>
+    <!-- </form> -->
+</div>
+
+<!-- OLD
+<div class="popup-bottom show-qr-code">
+    <div class="row1">
+        <div class="col-10">
+          <h4 class="mb-0">{{'GENERATED_QR' | translate}}</h4>
+        </div>
+        <div class="col-2">
+          <button class="ux-button-icon close-btn">
+            <img src="assets/images/svg/close-b.svg" alt="cross-icon" class="img-vsmall" (click)="closePopup('show-qr-code')">
+          </button>
+        </div>
+      </div>
+    <div class="row1">
+        <div class="col-12 text-center">
+            <div class="white-bg1">
+                <div class="scan-container">
+                    <div class="inner1" id="QRContainer">
+                        <div class="qr-container" >
+                            <img [src]="generateQR" alt="QR-code-icon" class="qr">
+                            <div class="overlap-logo">
+                                <img src="assets/images/svg/psb-icon-y.svg" alt="psb-icon" class="icon1">
+                                <img src="assets/images/icons/upi-icon1.png" alt="upi-icon" class="icon1">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row1 mt-2">
+        <div class="col-12 text-center" (click)="generateQRCode(false,true)">
+            <button class="ux-button primary submit-btn" type="button">share</button>
+        </div>
+        <div class="col-12 text-center" (click)="generateQRCode(true,false)">
+            <button class="ux-button primary submit-btn" type="button">download</button>
+        </div>
+    </div>
+</div> -->
+<!-- <div class="ios-nav-overlay"></div> -->
+
+
+<!-- Generate QR Popup Start -->
+
+<div class="popup-bottom show-qr-code">
+    <div class="row1">
+        <div class="col-10">
+            <h4>{{'GENERATED_QR' | translate}}</h4>
+        </div>
+        <div class="col-2">
+            <button class="ux-button-icon close-btn">
+        <img src="assets/images/svg/close-b.svg" alt="cross-icon" class="img-vsmall"
+          (click)="closePopup('show-qr-code')">
+      </button>
+        </div>
+    </div>
+    <div class="row1">
+        <div class="col-sm-12 col-12 col-md-12">
+            <div class="scan-container">
+                <div class="inner1 white-bg1" id="QRContainer" *ngIf="constant.getPlatform() == constant.val_android">
+                    <div class="qr-container">
+                        <div class="qr-img">
+                            <img [src]="generateQR" alt="QR-code-icon" class="qr">
+                            <div class="overlap-logo">
+                                <img src="assets/images/svg/psb-icon-y.svg" alt="psb-icon" class="icon1">
+                                <img src="assets/images/svg/upi-icon2.svg" alt="upi-icon" class="icon1">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="inner1 white-bg1" *ngIf="constant.getPlatform() == constant.val_ios">
+                    <div class="qr-container" id="QRContainer">
+                        <div class="qr-img">
+                            <img [src]="generateQR" alt="QR-code-icon" class="qr">
+                            <!--Comment both icons for iOS-->
+                            <!-- <div class="overlap-logo">
+                                <img src="assets/images/svg/psb-icon-y.svg" alt="psb-icon" class="icon1">
+                                <img src="assets/images/svg/upi-icon2.svg" alt="upi-icon" class="icon1">
+                            </div> -->
+                        </div>
+                    </div>
+                </div>
+                <div class="inner1">
+                    <div class="row1 mt-3 mb-3">
+                        <button class="ux-linkbutton primary sm1 float-left" (click)="QRDownload();"><img
+                src="assets/images/svg/download.svg" alt="download-icon">{{'DOWNLOAD' | translate}}</button>
+                        <button class="ux-linkbutton primary sm1 float-right" (click)="shareQRCode();"><img
+                src="assets/images/svg/share.svg" alt="share-icon">{{'SHARE' | translate}}</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--Execute mandate popup start-->
+<div class="popup-bottom executeMandate">
+    <div class="row">
+        <div class="col-12">
+            <h4 class="text-center">{{'EXECUTE_MANDATE' | translate}}</h4>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12">
+            <p>
+                {{'DO_YOU_WANT_TO_EXECUTE_MANDATE_FROM' | translate}} {{mandateDetails.payerName}}?
+            </p>
+        </div>
+    </div>
+    <div class="row1 mt-2">
+        <div class="col-6 text-center">
+            <button class="ux-button secondary no md close-btn" type="button" (click)="closePopup('executeMandate')">{{'NO' | translate}}</button>
+        </div>
+        <div class="col-6 text-center">
+            <button class="revoke-btn1 ux-button primary md" type="button" (click)="executeMandate()">{{'YES' | translate}}</button>
+        </div>
+    </div>
+</div>
+<!--Execute mandate popup end-->
+<!-- Generate QR Popup End -->

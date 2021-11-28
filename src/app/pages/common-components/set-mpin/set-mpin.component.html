@@ -1,0 +1,415 @@
+<div class="main">
+
+
+  <div class="right-main-column minus-rt-col bg1 mar-custom">
+    <div class="right-col-container">
+
+      <div class="body-page-container">
+        <div class="container-fluid">
+          <div class="bg-section">
+            <div class="col-sm-12 col-12 col-md-12">
+          <div class="row">
+            <div class="sub-header2">
+              <div class="in-header">
+                <div class="header-icons-lft">
+                  <div class="header-actions">
+                    <button class="ux-button-header" (click)="backClick()">
+                      <img src="assets/images/svg/left-arrow.svg" alt="left-arrow-icon" class="img-vsmall">
+                    </button>
+                  </div>
+                </div>
+                <div class="brand-logo m-auto text-center">
+                  <h4>
+                    {{ 'REGISTRATION' | translate }}
+                    <!-- Registration -->
+                  </h4>
+                </div>
+                <div class="header-icons-rit">
+                  <div class="header-actions">
+                    <button class="ux-button-header" (click)="backClick()">
+                      <img src="assets/images/svg/close-w.svg" alt="cross-icon" class="img-vsmall">
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- <form id="mpin-form" (ngSubmit)="submitForm()" [formGroup]="mpinForm"> -->
+          <form id="mpin-form"  [formGroup]="mpinForm">
+
+            <div class="row1">
+              <div class="col-sm-12 col-12 col-md-12">
+                <div class="grey-bg2 mar-0 pad-custom">
+
+                  <div class="row1">
+                    <div class="col-12">
+                      <div class="logo1">
+                        <img src="assets/images/logo/bhim-upi-logo.svg" alt="bhim-upi-logo"> 
+                      </div>
+                    </div>
+                    <div class="col-12 mt-4">
+                      <ul class="step-list">
+                        <li class="step-matched">
+                          <em>
+                            <span class="primary">
+                              {{ 'STEP_2' | translate }}
+                              <!-- STEP 2  -->
+                            </span>
+                            <span class="secondary">
+                              {{ 'OF_STEP_2' | translate }}
+                              <!-- of STEP 2 -->
+                            </span>
+                          </em>
+                        </li>
+                      </ul>
+                    </div>
+                    <div class="col-12 mt-2 ">
+                      <h4>
+                        {{ 'SET_MPIN' | translate }}
+                        <!-- Set MPIN -->
+                      </h4>
+                    </div>
+                    <div class="col-sm-12 col-12 col-md-12 mb-2">
+                      <div class="ux-input pt-0">
+                        <em class="message">
+                          {{ 'MPIN_DESCRIPTION' | translate }}
+                          <!-- MPIN is 6 digit numerical quick access PIN, which can be used for login into your mobile application -->
+                        </em>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-sm-12 col-12 col-md-12">
+                        <div class="row">
+                          <div class="col-sm-12 col-12 col-md-12 mt-2">
+                            <div class="row">
+                              <div class="col-12">
+                                <div class="ux-input password1 p1">
+                                  <label for="sapassword" class="mb0">
+                                    {{ 'ENTER_MPIN' | translate }}
+                                    <!-- Enter MPIN -->
+                                  </label>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="row3">
+                              <div class="col-sm-2 col-2 col-md-2"
+                                *ngFor="let mpinInput of formInput | slice:0:6; index as i">
+                                <div class="ux-input password1 p1">
+                                  <input #mPINformRow type="tel" placeholder="&#9679;" autocomplete="off"
+                                    formControlName="{{mpinInput}}" numbersOnly maxlength="1"
+                                    (keyup)="keyUpEvent('mpin',$event, i)" />
+                                  <!-- <input #mPINformRow type="tel" autocomplete="off" formControlName="{{mpinInput}}" numbersOnly maxlength="1" (keyup)="keyUpEvent('mpin',$event, i)" /> -->
+                                </div>
+                              </div>
+                            </div>
+                            <div class="row">
+                              <div class="col-12">
+                                <div class="ux-input input-error password1 p1 mb-0">
+                                  <!-- <p *ngIf="mpinError">
+                                                                        {{ mpinError }}
+                                                                    </p> -->
+
+                                  <p *ngIf="mpinError">
+                                    {{ 'ENTER_6_DIGIT_MPIN_ERROR' | translate }}
+                                  </p>
+                                  <p *ngIf="validMpin">
+                                    {{ 'MPIN_SIMPLE_ERROR' | translate }}
+                                  </p>
+                                  <!-- <p *ngIf="">
+                                                                        {{ 'MPIN_MATCHES_PREVIOUS_MPIN_ERROR' | translate }}
+                                                                    </p> -->
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="col-sm-12 col-12 col-md-12 mt-2">
+                            <div class="row">
+                              <div class="col-12">
+                                <div class="ux-input password1 p1 mt-0">
+                                  <label for="capassword" class="mb0">
+                                    {{ 'CONFIRM_MPIN' | translate }}
+                                    <!-- Confirm MPIN -->
+                                  </label>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="row3">
+                              <div class="col-sm-2 col-2 col-md-2"
+                                *ngFor="let confirmMPINInput of formInput | slice:6:12; index as i">
+                                <div class="ux-input password1 p1">
+                                  <input #confirmMPINformRow placeholder="&#9679;" type="tel" autocomplete="off"
+                                    formControlName="{{confirmMPINInput}}" numbersOnly maxlength="1"
+                                    (keyup)="keyUpEvent('confirmMpin',$event, i)" />
+                                  <!-- <input #confirmMPINformRow type="tel" autocomplete="off" formControlName="{{confirmMPINInput}}" numbersOnly maxlength="1" (keyup)="keyUpEvent('confirmMpin',$event, i)" /> -->
+                                </div>
+                              </div>
+                            </div>
+                            <div class="row">
+                              <div class="col-12">
+                                <div class="ux-input input-error password1 p1 mb-0">
+                                  <!-- <p *ngIf="confMpinError">
+                                                                        {{ confMpinError }}
+                                                                    </p> -->
+                                  <p *ngIf="confMpinError">
+                                    {{ 'ENTER_6_DIGIT_CONFIRM_MPIN_ERROR' | translate }}
+                                  </p>
+                                  <p *ngIf="!mpinMatch">
+                                    {{ 'MPIN_CONFIRM_MISMATCH_ERROR' | translate }}
+                                  </p>
+                                  <p *ngIf="validConfirmMpin">
+                                    {{ 'MPIN_SIMPLE_ERROR' | translate }}
+                                  </p>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!-- <div class="footer-container sticky-actions bg-transparent">
+                <div class="footer-inactions minus-rt-col">
+                  <div class="container-fluid">
+                    <div class="row">
+                      <div class="col-12">
+                        <button type="submit" class="ux-button primary md confirm-btn">
+                          {{ 'PROCEED' | translate }}
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div> -->
+            </div>
+          </form>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <div class="footer-container sticky-actions box-shadow">
+        <div class="footer-inactions minus-rt-col">
+          <div class="container-fluid">
+            <div class="row">
+              <div class="col-12">
+                <button type="button" class="ux-button primary md confirm-btn" (click) = "submitForm()">
+                  {{ 'PROCEED' | translate }}
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="sticky-actions-spacer"></div>
+
+
+      
+    </div>
+  </div>
+</div>
+
+<!-- main -->
+
+<!-- footer section start -->
+
+<!-- <div class="footer-container sticky-actions bg-transparent">
+    <div class="footer-inactions minus-rt-col">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-12">
+                    <button class="ux-button primary md confirm-btn">
+                        {{ 'PROCEED' | translate }}
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="sticky-actions-spacer"></div>
+ -->
+
+<!-- footer section end -->
+
+
+
+<!-- Confirmation Popup Start -->
+
+<div class="popup-bottom confirmation">
+  <div class="row">
+    <div class="col-12">
+      <h4 class="text-center">
+        {{ 'CONFIRMATION' | translate }}
+        <!-- Confirmation -->
+      </h4>
+    </div>
+  </div>
+  <form id="terms-form">
+    <div class="row">
+      <div class="col-12">
+        <p>
+          {{ 'ACTIVATE_BIOMETRIC' | translate }}
+          <!-- Do you want to activate the Biometric or Face recognition option? -->
+        </p>
+      </div>
+      <div class="col-12">
+        <ul class="sim-list">
+          <li *ngIf="biometricType == 'finger' || biometricType == 'biometric'">
+            <a (click)="thumbClick()">
+              <div class="text-center">
+                <svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" viewBox="0 0 80 80">
+                  <g transform="translate(0)">
+                    <path d="M383.541,0h-11.2a2.344,2.344,0,1,0,0,4.687h11.2A3.964,3.964,0,0,1,387.5,8.647v11.2a2.344,2.344,0,0,0,4.688,0V8.647A8.657,8.657,0,0,0,383.541,0Z"
+                      transform="translate(-312.188)"></path>
+                    <path d="M2.344,22.187a2.344,2.344,0,0,0,2.344-2.344V8.647a3.964,3.964,0,0,1,3.96-3.959h11.2a2.344,2.344,0,0,0,0-4.687H8.647A8.657,8.657,0,0,0,0,8.647v11.2a2.344,2.344,0,0,0,2.344,2.344Z">
+                    </path>
+                    <path d="M19.844,387.5H8.647a3.964,3.964,0,0,1-3.96-3.959v-11.2a2.344,2.344,0,1,0-4.687,0v11.2a8.657,8.657,0,0,0,8.647,8.647h11.2a2.344,2.344,0,0,0,0-4.688Z"
+                      transform="translate(0 -312.188)"></path>
+                    <path d="M389.844,370a2.344,2.344,0,0,0-2.344,2.344v11.2a3.964,3.964,0,0,1-3.959,3.959h-11.2a2.344,2.344,0,0,0,0,4.688h11.2a8.657,8.657,0,0,0,8.647-8.647v-11.2A2.344,2.344,0,0,0,389.844,370Z"
+                      transform="translate(-312.188 -312.188)"></path>
+                    <path d="M140.512,50.309c-16.268-12.067-33.8-12.374-50.546-.214a2.344,2.344,0,1,0,2.754,3.793c15.132-10.989,30.425-10.625,45,.186a2.344,2.344,0,1,0,2.793-3.765Z"
+                      transform="translate(-75.093 -34.691)"></path>
+                    <path d="M101.593,105c-9.957,0-22.757,6.63-28.2,14.794a2.344,2.344,0,1,0,3.9,2.6c4.512-6.769,15.867-12.706,24.3-12.706,8.257,0,19.55,4.405,24.215,12.569a2.344,2.344,0,1,0,4.07-2.325C124.5,110.527,111.887,105,101.593,105Z"
+                      transform="translate(-61.593 -88.594)"></path>
+                    <path d="M149.688,251.594c0-7.668,5.678-13.906,12.656-13.906S175,243.926,175,251.594v2.5a2.344,2.344,0,1,0,4.687,0v-2.5c0-10.253-7.78-18.594-17.344-18.594S145,241.341,145,251.594c0,9.966,7.493,15.305,10.8,20.084a2.344,2.344,0,1,0,3.854-2.668C156.075,263.838,149.688,259.549,149.688,251.594Z"
+                      transform="translate(-122.344 -196.594)"></path>
+                    <path d="M134.19,206.142C141.434,191.655,128.553,169,108.344,169,94.116,169,81,181.059,81,196.344c0,5.549.712,10.243,4.186,15.111A2.344,2.344,0,1,0,89,208.732c-2.447-3.429-3.314-6.671-3.314-12.389,0-12.069,10.587-22.656,22.656-22.656a22.792,22.792,0,0,1,16.463,7.353c6.21,6.615,8.441,16.5,5.191,23.006-3.384,6.767-14.31,4.849-14.31-3.952,0-17.382-17.805-12.183-14.617.568a2.344,2.344,0,1,0,4.547-1.137c-.819-3.275.683-5.838,2.726-5.838,1.835,0,2.656,3.217,2.656,6.406C111,213.818,128.58,217.362,134.19,206.142Z"
+                      transform="translate(-68.344 -142.594)"></path>
+                  </g>
+                </svg>
+              </div>
+            </a>
+          </li>
+          <li  *ngIf="biometricType == 'face'">
+            <a (click)="faceClick()">
+              <div class="text-center">
+                <svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" viewBox="0 0 80 80">
+                  <path d="M14.333,34.333H11a2.5,2.5,0,0,1,0-5h3.333A4.172,4.172,0,0,0,18.5,25.167V8.5a2.5,2.5,0,0,1,5,0V25.167A9.174,9.174,0,0,1,14.333,34.333Z"
+                    transform="translate(19.833 14)"></path>
+                  <path d="M21.416,27.92a16.107,16.107,0,0,1-13.82-7.9,2.5,2.5,0,0,1,4.31-2.54,11.042,11.042,0,0,0,19.027,0,2.5,2.5,0,0,1,4.31,2.54A16.126,16.126,0,0,1,21.416,27.92Z"
+                    transform="translate(16.917 37.914)"></path>
+                  <path d="M40.979,27.827a2.5,2.5,0,0,1-2.5-2.5V9.167A4.172,4.172,0,0,0,34.312,5H18.152a2.5,2.5,0,1,1,0-5h16.16a9.176,9.176,0,0,1,9.167,9.167v16.16A2.5,2.5,0,0,1,40.979,27.827Z"
+                    transform="translate(36.521)"></path>
+                  <path d="M2.5,27.827a2.5,2.5,0,0,1-2.5-2.5V9.167A9.176,9.176,0,0,1,9.167,0h16.16a2.5,2.5,0,0,1,0,5H9.167A4.172,4.172,0,0,0,5,9.167v16.16a2.5,2.5,0,0,1-2.5,2.5Z">
+                  </path>
+                  <path d="M34.312,43.479H18.152a2.5,2.5,0,0,1,0-5h16.16a4.172,4.172,0,0,0,4.167-4.167V18.152a2.5,2.5,0,0,1,5,0v16.16A9.176,9.176,0,0,1,34.312,43.479Z"
+                    transform="translate(36.521 36.521)"></path>
+                  <path d="M25.327,43.479H9.167A9.176,9.176,0,0,1,0,34.312V18.152a2.5,2.5,0,0,1,5,0v16.16a4.172,4.172,0,0,0,4.167,4.167h16.16a2.5,2.5,0,0,1,0,5Z"
+                    transform="translate(0 36.521)"></path>
+                  <path d="M7.5,6A2.5,2.5,0,0,0,5,8.5v5a2.5,2.5,0,0,0,5,0v-5A2.5,2.5,0,0,0,7.5,6Z"
+                    transform="translate(11.667 14)"></path>
+                  <path d="M19,6a2.5,2.5,0,0,0-2.5,2.5v5a2.5,2.5,0,0,0,5,0v-5A2.5,2.5,0,0,0,19,6Z"
+                    transform="translate(38.5 14)"></path>
+                </svg>
+              </div>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-12 text-center">
+        <p *ngIf="biometriSelectedOption=='nooption'">
+          {{'CHECK_ONE_OPTION' | translate}}
+        </p>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-6 text-center">
+        <button class="ux-button secondary" (click)="hideBiometricModal()">
+          {{ 'LATER' | translate }}
+          <!-- Later -->
+        </button>
+      </div>
+      <div class="col-6 text-center">
+        <!-- <button class="ux-button primary" (click)="goToPage('createUpi')"> -->
+        <button class="ux-button primary" (click)="biometricCheck()">
+          {{ 'YES' | translate }}
+          <!-- Yes -->
+        </button>
+      </div>
+    </div>
+  </form>
+</div>
+
+
+<div class="popup-bottom user-verification">
+  <div class="row1">
+      <div class="col-12">
+          <h4 class="text-center"> {{'VERIFICATION' | translate}}
+          </h4>
+      </div>
+  </div>
+  <div class="row1">
+      <div class="col-12">
+          <p>{{'WELCOME_BACK_TO_NEW_APP_MSG' | translate}}</p>
+      </div>
+  </div>
+  <div class="row1  mt-2">
+      <div class="col-12 text-center" (click)="closePopup('div.popup-bottom.user-verification')">
+          <button class="ux-button primary submit-btn" type="button">{{'OK' | translate}}</button>
+      </div>
+  </div>
+</div>
+
+<div class="popup-bottom user-profile-inactive">
+  <div class="row1">
+      <div class="col-12">
+          <h4 class="text-center"> {{'VERIFICATION' | translate}}
+          </h4>
+      </div>
+  </div>
+  <div class="row1">
+      <div class="col-12">
+          <p>{{'WELCOME_BACK_MIGRATED_USER' | translate}}</p>
+      </div>
+  </div>
+  <div class="row1  mt-2">
+      <div class="col-12 text-center" (click)="closePopup('div.popup-bottom.user-profile-inactive')">
+          <button class="ux-button primary submit-btn" type="button">{{'OK' | translate}}</button>
+      </div>
+  </div>
+</div>
+
+
+<div class="popup-bottom show-biometric-info-popup">
+  <div class="row1">
+      <div class="col-12">
+          <h4 class="text-center"> <img src="./assets/images/svg/information.svg" alt="information-icon"> {{informationLabel}}
+          </h4>
+      </div>
+  </div>
+  <div class="row1">
+      <div class="col-12">
+          <p>{{ information}}</p>
+      </div>
+  </div>
+  <!-- <div class="row1  mt-2">
+      <div class="col-12 text-center" (click)="closeBiometricInfoPopup()">
+          <button class="ux-button primary submit-btn" type="button">{{'OK' | translate}}</button>
+      </div>
+  </div> -->
+  <div class="row">
+    <div class="col-6 text-center">
+      <button class="ux-button secondary" (click)="closeBiometricInfoPopup();biometricCheck();">
+        {{ 'RETRY' | translate }}
+        <!-- Later -->
+      </button>
+    </div>
+    <div class="col-6 text-center">
+      <!-- <button class="ux-button primary" (click)="goToPage('createUpi')"> -->
+      <button class="ux-button primary" (click)="hideBiometricModal()">
+        {{ 'PROCEED' | translate }}
+        <!-- Yes -->
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- Confirmation Popup End -->
+
+<!-- <div class="ios-nav-overlay"></div> -->

@@ -1,0 +1,66 @@
+{
+  "_from": "cordova-plugin-cors",
+  "_id": "cordova-plugin-cors@1.0.6",
+  "_inBundle": false,
+  "_integrity": "sha512-OssGq+yz19ntYofVI1adV/vhGJbbV4t4CfG+YkNGUEyzliR2npKXV9hTMaf4vZjpecvLsmwLsPt8aRmT0dglTw==",
+  "_location": "/cordova-plugin-cors",
+  "_phantomChildren": {},
+  "_requested": {
+    "type": "tag",
+    "registry": true,
+    "raw": "cordova-plugin-cors",
+    "name": "cordova-plugin-cors",
+    "escapedName": "cordova-plugin-cors",
+    "rawSpec": "",
+    "saveSpec": null,
+    "fetchSpec": "latest"
+  },
+  "_requiredBy": [
+    "#USER",
+    "/"
+  ],
+  "_resolved": "https://registry.npmjs.org/cordova-plugin-cors/-/cordova-plugin-cors-1.0.6.tgz",
+  "_shasum": "6e8d4483aa073224694a8c0aec9a903abed99135",
+  "_spec": "cordova-plugin-cors",
+  "_where": "D:\\Sachin\\Office Projects\\PSB",
+  "author": {
+    "name": "Raphaël Calabro",
+    "email": "ddaeke-npmjs@yahoo.com"
+  },
+  "bugs": {
+    "url": "https://github.com/Raphcal/cordova-plugin-cors/issues"
+  },
+  "bundleDependencies": false,
+  "cordova": {
+    "id": "cordova-plugin-cors",
+    "platforms": [
+      "ios"
+    ]
+  },
+  "deprecated": false,
+  "description": "Allow CORS requests on iOS with WKWebView.",
+  "devDependencies": {
+    "typescript": "^2.6.2"
+  },
+  "directories": {},
+  "homepage": "https://github.com/Raphcal/cordova-plugin-cors#readme",
+  "keywords": [
+    "cordova",
+    "cors",
+    "ecosystem:cordova",
+    "cordova-ios"
+  ],
+  "license": "LGPLv3",
+  "maintainers": [
+    {
+      "name": "Raphaël Calabro",
+      "email": "ddaeke-npmjs@yahoo.com"
+    }
+  ],
+  "name": "cordova-plugin-cors",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Raphcal/cordova-plugin-cors.git"
+  },
+  "version": "1.0.6"
+}

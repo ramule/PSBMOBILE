@@ -1,0 +1,34 @@
+.my-pagination .ngx-pagination .current {
+    background: #007C3D !important;
+    border-radius: 5px !important;
+  }
+ 
+  .my-pagination .ngx-pagination .pagination-next a::after, .ngx-pagination .pagination-next.disabled::after {
+    content: '' !important;
+    display: inline-block !important;
+    margin-left: 0.5rem !important;
+ }
+ 
+ .my-pagination .ngx-pagination .pagination-previous a::before, .ngx-pagination .pagination-previous.disabled::before {
+  content: '' !important;
+ }
+ 
+ 
+ 
+ .my-pagination .ngx-pagination a, .ngx-pagination button {
+  color: #007C3D !important;
+  text-decoration: none;
+ }
+ 
+ .my-pagination .ngx-pagination li {
+  border-bottom:0px solid transparent !important
+ }
+ 
+ 
+ 
+ .my-pagination .ngx-pagination .pagination-next a::after, .ngx-pagination .pagination-next.disabled::after {
+    content: '';
+    display: inline-block;
+    margin-left: 0.5rem;
+ }
+

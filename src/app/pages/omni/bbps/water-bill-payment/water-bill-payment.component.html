@@ -1,0 +1,508 @@
+<div class="main bg-m">
+	<div class="right-main-column " (click)="clickedOut($event)">
+		<div class="right-col-container pad-b full-width">
+			<!-- ======== body page content start from here ======== -->
+			<div class="body-page-container main-dashborad bill-wrapper">
+				<div class="container-fluid">
+					<div class="row">
+						<div class="col-12 p-0">
+							<div class="breadcrumb">
+								<ul class="lst-breadcrumb">
+                                    <li *ngFor="let name of DataService.breadcrumblist">
+                                        <a (click)="DataService.breadcrumroute(name.routeName)">{{name.currentRoute | translate}}</a>
+                                       </li>
+                                </ul>
+							</div>
+						</div>
+					</div>
+					<!--.row -->
+					<div class="vspacer15 customize d-none d-md-block d-lg-block d-xl-block"></div>
+					<div class="row no-gutters">
+						<div class="col-12">
+							<div class="row1">
+								<div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-9">
+									<!-- Greencard2 Start here -->
+									<div class="greencard2">
+										<div class="row1 hide-m">
+											<div class="col-md-10 col-12">
+												<h4>Water</h4> </div>
+											<div class="col-md-2 col-12">
+												<div class="header-actions"> <img src="assets/images/icons/billpay.png" alt="billpay-img" class="small-img"> </div>
+											</div>
+										</div>
+										<div class="row1">
+											<div class="col-sm-12 col-12 col-md-12">
+												<div class="ux-nav-tabs" style="margin:0">
+													<div class="responsive3">
+														<ul class="nav nav-tabs nav-justified bor-n  d-flex d-sm-none mt-0" role="tablist">
+															<li class="nav-item"> <a class="nav-link active" data-toggle="tab" href="#pay-bill" data-target="#pay-bill, #bill-pay1">Pay Bill</a> </li>
+															<li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#recent-pay">Recent Payments</a> </li>
+														</ul>
+														<!-- Tab panes -->
+														<div class="tab-content  custom-tab-content1 mb-0 row1">
+															<div id="pay-bill" class=" tab-pane active show col-12 p-0">
+																<div class="widget-box5 mb-3 overflow-inherit">
+																	<div class="bg-white1 pad-custom rounded-8">
+                                                                        <form [formGroup]="waterBillPaymentForm">
+																		<div class="row1">
+																			<div class="flex-container2">
+																				<div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 full-info">
+																					<div class="row1">
+																						<div class="col-12 col-md-6 col-lg-4 col-xl-4">
+																							<div class="ux-input">
+																								<label>State</label>
+																								<select formControlName="custstate">
+																									<option value="">Select</option>
+																									<option value="maharashtra">maharashtra</option>
+																									<option value="Goa">Goa</option>
+																								</select>
+                                                                                                <p class="error-message" id="errorMessage" *ngIf="waterBillPaymentForm.controls['custstate'].hasError('required') && (waterBillPaymentForm.controls['custstate'].dirty || waterBillPaymentForm.controls['custstate'].touched)"> Please select state </p>
+
+																							</div>
+																						</div>
+																						<div class="col-12 col-md-6 col-lg-8 col-xl-8">
+																							<div class="row1">
+																								<div class="col-12 col-md-8 col-lg-6 col-xl-6">
+																									<!-- <div class="ux-input biller-custom-selectbox">
+																										<label>Billers</label>
+																										<select class="d-block d-sm-none mob-board-name" onclick="location.href='mob-biller-dropdown.html'">
+																											<option value="">Select</option>
+																										</select>
+																										<ul class="list-unstyled hide-m" id="custom-icon-selectbox">
+																											<li class="init">Select Billers</li>
+																											<div class="list">
+																												<li style="display: none;"><img src="assets/images/icons/mahavitran.png" alt="icon"> Ahmedabad Municipal Corporation <img src="assets/images/svg/BBPS_Logo.svg" alt="BBPS_Logo"></li>
+																												<li style="display: none;"><img src="assets/images/icons/aasam-power.png" alt="icon"> Kalyan Dombivali Municipal Corporation<img src="assets/images/svg/BBPS_Logo.svg" alt="BBPS_Logo"></li>
+																											</div> <span class="right-arrow"></span> </ul>
+																										<p class="error-message"></p>
+																									</div> -->
+
+                                                                                                    <div class="ux-input biller-custom-selectbox">
+																										<label>Billers</label>
+																										<select class="d-block d-sm-none mob-board-name"  (click)="goToPage('mobBillerDropdown')"  >
+																											<option value="select" *ngIf="DataService.billerValueMob == '' ">Select</option>
+																											<option value ="DataService.billerValueMob != '' " > {{DataService.billerValueMob.boardName}} </option>
+																										</select>
+																										
+																										<div class="send-input hide-m">
+																											<span class="placeholder" [ngStyle]="{'display': boardNameValue != '' ? 'none' : 'block' }" (click)="onSelectOption($event)" >
+																												<img src="{{boardNameValue.imagName}}" alt="" *ngIf="boardNameValue != '' "> 
+																												{{boardNameValue == "" ? 'Search / Select Account' : boardNameValue.boardName}} 
+																											</span>
+
+																											<span class="sendDisplay init"  [ngStyle]="{'display': boardNameValue != '' ? 'block' : 'none' }"  (click)="onSelectOption($event)">
+																												<img src="{{boardNameValue.imagName}}" alt="" *ngIf="boardNameValue != '' "> 
+																												<b id="board-display">{{ boardNameValue.boardName}}</b>
+																											</span>
+
+																											<ul id="board-name" class="list-unstyled hide-m list" >
+																												<li  class="init" *ngFor="let item of billPaymentBoardName" (click)="boardTypeSelection(item)" ><img src="{{item.imagName}}" alt=""> 
+																													
+																													<span id="board-display"> {{item.boardName}} </span>	    <img src="assets/images/svg/BBPS_Logo.svg" alt=""></li>
+																											</ul>
+
+																										</div>
+
+
+																										<!-- <ul class="list-unstyled hide-m" id="custom-icon-selectbox" (click)="onSelectOption($event)"> 
+																											<li class="init" *ngIf="boardNameValue == '' ">Select Board Name</li>
+																											<li class="init" *ngIf="boardNameValue != '' "> <img src="{{boardNameValue.imagName}}" alt="">{{boardNameValue.boardName}} </li>
+
+																											<div class="list" id="board-name" *ngIf="boardNameToggle" >
+																												<li *ngFor="let item of billPaymentBoardName" (click)="boardTypeSelection(item)" ><img src="{{item.imagName}}" alt=""> {{item.boardName}} <img src="assets/images/svg/BBPS_Logo.svg" alt=""></li>
+																											</div> <span class="right-arrow"></span> </ul> -->
+																									</div>
+																								</div>
+																								<div class="col-12 col-md-4 col-lg-6 col-xl-6 d-none d-sm-block" *ngIf="boardNameValue != '' ">
+																									<div class="biller-selected-logo">
+																										<img src="assets/images/svg/BBPS_Logo.svg" alt=""></div>
+																								</div>
+																							</div>
+																						</div>
+																					</div>
+																					<div class="row1">
+																						<div class="col-12 col-md-6 col-lg-4 col-xl-4">
+																							<div class="ux-input">
+																								<label>Customer ID</label>
+																								<input type="text" numbersOnly placeholder="Enter Customer ID" formControlName="customerId">
+																								<div class="row">
+																									<p class="text-left col-6">
+																										<!-- <a class="link-txt" href="#">View Sample Bill</a> --></p>
+																									<p class="text-right col-6">
+																										<button class="ux-button primary sm5 float-right fetchBtn" (click)="waterBillPaymentSubmit()" >Fetch Bill</button>
+																									</p>
+																								</div>
+                                                                                                <p class="error-message" id="errorMessage" *ngIf="waterBillPaymentForm.controls['customerId'].hasError('required') && (waterBillPaymentForm.controls['customerId'].dirty || waterBillPaymentForm.controls['customerId'].touched)"> Please enter customer id </p>
+
+																							</div>
+																						</div>
+																					</div>
+																					<div class="row1">
+																						<div class="col-12 col-md-12">
+																							<div class="ux-selection mt-4">
+																								<label class="ux-selection1">I here by, wish to get bills generated by this biller on regular basis. I also agree to share the require details for receiving bill reminders <a class="terms-info-btn">Terms and Conditions</a>
+																									<input type="checkbox" name="radioboxdemo" formControlName="termsCondition" required> <span class="checkmark"></span> </label>
+																							</div>
+																						</div>
+																						<div class="col-12 col-md-12">
+																							<div class="row">
+																								<div class="ux-input">
+                                                                                                    <p class="error-message" id="errorMessage" *ngIf="waterBillPaymentForm.controls['termsCondition'].hasError('required') && (waterBillPaymentForm.controls['termsCondition'].dirty || waterBillPaymentForm.controls['termsCondition'].touched)"> Please select terms & condition </p>
+																								</div>
+																							</div>
+																						</div>
+																					</div>
+																				</div>
+																			</div>
+																		</div>
+                                                                        </form>
+																	</div>
+																</div>
+																<div class="row1 fetch-bill-info" *ngIf="showFetchBill">
+																	<div class="col-sm-12 col-12 col-md-12">
+																		<div class="white-box2 mb-3 mt-0 p-0">
+																			<div class="bill-info-card green-light m-0">
+																				<ul class="comp-info2">
+																					<li>
+																						<div class="grid-info ">
+																							<div class="full-info">
+																								<h5>Ahmedabad Municipal Corporation</h5>
+																								<h6>Due Date 16 Mar 2021</h6> </div>
+																						</div>
+																						<div class="grid-info d-block">
+																							<div class="full-info">
+																								<h5 class="my-4 greentext"><img src="assets/images/svg/rupee-g2.svg" alt="rupees-icon"> 1200.00</h5> </div>
+																						</div>
+																					</li>
+																				</ul>
+																			</div>
+																		</div>
+																	</div>
+																	<div class="col-sm-12 col-12 col-md-12">
+																		<div class="widget-box5 mb-3">
+																			<div class="bg-white1 pad-custom py-2">
+																				<div class="row1">
+																					<div class="col-md-12 col-12">
+																						<div id="accordion1" class="accordion-container parent-accordion">
+																							<div class="card4">
+																								<a class="card-link collapsed" data-toggle="collapse" href="#consumer" aria-expanded="false">
+																									<div class="card-header3">
+																										<div class="panel-title3">
+																											<h6 class="detail-heading">Consumer Details</h6> </div> <em></em> </div>
+																									<!--card-header-->
+																								</a>
+																								<div id="consumer" class="collapse" data-parent="#accordion1" >
+																									<div class="white-box2 m-0 p-0 shadow-none">
+																										<div class="info-bottom pad-custom swap-div-mob p-0">
+																											<div class="info-details pr-35">
+																												<div class="row">
+																													<h6>Biller ID</h6>
+																													<h5>REL273927</h5> </div>
+																											</div>
+																											<div class="info-details">
+																												<div class="row">
+																													<div class="left-info"> <span class="biller-icon">
+                                                                                                                                    <img src="assets/images/icons/adani.png" alt="adani-logo">
+                                                                                                                                </span>
+																														<div class="right-info">
+																															<h6>Biller Name</h6>
+																															<h5>Adani Electricity</h5> </div>
+																													</div>
+																												</div>
+																											</div>
+																											<div class="info-details">
+																												<div class="row">
+																													<h6>Biller Account ID</h6>
+																													<h5>3646236472837</h5> </div>
+																											</div>
+																											<div class="info-details">
+																												<div class="row">
+																													<h6>Consumer Number</h6>
+																													<h5>REL273927</h5> </div>
+																											</div>
+																											<div class="info-details">
+																												<div class="row">
+																													<h6>Customer Name </h6>
+																													<h5>Rajesh Shah</h5> </div>
+																											</div>
+																											<div class="info-details">
+																												<div class="row">
+																													<h6>Customer Mobile Number</h6>
+																													<h5>986587867</h5> </div>
+																											</div>
+																											<div class="info-details">
+																												<div class="row">
+																													<h6>Short Name </h6>
+																													<h5>Home Electricity</h5> </div>
+																											</div>
+																										</div>
+																									</div>
+																								</div>
+																							</div>
+																						</div>
+																					</div>
+																				</div>
+																			</div>
+																		</div>
+																	</div>
+																	<div class="col-sm-12 col-12 col-md-12">
+																		<div class="widget-box5 mb-3">
+																			<div class="bg-white1 pad-custom">
+																				<div class="row1">
+																					<div class="col-md-12 col-12">
+																						<div class="row1 mb-1">
+																							<div class="col-md-4 col-lg-4 col-xl-4 col-12">
+																								<h6 class="detail-heading">Payment Mode</h6> </div>
+																						</div>
+																					</div>
+																				</div>
+																				<form [formGroup]="paymentTypeForm">
+																					<div class="row1">
+																						<div class="col-12">
+																							<div class="ux-selection">
+																								<label class="ux-selection2">Pay via UPI
+																									<input type="radio" value="upi" name="paymentMode" autocomplete="off" formControlName="paymentMode"> <span class="checkmark"></span> </label>
+																							</div>
+																							<div class="ux-selection">
+																								<label class="ux-selection2">Pay via Account
+																									<input type="radio" value="account" name="paymentMode" autocomplete="off" formControlName="paymentMode"> <span class="checkmark"></span> </label>
+																							</div>
+																						</div>
+																					</div>
+																				</form>
+																				<div class="row1">
+																					<div class="col-12">
+																						<div class="ux-input m-0">
+																							<p class="error-message" id="errorMessage" *ngIf="paymentTypeForm.controls['paymentMode'].hasError('required') && (paymentTypeForm.controls['paymentMode'].dirty || paymentTypeForm.controls['paymentMode'].touched)"> Please select payment mode for transaction </p>
+
+																						</div>
+																					</div>
+																				</div>
+																			</div>
+																		</div>
+																	</div>
+																	<div class="col-sm-12 col-12 col-md-12">
+																		<div class="row1">
+																			<div class="ux-selection">
+																				<div class="ux-selection1 mar-rcustom ">
+																					<label>Add as registered biller
+																						<input type="checkbox" name="" autocomplete="off"> <span class="checkmark"></span> </label>
+																				</div>
+																			</div>
+																		</div>
+																		<div class="row1">
+																			<div class="col-12">
+																				<div class="ux-input m-0">
+																					<p class="error-message"></p>
+																				</div>
+																			</div>
+																		</div>
+																	</div>
+																	<div class="col-12 col-md-12">
+																		<ul class="bottom-footer1">
+																			<li>
+																				<div class="btn-div w100">
+																					<button class="ux-button primary  sm-mob" type="submit" (click)="existingGetBillSubmit()">Proceed to Pay</button>
+																				</div>
+																			</li>
+																		</ul>
+																	</div>
+																</div>
+															</div>
+															<div id="recent-pay" class="tab-pane fade d-sm-none">
+																<div class="row1">
+																	<div class="col-sm-12 col-12 col-md-12">
+																		<div class="widget-box7">
+																			<div class="component-title6">
+																				<div class="row1">
+																					<div class="col-8 col-md-5  d-none d-sm-block">
+																						<h3>Registered Pay</h3> </div>
+																					<div class="col-4 col-md-7 d-none d-sm-block pl-0 text-right"> <a class="link-txt" >Register New Biller</a> <a class="link-txt ml-3" href="#">View All</a> </div>
+																				</div>
+																			</div>
+																			<div class="component-box">
+																				<ul class="pay-list">
+																					<li>
+																						<div class="white-container">
+																							<div class="list-full mb-1">
+																								<div class="list-info">
+																									<div class="icon1"> <img src="assets/images/icons/mahanagar-gas.png" alt="mahanagar-logo"> </div>
+																									<h5>Ahmedabad Municipal Corporation</h5>
+																									<h6><span>20 Oct 2020</span> </h6> </div>
+																							</div>
+																							<div class="list-full2">
+																								<div class="list-day-info"> <em class="text-pass">Payment Successful</em>
+																									<div class="mob-amount d-sm-none d-block">
+																										<h4 class="text-reject m-0 mb-2"> 
+                                                                                                                    ₹ 1200.00
+                                                                                                                </h4> </div>
+																								</div>
+																								<div class="list-btn">
+																									<button class="ux-button primary sm5 float-right ml-2" >Repeat</button>
+																									<button class="ux-button secondary sm5 float-right" >Details</button>
+																								</div>
+																							</div>
+																						</div>
+																					</li>
+																					<li>
+																						<div class="white-container">
+																							<div class="list-full mb-1">
+																								<div class="list-info">
+																									<div class="icon1"> <img src="assets/images/icons/mahanagar-gas.png" alt="mahanagar-logo"> </div>
+																									<h5>HT Digital</h5>
+																									<h6><span>20 Oct 2020</span> </h6> </div>
+																							</div>
+																							<div class="list-full2">
+																								<div class="list-day-info"> <em class="text-reject">Payment Failed</em>
+																									<div class="mob-amount d-sm-none d-block">
+																										<h4 class="text-del m-0 mb-2"> 
+                                                                                                                    ₹ 900.00
+                                                                                                                </h4> </div>
+																								</div>
+																								<div class="list-btn">
+																									<button class="ux-button primary sm5 float-right ml-2" >Repeat</button>
+																									<button class="ux-button secondary sm5 float-right" >Details</button>
+																								</div>
+																							</div>
+																						</div>
+																					</li>
+																					<li>
+																						<div class="white-container">
+																							<div class="list-full mb-1">
+																								<div class="list-info">
+																									<div class="icon1"> <img src="assets/images/icons/mahanagar-gas.png" alt="mahanagar-logo"> </div>
+																									<h5>B. K. Arogyam and Reearch Pvt. Ltd</h5>
+																									<h6><span>20 Oct 2020</span> </h6> </div>
+																							</div>
+																							<div class="list-full2">
+																								<div class="list-day-info"> <em class="text-pass">Payment Successful</em>
+																									<div class="mob-amount d-sm-none d-block">
+																										<h4 class="text-reject m-0 mb-2"> 
+                                                                                                                    ₹ 900.00
+                                                                                                                </h4> </div>
+																								</div>
+																								<div class="list-btn">
+																									<button class="ux-button primary sm5 float-right ml-2" >Repeat</button>
+																									<button class="ux-button secondary sm5 float-right" >Details</button>
+																								</div>
+																							</div>
+																						</div>
+																					</li>
+																				</ul>
+																			</div>
+																		</div>
+																	</div>
+																</div>
+															</div>
+														</div>
+													</div>
+												</div>
+											</div>
+											<div class="col-12 col-md-12 d-none d-sm-block"  *ngIf="!showFetchBill">
+												<ul class="bottom-footer1">
+													<li>
+														<div class="btn-div hide-m w100">
+															<button class="ux-button secondary sm-mob" (click)="goToPage('retailRechargeBillPay')">Cancel</button>
+														</div>
+														<!-- <div class="btn-div w100">
+															<button class="ux-button primary sm-mob" (click)="waterBillPaymentSubmit()">Proceed</button>
+														</div> -->
+													</li>
+												</ul>
+											</div>
+										</div>
+									</div>
+								</div>
+								<!-- Greencard2 End here -->
+								<!-- Right Column Ads Start -->
+								<div class="vspacer5 d-block d-sm-none"></div>
+								<div class="col-12 col-md-12 col-lg-12 col-xl-3" id="bill-pay1">
+									<div class="row1">
+										<div class="col-sm-12 col-12 col-md-12">
+											<div class="widget-box7">
+												<div class="component-title6">
+													<div class="row1">
+														<div class="col-12 col-md-12">
+															<h6>Pending Dues</h6> </div>
+													</div>
+												</div>
+												<div class="component-box">
+													<ul class="pay-list pendig-due-wrapper">
+														<li>
+															<div class="white-container">
+																<div class="list-full mb-1">
+																	<div class="list-info">
+																		<div class="icon1"> <img src="assets/images/icons/mahanagar-gas.png" alt="mahanagar-logo"> </div>
+																		<h5>Ahmedabad Municipal Corporation</h5>
+																		<h6>Last Paid <span>20 Oct 2020</span> 12:18 </h6> </div>
+																	<div class="list-amount text-right ">
+																		<h4 class="text-reject my-3"> 
+                                                                                    ₹ 900.00
+                                                                                </h4> </div>
+																</div>
+																<div class="list-full2">
+																	<div class="list-day-info"> <em class="text-reject">4 days left</em> </div>
+																	<div class="list-btn">
+																		<button class="ux-button primary sm5 float-right ml-2" >Pay Now</button>
+																	</div>
+																</div>
+															</div>
+														</li>
+														<li>
+															<div class="white-container">
+																<div class="list-full mb-1">
+																	<div class="list-info">
+																		<div class="icon1"> <img src="assets/images/icons/mahanagar-gas.png" alt="mahanagar-logo"> </div>
+																		<h5>HT Digital</h5>
+																		<h6>Last Paid <span>20 Oct 2020</span> 12:18 </h6> </div>
+																	<div class="list-amount text-right">
+																		<h4 class="text-reject my-3"> 
+                                                                                    ₹ 900.00
+                                                                                </h4> </div>
+																</div>
+																<div class="list-full2">
+																	<div class="list-day-info"> <em class="text-available">14 days left</em> </div>
+																	<div class="list-btn">
+																		<button class="ux-button primary sm5 float-right ml-2" >Pay Now</button>
+																	</div>
+																</div>
+															</div>
+														</li>
+														<li>
+															<div class="white-container">
+																<div class="list-full mb-1">
+																	<div class="list-info">
+																		<div class="icon1"> <img src="assets/images/icons/mahanagar-gas.png" alt="mahanagar-logo"> </div>
+																		<h5>B. K. Arogyam and Reearch Pvt. Ltd</h5>
+																		<h6>Last Paid <span>20 Oct 2020</span> 12:18</h6> </div>
+																	<div class="list-amount text-right">
+																		<h4 class="text-del my-3"> 
+                                                                                    ₹ 900.00
+                                                                                </h4> </div>
+																</div>
+																<div class="list-full2">
+																	<div class="list-day-info"> <em class="text-available">12 days left</em> </div>
+																	<div class="list-btn">
+																		<button class="ux-button primary sm5 float-right ml-2" >Pay Now</button>
+																	</div>
+																</div>
+															</div>
+														</li>
+													</ul>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+								<!-- Right Column Ads Ends -->
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!--.right-col-container-->
+	</div>
+	<!--.right-main-column-->
+</div>
+<!-- main -->

@@ -1,0 +1,152 @@
+<div class="main bg-m">
+	<div class="nav-overlay"></div>
+	<div class="right-main-column ">
+		<div class="right-col-container pad-b full-width">
+			<!-- ======== body page content start from here ======== -->
+			<div class="body-page-container main-dashborad manage-payee">
+				<div class="container-fluid">
+					<div class="row">
+						<div class="col-12 p-0">
+							<div class="breadcrumb">
+								<ul class="lst-breadcrumb">
+									<!-- <li> <a>Social Securities</a> </li>
+									<li> APY </li> -->
+									<li *ngFor="let name of DataService.breadcrumblist">
+										<a (click)="DataService.breadcrumroute(name.routeName)">{{name.currentRoute | translate}}</a>
+								</li>
+								
+								</ul>
+							</div>
+						</div>
+					</div>
+					<!--.row -->
+					<div class="vspacer15 customize d-none d-md-block d-lg-block d-xl-block"></div>
+					<div class="row no-gutters">
+						<div class="col-12">
+							<div class="row1">
+								<div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-9">
+									<!-- Greencard2 Start here -->
+									<div class="greencard2">
+										<div class="row1 hide-m">
+											<div class="col-md-8 col-12">
+												<h4>Overview</h4> </div>
+											<div class="col-md-4 col-12"> </div>
+										</div>
+										<div class="row1">
+											<div class="col-sm-12 col-12 col-md-12">
+												<div class="mar-t result-container1">
+													<!-- <div class="white-box2 mar-t pad-custom custom-bor"> -->
+													<div class="info-bottom pad-custom pad-custom-setting">
+														<div class="info-details">
+															<div class="row">
+																<h6>Scheme</h6>
+																<h5>Atal Pension Yojna (APY) Scheme</h5>
+																<!-- <h5><span>Biller ID MGAs2099832</span></h5> --></div>
+														</div>
+														<div class="info-details">
+															<div class="row">
+																<h6>Name</h6>
+																<h5>{{profileDetailsData[0].custName}}</h5>
+															</div>
+														</div>
+														<div class="info-details">
+															<div class="row">
+																<h6>Date of Birth</h6>
+																<h5>{{profileDetailsData[0].custBirthDate}}</h5>
+																<!-- <h5>16 July 1978</h5> -->
+															</div>
+														</div>
+														<div class="info-details">
+															<div class="row">
+																<h6>Nominee Name</h6>
+																<h5>{{ apyFormData.nomineeName }}</h5> </div>
+														</div>
+														<div class="info-details">
+															<div class="row">
+																<h6> Debit Account </h6>
+																				<h5>{{ apyFormData.debitAcc }}</h5>
+																			</div> 
+																		</div>
+																		  <div class="info-details">
+																			<div class="row">
+																				<h6>Pension Amount </h6>
+																<h5>{{ apyFormData.pensionAmt | customcurrency }}</h5> </div>
+														</div>
+														<!-- <div class="info-details">
+															<div class="row">
+																<h6> Premium Amount </h6>
+																<h5></h5>
+															</div>
+														</div> -->
+														<div class="info-details">
+															<div class="row">
+																<h6> Premium Frequency </h6>
+																<h5>{{ apyFormData.premiumFreq }}</h5> </div>
+														</div>
+														<!-- <div class="info-details">
+															<div class="row">
+																<h6> Date of Enrollment </h6>
+																<h5></h5>
+															</div>
+														</div> -->
+														<!-- <div class="info-details">
+															<div class="row">
+																<h6>Registered Email ID </h6>
+																<h5>{{profileDetailsData[0].emailId}}</h5>
+															</div>
+														</div>
+														<div class="info-details">
+															<div class="row">
+																<h6> Policy Number </h6>
+																<h5>{{apyPensionDetailsData.pranNo}}</h5>
+															</div>
+														</div> -->
+													</div>
+												</div>
+											</div>
+											<div class="col-12 col-md-12">
+												<div class="row1">
+													<div class="col-md-12 col-lg-6 col-12">
+														<!-- <ul class="link-list hide-m">
+															<li>
+																<a><img src="assets/images/svg/download.svg" alt="download-icon">Download</a>
+															</li>
+														</ul> -->
+													</div>
+													<div class="col-md-12 col-lg-6 col-12">
+														<ul class="bottom-footer1">
+															<li>
+																<div class="btn-div">
+																	<button class="ux-button secondary sm-mob" (click)="goToPage('socialSecurities')" >Cancel</button>
+																</div>
+																<div class="btn-div">
+																	<button class="ux-button primary sm-mob" (click)="goToPage('otpSession')">Confirm</button>
+																</div>
+															</li>
+														</ul>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+									<!-- Greencard2 End here -->
+								</div>
+								<!-- Right Column Ads Start -->
+								<div class="col-12 col-md-12 col-lg-12 col-xl-3 d-none d-xl-block">
+									<div class="right-ads">
+										<a> <img src="assets/images/banner/my-card-banner.jpg"> </a>
+									</div>
+									<div class="vspacer30"></div>
+								</div>
+								<!-- Right Column Ads Ends -->
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!--.right-col-container-->
+	</div>
+	<!--.right-main-column-->
+</div>
+<!-- main -->

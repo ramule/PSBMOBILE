@@ -1,0 +1,202 @@
+{
+  "prepare_queue": {
+    "installed": [],
+    "uninstalled": []
+  },
+  "config_munge": {
+    "files": {}
+  },
+  "installed_plugins": {
+    "cordova-plugin-customurlscheme": {
+      "URL_SCHEME": "upi",
+      "ANDROID_SCHEME": " ",
+      "ANDROID_HOST": " ",
+      "ANDROID_PATHPREFIX": "/",
+      "PACKAGE_NAME": "com.infrasofttech.psb"
+    },
+    "cordova-plugin-device": {
+      "PACKAGE_NAME": "com.infrasofttech.psb"
+    },
+    "cordova-plugin-firebasex": {
+      "FIREBASE_ANALYTICS_COLLECTION_ENABLED": "true",
+      "FIREBASE_PERFORMANCE_COLLECTION_ENABLED": "true",
+      "FIREBASE_CRASHLYTICS_COLLECTION_ENABLED": "true",
+      "ANDROID_ICON_ACCENT": "#FF00FFFF",
+      "ANDROID_PLAY_SERVICES_TAGMANAGER_VERSION": "17.0.0",
+      "ANDROID_PLAY_SERVICES_AUTH_VERSION": "18.0.0",
+      "ANDROID_FIREBASE_ANALYTICS_VERSION": "17.4.0",
+      "ANDROID_FIREBASE_MESSAGING_VERSION": "20.1.6",
+      "ANDROID_FIREBASE_CONFIG_VERSION": "19.1.4",
+      "ANDROID_FIREBASE_PERF_VERSION": "19.0.7",
+      "ANDROID_FIREBASE_AUTH_VERSION": "19.3.1",
+      "ANDROID_FIREBASE_INAPPMESSAGING_VERSION": "19.0.6",
+      "ANDROID_FIREBASE_FIRESTORE_VERSION": "21.4.3",
+      "ANDROID_CRASHLYTICS_VERSION": "2.10.1",
+      "ANDROID_CRASHLYTICS_NDK_VERSION": "2.1.1",
+      "ANDROID_GSON_VERSION": "2.8.6",
+      "PACKAGE_NAME": "com.infrasofttech.psb"
+    },
+    "cordova-plugin-iroot": {
+      "PACKAGE_NAME": "com.infrasofttech.psb"
+    },
+    "cordova.plugins.diagnostic": {
+      "ANDROIDX_VERSION": "1.0.0",
+      "ANDROIDX_APPCOMPAT_VERSION": "1.3.1",
+      "PACKAGE_NAME": "com.infrasofttech.psb"
+    }
+  },
+  "dependent_plugins": {
+    "com.cordova.simdetect": {
+      "PACKAGE_NAME": "com.infrasofttech.psb"
+    },
+    "com.darktalker.cordova.screenshot": {
+      "PACKAGE_NAME": "com.infrasofttech.psb"
+    },
+    "com.infrasoft.qrScanIos": {
+      "PACKAGE_NAME": "com.infrasofttech.psb"
+    },
+    "cordova-open-native-settings": {
+      "PACKAGE_NAME": "com.infrasofttech.psb"
+    },
+    "cordova-pdf-generator": {
+      "PACKAGE_NAME": "com.infrasofttech.psb"
+    },
+    "cordova-plugin-actionsheet": {
+      "PACKAGE_NAME": "com.infrasofttech.psb"
+    },
+    "cordova-plugin-add-swift-support": {
+      "PACKAGE_NAME": "com.infrasofttech.psb"
+    },
+    "cordova-plugin-android-permissions": {
+      "PACKAGE_NAME": "com.infrasofttech.psb"
+    },
+    "cordova-plugin-androidx": {
+      "PACKAGE_NAME": "com.infrasofttech.psb"
+    },
+    "cordova-plugin-androidx-adapter": {
+      "PACKAGE_NAME": "com.infrasofttech.psb"
+    },
+    "cordova-plugin-camera": {
+      "ANDROID_SUPPORT_V4_VERSION": "27.+",
+      "PACKAGE_NAME": "com.infrasofttech.psb"
+    },
+    "cordova-plugin-contacts-phonenumbers": {
+      "PACKAGE_NAME": "com.infrasofttech.psb"
+    },
+    "cordova-plugin-cors": {
+      "PACKAGE_NAME": "com.infrasofttech.psb"
+    },
+    "cordova-plugin-crop": {
+      "PACKAGE_NAME": "com.infrasofttech.psb"
+    },
+    "cordova-plugin-dialogs": {
+      "PACKAGE_NAME": "com.infrasofttech.psb"
+    },
+    "cordova-plugin-file": {
+      "PACKAGE_NAME": "com.infrasofttech.psb"
+    },
+    "cordova-plugin-file-opener2": {
+      "ANDROID_SUPPORT_V4_VERSION": "27.+",
+      "PACKAGE_NAME": "com.infrasofttech.psb"
+    },
+    "cordova-plugin-file-transfer": {
+      "PACKAGE_NAME": "com.infrasofttech.psb"
+    },
+    "cordova-plugin-fingerprint-aio": {
+      "PACKAGE_NAME": "com.infrasofttech.psb"
+    },
+    "cordova-plugin-geolocation": {
+      "PACKAGE_NAME": "com.infrasofttech.psb"
+    },
+    "cordova-plugin-imei": {
+      "PACKAGE_NAME": "com.infrasofttech.psb"
+    },
+    "cordova-plugin-inappbrowser": {
+      "PACKAGE_NAME": "com.infrasofttech.psb"
+    },
+    "cordova-plugin-ip-mac-address": {
+      "PACKAGE_NAME": "com.infrasofttech.psb"
+    },
+    "cordova-plugin-media": {
+      "PACKAGE_NAME": "com.infrasofttech.psb"
+    },
+    "cordova-plugin-nativegeocoder": {
+      "PACKAGE_NAME": "com.infrasofttech.psb"
+    },
+    "cordova-plugin-network-information": {
+      "PACKAGE_NAME": "com.infrasofttech.psb"
+    },
+    "cordova-plugin-networkinterface": {
+      "PACKAGE_NAME": "com.infrasofttech.psb"
+    },
+    "cordova-plugin-npci-android": {
+      "ANDROID_SUPPORT_V4_VERSION": "27.+",
+      "PACKAGE_NAME": "com.infrasofttech.psb"
+    },
+    "cordova-plugin-npci-ios": {
+      "PACKAGE_NAME": "com.infrasofttech.psb"
+    },
+    "cordova-plugin-privacyscreen": {
+      "PACKAGE_NAME": "com.infrasofttech.psb"
+    },
+    "cordova-plugin-proguard": {
+      "PACKAGE_NAME": "com.infrasofttech.psb"
+    },
+    "cordova-plugin-qrcodejs": {
+      "PACKAGE_NAME": "com.infrasofttech.psb"
+    },
+    "cordova-plugin-request-location-accuracy": {
+      "PLAY_SERVICES_LOCATION_VERSION": "16.+",
+      "PACKAGE_NAME": "com.infrasofttech.psb"
+    },
+    "cordova-plugin-screen-mirror-detect-ios": {
+      "PACKAGE_NAME": "com.infrasofttech.psb"
+    },
+    "cordova-plugin-sim": {
+      "PACKAGE_NAME": "com.infrasofttech.psb"
+    },
+    "cordova-plugin-simple-image-resizer": {
+      "ANDROID_EXIFINTERFACES_VERSION": "27.+",
+      "PACKAGE_NAME": "com.infrasofttech.psb"
+    },
+    "cordova-plugin-splashscreen": {
+      "PACKAGE_NAME": "com.infrasofttech.psb"
+    },
+    "cordova-plugin-sslcertificatechecker": {
+      "PACKAGE_NAME": "com.infrasofttech.psb"
+    },
+    "cordova-plugin-statusbar": {
+      "PACKAGE_NAME": "com.infrasofttech.psb"
+    },
+    "cordova-plugin-telerik-imagepicker": {
+      "PACKAGE_NAME": "com.infrasofttech.psb"
+    },
+    "cordova-plugin-touch-id": {
+      "PACKAGE_NAME": "com.infrasofttech.psb"
+    },
+    "cordova-plugin-upi-qrcodescanner": {
+      "PACKAGE_NAME": "com.infrasofttech.psb"
+    },
+    "cordova-plugin-whitelist": {
+      "PACKAGE_NAME": "com.infrasofttech.psb"
+    },
+    "cordova-plugin-wkwebview-engine": {
+      "PACKAGE_NAME": "com.infrasofttech.psb"
+    },
+    "es6-promise-plugin": {
+      "PACKAGE_NAME": "com.infrasofttech.psb"
+    },
+    "cordova-plugin-x-socialsharing": {
+      "PACKAGE_NAME": "com.infrasofttech.psb"
+    },
+    "cordova-sms-plugin": {
+      "PACKAGE_NAME": "com.infrasofttech.psb"
+    },
+    "nl.madebymark.share": {
+      "PACKAGE_NAME": "com.infrasofttech.psb"
+    },
+    "skwas-cordova-plugin-datetimepicker": {
+      "PACKAGE_NAME": "com.infrasofttech.psb"
+    }
+  }
+}

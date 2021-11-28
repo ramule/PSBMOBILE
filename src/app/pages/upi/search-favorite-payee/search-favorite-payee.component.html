@@ -1,0 +1,62 @@
+<div class="main">
+    <div class="right-main-column minus-rt-col mar-custom">
+        <div class="right-col-container">
+            <div class="body-page-container">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="bg-section">
+                            <div class="col-12">
+                                <div class="row1">
+                                    <div class="col-sm-12 col-12 col-md-12">
+                                        <div class="white-bg1">
+                                            <div class="row">
+                                                <div class="col-sm-12 col-12 col-md-12 p-0">
+                                                    <div class="ux-input">
+                                                        <input type="text" name="searchBenef" [pattern]="constant.ALPHA_NUMERIC_SPACE_UPI_REGEX" [(ngModel)]="searchBeneficiaries" #searchBenef="ngModel" placeholder="{{'SEARCH_FOR_UPI_ID_MOB_NO'|translate}}" required>
+                                                        <p class="text-center error-message" *ngIf="searchBenef.errors?.pattern">{{ 'ENTER_ALPHABET_NUMBER_ERROR' | translate}}</p>
+                                                        <p></p>
+                                                    </div>
+                                                </div>
+                                                <div class="col-sm-12 col-12 col-md-12 p-0">
+                                                    <ul class="contact-list">
+                                                        <li *ngFor="let beneficiary of beneficiaryList | searchFilter : 'beneVpa,beneAccount,beneIfsc,beneName, ' : searchBeneficiaries; index as i ">
+                                                            <a (click)="navigateToRecentTransaction(beneficiary)">
+                                                                <div class="list-lft">
+                                                                    <span class="{{beneficiary.color}}" >
+                                                                        <img *ngIf="beneficiary.beneImageUrl" [src]="beneficiary.beneImageUrl" alt="user-img">
+                                                                        <h6 *ngIf="!beneficiary.beneImageUrl" >
+                                                                            {{beneficiary.beneName | firstLastChar}}
+                                                                        </h6> 
+                                                                    </span>
+                                                                </div>
+                                                                <div class="list-rit">
+                                                                    <h5>
+                                                                        {{beneficiary.beneName}}
+                                                                    </h5>
+                                                                    <h6 *ngIf="beneficiary.beneVpa">
+                                                                        {{'UPI_ID' | translate }} :  {{beneficiary.beneVpa}}
+                                                                    </h6>
+                                                                    <h6 *ngIf="!beneficiary.beneVpa">
+                                                                        {{beneficiary.beneAccount}}
+                                                                    </h6>
+                                                                    <h6 *ngIf="!beneficiary.beneVpa">
+                                                                        {{beneficiary.beneIfsc}}
+                                                                    </h6>
+                                                                </div>
+                                                            </a>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- main -->

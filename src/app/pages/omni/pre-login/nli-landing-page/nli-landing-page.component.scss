@@ -1,0 +1,17 @@
+.overlap-badge-soon{
+    position: absolute;
+    content: "";
+    bottom: 5px;
+    right: 5px;
+    background-color: #fff200;
+    border: none;
+    text-transform: capitalize;
+    padding: 3px 5px;
+    display: block;
+    text-align: center;
+    cursor: pointer;
+    border-radius: 50px;
+    color: #e82338;
+    font-size: 0.6rem;
+    font-weight: 500;
+}

@@ -1,0 +1,151 @@
+<div class="main">
+
+
+<div class="right-main-column minus-rt-col mar-custom">
+	 <div class="right-col-container">
+   
+  <div class="body-page-container">
+	 <div class="container-fluid">
+		<div class="row">
+		   <div class="bg-section">
+			  <div class="col-12">
+				  <div class="row1">
+					  <div class="col-sm-12 col-12 col-md-12">
+
+						 <div class="white-bg1">
+							<div class="profile-container">
+								<div class="profile-bg">
+									<div class="row">
+										<div class="col-md-12 col-12">
+											<div class="profile1">
+												<!-- <img src="assets/images/icons/user1.png" class="img-responsive"> -->
+												<img *ngIf="dataService.profileImage && dataService.profileImage != ''" [src]="dataService.profileImage" onerror="this.src='./assets/images/svg/user-profile-w.svg'" class="img-responsive">
+                                                <h3 *ngIf="dataService.profileImage == ''">{{dataService.userName | firstLastChar}}</h3>
+
+                                                <em class="cam-click">
+													<a class="btn-profile"><img src="assets/images/svg/camera.svg"></a>
+												</em>
+											</div>
+										</div>
+										<div class="row1">
+											<div class="col-12 col-md-12">
+												<h6>{{'NAME' | translate}}</h6>
+												<h5>{{dataService.userName}}</h5>
+											</div>
+											<div class="col-12 col-md-12 mt-3">
+												<h6>{{'EMAIL' | translate}}</h6>
+												<h5>{{dataService.upiUserEmailAdress}}</h5>
+											</div>
+											<div class="col-12 col-md-12 mt-3">
+												<h6>{{'MOBILE_NUMBER' | translate}}</h6>
+												<h5>{{mobileNumber}}</h5>
+											</div>
+										</div>
+									 </div> 
+								   </div> 
+								
+							 </div>
+						   </div>	
+						 </div>
+					 </div>
+					</div>
+				 </div>
+			  </div> 
+
+			 </div> 
+		  </div>
+		  
+		</div>  
+	  </div> 
+   
+  </div> 
+    
+  <!-- main -->
+	
+  <div class="popup-bottom delete-profile-pic-1">
+    <div class="row">
+        <div class="col-12">
+            <h4 class="text-center">{{'DELETE_PROFILE_PICTURE' | translate}}</h4>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12">
+            <p>
+                {{'ARE_YOU_SURE_YOU_WANT_TO_DELETE' | translate}}
+            </p>
+        </div>
+    </div>
+    <div class="row1 mt-2">
+        <div class="col-6 text-center">
+            <button class="ux-button secondary no md close-btn" (click)="closeRemoveProfilePopUp()">{{'NO' | translate}}</button>
+        </div>
+        <div class="col-6 text-center">
+            <button class="logout-btn ux-button primary md" (click)="removeProfilePicture('P')">{{'YES' | translate}}</button>
+        </div>
+    </div>
+</div>
+
+
+<!-- Upload Profile Picture Popup Start -->
+<div class="popup-bottom profile1">
+    <div class="row1">
+        <div class="col-10">
+            <h4>{{'UPLOAD_PROFILE_PICTURE' | translate}}</h4>
+        </div>
+        <div class="col-2">
+            <button class="ux-button-icon close-btn">
+                <img src="assets/images/svg/close-b.svg" alt="cross-icon" class="img-vsmall">
+            </button>
+        </div>
+    </div>
+    <div class="row1">
+        <div class="col-12">
+            <ul class="profile-list">
+                <li (click)="selectImageFromGallery('P')">
+                    <a href="javascript:;">
+                        <img src="assets/images/svg/gallery1.svg" alt="gallery-icon"> {{'SELECT_FROM_GALLERY' | translate}}
+                    </a>
+                </li>
+                <li (click)="takePhoto('P')">
+                    <a href="javascript:;">
+                        <img src="assets/images/svg/photo-camera.svg" alt="camera-icon"> {{'TAKE_PHOTO' | translate}}
+                    </a>
+                </li>
+                <li (click)="removeProfilePopUp()">
+                    <a class="delete-btn">
+                        <img src="assets/images/svg/delete.svg" alt="remove-icon"> {{'REMOVE_PROFILE_PICTURE' | translate}}
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <!-- <div class="row mt-2">
+        <div class="col-12 text-center">
+            <button class="ux-button primary submit-btn" (click)="closeProfilePopUp()" >{{'CONFIRM' | translate}}</button>
+        </div>
+    </div> -->
+</div>
+<!-- Upload Profile Picture Popup End -->
+
+
+  <!-- Popup Start -->
+  <div class="popup-bottom header-info">
+    <div class="row1">
+        <div class="col-12">
+            <h4 class="text-center"> <img src="assets/images/svg/information.svg" alt="information-icon"> {{'INFORMATION' | translate}}</h4>
+         </div>
+       </div>
+        <div class="row1">
+            <div class="col-12">
+                  <p>{{information | translate}}</p>	 
+               </div>
+           </div>
+         <div class="row1  mt-2">
+            <div class="col-12 text-center">
+                <button  class="ux-button primary submit-btn"  type="button" (click)="closePopup('div.popup-bottom.header-info')">{{'OK' | translate}}</button>
+            </div>
+         </div>
+    </div> 
+   <!-- Popup End -->
+
+  <!-- <div class="ios-nav-overlay"></div>  -->

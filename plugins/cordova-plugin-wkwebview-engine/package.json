@@ -1,0 +1,64 @@
+{
+  "_from": "git+https://github.com/apache/cordova-plugin-wkwebview-engine.git#master",
+  "_id": "cordova-plugin-wkwebview-engine@1.2.2-dev",
+  "_inBundle": false,
+  "_integrity": "",
+  "_location": "/cordova-plugin-wkwebview-engine",
+  "_phantomChildren": {},
+  "_requested": {
+    "type": "git",
+    "raw": "git+https://github.com/apache/cordova-plugin-wkwebview-engine.git#master",
+    "rawSpec": "git+https://github.com/apache/cordova-plugin-wkwebview-engine.git#master",
+    "saveSpec": "git+https://github.com/apache/cordova-plugin-wkwebview-engine.git#master",
+    "fetchSpec": "https://github.com/apache/cordova-plugin-wkwebview-engine.git",
+    "gitCommittish": "master"
+  },
+  "_requiredBy": [
+    "#DEV:/",
+    "#USER"
+  ],
+  "_resolved": "git+https://github.com/apache/cordova-plugin-wkwebview-engine.git#8735c4615a1135bf7d5c50753e44616641236664",
+  "_spec": "git+https://github.com/apache/cordova-plugin-wkwebview-engine.git#master",
+  "_where": "D:\\Project\\Punjab & Sindh\\Source\\MOBILE\\PSB THEME\\V1.0",
+  "author": {
+    "name": "Apache Software Foundation"
+  },
+  "bugs": {
+    "url": "https://github.com/apache/cordova-plugin-wkwebview-engine/issues"
+  },
+  "bundleDependencies": false,
+  "deprecated": false,
+  "description": "The official Apache Cordova WKWebView Engine Plugin",
+  "devDependencies": {
+    "@cordova/eslint-config": "^3.0.0"
+  },
+  "engines": {
+    "cordovaDependencies": {
+      "2.0.0": {
+        "cordova": ">100",
+        "cordova-ios": "<6.0.0"
+      }
+    }
+  },
+  "homepage": "https://github.com/apache/cordova-plugin-wkwebview-engine#readme",
+  "keywords": [
+    "cordova",
+    "wkwebview",
+    "cordova-ios",
+    "ecosystem:cordova"
+  ],
+  "license": "Apache-2.0",
+  "main": "index.js",
+  "name": "cordova-plugin-wkwebview-engine",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/apache/cordova-plugin-wkwebview-engine.git"
+  },
+  "scripts": {
+    "lint": "eslint .",
+    "objc-tests": "cd tests/ios && npm test",
+    "preobjc-tests": "cd tests/ios && npm install",
+    "test": "npm run lint && npm run objc-tests"
+  },
+  "version": "1.2.2-dev"
+}

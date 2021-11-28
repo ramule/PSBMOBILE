@@ -1,0 +1,228 @@
+<div  class="prelogin-page">
+    <div class="registration-steps ">
+        <div class="row">
+            <div class="col-12 position-static">
+
+                <div class="inner-header">
+                    <div class="registration-container">
+                        <a class="prev-tab" (click)="goBack()"><img src="assets/images/svg/left-arrow.svg">Back to Login</a>
+                        <a class="closewindow close-registration"><img src="assets/images/svg/close-w.svg" (click)=" goBack()"></a>
+
+                        <h4>{{'ACCOUNT_OPENING' | translate }}</h4>
+                        <!-- <a class="close-registration" ><img (click)="mobPrevclick('cross')" src="assets/images/svg/close-w.svg"></a> -->
+                    </div>
+                </div>
+
+                <div class="registrationsteps-block registration-container acc-opening-page">
+                   <div class="row">
+                    <div class="background-block" style="background-image: url(assets/images/background/basic-background.png);">
+
+                    </div>
+                    <div class="middle-block">
+                        <div class="pageHeader">
+                            <h3>{{'HELP_US_WITH_BASIC_DTLS' | translate }}</h3>
+                            <span>{{'ENTER_AADHAR_PAN_DTLS' | translate }}</span>
+                        </div>
+                        <form [formGroup]="personalInfoForm" (ngSubmit)="submitForm()" autocomplete="off" >
+                            <div class="ux-input  ">
+                                <label> {{ 'FIRST_NAME' | translate }}</label>
+
+                                    <input id="userFirstname" type="text" alphabetsNSpaceOnly placeholder='Enter First Name'
+                                    formControlName="firstname" limit-to="20" >
+                                    <span class="errormsg"
+                                    *ngIf="personalInfoForm.controls['firstname'].hasError('required')  && personalInfoForm.controls['firstname'].touched">
+                                    {{ 'ENTER_NAME_ERROR' | translate }}
+                                  </span>
+                                  <span class="errormsg"
+                                    *ngIf="personalInfoForm.controls['firstname'].hasError('pattern') && personalInfoForm.controls['firstname'].touched">
+                                    {{ 'INVALID_NAME' | translate }}
+                                  </span>
+
+                            </div>
+                            <div class="ux-input  ">
+                                <label> {{ 'MIDDLE_NAME' | translate }}</label>
+
+                                    <input id="userFirstname" type="text" alphabetsNSpaceOnly placeholder='Enter Middle Name'
+                                    formControlName="middlename" limit-to="20" >
+                                    <span class="errormsg"
+                                    *ngIf="personalInfoForm.controls['middlename'].hasError('required')  && personalInfoForm.controls['middlename'].touched">
+                                    {{ 'ENTER_NAME_ERROR' | translate }}
+                                  </span>
+                                  <span class="errormsg"
+                                    *ngIf="personalInfoForm.controls['middlename'].hasError('pattern') && personalInfoForm.controls['middlename'].touched">
+                                    {{ 'INVALID_NAME' | translate }}
+                                  </span>
+
+                            </div>
+                            <div class="ux-input ">
+                                <label> {{ 'LAST_NAME' | translate }}</label>
+
+                                <input id="userLastname" type="text" alphabetsNSpaceOnly placeholder='Enter Last Name'
+                                    formControlName="lastname" limit-to="20"  >
+
+
+                                    <span class="errormsg"
+                                    *ngIf="personalInfoForm.controls['lastname'].hasError('required')  && personalInfoForm.controls['lastname'].touched">
+                                    {{ 'ENTER_NAME_ERROR' | translate }}
+                                  </span>
+                                  <span class="errormsg"
+                                    *ngIf="personalInfoForm.controls['lastname'].hasError('pattern') && personalInfoForm.controls['lastname'].touched">
+                                    {{ 'INVALID_NAME' | translate }}
+                                  </span>
+                            </div>
+                            <div class="ux-input  ">
+                                <label>{{'MOBILE_NUMBER' | translate }}</label>
+
+                                <input id="userMobile" type="text" placeholder='ENTER_MOBILE_NUMBER' numbersOnly
+                                    formControlName="mobile" limit-to="10"   >
+
+                                    <span class="errormsg"
+                                    *ngIf="personalInfoForm.controls['mobile'].hasError('required')  && personalInfoForm.controls['mobile'].touched">
+                                    {{ 'ENTER_MOBILE_ERROR' | translate }}
+                                  </span>
+                                  <span class="errormsg"
+                                    *ngIf="personalInfoForm.controls['mobile'].hasError('pattern') && personalInfoForm.controls['mobile'].touched">
+                                    {{ 'INVALID_NUMBER' | translate }}
+                                  </span>
+
+                            </div>
+                            <div class="ux-input ">
+                                <label>{{'EMAIL_ID' | translate }}</label>
+
+                                <input id="userEmail" type="text" placeholder='ENTER_EMAIL_ID'
+                                    formControlName="email" limit-to="100" >
+
+                                    <span class="errormsg"
+                                    *ngIf="personalInfoForm.controls['email'].hasError('required')  && personalInfoForm.controls['email'].touched">
+                                    {{ 'ENTER_EMAIL_ID_ERROR' | translate }}
+                                  </span>
+                                  <span class="errormsg"
+                                    *ngIf="personalInfoForm.controls['email'].hasError('pattern') && personalInfoForm.controls['email'].touched">
+                                    {{ 'INVALID_EMAIL_ID' | translate }}
+                                  </span>
+
+                            </div>
+                            <div class="ux-selection">
+                                <label class="ux-selection1">I confirm that I am not a Politically exposed person
+                                    <input type="checkbox" name="radioboxdemo"  formControlName="acceptTerms1">
+                                    <span class="checkmark"></span>
+                                  </label>
+                                  <span class="errormsg"
+                                  *ngIf="personalInfoForm.controls['acceptTerms1'].status=='INVALID' && personalInfoForm.controls['acceptTerms1'].touched && personalInfoForm.controls['acceptTerms1'].hasError('required')">
+                                  {{ 'PLEASE_CONFIRM_POLITICALLY_EXPOSED_PERSON' | translate }}
+                                </span>
+                             </div>
+                             <div class="ux-selection mb-5">
+                                <label class="ux-selection1">{{'CONFIRM_AUTHORIZE_BANK_TO_CONTACT' | translate }}
+                                    <input type="checkbox" name="radioboxdemo"  formControlName="acceptTerms2">
+                                    <span class="checkmark"></span>
+                                  </label>
+                                  <span class="errormsg"
+                                  *ngIf="personalInfoForm.controls['acceptTerms2'].status=='INVALID' && personalInfoForm.controls['acceptTerms2'].touched && personalInfoForm.controls['acceptTerms2'].hasError('required')">
+                                  {{ 'ACCEPT_TERMS' | translate }}
+                                </span>
+                                 <div class="text-center button-block">
+                                     <button class="ux-button primary  " type="submit"> {{ 'CONTINUE' | translate }}</button>
+                                 </div>
+                             </div>
+
+                        </form>
+                    </div>
+                   </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="popup-bottom otp numberConfirmation text-center" >
+    <div class="row1">
+        <div class="col-12 col-md-2 col-lg-2 col-xl-2">
+        </div>
+        <div class="col-10 col-md-8 col-lg-8 col-xl-8">
+            <h4>OTP Verification</h4>
+        </div>
+        <div class="col-2 col-md-2 col-lg-2 col-xl-2">
+            <button class="ux-button-icon close-btn" (click)="closePopup('otp')">
+                <img src="assets/images/svg/close-b.svg" alt="cross-icon" class="img-vsmall">
+            </button>
+        </div>
+    </div>
+    <div class="row1">
+        <div class="col-12">
+            <form [formGroup]="otpForm">
+            <div class="imgblock">
+                <img src="assets/images/icons/mobile.svg">
+            </div>
+            <h5>Mobile OTP</h5>
+            <em class="info-message" style="text-align: center;">Please enter 6 digit OTP sent on Mobile <br/>{{commonMethods.maskMobileNumber(personalInfoForm.value.mobile)}}</em>
+            <div class="box-password d-inline-block password1">
+                <div class="ux-input expiry-input card-pin mx-1 password1">
+                <input id="mobile1" #mOtpRow type="password" maxlength="1" placeholder="●" numbersOnly (keyup)="onKeyUp(0, $event,'mobileOtp')" (focus)="onFocus(0,'mobileOtp')" formControlName="mobile1" >
+                </div>
+                <div class="ux-input expiry-input card-pin mx-1 password1">
+                <input id="mobile2" #mOtpRow type="password" maxlength="1" placeholder="●" numbersOnly (keyup)="onKeyUp(1, $event,'mobileOtp')" (focus)="onFocus(1,'mobileOtp')"  formControlName="mobile2">
+                </div>
+                <div class="ux-input expiry-input card-pin mx-1 password1">
+                <input id="mobile3" #mOtpRow type="password" maxlength="1" placeholder="●" numbersOnly (keyup)="onKeyUp(2, $event,'mobileOtp')" (focus)="onFocus(2,'mobileOtp')" formControlName="mobile3" >
+                </div>
+                <div class="ux-input expiry-input card-pin mx-1 password1">
+                <input id="mobile4" #mOtpRow type="password" maxlength="1" placeholder="●" numbersOnly (keyup)="onKeyUp(3, $event,'mobileOtp')" (focus)="onFocus(3,'mobileOtp')" formControlName="mobile4" >
+                </div>
+                <div class="ux-input expiry-input card-pin mx-1 password1">
+                <input id="mobile5" #mOtpRow type="password" maxlength="1" placeholder="●" numbersOnly (keyup)="onKeyUp(4, $event,'mobileOtp')" (focus)="onFocus(4,'mobileOtp')" formControlName="mobile5" >
+                </div>
+                <div class="ux-input expiry-input card-pin mx-1 password1">
+                <input id="mobile6" #mOtpRow type="password" maxlength="1" placeholder="●" numbersOnly (keyup)="onKeyUp(5, $event,'mobileOtp')" (focus)="onFocus(5,'mobileOtp')" formControlName="mobile6" >
+                </div>   
+                <!-- <div class="clearfix mt-1">
+                        <b class="float-left" *ngIf="mobileCounter > 0" >{{mobileCounter| formatTimer }}</b><a class="float-right" [ngClass]="mobileCounter > 0 ? 'mydisabled' : 'resendActive'" (click)="resendLeadOtp('mobile')" >Resend</a>
+                    </div> -->
+            </div>
+            <h5>Email OTP</h5>
+            <em class="info-message" style="text-align: center;">Please enter 6 digit OTP sent on Email ID <br/>{{commonMethods.maskEmailId(personalInfoForm.value.email)}}</em>
+            <div class="box-password d-inline-block password1">
+            
+                <div class="ux-input expiry-input card-pin mx-1 password1">
+                <input id="email1" #eOtpRow type="password" maxlength="1" placeholder="●" numbersOnly (keyup)="onKeyUp(0, $event,'emailOtp')" (focus)="onFocus(0,'emailOtp')" formControlName="email1" >
+                </div>
+                <div class="ux-input expiry-input card-pin mx-1 password1">
+                <input id="email2" #eOtpRow type="password" maxlength="1" placeholder="●" numbersOnly (keyup)="onKeyUp(1, $event,'emailOtp')" (focus)="onFocus(1,'emailOtp')" formControlName="email2" >
+                </div>
+                <div class="ux-input expiry-input card-pin mx-1 password1">
+                <input id="email3" #eOtpRow type="password" maxlength="1" placeholder="●" numbersOnly (keyup)="onKeyUp(2, $event,'emailOtp')" (focus)="onFocus(2,'emailOtp')" formControlName="email3" >
+                </div>
+                <div class="ux-input expiry-input card-pin mx-1 password1">
+                
+                <input id="email4" #eOtpRow type="password" maxlength="1" placeholder="●" numbersOnly (keyup)="onKeyUp(3, $event,'emailOtp')" (focus)="onFocus(3,'emailOtp')" formControlName="email4" >
+                </div>
+                <div class="ux-input expiry-input card-pin mx-1 password1">
+                <input id="email5" #eOtpRow type="password" maxlength="1" placeholder="●" numbersOnly (keyup)="onKeyUp(4, $event,'emailOtp')" (focus)="onFocus(4,'emailOtp')" formControlName="email5" >
+                </div>
+                <div class="ux-input expiry-input card-pin mx-1 password1">
+                <input id="email6" #eOtpRow type="password" maxlength="1" placeholder="●" numbersOnly (keyup)="onKeyUp(5, $event,'emailOtp')" (focus)="onFocus(5,'emailOtp')" formControlName="email6" >
+                </div>
+                <div class="clearfix mt-1">
+                       
+                        <b class="float-left" *ngIf="mobileCounter > 0" > {{counter | formatTimer }} </b><a class="float-right" [ngClass]="counter > 0 ? 'float-right mydisabled' : 'float-right resendActive'" (click)="resendLeadOtp('email')" >Resend</a>
+                    </div>
+                <div class="row1">
+                    <div class="col-12">
+                        <div class="ux-input password1 mt-0 mb-0">
+                            <p class="error-message">{{invalidDtl}}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="button-footer">
+                <button type="button" class="ux-button sm primary" (click)="validateOtp()" [disabled]="otpForm.invalid"
+                   > {{ 'SUBMIT' | translate }}</button>
+            </div>
+            </form>
+        </div>
+
+    </div>
+
+</div>

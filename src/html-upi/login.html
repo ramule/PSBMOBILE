@@ -1,0 +1,607 @@
+<!DOCTYPE html>
+
+	<html>
+	
+	<head>
+		<meta charset="UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+	    <title>Login</title>
+		<link href="../css/lib/bootstrap.min.css" rel="stylesheet">
+		<link href="../css/lib/owl.carousel.min.css" rel="stylesheet">
+	    <link href="../css/lib/jquery-ui.min.css" rel="stylesheet">
+	 	<link href="../css/lib/jquery.mCustomScrollbar.min.css" rel="stylesheet">
+		<link href="../css/main.css" rel="stylesheet">
+		<link href="../css/lib/ripple.css" rel="stylesheet">
+		
+	</head>	
+
+<body>
+	
+	<div class="prelogin-page bg2 bg-custom upi-login">
+    	  
+		   <!-- Loginform Container Start -->
+			 <div class="col-12 col-sm-12 h100">
+				<div class="row h100">
+					<div class="login-bg"> 
+						 <div class="row1">
+							<div class="col-12">
+								<div class="login-header">
+									<div class="brand-logo">
+										<img src="../assets/images/logo/psb-logo.png" alt="psb-logo"> 
+									</div>
+									<div class="brand-logo2">
+										<img src="../assets/images/logo/bhim-upi-logo.svg" alt="bhim-upi-logo"> 
+									</div>
+								</div>
+							  </div>
+							  <div class="col-sm-12 col-12 col-md-12 mb-1">
+								  <form  action="#" method="#">
+									<div class="whitebg-input mar-custom">
+                                        <div class="row1"> 
+											<div Class="col-12">
+												 <div class="ux-input password1 mt-0 mb-0">
+													 <label>Login with MPIN</label>
+												  </div>
+											 </div>
+											 <div class="col-12 col-md-12">
+											     <div class="row">
+														<div class="col-12">
+															<div class="password1 ux-input  p1 mb-0 mt-3">
+																<label for="sapassword" class="mb0">Enter MPIN</label>
+															 </div> 	 
+														 </div>
+													</div>
+													 <div class="row3">
+														 <div class="col-sm-2 col-2 col-md-2">
+															<div class="ux-input password1 p1 mb-1">
+																<input id="spassword1" type="password" maxlength="1" placeholder="&#9679" onkeyup="onKeyUpEvent(1, event)" onfocus="onFocusEvent(1)"/>
+															 </div> 
+														</div>
+														<div class="col-sm-2 col-2 col-md-2">
+															<div class="ux-input password1 p1 mb-1">
+																<input id="spassword2" type="password" maxlength="1" placeholder="&#9679" onkeyup="onKeyUpEvent(2, event)" onfocus="onFocusEvent(2)"/>
+															 </div> 
+														</div>
+														<div class="col-sm-2 col-2 col-md-2">
+															<div class="ux-input password1 p1 mb-1">
+																<input id="spassword3" type="password" maxlength="1" placeholder="&#9679" onkeyup="onKeyUpEvent(3, event)" onfocus="onFocusEvent(3)"/>
+															 </div> 
+														</div>
+														<div class="col-sm-2 col-2 col-md-2">
+															<div class="ux-input password1 p1 mb-1">
+																<input id="spassword4" type="password" maxlength="1" placeholder="&#9679" onkeyup="onKeyUpEvent(4, event)" onfocus="onFocusEvent(4)"/>
+															 </div> 
+														</div>
+														<div class="col-sm-2 col-2 col-md-2">
+															<div class="ux-input password1 p1 mb-1">
+																<input id="spassword5" type="password" maxlength="1" placeholder="&#9679" onkeyup="onKeyUpEvent(5, event)" onfocus="onFocusEvent(5)"/>
+															 </div> 
+														</div>
+														<div class="col-sm-2 col-2 col-md-2">
+															<div class="ux-input password1 p1 mb-1">
+																<input id="spassword6" type="password" maxlength="1" placeholder="&#9679" onkeyup="onKeyUpEvent(6, event)" onfocus="onFocusEvent(6)"/>
+															 </div> 
+														</div>
+													 </div> 
+												  <div class="row">
+													 <div class="col-12">
+														<div class="ux-input input-error password1 p1 mt-0 mb-0">
+															 <p> </p>
+														 </div> 	 
+													 </div>
+													</div> 
+										      </div>
+									     </div> 
+										 <div class="row1">
+											<div Class="col-12 ">
+												<div class="ux-input">
+													<label class="small-message text-center mb-0">OR</label>
+												  </div>
+											</div>
+											<div class="col-12 col-md-12">
+												<div class="text-center">
+													<a href="#">
+													  <span class="round-circle1">
+														<img src="../assets/images/svg/biometric.svg" alt="biometric-icon"> 
+													  </span>
+													</a>
+											   </div>
+											</div>
+											  <div class="col-12 col-md-12">
+												<div class="ux-input pb-0">
+												  <div class="text-center">
+													<em class="message">Login with biometric</em>
+												 </div>
+											   </div>
+											</div>
+										 </div>  
+							    	</div>
+								 </form> 
+						  </div> 
+
+						  <div class="col-12">
+							  <div class="white-radius-container">
+								  <a class="fogot-mpin link-text" href="#" >Forgot MPIN?</a>
+							  </div>
+						 </div> 
+				   </div>
+				   <div class="row1">
+					<div class="col-sm-12 col-12 col-md-12">
+						<div class="slider-section pos-custom">
+						 <div class="scroll-box mt-0">
+							 <div class="owl-carousel box-owl" role="list">
+								<div class="item ux-small-scroll2" role="listitem">
+										  <a href="javascript:;">
+											  <span>
+												  <img src="../assets/images/slides/dashboard-banner.png" alt="banner1">
+											  </span>
+										   </a>
+									  </div>
+									  <div class="item ux-small-scroll2" role="listitem"> 	
+										  <a href="javascript:;">
+											<span>
+												<img src="../assets/images/slides/dashboard-banner.png" alt="banner2">
+											</span>
+										   </a>
+									  </div>
+									  <div class="item ux-small-scroll2" role="listitem"> 	
+										  <a href="javascript:;">
+											<span>
+												<img src="../assets/images/slides/dashboard-banner.png" alt="banner3">
+											</span>
+										  </a>
+									  </div>
+								  </div>
+							  </div>
+						</div>
+					</div>
+				</div>
+
+
+	      <!-- footer section start -->  
+					<footer>
+						<nav class="ios-global-nav3">
+							<ul class="lst-ios-nav">
+							<li>
+								<a href="javascript:;">
+									<span class="inav-icon">
+									  <img src="../assets/images/svg/translate1-w.svg" alt="translate-icon">  
+									</span>
+									Language 
+								</a>
+							</li>
+						    <li>
+								<a href="javascript:;">
+									<span class="inav-icon">
+									  <img src="../assets/images/svg/mobile banking-w.svg" alt="mobile-banking">  
+									</span>
+									Mobile Banking
+								</a>
+							</li>  
+							<!-- <li>
+								<a href="javascript:;">
+									<span class="inav-icon">
+									  <img src="../assets/images/svg/mobile banking-w.svg" alt="mobile-banking">  
+									</span>
+									Mobile Banking
+								</a>
+							</li> -->
+							<!-- <li>
+								<a href="javascript:;">
+									<span class="inav-icon">
+									  <img src="../assets/images/svg/bank1-w.svg" alt="bank-icon">  
+									</span>
+									Open an Account
+								</a>
+							</li> -->
+							 <li>
+								<a href="javascript:;">
+									<span class="inav-icon">
+									  <img src="../assets/images/svg/pin1-w.svg" alt="location-icon">  
+									</span>
+									 Locate Us 
+								</a>
+							</li>
+							<li>
+								<a href="javascript:;">
+									<span class="inav-icon">
+									  <img src="../assets/images/svg/phone1-w.svg" alt="contact-icon">  
+									</span>
+								   Contact Us 
+								</a>
+							</li> 
+						</ul> 
+							 
+						</nav>
+					</footer>	
+		 	<!-- footer section end -->
+ 
+			  </div>
+		  </div>
+	   </div>
+
+	  <div class="ios-nav-overlay"></div>
+ 
+  </div>
+
+  
+
+<!-- =========== modal popup start ===============  -->
+
+
+<div id="loginModal" class="modal fade " role="dialog">
+	<div class="modal-dialog modal-dialog-centered">
+		  <div class="modal-content pad-custom">
+			<div class="modal-header  bor-n cust-pad">
+				 <div class="mh-bottom">
+					<div class="row1">
+						<div class="col-12">
+							<h6 class="success">Login to Punjab & Sind Bank</h6>
+						</div>
+					 </div>
+				</div>
+			</div>
+			<div class="modal-body pt-0 cust-pad">
+				<p>Use your ﬁngerprint for faster, easier access to your account</p>
+				<div class="custom-list">
+				      <div class="list-lft">
+						  <a href="#"> 
+							  <span class="round-circle1">
+								<img src="../assets/images/svg/biometric.svg" alt="biometric-icon">
+							  </span> 
+							</a>
+						  </div>
+						   <div class="list-rit">
+							   <h6>Touch the Sensor</h6>
+					  </div>
+			    </div>
+		 </div>
+		 <div class="modal-footer1 cust-pad float-right ">
+			<button type="button" class="ux-linkbutton secondary" data-dismiss="modal">Cancel</button>
+			<button type="button" class="ux-linkbutton primary ml-3" onclick=" location.href='#'">Use MPIN</button>
+		</div>
+	  </div>
+    </div> 
+</div>
+
+
+
+
+<!-- Select MPIN Info Popup Start -->
+
+<div class="popup-bottom mpin-info">
+	<div class="row1">
+	  <div class="col-10">
+		<h4>Forgot MPIN</h4>
+	  </div>
+	  <div class="col-2">
+		<button class="ux-button-icon close-btn">
+			<img src="../assets/images/svg/close-b.svg" alt="cross-icon" class="img-vsmall">
+		</button> 
+	  </div>
+	</div>
+	<form action="set-mpin.html" id="mpin-form"> 
+		<div class="row1">
+		 <div class="col-12">
+			<div class="ux-input digit-input2">
+				<label for="">Linked Account Number</label>
+				 <input type="text" placeholder="XXXX XXXX XXXX" name="card-number" id="card"  value="" minlength="14" maxlength="14"  >
+				   <!-- <input type="text" placeholder="XXXX XXXX XXXX" minlength="12" maxlength="12" onkeypress="return checkDigit(event)"> -->
+				   <span class="show-digit2">1234</span> 
+				   <em class="info-message">Enter your account number linked with primary UPI id</em>
+                   <p class="mb-0 error-message"></p>
+			  </div>
+		   </div> 
+			 <div class="col-12 col-md-12">
+				<div class="row1">
+					   <div class="col-12">
+						   <div class="ux-input  p1 mb-0 mt-3 mb-3">
+							   <label for="otp" class="mb0">Enter OTP</label>
+							   <em class="info-message">Please enter 6 digit OPT sent on Email ID <br/> ******shah@gmail.com</em>
+							</div> 	 
+						</div>
+				   </div>
+				   <div class="row">
+							<div class="col-12 pl-2 pr-2">
+								<div class="row3">
+									<div class="col-sm-2 col-2 col-md-2">
+									   <div class="ux-input password1 p1 mb-1">
+										   <input id="otppassword1" type="password" maxlength="1" placeholder="&#9679" onkeyup="onKeyupEvent(1, event)" onfocus="onfocusEvent(1)"/>
+										</div> 
+								   </div>
+								   <div class="col-sm-2 col-2 col-md-2">
+									   <div class="ux-input password1 p1 mb-1">
+										   <input id="otppassword2" type="password" maxlength="1" placeholder="&#9679" onkeyup="onKeyupEvent(2, event)" onfocus="onfocusEvent(2)"/>
+										</div> 
+								   </div>
+								   <div class="col-sm-2 col-2 col-md-2">
+									   <div class="ux-input password1 p1 mb-1">
+										   <input id="otppassword3" type="password" maxlength="1" placeholder="&#9679" onkeyup="onKeyupEvent(3, event)" onfocus="onfocusEvent(3)"/>
+										</div> 
+								   </div>
+								   <div class="col-sm-2 col-2 col-md-2">
+									   <div class="ux-input password1 p1 mb-1">
+										   <input id="otppassword4" type="password" maxlength="1" placeholder="&#9679" onkeyup="onKeyupEvent(4, event)" onfocus="onfocusEvent(4)"/>
+										</div> 
+								   </div>
+								   <div class="col-sm-2 col-2 col-md-2">
+									   <div class="ux-input password1 p1 mb-1">
+										   <input id="otppassword5" type="password" maxlength="1" placeholder="&#9679" onkeyup="onKeyupEvent(5, event)" onfocus="onfocusEvent(5)"/>
+										</div> 
+								   </div>
+								   <div class="col-sm-2 col-2 col-md-2">
+									   <div class="ux-input password1 p1 mb-1">
+										   <input id="otppassword6" type="password" maxlength="1" placeholder="&#9679" onkeyup="onKeyupEvent(6, event)" onfocus="onfocusEvent(6)"/>
+										</div> 
+								   </div>
+								</div> 
+							 <div class="row1">
+								<div class="col-12">
+								   <div class="ux-input password1 p1 mt-0 mb-0">
+										<p class="error-message"></p>
+									</div> 	 
+								</div>
+							 </div> 
+							 <div class="row1">
+								<div class="col-6 col-md-6">
+									<div class="text-left">
+										 <p class="text-left"> 
+											 <span class="success-text">00.20</span>
+										 </p>
+									 </div> 	 
+								 </div>
+								<div class="col-6 col-md-6">
+								   <div class="text-right mt-3">
+									   <button class="ux-linkbutton default-underline">Resend</button>
+									</div> 	 
+								</div>
+							 </div> 
+						  </div>
+				   </div>
+			  </div>
+		  </div>
+
+		 <div class="row mt-2">
+			<div class="col-12 text-center">
+			   <button class="ux-button primary debit-details" onclick="window.location.href = 'set-mpin.html'">Proceed</button>
+			</div>
+		 </div>
+	</form>
+</div> 
+
+<div class="ios-nav-overlay"></div> 
+
+<!-- Select MPIN Info Popup End -->	
+
+ 
+
+<!-- =========== modal popup end ===============  -->
+
+<script src="../js/lib/jquery.min.js"></script>
+<script src="../js/lib/bootstrap.min.js"></script>
+<script src="../js/lib/jquery-ui.min.js"></script>
+<script src="../js/lib/owl.carousel.min.js"></script>
+<script src="../js/lib/popper.min.js"></script>
+<script src="../js/lib/jquery.mousewheel.min.js"></script>
+<script src="../js/lib/jquery.mCustomScrollbar.js"></script>
+<script src="../js/lib/datatables.min.js"></script>
+<script src="../js/lib/ripple.js"></script>
+<script src="../js/common.js"></script>
+
+<script type="text/javascript">
+	//  createGlobalNavMore();
+	boxCarousel();
+
+
+	
+	$ (function () {
+			$('nav.ios-global-nav3 ul.lst-ios-nav li').click(function() {
+				$(this).addClass('active').siblings().removeClass('active');
+			});
+		})
+
+	$('input[name=card-number]').keypress(function(){
+		console.log(document.getElementById('card').value);
+		var rawNumbers = $(this).val().replace(/[^0-9]/gi,'');
+		var cardLength = rawNumbers.length;
+		if(cardLength !==0 && cardLength <=10 && cardLength % 4 == 0){
+		$(this).val($(this).val()+' ');
+	  }
+	  return /\d/.test(String.fromCharCode(event.keyCode));
+	});
+
+	// function cc_format(value) {
+    //         var v = value.replace(/\s+/g, '').replace(/[^0-9]/gi, '')
+    //         var matches = v.match(/\d{4,12}/g);
+    //         var match = matches && matches[0] || ''
+    //         var parts = []
+    //         for (i=0, len=match.length; i<len; i+=4) {
+    //             parts.push(match.substring(i, i+4))
+    //         }
+    //         if (parts.length) {
+    //             return parts.join(' ')
+    //         } else {
+    //             return value
+    //         }
+    //     }
+
+    //     onload = function() {
+    //         document.getElementById('cc').oninput = function() {
+    //             this.value = cc_format(this.value)
+    //         }
+    //     }
+
+		function checkDigit(event) {
+			var code = (event.which) ? event.which : event.keyCode;
+
+			if ((code < 48 || code > 57) && (code > 31)) {
+				return false;
+			}
+
+			return true;
+        }
+
+
+		
+	
+	$(document).ready(function() {
+      setTimeout(function() {
+        $("#loginModal").modal('show');
+      }, 500);
+    });
+
+    $("ul.sim-list li a").click(function(){
+     console.log('its working');
+     $("ul.sim-list li a").removeClass("active");
+     if (!$(this).hasClass('active') ) {
+        $(this).addClass('active');
+        // $( 'div.ios-nav-overlay' ).fadeIn( 400 );
+        // $( 'body' ).css( 'overflow', 'hidden' );
+    } else {
+        $(this).removeClass('active');
+        // $( 'div.ios-nav-overlay' ).fadeOut(  );
+        // $( 'body' ).css( 'overflow', 'auto' );
+     }
+    });
+
+
+	function getSpasswordElement(index) {
+        return document.getElementById('spassword' + index);
+      }
+      function onKeyUpEvent(index, event) {
+        const eventCode = event.which || event.keyCode;
+        if (getSpasswordElement(index).value.length === 1) {
+          if (index !== 6) {
+            getSpasswordElement(index+ 1).focus();
+          } else {
+            getSpasswordElement(index).blur();
+            // Submit code
+            console.log('submit code ');
+          }
+        }
+        if (eventCode === 12 && index !== 1) {
+          getSpasswordElement(index - 1).focus();
+        }
+      }
+      function onFocusEvent(index) {
+        for (item = 1; item < index; item++) {
+          const currentElement = getSpasswordElement(item);
+          if (!currentElement.value) {
+              currentElement.focus();
+              break;
+          }
+        }
+	  }
+	  
+	  function getCpasswordElement(index) {
+        return document.getElementById('cpassword' + index);
+      }
+      function onKeyUpEvents(index, event) {
+        const eventCode = event.which || event.keyCode;
+        if (getCpasswordElement(index).value.length === 1) {
+          if (index !== 6) {
+            getCpasswordElement(index+ 1).focus();
+          } else {
+            getCpasswordElement(index).blur();
+            // Submit code
+            console.log('submit code ');
+          }
+        }
+        if (eventCode === 12 && index !== 1) {
+          getCpasswordElement(index - 1).focus();
+        }
+      }
+      function onFocusEvents(index) {
+        for (item = 1; item < index; item++) {
+          const currentElement = getCpasswordElement(item);
+          if (!currentElement.value) {
+              currentElement.focus();
+              break;
+          }
+        }
+      } 
+
+
+	  function getSpasswordElement(index) {
+        return document.getElementById('otppassword' + index);
+      }
+      function onKeyupEvent(index, event) {
+        const eventCode = event.which || event.keyCode;
+        if (getSpasswordElement(index).value.length === 1) {
+          if (index !== 6) {
+            getSpasswordElement(index+ 1).focus();
+          } else {
+            getSpasswordElement(index).blur();
+            // Submit code
+            console.log('submit code ');
+          }
+        }
+        if (eventCode === 12 && index !== 1) {
+          getSpasswordElement(index - 1).focus();
+        }
+      }
+      function onfocusEvent(index) {
+        for (item = 1; item < index; item++) {
+          const currentElement = getSpasswordElement(item);
+          if (!currentElement.value) {
+              currentElement.focus();
+              break;
+          }
+        }
+	  }
+
+   
+	$("a.fogot-mpin").click(function(){
+		// console.log('working');
+		if ( !$('div.popup-bottom.mpin-info').hasClass('popup-active') ) {
+				$('div.popup-bottom.mpin-info').addClass('popup-active');
+				$( 'div.ios-nav-overlay' ).fadeIn(400);
+			} else {
+				$('div.popup-bottom.mpin-info').removeClass('popup-active');
+				$( 'div.ios-nav-overlay' ).fadeOut(400);
+		 	}
+       });
+	   
+ 
+
+	   $("button.close-btn").click(function(){
+		    console.log('working');
+		   $('div.popup-bottom.mpin-info').removeClass('popup-active');
+		   $( 'div.ios-nav-overlay' ).fadeOut(400);
+	   });
+
+ 
+
+	   $("div.ios-nav-overlay").click(function(e){
+		    e.stopPropagation();
+		    // console.log('working');
+		   $('div.popup-bottom.mpin-info').removeClass('popup-active');
+		   $( 'div.ios-nav-overlay' ).fadeOut(400);
+	   });
+
+
+	//    $("input[type='password']").focus(function () {
+	// 		// $("nav.ios-global-nav3").css("position", "relative");
+	// 		$("nav.ios-global-nav3").hide();
+	// 	  });
+
+    //    $("input[type='password']").blur(function () {
+	// 	//    $("nav.ios-global-nav3").css("position", "absolute");
+    //          $("nav.ios-global-nav3").show();
+	//      });
+
+
+	// $(document).ready(function(){
+
+	// 	var width1 = $(".show-digit1").css('width'); // Best way will be if you use id rather than class for this div
+
+	// 	$(".digit-input1").css('padding-right', width1);
+
+	// 	});
+  
+
+</script>
+
+</body>
+</html>

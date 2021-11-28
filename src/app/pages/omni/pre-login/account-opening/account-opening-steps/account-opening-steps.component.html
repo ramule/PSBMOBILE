@@ -1,0 +1,264 @@
+<div class=" prelogin-page">
+    <div class=" registration-steps">
+        <div class="row">
+            <div class="col-12">
+                <div class="inner-header">
+                    <div class="registration-container">
+                        <a class="prev-tab" (click)="goToLogin()"><img src="assets/images/svg/left-arrow.svg">Back to Login</a>
+                        <a class="closewindow close-registration"><img src="assets/images/svg/close-w.svg" (click)="goToLogin()" ></a>
+                        <h4>{{'ACCOUNT_OPENING' | translate }}</h4>
+                        <!-- <a class="close-registration" ><img (click)="mobPrevclick('cross')" src="assets/images/svg/close-w.svg"></a> -->
+                    </div>
+                </div>
+
+                <div class="registrationsteps-block registration-container clearfix">
+                    <div class="row">
+                    <div class="steps-block">
+                        <span class="close"><img src="assets/images/svg/close-b.svg"></span>
+                        <ul>
+                            <li *ngFor="let step of accOpeningteps; index as i"
+                                [ngClass]="{'active':step.stepActive,'completed':step.stepStatus === 'completed' , 'inprogress':step.stepStatus === 'inprogress'}">
+                                <input type="radio" [value]="step.tabName" [(ngModel)]="step.tabName" name="steps"
+                                    [checked]="step.stepActive"
+                                    (change)="onstepChange(step.tabName , step.stepIndex )">
+                                <span class="step-number">{{step.stepIndex}}</span><b class="step-name">
+                                    {{step.stepname}}</b>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="tab-block">
+                        <div *ngIf="activeTab =='step1'">
+                            <app-account-opening-personal-details (nextEvent)="nextstep($event)">
+                            </app-account-opening-personal-details>
+
+                        </div>
+                        <div *ngIf="activeTab =='step2'">
+                            <app-account-opening-additonal-details (nextEvent)="nextstep($event)"
+                                (prevEvent)="prevstep($event)"></app-account-opening-additonal-details>
+
+                        </div>
+                        <div *ngIf="activeTab =='step3'">
+
+                            <app-account-opening-branch-details (nextEvent)="nextstep($event)" (prevEvent)="prevstep($event)">
+                            </app-account-opening-branch-details>
+
+                        </div>
+                        <div *ngIf="activeTab =='step4'">
+
+                            <app-account-opening-nominee-details (nextEvent)="nextstep($event)" (prevEvent)="prevstep($event)">
+                            </app-account-opening-nominee-details>
+
+                        </div>
+                        <div *ngIf="activeTab =='step5' ">
+                            <app-account-opening-create-upi (nextEvent)="nextstep($event)" (prevEvent)="prevstep($event)">
+                            </app-account-opening-create-upi>
+
+
+                        </div>
+                        <div *ngIf="activeTab =='step6' ">
+                            <app-account-opening-account-selection (nextEvent)="nextstep($event)" (prevEvent)="prevstep($event)" (popuptype)=openPopup($event) (factaEvent)="termsConditionPopup($event)"  (bankTCEvent)="termsConditionPopup($event)">
+                            </app-account-opening-account-selection>
+
+                        </div>
+                    </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<div class="popup-bottom fatca " id="fatca">
+    <div class="row1">
+        <div class="col-12 col-md-2 col-lg-2 col-xl-2">
+        </div>
+        <div class="col-10 col-md-8 col-lg-8 col-xl-8">
+            <h4>{{'FACTCA_CRS_DECLARATION' | translate }}</h4>
+        </div>
+        <div class="col-2 col-md-2 col-lg-2 col-xl-2">
+            <button class="ux-button-icon close-btn">
+                <img src="assets/images/svg/close-b.svg" alt="cross-icon" class="img-vsmall">
+            </button>
+        </div>
+    </div>
+    <div class="popup-body">
+    <div class="row1">
+        <div class="col-12 ">
+            <p class="text-left">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+                labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco labterms-conditions-facta
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+                 eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation
+                  ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
+                   velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
+                   culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+                    sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation
+                     ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+                      cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt
+                       mollit anim id est laborum.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+                       labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
+                       commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+                        Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum
+                         dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
+                         minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
+                         reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident
+                         unt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                         <p>Lorem ipsum dolor sit amet, consectetur adipiscing
+                          elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis
+                          nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
+                          reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
+                           cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor
+                            sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                             Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                              Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+                              Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                              <p>
+                               Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna
+                                aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                                 Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+                                 Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+
+            <div class="text-center">
+                <div class="ux-selection mb-4 float-none">
+                    <label class="ux-selection1">{{'READ_TERMS_AND_CONDITIONS' | translate }}
+                        <input type="checkbox" name="radioboxdemo">
+                        <span class="checkmark"></span>
+                      </label>
+                 </div>
+                 <div class="mt-1">
+                    <button class="ux-button sm primary">{{'I_AGREE' | translate }}</button>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+</div>
+
+</div>
+<div class="popup-bottom initialpayment md-popup" id="initialpayment">
+    <div class="row1">
+        <div class="col-12 col-md-2 col-lg-2 col-xl-2">
+        </div>
+        <div class="col-10 col-md-8 col-lg-8 col-xl-8">
+            <h4>INITIAL_DEPOSIT</h4>
+        </div>
+        <div class="col-2 col-md-2 col-lg-2 col-xl-2">
+            <button class="ux-button-icon close-btn" (click)="closePopup()">
+                <img src="assets/images/svg/close-b.svg" alt="cross-icon" class="img-vsmall" >
+            </button>
+        </div>
+    </div>
+    <div class="popup-body">
+        <form [formGroup]="depositForm" (ngSubmit)="submitForm()">
+            <div class="row1">
+                <div class="col-12 ">
+                        <img src="assets/images/svg/money1.svg">
+                        <h5>NEED_MIN_AMT_TO_ACTIVATE_ACC <br>(min ₹ 500 - Max ₹1,00,000 )</h5>
+                        <h6> {{ 'ENTER_AMOUNT' | translate }}</h6>
+                        <div class="ux-input pb-0">
+                            <input type="text" class="amount" formControlName="amt"  (keyup)="amountChange()"  numbersOnly >
+                            <span class="errormsg text-center"
+                            *ngIf="depositForm.controls['amt'].hasError('required')  && depositForm.controls['amt'].touched">
+                            {{ 'ENTER_AMOUNT' | translate }}
+                            </span>
+                        </div>
+
+                        <ul class="amtlist">
+                            <li *ngFor="let amt of amtlist">
+                                <input type="radio" [value]="amt" name="amtSuggestion" formControlName="amtSuggestion" (change)="onAmtselect(amt)">
+                                <span>₹ {{amt}}</span>
+                            </li>
+
+                        </ul>
+                    <div class="text-center mt-5">
+                            <button type="button" class="ux-button sm secondary mr-2" *ngIf="modelType == 'zeroBalance'" (click)="skipPayment()" >SKIP</button>
+                            <button type="submit" class="ux-button sm primary" >DEPOSIT_NOW</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+
+</div>
+<div class="popup-bottom aadhar-otp-confirm sm-popup">
+    <div class="row1">
+        <div class="col-12">
+            <h4 class="text-center">
+                <img src="assets/images/svg/information.svg" alt="error-icon"> {{ 'INFORMATION' | translate }}
+            </h4>
+        </div>
+    </div>
+    <div class="row1">
+        <div class="col-12 mb-4">
+            <p>Payment Address Already Exists</p>
+        </div>
+    </div>
+    <div class="row1  mt-2">
+        <div class="col-12 text-center">
+            <button class="ux-button submit-btn" (click)="closePopup()">{{ 'CLOSE' | translate }}</button>
+        </div>
+    </div>
+</div>
+
+
+<div class="popup-bottom account-open-error sm-popup">
+    <div class="row1">
+        <div class="col-12">
+            <h4 class="text-center">
+                <img src="assets/images/svg/information.svg" alt="error-icon"> {{ 'INFORMATION' | translate }}
+            </h4>
+        </div>
+    </div>
+    <div class="row1">
+        <div class="col-12 mb-4">
+            <p>{{ 'UNABLE_TO_PROCEED_PLEASE_CONTACT_BANK' | translate }}</p>
+        </div>
+    </div>
+    <div class="row1  mt-2">
+        <div class="col-12 text-center">
+            <button class="ux-button submit-btn" (click)="closePopup_err('account-open-error')">{{ 'CLOSE' | translate }}</button>
+        </div>
+    </div>
+</div>
+
+
+
+<div class="popup-bottom lg-popup terms-conditions-facta">
+    <div class="row1">
+        <div class="col-10">
+            <h4 class="text-center">FACTCA_CRS_DECLARATION</h4>
+        </div>
+        <div class="col-2">
+            <button class="ux-button-icon close-btn" (click)="closeTerms()">
+                <img src="assets/images/svg/close-b.svg" alt="cross-icon" class="img-vsmall">
+            </button>
+        </div>
+    </div>
+  <div class="row1 mt-2">
+     <div class="scroll-content">
+         <div class="content-scroll">
+            <div class="col-12 p-2">
+                <ol class="order-list">
+                    <li>
+                            <ul class="orderlist">
+                                <li>I hereby certify that I have declared my status as per the rules applicable under section 285BA of the Income Tax Act, 1961 as notified by Central Board of Direct Taxes (CBDT) vide Notification No. S.O. 2155(E) dated 7 August 2015 and RBI Circular Ref No. DBR.AML.BC.No.36/14.01.001/2015-16 dated 28 August 2015 in this regard.</li>
+                                <li>I understand and acknowledge that as per the provisions of Income Tax Act, Rules made thereunder and the guidelines issued by the RBI in the matter, depending upon the residential status and/or other criteria stipulated therein, the Bank may have to report the details in respect of our account(s) as per the prescribed format to the Central Board of Direct Taxes (CBDT) or other Government Agencies to comply with the obligations as per the Inter-Governmental Agreements (IGA) in respect of Foreign Accounts Tax Compliance Act (FATCA) and Common Reporting Standards (CRS) and or any other similar arrangements.</li>
+								<li>I certify that the information provided by me, as applicable to me is, to the best of my knowledge and belief, true, correct and complete and that I have not withheld any material information that may affect the assessment/categorization of my account as a US Reportable Account or Other Reportable Account or otherwise.</li>
+								<li>I undertake the responsibility to declare and disclose within 30 days from the date of change, any changes that may take place in the information provided by me, or if any certification becomes incorrect and to provide fresh and valid self-certification along with documentary evidence.</li>
+								<li>I also agree that my failure to disclose any material fact known to me, now or in future, may invalidate me from transacting in the account and the Bank would be within its right to put restrictions in the operations of my account or close it or report to any regulator and/or any authority designated by the Government of India (GOI) /RBI for the purpose or take any other action as may be deemed appropriate by Punjab & Sind Bank, under the guidelines issued by CBDT/RBI from time to time, if the deficiency is not remedied by me within the stipulated period.</li>
+								<li>I also agree to furnish and intimate to Punjab & Sind Bank any other particulars that are called upon me to provide on account of any change in law either in India or abroad in the subject matter herein.</li>
+								<li>I shall indemnify Punjab & Sind Bank for any loss that may be caused to the Bank on account of providing incorrect or incomplete information by me.</li>
+                            </ul>
+
+                     </li>
+                </ol>
+            </div>
+         </div>
+      </div>
+  </div>
+ </div>
+
+
+<app-terms-conditons [termsConditionType]="termsCondition"></app-terms-conditons>

@@ -1,0 +1,287 @@
+@mixin backface-visibility () {
+	-webkit-backface-visibility: hidden;
+	-moz-backface-visibility: hidden;
+	-ms-backface-visibility: hidden;
+	-o-backface-visibility: hidden;
+	backface-visibility: hidden;
+}
+ 
+@mixin border-radius($radius: 4px) {
+	-webkit-border-radius: $radius;
+	-moz-border-radius: $radius;
+	-ms-border-radius: $radius;
+	border-radius: $radius;
+}
+@mixin box-shadow ($shadow-properties...) {
+	@if length($shadow-properties) < 1 {
+		$shadow-properties: 0 1px 3px rgba($black, 0.3);
+	}
+	-webkit-box-shadow: $shadow-properties;
+	-moz-box-shadow: $shadow-properties;
+	box-shadow: $shadow-properties;
+}
+@mixin transition-duration ($duration: .3s) {
+	-webkit-transition-duration: $duration;
+	-moz-transition-duration: $duration;
+	-o-transition-duration: $duration;
+	transition-duration: $duration;
+}
+ 
+@mixin translate3D ($x, $y, $z) {
+   @include transform(translate3D($x, $y, $z));
+}/* //translate */
+
+@mixin transform-origin ($origin) {
+	moz-transform-origin: $origin;
+	-o-transform-origin: $origin;
+	-ms-transform-origin: $origin;
+	-webkit-transform-origin: $origin;
+	transform-origin: $origin;
+}
+@mixin flexbox () {
+	display: -webkit-box;      /* OLD - iOS 6-, Safari 3.1-6 */
+	display: -moz-box;         /* OLD - Firefox 19- (buggy but mostly works) */
+	display: -ms-flexbox;      /* TWEENER - IE 10 */
+	display: -webkit-flex;     /* NEW - Chrome */
+	display: flex;             /* NEW, Spec - Opera 12.1, Firefox 20+ */
+}
+
+@mixin flex-justify-content () {
+	-webkit-box-pack: justify;
+	-moz-box-pack: justify;
+	-ms-flex-pack: justify;
+	-webkit-justify-content: space-between;
+	justify-content: space-between;
+}
+
+@mixin opacity ($opacity: 1) {
+	zoom: 1;
+	filter: alpha(opacity=$opacity*100);
+	opacity: $opacity;
+}
+
+@mixin appearance ( $value : none ) {
+	-webkit-appearance: $value;
+	-moz-appearance: $value;
+	-ms-appearance: $value;
+	appearance: $value;
+}
+
+@mixin animation ($animation-values) {
+	-webkit-animation: $animation-values;/* Safari 4+ */
+	-moz-animation: $animation-values;/* Fx 5+ */
+	-ms-animation: $animation-values;/* Fx 5+ */
+	-o-animation: $animation-values;/* Opera 12+ */
+	animation: $animation-values;/* IE 10+, Fx 29+ */
+} /* //animation */
+
+@mixin animation-delay ($delay : 400ms) {
+	-webkit-animation-delay: $delay;
+	-moz-animation-delay: $delay;
+	-ms-animation-delay: $delay;
+	-o-animation-delay: $delay;
+	animation-delay: $delay;
+}
+
+@mixin spacer ($direction, $spacing) {
+	@if $direction == 'vertical' {
+		clear: both;
+		display: block;
+		width: 100%;
+		height: $spacing;
+		zoom: 1;
+	} @else {
+		width: $spacing;
+		height: 40px;
+		display: inline-block;
+	}
+}
+
+
+@-moz-keyframes pulse {
+	0% {-moz-transform: scale(0); opacity: 0.3; }
+    50% {  -moz-transform: scale(1); opacity: 1; }
+	100% { -moz-transform: scale(0); opacity: 0.3; } 
+}
+@-webkit-keyframes pulse {
+	0% {-moz-transform: scale(0); opacity: 0.3; }
+    50% {  -moz-transform: scale(1); opacity: 1; }
+	100% { -moz-transform: scale(0); opacity: 0.3; }  
+ }
+@keyframes pulse {
+	0% {-moz-transform: scale(0); opacity: 0.3; }
+    50% {  -moz-transform: scale(1); opacity: 1; }
+	100% { -moz-transform: scale(0); opacity: 0.3; } 
+ }
+ 
+
+/* =============== common mixins start ===================  */
+@mixin appearance ( $value : none ) {
+	-webkit-appearance: $value;
+	   -moz-appearance: $value;
+			appearance: $value;
+} /*appearance*/
+@mixin transform ($properties...) {
+	-webkit-transform: -webkit-#{$properties};
+	   -moz-transform: -moz-#{$properties};
+		-ms-transform: -ms-#{$properties};
+		 -o-transform: -o-#{$properties};
+			transform: $properties;
+} /* //transform */
+@mixin transition ($properties...) {
+	@if length($properties) < 1 {
+		$properties: all .2s ease-in;
+	}
+	-webkit-transition: $properties;
+	   -moz-transition: $properties;
+		-ms-transition: $properties;
+		 -o-transition: $properties;
+			transition: $properties;
+} /* //transition */
+
+@mixin flexbox () {
+	display: -webkit-box;      /* OLD - iOS 6-, Safari 3.1-6 */
+	display: -moz-box;         /* OLD - Firefox 19- (buggy but mostly works) */
+	display: -ms-flexbox;      /* TWEENER - IE 10 */
+	display: -webkit-flex;     /* NEW - Chrome */
+	display: flex;             /* NEW, Spec - Opera 12.1, Firefox 20+ */
+}
+
+@mixin flex-justify-content () {
+	-webkit-box-pack: justify;
+	-moz-box-pack: justify;
+	-ms-flex-pack: justify;
+	-webkit-justify-content: space-between;
+	justify-content: space-between;
+}
+
+
+@mixin spacer ($direction, $spacing) {
+	@if $direction == 'vertical' {
+		clear: both;
+		display: block;
+		width: 100%;
+		height: $spacing;
+		zoom: 1;
+	} @else {
+		width: $spacing;
+		height: 40px;
+		display: inline-block;
+	}
+}
+
+@mixin opacity ($opacity: 1) {
+	zoom: 1;
+	filter: alpha(opacity=$opacity*100);
+	opacity: $opacity;
+}
+@mixin box-shadow ($shadow-properties...) {
+	@if length($shadow-properties) < 1 {
+		$shadow-properties: 0 1px 3px rgba(0, 0, 0, 0.3);
+	}
+	-webkit-box-shadow: $shadow-properties;
+	-moz-box-shadow: $shadow-properties;
+	box-shadow: $shadow-properties;
+}
+@mixin placeholder () {
+	/* Firefox */
+    font-style: italic;
+    font-weight: 400;
+    color: rgba($black,0.3);
+}
+
+ 
+@mixin transition-property ($properties...) {
+	-webkit-transition-property: $properties;
+	   -moz-transition-property: $properties;
+		 -o-transition-property: $properties;
+			transition-property: $properties;
+}
+@mixin transition-timing-function ($timing: ease) {
+	-webkit-transition-timing-function: $timing;
+	   -moz-transition-timing-function: $timing;
+		 -o-transition-timing-function: $timing;
+			transition-timing-function: $timing;
+}
+
+@mixin clearfix(){
+	
+}
+::placeholder {
+    @include placeholder;
+}
+
+:-ms-input-placeholder { /* Internet Explorer 10-11 */
+	@include placeholder;
+}
+
+::-ms-input-placeholder { /* Microsoft Edge */
+	@include placeholder;
+}
+/* ================ common mixins end ============== */
+
+
+@mixin grid($cols, $mgn){
+	float: left;
+	width: ((100% - (($cols - 1) * $mgn)) / $cols );
+	margin-right: $mgn;
+	margin-bottom: $mgn;
+	&:nth-child(#{$cols}n){
+	  margin-right: 0;
+	}
+  }
+ 
+  @mixin grid1($cols, $mgn){
+	float: left;
+	width: ((100% - (($cols - 1) * $mgn)) / $cols );
+	margin-right: $mgn;
+	margin-top: $mgn;
+	margin-bottom: $mgn;
+	&:nth-child(#{$cols}n){
+	  margin-right: 0;
+	}
+  }
+
+  @mixin grid2($cols, $mgn){
+	float: left;
+	width: ((100% - (($cols - 1) * $mgn)) / $cols );
+	margin-right: $mgn;
+   &:nth-child(#{$cols}n){
+	  margin-right: 0;
+	}
+  }
+
+  @mixin grid3($cols, $mgn){
+	float: left;
+	width: ((100% - (($cols - 1) * $mgn)) / $cols );
+	margin-right: $mgn;
+   &:nth-child(#{$cols}n){
+	  margin-right: 0;
+	}
+  }
+
+  @mixin grid4($cols, $mgn){
+	float: left;
+	width: ((100% - (($cols - 1) * $mgn)) / $cols );
+    margin-right: $mgn;
+	margin-top: $mgn;
+	margin-bottom: $mgn;
+   &:nth-child(#{$cols}n){
+	  margin-right: 0;
+	 }
+  }
+
+  @mixin grid5($cols, $mgn){
+	float: left;
+	width: ((100% - (($cols - 1) * $mgn)) / $cols );
+    margin-right: $mgn;
+	margin-top: $mgn;
+  &:nth-child(#{$cols}n){
+	  margin-right: 0;
+	 }
+  }
+
+  
+  
+
+

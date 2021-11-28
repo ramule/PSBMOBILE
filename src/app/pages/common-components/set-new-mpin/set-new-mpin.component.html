@@ -1,0 +1,238 @@
+<form (ngSubmit)="submitForm()" [formGroup]="mpinForm">
+    <div class="main">
+
+        <div class="right-main-column minus-rt-col mar-custom">
+            <div class="right-col-container">
+
+                <div class="body-page-container">
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="bg-section">
+                                <div class="col-12">
+
+                                    <div class="row1">
+                                        <div class="col-sm-12 col-12 col-md-12">
+                                            <div class="white-bg1">
+                                                <div class="row">
+                                                    <div class="col-sm-12 col-12 col-md-12">
+                                                        <div class="row">
+                                                            <div class="col-12">
+                                                                <div class="ux-input password1 p1 mt-0 mb-0">
+                                                                    <label for="sapassword" class="mb0">Enter MPIN</label>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="row3">
+                                                            <div class="col-sm-2 col-2 col-md-2" *ngFor="let mpinInput of formInput | slice:0:6; index as i">
+                                                                <div class="ux-input password1 p1 mb-0">
+                                                                    <!-- <input id="spassword1" type="password" maxlength="1"
+                                                                    onkeyup="onKeyUpEvent(1, event)"
+                                                                    onfocus="onFocusEvent(1)" /> -->
+                                                                    <input #mPINformRow placeholder="&#9679;" type="tel" autocomplete="off" formControlName="{{mpinInput}}" numbersOnly maxlength="1" (keyup)="keyUpEvent('mpin',$event, i)" />
+                                                                </div>
+                                                            </div>
+                                                            <!-- <div class="col-sm-2 col-2 col-md-2">
+                                                            <div class="ux-input password1 p1">
+                                                                <input id="spassword2" type="password" maxlength="1"
+                                                                    onkeyup="onKeyUpEvent(2, event)"
+                                                                    onfocus="onFocusEvent(2)" />
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-sm-2 col-2 col-md-2">
+                                                            <div class="ux-input password1 p1">
+                                                                <input id="spassword3" type="password" maxlength="1"
+                                                                    onkeyup="onKeyUpEvent(3, event)"
+                                                                    onfocus="onFocusEvent(3)" />
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-sm-2 col-2 col-md-2">
+                                                            <div class="ux-input password1 p1">
+                                                                <input id="spassword4" type="password" maxlength="1"
+                                                                    onkeyup="onKeyUpEvent(4, event)"
+                                                                    onfocus="onFocusEvent(4)" />
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-sm-2 col-2 col-md-2">
+                                                            <div class="ux-input password1 p1">
+                                                                <input id="spassword5" type="password" maxlength="1"
+                                                                    onkeyup="onKeyUpEvent(5, event)"
+                                                                    onfocus="onFocusEvent(5)" />
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-sm-2 col-2 col-md-2">
+                                                            <div class="ux-input password1 p1">
+                                                                <input id="spassword6" type="password" maxlength="1"
+                                                                    onkeyup="onKeyUpEvent(6, event)"
+                                                                    onfocus="onFocusEvent(6)" />
+                                                            </div>
+                                                        </div> -->
+                                                        </div>
+                                                        <div class="row">
+                                                            <div class="col-12">
+                                                                <div class="ux-input input-error password1 p1 mt-0 mb-0">
+                                                                    <!-- <p *ngIf="mpinError">
+                                                                    {{ mpinError }}
+                                                                </p> -->
+
+                                                                    <p *ngIf="mpinError">
+                                                                        {{ 'ENTER_6_DIGIT_MPIN_ERROR' | translate }}
+                                                                    </p>
+                                                                    <p *ngIf="validMpin">
+                                                                        {{ 'MPIN_SIMPLE_ERROR' | translate }}
+                                                                    </p>
+                                                                    <!-- <p *ngIf="">
+                                                                    {{ 'MPIN_MATCHES_PREVIOUS_MPIN_ERROR' | translate }}
+                                                                </p> -->
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-sm-12 col-12 col-md-12 mt-2">
+                                                        <div class="row">
+                                                            <div class="col-12">
+                                                                <div class="ux-input password1 p1 mb-0">
+                                                                    <label for="capassword" class="mb0">Confirm MPIN</label>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="row3">
+                                                            <div class="col-sm-2 col-2 col-md-2" *ngFor="let confirmMPINInput of formInput | slice:6:12; index as i">
+                                                                <div class="ux-input password1 p1 mb-0">
+                                                                    <!-- <input id="cpassword1" type="password" maxlength="1"
+                                                                    onkeyup="onKeyUpEvents(1, event)"
+                                                                    onfocus="onFocusEvents(1)" /> -->
+                                                                    <input placeholder="&#9679;" #confirmMPINformRow type="tel" autocomplete="off" formControlName="{{confirmMPINInput}}" numbersOnly maxlength="1" (keyup)="keyUpEvent('confirmMpin',$event, i)" />
+                                                                </div>
+                                                            </div>
+                                                            <!-- <div class="col-sm-2 col-2 col-md-2">
+                                                            <div class="ux-input password1 p1 mb-0">
+                                                                <input id="cpassword2" type="password" maxlength="1"
+                                                                    onkeyup="onKeyUpEvents(2, event)"
+                                                                    onfocus="onFocusEvents(2)" />
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-sm-2 col-2 col-md-2">
+                                                            <div class="ux-input password1 p1 mb-0">
+                                                                <input id="cpassword3" type="password" maxlength="1"
+                                                                    onkeyup="onKeyUpEvents(3, event)"
+                                                                    onfocus="onFocusEvents(3)" />
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-sm-2 col-2 col-md-2">
+                                                            <div class="ux-input password1 p1 mb-0">
+                                                                <input id="cpassword4" type="password" maxlength="1"
+                                                                    onkeyup="onKeyUpEvents(4, event)"
+                                                                    onfocus="onFocusEvents(4)" />
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-sm-2 col-2 col-md-2">
+                                                            <div class="ux-input password1 p1 mb-0">
+                                                                <input id="cpassword5" type="password" maxlength="1"
+                                                                    onkeyup="onKeyUpEvents(5, event)"
+                                                                    onfocus="onFocusEvents(5)" />
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-sm-2 col-2 col-md-2">
+                                                            <div class="ux-input password1 p1 mb-0">
+                                                                <input id="cpassword6" type="password" maxlength="1"
+                                                                    onkeyup="onKeyUpEvents(6, event)"
+                                                                    onfocus="onFocusEvents(6)" />
+                                                            </div>
+                                                        </div> -->
+                                                        </div>
+                                                        <div class="row">
+                                                            <div class="col-12">
+                                                                <div class="ux-input input-error password1 p1 mt-0 mb-0">
+                                                                    <!-- <p *ngIf="confMpinError">
+                                                                        {{ confMpinError }}
+                                                                    </p> -->
+                                                                    <p *ngIf="confMpinError">
+                                                                        {{ 'ENTER_6_DIGIT_CONFIRM_MPIN_ERROR' | translate }}
+                                                                    </p>
+                                                                    <p *ngIf="!mpinMatch">
+                                                                        {{ 'MPIN_CONFIRM_MISMATCH_ERROR' | translate }}
+                                                                    </p>
+                                                                    <p *ngIf="validConfirmMpin">
+                                                                        {{ 'MPIN_SIMPLE_ERROR' | translate }}
+                                                                    </p>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                        </div>
+
+                                        <div class="col-12 col-sm-12 col-md-12 col-lg-12 mt-2">
+                                            <h4>
+                                                Note
+                                            </h4>
+                                            <ol class="orderlist2 mar-b">
+                                                <li>Login MPIN should be minimum 6 digit numeric only.</li>
+                                                <li>No special characters allowed.</li>
+                                            </ol>
+                                        </div>
+
+                                    </div>
+
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- main -->
+
+    <!-- footer section start -->
+
+    <div class="footer-container sticky-actions">
+        <div class="footer-inactions minus-rt-col">
+            <div class="container-fluid">
+                <div class="row">
+                    <button class="mpin-submit ux-button primary md" [disabled]="mpinForm.invalid">Submit</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="sticky-actions-spacer"></div>
+</form>
+
+<!-- footer section end -->
+
+<!-- =========== modal popup start ===============  -->
+
+
+
+<!-- MPIN Success Popup Start -->
+
+<div class="popup-bottom mpin-success">
+    <form action="#" id="success-form">
+        <div class="row1 mt-3">
+            <div class="success">
+                <img src="assets/images/svg/check.svg" alt="success-icon">
+                <h3>
+                    {{ 'SUCCESS' | translate }}
+                </h3>
+                <h5>
+                    {{ 'LOGIN_MPIN_RESET_SUCCESS' | translate}}
+                    <!-- Login MPIN Reset Successfully -->
+                </h5>
+            </div>
+        </div>
+        <div class="row1 mt-3">
+            <div class="col-12 text-center">
+                <button class="ux-button primary md " (click)="hideMPINSuccessModal()">Ok</button>
+            </div>
+        </div>
+    </form>
+</div>
+
+<!-- MPIN Success Popup End -->
+
+<!-- <div class="ios-nav-overlay"></div> -->

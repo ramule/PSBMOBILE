@@ -1,0 +1,1586 @@
+<!DOCTYPE html>
+
+<html>
+    
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+        
+        <title>Recharge & Bill Pay</title>
+        
+        <link href="../css/lib/bootstrap.min.css" rel="stylesheet">
+        <link href="../css/lib/jquery-ui.min.css" rel="stylesheet">
+        <link href="../css/lib/owl.carousel.min.css" rel="stylesheet">
+        <link href="../css/lib/jquery.mCustomScrollbar.min.css" rel="stylesheet">
+        <link href="../css/main.css" rel="stylesheet">
+        <link href="../css/lib/duDatepicker.css" rel="stylesheet">
+        
+    </head>
+    
+    <body>
+        
+        <div class="main bg-m">
+            
+            <!-- Start Global Nav -->
+            
+            <nav class="global-nav">
+                <div class="nav-items">
+                    <div class="nav-header">
+                        <!-- <a href="javascript:;" class="btn-closeglnav hi-btn-menu"></a> -->
+                        <div class="brand-logo">
+                            <a href="#">
+                                <img src="../assets/images/logo/psb-bank.png" alt="psb-logo">
+                            </a>
+                        </div>
+                    </div>
+                    <ul class="lst-nav-items">
+                        <li>
+                            <a href="dashboard.html">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 22 22.001" class="">
+                                    <g transform="translate(0 0.001)">
+                                        <path class="a"
+                                            d="M20.625,20.625V18.562a.688.688,0,0,0-.688-.688H19.25v-5.5h1.375a.687.687,0,0,0,.687-.687V8.937a.687.687,0,0,0-.687-.687H19.532L11.488.2a.688.688,0,0,0-.969,0L2.468,8.25H1.375a.687.687,0,0,0-.687.687v2.75a.687.687,0,0,0,.688.688H2.75v5.5H2.063a.688.688,0,0,0-.687.688v2.063H0V22H22V20.625ZM11,1.657,17.593,8.25H4.407ZM2.063,11V9.625H19.938V11Zm15.812,1.375v5.5H16.5v-5.5Zm-2.75,0v5.5H13.063v-5.5Zm-3.438,0v5.5H10.313v-5.5Zm-2.75,0v5.5H6.875v-5.5Zm-3.437,0v5.5H4.125v-5.5Zm13.75,8.25H2.75V19.25h16.5Z" />
+                                        <circle class="a" cx="1.833" cy="1.833" r="1.833" transform="translate(9.167 3.928)" />
+                                    </g>
+                                </svg>
+                                Dashboard
+                                <span class="chevron"></span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="glnv-dropdown">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 22 22">
+                                    <path class="a"
+                                        d="M20.625,0H1.375A1.375,1.375,0,0,0,0,1.375v19.25A1.375,1.375,0,0,0,1.375,22H7.563V20.625H1.375V18.563H7.563V17.188H1.375V15.125H7.563V13.75H1.375V1.375h19.25v8.938H22V1.375A1.375,1.375,0,0,0,20.625,0Z" />
+                                    <path class="a"
+                                        d="M18.25,9.125a4.125,4.125,0,1,0-4.125,4.125A4.125,4.125,0,0,0,18.25,9.125Zm-6.875,0a2.75,2.75,0,1,1,2.75,2.75A2.75,2.75,0,0,1,11.375,9.125Z"
+                                        transform="translate(-3.125 -1.563)" />
+                                    <rect class="a" width="1.375" height="1.375" transform="translate(17.188 6.875)" />
+                                    <rect class="a" width="1.375" height="1.375" transform="translate(3.438 6.875)" />
+                                    <path class="a"
+                                        d="M25.688,18h-5.5a.687.687,0,0,0-.687.688V20.75H14.688a.687.687,0,0,0-.687.688v5.5a.687.687,0,0,0,.688.688h11a.687.687,0,0,0,.688-.687v-8.25A.687.687,0,0,0,25.688,18ZM19.5,26.25H15.375V24.875H19.5Zm0-2.75H15.375V22.125H19.5ZM25,26.25H20.875V24.875H25Zm0-2.75H20.875V22.125H25Zm0-2.75H20.875V19.375H25Z"
+                                        transform="translate(-4.375 -5.625)" />
+                                </svg>
+                                My Accounts
+                                <span class="chevron"></span>
+                                
+                            </a>
+                            <div class="mysubnavigation-items">
+                                <ul class="lst-subnavigation">
+                                    <li><a href="my-accounts.html">Operative Accounts</a></li>
+                                    <li><a href="#">My Deposits</a></li>
+                                    <li><a href="#">My Borrowings</a></li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li>
+                            <a href="#" class="glnv-dropdown">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 22 16.741">
+                                    <path class="a"
+                                        d="M20.625,5H1.375A1.375,1.375,0,0,0,0,6.375V18.75a1.375,1.375,0,0,0,1.375,1.375h19.25A1.375,1.375,0,0,0,22,18.75V6.375A1.375,1.375,0,0,0,20.625,5Zm0,13.75H1.375V6.375h19.25Z"
+                                        transform="translate(0 -4.313)" />
+                                    <path class="a"
+                                        d="M14.125,18.25A4.125,4.125,0,1,0,10,14.125,4.125,4.125,0,0,0,14.125,18.25Zm0-6.875a2.75,2.75,0,1,1-2.75,2.75A2.75,2.75,0,0,1,14.125,11.375Z"
+                                        transform="translate(-3.125 -5.875)" />
+                                    <rect class="a" width="1.375" height="1.375" transform="translate(3.438 7.563)" />
+                                    <rect class="a" width="1.375" height="1.375" transform="translate(17.188 7.563)" />
+                                    <path class="b" d="M0,0,2.786.109,2.063,1.346l1.3,1.645L0,2.75Z" transform="translate(10.313 13.75)" />
+                                    <path class="c" d="M3.367,0,.581.109,1.3,1.346,0,2.991,3.367,2.75Z" transform="translate(8.25)" />
+                                </svg>
+                                Send Money
+                                <span class="chevron"></span>
+                            </a>
+                            <div class="mysubnavigation-items">
+                                <ul class="lst-subnavigation">
+                                    <li><a href="#">
+                                            Manage Payee</a>
+                                    </li>
+                                    <li><a href="fund-transfer.html">
+                                            Initiate Send Money</a>
+                                    </li>
+                                    <li><a href="#">
+                                            Cardless Cash Withdrawals</a>
+                                    </li>
+                                    <li><a href="#">
+                                            Transaction Status</a>
+                                    </li>
+                                    <li><a href="manage-payee.html">
+                                            Manage Payee</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 22 22">
+                                    <path class="a"
+                                        d="M20.625,0H1.375A1.375,1.375,0,0,0,0,1.375v16.5A1.375,1.375,0,0,0,1.375,19.25v2.063A.687.687,0,0,0,2.063,22h2.75a.687.687,0,0,0,.688-.687V19.25h11v2.063a.687.687,0,0,0,.688.688h2.75a.687.687,0,0,0,.688-.687V19.25A1.375,1.375,0,0,0,22,17.875V1.375A1.375,1.375,0,0,0,20.625,0ZM4.125,20.625H2.75V19.25H4.125Zm15.125,0H17.875V19.25H19.25Zm1.375-2.75H1.375V1.375h19.25Z" />
+                                    <path class="a"
+                                        d="M4.688,17.75H19.813V16.375H5.375v-11H19.813V4H4.688A.687.687,0,0,0,4,4.688V17.063A.687.687,0,0,0,4.688,17.75Z"
+                                        transform="translate(-1.25 -1.25)" />
+                                    <path class="a"
+                                        d="M21.438,9a3.438,3.438,0,1,0,3.438,3.438A3.437,3.437,0,0,0,21.438,9Zm-2.062,3.438a2.053,2.053,0,0,1,2.949-1.856l-2.75,2.75a2.062,2.062,0,0,1-.2-.894ZM21.438,14.5a2.063,2.063,0,0,1-.887-.206l2.75-2.75A2.07,2.07,0,0,1,21.438,14.5Z"
+                                        transform="translate(-5.625 -2.813)" />
+                                    <path class="a" d="M11.438,9.375V8H8.688A.687.687,0,0,0,8,8.688v6.875a.687.687,0,0,0,.688.688h2.75V14.875H9.375v-5.5Z"
+                                        transform="translate(-2.5 -2.5)" />
+                                </svg>
+                                My Cards
+                                <span class="chevron"></span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="glnv-dropdown active">
+                                <img src="../assets/images/svg/recharge-bill-pay.svg" alt="recharge-bill-pay-icon">
+                                Recharge & Bill Pay
+                                <span class="chevron"></span>
+                            </a>
+                            <div class="mysubnavigation-items" style="display: block;">
+                                <ul class="lst-subnavigation">
+                                    <li><a href="#" class="active"	>
+                                            Bill Payment</a>
+                                    </li>
+                                    <li><a href="#">
+                                            Registered Pay</a>
+                                    </li>
+                                    <li><a href="#">
+                                            Recent Transactions</a>
+                                    </li>
+                                    <li><a href="#">
+                                            Pending Bill Reminder</a>
+                                    </li>
+                                    <li><a href="#">
+                                            Complaints</a>
+                                    </li>
+                                    <li><a href="#">
+                                            Payment History</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li>
+                            <a href="loans.html">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 22 22">
+                                    <path class="a"
+                                        d="M20.625,3.438H15.813V1.375A1.375,1.375,0,0,0,14.438,0H7.563A1.375,1.375,0,0,0,6.188,1.375V3.438H1.375A1.375,1.375,0,0,0,0,4.813v6.875a1.375,1.375,0,0,0,1.375,1.375v8.25A.687.687,0,0,0,2.063,22h5.5V20.625H2.75V13.063h5.5v.688a.687.687,0,0,0,.688.688h4.125a.687.687,0,0,0,.688-.687V11a.687.687,0,0,0-.687-.687H8.938A.687.687,0,0,0,8.25,11v.688H1.375V4.813h19.25v5.5H22v-5.5A1.375,1.375,0,0,0,20.625,3.438Zm-11,8.25h2.75v1.375H9.625Zm4.813-8.25H7.563V1.375h6.875Z" />
+                                    <path class="a"
+                                        d="M25.688,18h-5.5a.687.687,0,0,0-.687.688V20.75H14.688a.687.687,0,0,0-.687.688v5.5a.687.687,0,0,0,.688.688h11a.687.687,0,0,0,.688-.687v-8.25A.687.687,0,0,0,25.688,18ZM19.5,26.25H15.375V24.875H19.5Zm0-2.75H15.375V22.125H19.5ZM25,26.25H20.875V24.875H25Zm0-2.75H20.875V22.125H25Zm0-2.75H20.875V19.375H25Z"
+                                        transform="translate(-4.375 -5.625)" />
+                                </svg>
+                                Loans
+                                <span class="chevron"></span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 22 16.5">
+                                    <g transform="translate(0 -4)">
+                                        <path class="a"
+                                            d="M20.625,4H1.375A1.375,1.375,0,0,0,0,5.375v13.75A1.375,1.375,0,0,0,1.375,20.5h19.25A1.375,1.375,0,0,0,22,19.125V5.375A1.375,1.375,0,0,0,20.625,4Zm0,15.125H1.375V5.375h19.25Z" />
+                                        <path class="a" d="M6.063,12.125H7.438A2.063,2.063,0,0,0,7.438,8H6.063a2.063,2.063,0,0,0,0,4.125Z"
+                                            transform="translate(-1.25 -1.25)" />
+                                        <path class="a"
+                                            d="M24.063,12.125A2.062,2.062,0,1,0,22,10.063a2.062,2.062,0,0,0,2.062,2.062Zm0-2.75a.688.688,0,1,1-.687.688A.688.688,0,0,1,24.063,9.375Z"
+                                            transform="translate(-6.875 -1.25)" />
+                                        <rect class="a" width="16.5" height="1.375" transform="translate(2.75 12.938)" />
+                                        <rect class="a" width="1.375" height="1.375" transform="translate(2.75 15.688)" />
+                                        <rect class="a" width="1.375" height="1.375" transform="translate(5.5 15.688)" />
+                                        <rect class="a" width="2.75" height="1.375" transform="translate(16.5 15.688)" />
+                                    </g>
+                                </svg>
+                                Card Services
+                                <span class="chevron"></span>
+                            </a>
+                        </li>
+                        
+                        <li>
+                            <a href="#">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 22 16.509">
+                                    <path class="a"
+                                        d="M20.625,4H1.375A1.32,1.32,0,0,0,0,5.256v11.3a1.32,1.32,0,0,0,1.375,1.256H11V16.561H1.375V5.256h19.25v6.28H22V5.256A1.32,1.32,0,0,0,20.625,4Z"
+                                        transform="translate(0 -4)" />
+                                    <path class="a"
+                                        d="M18.731,13.365a4.365,4.365,0,1,0-4.365,4.365A4.365,4.365,0,0,0,18.731,13.365Zm-4.365,2.91a2.91,2.91,0,1,1,2.91-2.91A2.91,2.91,0,0,1,14.365,16.276Z"
+                                        transform="translate(-3.365 -6.161)" />
+                                    <rect class="a" width="1.455" height="1.455" transform="translate(3.083 6.548)" />
+                                    <rect class="a" width="1.455" height="1.455" transform="translate(16.907 6.548)" />
+                                    <path class="a"
+                                        d="M27.265,19H23.627v1.455h1.884l-2.183,2.183H20.717a.728.728,0,0,0-.517.211l-2.91,2.91,1.026,1.026,2.7-2.692h2.612a.728.728,0,0,0,.517-.211l2.394-2.4v1.884h1.455V19.728A.728.728,0,0,0,27.265,19Z"
+                                        transform="translate(-5.993 -10.276)" />
+                                </svg>
+                                Expencess Manager
+                                <span class="chevron"></span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="glnv-dropdown">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 22 17.875">
+                                    <g transform="translate(0 -3)">
+                                        <path class="a"
+                                            d="M20.625,11H19.25v1.375h1.375V22H1.375V12.375H11V11H1.375A1.375,1.375,0,0,0,0,12.375V22a1.375,1.375,0,0,0,1.375,1.375h19.25A1.375,1.375,0,0,0,22,22V12.375A1.375,1.375,0,0,0,20.625,11Z"
+                                            transform="translate(0 -2.5)" />
+                                        <path class="a"
+                                            d="M20.574,16.551a.688.688,0,0,0,.969,0l1.375-1.375a.687.687,0,0,0,.206-.488v-11A.687.687,0,0,0,22.437,3h-2.75A.687.687,0,0,0,19,3.688v11a.688.688,0,0,0,.2.488Zm-.2-8.738H21.75v6.593l-.687.688-.687-.687Z"
+                                            transform="translate(-5.937)" />
+                                        <path class="a" d="M7.375,22.375h6.188V21H6A1.375,1.375,0,0,0,7.375,22.375Z" transform="translate(-1.875 -5.625)" />
+                                        <path class="a" d="M14.125,18.375V17H10a1.375,1.375,0,0,0,1.375,1.375Z" transform="translate(-3.125 -4.375)" />
+                                    </g>
+                                </svg>
+                                Service Request
+                                <span class="chevron"></span>
+                            </a>
+                            <div class="mysubnavigation-items ">
+                                <ul class="lst-subnavigation">
+                                    <li><a href="cheque-book-request.html">
+                                            Cheque Book Request </a>
+                                    </li>
+                                    <li><a href="stop-cheques.html">
+                                            Stop Cheques</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li>
+                            <a href="pending-requests.html">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 18.393 22">
+                                    <path class="a"
+                                        d="M21.188,4.324,16.944.2a.718.718,0,0,0-.5-.2H5.122A2.093,2.093,0,0,0,3,2.062V19.937A2.093,2.093,0,0,0,5.122,22H19.271a2.093,2.093,0,0,0,2.122-2.062V4.812a.678.678,0,0,0-.205-.488Zm-1.21,15.613a.7.7,0,0,1-.707.688H5.122a.7.7,0,0,1-.707-.687V2.062a.7.7,0,0,1,.707-.687H15.734v2.75A1.4,1.4,0,0,0,17.149,5.5h2.83Z"
+                                        transform="translate(-3 0)" />
+                                    <path class="a"
+                                        d="M10.277,11a2.277,2.277,0,1,0,2.277,2.277A2.277,2.277,0,0,0,10.277,11Zm0,3.036a.759.759,0,1,1,.759-.759A.759.759,0,0,1,10.277,14.036Z"
+                                        transform="translate(-4.54 -3.619)" />
+                                    <path class="a"
+                                        d="M10.277,21a2.277,2.277,0,1,0,2.277,2.277A2.277,2.277,0,0,0,10.277,21Zm0,3.036a.759.759,0,1,1,.759-.759A.759.759,0,0,1,10.277,24.036Z"
+                                        transform="translate(-4.54 -6.908)" />
+                                    <rect class="a" width="6.071" height="1.518" transform="translate(8.528 7.589)" />
+                                    <rect class="a" width="3.036" height="1.518" transform="translate(9.287 9.865)" />
+                                    <rect class="a" width="6.071" height="1.518" transform="translate(8.528 14.419)" />
+                                    <rect class="a" width="3.036" height="1.518" transform="translate(9.287 16.695)" />
+                                </svg>
+                                Pending Requests
+                                <span class="chevron"></span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="glnv-dropdown">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 22 16.741">
+                                    <path class="a"
+                                        d="M20.625,5H1.375A1.375,1.375,0,0,0,0,6.375V18.75a1.375,1.375,0,0,0,1.375,1.375h19.25A1.375,1.375,0,0,0,22,18.75V6.375A1.375,1.375,0,0,0,20.625,5Zm0,13.75H1.375V6.375h19.25Z"
+                                        transform="translate(0 -4.313)" />
+                                    <path class="a"
+                                        d="M14.125,18.25A4.125,4.125,0,1,0,10,14.125,4.125,4.125,0,0,0,14.125,18.25Zm0-6.875a2.75,2.75,0,1,1-2.75,2.75A2.75,2.75,0,0,1,14.125,11.375Z"
+                                        transform="translate(-3.125 -5.875)" />
+                                    <rect class="a" width="1.375" height="1.375" transform="translate(3.438 7.563)" />
+                                    <rect class="a" width="1.375" height="1.375" transform="translate(17.188 7.563)" />
+                                    <path class="b" d="M0,0,2.786.109,2.063,1.346l1.3,1.645L0,2.75Z" transform="translate(10.313 13.75)" />
+                                    <path class="c" d="M3.367,0,.581.109,1.3,1.346,0,2.991,3.367,2.75Z" transform="translate(8.25)" />
+                                </svg>
+                                Cheque Book
+                                <span class="chevron"></span>
+                            </a>
+                            <div class="mysubnavigation-items">
+                                <ul class="lst-subnavigation">
+                                    <li><a href="my-cheque-book.html">
+                                            My Cheque Book(s)</a>
+                                    </li>
+                                    <li><a href="#">
+                                            Cheque Status Enquiry</a>
+                                    </li>
+                                    <li><a href="positive-pay.html" class="active">
+                                            Positive Pay</a>
+                                    </li>
+                                    <li><a href="#">
+                                            Stop Cheque</a>
+                                    </li>
+                                    <li><a href="#">
+                                            Inward Cheque Inquiry</a>
+                                    </li>
+                                    <li><a href="#">
+                                            New Cheque Book Request</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <div class="nav-footer">
+                    <div class="poweredby">
+                        <div class="row">
+                            <div class="col-12 col-xl-12 p-0">
+                                <p>
+                                    <!-- <img src="../assets/images/svg/version.svg" alt="vrsion-icon">	 -->
+                                    Version 2.0
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+            
+            <div class="nav-overlay"></div>
+            
+            <!-- End Global Nav -->
+            
+            <!-- header section Start -->
+            
+            <header class="global-header">
+                <div class="desk-header ">
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-xl-1 col-lg-1 col-md-1 col-sm-1 col-2 d-lg-none">
+                                <div class="header-actions">
+                                    <button class="ux-button-header menu-btn">
+                                        <img src="../assets/images/svg/open-menu1.svg" alt="open-menu-icon">
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="col-xl-1 col-lg-1 col-md-1 col-sm-1 col-2 pl-0 pr-0 d-none d-xl-block d-lg-block d-md-none d-sm-none ">
+                                <div id="nav-icon1">
+                                    <div class="inner-div">
+                                        <span></span>
+                                        <span></span>
+                                        <span></span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xl-5 col-lg-5 col-md-5 col-sm-6 col-6 position-static">
+                                <div class="brand-heading">
+                                    <span class="logo-img">
+                                        <img src="../assets/images/svg/final-logo.svg" alt="psb-logo">
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-5 col-4">
+                                <div class="header-items">
+                                    <ul class="lst-header-items">
+                                        <li>
+                                            <div class="user-details item-user">
+                                                <span class="round-circle"><img src="../assets/images/icons/john.png" alt="user-img"></span>
+                                            </div>
+                                            <div class="bm-userprofile">
+                                                <ul class="lst-userprofile">
+                                                    <li>
+                                                        <div class="userprofile-container">
+                                                            <div class="row1">
+                                                                <div class="col-12 col-sm-6">
+                                                                    <span>John Smith</span>
+                                                                    <em>Last login <i>12 Jan 2020,</i><b>16:25</b></em>
+                                                                </div>
+                                                                <div class="col-12 col-sm-6">
+                                                                    <div class="profile-btn">
+                                                                        <button class="ux-button sm secondary" onclick="window.location.href='#'">My
+                                                                            Profile</button>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </li>
+                                                    <li>
+                                                        <a href="#" class="common-action change-pwd">
+                                                            <span> Change Password</span>
+                                                        </a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="login.html" class="common-action logout" data-toggle="modal" data-target="#logoutModal">
+                                                            <span> Logout</span>
+                                                        </a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </li>
+                                        <li class="hil-setting">
+                                            <a href="javascript:;" class="item-settings">
+                                                <img src="../assets/images/svg/settings-w.svg" alt="setting-icon">
+                                            </a>
+                                        </li>
+                                        <li class="hil-notification">
+                                            <a href="javascript:;" class="item-notification">
+                                                <div class="notify">
+                                                    <!-- <span class="pulse"></span>  -->
+                                                    <!-- <span class="point">1</span> -->
+                                                </div>
+                                                <img src="../assets/images/svg/bell1.svg" alt="bell-icon">
+                                            </a>
+                                            <div class="bm-notification">
+                                                <div class="nf-header">
+                                                    <span class="nf-title">Notifications <b>2</b></span>
+                                                </div>
+                                                <!-- .nf-header -->
+                                                <div class="nf-content">
+                                                    <div class="template-list">
+                                                        <dl class="dl-template-items">
+                                                            <div>
+                                                                <a href="javascript:;">
+                                                                    <span>N</span>
+                                                                    <dt>New data added to system</dt>
+                                                                    <dd>System is updated with new reports</dd>
+                                                                    <em>12 Jan 2020, 9:25 AM</em>
+                                                                </a>
+                                                            </div>
+                                                            <div>
+                                                                <a href="javascript:;">
+                                                                    <span>E</span>
+                                                                    <dt>Event Today</dt>
+                                                                    <dd>Just a reminder of an event</dd>
+                                                                    <em>11 Jan 2020, 08:00 AM</em>
+                                                                </a>
+                                                            </div>
+                                                            <div>
+                                                                <a href="javascript:;" class="nf-read">
+                                                                    <span>S</span>
+                                                                    <dt>System Maintenance</dt>
+                                                                    <dd>System will be down from 5PM - 8PM today</dd>
+                                                                    <em>10 Jan 2020, 07:00 AM</em>
+                                                                </a>
+                                                            </div>
+                                                        </dl>
+                                                    </div>
+                                                </div>
+                                                <div class="nf-footer ">
+                                                    <button class="ux-button sm secondary" onclick="window.location.href='#'"> View all</button>
+                                                </div>
+                                                <!-- .nf-footer -->
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <a href="javascript:;" class="item-logout1" data-toggle="modal" data-target="#logoutModal">
+                                                <img src="../assets/images/svg/logout-w.svg" alt="logout-icon">
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </header> <!-- global-header -->
+            
+            <!-- header section End -->
+            
+            <div class="right-main-column">
+                <div class="right-col-container pad-b full-width">
+                    <!-- ======== body page content start from here ======== -->
+                    <div class="body-page-container main-dashborad bill-wrapper myprofile">
+                        <div class="container-fluid">
+
+							<div class="row">
+                                <div class="col-12 p-0">
+                                    <div class="breadcrumb">
+                                        <ul class="lst-breadcrumb">
+                                            <li>
+                                                Recharge & Bills
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--.row -->
+                            
+                            <div class="vspacer15 customize d-none d-md-block d-lg-block d-xl-block"></div>
+
+                            <div class="row no-gutters">
+                                <div class="col-12">
+                                    <div class="row1">
+										
+										<div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-9">
+                                            
+                                            <!-- Greencard2 Start here -->
+                                            <div class="greencard2">
+                                                <div class="row1 hide-m">
+                                                    <div class="col-md-10 col-12">
+                                                        <h4> Recharge & Bill Pay</h4>
+                                                    </div>
+                                                    <div class="col-md-2 col-12">
+                                                        <div class="header-actions">
+                                                            <img src="../assets/images/icons/billpay.png" alt="billpay-img" class="small-img">
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+
+												<div class="row1">
+													<div class="col-sm-12 col-12 col-md-12">
+														<div class="ux-nav-tabs" style="margin:0">
+															<div class="responsive3">
+																<ul class="nav nav-tabs nav-justified bor-n  d-flex d-sm-none mt-0" role="tablist">
+																	<li class="nav-item">
+																		<a class="nav-link active" data-toggle="tab" href="#instant-pay" data-target="#instant-pay, #instant-pay1" >Instant Pay</a>
+																	</li>
+																	<li class="nav-item">
+																		<a class="nav-link" data-toggle="tab" href="#register-pay">Registered Pay</a>
+																	</li>
+																</ul>
+																
+																<!-- Tab panes -->
+																<div class="tab-content  custom-tab-content1 pad-b mb-0 row1">
+																	<div id="instant-pay" class=" tab-pane active show col-12 p-0">
+																		<div class="row1">
+																			<div class="col-sm-12 col-12 col-md-12">
+																				<div class="scroll-box5">
+																					<div class="owl-carousel  box-owl4" role="list">
+																						<div class="item" role="listitem">
+																							<div class="white-bg3 mar-b">
+                                                                                                <div class="row1 d-none d-sm-block">
+                                                                                                    <div class="col-8 col-md-9">
+                                                                                                        <h5 class="detail-heading mb-2">Instant Pay</h5>
+                                                                                                    </div>
+                                                                                                </div>
+																								<ul class="information-list4">
+																									<li>
+																										<a href="#">
+																											<div class="icon1">
+																												<img src="../assets/images/svg/mobile-recharge.svg"
+																													alt="mobile-recharge-icon" />
+																											</div>
+																											<em>Mobile Postpaid</em>
+																										</a>
+																									</li>
+																									<li>
+																										<a href="#">
+																											<div class="icon1">
+																												<img src="../assets/images/svg/dth.svg"
+																													alt="dth-icon" />
+																											</div>
+																											<em>DTH</em>
+																										</a>
+																									</li>
+																									<li>
+																										<a href="#">
+																											<div class="icon1">
+																												<img src="../assets/images/svg/electricity.svg"
+																													alt="electricity-icon" />
+																											</div>
+																											<em>Electricity</em>
+																										</a>
+																									</li>
+																									<li>
+																										<a href="#">
+																											<div class="icon1">
+																												<img src="../assets/images/svg/gas-g.svg"
+																													alt="gas-icon" />
+																											</div>
+																											<em>Gas</em>
+																										</a>
+																									</li>
+																									<li>
+																										<a href="#">
+																											<div class="icon1">
+																												<img src="../assets/images/svg/water-g.svg"
+																													alt="water-icon" />
+																											</div>
+																											<em>Water</em>
+																										</a>
+																									</li>
+																									<li>
+																										<a href="#">
+																											<div class="icon1">
+																												<img src="../assets/images/svg/landline-g.svg"
+																													alt="landline-icon" />
+																											</div>
+																											<em>Landline Postpaid</em>
+																										</a>
+																									</li>
+																									<li>
+																										<a href="#">
+																											<div class="icon1">
+																												<img src="../assets/images/svg/fast-tag1.svg"
+																													alt="fast-tag-icon" />
+																											</div>
+																											<em>Fastage</em>
+																										</a>
+																									</li>
+																									<li>
+																										<a href="#">
+																											<div class="icon1">
+																												<img src="../assets/images/svg/insurance-g.svg"
+																													alt="insurance-icon" />
+																											</div>
+																											<em>Insurance</em>
+																										</a>
+																									</li>
+																								</ul>
+																							</div>
+																						</div>
+																						<div class="item" role="listitem">
+																							<div class="white-bg3 mar-b">
+                                                                                                <div class="row1 d-none d-sm-block">
+                                                                                                    <div class="col-8 col-md-9">
+                                                                                                        <h5 class="detail-heading mb-2">Instant Pay</h5>
+                                                                                                    </div>
+                                                                                                </div>
+																								<ul class="information-list4">
+																									<li>
+																										<a href="#">
+																											<div class="icon1">
+																												<img src="../assets/images/svg/mobile-recharge.svg"
+																													alt="mobile-recharge-icon" />
+																											</div>
+																											<em>Mobile Postpaid</em>
+																										</a>
+																									</li>
+																									<li>
+																										<a href="#">
+																											<div class="icon1">
+																												<img src="../assets/images/svg/dth.svg"
+																													alt="dth-icon" />
+																											</div>
+																											<em>DTH</em>
+																										</a>
+																									</li>
+																									<li>
+																										<a href="#">
+																											<div class="icon1">
+																												<img src="../assets/images/svg/electricity.svg"
+																													alt="electricity-icon" />
+																											</div>
+																											<em>Electricity</em>
+																										</a>
+																									</li>
+																									<li>
+																										<a href="#">
+																											<div class="icon1">
+																												<img src="../assets/images/svg/gas-g.svg"
+																													alt="gas-icon" />
+																											</div>
+																											<em>Gas</em>
+																										</a>
+																									</li>
+																									<li>
+																										<a href="#">
+																											<div class="icon1">
+																												<img src="../assets/images/svg/water-g.svg"
+																													alt="water-icon" />
+																											</div>
+																											<em>Water</em>
+																										</a>
+																									</li>
+																									<li>
+																										<a href="#">
+																											<div class="icon1">
+																												<img src="../assets/images/svg/landline-g.svg"
+																													alt="landline-icon" />
+																											</div>
+																											<em>Landline Postpaid</em>
+																										</a>
+																									</li>
+																									<li>
+																										<a href="#">
+																											<div class="icon1">
+																												<img src="../assets/images/svg/fast-tag1.svg"
+																													alt="fast-tag-icon" />
+																											</div>
+																											<em>Fastage</em>
+																										</a>
+																									</li>
+																									<li>
+																										<a href="#">
+																											<div class="icon1">
+																												<img src="../assets/images/svg/insurance-g.svg"
+																													alt="insurance-icon" />
+																											</div>
+																											<em>Insurance</em>
+																										</a>
+																									</li>
+																								</ul>
+																							</div>
+																						</div>
+																					</div>
+																				</div>
+																			</div>
+																		</div>
+																	</div>
+
+																	<div id="instant-pay1" class=" tab-pane active show col-xl-6 col-lg-12 col-md-12 col-sm-12 col-12 p-0">
+																		<div class="row1">
+
+																			<div class="col-sm-12 col-12 col-md-12">
+																				<div class="widget-box7">
+																					<div class="component-title6">
+																						<div class="row1">
+																							<div class="col-8 col-md-9">
+																								<h3>Recent Transactions</h3>
+																							</div>
+																							<div class="col-4 col-md-3 d-none d-sm-block">
+																								<a class="link-txt float-right" href="#">View All</a>
+																							</div>
+																						</div>
+																						
+																					</div>
+																					<div class="component-box">
+																						<div class="row">
+																							<ul class="information-list5">
+																								<li>
+																									<a href="#">
+																										<div class="icon1">
+																											<img src="../assets/images/icons/airtel.png"
+																												alt="airtel-logo" />
+																										</div>
+																										<em>Postpaid</em>
+																									</a>
+																								</li>
+																								<li>
+																									<a href="#">
+																										<div class="icon1">
+																											<img src="../assets/images/icons/tata-sky.png"
+																												alt="tata-sky-logo" />
+																										</div>
+																										<em>DTH Tata Sky</em>
+																									</a>
+																								</li>
+																								<li>
+																									<a href="#">
+																										<div class="icon1">
+																											<img src="../assets/images/icons/adani.png"
+																												alt="adani-logo" />
+																										</div>
+																										<em>Adani Electricity</em>
+																									</a>
+																								</li>
+																								<li>
+																									<a href="#">
+																										<div class="icon1">
+																											<img src="../assets/images/icons/mahanagar-gas.png"
+																												alt="mahanagar-gas-logo" />
+																										</div>
+																										<em>Mahanagar Gas</em>
+																									</a>
+																								</li>
+																								<li>
+																									<a href="#">
+																										<div class="icon1">
+																											<img src="../assets/images/icons/mcgm.png"
+																												alt="mcgm-logo" />
+																										</div>
+																										<em>MCGM</em>
+																									</a>
+																								</li>
+																							</ul>
+																						</div>
+																					</div>
+																				</div>
+																			</div>
+																			
+																			<div class="col-sm-12 col-12 col-md-12">
+																				<div class="widget-box7">
+																					<div class="component-title6">
+																						<div class="row1">
+																							<div class="col-8 col-md-9">
+																								<h3>Pending Bills Reminder</h3>
+																							</div>
+																							<div class="col-4 col-md-3 d-none d-sm-block">
+																								<a class="link-txt float-right" href="#">View All</a>
+																							</div>
+																						</div>
+																					</div>
+
+																					<div class="component-box">
+																						<div class="row">
+																							<ul class="information-list6">
+																								<li>
+																									<a href="#">
+																										<div class="icon1">
+																											<img src="../assets/images/icons/airtel.png"
+																												alt="airtel-logo" />
+																										</div>
+																										<em><img src="../assets/images/svg/rupee2.svg"
+																												alt="rupees-icon">399</em>
+																										<span>Due 25 Oct,20</span>
+																									</a>
+																								</li>
+																								<li>
+																									<a href="#">
+																										<div class="icon1">
+																											<img src="../assets/images/icons/tata-sky.png"
+																												alt="tata-sky-logo" />
+																										</div>
+																										<em><img src="../assets/images/svg/rupee2.svg"
+																												alt="rupees-icon">265</em>
+																										<span>Due 28 Oct,20</span>
+																									</a>
+																								</li>
+																								<li>
+																									<a href="#">
+																										<div class="icon1">
+																											<img src="../assets/images/icons/adani.png"
+																												alt="adani-logo" />
+																										</div>
+																										<em><img src="../assets/images/svg/rupee2.svg"
+																												alt="rupees-icon">1500</em>
+																										<span>Due 29 Oct,20</span>
+																									</a>
+																								</li>
+																								<li>
+																									<a href="#">
+																										<div class="icon1">
+																											<img src="../assets/images/icons/mahanagar-gas.png"
+																												alt="mahanagar-gas-logo" />
+																										</div>
+																										<em><img src="../assets/images/svg/rupee2.svg"
+																												alt="rupees-icon">150 </em>
+																										<span>Due 01 Nov,20</span>
+																									</a>
+																								</li>
+																								<li>
+																									<a href="pending-bills.html">
+																										<div class="icon1">
+																											<img src="../assets/images/svg/more.svg" alt="more-icon">
+																										</div>
+																										<em> View All </em>
+																									</a>
+																								</li>
+																							</ul>
+																						</div>
+																					</div>
+																				</div>
+																			</div>
+
+																			<div class="col-sm-12 col-12 col-md-12">
+																				<div class="widget-box7">
+																					<div class="component-box">
+																						<div class="row">
+																							<div class="ad-wrapper">
+                                                                                                <img src="../assets/images/banner/billpay-dashboard.png" alt="ad-image" class="img-fluid">
+                                                                                            </div>
+																						</div>
+																					</div>
+																				</div>
+																			</div>
+
+                                                                        </div>
+
+                                                                        <!-- footer section start -->
+	                                           
+                                                                        <div class="row1 d-block d-sm-none">
+                                                                            <div class="footer-container sticky-actions ">
+                                                                                <div class="footer-inactions minus-rt-col">
+                                                                                    <div class="container-fluid">
+                                                                                        <div class="row">
+                                                                                            <div class="col-6 text-center">
+                                                                                                <button class="ux-button secondary md" onclick="window.location.href = '#'">Complaints</button>
+                                                                                            </div> 
+                                                                                        <div class="col-6 text-center">
+                                                                                                <button class="ux-button secondary md" onclick="window.location.href = '#'">Payment History</button>
+                                                                                            </div> 
+                                                                                        </div> 
+                                                                                    </div> 
+                                                                                </div> 
+                                                                            </div> 
+                                                                            <div class="sticky-actions-spacer"></div>  
+                                                                        </div>
+												  
+											
+												                        <!-- footer section end -->
+
+																	</div>
+
+																	<div id="register-pay" class="tab-pane active show col-xl-6 col-lg-12 col-md-12 col-sm-12 col-12 p-0 pl-m-15">
+																		<div class="row1">
+																			<div class="col-sm-12 col-12 col-md-12">
+                                                                                <div class="widget-box7">
+																					<div class="component-title6">
+																						<div class="row1">
+																							<div class="col-8 col-md-5  d-none d-sm-block">
+																								<h3>Registered Pay</h3>
+																							</div>
+																							<div class="col-4 col-md-7 d-none d-sm-block pl-0 text-right">
+																								<a class="link-txt" href="#">Register New Biller</a>
+                                                                                                <a class="link-txt ml-3" href="#">View All</a>
+																							</div>
+																						</div>
+																					</div>
+                                                                                    <div class="component-box">
+                                                                                        <ul class="pay-list">
+                                                                                            <li>
+                                                                                                <div class="white-container">
+                                                                                                    <div class="list-full">
+                                                                                                        <div class="list-info">
+                                                                                                            <div class="icon1">
+                                                                                                                <img src="../assets/images/icons/adani.png" alt="adani-logo">
+                                                                                                            </div>
+                                                                                                            <h5>Home Electricity - 15678549</h5>
+                                                                                                            <h6>Bill Payment due on <span>20 Oct 2020</span> </h6>
+                                                                                                        </div>
+                                                                                                        <div class="list-amount text-right d-none d-sm-block">
+                                                                                                            <h4 class="custom-m"> 
+                                                                                                                <img src="../assets/images/svg/rupee-bl.svg"  alt="rupees-icon">900.00 
+                                                                                                            </h4>
+                                                                                                        </div>
+                                                                                                    </div>
+
+                                                                                                    <div class="list-full2">
+                                                                                                        <div class="list-day-info">
+                                                                                                            <em> <span>4 days left</span></em>
+                                                                                                            <div class="mob-amount d-sm-none d-block">
+                                                                                                                <h4 class="custom-m"> 
+                                                                                                                    <img src="../assets/images/svg/rupee-bl.svg"  alt="rupees-icon">900.00 
+                                                                                                                </h4>
+                                                                                                            </div>
+                                                                                                        </div>
+                                                                                                        <div class="list-btn">
+                                                                                                            <button class="ux-button primary sm5 float-right ml-2" onclick="window.location.href = '#'">Pay Now</button>
+                                                                                                            <button class="ux-button secondary sm5 float-right" onclick="window.location.href = '#'">Details</button>
+                                                                                                        </div>
+                                                                                                    </div>
+                                                                                                </div>
+                                                                                            </li>
+                                                                                            <li>
+                                                                                                <div class="white-container">
+                                                                                                    <div class="list-full">
+                                                                                                        <div class="list-info">
+                                                                                                            <div class="icon1">
+                                                                                                                <img src="../assets/images/icons/bsnl.png" alt="bsnl-logo">
+                                                                                                            </div>
+                                                                                                            <h5>Home Electricity - 15678549</h5>
+                                                                                                            <h6>Bill Payment due on <span>20 Oct 2020</span> </h6>
+                                                                                                        </div>
+                                                                                                        <div class="list-amount text-right  d-none d-sm-block">
+                                                                                                            <h4 class="custom-m"> 
+                                                                                                                <img src="../assets/images/svg/rupee-bl.svg"  alt="rupees-icon">499.00 
+                                                                                                            </h4>
+                                                                                                        </div>
+                                                                                                    </div>
+
+                                                                                                    <div class="list-full2">
+                                                                                                        <div class="list-day-info">
+                                                                                                            <em> <span>2 days left</span></em>
+                                                                                                            <div class="mob-amount d-sm-none d-block">
+                                                                                                                <h4 class="custom-m"> 
+                                                                                                                    <img src="../assets/images/svg/rupee-bl.svg"  alt="rupees-icon">900.00 
+                                                                                                                </h4>
+                                                                                                            </div>
+                                                                                                        </div>
+                                                                                                        <div class="list-btn">
+                                                                                                            <button class="ux-button primary sm5 float-right ml-2" onclick="window.location.href = '#'">Pay Now</button>
+                                                                                                            <button class="ux-button secondary sm5 float-right" onclick="window.location.href = '#'">Details</button>
+                                                                                                        </div>
+                                                                                                    </div>
+                                                                                                </div>
+                                                                                            </li>
+                                                                                            <li>
+                                                                                                <div class="white-container">
+                                                                                                    <div class="list-full">
+                                                                                                        <div class="list-info">
+                                                                                                            <div class="icon1">
+                                                                                                                <img src="../assets/images/icons/mahanagar-gas.png" alt="mahanagar-logo">
+                                                                                                            </div>
+                                                                                                            <h5>Gas - 65778987</h5>
+                                                                                                            <h6>No Due Payment</h6>
+                                                                                                        </div>
+                                                                                                    </div>
+                                                                                                </div>
+                                                                                            </li>
+                                                                                            <li>
+                                                                                                <div class="white-container">
+                                                                                                    <div class="list-full">
+                                                                                                        <div class="list-info">
+                                                                                                            <div class="icon1">
+                                                                                                                <img src="../assets/images/icons/bsnl.png" alt="bsnl-logo">
+                                                                                                            </div>
+                                                                                                            <h5>Home Electricity - 15678549</h5>
+                                                                                                            <h6>Bill Payment due on <span>20 Oct 2020</span> </h6>
+                                                                                                        </div>
+                                                                                                        <div class="list-amount text-right  d-none d-sm-block">
+                                                                                                            <h4 class="custom-m"> 
+                                                                                                                <img src="../assets/images/svg/rupee-bl.svg"  alt="rupees-icon">499.00 
+                                                                                                            </h4>
+                                                                                                        </div>
+                                                                                                    </div>
+
+                                                                                                    <div class="list-full2">
+                                                                                                        <div class="list-day-info">
+                                                                                                            <em> <span>2 days left</span></em>
+                                                                                                            <div class="mob-amount d-sm-none d-block">
+                                                                                                                <h4 class="custom-m"> 
+                                                                                                                    <img src="../assets/images/svg/rupee-bl.svg"  alt="rupees-icon">900.00 
+                                                                                                                </h4>
+                                                                                                            </div>
+                                                                                                        </div>
+                                                                                                        <div class="list-btn">
+                                                                                                            <button class="ux-button primary sm5 float-right ml-2" onclick="window.location.href = '#'">Pay Now</button>
+                                                                                                            <button class="ux-button secondary sm5 float-right" onclick="window.location.href = '#'">Details</button>
+                                                                                                        </div>
+                                                                                                    </div>
+                                                                                                </div>
+                                                                                            </li>
+                                                                                        </ul>
+
+                                                                                        <!-- footer section start -->
+	                                           
+                                                                                        <div class="row1 d-block d-sm-none">
+                                                                                            <div class="footer-container sticky-actions ">
+                                                                                                <div class="footer-inactions minus-rt-col">
+                                                                                                    <div class="container-fluid">
+                                                                                                        <div class="row">
+                                                                                                            <div class="col-12 text-center">
+                                                                                                                <button class="ux-button primary md" onclick="window.location.href = '#'">Add New Biller</button>
+                                                                                                            </div>
+                                                                                                        </div> 
+                                                                                                    </div> 
+                                                                                                </div> 
+                                                                                            </div> 
+                                                                                            <div class="sticky-actions-spacer"></div>  
+                                                                                        </div>
+                                                                
+                                                            
+                                                                                        <!-- footer section end -->
+                                                                                    </div>
+                                                                                </div>
+																			</div>
+																		</div>
+																	</div>
+																</div>
+															</div>
+														</div>
+													</div>
+												</div>
+
+											</div>
+										</div>
+										<!-- Greencard2 End here -->
+
+										 <!-- Right Column Ads Start -->
+                                        
+										 <div class="col-12 col-md-12 col-lg-12 col-xl-3 d-none d-xl-block">
+                                            <div class="row1">
+
+                                                <div class="col-sm-12 col-12 col-md-12">
+                                                    <div class="widget-box7">
+                                                        <div class="component-box">
+                                                            <div class="ux-input pwd-input px-3">
+                                                                <input type="text" name="" placeholder="Search your provider name">
+                                                                <em class=" search-ic cal-top"></em>
+                                                                <p class="error-message"></p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-sm-12 col-12 col-md-12">
+                                                    <div class="widget-box7">
+                                                        <div class="component-title6">
+                                                            <div class="row1">
+                                                                <div class="col-8 col-md-8">
+                                                                    <h6>Payment History</h6>
+                                                                </div>
+                                                                <div class="col-4 col-md-4 d-none d-sm-block">
+                                                                    <a class="link-txt float-right" href="#">View All</a>
+                                                                </div>
+                                                            </div>
+                                                            
+                                                        </div>
+                                                        <div class="component-box">
+                                                            <ul class="pay-list pendig-due-wrapper">
+                                                                <li>
+                                                                    <div class="white-container">
+                                                                        <div class="row1">
+                                                                            <div class="col-12 col-lg-12 pr-0">
+                                                                                <div class="list-full mb-1">
+                                                                                    <div class="icon1">
+                                                                                        <img src="../assets/images/icons/adani.png" alt="adani-logo">
+                                                                                    </div>
+                                                                                    <h5>Adani Electricity</h5>
+                                                                                    <h6><span>20 Oct 2020 12:18s</span> </h6>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="list-full2">
+                                                                            <div class="list-day-info">
+                                                                                <em class="text-pass">Payment Successful</em>
+                                                                            </div>
+                                                                            <div class="list-btn text-right">
+                                                                                <h4 class="text-reject"> 
+                                                                                    ₹ 900.00
+                                                                                </h4> 
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </li>
+                                                                <li>
+                                                                    <div class="white-container">
+                                                                        <div class="row1">
+                                                                            <div class="col-12 col-lg-12 pr-0">
+                                                                                <div class="list-full mb-1">
+                                                                                    <div class="icon1">
+                                                                                        <img src="../assets/images/icons/adani.png" alt="adani-logo">
+                                                                                    </div>
+                                                                                    <h5>Adani Electricity</h5>
+                                                                                    <h6><span>20 Oct 2020 12:18s</span> </h6>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="list-full2">
+                                                                            <div class="list-day-info">
+                                                                                <em class="text-pass">Payment Successful</em>
+                                                                            </div>
+                                                                            <div class="list-btn text-right">
+                                                                                <h4 class="text-reject"> 
+                                                                                    ₹ 1200.00
+                                                                                </h4>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </li>
+                                                                <li>
+                                                                    <div class="white-container">
+                                                                        <div class="row1">
+                                                                            <div class="col-12 col-lg-12 pr-0">
+                                                                                <div class="list-full mb-1">
+                                                                                    <div class="icon1">
+                                                                                        <img src="../assets/images/icons/mahanagar-gas.png" alt="mahanagar-logo">
+                                                                                    </div>
+                                                                                    <h5>Mahanagar Gas</h5>
+                                                                                    <h6><span>20 Oct 2020 12:18s</span> </h6>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="list-full2">
+                                                                            <div class="list-day-info">
+                                                                                <em class="text-reject">Payment Failed</em>
+                                                                            </div>
+                                                                            <div class="list-btn text-right">
+                                                                                <h4 class="text-del"> 
+                                                                                    ₹ 800.00
+                                                                                </h4>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </li>
+                                                            </ul>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                
+                                                <div class="col-sm-12 col-12 col-md-12">
+                                                    <div class="widget-box7">
+                                                        <div class="component-title6">
+                                                            <div class="row1">
+                                                                <div class="col-8 col-md-8">
+                                                                    <h6>Recent Complaints</h6>
+                                                                </div>
+                                                                <div class="col-4 col-md-4 d-none d-sm-block">
+                                                                    <a class="link-txt float-right" href="#">View All</a>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="component-box">
+                                                            <div class="row">
+                                                               <div class="no-complaint text-center col-12">
+                                                                    <div class="ad-wrapper">
+                                                                        <img src="../assets/images/banner/no-complaints.png" alt="ad-image" class="img-fluid">
+                                                                    </div>
+                                                                    <small>You don't have any complaint</small>
+                                                               </div>
+                                                                <ul class="bill-complaint-grid-dashboard">
+                                                                    <li>
+                                                                        <div class="grid-info">
+                                                                            <div class="full-info">
+                                                                                <h6 class="display-mt">Complaint ID</h6>
+                                                                                <h5>BD656567576</h5>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="grid-info">
+                                                                            <div class="full-info">
+                                                                                <h6 class="display-mt">Biller ID</h6>
+                                                                                <h5>54545</h5>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="grid-info">
+                                                                            <div class="full-info">
+                                                                                <h6 class="display-mt">Service Provider</h6>
+                                                                                <h5>Mahanagar Gas</h5>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="grid-info">
+                                                                            <div class="full-info">
+                                                                                <h6>8 Dec 2020, 12:18</h6>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="grid-info">
+                                                                            <div class="full-info text-status">
+                                                                                <button class="ux-linkbutton1 warning " onclick="window.location.href = '#'"> Asigned</button>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="grid-info">
+                                                                            <div class="full-info">
+                                                                                <h6 class="display-mt">Amount</h6>
+                                                                                <h5>₹ 300</h5>
+                                                                            </div>
+                                                                        </div>
+                                                                    </li>
+                                                                </ul>
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="component-footer  border-top">
+                                                            <div class="col-12 col-md-12">
+                                                                <ul class="bottom-footer1">
+                                                                    <li>
+                                                                        <div class="btn-div">
+                                                                            <button class="ux-button primary sm5 raise-btn" onclick="location.href='#'">Raise Complaint</button>
+                                                                        </div>
+                                                                    </li>
+                                                                </ul>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- Right Column Ads Ends -->
+
+                                	</div>
+                            	</div>
+							</div>
+                            
+                            
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+            
+        </div>
+        
+        <!-- main -->
+        
+        
+        
+        <!-- =========== modal popup start ===============  -->
+        
+        
+        <!-- Filter Popup Start -->
+        
+        <div class="popup-bottom filter1">
+            <div class="row1">
+                <div class="col-10">
+                    <h4>Filter</h4>
+                </div>
+                <div class="col-2">
+                    <button class="ux-button-icon close-btn">
+                        <img src="../assets/images/svg/close-b.svg" alt="cross-icon" class="img-vsmall">
+                    </button>
+                </div>
+            </div>
+            <form action="#" id="filter-form">
+                <div class="row1 mt-2">
+                    <div class="col-12 col-sm-12 col-md-12 col-lg-12">
+                        <div class="ux-input">
+                            <label for="upiId">UPI ID</label>
+                            <select required="">
+                                <option value="">Select</option>
+                                <option value="9768245145@psb">9768245145@psb</option>
+                            </select>
+                            <p class="mb-0"></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="row1">
+                    <div class="col-6">
+                        <div class="ux-input">
+                            <label>Start Date</label>
+                            <input type="text" class="datepicker1" placeholder="DD/MM/YYYY">
+                            <em class="calendar-ic cal-top"></em>
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <div class="ux-input">
+                            <label>End Date</label>
+                            <input type="text" class="datepicker1" placeholder="DD/MM/YYYY">
+                            <em class="calendar-ic cal-top"></em>
+                        </div>
+                    </div>
+                </div>
+                <div class="row1">
+                    <div class="col-12 col-sm-12 col-md-12 col-lg-12">
+                        <div class="ux-input">
+                            <label for="">Transaction Type</label>
+                            <select required="">
+                                <option value="">Select</option>
+                                <option value="Collect">Collect</option>
+                            </select>
+                            <p class="mb-0"></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="row1 mt-2">
+                    <div class="col-6 text-center">
+                        <button class="ux-button secondary  md" onclick="window.location.href = '#'">Clear</button>
+                    </div>
+                    <div class="col-6 text-center">
+                        <button class="ux-button primary md" onclick="window.location.href = '#'">Apply</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+        
+        
+        <!-- Delete Biller Popup Start -->
+        
+        <div class="popup-bottom delete1">
+            <div class="row">
+                <div class="col-12">
+                    <h4 class="text-center">Delete Biller</h4>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12">
+                    <p>
+                        Are you sure you want to delete Biller Home Electricity?
+                    </p>
+                </div>
+            </div>
+            <div class="row1 mt-2">
+                <div class="col-6 text-center">
+                    <button class="ux-button secondary no md close-btn" onclick="window.location.href = '#'">No</button>
+                </div>
+                <div class="col-6 text-center">
+                    <button class="ux-button primary md" onclick="window.location.href = 'delete-register-biller-success.html'">Yes</button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Delete Biller Popup End -->
+        
+        <!-- Filter Popup End -->
+        <div class="ios-nav-overlay"></div>
+        
+        
+        <!-- =========== modal popup end ===============  -->
+        
+        <script src="../js/lib/jquery.min.js"></script>
+        <script src="../js/lib/bootstrap.min.js"></script>
+        <script src="../js/lib/jquery-ui.min.js"></script>
+        <script src="../js/lib/popper.min.js"></script>
+        <script src="../js/lib/owl.carousel.min.js"></script>
+        <script src="../js/lib/jquery.mousewheel.min.js"></script>
+        <script src="../js/lib/jquery.mCustomScrollbar.js"></script>
+        <script src="../js/lib/datatables.min.js"></script>
+        <script src="../js/common.js"></script>
+        <script src="../js/lib/duDatepicker.js"></script>
+        
+        <script type="text/javascript">
+        //  createGlobalNavMore();
+        // boxCarousel4()
+        boxCarousel6()
+        
+        $("ul.info-list li").click(function()
+        {
+            console.log('its working');
+            $("ul.info-list li").removeClass("active");
+            if (!$(this).hasClass('active'))
+            {
+                $(this).addClass('active');
+            }
+            else
+            {
+                $(this).removeClass('active');
+            }
+        });
+        
+        $("button.filter-btn").click(function()
+        {
+            console.log('working');
+            if (!$('div.popup-bottom.filter1').hasClass('popup-active'))
+            {
+                $('div.popup-bottom.filter1').addClass('popup-active');
+                $('div.ios-nav-overlay').fadeIn(400);
+            }
+            else
+            {
+                $('div.popup-bottom.filter1').removeClass('popup-active');
+                $('div.ios-nav-overlay').fadeOut();
+            }
+        });
+        
+        $("a.remove-btn").click(function()
+        {
+            console.log('working');
+            if (!$('div.popup-bottom.delete1').hasClass('popup-active'))
+            {
+                $('div.popup-bottom.delete1').addClass('popup-active');
+                $('div.ios-nav-overlay').fadeIn(400);
+            }
+            else
+            {
+                $('div.popup-bottom.delete1').removeClass('popup-active');
+                $('div.ios-nav-overlay').fadeOut();
+            }
+        });
+        
+        $("button.close-btn").click(function()
+        {
+            console.log('working');
+            $('div.popup-bottom.filter1').removeClass('popup-active');
+            $('div.popup-bottom.delete1').removeClass('popup-active');
+            $('div.ios-nav-overlay').fadeOut();
+        });
+        
+
+        function boxCarousel6() {
+            $('.box-owl4').owlCarousel({
+                autoplay: false,
+                autoplayTimeout: 3000,
+                loop: false,
+                rewind: true,
+                nav: true,
+                responsive: {
+                0: {
+                    items: 1
+                },
+                480: {
+                    items: 1
+                },
+                640: {
+                    items: 1
+                },
+                768: {
+                    items: 1,
+                    nav: false,
+                    // loop:false
+                },
+                1024: {
+                    items: 1,
+                    nav: true,
+                    // loop:false
+                },
+                1200: {
+                    items: 1,
+                    nav: true,
+                    // loop:false
+                },
+                1366: {
+                    items: 1,
+                    nav: true,
+                    // loop:false
+                },
+                1400: {
+                    items: 1,
+                    nav: true,
+                    // loop:false
+                },
+                1600: {
+                    items: 1,
+                    nav: true,
+                    // loop:false
+                }
+                }
+            })
+            $('button.proceed1').attr('disabled', true);
+            $('button.proceed1').addClass('disable');
+
+            $("select.biller").on('change', function () {
+                $(this).find("option:selected").each(function () {
+                var optionValue = $(this).attr("value");
+                if (optionValue) {
+                    $('button.proceed1').attr('disabled', false);
+                    $('button.proceed1').removeClass('disable');
+                } else {
+                    $('button.proceed1').attr('disabled', true);
+                    $('button.proceed1').addClass('disable');
+                }
+                });
+            });
+
+            $("input[name='consumerNumber']").on('keyup', function () {
+                if ($(this).val() != '') {
+                $('button.proceed1').attr('disabled', false);
+                $('button.proceed1').removeClass('disable');
+                } else {
+                $('button.proceed1').attr('disabled', true);
+                $('button.proceed1').addClass('disable');
+                }
+            });
+            $("input[name='shortName']").on('keyup', function () {
+                if ($(this).val() != '') {
+                $('button.proceed1').attr('disabled', false);
+                $('button.proceed1').removeClass('disable');
+                } else {
+                $('button.proceed1').attr('disabled', true);
+                $('button.proceed1').addClass('disable');
+                }
+            });
+
+
+            $("ul.info-list li").click(function () {
+                console.log('its working');
+                $("ul.info-list li").removeClass("active");
+                if (!$(this).hasClass('active')) {
+                $(this).addClass('active');
+                } else {
+                $(this).removeClass('active');
+                }
+            });
+
+            $("button.filter-btn").click(function () {
+                console.log('working');
+                if (!$('div.popup-bottom.filter1').hasClass('popup-active')) {
+                $('div.popup-bottom.filter1').addClass('popup-active');
+                $('div.ios-nav-overlay').fadeIn(400);
+                } else {
+                $('div.popup-bottom.filter1').removeClass('popup-active');
+                $('div.ios-nav-overlay').fadeOut();
+                }
+            });
+
+            $("button.close-btn").click(function () {
+                console.log('working');
+                $('div.popup-bottom.filter1').removeClass('popup-active');
+                $('div.ios-nav-overlay').fadeOut();
+            });
+
+            $("a.remove-btn").click(function(){
+                    console.log('working');
+                    if ( !$('div.popup-bottom.delete1').hasClass('popup-active') ) {
+                            $('div.popup-bottom.delete1').addClass('popup-active');
+                            $( 'div.ios-nav-overlay' ).fadeIn( 400 );
+                        } else {
+                            $('div.popup-bottom.delete1').removeClass('popup-active');
+                            $( 'div.ios-nav-overlay' ).fadeOut(  );
+                        }
+                });
+
+
+            }
+
+
+            // Mobile tab js
+            // $(window).resize(function(){
+            //     tabShow(); 
+            // })
+
+            function tabShow(){
+                if($(window).width() < 768){
+                    $('#register-pay').removeClass('active show');
+                    $('#register-pay').addClass('fade');
+
+                    $('a[href="#instant-pay"]').click(function(){
+                        $('#instant-pay, #instant-pay1').addClass('active show');
+                        $('#instant-pay, #instant-pay1').removeClass('fade');
+                        $('#register-pay').removeClass('active show');
+                    });
+                    
+                    $('a[href="#register-pay"]').click(function(){
+                        $('#instant-pay, #instant-pay1').removeClass('active show');
+                        $('#instant-pay, #instant-pay1').addClass('fade');
+                    });
+                }
+                else{
+                    $('#register-pay').removeClass('fade');
+                    $('#register-pay').addClass('active show'); 
+                }
+            }tabShow();
+
+
+            $('.bill-complaint-grid-dashboard').hide();
+            $('.raise-btn').click(function(){
+                $('.no-complaint').hide();
+                $('.bill-complaint-grid-dashboard').show();
+            })
+            
+
+        </script>
+        
+    </body>
+    
+</html>

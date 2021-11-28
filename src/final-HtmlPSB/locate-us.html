@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <meta charset="UTF-8">
+    <title>Locate Us</title>
+    <link href="../css/lib/bootstrap.min.css" rel="stylesheet">
+    <link href="../css/lib/owl.carousel.min.css" rel="stylesheet">
+    <link href="../css/lib/jquery-ui.min.css" rel="stylesheet">
+    <link href="../css/lib/datatables.min.css" rel="stylesheet">
+    <link href="../css/lib/jquery.mCustomScrollbar.min.css" rel="stylesheet">
+    <link href="../css/main.css" rel="stylesheet">
+
+</head>
+
+<body>
+
+    <div class="prelogin-page">
+
+        <!-- header section Start -->
+
+        <header class="global-header">
+            <div class="desk-header">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-xl-3 col-lg-3 col-md-3 col-sm-2 col-2 d-none d-md-block d-lg-block d-xl-block">
+                            <ul class="headerlist">
+                                <li>
+                                    <a href="#"> <img src="../assets/images/svg/home1.svg" alt="home-icon"> <em>Home</em></a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
+                            <div class="brand-heading text-center m-auto">
+                                <span class="logo-img2">
+                                    <img src="../assets/images/svg/final-logo.svg" alt="psb-logo">
+                                </span>
+                            </div>
+                        </div>
+                        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-2 col-2 d-none d-md-block d-lg-block d-xl-block">
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header> <!-- global-header -->
+
+        <!-- header section End -->
+
+
+
+        <div class="registration-steps">
+            <div class="row1">
+                <div class="col-12 position-static">
+
+                    <div class="inner-header">
+                        <div class="registration-container">
+                            <!-- <a class="prev-tab"><img src="./assets/images/svg/close-w.svg"></a> -->
+                            <h4>Locate Us</h4>
+                            <a class="close-registration"><img (click)="mobPrevclick('cross')" src="../assets/images/svg/close-w.svg"></a>
+                        </div>
+                    </div>
+                    <div class="ios-nav-overlay"></div>
+                    <div class="registrationsteps-block registration-container clearfix locate-us">
+
+                        <div id="accordion1" class="accordion-container card-container mt-0 mb-3 hide-m">
+
+                            <div class="card2 overflow">
+                                <a class="card-link" data-toggle="collapse" href="#find" aria-expanded="true">
+                                    <div class="card-header6">
+                                        <div class="panel-title">
+                                            <ul class="comp-info">
+                                                <li>
+                                                    <div class="grid-info ">
+                                                        <div class="full-info">
+                                                            <h5>Find Branch/ATM</h5>
+                                                        </div>
+                                                    </div>
+                                                 </li>
+                                            </ul>
+                                        </div>
+                                        <em></em>
+                                    </div>
+                                    <!--card-header-->
+                                </a>
+
+                                <div id="find" class="collapse show" data-parent="#accordion1">
+                                    <div class="card-body bg-w pad-custom">
+                                        <div class="row1">
+                                            <div class="col-12 p-0">
+                                                <ul class="custom-radio-list bg-grey">
+                                                    <li>
+                                                        <div class="ux-selection branch">
+                                                            <label class="ux-selection2">Branch
+                                                                <input type="radio" checked="checked" value="branch" name="searchtype">
+                                                                <span class="checkmark"></span>
+                                                            </label>  
+                                                        </div>
+                                                    </li>
+                                                    <li>
+                                                        <div class="ux-selection atm">
+                                                            <label class="ux-selection2">ATM
+                                                                <input type="radio" value="atm" name="searchtype">
+                                                                <span class="checkmark"></span>
+                                                            </label>  
+                                                        </div>
+                                                    </li>
+                                                    <li>
+                                                        <div class="ux-selection zonal-office">
+                                                            <label class="ux-selection2">Zonal Office
+                                                                <input type="radio" value="zonal-office" name="searchtype">
+                                                                <span class="checkmark"></span>
+                                                            </label>  
+                                                        </div>
+                                                    </li>
+                                                    <li>
+                                                        <div class="ux-selection head-office">
+                                                            <label class="ux-selection2">Head Office
+                                                                <input type="radio" value="head-office" name="searchtype">
+                                                                <span class="checkmark"></span>
+                                                            </label>  
+                                                        </div>
+                                                    </li>
+                                                 </ul>
+                                             </div>
+                                           <div class="col-12 p-0">
+                                            <div class="search-container clearfix">
+                                                <h6>Search By</h6>
+                                                <div class="ux-selection">
+                                                    <label class="ux-selection2">Location
+                                                        <input type="radio" checked="checked" value="location" name="searchby">
+                                                        <span class="checkmark"></span>
+                                                    </label>
+                                                </div>
+                                                <div class="ux-selection">
+                                                    <label class="ux-selection2">State/City
+                                                        <input type="radio" value="state-city" name="searchby">
+                                                        <span class="checkmark"></span>
+                                                    </label>
+                                                </div>
+                                                <div class="ux-selection">
+                                                    <label class="ux-selection2">Branch code
+                                                        <input type="radio" value="branch-code" name="searchby">
+                                                        <span class="checkmark"></span>
+                                                    </label>
+                                                </div>
+                                                <div class="ux-selection">
+                                                    <label class="ux-selection2">IFSC
+                                                        <input type="radio" value="ifsc" name="searchby">
+                                                        <span class="checkmark"></span>
+                                                    </label>
+                                                </div>
+                                            </div>
+                                           </div>
+                                        </div>
+                                            <div class="row1">
+                                                <div class="col-12 p-0">
+                                                    <div class="search-box pt-0">
+                                                       <div class="row">
+                                                            <div class="col-12 col-md-6 col-lg-4 col-xl-4">
+                                                                <div class="ux-input mt-0">
+                                                                    <input type="text" placeholder="Search Location">
+                                                                    <p class="error-message"></p>
+                                                                </div>
+                                                             </div>
+                                                            <div class="col-12 col-md-6 col-lg-4 col-xl-4">
+                                                                <button class="ux-linkbutton link-text primary mt-3" onclick="window.location.href = '#'"> 
+                                                                    <img src="../assets/images/svg/add-g.svg" alt="ad-icon"> Detect Location
+                                                                </button>
+                                                             </div>
+                                                       </div>
+                                                    </div>
+        
+                                                </div>
+                                            </div>
+
+                                            <div class="row1 border-t">
+                                                <div class="col-12 col-md-12">
+                                                    <ul class="bottom-footer1">
+                                                        <li>
+                                                            <div class="btn-div">
+                                                                <button class=" ux-button secondary sm-mob" onclick="window.location.href='#'">Clear</button>
+                                                            </div>
+                                                            <div class="btn-div">
+                                                                <button class=" ux-button primary sm-mob" onclick="window.location.href='#'">Apply</button>
+                                                            </div>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                         
+                                     </div>
+                                </div>
+                            </div>
+ 
+                        </div>
+
+                        
+                        <div class="branch-searchresult">
+                            <div class="ios-nav-overlay"></div>
+                            <div class="ux-nav-tabs" style="margin:0">
+                                <div class="responsive5">
+                                    <ul class="nav nav-tabs nav-justified bor-n" role="tablist">
+                                        <li class="nav-item">
+                                            <a class="nav-link active" data-toggle="tab" href="#tab01">List</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link" data-toggle="tab" href="#tab02">Map</a>
+                                        </li>
+                                    </ul>
+
+                                    <!-- Tab panes -->
+                                    <div class="tab-content ">
+                                        <div class="tabHeading clearfix">
+                                            <div class="row1">
+                                                <div class="col-8 col-sm-9"><h4>Result(03)</h4></div>
+                                                <div class="col-4 col-sm-3">
+                                                    <div class="text-right">
+                                                        <button class="filter-btn ux-linkbutton link-text primary " onclick="window.location.href = '#'"> 
+                                                            <img src="../assets/images/svg/add-g.svg" alt="filter-icon"> Filter
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div id="tab01" class=" tab-pane branch-lst active">
+                                            <ul>
+                                                <li class="result-info">
+                                                    <h6>02 Branches found <span> Andheri East</span></h6> 
+                                                </li>
+                                                <li class="bank">
+                                                    <span class="branch-detail">
+                                                        <b>Punjab & Sind Bank - B0499</b>
+                                                        <p><img src="../assets/images/svg/location-g.svg" alt="location-icon"> Kurla Rd, Near samgham cinema, Anderi (E), Mumbai - Maharashtra 400059</p>
+                                                        <a href="#"><img src="../assets/images/icons/phone-call.svg" alt="phone-icon">9876543210</a><br>
+                                                        <a href="#"><img src="../assets/images/svg/email.svg" alt="email-icon">psb@gmail.com</a><br>
+                                                        <a class="services"><img src="../assets/images/svg/bank-icon.svg" alt="bank-icon"> Banking services</a>
+                                                        <div class="service-list">
+                                                            <ul>
+                                                                <li class="active">Cash Deposit machine</li>
+                                                                <li>For Aadhaar enrolment</li>
+                                                                <li class="active">Loan Servicing</li>
+                                                                <li>SME branches</li>
+                                                                <li class="active">RTGS branches</li>
+                                                                <li class="active">PFF Nomanies</li>
+                                                                <li>Direct Tax branches</li>
+                                                            </ul>
+                                                        </div>
+                                                    </span>
+                                                </li>
+                                                <li class="bank">
+
+                                                    <span class="branch-detail">
+                                                        <b>Punjab & Sind Bank - B0499</b>
+                                                        <p><img src="../assets/images/svg/location-g.svg" alt="location-icon"> Kurla Rd, Near samgham cinema, Anderi (E), Mumbai - Maharashtra 400059</p>
+                                                        <a href="#"><img src="../assets/images/icons/phone-call.svg" alt="phone-icon">9876543210</a><br>
+                                                        <a href="#"><img src="../assets/images/svg/email.svg" alt="email-icon">psb@gmail.com</a><br>
+                                                        <a class="services"><img src="../assets/images/svg/bank-icon.svg" alt="bank-icon"> Banking services</a>
+                                                        <div class="service-list">
+                                                            <ul>
+                                                                <li class="active">Cash Deposit machine</li>
+                                                                <li>For Aadhaar enrolment</li>
+                                                                <li class="active">Loan Servicing</li>
+                                                                <li>SME branches</li>
+                                                                <li class="active">RTGS branches</li>
+                                                                <li class="active">PFF Nomanies</li>
+                                                                <li>Direct Tax branches</li>
+                                                            </ul>
+                                                        </div>
+                                                    </span>
+                                                </li>
+                                                <li class="bank">
+
+                                                    <span class="branch-detail">
+                                                        <b>Punjab & Sind Bank - B0499</b>
+                                                        <p><img src="../assets/images/svg/location-g.svg" alt="location-icon"> Kurla Rd, Near samgham cinema, Anderi (E), Mumbai - Maharashtra 400059</p>
+                                                        <a href="#"><img src="../assets/images/icons/phone-call.svg" alt="phone-icon">9876543210</a><br>
+                                                        <a href="#"><img src="../assets/images/svg/email.svg" alt="email-icon">psb@gmail.com</a><br>
+                                                        <a class="services"><img src="../assets/images/svg/bank-icon.svg" alt="bank-icon"> Banking services</a>
+                                                        <div class="service-list">
+                                                            <ul>
+                                                                <li class="active">Cash Deposit machine</li>
+                                                                <li>For Aadhaar enrolment</li>
+                                                                <li class="active">Loan Servicing</li>
+                                                                <li>SME branches</li>
+                                                                <li class="active">RTGS branches</li>
+                                                                <li class="active">PFF Nomanies</li>
+                                                                <li>Direct Tax branches</li>
+                                                            </ul>
+                                                        </div>
+                                                    </span>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <div id="tab02" class="tab-pane branch-map fade">
+                                            <!-- <img src="../assets/images/icons/map.png"> -->
+                                            <div class="map-container">
+                                                   <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3769.5405545511962!2d72.8735725143775!3d19.127801455314057!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be7c81f79f80d47%3A0xc34e6d37e35a6877!2sInfrasoft%20Technologies%20Ltd!5e0!3m2!1sen!2sin!4v1617886463000!5m2!1sen!2sin" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- .full-container -->
+
+        <!-- Footer Code Starts Here -->
+        <footer>
+            <div class="global-footer full-footer">
+                <div class="in-glfooter">
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-4 col-xl-6 col-lg-6 col-md-6 col-sm-4">
+                                <div class="glfooter-content">
+                                    <div class="glfooter-box">
+                                        <div class="glcopyright-text">
+                                            <em>Powered by</em> <img src="../assets/images/kiya-logo.png">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-8 col-xl-6 col-lg-6 col-md-6 col-sm-8">
+                                <div class="glfooter-content">
+                                    <div class="glfooter-box">
+                                        <div class="glcopyright-text1">
+                                            <em>Copyright © 2020 Infrasoft Technologies Ltd. All rights reserved.</em>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+        <!-- Footer Code Ends -->
+
+
+        
+  <!-- Filter Popup Start -->
+
+  <div class="popup-bottom filter1">
+	<div class="row1">
+		<div class="col-10">
+		  <h4>Filter by</h4>
+		</div>
+		<div class="col-2">
+		  <button class="ux-button-icon close-btn">
+			  <img src="../assets/images/svg/close-b.svg" alt="cross-icon" class="img-vsmall">
+		  </button> 
+		</div>
+	  </div>
+	<form action="#" id="filter-form">
+		<div class="row mt-2 mb-3">
+            <div class="col-12 p-0">
+                <ul class="custom-radio-list">
+                    <li>
+                        <div class="ux-selection branch">
+                            <label class="ux-selection2">Branch
+                                <input type="radio" checked="checked" value="branch" name="searchtype">
+                                <span class="checkmark"></span>
+                            </label>  
+                        </div>
+                    </li>
+                    <li>
+                        <div class="ux-selection atm">
+                            <label class="ux-selection2">ATM
+                                <input type="radio" value="atm" name="searchtype">
+                                <span class="checkmark"></span>
+                            </label>  
+                        </div>
+                    </li>
+                    <li>
+                        <div class="ux-selection zonal-office">
+                            <label class="ux-selection2">Zonal Office
+                                <input type="radio" value="zonal-office" name="searchtype">
+                                <span class="checkmark"></span>
+                            </label>  
+                        </div>
+                    </li>
+                    <li>
+                        <div class="ux-selection head-office">
+                            <label class="ux-selection2">Head Office
+                                <input type="radio" value="head-office" name="searchtype">
+                                <span class="checkmark"></span>
+                            </label>  
+                        </div>
+                    </li>
+                 </ul>
+             </div>
+		 </div> 
+		 <div class="row1">
+             <div class="col-12">
+                <h5>Search By</h5>
+             </div>
+			<div class="col-12 col-md-12">
+
+                <ul class="radio-list6">
+                    <li>
+                        <div class="ux-selection">
+                            <label class="ux-selection2">Location
+                                <input type="radio" checked="checked" value="location" name="searchby">
+                                <span class="checkmark"></span>
+                            </label>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="ux-selection">
+                            <label class="ux-selection2">State/City
+                                <input type="radio" value="state-city" name="searchby">
+                                <span class="checkmark"></span>
+                            </label>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="ux-selection">
+                            <label class="ux-selection2">Branch code
+                                <input type="radio" value="branch-code" name="searchby">
+                                <span class="checkmark"></span>
+                            </label>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="ux-selection">
+                            <label class="ux-selection2">IFSC
+                                <input type="radio" value="ifsc" name="searchby">
+                                <span class="checkmark"></span>
+                            </label>
+                        </div>
+                    </li>
+                 </ul>
+               </div>
+		  </div>
+		 
+		<div class="row1 mb-3">
+			<div class="col-12">
+				<div class="ux-input mt-0">
+                    <input type="text" placeholder="Search Location">
+                    <p class="error-message"></p>
+                </div>	 
+			</div>
+			<div class="col-12 text-right">
+                <button class="ux-linkbutton link-text primary" onclick="window.location.href = '#'"> 
+                    <img src="../assets/images/svg/add-g.svg" alt="ad-icon"> Detect Location
+                </button>
+			 </div>
+		</div>
+	   <div class="row1 mt-2">
+         <div class="col-6 text-center">
+                <button class="ux-button secondary  md" onclick="window.location.href = '#'">Clear</button>
+            </div> 
+	      <div class="col-6 text-center">
+			 <button class="ux-button primary md" onclick="window.location.href = '#'">Apply</button>
+		 </div> 
+	   </div>
+	</form>
+</div> 
+
+<!-- Filter Popup End -->	
+
+<div class="ios-nav-overlay"></div> 
+
+
+    </div>
+    <!-- .prelogin-page -->
+
+
+
+
+
+
+    <script src="../js/lib/jquery.min.js"></script>
+    <script src="../js/lib/bootstrap.min.js"></script>
+    <script src="../js/lib/jquery-ui.min.js"></script>
+    <script src="../js/lib/owl.carousel.min.js"></script>
+    <script src="../js/lib/popper.min.js"></script>
+    <script src="../js/lib/jquery.mousewheel.min.js"></script>
+    <script src="../js/lib/jquery.mCustomScrollbar.js"></script>
+    <script src="../js/lib/datatables.min.js"></script>
+    <script src="../js/common.js"></script>
+    
+
+    <script>
+        //  createGlobalNavMore();
+
+        // $(document).on('click', '.locate-us .tabHeading span', function() {
+        //     $('.ux-acc-container .acc-slide .acc-slide-content').addClass('active');
+        //     $('.ios-nav-overlay').fadeIn();
+        // })
+
+        // $(document).on('click', '.locate-us .filter-header span', function() {
+        //     $('.ux-acc-container .acc-slide .acc-slide-content').removeClass('active');
+        //     $('.ios-nav-overlay').fadeOut();
+        // })
+
+
+        $(".ux-selection input").click(function(){
+            var prntClass= $(this).parents().eq(1).attr('class').split(' ')[1];
+            if($(this).val() == prntClass){
+               $(this).parents().eq(2).addClass('active');
+               $(this).parents().eq(2).siblings().removeClass('active');
+            }
+        });
+
+        $("a.services").click(function(){
+            $(this).siblings().find('div.service-list').slideDown();
+            $(this).parents().eq(1).siblings().find('div.service-list').slideUp();
+        })
+
+        $('.search-link a').click(function() {
+            console.log("Worrking!");
+            if ($(this).hasClass('active')) {
+                $(".search-box").slideUp();
+                $(this).removeClass('active')
+                
+            } else {
+                $(this).addClass('active')
+                $(".search-box").slideDown();
+            }
+        });
+
+
+        $("button.filter-btn").click(function(){
+		console.log('working');
+		if ( !$('div.popup-bottom.filter1').hasClass('popup-active') ) {
+				$('div.popup-bottom.filter1').addClass('popup-active');
+				$( 'div.ios-nav-overlay' ).fadeIn( 400 );
+			} else {
+				$('div.popup-bottom.filter1').removeClass('popup-active');
+				$( 'div.ios-nav-overlay' ).fadeOut(  );
+		 	}
+       });
+	   $("button.close-btn").click(function(){
+		    console.log('working');
+		   $('div.popup-bottom.filter1').removeClass('popup-active');
+		   $( 'div.ios-nav-overlay' ).fadeOut(  );
+	   });
+
+
+    </script>
+
+</body>
+
+</html>

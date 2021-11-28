@@ -1,0 +1,146 @@
+<div class="main main-bg2">
+  <div class="right-main-column mar-custom">
+    <div class="right-col-container pad-b">
+      <div class="body-page-container">
+        <div class="vspacer5 d-sm-block d-none"></div>
+        <div class="container-fluid">
+          <form [formGroup]="selfTransferAmtForm">
+            <div class="row">
+              <div class="bg-section2">
+                <div class="col-12">
+                  <div class="row1">
+                    <div class="payee-info1">
+                      <div class="row">
+                        <div class="info-inner">
+                          <div class="info-lft">
+                            <span class="yellow">
+                              <h6>{{transferAct.custName | firstLastChar}}</h6>
+                              <!-- <img src="assets/images/icons/psb-icon.png" alt="psb-icon-img" class="icon-img"> -->
+                            </span>
+                          </div>
+                          <div class="info-center">
+                            <a>
+                              <img src="assets/images/svg/double-right-arrows.svg" alt="double-right-arrows-icon" />
+                            </a>
+                          </div>
+                          <div class="info-rit">
+                            <span class="yellow">
+                              <h6>{{depositAct.custName | firstLastChar}}</h6>
+                              <!-- <img src="assets/images/icons/hdfc-icon.png" alt="hdfc-icon-img" class="icon-img"> -->
+                            </span>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col-12 col-md-12">
+                          <h5>{{'DEPOSIT_TO' | translate}} {{'SELF' | translate}}</h5>
+                          <h6>{{depositAct.accType}} {{depositAct.maskedAccountNumber}}</h6>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row1">
+                    <div class="col-sm-12 col-12 col-md-12">
+                      <div class="ux-input white-input mar-tb">
+                        <!-- Android Keyboard Start -->
+                        <!-- <input type="tel" placeholder="₹ 0" autocomplete="off" formControlName="amount" limit-to="12" (blur)="onInput($event.target.value)" id="amt" data-a-sign="Rs."> -->
+                        <!-- Android Keyboard End -->
+                        <!-- iOS Keyboard Start -->
+                        <input type="text" inputmode="decimal" placeholder="₹ 0" autocomplete="off"
+                          formControlName="amount" limit-to="12" 
+                          (blur)="formatCurrency($event.target.value)" id="amt" data-a-sign="Rs.">
+                        <!-- iOS Keyboard End -->
+                        <!-- <div class="text-center"> <span class="errormsg" style="top:48px;"
+                            *ngIf="selfTransferAmtForm.controls['amount'].hasError('required')  && selfTransferAmtForm.controls['amount'].touched">
+                            {{ 'ENTER_AMOUNT_ERROR' | translate }}
+                          </span></div> -->
+                        <p class="text-center error-message"
+                          *ngIf="selfTransferAmtForm.controls['amount'].untouched && selfTransferAmtForm.controls['amount'].hasError('required')">
+                          {{ 'ENTER_AMOUNT_ERROR' | translate }}
+                        </p>
+
+                        <p class="text-center error-message"
+                          *ngIf="selfTransferAmtForm.controls['amount'].hasError('required')  && selfTransferAmtForm.controls['amount'].touched">
+                          {{ 'ENTER_AMOUNT_ERROR' | translate }}
+                        </p>
+                        <!-- <p class="text-center error-message"></p> -->
+                        <p class="text-center error-message"
+                          *ngIf="selfTransferAmtForm.controls['amount'].hasError('pattern')">
+                          {{ 'ENTER_NUMBER_ERROR' | translate}}</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row1">
+                    <div class="col-sm-5 col-5 col-md-3 m-auto">
+                      <div class="ux-input dark-input mar-tb">
+                        <input type="text" formControlName="remarks" autocomplete="off" limit-to="100"
+                          placeholder="{{'REMARKS' | translate}}">
+                        <p class="text-center error-message"
+                          *ngIf="selfTransferAmtForm.controls['remarks'].hasError('pattern')">
+                          {{ 'ENTER_SPECIAL_CHARACTOR_ERROR' | translate}}</p>
+                        <p class="text-center error-message"> </p>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Info Bottom Container Start -->
+                  <div class="info-bottom-container">
+                    <div class="row1 mt-5">
+                      <div class="col-sm-12 col-12 col-md-12 m-auto">
+                        <!-- Deposit Start -->
+                        <div class="bottom-info">
+                          <div class="row1">
+                            <div class="col-12">
+                              <h4>{{'FROM_ACCOUNT' | translate}}</h4>
+                            </div>
+                          </div>
+                          <form action="#" id="payment-form">
+                            <div class="row1 mt-4 mb-4">
+                              <div class="col-12">
+                                <h5>{{transferAct.bankName}}</h5>
+                                <h6>{{transferAct.accType}} {{transferAct.maskedAccountNumber}}
+                                </h6>
+                              </div>
+                            </div>
+                            <div class="col-12 col-md-12 mt-4">
+                              <!-- <em class="custom-t"><span>*</span> {{ 'NPCI_CIRCULAR_PAYMENT_MSG' | translate }} </em> -->
+                            </div>
+                            <span class="fs-2" style="color: red;" *ngIf="transferAct.mbeba == 'N'">{{
+                                                            'UPI_PIN_IS_NOT_SET_FOR_THIS_ACCOUNT' | translate}}</span>
+                            <br />
+                            <div class="row1 mt-3">
+                              <div class="col-12 text-center">
+                                <button type="submit" class="ux-button primary submit md" (click)="onClickTransferNow()"
+                                  [disabled]="selfTransferAmtForm.invalid || mbebaFlag == 'N'">{{'PAY_NOW'
+                                                                    |
+                                                                    translate}}</button>
+                              </div>
+                            </div>
+                          </form>
+
+                          <div class="row1">
+                            <div class="col-12 text-center mt-4">
+                              <div class="powered-logo">
+                                <img src="assets/images/logo/powered-upi-logo.svg" alt="powered-upi-logo">
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <!-- Deposit End -->
+
+                      </div>
+                    </div>
+                  </div>
+                  <!-- Info Bottom Container End -->
+
+                </div>
+
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>

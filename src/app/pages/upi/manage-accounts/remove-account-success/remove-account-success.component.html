@@ -1,0 +1,130 @@
+<div class="main bg-section3">
+    <!--  Header Section Start -->
+
+    <header class="global-header success-bg minus-nav">
+        <div class="in-header">
+            <div class="header-icons-lft ">
+                <div class="header-actions">
+                    <button class="ux-button-header" (click)="goBack()">
+                        <img src="assets/images/svg/close-w.svg" alt="left-arrow-icon" class="img-vsmall" />
+                    </button>
+                </div>
+            </div>
+            <div class="brand-logo">
+            </div>
+            <div class="header-icons-rit">
+                <div class="header-actions">
+                    <!-- <button class="ux-button-header mr-2">
+							<img src="assets/images/svg/download1-w.svg"  alt="download-icon" class="img-small" />
+						</button>
+						<button class="ux-button-header mr-2">
+							<img src="assets/images/svg/share1-w.svg"  alt="share-icon" class="img-small" />
+						</button>
+						 <button class="ux-button-header">
+							<img src="assets/images/svg/star1-w.svg"  alt="star-icon" class="img-small" />
+						</button>   -->
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Header Section End -->
+    <div class="right-main-column mar-custom">
+        <div class="right-col-container pad-b">
+            <div class="body-page-container">
+                <div class="container-fluid">
+                    <div class="bg-section">
+
+                        <!-- <div class="row">
+                        <div class="transparent-subheader">
+                            <div class="in-header">
+                                <div class="header-icons-lft">
+                                    <div class="header-actions">
+                                        <button class="ux-button-header" (click)="goBack()">
+                                            <img src="assets/images/svg/close-w.svg" alt="close-icon"
+                                                class="img-small" />
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="brand-logo"></div>
+                                <div class="header-icons-rit"></div>
+                            </div>
+                        </div>
+                    </div> -->
+                        <div class="col-12">
+                            <div class="row1">
+                                <div class="col-sm-12 col-12 col-md-12">
+                                    <div class="white-box2">
+                                        <div class="row">
+                                            <div class="success">
+                                                <h5>
+                                                    <img src="assets/images/svg/success-arrow1.svg" alt="success-icon" /> {{ 'SUCCESSFUL' | translate }}
+                                                    <!-- Successful -->
+                                                </h5>
+                                                <small>
+                                                    {{ 'ACCOUNT_REMOVED_SUCCESSFULLY' | translate }}
+                                                    <!-- Account Removed Successfully -->
+                                                </small>
+                                                <small class="mt-4">
+                                                    <span>
+                                                        {{ accountDetails.txnTime }}
+                                                        <!-- 20 April 2020, 11:36:00 -->
+                                                    </span>
+                                                </small>
+                                            </div>
+                                        </div>
+                                        <div class="bg-img">
+                                            <img src="assets/images/svg/psb-receipt icon.svg" alt="success-bg" />
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-12 col-12 col-md-12">
+                                    <div class="result-container1 mar-top">
+                                        <div class="info-bottom">
+                                            <div class="info-details mt-4">
+                                                <div class="row">
+                                                    <h6>
+                                                        {{ 'UPI_ID' | translate }}
+                                                        <!-- UPI ID -->
+                                                    </h6>
+                                                    <h5>
+                                                        <!-- Ajay Singh -->
+                                                        {{ accountDetails.paymentAddress }}
+                                                    </h5>
+                                                </div>
+                                            </div>
+                                            <div class="info-details">
+                                                <div class="row">
+                                                    <h6>
+                                                        {{ 'ACCOUNT' | translate }}
+                                                        <!-- Account -->
+                                                    </h6>
+                                                    <h5>
+                                                        <!-- Savings XXXX XXXX XXXX 9557 -->
+                                                        {{ accountDetails.actualAccType }} {{ accountDetails.accNum | maskAccountNo }}
+                                                    </h5>
+                                                </div>
+                                            </div>
+                                            <div class="info-details">
+                                                <div class="row">
+                                                    <h6>
+                                                        {{ 'REFERENCE_ID' | translate }}
+                                                        <!-- Reference ID -->
+                                                    </h6>
+                                                    <h5>
+                                                        <!-- 8654136412 -->
+                                                        {{ accountDetails.refId }}
+                                                    </h5>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

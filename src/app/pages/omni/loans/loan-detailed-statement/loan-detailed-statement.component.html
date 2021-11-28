@@ -1,0 +1,469 @@
+<div class="main bg-m">
+
+    <div class="nav-overlay"></div>
+
+
+    <div class="right-main-column ">
+        <div class="right-col-container pad-b full-width">
+
+
+
+            <div class="body-page-container main-dashborad">
+                <div class="container-fluid">
+
+                    <div class="row">
+                        <div class="col-12 p-0">
+                            <div class="breadcrumb">
+                                <ul class="lst-breadcrumb">
+                                    <li *ngFor="let name of dataService.breadcrumblist">
+                                        <a (click)="dataService.breadcrumroute(name.routeName)">{{name.currentRoute | translate}}</a>
+                                    </li>	
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <!--.row -->
+                    <div class="vspacer15 customize d-none d-md-block d-lg-block d-xl-block"></div>
+                    <div class="row no-gutters">
+                        <div class="col-12">
+                            <div class="row1">
+                                <div class="col-12 col-sm-12 col-md-12 col-lg-12  col-xl-12">
+                                    <div class="ux-acc-container" style="margin: 0">
+                                        <form [formGroup]="dsForm">
+                                            <div class="greenCard  detailed-statement">
+                                                <div class="flex-container no-bg">
+                                                    <div class="full-info">
+                                                        <div class="ac-info">
+                                                            <div class="greenbg-input ux-input ">
+                                                                <label for="fromaccount" *ngIf="this.dataService.accTypeSelected!='Deposits'">Loan Account</label>
+                                                                <label for="fromaccount" *ngIf="this.dataService.accTypeSelected=='Deposits'">Deposit Account</label>
+                                                            </div>
+                                                        </div>
+                                                        <div class="ac-info">
+                                                            <div class="greenbg-input ux-input">
+                                                                <select class="hide-m w-auto" formControlName="selAcc" (change)=getSelectedAccount($event.target.value)>
+                                                                    <option value="">Select</option>
+                                                                    <option *ngFor="let item of totalAccountList"
+                                                                      [value]="item.accountNo">
+                                                                      {{item?.SchemeCode}} 
+                                                                      {{item?.sbAccount}}</option>
+                                                                </select>
+                                                                  <div class="custom-selectbox">
+                                                                    <span>{{selAccDtl?.schemeDescription}}  {{selAccDtl?.sbAccount}} </span>
+                                                                    <span class="right-arrow"></span>
+                                                                  </div>
+                                                                <p class="error-message"></p>
+                                                            </div>
+                                                        </div>
+                                                        <div class="ac-info">
+                                                            <div class="greenbg-input ux-input">
+                                                                <p class="info-message2"><i>Total Balance</i> <span> {{selAccDtl?.acctBalance |  customcurrency : 'symbol' : selAccDtl.currency }}</span></p>
+                                                            </div>
+                                                        </div>
+                                                        <div class="ac-info hide-m">
+                                                            <button class="refresh-btn"><img
+                                                                    src="assets/images/svg/refresh.svg"
+                                                                    alt="refresh-icon"></button>
+                                                            <span class="refresh-text"> Last refreshed on {{refreshDate | date: 'dd MMM yyyy, hh:mm' }}</span>
+                                                        </div>
+                                                    </div>
+
+                                                </div>
+
+                                            </div>
+
+                                            <div class="statement-table  overlap3 detailed-statment">
+
+                                                <div
+                                                    class="block-header clearfix d-none d-md-block d-lg-block d-xl-block bottom-border">
+                                                    <h5>Detailed Statement for {{selAccDtl?.sbAccount}}</h5>
+
+                                                </div>
+                                                <div class="inner-panel pb-0">
+                                                    <div class=" d-block d-md-none d-lg-none d-xl-none">
+
+                                                    </div>
+                                                    <div class="row1">
+                                                        <div class="col-12 col-md-12 col-lg-10 col-xl-10 pb-3">
+                                                            <div class="row1">
+                                                                <div
+                                                                    class="col-md-12 col-lg-4 col-xl-4 d-md-block d-lg-block d-xl-block">
+                                                                    <div class="row1">
+                                                                        <div class="col-12">
+                                                                            <div class="ux-selection">
+                                                                                <label class="ux-selection2">period
+                                                                                    <input type="radio"  name="filtertype1" value="period" formControlName="filtertype1" [checked]="selType == 'period'"  (click)="selStatementType('period')" >
+                                                                                    <span class="checkmark"></span>
+                                                                                </label>
+                                                                            </div>
+                                                                            <!-- <div class="ux-selection">
+                                                                                <label class="ux-selection2">period
+                                                                                    <input type="radio" name="filtertype1" value="period" formControlName="filtertype1">
+                                                                                    <span class="checkmark"></span>
+                                                                                </label>
+                                                                            </div> -->
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="row1">
+                                                                        <div class="col-12">
+                                                                            <div class="ux-input p-0 mt-0 mb-0" [ngClass]="{'ux-disabled': selType != 'period' }" >
+                                                                                <select formControlName="selectPeriod" (change)="onPeriodChange($event.target.value)" >
+                                                                                  <option value="">Select</option>
+                                                                                  <option *ngFor="let period of periodList" [value]="period.configVal" >{{period.configVal | translate}}</option>
+                                                                                </select>
+                                                                                <span class="errormsg" *ngIf="dsForm.controls['selectPeriod'].touched && dsForm.controls['selectPeriod'].hasError('required')">{{"PLEASE_SELECT_PERIOD" | translate }}</span>
+                                                                               </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div
+                                                                    class="vspacer10 d-block d-md-none d-lg-none d-xl-none ">
+                                                                </div>
+
+                                                                <div class="col-md-12 col-lg-4 col-xl-4">
+                                                                    <div class="row1">
+                                                                        <div class="col-12">
+                                                                            <div class="ux-selection">
+                                                                                <label class="ux-selection2">Date Range
+                                                                                    <input type="radio"  name="filtertype1" value="dateRange" formControlName="filtertype1" [checked]="selType == 'dateRange'" (click)="selStatementType('dateRange')" >
+                                                                                    <span class="checkmark"></span>
+                                                                                </label>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="row1">
+                                                                        <div class="col-6 col-md-6 col-lg-6 col-xl-6">
+                                                                            <div class="ux-input  p-0 mt-0 mb-0" [ngClass]="{'ux-disabled': selType != 'dateRange' }">
+                                                                                <!-- <input type="text" [owlDateTime]="dt1" [owlDateTimeTrigger]="dt1" placeholder="DD/MM/YYYY" readonly [min]="minFrom" [max]="maxFrom" formControlName="toDate" (ngModelChange)="fromDateChange($event)" >
+                                                                                <owl-date-time [pickerType]="'calendar'" #dt1></owl-date-time>
+                                                                                <em [ngClass]="disable == true ? 'calendar-disable' : 'calendar-enable'"  [owlDateTimeTrigger]="dt1"></em> -->
+
+                                                                                <input type="text" [owlDateTime]="dt1" [owlDateTimeTrigger]="dt1" placeholder="DD/MM/YYYY" readonly  formControlName="fromDate"  [max]="maxFrom" [min]="minFrom" (ngModelChange)="fromDateChange($event)">
+																				<owl-date-time [pickerType]="'calendar'" #dt1></owl-date-time>
+																				<em class=" calendar-ic cal-top" [owlDateTimeTrigger]="dt1"></em>
+
+                                                                               </div>
+                                                                               <div class="ux-input">
+                                                                                    <p class="error-message" *ngIf="dsForm.controls['fromDate'].touched && dsForm.controls['fromDate'].hasError('required')">{{"PLEASE_SELECT_FROM_DATE" | translate }}</p>
+                                                                                    <p class="error-message" *ngIf="!dsForm.controls['fromDate'].hasError('required') && hasErrorOneYear">Date Range of only One year is allowed</p>
+                                                                                    <span class="errormsg" *ngIf="!dsForm.controls['fromDate'].hasError('required') && dateGreaterThan ">From date cannot be greater than to date</span>
+                                                                               </div>
+                                                                        </div>
+                                                                        <div class="col-6 col-md-6 col-lg-6 col-xl-6">
+                                                                            <div class="ux-input p-0 mt-0 mb-0" [ngClass]="{'ux-disabled': selType != 'dateRange' }">
+                                                                                <!-- <input type="text" [owlDateTime]="dt2" [owlDateTimeTrigger]="dt2" placeholder="DD/MM/YYYY" readonly [min]="minTo"  [max]="maxTo" formControlName="toDate" (ngModelChange)="ToDateChange($event)" >
+                                                                                <owl-date-time [pickerType]="'calendar'" #dt2></owl-date-time><em class=" calendar-ic cal-top"></em>
+                                                                                <em [ngClass]="disable == true ? 'calendar-disable' : 'calendar-enable'"  [owlDateTimeTrigger]="dt2"></em> -->
+                                                                                
+                                                                                <input type="text" [owlDateTime]="dt2" [owlDateTimeTrigger]="dt2" placeholder="DD/MM/YYYY" readonly  formControlName="toDate"  [max]="maxTo" [min]="minTo" (ngModelChange)="ToDateChange($event)">
+																				<owl-date-time [pickerType]="'calendar'" #dt2></owl-date-time>
+																				<em class=" calendar-ic cal-top" [owlDateTimeTrigger]="dt2"></em>
+                                                                            
+                                                                            </div>
+
+                                                                            <div class="ux-input">
+                                                                                <p class="error-message" *ngIf="dsForm.controls['toDate'].touched && dsForm.controls['toDate'].hasError('required')">{{"PLEASE_SELECT_FROM_DATE" | translate }}</p>
+                                                                           </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div
+                                                                    class="vspacer10 d-block d-md-none d-lg-none d-xl-none ">
+                                                                </div>
+
+                                                                <div
+                                                                    class="col-md-12 col-lg-3 col-xl-3  d-md-block d-lg-block d-xl-block">
+                                                                    <div class="row1">
+                                                                        <div class="col-12">
+                                                                            <div class="ux-selection">
+                                                                                <label class="ux-selection2">Transaction Count
+                                                                                    <input type="radio"  name="filtertype1" value="transactionCount" formControlName="filtertype1" [checked]="selType == 'transactionCount'" (click)="selStatementType('transactionCount')" >
+                                                                                    <span class="checkmark"></span>
+                                                                                    </label>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="row1">
+                                                                        <div class="col-12">
+                                                                            <div class="ux-input p-0 mt-0 mb-0" [ngClass]="{'ux-disabled': selType != 'transactionCount' }" >
+                                                                                <select formControlName="transCount" (change)="onCountSelected()" >
+                                                                                  <option value="">Select</option>
+                                                                                  <option *ngFor="let item of transactionCnt" [value]="item.configVal">{{item.configVal}}</option>
+                                                                                </select>
+                                                                                <span class="errormsg" *ngIf="dsForm.controls['transCount'].touched && dsForm.controls['transCount'].hasError('required')">{{"PLEASE_SELECT_TRANSACTION_COUNT" | translate }}</span>
+                                                                               </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div
+                                                                    class="vspacer10 d-block d-md-none d-lg-none d-xl-none ">
+                                                                </div>
+
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="col-12 col-md-12 col-lg-2 col-xl-2 pb-3">
+                                                            <a class="advanceSearch" (click)="toggleDisable();"><img
+                                                                    src="assets/images/icons/calendar-b.png">Filter
+                                                            </a>
+                                                        </div>
+
+                                                    </div>
+                                                    <div class="detailedstatment-tab" id="period">
+                                                        <div class="advsearch">
+                                                            <div class="row">
+                                                                <div class="col-md-7 col-lg-6 col-xl-6 pl-1 pr-1">
+                                                                    <h6>Amount Range</h6>
+                                                                    <div class="row1">
+                                                                        <div class="col-12 col-md-6 col-lg-6 col-xl-6">
+                                                                            <div class="ux-input  p-0">
+                                                                                <label>Min Amount</label>
+                                                                                <input type="text" class=" " (input)="checkMinMax()"  formControlName="minAmount" placeholder="Enter Min Amount" limit-to="10">
+                                                                                <p class="error-message" *ngIf="dsForm.controls['minAmount'].touched && dsForm.controls['minAmount'].hasError('required')">{{"PLEASE_ENTER_MIN_AMOUNT" | translate }}</p>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="col-12 col-md-6 col-lg-6 col-xl-6">
+                                                                            <div class="ux-input  p-0">
+                                                                                <label>Max Amount</label>
+                                                                                <input type="text" class=" " (input)="checkMinMax()" formControlName="maxAmount" placeholder="Enter Max Amount" limit-to="10">
+                                                                                <p class="error-message" *ngIf="dsForm.controls['maxAmount'].touched && dsForm.controls['maxAmount'].hasError('required')">{{"PLEASE_ENTER_MAXAMOUNT" | translate }}</p>
+                                                                                <p class="error-message" *ngIf="minmaxCheck==true">Maximum amount should be greater than minimum amount.</p>
+                                                                            
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div
+                                                                    class="vspacer10 d-block d-md-none d-lg-none d-xl-none">
+                                                                </div>
+
+                                                                <div class="col-md-5 col-lg-3 col-xl-3 nopad-m">
+                                                                    <h6>Transaction Type</h6>
+                                                                    <div
+                                                                        class="vspacer20 d-none d-md-block d-lg-block d-xl-block">
+                                                                    </div>
+                                                                    <div class="vspacer10"></div>
+                                                                    <div class="row1">
+                                                                        <div class="col-12 col-md-12 col-lg-12 col-xl-12">
+                                                                            <div class="ux-selection p-0" *ngFor="let item of transactionType; let i=index;">
+                                                                                <label class="ux-selection2">{{item.name}}
+                                                                                  <input type="radio" formControlName="transType" [value]="item.value" [checked]="item.checked" >
+                                                                                  <span class="checkmark"></span>
+                                                                                </label>
+                                                                              </div>
+                                                                            <!-- <div class="ux-selection p-0">
+                                                                                <label class="ux-selection2">Both
+                                                                                    <input type="radio"
+                                                                                        checked="checked"
+                                                                                        name="radioboxdemo">
+                                                                                    <span class="checkmark"></span>
+                                                                                </label>
+                                                                            </div>
+                                                                            <div class="ux-selection p-0">
+                                                                                <label class="ux-selection2">Credit
+                                                                                    <input type="radio"
+                                                                                        checked="checked"
+                                                                                        name="radioboxdemo">
+                                                                                    <span class="checkmark"></span>
+                                                                                </label>
+                                                                            </div>
+                                                                            <div class="ux-selection p-0">
+                                                                                <label class="ux-selection2">Debit
+                                                                                    <input type="radio"
+                                                                                        checked="checked"
+                                                                                        name="radioboxdemo">
+                                                                                    <span class="checkmark"></span>
+                                                                                </label>
+                                                                            </div> -->
+                                                                        </div>
+
+                                                                    </div>
+                                                                </div>
+
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                </div>
+
+                                                <div class="panel-footer detstat-action text-right  clearfix">
+                                                    <ul class="bottom-footer1">
+                                                        <li>
+                                                            <div class="btn-div">
+                                                                <button class=" ux-button secondary sm-mob" (click)="resetForm()" 
+                                                                    >Reset</button>
+                                                            </div>
+                                                            <div class="btn-div">
+                                                                <button class=" ux-button primary sm-mob"
+                                                                (click)="submit(dsForm.value)">Get
+                                                                    Statement</button>
+                                                            </div>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+
+                                            </div>
+                                        </form>
+
+                                        <div
+                                            class="statement-table detailed-statment" *ngIf="detailStatementList.length != 0">
+                                            <div class="block-header clearfix">
+                                                <h5>Detailed Statement</h5>
+                                                <ul>
+                                                    <!-- <li><a ><img src="assets/images/svg/email.svg">Send
+                                                            over Email</a></li> -->
+
+                                                    <li><a (click)="generatePDF()"><img
+                                                                src="assets/images/svg/download.svg">Download</a>
+                                                    </li>
+                                                    <li><a (click)="generatePDF(true)"><img
+                                                                src="assets/images/svg/print.svg">Print</a></li>
+
+                                                </ul>
+                                            </div>
+                                            <div class="row mx-3 ">
+                                                <div class="col-sm-3 p-0">
+                                                    <div class="dtlabel-readonly"><span>Opening Balance</span><i> {{openBal | customcurrency : 'symbol' : selAccDtl.currency}}</i></div>
+                                                </div>
+                                                <div class="col-sm-3 p-0">
+                                                    <div class="dtlabel-readonly total-dep"><span>Total
+                                                            Deposit</span><i> {{totalDeposit | customcurrency : 'symbol' : selAccDtl.currency }}</i></div>
+                                                </div>
+                                                <div class="col-sm-3 p-0">
+                                                    <div class="dtlabel-readonly total-withdraw"><span>Total
+                                                            Withdrawals</span><i> {{totalWithdraw | customcurrency : 'symbol' : selAccDtl.currency }}</i></div>
+                                                </div>
+                                                <div class="col-sm-3 p-0">
+                                                    <div class="dtlabel-readonly closing-bal"><span>Closing
+                                                            Balance</span><i> {{closingBal | customcurrency : 'symbol' : selAccDtl.currency }}</i></div>
+                                                </div>
+                                            </div>
+                                            <div class="datatable-box"  > 
+                                                <div class="table-responsivebox">
+                                                    <table id="dt-sample1" class="table table-hover display table-borderless">
+                                                        <thead>
+                                                            <tr>
+                                                                <th class="show-mobile">Transfer details</th>
+                                                                <th class="show-desktop">Sr.No</th>
+                                                                <th class="show-desktop">Transaction Date</th>
+                                                                <th class="show-desktop">Remarks</th>
+                                                                <th class="show-desktop">Ref. No.</th>
+                                                                <th class="show-desktop">Cheque No.</th>
+                                                                
+                                                                <!-- <th>Value Date</th> -->
+                                                                <th class="text-right show-desktop">Withdrawl (INR)</th>
+                                                                <th class="text-right show-desktop">Deposit (INR)</th>
+                                                                <th class="text-right show-desktop">Closing Balance (INR)</th>
+                                                                <th class="text-right show-mobile">Amount</th>
+                                                             </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            <tr class="no-borders" *ngFor="let item of detailStatementList  ; index as i " >
+                                                                <td class="show-mobile"><b>{{item?.TransactionDate.substring(6,8) + '/' + item?.TransactionDate.substring(4,6) + '/' + item?.TransactionDate.substring(0,4)}}</b><br>{{item?.particulars}}</td>
+                                                                <td class="show-desktop">{{i+1}}.</td>
+                                                                <td class="show-desktop">{{item?.TransactionDate.substring(6,8) + '/' + item?.TransactionDate.substring(4,6) + '/' + item?.TransactionDate.substring(0,4)}}</td>
+                                                                <td class="show-desktop">{{item?.particulars}}</td>
+                                                                <td class="show-desktop"> {{item?.TransactionId}}</td>
+                                                                <td class="show-desktop">{{randomCheque(item?.instrumentNumber)}}</td>
+                                                               
+                                                                <!-- <td>{{item?.valueDate}}</td> -->
+                                                                <td class="text-right debit show-desktop"> <div *ngIf="item.creditOrDebit == 'D'" >{{item?.amount  | customcurrency : 'symbol' : selAccDtl.currency }}</div></td>
+                                                                <td class="text-right credit show-desktop"> <div *ngIf="item.creditOrDebit == 'C'" >{{item?.amount  | customcurrency : 'symbol' : selAccDtl.currency }}</div> </td>
+                                                                <td class="text-right show-desktop "> {{item?.closingBalance | customcurrency : 'symbol' : selAccDtl.currency }}</td>
+                                                                <td class="text-right show-mobile " [ngClass]="{'debit': item?.creditOrDebit == 'D', 'credit' : item?.creditOrDebit == 'C' }" ><div *ngIf="item.creditOrDebit == 'D'" >{{item?.amount  | customcurrency : 'symbol' : selAccDtl.currency }}</div> <div *ngIf="item.creditOrDebit == 'C'" >{{item?.amount  | customcurrency : 'symbol' : selAccDtl.currency }}</div></td>
+                                                            </tr>
+
+                                                        </tbody>
+                                                    </table>
+
+                                                    <div class="border-top-container "  style="margin: 0px;">
+                                                        <div class="row1">
+                                                            <div class="col-12 col-md-12">
+                                                                <ul class="bottom-footer1" id="transaction">
+                                                                  <li *ngIf="this.moreListFlag == 'N'" style="flex: 1;">
+                                                                    <div class="btn-div w100">
+                                                                        <h4>Total Number of Transactions : {{detailStatementList.length}}</h4> 
+                                                                    </div>
+                                                                  </li>
+                                                                    <li style="flex: 3;" >
+                                                                        <div class="btn-div w100">
+                                                                            <button class="ux-button primary sm-mob" (click)="generatePDF()"  *ngIf="this.moreListFlag == 'N'">Download</button>
+                                                                        </div>
+                                                                        <div class="btn-div w100">
+                                                                            <button class="ux-button primary sm-mob" [class.getMore]="this.moreListFlag == 'N' " (click)="onNextClick()" *ngIf="detailStatementList.length>0">Get More Records </button>
+                                                                        </div>
+                                                                    </li>
+                                                                </ul>
+                                                            </div>
+                                                          </div>
+                                                       </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="vspacer30 d-none d-md-block d-lg-block d-xl-block"></div>
+
+
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+                    </div><!-- row no-gutters -->
+
+                </div>
+                <!--.container-fluid-->
+            </div>
+            <!--.body-page-container-->
+
+
+        </div>
+        <!--.right-col-container-->
+    </div>
+    <!--.right-main-column-->
+
+</div> <!-- main -->
+
+
+<div class="notpanel-overlay"></div>
+
+
+
+
+<!-- Select Accounts Popup Start-->
+
+<div class="popup-bottom sel-account">
+    <div class="row1">
+        <div class="col-10">
+            <h4>Select From Account</h4>
+        </div>
+        <div class="col-2">
+            <button class="ux-button-icon close-btn">
+                <img src="assets/images/svg/close-b.svg" alt="cross-icon" class="img-vsmall"  (click)="commonMethod.closeAllPopup()">
+            </button>
+        </div>
+    </div>
+    <div class="row1">
+        <div class="col-12">
+            <div class="row1">
+              <div class="col-12 col-md-12" *ngFor="let item of totalAccountList">
+                <div class="ux-selection mar-custom">
+                  <label class="ux-selection2">{{item?.SchemeCode}} {{item?.sbAccount}}
+                    <input type="radio" [value]="item?.accountNo" name="upi-account" [checked]="selectedAccountNo == item?.accountNo ? true : false" [(ngModel)]="selectedAccountNo" [ngModelOptions]="{standalone: true}" (click)=getSelectedAccount(item.accountNo) > <span class="checkmark"></span> </label>
+                </div>
+              </div>
+            </div>
+         </div>
+    </div>
+  
+    <div class="row mt-2">
+        <div class="col-12 text-center">
+            <button class="ux-button primary submit-btn2" (click)="commonMethod.closeAllPopup()" >Submit</button>
+        </div>
+    </div>
+  </div>
+
+<!-- Select Accounts Popup End-->
+<div class="ios-nav-overlay"></div>

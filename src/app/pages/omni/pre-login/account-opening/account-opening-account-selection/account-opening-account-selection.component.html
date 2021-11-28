@@ -1,0 +1,112 @@
+<div class="row">
+    <div class="col-12 col-lg-6 col-md-10 col-sm-12 position-static">
+        <!-- <form [formGroup]="registrationFormstep3" (ngSubmit)="submitStep3()"> -->
+        <div class="row1">
+            <div class="col-12">
+                <ul class="step-list">
+                    <li class="step-matched">
+                        <em> <span class="primary">{{'STEP' | translate }} 8 </span> <span class="secondary">{{'OF_STEP' | translate }} 8</span> </em>
+                     </li>
+                </ul>
+               <div class="tab-header">
+                    <h4>{{'ACCOUNT_TYPE' | translate }}</h4>
+                    <small>{{'SELECT_ACCOUNT_TO_OPEN' | translate }}</small>
+                </div>
+            </div>
+            <div class="col-12">
+                <div class="details-section">
+                    <div class="row1">
+                        <div Class="col-12 col-md-6">
+                            <div class="accType-block" [ngClass]="{'active': accounttype === 'zeroBalance'}">
+                                <h4>{{'ZERO_BALANCE_ACCOUNT' | translate }}</h4>
+                                <ul>
+                                    <!-- <li>{{'LOREM_IPSUM' | translate }} </li>
+                                    <li>{{'LOREM_IPSUM' | translate }}</li>
+                                    <li>{{'LOREM_IPSUM' | translate }}</li> -->
+                                    <li style="margin-top:8px">● Hassel free Instant Account Opening</li>
+                                    <li style="margin-top:8px" >● Instant Virtual Debit Card</li>
+                                    <li style="margin-top:8px">● No Minimum Balance</li>
+                                    <li style="margin-top:8px">● Get Interest on your Deposits</li>
+                                    <li style="margin-top:8px">● Fund Transfer Facility (RTGS/NEFT/IMPS/UPI)</li>
+                                    <li style="margin-top:8px">● Apply for IPO through ASBA (Coming Soon)</li>
+                                    <li style="margin-top:8px">● Access to PSB UnIC Digital Banking Solution</li>
+                                    <li style="margin-top:8px">● Choice to apply for a Physical Card</li>
+                                </ul>
+                                <div class="text-center">
+                                 <!-- <button class="ux-button primary sm  ml-2">{{'SELECT' | translate }}</button> -->
+
+                                </div>
+
+                                <input type="radio" name="acctype"  (change)="selectAccType('zeroBalance')">
+                            </div>
+                        </div>
+                        <div class="col-12 col-md-6"> 
+                            <!-- [ngClass]="{'active': accounttype === 'Premium'}" -->
+                            <div class="accType-block ux-input ux-disabled" >
+                                <h4>{{'PREMIUM_ACCOUNT' | translate }}</h4>
+                                <ul>
+                                   
+                                    <li _ngcontent-scv-c113="" class="errormsg text-center" style="
+    background-color: #fff200;
+    color: #e82338;
+    border-radius: 50px;
+">Coming soon</li>
+                                </ul>
+                                <div class="text-center">
+                                 <!-- <button class="ux-button primary sm  ml-2">{{'SELECT' | translate }}</button> -->
+                                </div>
+                                <input type="radio" name="acctype"  (change)="selectAccType('Premium')">
+                            </div>
+                        </div>
+                        <form [formGroup]="accountOpenSubForm" >
+
+                        
+                        <div class="col-12 mt-4">
+                            <div class="ux-selection  float-none display-block">
+                                <label class="ux-selection1">{{'SMS_EMAIL_PERMISSION' | translate }}
+                                <input type="checkbox" name="radioboxdemo" formControlName="smsPermission" >
+                                <span class="checkmark"></span>
+                            </label>
+                            </div> 
+                            <div class="ux-selection float-none display-block">
+                                <label class="ux-selection1"> <a href="javascript:void(0)"  (click)="opencustpoup('factca')">{{'FACTCA_CRS_DECLARATION' | translate }}  </a>
+                                    <input type="checkbox"  name="radioboxdemo"  formControlName="factcaDclr">
+                                    <span class="checkmark"></span>
+                                  </label>
+                             </div>   <br>
+                             <div class="ux-selection  float-none display-block">
+                                <label class="ux-selection1"><a href="javascript:void(0)"  (click)="opencustpoup('bankTermsCondition')"> {{'BANK_TERMS_CONDITION' | translate }} </a>
+                                <input type="checkbox" [checked]="accountOpeningTermsFlag" disabled="disabled" name="radioboxdemo" formControlName="bankTerm">
+                                <span class="checkmark"></span>
+                            </label>
+                            </div>
+                            <br>
+                          
+                        </div>
+
+                    </form>
+                    </div>
+
+                </div>
+            </div>
+            <div class="col-12 col-lg-10 col-md-12 col-sm-12 position-static">
+                <div class="ux-footer border-n">
+                    <div class="row1">
+                        <div class="col-12 col-lg-6 col-md-6 col-sm-6">
+
+                        </div>
+                        <div class="col-12 col-lg-6 col-md-6 col-sm-6 text-right">
+                            <!-- <button class="ux-button secondary sm  cancel-btn" type="button" (click)="cancelbtn()" *ngIf="DataService.isFromOmniReg.isStepIII" >{{'PREVIOUS' | translate}}</button>
+                            <button class="ux-button primary sm  ml-2" type="submit">{{'NEXT' | translate}}</button> -->
+                            <button class="ux-button sm secondary cancel-btn" (click)="prevtab()"  >{{'PREVIOUS' | translate }}</button>
+                            <button class="ux-button primary sm  ml-2" (click)="submit()" [disabled]="accountOpenSubForm.invalid || this.accounttype=='' ">{{'NEXT' | translate }}</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-12 col-lg-6 col-md-2 col-sm-12 d-none d-lg-block d-xl-block">
+        <img src="assets/images/svg/UPIID.svg" class="right-regImg">
+    </div>
+</div>

@@ -1,0 +1,17 @@
+input.password_number {
+    -webkit-text-security: disc;
+    outline: 0;
+    -webkit-appearance: none;
+  }
+
+  input[type=password].otpinput {
+    text-align: center;
+    letter-spacing: 30px;
+    border: 1px solid rgba(0, 0, 0, 0.4);
+    height: 39px;
+    border-radius: 4px;
+}
+
+::placeholder {
+  letter-spacing: 2px;
+}

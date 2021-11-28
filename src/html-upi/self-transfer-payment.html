@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+
+	<html>
+	
+	<head>
+		<meta charset="UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+	    <title>Self Transfer Payment | UPI Pay</title>
+		<link href="../css/lib/bootstrap.min.css" rel="stylesheet">
+	    <link href="../css/lib/jquery-ui.min.css" rel="stylesheet">
+	 	<link href="../css/lib/jquery.mCustomScrollbar.min.css" rel="stylesheet">
+		<link href="../css/main.css" rel="stylesheet">
+		<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+		
+	</head>	
+
+<body>
+
+	<div class="main main-bg2">
+ 
+  <!--  Header Section Start -->
+<header class="global-header brand-bg2 minus-nav">
+	<div class="in-header">
+		<div class="header-icons-lft">   
+			<div class="header-actions">
+				<button class="ux-button-header">
+					<img src="../assets/images/svg/left-arrow.svg"  alt="left-arrow-icon" class="img-small"/>
+				</button>
+		   </div> 
+		</div>  
+		 <div class="brand-logo">
+			<h3>Self Transfer</h3>
+		 </div> 
+	   <div class="header-icons-rit">
+			<div class="header-actions">
+			 </div> 
+		</div> 
+	</div> 
+</header> 
+
+<!-- Header Section End -->
+
+ <div class="right-main-column mar-custom">
+    <div class="right-col-container pad-b">
+               
+    <div class="body-page-container">
+	  <div class="vspacer5 d-sm-block d-none"></div> 
+		  <div class="container-fluid">
+			  <div class="row"> 
+				  <div class="bg-section2"> 
+					 <div class="col-12"> 	
+					  <div class="row1">
+					  <div class="payee-info1">
+						<div class="row">
+						 <div class="info-inner">
+                              <div class="info-lft">
+								 <span class="white1">
+									 <img src="../assets/images/icons/psb-icon.png" alt="psb-icon-img" class="icon-img">
+								 </span>
+							   </div>
+								<div class="info-center">
+									 <a href="#"> <img src="../assets/images/svg/double-right-arrows.svg" alt="double-right-arrows-icon"> </a>
+								</div>
+								<div class="info-rit">
+									<span class="white1">
+										<img src="../assets/images/icons/hdfc-icon.png" alt="hdfc-icon-img" class="icon-img" >
+									</span>
+								 </div>
+							   </div>
+					    	</div>
+							  <div class="row">
+                                <div class="col-12 col-md-12">
+									 <h5>Deposit to HDFC Bank</h5>
+									  <h6>Savings XXXX XXXX XXXX 2541</h6>
+								 </div>
+						     </div>
+							 </div>
+						   </div>
+						   <div class="row1">
+								<div class="col-sm-5 col-8 col-md-3 m-auto">
+									<div class="ux-input white-input mar-tb">
+										<input type="text" placeholder="0" required id="amt" data-a-sign="Rs.">
+									    <p class="text-center error-message"></p>
+									</div> 
+								</div> 
+						  </div>
+						   <div class="row1">
+								 <div class="col-sm-5 col-5 col-md-3 m-auto">
+									<div class="ux-input dark-input mar-tb">
+										<input type="text" placeholder="Remarks" required>
+									    <p class="text-center error-message"> </p>
+								  </div> 
+							 </div> 
+						 </div>
+
+			  <!-- Info Bottom Container Start -->
+				  <div class="info-bottom-container">
+                    <div class="row1 mt-5">
+						<div class="col-sm-12 col-12 col-md-12 m-auto">
+						   <!-- Deposit Start -->
+								<div class="bottom-info">
+									<div class="row1">
+										<div class="col-12">
+										  <h4>From Account</h4>
+										</div>
+									  </div>
+									  <form action="#" id="payment-form"> 
+										  <div class="row1 mt-2">
+											  <div class="col-12">
+												  <h5>Punjab & Sind Bnak</h5>
+												  <h6>Savings XXXXXXXXXXXX9557</h6>
+											   </div>
+										   </div>
+										<div class="row1 mt-3">
+											<div class="col-12 text-center">
+												<button class="ux-button primary submit md">Transfer Now</button>
+											</div>
+										 </div>
+									  </form>
+									  <div class="row1">
+										<div class="col-12 text-center mt-4">
+											<div class="powered-logo">
+                                                <img src="../assets/images/logo/powered-upi-logo.svg" alt="powered-upi-logo">
+											</div>
+										 </div>
+									 </div>
+								</div> 
+							<!-- Deposit End -->	
+	 
+							 </div>  
+						   </div>
+						</div>
+					 <!-- Info Bottom Container End -->	
+					 
+					  </div>
+
+					</div>	 
+                 </div> 
+			 </div> 
+ 
+		  </div> 
+	   </div> 
+	  </div>  
+          
+    </div> 
+    
+  <!-- main -->
+
+ 
+<script src="../js/lib/jquery.min.js"></script>
+<script src="../js/lib/bootstrap.min.js"></script>
+<script src="../js/lib/jquery-ui.min.js"></script>
+<script src="../js/lib/popper.min.js"></script>
+<script src="../js/lib/jquery.mousewheel.min.js"></script>
+<script src="../js/lib/jquery.mCustomScrollbar.js"></script>
+<script src="../js/lib/datatables.min.js"></script>
+<script src="../js/lib/autoNumeric.js"></script>
+<script src="../js/common.js"></script>
+
+<script type="text/javascript">
+	//  createGlobalNavMore();
+	  $('#amt').autoNumeric('init', {aSign: " ₹ "});
+	 
+	$("ul.theme-list li").click(function(){
+		console.log('its working');
+	$("ul.theme-list li").removeClass("active");
+	if (!$(this).hasClass('active') ) {
+			$(this).addClass('active');
+			// $( 'div.ios-nav-overlay' ).fadeIn( 400 );
+			// $( 'body' ).css( 'overflow', 'hidden' );
+		} else {
+			$(this).removeClass('active');
+			// $( 'div.ios-nav-overlay' ).fadeOut(  );
+			// $( 'body' ).css( 'overflow', 'auto' );
+		}
+	}); 
+
+	// $("input[name='amount']").on('keyup',function() {
+	// 	if($(this).hasClass('rupee')) {
+	// 		$(this).removeClass('rupee');
+	//   }else{
+	// 	  $(this).addClass('rupee');
+	// 	}
+    // });
+</script>
+
+</body>
+</html>

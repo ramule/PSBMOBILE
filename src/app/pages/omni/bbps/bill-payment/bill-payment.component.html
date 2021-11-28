@@ -1,0 +1,451 @@
+<div class="main bg-m">
+	<div class="right-main-column " >
+		<div class="right-col-container pad-b full-width">
+			<!-- ======== body page content start from here ======== -->
+			<div class="body-page-container main-dashborad bill-wrapper">
+				<div class="container-fluid">
+					<div class="row">
+						<div class="col-12 p-0">
+							<div class="breadcrumb">
+								<ul class="lst-breadcrumb">
+                                    <li *ngFor="let name of DataService.breadcrumblist">
+                                        <a (click)="DataService.breadcrumroute(name.routeName)">{{name.currentRoute | translate}}</a>
+                                	</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+					<!--.row -->
+					<div class="vspacer15 customize d-none d-md-block d-lg-block d-xl-block"></div>
+					<div class="row no-gutters">
+						<div class="col-12">
+							<div class="row1">
+								<div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-9">
+									<!-- Greencard2 Start here -->
+									<div class="greencard2">
+										<div class="row1 hide-m">
+											<div class="col-md-10 col-12">
+												<h4>{{DataService.billtype}}</h4> </div>
+											<div class="col-md-2 col-12">
+												<div class="header-actions"> <img src="assets/images/icons/billpay.png" alt="billpay-img" class="small-img"> </div>
+											</div>
+										</div>
+										<div class="row1">
+											<div class="col-sm-12 col-12 col-md-12">
+												<div class="ux-nav-tabs" style="margin:0">
+													<div class="responsive3">
+														<ul class="nav nav-tabs nav-justified bor-n  d-flex d-sm-none mt-0" role="tablist">
+															<li class="nav-item"> <a class="nav-link active" data-toggle="tab" href="#pay-bill" data-target="#pay-bill, #bill-pay1">Pay Bill</a> </li>
+															<li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#recent-pay">Recent Payments</a> </li>
+														</ul>
+														<!-- Tab panes -->
+														<div class="tab-content  custom-tab-content1 mb-0 row1">
+															<div id="pay-bill" class=" tab-pane active show col-12 p-0">
+																
+
+													<div class="widget-box5 mb-3 overflow-inherit min-height" >
+														<div class="bg-white1 pad-custom rounded-8">
+															<form [formGroup]="billPaymentForm"  (ngSubmit)="billPaymentSubmit()" >
+															<div class="row1">
+																<div class="flex-container2">
+																	<div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 full-info">
+																		<div class="row1">
+																			<div class="col-12 col-md-6 col-lg-4 col-xl-4"  [ngClass]="{'d-none': stateList.length == 1 && stateList[0] == 'National'}">
+																				<div class="ux-input">
+																					<label>Location</label>
+																					<select formControlName="state" (change)="onStateSelect($event.target.value)" >
+																						<option value="">Select Location</option>
+																						<option *ngFor="let item of stateList; let i = index" [value]="item">{{item}}</option>
+																					</select>
+																					<p class="errormsg" *ngIf="billPaymentForm.controls['state'].hasError('required') && (billPaymentForm.controls['state'].dirty || billPaymentForm.controls['state'].touched)"> Please select state </p>
+																				</div>
+																			</div>
+																			<div class="col-12 col-md-6 col-lg-8 col-xl-8" [ngClass]="{'d-none': finalBillerList.length == 0}">
+																				<div class="row1">
+																					<div class="col-12 col-md-8 col-lg-6 col-xl-6">
+																						<div class="ux-input biller-custom-selectbox">
+																							<label>Billers</label>
+																							<div class="custom-dropdown-dummy">
+																								<span (click)="onSelectOption()" class="dispayblock"><img src="{{selectedBoard.biller_logo}}" *ngIf="selectedBoard.biller_logo != ''" class="boardlogo" alt=""> {{selectedBoard.biller_legal_name}}</span>
+																								<input type="hidden" formControlName="boardname" [value]="selectedBoard.billerid" >
+																								<ul id="board-name" class="list-unstyled hide-m" class="list">
+																									<li  class="init" *ngFor="let item of finalBillerList" (click)="boardTypeSelection(item)" >
+																										<img src="{{item.biller_logo}}"  class="boardlogo" alt=""> 
+																							
+																										<span class="board-display"> {{item.biller_name}} </span>	    <img style="display:none" src="assets/images/svg/BBPS_Logo.svg" alt="">
+																									</li>
+																								</ul>
+																							</div>
+																						</div>
+																					</div>
+																					<div class="col-12 col-md-4 col-lg-6 col-xl-6 d-none d-sm-block" *ngIf="boardNameValue != '' ">
+																						<div class="biller-selected-logo">
+																							<img src="assets/images/svg/BBPS_Logo.svg" alt=""></div>
+																					</div>
+																				
+																				</div>
+																			
+																			</div>
+																		</div>
+																
+																		<div class="row1">
+																			<div class="col-12 col-md-6 col-lg-4 col-xl-4" [ngClass]="{'d-none': consumerLabel == ''}">
+																				<div class="ux-input">
+																					<label>{{consumerLabel}}</label>
+																					<input type="text" placeholder="Enter {{consumerLabel}}" formControlName="consumerNumber" (input)="showFetchBill = false  " >
+																					<span class="errormsg" *ngIf="billPaymentForm.controls['consumerNumber'].hasError('required') && (billPaymentForm.controls['consumerNumber'].dirty || billPaymentForm.controls['consumerNumber'].touched)">Please enter {{consumerLabel}} </span>
+																					<span class="errormsg" *ngIf="billPaymentForm.controls['consumerNumber'].hasError('pattern') && (billPaymentForm.controls['consumerNumber'].dirty || billPaymentForm.controls['consumerNumber'].touched)"> {{errorMsg}} </span>
+																					<div class="row">
+																						<p class="text-right"> <a class="link-txt" (click)="commonMethod.openPopup('.sampleBill')" >View Sample Bill</a></p>
+																						<p class="text-right col-6">
+																							<button class="ux-button primary sm5 float-right fetchBtn" type="submit" (click)="billPaymentSubmit()" >Fetch Bill</button>
+																						</p>
+																					</div>
+																					
+
+																				</div>
+																			</div>
+																		</div>
+																		<div class="vspacer30 d-none d-sm-block"></div>
+																	</div>
+																</div>
+															</div>
+														</form>
+														</div>
+													</div>
+
+
+													<div class="row1 fetch-bill-info" *ngIf="showFetchBill">
+														<div class="col-sm-12 col-12 col-md-12">
+															<div class="white-box2 mb-3 mt-0 p-0">
+																<!-- <div class="bill-info-card green-light m-0">
+																	<ul class="comp-info2">
+																		<li>
+																			<div class="grid-info ">
+																				<div class="full-info">
+																					<h5>{{billerdetailsDataPass.billerName}} </h5>
+																					<h6>Due Date: {{billerdetailsDataPass.dueDate}}  </h6> </div>
+																			</div>
+																			<div class="grid-info d-block">
+																				<div class="full-info">
+																					<img src="assets/images/svg/rupee-g2.svg" alt="rupees-icon">
+																					<h5 class="my-4 greentext partialPay" *ngIf="partialPay == 'N'"> {{billerdetailsDataPass.billamt}}</h5>
+																					
+																					<input  *ngIf="partialPay == 'Y'" type="text" [value]="billerdetailsDataPass.billamt" class="partialPay my-4"> </div>
+																			</div>
+																		</li>
+																	</ul>
+																</div> -->
+
+																<div class="bill-info-card green-light m-0 new-bill-card">
+																	<ul class="comp-info2">
+																		<li>
+																			<div class="grid-info">
+																				<div class="full-info">
+																					<h6>Total Bill Amount</h6>
+																					<div class="ux-input col-8 col-sm-11 col-md-8 col-lg-8 col-xl-8 m-0 p-0">
+																						<h5 class="p-0 m-0 h-auto" *ngIf="partialPay == 'N'"> <img src="assets/images/svg/rupee-g2.svg" alt="rupees-icon">  {{billerdetailsDataPass.billamt}}</h5>
+																						<input type="text" placeholder="Enter Amount" class="p-0 m-0 h-auto" [value]="billerdetailsDataPass.billamt" *ngIf="partialPay == 'Y'"> 
+																					   <p class="error-message"></p>
+																					</div>
+																				</div>
+																			 </div>
+																			<div class="grid-info  d-block">
+																				<div class="full-info">
+																					<h5>{{billerdetailsDataPass.billerName}}</h5>
+																					<h6 class="my-2">Due Date : {{billerdetailsDataPass.dueDate}} </h6>
+																				</div>
+																			</div>
+																		</li>
+																	</ul>
+																</div>
+
+															</div>
+														</div>
+														<div class="col-sm-12 col-12 col-md-12">
+															<div class="widget-box5 mb-3">
+																<div class="bg-white1 pad-custom py-2">
+																	<div class="row1">
+																		<div class="col-md-12 col-12">
+																			<div id="accordion1" class="accordion-container parent-accordion">
+																				<div class="card4">
+																					<a class="card-link collapsed" data-toggle="collapse" href="#consumer" aria-expanded="false">
+																						<div class="card-header3">
+																							<div class="panel-title3">
+																								<h6 class="detail-heading">Consumer Details</h6> </div> <em></em> </div>
+																						<!--card-header-->
+																					</a>
+																					<div id="consumer" class="collapse" data-parent="#accordion1" >
+																						<div class="white-box2 m-0 p-0 shadow-none">
+																							<div class="info-bottom pad-custom swap-div-mob p-0">
+																								<div class="info-details pr-35"  *ngFor="let item of billerdetailsDataPass.displayData">
+																									<div class="row">
+																										<h6>{{item.label}}</h6>
+																										<h5>{{item.field  | titlecase}} </h5> </div>
+																								</div>
+																							</div>
+																						</div>
+																					</div>
+																				</div>
+																			</div>
+																		</div>
+																	</div>
+																</div>
+															</div>
+														</div>
+														<div class="col-sm-12 col-12 col-md-12">
+															<div class="row1">
+																<div class="col-12 col-md-12">
+																	<ul class="bottom-footer1">
+																		<li>
+																			<div class="btn-div w100">
+																				<button class="ux-button primary  sm-mob" type="button" (click)="existingGetBillSubmit()">Proceed to Pay</button>
+																			</div>
+																		</li>
+																	</ul>
+																</div>
+															</div>
+														</div>
+													</div>
+
+												</div>
+
+															<div id="recent-pay" class="tab-pane fade d-sm-none">
+																<div class="row1">
+																	<div class="col-sm-12 col-12 col-md-12">
+																		<div class="widget-box7">
+																			<div class="component-title6">
+																				<div class="row1">
+																					<div class="col-8 col-md-5  d-none d-sm-block">
+																						<h3>Registered Pay</h3>
+																					</div>
+																					<div class="col-4 col-md-7 d-none d-sm-block pl-0 text-right">
+																						<a class="link-txt" href="#">Register New Biller</a>
+																						<a class="link-txt ml-3" href="#">View All</a>
+																					</div>
+																				</div>
+																			</div>
+																			<div class="component-box">
+																				<ul class="pay-list">
+																					<li>
+																						<div class="white-container">
+																							<div class="list-full mb-1">
+																								<div class="list-info">
+																									<div class="icon1">
+																										<img src="assets/images/icons/adani.png" alt="adani-logo">
+																									</div>
+																									<h5>Adani Electricity Mumbai</h5>
+																									<h6><span>20 Oct 2020</span> </h6>
+																								</div>
+																							</div>
+
+																							<div class="list-full2">
+																								<div class="list-day-info">
+																									<em class="text-pass">Payment Successful</em>
+																									<div class="mob-amount d-sm-none d-block">
+																										<h4 class="text-reject m-0 mb-2"> 
+																											₹ 900.00
+																										</h4>
+																									</div>
+																								</div>
+																								<div class="list-btn">
+																									<button class="ux-button primary sm5 float-right ml-2" >Repeat</button>
+																									<button class="ux-button secondary sm5 float-right" >Details</button>
+																								</div>
+																							</div>
+																						</div>
+																					</li>
+																					<li>
+																						<div class="white-container">
+																							<div class="list-full mb-1">
+																								<div class="list-info">
+																									<div class="icon1">
+																										<img src="assets/images/icons/aasam-power.png" alt="aasam-logo">
+																									</div>
+																									<h5>Aasam Power - RAPDR</h5>
+																									<h6><span>20 Oct 2020</span> </h6>
+																								</div>
+																							</div>
+
+																							<div class="list-full2">
+																								<div class="list-day-info">
+																									<em class="text-reject">Payment Failed</em>
+																									<div class="mob-amount d-sm-none d-block">
+																										<h4 class="text-del m-0 mb-2"> 
+																											₹ 900.00
+																										</h4>
+																									</div>
+																								</div>
+																								<div class="list-btn">
+																									<button class="ux-button primary sm5 float-right ml-2" >Repeat</button>
+																									<button class="ux-button secondary sm5 float-right" >Details</button>
+																								</div>
+																							</div>
+																						</div>
+																					</li>
+																					<li>
+																						<div class="white-container">
+																							<div class="list-full mb-1">
+																								<div class="list-info">
+																									<div class="icon1">
+																										<img src="assets/images/icons/adani.png" alt="adani-logo">
+																									</div>
+																									<h5>Adani Electricity Mumbai</h5>
+																									<h6><span>20 Oct 2020</span> </h6>
+																								</div>
+																							</div>
+
+																							<div class="list-full2">
+																								<div class="list-day-info">
+																									<em class="text-pass">Payment Successful</em>
+																									<div class="mob-amount d-sm-none d-block">
+																										<h4 class="text-reject m-0 mb-2"> 
+																											₹ 900.00
+																										</h4>
+																									</div>
+																								</div>
+																								<div class="list-btn">
+																									<button class="ux-button primary sm5 float-right ml-2" >Repeat</button>
+																									<button class="ux-button secondary sm5 float-right" >Details</button>
+																								</div>
+																							</div>
+																						</div>
+																					</li>
+																				</ul>
+																			</div>
+																		</div>
+																	</div>
+																</div>
+															</div>
+														</div>
+													</div>
+												</div>
+											</div>
+											<div class="col-12 col-md-12 d-none d-sm-block"  *ngIf="!showFetchBill">
+												<ul class="bottom-footer1">
+													<li>
+														<div class="btn-div hide-m">
+															<button class="ux-button secondary sm-mob" (click)="goToPage('retailRechargeBillPay')" >Cancel</button>
+														</div>
+														<!-- <div class="btn-div w100">
+															<button class="ux-button primary sm-mob" (click)="billPaymentSubmit()">Proceed</button>
+														</div> -->
+													</li>
+												</ul>
+											</div>
+										</div>
+									</div>
+								</div>
+								<!-- Greencard2 End here -->
+								<!-- Right Column Ads Start -->
+								<div class="vspacer5 d-block d-sm-none"></div>
+								<div class="col-12 col-md-12 col-lg-12 col-xl-3" id="bill-pay1">
+									<div class="row1">
+										<div class="col-sm-12 col-12 col-md-12">
+											<div class="widget-box7">
+												<div class="component-title6">
+													<div class="row1">
+														<div class="col-12 col-md-12">
+															<h6>Pending Dues</h6> </div>
+													</div>
+												</div>
+												<div class="component-box">
+													<ul class="pay-list pendig-due-wrapper">
+														<li>
+															<div class="white-container">
+																<div class="list-full mb-1">
+																	<div class="list-info">
+																		<div class="icon1"> <img src="assets/images/icons/adani.png" alt="adani-logo"> </div>
+																		<h5>Adani Electricity</h5>
+																		<h6>Last Paid <span>20 Oct 2020</span> 12:18 </h6> </div>
+																	<div class="list-amount text-right ">
+																		<h4 class="text-reject my-3"> 
+                                                                                    ₹ 900.00
+                                                                                </h4> </div>
+																</div>
+																<div class="list-full2">
+																	<div class="list-day-info"> <em class="text-reject">4 days left</em> </div>
+																	<div class="list-btn">
+																		<button class="ux-button primary sm5 float-right ml-2" >Pay Now</button>
+																	</div>
+																</div>
+															</div>
+														</li>
+														<li>
+															<div class="white-container">
+																<div class="list-full mb-1">
+																	<div class="list-info">
+																		<div class="icon1"> <img src="assets/images/icons/airtel.png" alt="airtel-logo"> </div>
+																		<h5>Mobile Bill</h5>
+																		<h6>Last Paid <span>20 Oct 2020</span> 12:18 </h6> </div>
+																	<div class="list-amount text-right">
+																		<h4 class="text-reject my-3"> 
+                                                                                    ₹ 900.00
+                                                                                </h4> </div>
+																</div>
+																<div class="list-full2">
+																	<div class="list-day-info"> <em class="text-available">14 days left</em> </div>
+																	<div class="list-btn">
+																		<button class="ux-button primary sm5 float-right ml-2" >Pay Now</button>
+																	</div>
+																</div>
+															</div>
+														</li>
+														<li>
+															<div class="white-container">
+																<div class="list-full mb-1">
+																	<div class="list-info">
+																		<div class="icon1"> <img src="assets/images/icons/mahanagar-gas.png" alt="mahanagar-logo"> </div>
+																		<h5>Mahanagar Gas</h5>
+																		<h6>Last Paid <span>20 Oct 2020</span> 12:18</h6> </div>
+																	<div class="list-amount text-right">
+																		<h4 class="text-del my-3"> 
+                                                                                    ₹ 900.00
+                                                                                </h4> </div>
+																</div>
+																<div class="list-full2">
+																	<div class="list-day-info"> <em class="text-available">12 days left</em> </div>
+																	<div class="list-btn">
+																		<button class="ux-button primary sm5 float-right ml-2" >Pay Now</button>
+																	</div>
+																</div>
+															</div>
+														</li>
+													</ul>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+								<!-- Right Column Ads Ends -->
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!--.right-col-container-->
+	</div>
+	<!--.right-main-column-->
+</div>
+<!-- main -->
+
+<div class="popup-bottom sm-popup sampleBill">
+	<div class="row1">
+		<div class="col-12">
+			<h4 class="text-center">
+				<img src="./assets/images/svg/information.svg" alt="error-icon"> Sample Bill
+			</h4>
+		</div>
+	</div>
+	<div class="row1">
+		<div class="col-12 mb-4">
+			<img src="{{billSampleURL}}" alt="Sample Bill" style="display: block;margin: 0 auto;max-width: 100%;">
+		</div>
+	</div>
+	<div class="row1  mt-2">
+		<div class="col-12 text-center">
+			<button class="ux-button primary submit-btn" (click)="commonMethod.closeAllPopup()">Close</button>
+		</div>
+	</div>
+</div>

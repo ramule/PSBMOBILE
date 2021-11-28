@@ -1,0 +1,220 @@
+<div class="main bg-m">
+	<div class="right-main-column ">
+		<div class="right-col-container pad-b full-width">
+			<!-- ======== body page content start from here ======== -->
+			<div class="body-page-container main-dashborad myprofile">
+				<div class="container-fluid">
+					<div class="row">
+						<div class="col-12 p-0">
+							<div class="breadcrumb">
+								<ul class="lst-breadcrumb">
+									<!-- <li [routerLink]="['/myAccount']"> <a>My Accounts</a> </li>
+									<li [routerLink]="['/myAccountDetails']"> <a>Operative Accounts</a> </li>
+									<li [routerLink]="['/myAccountsInfo']"> <a>Saving Account Details</a> </li>
+									<li> Nominee Details </li> -->
+									<li *ngFor="let name of DataService.breadcrumblist">
+										<a (click)="DataService.breadcrumroute(name.routeName)">{{name.currentRoute | translate}}</a>
+								</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+					<!--.row -->
+					<div class="vspacer15 customize d-none d-md-block d-lg-block d-xl-block"></div>
+					<div class="row no-gutters">
+						<div class="col-12">
+							<div class="row1">
+								<div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-9">
+									<!-- Greencard2 Start here -->
+									<div class="greencard2">
+										<div class="row1 hide-m">
+											<div class="col-md-10 col-12">
+												<h4>Nominee Details</h4> </div>
+											<div class="col-md-2 col-12"> </div>
+										</div>
+                                        <form [formGroup]="nomineeDetailsForm">
+										<div class="row1">
+											<div class="col-sm-12 col-12 col-md-12">
+												<div class="widget-box5 mb-3">
+													<div class="bg-white1 pad-custom">
+														<div class="row1">
+															<div class="flex-container2">
+																<div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 full-info">
+																	<div class="row1">
+																		<div class="col-12 col-md-6 col-lg-4 col-xl-4">
+																			<div class="ux-input">
+																				<label>Nominee Name</label>
+																				<input type="text"  placeholder="Enter Name" formControlName="nomineeName" limit-to="30">
+																				<p class="error-message" *ngIf="nomineeDetailsForm.controls['nomineeName'].hasError('required') && (nomineeDetailsForm.controls['nomineeName'].dirty || nomineeDetailsForm.controls['nomineeName'].touched)"> This field is required </p>
+																				<p class="error-message" *ngIf="nomineeDetailsForm.controls['nomineeName'].hasError('pattern') && (nomineeDetailsForm.controls['nomineeName'].dirty || nomineeDetailsForm.controls['nomineeName'].touched)"> Only Alphabet is allowed </p>
+
+																			</div>
+																		</div>
+																		<div class="col-12 col-md-6 col-lg-4 col-xl-4">
+																			<div class="ux-input">
+																				<label>Relationship with nominee</label>
+																				<select formControlName="nomineeRelationship">
+																					<option value=""> Select </option>
+																					<option *ngFor="let relationShip of relationShipList" [value]="relationShip.ref_code">{{relationShip.DESCRIPTION}}</option>
+																				</select>
+																				<p class="error-message" *ngIf="nomineeDetailsForm.controls['nomineeRelationship'].hasError('required') && (nomineeDetailsForm.controls['nomineeRelationship'].dirty || nomineeDetailsForm.controls['nomineeRelationship'].touched)"> This field is required </p>
+
+																			</div>
+																		</div>
+																	</div>
+																	<div class="row1">
+																		<!-- <div class="col-12 col-md-6 col-lg-4 col-xl-4">
+																			<div class="ux-input">
+																				<h6 class="mb-2">Communication address</h6>
+																				<div class="ux-selection1 mar-rcustom pt-0 ">
+																					<label>Same as applicant Permanent address
+																						<input type="checkbox" name="" formControlName="communicationAddress"> <span class="checkmark setcheckbox" ></span> </label>
+																				</div>
+																			</div>
+																		</div> -->
+																		<div class="col-12 col-md-6 col-lg-4 col-xl-4">
+																			<div class="ux-input">
+																				<label> Date of Birth</label>
+																				<!-- <input type="text" class="datepicker1" placeholder="DD/MM/YYYY" formControlName="dob"> <em class=" calendar-ic cal-top"></em> -->
+																				<input type="text" readonly [(ngModel)]="defaultDate" [owlDateTime]="dt1" [owlDateTimeTrigger]="dt1" placeholder="DD/MM/YYYY"   formControlName="dob"  [max]="max" (ngModelChange)="onDateChange($event)">
+																				<owl-date-time [pickerType]="'calendar'" #dt1></owl-date-time><em class=" calendar-ic cal-top" [owlDateTimeTrigger]="dt1" ></em>
+																				<!-- <p class="error-message">Nominee is minor</p> -->
+                                        										<p class="error-message" *ngIf="nomineeDetailsForm.controls['dob'].hasError('required') && (nomineeDetailsForm.controls['dob'].dirty || nomineeDetailsForm.controls['dob'].touched)"> This field is required </p>
+																				<!-- <p class="error-message"  *ngIf="nomineeAge < 18" >{{'NOMINEE_IS_MINOR' | translate }}</p>  -->
+																			</div>
+																		</div>
+																	</div>
+																	<div class="row1" *ngIf="nomineeAge < 18">
+																		<div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 my-2">
+																			<h6 class="detail-heading">Please Provide Guardian Details</h6> </div>
+																	</div>
+																	<div class="row1" *ngIf="nomineeAge < 18">
+																		<div class="col-12 col-md-6 col-lg-4 col-xl-4">
+																			<div class="ux-input">
+																				<label>Guardian Name</label>
+																				<input type="text" placeholder="Select Guardian Name"  formControlName="guardianName" limit-to="20">
+																				<p class="error-message" *ngIf="nomineeDetailsForm.controls['guardianName'].hasError('required') && (nomineeDetailsForm.controls['guardianName'].dirty || nomineeDetailsForm.controls['guardianName'].touched)"> This field is required </p>
+																				<p class="error-message" *ngIf="nomineeDetailsForm.controls['guardianName'].hasError('pattern') && (nomineeDetailsForm.controls['guardianName'].dirty || nomineeDetailsForm.controls['guardianName'].touched)"> This field is required </p>
+
+																			</div>
+																		</div>
+																		<div class="col-12 col-md-6 col-lg-4 col-xl-4">
+																			<div class="ux-input">
+																				<label>Guardian Relationship with Nominee</label>
+																				<select formControlName="guardianRelationShip">
+																					<option value=""> Select Guardian Type </option>
+																					<option *ngFor="let gardian of gardianTypeList" [value]="gardian.ref_code">{{gardian.DESCRIPTION}}</option>
+																				</select>
+																				<p class="error-message" *ngIf="nomineeDetailsForm.controls['guardianRelationShip'].hasError('required') && (nomineeDetailsForm.controls['guardianRelationShip'].dirty || nomineeDetailsForm.controls['guardianRelationShip'].touched)"> This field is required </p>
+																			</div>
+																		</div>
+																		<div class="col-12 col-md-6 col-lg-4 col-xl-4">
+																			<div class="ux-input">
+																				<label>Guardian Address</label>
+																				<input type="text"  placeholder="Enter Address"  formControlName="guardianAddress" limit-to="30">
+																				<p class="error-message" *ngIf="nomineeDetailsForm.controls['guardianAddress'].hasError('required') && (nomineeDetailsForm.controls['guardianAddress'].dirty || nomineeDetailsForm.controls['guardianAddress'].touched)"> This field is required </p>
+
+																			</div>
+																		</div>
+																	</div>
+																	<div class="row1">
+																		<div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 my-2">
+																			<h6 class="detail-heading">Nominee's Communication Address</h6> </div>
+																	</div>
+																	<div class="row1">
+																		<div class="col-12 col-md-6 col-lg-4 col-xl-4">
+																			<div class="ux-input">
+																				<label>Address line 1</label>
+																				<input type="text" placeholder="Enter Address line 1"  formControlName="address1" limit-to="30">
+																				<p class="error-message" *ngIf="nomineeDetailsForm.controls['address1'].hasError('required') && (nomineeDetailsForm.controls['address1'].dirty || nomineeDetailsForm.controls['address1'].touched)"> This field is required </p>
+
+																			</div>
+																		</div>
+																	
+																		<div class="col-12 col-md-6 col-lg-4 col-xl-4">
+																			<div class="ux-input">
+																				<label>Address line 2</label>
+																				<input type="text" placeholder="Enter Address line 2"  formControlName="address2" limit-to="30"> 
+																				<!-- <p class="error-message" *ngIf="nomineeDetailsForm.controls['address2'].hasError('required') && (nomineeDetailsForm.controls['address2'].dirty || nomineeDetailsForm.controls['address2'].touched)"> This field is required </p> -->
+
+																			</div>
+																		</div>
+																	
+																	</div>
+																	<div class="row1">
+																		<div class="col-12 col-md-6 col-lg-4 col-xl-4">
+																			<div class="ux-input">
+																				<label>State</label>
+																				<select formControlName="state" (change)="getCity($event.target.value)">
+																					<option value=""> Select State </option>
+																					<option *ngFor="let stateDtl of stateNomineeList" [value]="stateDtl.ID" >{{stateDtl.state}}</option>
+																				</select>
+																				<p class="error-message" *ngIf="nomineeDetailsForm.controls['state'].hasError('required') && (nomineeDetailsForm.controls['state'].dirty || nomineeDetailsForm.controls['state'].touched)"> This field is required </p>
+
+																			</div>
+																		</div>
+																		<div class="col-12 col-md-6 col-lg-4 col-xl-4">
+																			<div class="row1">
+																				<div class="col-6">
+																					<div class="ux-input">
+																						<label>City</label>
+																						<select formControlName="city" >
+																							<option value=""> Select city </option>
+																							<option *ngFor="let cityDtl of cityList" [value]="cityDtl.ID" >{{cityDtl.city}}</option>
+																						</select>
+																						<p class="error-message" *ngIf="nomineeDetailsForm.controls['city'].hasError('required') && (nomineeDetailsForm.controls['city'].dirty || nomineeDetailsForm.controls['city'].touched)"> This field is required </p>
+
+																					</div>
+																				</div>
+																				<div class="col-6">
+																					<div class="ux-input">
+																						<label>PIN</label>
+																						<input type="text" numbersONly limit-to="6" placeholder="Enter PIN" formControlName="pincode" limit-to="6">
+																						<p class="error-message" *ngIf="nomineeDetailsForm.controls['pincode'].hasError('required') && (nomineeDetailsForm.controls['pincode'].dirty || nomineeDetailsForm.controls['pincode'].touched)"> This field is required </p>
+
+																					</div>
+																				</div>
+																			</div>
+																		</div>
+																	</div>
+																</div>
+															</div>
+														</div>
+													</div>
+												</div>
+											</div>
+											<div class="col-12 col-md-12">
+												<ul class="bottom-footer1">
+													<li>
+														<div class="btn-div">
+															<button class="ux-button secondary sm-mob"  (click)="goToPage('myAccountsInfo')" >Cancel</button>
+														</div>
+														<div class="btn-div">
+															<button class="ux-button primary sm-mob" type="submit" (click)="nomineeDetailsSubmit()" >Update</button>
+														</div>
+													</li>
+												</ul>
+											</div>
+										</div>
+                                    </form>
+									</div>
+								</div>
+								<!-- Greencard2 End here -->
+								<!-- Right Column Ads Start -->
+								<div class="col-12 col-md-12 col-lg-12 col-xl-3 d-none d-xl-block">
+									<div class="right-ads">
+										<a> <img src="assets/images/banner/my-card-banner.jpg"> </a>
+									</div>
+								</div>
+								<!-- Right Column Ads Ends -->
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!--.right-col-container-->
+	</div>
+	<!--.right-main-column-->
+</div>
+<!-- main -->

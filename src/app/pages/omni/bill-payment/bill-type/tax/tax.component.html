@@ -1,0 +1,519 @@
+<div class="row no-gutters">
+  <div class="col-12">
+    <div class="row1">
+      <div class="col-12 col-xl-4 col-lg-12 col-md-12">
+        <div class="grid-container">
+          <div class="grid-header">
+            <h4>{{"TAX_BILL_PAYMENT" | translate}}</h4>
+          </div>
+          <form [formGroup]="taxBillForm" (ngSubmit)="getBillDetails()">
+            <div class="row1">
+              <div class="col-12 col-xl-12 col-lg-12 col-md-12 col-sm-12">
+                <div class="ux-input">
+                  <label>{{"CORPORATION" | translate}}</label>
+                  <select required formControlName="corporationType" (change)="selectCorporation($event.target.value)">
+                    <option value="">{{"SELECT_CORPORATION" | translate}}</option>
+                    <option *ngFor="let list of corporationLists; index as i" [value]="list.id">{{list.name}}</option>
+                  </select>
+                  <span class="errormsg"
+                    *ngIf="formErrorstaxBillForm.corporationType">{{ formErrorstaxBillForm.corporationType }}</span>
+                  <p></p>
+                </div>
+              </div>
+              <div class="col-12 col-xl-12 col-lg-12 col-md-12 col-sm-12" *ngIf="showDetails">
+                <div class="ux-input">
+                  <label>{{labelName}}</label>
+                  <input type="text" placeholder="" autocomplete="off" name="dynamicID" formControlName="dynamicID">
+                  <span class="errormsg"
+                    *ngIf="formErrorstaxBillForm.dynamicID && !taxBillForm.controls['dynamicID'].hasError('pattern')">{{ formErrorstaxBillForm.dynamicID }}</span>
+                
+                    <span class="errormsg"
+                    *ngIf="!taxBillForm.controls['dynamicID'].hasError('required') && taxBillForm.controls['dynamicID'].hasError('pattern')  && taxBillForm.controls['dynamicID'].touched">{{TAX_BILL_ERR_MSG | translate}}</span>
+                  <p></p>
+                </div>
+              </div>
+
+
+            </div>
+            <div class="vspacer5"></div>
+            <div class="grid-footer" *ngIf="!showbilldetails">
+              <div class="ux-footer border-n pb-0 pl-0 pr-0">
+                <div class="row1">
+                  <button class="ux-button primary d-block m-auto" type="submit">{{"FETCH_BILL" | translate}}}</button>
+                </div>
+              </div>
+            </div>
+          </form>
+          <div class="row1" *ngIf="showbilldetails">
+            <div class="col-12 col-xl-12 col-lg-12 col-md-12 col-sm-12">
+              <div class="billDesc">
+                <h5>{{"BILL_DETAILS" | translate}}</h5>
+                <ul>
+                  <li> <b>{{labelName}} : </b> {{this.taxBillForm.get('dynamicID').value}} </li>
+                  <li> <b>{{"DUE_DATE" | translate}} : </b>{{billDetails.dueDate}} </li>
+                </ul>
+              </div>
+              <div class="billDesc">
+                <h5>{{"AMOUNT" | translate}}(Rs)</h5>
+                <label>{{billDetails.txn_amount | customcurrency:'symbol'}}</label>
+              </div>
+
+            </div>
+          </div>
+          <div *ngIf="showbilldetails">
+            <form [formGroup]="paybillForm" (ngSubmit)="submitClick()">
+              <div class="row1">
+                <div class="col-12 col-xl-12 col-lg-12 col-md-12 col-sm-12">
+                  <div class="ux-input">
+                    <label>{{"TRANSFER_FROM" | translate }}</label>
+                       <select id="transferFrom" (change)="onAccountNoChange($event.target.value)" formControlName="transferFrom">
+                        <option value="">{{"SELECT" | translate }}</option>
+                        <option  *ngFor="let account of accountList" [value]="account.accountNumber">{{account.sbAccount}}</option>
+                       </select>
+                       <span class="errormsg" *ngIf="payFormErrors.transferFrom">{{ payFormErrors.transferFrom }}</span>
+                 
+                       <p></p>
+                          <div class="text-right" *ngIf="isAccountSelected">
+                            <em class="message">{{"TOTAL_AVL_BAL_IS" | translate }} {{selectedAccBal | customcurrency : "symbol"}}</em>
+                     </div>
+                  </div>
+                </div>
+              </div>
+              <div class="grid-footer">
+                <div class="ux-footer border-n pb-0 pl-0 pr-0">
+                  <div class="row1">
+                    <button class="ux-button primary d-block m-auto" type="submit">{{"PAY_BILL" | translate}}</button>
+
+                  </div>
+                </div>
+              </div>
+            </form>
+
+          </div>
+        </div>
+      </div>
+
+      <div class="col-12 col-xl-8 col-lg-12 col-md-12 col-sm-12 ">
+        <div class="widget-box1">
+          <div class="component-title6 pad-custom">
+            <div class="row1">
+              <div class="col-12 ">
+                <!-- Nav tabs -->
+                <div class="ux-nav-tabs" style="margin: 0">
+                  <ul class="nav nav-tabs nav-justify bor-n" role="tablist">
+                    <li class="nav-item w50">
+                      <a class="nav-link  active account-details" data-toggle="tab" href="#tranaction3">{{"RECENT_TRANS" | translate}}</a>
+                    </li>
+                    <li class="nav-item w50">
+                      <a class="nav-link  recent-trans" data-toggle="tab" href="#biller3">{{"REGISTERED_BILLER" | translate}}</a>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Tab panes -->
+          <div class="tab-content">
+            <div id="tranaction3" class=" tab-pane active">
+              <div class="col-12  p-0">
+                <div class="datatable-box">
+                  <div class="table-responsive">
+                    <table id="dt-sample3" class="table display table-borderless">
+                      <tbody>
+                        <tr class="no-borders">
+                          <td>
+                            <div class="row1">
+                              <div class="col-12 col-xl-3 col-lg-3 col-md-3">
+                                <div class="m-auto">
+                                  <div class="grey-circle1">
+                                    <!-- <img src="assets/images/icons/user1.png" alt="user-img">  -->
+                                  </div>
+
+                                </div>
+                              </div>
+                              <div class="col-9 col-xl-9 col-lg-9 col-md-9 display-n">
+                                <div class="trasaction-details mt">
+                                  <h4>Vodafone, Postpaid</h4>
+                                </div>
+                              </div>
+                            </div>
+                          </td>
+                          <td class="display-n">
+                            <div class="trasaction-details mt">
+                              <h4>01/06/2020</h4>
+                            </div>
+                          </td>
+                          <td>
+                            <div class="trasaction-details mt">
+                              <h4>Prasad, 9664298423</h4>
+                              <h6>Last paid on 23 Jul 2020</h6>
+                            </div>
+                          </td>
+                          <td class="text-right display-n">
+                            <div class="trasaction-details mt">
+                              <h4><img src="assets/images/svg/rupee2.svg" alt="rupees-icon">427.67 </h4>
+                            </div>
+                          </td>
+                        </tr>
+                        <tr class="no-borders">
+                          <td>
+                            <div class="row1">
+                              <div class="col-12 col-xl-3 col-lg-3 col-md-3">
+                                <div class="m-auto">
+                                  <div class="grey-circle1">
+                                    <!-- <h6>S</h6> -->
+                                  </div>
+
+                                </div>
+                              </div>
+                              <div class="col-9 col-xl-9 col-lg-9 col-md-9 display-n">
+                                <div class="trasaction-details mt">
+                                  <h4>Vodafone, Postpaid</h4>
+                                </div>
+                              </div>
+                            </div>
+                          </td>
+                          <td class="display-n">
+                            <div class="trasaction-details mt">
+                              <h4>01/06/2020</h4>
+                            </div>
+                          </td>
+                          <td>
+                            <div class="trasaction-details mt">
+                              <h4>Prasad, 9664298423</h4>
+                              <h6>Last paid on 23 Jul 2020</h6>
+                            </div>
+                          </td>
+                          <td class="text-right display-n">
+                            <div class="trasaction-details mt">
+                              <h4><img src="assets/images/svg/rupee2.svg" alt="rupees-icon">427.67 </h4>
+                            </div>
+                          </td>
+                        </tr>
+                        <tr class="no-borders">
+                          <td>
+                            <div class="row1">
+                              <div class="col-12 col-xl-3 col-lg-3 col-md-3">
+                                <div class="m-auto">
+                                  <div class="grey-circle1">
+                                    <!-- <h6>S</h6> -->
+                                  </div>
+
+                                </div>
+                              </div>
+                              <div class="col-9 col-xl-9 col-lg-9 col-md-9 display-n">
+                                <div class="trasaction-details mt">
+                                  <h4>Vodafone, Postpaid</h4>
+                                </div>
+                              </div>
+                            </div>
+                          </td>
+                          <td class="display-n">
+                            <div class="trasaction-details mt">
+                              <h4>01/06/2020</h4>
+                            </div>
+                          </td>
+                          <td>
+                            <div class="trasaction-details mt">
+                              <h4>Prasad, 9664298423</h4>
+                              <h6>Last paid on 23 Jul 2020</h6>
+                            </div>
+                          </td>
+                          <td class="text-right display-n">
+                            <div class="trasaction-details mt">
+                              <h4><img src="assets/images/svg/rupee2.svg" alt="rupees-icon">427.67 </h4>
+                            </div>
+                          </td>
+                        </tr>
+                        <tr class="no-borders">
+                          <td>
+                            <div class="row1">
+                              <div class="col-12 col-xl-3 col-lg-3 col-md-3">
+                                <div class="m-auto">
+                                  <div class="grey-circle1">
+                                    <!-- <h6>S</h6> -->
+                                  </div>
+
+                                </div>
+                              </div>
+                              <div class="col-9 col-xl-9 col-lg-9 col-md-9 display-n">
+                                <div class="trasaction-details mt">
+                                  <h4>Vodafone, Postpaid</h4>
+                                </div>
+                              </div>
+                            </div>
+                          </td>
+                          <td class="display-n">
+                            <div class="trasaction-details mt">
+                              <h4>01/06/2020</h4>
+                            </div>
+                          </td>
+                          <td>
+                            <div class="trasaction-details mt">
+                              <h4>Prasad, 9664298423</h4>
+                              <h6>Last paid on 23 Jul 2020</h6>
+                            </div>
+                          </td>
+                          <td class="text-right display-n">
+                            <div class="trasaction-details mt">
+                              <h4><img src="assets/images/svg/rupee2.svg" alt="rupees-icon">427.67 </h4>
+                            </div>
+                          </td>
+                        </tr>
+                        <tr class="no-borders">
+                          <td>
+                            <div class="row1">
+                              <div class="col-12 col-xl-3 col-lg-3 col-md-3">
+                                <div class="m-auto">
+                                  <div class="grey-circle1">
+                                    <!-- <h6>S</h6> -->
+                                  </div>
+
+                                </div>
+                              </div>
+                              <div class="col-9 col-xl-9 col-lg-9 col-md-9 display-n">
+                                <div class="trasaction-details mt">
+                                  <h4>Vodafone, Postpaid</h4>
+                                </div>
+                              </div>
+                            </div>
+                          </td>
+                          <td class="display-n">
+                            <div class="trasaction-details mt">
+                              <h4>01/06/2020</h4>
+                            </div>
+                          </td>
+                          <td>
+                            <div class="trasaction-details mt">
+                              <h4>Prasad, 9664298423</h4>
+                              <h6>Last paid on 23 Jul 2020</h6>
+                            </div>
+                          </td>
+                          <td class="text-right display-n">
+                            <div class="trasaction-details  mt">
+                              <h4><img src="assets/images/svg/rupee2.svg" alt="rupees-icon">427.67 </h4>
+                            </div>
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+                <div class="vspacer10"></div>
+              </div>
+            </div>
+            <div id="biller3" class="tab-pane fade">
+              <div class="col-12  p-0">
+                <div class="datatable-box">
+                  <div class="table-responsive">
+                    <table id="dt-sample3" class="table display table-borderless">
+                      <tbody>
+                        <tr class="no-borders">
+                          <td class="bor-b">
+                            <div class="row1">
+                              <div class="col-12 col-xl-3 col-lg-3 col-md-3">
+                                <div class="m-auto">
+                                  <div class="grey-circle1">
+                                    <!-- <img src="assets/images/icons/user1.png" alt="user-img">  -->
+                                  </div>
+
+                                </div>
+                              </div>
+                              <div class="col-9 col-xl-9 col-lg-9 col-md-9 display-n">
+                                <div class="trasaction-details  mt">
+                                  <h4>Vodafone, Postpaid</h4>
+                                </div>
+                              </div>
+                            </div>
+                          </td>
+                          <td class="bor-b">
+                            <div class="trasaction-details  mt">
+                              <h4>Prasad, 9664298423</h4>
+                              <h6>Last bill paid on 23 Jul 2020</h6>
+                            </div>
+                          </td>
+                          <td class="text-right display-n bor-b">
+                            <div class="trasaction-details  mt">
+                              <button class="ux-button sm secondary float-right"> Pay
+                                Now</button>
+                            </div>
+                          </td>
+                          <!-- <td class="text-right bor-b">
+                            <a class="viewbtn" href="#"><img src="assets/images/svg/right-arrow-b.svg"
+                                alt="right-arrow"></a>
+                          </td> -->
+                        </tr>
+                        <tr class="no-borders">
+                          <td class="bor-b">
+                            <div class="row1">
+                              <div class="col-12 col-xl-3 col-lg-3 col-md-3">
+                                <div class="m-auto">
+                                  <div class="grey-circle1">
+                                    <!-- <img src="assets/images/icons/user1.png" alt="user-img">  -->
+                                  </div>
+
+                                </div>
+                              </div>
+                              <div class="col-9 col-xl-9 col-lg-9 col-md-9 display-n">
+                                <div class="trasaction-details  mt">
+                                  <h4>Vodafone, Postpaid</h4>
+                                </div>
+                              </div>
+                            </div>
+                          </td>
+                          <td class="bor-b">
+                            <div class="trasaction-details  mt">
+                              <h4>Prasad, 9664298423</h4>
+                              <h6>Last bill paid on 23 Jul 2020</h6>
+                            </div>
+                          </td>
+                          <td class="text-right display-n bor-b">
+                            <div class="trasaction-details  mt">
+                              <button class="ux-button sm secondary float-right"> Pay
+                                Now</button>
+                            </div>
+                          </td>
+                          <!-- <td class="text-right bor-b">
+                            <a class="viewbtn" href="#"><img src="assets/images/svg/right-arrow-b.svg"
+                                alt="right-arrow"></a>
+                          </td> -->
+                        </tr>
+                        <tr class="no-borders">
+                          <td class="bor-b">
+                            <div class="row1">
+                              <div class="col-12 col-xl-3 col-lg-3 col-md-3">
+                                <div class="m-auto">
+                                  <div class="grey-circle1">
+                                    <!-- <img src="assets/images/icons/user1.png" alt="user-img">  -->
+                                  </div>
+
+                                </div>
+                              </div>
+                              <div class="col-9 col-xl-9 col-lg-9 col-md-9 display-n">
+                                <div class="trasaction-details  mt">
+                                  <h4>Vodafone, Postpaid</h4>
+                                </div>
+                              </div>
+                            </div>
+                          </td>
+                          <td class="bor-b">
+                            <div class="trasaction-details  mt">
+                              <h4>Prasad, 9664298423</h4>
+                              <h6>Last bill paid on 23 Jul 2020</h6>
+                            </div>
+                          </td>
+                          <td class="text-right display-n bor-b">
+                            <div class="trasaction-details  mt">
+                              <button class="ux-button sm secondary float-right"> Pay
+                                Now</button>
+                            </div>
+                          </td>
+                          <!-- <td class="text-right bor-b">
+                            <a class="viewbtn" href="#"><img src="assets/images/svg/right-arrow-b.svg"
+                                alt="right-arrow"></a>
+                          </td> -->
+                        </tr>
+                        <tr class="no-borders">
+                          <td class="bor-b">
+                            <div class="row1">
+                              <div class="col-12 col-xl-3 col-lg-3 col-md-3">
+                                <div class="m-auto">
+                                  <div class="grey-circle1">
+                                    <!-- <img src="assets/images/icons/user1.png" alt="user-img">  -->
+                                  </div>
+
+                                </div>
+                              </div>
+                              <div class="col-9 col-xl-9 col-lg-9 col-md-9 display-n">
+                                <div class="trasaction-details  mt">
+                                  <h4>Vodafone, Postpaid</h4>
+                                </div>
+                              </div>
+                            </div>
+                          </td>
+                          <td class="bor-b">
+                            <div class="trasaction-details  mt">
+                              <h4>Prasad, 9664298423</h4>
+                              <h6>Last bill paid on 23 Jul 2020</h6>
+                            </div>
+                          </td>
+                          <td class="text-right display-n bor-b">
+                            <div class="trasaction-details  mt">
+                              <button class="ux-button sm secondary float-right" > Pay
+                                Now</button>
+                            </div>
+                          </td>
+                          <!-- <td class="text-right bor-b">
+                            <a class="viewbtn" href="#"><img src="assets/images/svg/right-arrow-b.svg"
+                                alt="right-arrow"></a>
+                          </td> -->
+                        </tr>
+                        <tr class="no-borders">
+                          <td>
+                            <div class="row1">
+                              <div class="col-12 col-xl-3 col-lg-3 col-md-3">
+                                <div class="m-auto">
+                                  <div class="grey-circle1">
+                                    <!-- <img src="assets/images/icons/user1.png" alt="user-img">  -->
+                                  </div>
+
+                                </div>
+                              </div>
+                              <div class="col-9 col-xl-9 col-lg-9 col-md-9 display-n">
+                                <div class="trasaction-details  mt">
+                                  <h4>Vodafone, Postpaid</h4>
+                                </div>
+                              </div>
+                            </div>
+                          </td>
+                          <td>
+                            <div class="trasaction-details  mt">
+                              <h4>Prasad, 9664298423</h4>
+                              <h6>Last bill paid on 23 Jul 2020</h6>
+                            </div>
+                          </td>
+                          <td class="text-right display-n ">
+                            <div class="trasaction-details  mt">
+                              <button class="ux-button sm secondary float-right"> Pay
+                                Now</button>
+                            </div>
+                          </td>
+                          <!-- <td class="text-right ">
+                            <a class="viewbtn" href="#"><img src="assets/images/svg/right-arrow-b.svg"
+                                alt="right-arrow"></a>
+                          </td> -->
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+                <div class="vspacer10"></div>
+              </div>
+              <div class="ux-footer">
+                <div class="row1">
+                  <div class="col-6 col-lg-6 col-md-6 col-sm-6">
+                    <button class="ux-button secondary sm2 d-block d-sm-block d-xl-none d-lg-none d-md-none"
+                      >{{"EDIT_DELETE_BILLER" | translate}}</button>
+                  </div>
+                  <div class="col-6 col-lg-6 col-md-6 col-sm-6">
+                    <button class="ux-button primary sm2 d-block d-sm-block d-xl-none d-lg-none d-md-none"
+                    (click)="addBillerClick()" >{{"ADD_BILLER" | translate}}</button>
+                  </div>
+                </div>
+                <div class="row1 d-none d-sm-none d-xl-block d-lg-block d-md-block">
+                  <div class="col-12 col-lg-12 col-md-12 col-sm-12">
+                    <button class="ux-button primary float-right ml-4" (click)="addBillerClick()" >{{"ADD_BILLER" | translate}}</button>
+                    <button class="ux-button secondary float-right">{{"EDIT_DELETE_BILLER" | translate}}</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>

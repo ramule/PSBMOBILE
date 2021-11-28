@@ -1,0 +1,204 @@
+<div class="main bg-m">
+	<div class="right-main-column ">
+		<div class="right-col-container pad-b full-width">
+			<!-- ======== body page content start from here ======== -->
+			<div class="body-page-container main-dashborad manage-payee">
+				<div class="container-fluid">
+					<div class="row">
+						<div class="col-12 p-0">
+							<div class="breadcrumb">
+								<ul class="lst-breadcrumb">
+									<li *ngFor="let name of dataService.breadcrumblist">
+										<a (click)="DataService.breadcrumroute(name.routeName)">{{name.currentRoute | translate}}</a> </li>
+								</ul>
+							</div>
+						</div>
+					</div>
+					<!--.row -->
+					<div class="vspacer15 customize d-none d-md-block d-lg-block d-xl-block"></div>
+					<div class="row no-gutters">
+						<div class="col-12">
+							<div class="row1">
+								<div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-9">
+									<!-- Greencard2 Start here -->
+									<div class="greencard2">
+										<div class="row1 hide-m">
+											<div class="col-md-8 col-12">
+												<h4>Pradhan Mantri Jeevan Jyoti Bima Yojana(PMJJBY)</h4> </div>
+											<div class="col-md-4 col-12"> </div>
+										</div>
+										<div class="row1">
+											<div class="col-sm-12 col-12 col-md-12">
+												<div class="widget-box5 mb-3">
+													<div class="bg-white1 pad-custom py-2">
+														<div class="row1">
+															<div class="col-md-12 col-12">
+																<div id="accordion1" class="accordion-container parent-accordion">
+																	<div class="card4">
+																		<a class="card-link" data-toggle="collapse" href="#scheme" aria-expanded="false">
+																			<div class="card-header3">
+																				<div class="panel-title3">
+																					<h6 class="detail-heading">Scheme Details</h6> </div> <em></em> </div>
+																			<!--card-header-->
+																		</a>
+																		<div id="scheme" class="collapse show" data-parent="#accordion1">
+																			<div class="white-box2 m-0 p-0 shadow-none">
+																				<div class="info-bottom pad-custom p-0">
+																					<div class="info-details">
+																						<div class="row">
+																							<h6>Scheme</h6>
+																							<h5>Pradhan Mantri Jeevan Jyoti Bima Yojana(PMJJBY)</h5> </div>
+																					</div>
+																					<div class="info-details">
+																						<div class="row">
+																							<h6>Name</h6>
+																							<h5>{{dataService.userDetails?.customerName ? dataService.userDetails.customerName : '-'}}</h5> </div>
+																					</div>
+																					<div class="info-details">
+																						<div class="row">
+																							<h6>Date of Birth</h6>
+																							<h5>{{dataService.profiledateDetails[0].custBirthDate ? dataService.profiledateDetails[0].custBirthDate : '-'}}</h5> </div>
+																					</div>
+																					<div class="info-details">
+																						<div class="row">
+																							<h6>Policy Number</h6>
+																							<h5>{{enrollmentDetailsData.tranId ? enrollmentDetailsData.tranId : '-'}}</h5> </div>
+																					</div>
+																					<div class="info-details">
+																						<div class="row">
+																							<h6> Premium Amount </h6>
+																							<h5>{{enrollmentDetailsData.premiumAmount | customcurrency}}</h5> </div>
+																					</div>
+																					<div class="info-details">
+																						<div class="row">
+																							<h6> Debit Account </h6>
+																							<h5>{{enrollmentDetailsData.accountNo ? enrollmentDetailsData.accountNo : '-'}}</h5> </div>
+																					</div>
+																					<div class="info-details">
+																						<div class="row">
+																							<h6> Date of Enrollment </h6>
+																							<h5>{{enrollmentDetailsData.joinDate ? enrollmentDetailsData.joinDate : '-'}}</h5> </div>
+																					</div>
+																					<div class="info-details">
+																						<div class="row">
+																							<h6> Maturity Date</h6>
+																							<h5>{{enrollmentDetailsData.maturityDate ? enrollmentDetailsData.maturityDate : '-'}}</h5> </div>
+																					</div>
+																					<div class="info-details">
+																						<div class="row">
+																							<h6>Renewal Due On</h6>
+																							<h5>{{enrollmentDetailsData.tranDate ? enrollmentDetailsData.tranDate : '-'}}</h5> </div>
+																					</div>
+																				</div>
+																			</div>
+																		</div>
+																	</div>
+																</div>
+															</div>
+														</div>
+													</div>
+												</div>
+											</div>
+											<div class="col-sm-12 col-12 col-md-12">
+												<div class="widget-box5 mb-3">
+													<div class="bg-white1 pad-custom py-2">
+														<div class="row1">
+															<div class="col-md-12 col-12">
+																<div id="accordion1" class="accordion-container parent-accordion">
+																	<div class="card4">
+																		<a class="card-link" data-toggle="collapse" href="#nominee" aria-expanded="false">
+																			<div class="card-header3">
+																				<div class="panel-title3">
+																					<h6 class="detail-heading">Nominee Details</h6> </div> <em></em> </div>
+																			<!--card-header-->
+																		</a>
+																		<div id="nominee" class="collapse show" data-parent="#accordion1">
+																			<div class="white-box2 m-0 p-0 shadow-none">
+																				<div class="info-bottom pad-custom p-0">
+																					<div class="info-details">
+																						<div class="row">
+																							<h6>Nominee Name</h6>
+																							<h5>{{enrollmentDetailsData.nomineeName ? enrollmentDetailsData.nomineeName : '-'}}</h5> </div>
+																					</div>
+																					<div class="info-details">
+																						<div class="row">
+																							<h6>Relationship with Nominee</h6>
+																							<h5>{{enrollmentDetailsData.nomineeRelation ? enrollmentDetailsData.nomineeRelation : '-'}}</h5> </div>
+																					</div>
+																					<div class="info-details">
+																						<div class="row">
+																							<h6>Nominee Age</h6>
+																							<h5>{{enrollmentDetailsData.nomineeAge ? enrollmentDetailsData.nomineeAge+ ' Years' : '-'}}</h5> </div>
+																					</div>
+																					<div class="info-details">
+																						<div class="row">
+																							<h6>Nominee / Guardian Address</h6>
+																							<h5>-</h5> </div>
+																					</div>
+																					<!-- <div class="info-details">
+																						<div class="row">
+																							<h6>City</h6>
+																							<h5>-</h5> </div>
+																					</div>
+																					<div class="info-details">
+																						<div class="row">
+																							<h6>State</h6>
+																							<h5>-</h5> </div>
+																					</div>
+																					<div class="info-details">
+																						<div class="row">
+																							<h6>PIN</h6>
+																							<h5>-</h5> </div>
+																					</div> -->
+																				</div>
+																			</div>
+																		</div>
+																	</div>
+																</div>
+															</div>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+										<!-- <div class="row1">
+											<div class="col-12 col-md-12">
+												<div class="row1">
+													<div class="col-md-12 col-lg-6 col-12">
+														<ul class="link-list hide-m">
+															<li (click)="shareDetails()">
+																<a><img src="assets/images/svg/share.svg" alt="share-icon">Share</a>
+															</li>
+															<li (click)="downloadPdfReceipt(false)">
+																<a><img src="assets/images/svg/download.svg" alt="download-icon">Download</a>
+															</li>
+															<li (click)="downloadPdfReceipt(true)">
+																<a> <img src="assets/images/svg/print.svg" alt="print-icon">Print</a>
+															</li>
+														</ul>
+													</div>
+												</div>
+											</div>
+										</div> -->
+									</div>
+									<!-- Greencard2 End here -->
+								</div>
+								<!-- Right Column Ads Start -->
+								<div class="col-12 col-md-12 col-lg-12 col-xl-3 d-none d-xl-block">
+									<div class="right-ads">
+										<a> <img src="assets/images/banner/my-card-banner.jpg"> </a>
+									</div>
+									<div class="vspacer30"></div>
+								</div>
+								<!-- Right Column Ads Ends -->
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!--.right-col-container-->
+	</div>
+	<!--.right-main-column-->
+</div>
+<!-- main -->

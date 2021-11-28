@@ -1,0 +1,132 @@
+<div class="main">
+  <div class="right-main-column minus-rt-col mar-custom">
+    <div class="right-col-container pad-b">
+      <div class="body-page-container">
+        <div class="container-fluid">
+          <div class="row">
+            <div class="bg-section">
+              <div class="col-12">
+                <div class="row1">
+                  <div class="col-sm-12 col-12 col-md-12">
+
+                    <!-- No record Found section -->
+                    <div class="white-bg1 pad-custom" *ngIf="blockedUPIIdList.length==0">
+                      <div class="unfound-info">
+                        <!-- <img src="assets/images/svg/complaints-no-data.svg" alt="complaint-icon"> -->
+                        <!-- <h6>{{'YOU_DONT_HAVE_ANY_COMPLAINTS_RIGHT_NOW' | translate}}</h6> -->
+                        <h6>{{'NO_RECORD_FOUND' | translate}}</h6>
+                      </div>
+                    </div>
+                    <!-- End of no record found section -->
+
+                    <div class="white-bg1 pad-custom" *ngIf="blockedUPIIdList.length > 0">
+                      <!-- Accordion Start here-->
+                      <div id="accordion" class="accordion-container">
+                        <div class="card2" *ngFor="let blockedUPIId of blockedUPIIdList; index as i">
+                          <a class="card-link" data-toggle="collapse" href="#collapse{{i}}" aria-expanded="false">
+                            <div class="card-header3">
+                              <div class="panel-title2" style="padding: 0px;">
+                                <ul class="list2">
+                                  <li> <span class="green1">
+                                      <!-- <img src="assets/images/icons/user13.png" alt="user-img">   -->
+                                      <h6>{{blockedUPIId.name | firstLastChar}}</h6>
+                                    </span> </li>
+                                  <li>
+                                    <h4>{{blockedUPIId.name}}</h4> <small> {{'UPI_ID' | translate }} : {{blockedUPIId.vpa}}</small>
+                                  </li>
+                                </ul>
+                              </div> <em></em>
+                            </div>
+                            <!--card-header-->
+                          </a>
+                          <div id="collapse{{i}}" class="collapse" data-parent="#accordion">
+                            <div class="card-body bg-lg2">
+                              <div class="row">
+                                <ul class="user-info-list">
+                                  <li>
+                                    <h6>{{'BLOCK_FREQUENCY' | translate}}</h6>
+                                    <h5>{{blockedUPIId.blockPeriod}}</h5>
+                                  </li>
+                                  <li>
+                                    <h6>{{'BLOCKED_DATE' | translate}}</h6>
+                                    <h5>{{ blockedUPIId.fromBlockTime}}</h5>
+                                  </li>
+                                  <li>
+                                    <h6>{{'AUTO_UNBLOCK_DATE' | translate}} :</h6>
+                                    <h5>{{blockedUPIId.toBlockTime}}</h5>
+                                  </li>
+                                </ul>
+                              </div>
+                              <div class="ux-footer">
+                                <div class="row1">
+                                  <div class="col-12 col-lg-12 col-md-12 col-sm-12 text-center">
+                                    <button class="unblock-btn ux-button  secondary"
+                                      (click)="showPopup('unblockUPIId',blockedUPIId)">{{'UNBLOCK' | translate}}</button>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <!--card-->
+                      </div>
+                      <!-- Accordion End here-->
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- main -->
+
+
+<!-- =========== modal popup start ===============  -->
+
+<!-- Unblock UPI ID Popup Start -->
+<div class="popup-bottom unblockUPIId">
+  <div class="row">
+    <div class="col-12">
+      <h4 class="text-center">{{'UNBLOCK_UPI_ID' | translate}}</h4>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-12">
+      <p> {{'DO_YOU_WANT_TO_UNBLOCK_THIS_UPI_ID' | translate}} {{vpaDetails?.vpa}}? </p>
+    </div>
+  </div>
+  <div class="row1 mt-2">
+    <div class="col-6 text-center">
+      <button class="ux-button secondary no md close-btn"
+        (click)="closePopup('unblockUPIId')">{{'NO' | translate}}</button>
+    </div>
+    <div class="col-6 text-center">
+      <button class="unblock-submit ux-button primary md" (click)="UnblockUPIId()">{{'YES' | translate}}</button>
+    </div>
+  </div>
+</div>
+<!--  Unblock UPI ID Popup End -->
+
+
+<!-- Unblock ID Success Popup Start -->
+<div class="popup-bottom UPIID-Unblock-success">
+  <!-- <form action="#" id="success-form"> -->
+  <div class="row mt-3">
+    <div class="success"> <img src="assets/images/svg/check.svg" alt="success-icon">
+      <h3>{{'SUCCESS' | translate}}</h3>
+      <h5>{{information}}</h5>
+    </div>
+  </div>
+  <div class="row1 mt-3">
+    <div class="col-12 text-center">
+      <button class="ux-button primary md" (click)="closePopup('UPIID-Unblock-success')">{{'OK' | translate}}</button>
+    </div>
+  </div>
+  <!-- </form> -->
+</div>
+<!-- Unblock ID Success Popup End -->
+<div class="ios-nav-overlay"></div>

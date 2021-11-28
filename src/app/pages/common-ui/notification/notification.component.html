@@ -1,0 +1,256 @@
+<!-- Notification Panel Section :: Start -->
+<aside class="notification-panel sticky-panel"  *ngIf="commonPageComponent?.headerType === 'innerHeader' && isWeb">
+    <div class="notp-header">
+        <div class="row1">
+            <div class="col-6">
+                <a href="javascript:;" class="btn-closenoty" ></a>
+                <h5>Notifications</h5>
+            </div>
+            <div class="col-6">
+                <ul class="notification-filter">
+                    <li (click)="filter()">
+                        <a >
+                            <img src="assets/images/svg/filter-g.svg" alt="filter" >
+                        </a>
+                    </li>
+                    <li (click)="generatePDF()">
+                        <a>
+                            <img src="assets/images/svg/download.svg" alt="filter"  >
+                        </a>
+                    </li>
+                    <li (click)="shareNotification()">
+                        <a>
+                            <img src="assets/images/svg/share-notify.svg" alt="filter">
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div><!--.notp-header-->
+    <div class="notp-content fancy-scroll">
+
+        <div class="notp-innercontent">
+            <div class="notp-list">
+      <div class="notp-footer" *ngIf="this.DataService.notificationArray.length == 0">
+        <a>No records to display.</a>
+      </div>
+                <ul class="notification-list-web">
+                    <li *ngFor="let notification of this.DataService.notificationArray; let i = index" (click)="readNotification(notification.NotificationID)">
+                        <div class="full-container">
+                            <div class="notify-icon">
+                                <img src="assets/images/svg/login.svg" alt="" >
+                            </div>
+                            <div class="row1">
+                                <div class="col-12 col-md-12">
+                                    <div class="left-info">
+                                        <h6>{{notification.header}}</h6>
+                                        <em>{{notification.remarks}}</em>
+                                        <!-- <small>{{notification.TransactionDate}}</small> -->
+                                    </div>
+                                    </div>
+                                </div>
+                            <div class="row1">
+                                <div class="col-12 col-md-5">
+                                    <div class="left-info1">
+                                    <em>{{notification.TransactionDate | date :'dd MMM yyyy'}}</em>
+                                </div>
+                                </div>
+                                <div class="col-12 col-md-7">
+                                    <div class="right-info">
+                  <a class="share-btn" (click)="share(notification)"><img src="assets/images/svg/share.svg" alt="share-icon" /></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <!-- <li>
+                        <div class="full-container">
+                            <div class="notify-icon">
+                                <img src="assets/images/svg/pay.svg" alt="">
+                            </div>
+                            <div class="row1">
+                                <div class="col-12 col-md-12">
+                                    <div class="left-info">
+                                        <h6>
+                                            Upcoming Payment
+                                        </h6>
+                                        <em>Payment of ₹30,000.00 for you loan amount is due On 24 July 2021</em>
+                                        <small>3m</small>
+                                    </div>
+                                    </div>
+                                </div>
+                            <div class="row1">
+                                <div class="col-12 col-md-5">
+                                    <div class="left-info1">
+                                    <em>25 Sept 2020, 08:10</em>
+                                </div>
+                                </div>
+                                <div class="col-12 col-md-7">
+                                    <div class="right-info">
+                                        <button type="button" class="ux-button sm primary">Pay Now</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="full-container">
+                            <div class="notify-icon">
+                                <img src="assets/images/svg/reminder.svg" alt="">
+                            </div>
+                            <div class="row1">
+                                <div class="col-12 col-md-12">
+                                    <div class="left-info">
+                                        <h6>
+                                            OTP
+                                        </h6>
+                                        <em>Dear Customer, Your login PIN for PSB Bank has been changed successfully.</em>
+                                        <small>3m</small>
+                                    </div>
+                                    </div>
+                                </div>
+                            <div class="row1">
+                                <div class="col-12 col-md-5">
+                                    <div class="left-info1">
+                                    <em>25 Sept 2020, 08:10</em>
+                                </div>
+                                </div>
+                                <div class="col-12 col-md-7">
+                                    <div class="right-info">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="full-container">
+                            <div class="notify-icon">
+                                <img src="assets/images/svg/pay.svg" alt="">
+                            </div>
+                            <div class="row1">
+                                <div class="col-12 col-md-12">
+                                    <div class="left-info">
+                                        <h6>
+                                            Collect Request
+                                        </h6>
+                                        <em>billdesk@sbi has requested for ₹ 350.00. Please click here to authorize the payment collect request.</em>
+                                        <small>3m</small>
+                                    </div>
+                                    </div>
+                                </div>
+                            <div class="row1">
+                                <div class="col-12 col-md-5">
+                                    <div class="left-info1">
+                                    <em>25 Sept 2020, 08:10</em>
+                                </div>
+                                </div>
+                                <div class="col-12 col-md-7">
+                                    <div class="right-info">
+                                        <button type="button" class="ux-button sm secondary" >Decline</button>
+                                        <button type="button" class="ux-button sm primary">Accept</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="full-container">
+                            <div class="notify-icon">
+                                <img src="assets/images/svg/alert.svg" alt="">
+                            </div>
+                            <div class="row1">
+                                <div class="col-12 col-md-12">
+                                    <div class="left-info">
+                                        <h6>
+                                            Updated Address
+                                        </h6>
+                                        <em>Dear Customer, Your login PIN for PSB Bank has been changed successfully.</em>
+                                        <small>3m</small>
+                                    </div>
+                                    </div>
+                                </div>
+                            <div class="row1">
+                                <div class="col-12 col-md-5">
+                                    <div class="left-info1">
+                                    <em>25 Sept 2020, 08:10</em>
+                                </div>
+                                </div>
+                                <div class="col-12 col-md-7">
+                                    <div class="right-info">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="full-container">
+                            <div class="notify-icon">
+                                <img src="assets/images/svg/OFFERS.svg" alt="">
+                            </div>
+                            <div class="row1">
+                                <div class="col-12 col-md-12">
+                                    <div class="left-info">
+                                        <h6>
+                                            Home Loan Offer
+                                        </h6>
+                                        <em>Lorem Ipsum is simply dummy text of the printing and typesetting industry</em>
+                                        <small>3m</small>
+                                    </div>
+                                    </div>
+                                </div>
+                            <div class="row1">
+                                <div class="col-12 col-md-5">
+                                    <div class="left-info1">
+                                    <em>25 Sept 2020, 08:10</em>
+                                </div>
+                                </div>
+                                <div class="col-12 col-md-7">
+                                    <div class="right-info">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="full-container">
+                            <div class="notify-icon">
+                                <img src="assets/images/svg/Request (2).svg" alt="">
+                            </div>
+                            <div class="row1">
+                                <div class="col-12 col-md-12">
+                                    <div class="left-info">
+                                        <h6>
+                                            Service Requests
+                                        </h6>
+                                        <em>Lorem Ipsum is simply dummy text of the printing and typesetting industry</em>
+                                        <small>3m</small>
+                                    </div>
+                                    </div>
+                                </div>
+                            <div class="row1">
+                                <div class="col-12 col-md-5">
+                                    <div class="left-info1">
+                                    <em>25 Sept 2020, 08:10</em>
+                                </div>
+                                </div>
+                                <div class="col-12 col-md-7">
+                                    <div class="right-info">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </li> -->
+
+                </ul>
+
+            </div><!--.notp-list-->
+
+        </div><!--.notp-innercontent-->
+
+    </div><!--.notp-content-->
+    <div class="notp-footer">
+        <a (click)="goToPage('omniNotification')">View All Notifications</a>
+    </div><!--.notp-footer-->
+</aside><!--.notification-panel-->
+<div class="notpanel-overlay"></div><!--.notpanel-overlay-->
+<!-- Notification Panel Section :: End   -->

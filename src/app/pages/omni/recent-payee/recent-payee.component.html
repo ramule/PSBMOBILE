@@ -1,0 +1,216 @@
+<!-- Right Column Ads Start -->
+<div class="row1" *ngIf= "type != 'vpa'">
+	<div class="tab-show col-sm-12 col-12 col-md-12">
+		<div class="ux-nav-tabs" style="margin:0">
+			<div class="responsive3">
+				<ul class="nav nav-tabs nav-justified bor-n mt-0" role="tablist">
+					<li class="nav-item"> <a class="nav-link active" data-toggle="tab" href="#recent">Recent Payee</a> </li>
+					<li class="nav-item" *ngIf="favoritePayee"> <a class="nav-link" data-toggle="tab" href="#favorite">Favorite Payee</a> </li>
+				</ul>
+				<!-- Tab panes -->
+				<div class="tab-content custom-tab-content scrollDiv" >
+					<div id="recent" class=" tab-pane active">
+						<div class="row1" *ngIf="recentTransactionList.length == 0"> 
+							<div class="col-sm-12 col-12 col-md-12">
+							  <div class="unfound-info">
+								  <!-- <img src="../assets/images/svg/bank-info.svg" alt="bank-icon"> -->
+								   <h6>No Record Found</h6>
+							 </div>
+						   </div> 
+					   </div>
+						<div class="row1">
+							<div class="col-sm-12 col-12 col-md-12">
+								<ul class="payee-list2">
+									<li *ngFor="let payee of recentTransactionList">
+										<a (click)="payeeSelection(payee,'recent')">
+											<div class="full-container">
+												<div class="full-info">
+													<div class="left-info">
+														<div class="user-info">
+															<!-- <span class="green">
+                                                                         <img src="assets/images/icons/user3.png" alt="user-img">
+                                                                    </span>  -->
+                                                            <span class="{{payee.color}}">
+                                                                <h6>{{ payee.benefName | firstLastChar | uppercase }}</h6>
+                                                            </span> 
+                                                        </div>
+														<h5>{{  payee.benefName }} </h5>
+														<!-- <h6>{{ payee.benefName }}</h6>  --></div>
+												</div>
+												<div class="full-info" *ngIf="type != 'vpa'">
+													<div class="right-info">
+														<h5><img src="assets/images/svg/rupee-bl.svg" alt="rupees-icon">{{ payee.txn_amount }}</h5>
+														<h6>{{payee.TransactionDate}}  {{payee.TransactionMonth}}</h6> </div>
+												</div>
+											</div>
+										</a>
+									</li>
+									<li class="view-more" *ngIf='recentTransactionList.length > 8'>
+										<a (click)="viewMoreDtl('recent')"> 
+                                            <span class="white1">
+                                                <img src="assets/images/svg/more.svg" alt="more-icon">
+                                            </span> 
+                                        <em>View More</em> 
+                                        </a>
+									</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+					<div id="favorite" class="tab-pane fade">
+						<div class="row1" *ngIf="favoriteList.length == 0"> 
+							<div class="col-sm-12 col-12 col-md-12">
+							  <div class="unfound-info">
+								  <!-- <img src="../assets/images/svg/bank-info.svg" alt="bank-icon"> -->
+								   <h6>No Record Found</h6>
+							 </div>
+						   </div> 
+					   </div>
+						<div class="row1">
+							<div class="col-sm-12 col-12 col-md-12">
+								<ul class="payee-list2">
+									<li *ngFor="let payee of favoriteList">
+										<a (click)="payeeSelection(payee,'favorite')">
+											<div class="full-container">
+												<div class="full-info">
+													<div class="left-info">
+														<div class="user-info"> 
+                                                            <span class="{{payee.color}}">
+                                                                <h6>{{payee.benefName | firstLastChar | uppercase }}</h6>
+                                                            </span> 
+                                                        </div>
+														<h5>{{ payee.benefName}}</h5>
+														<h6 *ngIf="type == ''">{{payee.accountNo}}</h6> </div>
+												</div>
+												<div class="full-info" *ngIf="type != 'vpa'">
+													<div class="right-info">
+														<h5><img src="assets/images/svg/rupee-bl.svg" alt="rupees-icon">{{payee.TransactionAmount}}</h5> 
+                                                    </div>
+												</div>
+											</div>
+										</a>
+									</li>
+									<li class="view-more" *ngIf='favoriteList.length > 8'>
+										<a> <span class="white1" (click)="viewMoreDtl('favorite')" >
+                                            <img src="assets/images/svg/more.svg" alt="more-icon">
+                                                </span> <em>View More</em> 
+                                        </a>
+									</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="row1" *ngIf= "type == 'vpa'">
+	<div class="tab-show col-sm-12 col-12 col-md-12">
+		<div class="ux-nav-tabs" style="margin:0">
+			<div class="responsive3">
+				<ul class="nav nav-tabs nav-justified bor-n mt-0" role="tablist">
+					<li class="nav-item"> <a class="nav-link active" data-toggle="tab" href="#recent">Recent Payee</a> </li>
+					<li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#favorite">Favorite Payee</a> </li>
+				</ul>
+				<!-- Tab panes -->
+				<div class="tab-content custom-tab-content scrollDiv">
+					<div id="recent" class=" tab-pane active">
+						<div class="row1" *ngIf="upirecentTransactionList.length == 0"> 
+							<div class="col-sm-12 col-12 col-md-12">
+							  <div class="unfound-info">
+								  <!-- <img src="../assets/images/svg/bank-info.svg" alt="bank-icon"> -->
+								   <h6>No Record Found</h6>
+							 </div>
+						   </div> 
+					   </div>
+						<div class="row1">
+							<div class="col-sm-12 col-12 col-md-12">
+								<ul class="payee-list2">
+									<li *ngFor="let payee of upirecentTransactionList">
+										<a (click)="payeeSelection(payee,'recent')">
+											<div class="full-container">
+												<div class="full-info">
+													<div class="left-info">
+														<div class="user-info">
+															<!-- <span class="green">
+                                                                         <img src="assets/images/icons/user3.png" alt="user-img">
+                                                                    </span>  -->
+                                                            <span class="{{payee.color}}">
+                                                                <h6>{{payee.nickName | firstLastChar | uppercase }}</h6>
+                                                            </span> 
+                                                        </div>
+														<h5>{{ payee.nickName | titlecase }} </h5>
+														<h6>{{ payee.beneVpa }}</h6> </div>
+												</div>
+												<!-- <div class="full-info" *ngIf="type != 'vpa'">
+													<div class="right-info">
+														<h5><img src="assets/images/svg/rupee-bl.svg" alt="rupees-icon">{{ payee.txn_amount }}</h5>
+														<h6>{{payee.TransactionMonth}}</h6> </div>
+												</div> -->
+											</div>
+										</a>
+									</li>
+									<li class="view-more" *ngIf='upirecentTransactionList.length > 7' (click)="gotoPage('payeeList')">
+										<a> 
+                                            <span class="white1">
+                                                <img src="assets/images/svg/more.svg" alt="more-icon">
+                                            </span> 
+                                        <em>View More</em> 
+                                        </a>
+									</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+					<div id="favorite" class="tab-pane fade">
+						<div class="row1" *ngIf="upifavoriteList.length == 0"> 
+							<div class="col-sm-12 col-12 col-md-12">
+							  <div class="unfound-info">
+								  <!-- <img src="../assets/images/svg/bank-info.svg" alt="bank-icon"> -->
+								   <h6>No Record Found</h6>
+							 </div>
+						   </div> 
+					   </div>
+						<div class="row1">
+							<div class="col-sm-12 col-12 col-md-12">
+								<ul class="payee-list2">
+									<li *ngFor="let payee of upifavoriteList">
+										<a (click)="payeeSelection(payee,'favorite')">
+											<div class="full-container">
+												<div class="full-info">
+													<div class="left-info">
+														<div class="user-info"> 
+                                                            <span class="{{payee.color}}">
+                                                                <h6>{{payee.nickName | firstLastChar | uppercase }}</h6>
+                                                            </span> 
+                                                        </div>
+														<h5>{{ payee.nickName | titlecase}}</h5>
+														<h6>{{ payee.beneVpa }}</h6> 
+														<!-- <h6 *ngIf="type == ''">{{payee.accountNo}}</h6>  -->
+													</div>
+												</div>
+												<!-- <div class="full-info" *ngIf="type != 'vpa'">
+													<div class="right-info">
+														<h5><img src="assets/images/svg/rupee-bl.svg" alt="rupees-icon">{{payee.TransactionAmount}}</h5> 
+                                                    </div>
+												</div> -->
+											</div>
+										</a>
+									</li>
+									<li class="view-more" *ngIf='upifavoriteList.length > 7' (click)="gotoPage('payeeList')" >
+										<a> <span class="white1">
+                                            <img src="assets/images/svg/more.svg" alt="more-icon">
+                                                </span> <em>View More</em> 
+                                        </a>
+									</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

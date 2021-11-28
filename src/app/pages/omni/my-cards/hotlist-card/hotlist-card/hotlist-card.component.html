@@ -1,0 +1,221 @@
+<div class="main bg-m frwk-changes">
+	<div class="nav-overlay"></div>
+	<!-- End Global Nav -->
+	<div class="right-main-column ">
+		<div class="right-col-container pad-b full-width">
+			<!-- ======== body page content start from here ======== -->
+			<div class="body-page-container main-dashborad mycards">
+				<div class="container-fluid">
+					<div class="row">
+						<div class="col-12 p-0">
+							<div class="breadcrumb">
+								<ul class="lst-breadcrumb">
+									<!-- <li> <a [routerLink]="['/myCardsDetails']">My Cards</a> </li>
+									<li> <a [routerLink]="['/debitCards']">Debit Cards</a> </li>
+									<li> Hotlist Card </li> -->
+									<li *ngFor="let name of DataService.breadcrumblist">
+										<a (click)="DataService.breadcrumroute(name.routeName)">{{name.currentRoute | translate}}</a>
+								</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+					<!--.row -->
+					<div class="vspacer15 customize d-none d-xl-block d-lg-block d-md-none d-sm-none "></div>
+					<div class="row no-gutters">
+						<div class="col-12">
+							<div class="row1">
+								<div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-9">
+									<!-- Greencard2 Start here -->
+                  <form [formGroup]="hotListDebitCardForm">
+									<div class="greencard2">
+										<div class="flex-container no-bg">
+											<div class="full-info">
+												<div class="row1">
+													<div class="col-12">
+														<div class="ac-info">
+															<div class="greenbg-input ux-input">
+																<label for="debitCard" class="largeview-enable">Debit Card</label>
+															</div>
+														</div>
+														<!-- <div class="ac-info" (click)="onAccountSelectType()">
+															<div class="greenbg-input ux-input">
+																<select id="custom-icon-selectbox" class="hide-m">
+																	<option  value="select">Select</option>
+																	<option data-img_src="assets/images/icons/icici-icon.png"  *ngFor="let account of accountList"> {{account.accountNo}}</option>
+																</select>
+
+																<div class="custom-selectbox">
+
+																	<span *ngIf="accountValue == '' ">Select Account </span>
+																	<span *ngIf="accountValue != '' "> <img src="{{bankImage}}" class="bank-icon"> {{accountValue}}</span>
+																	<span class="right-arrow"></span> </div>
+																<p class="error-message"></p>
+															</div>
+														</div> -->
+														<div class="ac-info">
+															<div class="greenbg-input ux-input" (click)="onAccountSelectType()">
+																<ul class="list-unstyled hide-m" id="custom-icon-selectbox"  (click)="toggleOpen()" >
+																	<li class="init" *ngIf="selectedCard == '' ">Select Account</li>
+																	<li class="init"  *ngIf="selectedCard != '' ">
+																		<img *ngIf="selCard[0]?.card_network == 'VS' " src="assets/images/icons/visa-icon.svg" alt="visa-logo" style="width: 19% !important;" >
+																		<img *ngIf="selCard[0]?.card_network == '' " src="assets/images/svg/Rupay-01.svg" alt="rupay-logo" style="width: 19% !important;" >
+																		<img *ngIf="selCard[0]?.card_network == 'RS' " src="assets/images/svg/Rupay-02.svg" alt="rupay-logo" style="width: 19% !important;" >
+																		<img *ngIf="selCard[0]?.card_network == 'MS' " src="assets/images/icons/visa-icon.svg" alt="master-logo" style="width: 19% !important;" >
+																		{{selectedCard?.MaskCardNumber}}</li>
+																	<!-- <li style="display: none;" [ngStyle]="{display : openDropDown ? 'list-item' : 'none' }" *ngFor="let accountListData of DataService.cardList ; index as i" (click)="dataSelection(accountListData)"> {{accountListData.MaskCardNumber}}</li> -->
+																	<!-- <li style="display: none;"><img src="assets/images/icons/hdfc-icon.png" alt=""> XXXX XXXX XXXX 4545</li>
+																	<li style="display: none;"><img src="assets/images/icons/icici-icon.png" alt=""> XXXX XXXX XXXX 6675</li>  -->
+
+                                                                    <!-- <span class="right-arrow"></span>  -->
+																</ul>
+																<div class="custom-selectbox">
+																	<span *ngIf="selectedCard == '' ">Select Account</span>
+																	<span  *ngIf="selectedCard != '' ">
+																		<img *ngIf="selCard[0]?.card_network == 'VS' " src="assets/images/icons/visa-icon.svg" alt="visa-logo" style="width: 19% !important;" >
+																		<img *ngIf="selCard[0]?.card_network == '' " src="assets/images/svg/Rupay-01.svg" alt="rupay-logo" style="width: 19% !important;" >
+																		<img *ngIf="selCard[0]?.card_network == 'RS' " src="assets/images/svg/Rupay-02.svg" alt="rupay-logo" style="width: 19% !important;" >
+																		<img *ngIf="selCard[0]?.card_network == 'MS' " src="assets/images/icons/visa-icon.svg" alt="master-logo" style="width: 19% !important;" >
+																		{{selectedCard?.MaskCardNumber}}</span>
+
+                                                                    <!-- <span *ngIf="accountValue == '' ">Select Account </span>
+                                                                    <span *ngIf="accountValue != '' ">  <img src="{{bankImage}}" class="bank-icon"> {{accountValue}} </span >
+                                                                    <span class="right-arrow"></span>  -->
+																</div>
+																<p class="error-message"></p>
+															</div>
+														</div>
+														<div class="ac-info d-none">
+															<button class="refresh-btn d-block ml-auto"><img src="assets/images/svg/eye-g.svg" alt="view-icon"></button>
+														</div>
+													</div>
+													<div class="col-2 d-none">
+														<div class="ac-info d-none">
+															<button class="refresh-btn d-block ml-auto"><img src="assets/images/svg/eye-g.svg" alt="view-icon"></button>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+										<div class="vspacer10 customize d-block d-xl-none d-lg-none d-md-none d-sm-none "></div>
+										<div class="row1">
+											<div class="col-12 col-sm-12 col-md-12 col-lg-12">
+												<div class="widget-box5">
+													<div class="card-info">
+														<div class="row1">
+															<div class="col-xl-12 col-12">
+																<ul class="account-list2  custm-margin">
+																	<li>
+																		<div class="d-inline-block">Linked Saving Account</div>
+																		<div class="d-inline-block ml-5"> <strong>{{maskedAccNo}}</strong> </div>
+																	</li>
+																</ul>
+															</div>
+														</div>
+														<div class="row1 border-bottom d-none d-sm-block"></div>
+														<div class="custom-p">
+															<div class="row1">
+																<div class="col-12 col-md-6 col-lg-6 col-xl-4">
+																	<div class="ux-input">
+																		<label>Reason for Hotlisting</label>
+																		<input type="text" autocomplete="off" placeholder="Enter reason" limit-to="20" formControlName="reason" >
+                                    									<!-- <select id="reasonvalue" required  formControlName="reason" (change)="onReasonChange($event.target.value)">
+																			<option value="">Select Reason</option>
+																			<option value="Not Interested">Not Interested</option>
+																			<option value="fraud">fraud</option>
+																			<option value="Not interested">Not interested</option>
+																		</select> -->
+																		<!-- <p class="error-message" *ngIf="hotListDebitCardForm.controls['reason'].hasError('required') && (hotListDebitCardForm.controls['reason'].dirty || hotListDebitCardForm.controls['reason'].touched)">Please enter the required filed</p> -->
+																	</div>
+																</div>
+															</div>
+														</div>
+														<div class="vspacer30 customize"></div>
+													</div>
+												</div>
+											</div>
+										</div>
+										<div class="vspacer30 customize d-none d-xl-block d-lg-block d-md-none d-sm-none "></div>
+										<div class="row1">
+											<div class="col-12 col-md-12">
+												<ul class="bottom-footer1">
+													<li>
+														<div class="btn-div">
+                              <button class=" ux-button secondary sm-mob" (click)="cancel()">Cancel</button>
+														</div>
+														<div class="btn-div">
+                              <button class=" ux-button primary sm-mob" (click)="onSubmit()">Submit</button>
+														</div>
+													</li>
+												</ul>
+											</div>
+										</div>
+									</div>
+                  </form>
+									<!-- Greencard2 End here -->
+								</div>
+								<!-- Right Column Ads Start -->
+								<div class="col-12 col-md-12 col-lg-12 col-xl-3 d-none d-xl-block">
+									<div class="right-ads">
+										<a> <img src="assets/images/banner/my-card-banner.jpg"> </a>
+									</div>
+								</div>
+								<!-- Right Column Ads End -->
+							</div>
+						</div>
+					</div>
+				</div>
+				<!--.container-fluid-->
+			</div>
+			<!--.body-page-container-->
+		</div>
+		<!--.right-col-container-->
+	</div>
+	<!--.right-main-column-->
+</div>
+<!-- main -->
+<!-- Select Accounts Popup Start-->
+<div class="popup-bottom sel-account">
+	<div class="row1">
+		<div class="col-10">
+			<h4>Select From Account</h4> </div>
+		<div class="col-2">
+			<button class="ux-button-icon close-btn" (click)="closePopup()"> <img src="assets/images/svg/close-b.svg" alt="cross-icon" class="img-vsmall"> </button>
+		</div>
+	</div>
+	<div class="row1">
+		<div class="col-12">
+			<div class="row1">
+				<div class="col-12 col-md-12" *ngFor="let account of accountList; let i = index" (click)="getToAccValue(account.bankImage,account)">
+					<div class="ux-selection mar-custom">
+						<label class="ux-selection2"> <img src="{{account.bankImage}}" class="bank-icon">{{account}}
+							<input type="radio"  [value]="account" name="upi-account"> <span class="checkmark"></span> </label>
+					</div>
+				</div>
+				<!-- <div class="col-12 col-md-12">
+					<div class="ux-selection mar-custom">
+						<label class="ux-selection2"> <img src="assets/images/icons/hdfc-icon.png" class="bank-icon"> XXXX XXXX XXXX 9897
+							<input type="radio" value=" XXXX XXX 968" name="upi-account"> <span class="checkmark"></span> </label>
+					</div>
+				</div>
+				<div class="col-12 col-md-12">
+					<div class="ux-selection mar-custom">
+						<label class="ux-selection2"> <img src="assets/images/icons/icici-icon.png" class="bank-icon"> XXXX XXXX XXXX 9897
+							<input type="radio" value=" XXXX XXX 969" name="upi-account"> <span class="checkmark"></span> </label>
+					</div>
+				</div> -->
+				<div class="col-12 col-md-12">
+					<div class="ux-input">
+						<!-- <p class="error-message"> Error show</p> -->
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="row mt-2">
+		<div class="col-12 text-center">
+			<button class="ux-button primary submit-btn2" (click)="selectCardNo(accountValue);closePopup()"> Submit</button>
+		</div>
+	</div>
+</div>
+<!-- Select Accounts Popup End-->

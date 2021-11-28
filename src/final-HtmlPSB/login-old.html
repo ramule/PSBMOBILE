@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <meta charset="UTF-8">
+    <title>Login</title>
+    <link href="../css/lib/bootstrap.min.css" rel="stylesheet">
+    <link href="../css/lib/owl.carousel.min.css" rel="stylesheet">
+    <link href="../css/lib/jquery-ui.min.css" rel="stylesheet">
+    <link href="../css/lib/datatables.min.css" rel="stylesheet">
+    <link href="../css/lib/jquery.mCustomScrollbar.min.css" rel="stylesheet">
+    <link href="../css/main.css" rel="stylesheet">
+
+</head>
+
+<body>
+
+    <div class="prelogin-page login-page">
+
+        <!-- header section Start -->
+
+        <header class="global-header">
+            <div class="desk-header">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-xl-3 col-lg-3 col-md-3 col-sm-2 col-2 d-none  d-lg-block d-xl-block">
+                            <ul class="headerlist">
+                                <li>
+                                    <a href="#"> <img src="../assets/images/svg/home1.svg" alt="home-icon"> <em>Home</em></a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12">
+                            <div class="brand-heading text-center m-auto">
+                                <span class="logo-img2">
+                                    <img src="../assets/images/svg/final-logo.svg" alt="psb-logo">
+                                </span>
+                            </div>
+                        </div>
+                        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-2 col-2 d-none  d-lg-block d-xl-block">
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header> <!-- global-header -->
+
+        <!-- header section End -->
+
+
+
+        <div class="full-container halfBackground forLogin">
+            <div class="login-container">
+                <div class="central-box">
+
+                    <!-- Banner Container Start -->
+                    <div class="banner-container bg">
+                        <div class="left-content">
+                            <h5>Ensure Following While Login</h5>
+                            <div class="vspacer10"></div>
+                            <p>
+                                The website address (URL) starts with https://www.psbonline.co.in<br />
+                                Verify the security certificate by clicking on padlock icon. check the validity of security certificate<br />
+                                Never enter User ID, Password, & other sensitive information in any pop up window
+                            </p>
+                            <div class="vspacer20"></div>
+                            <button onclick="window.location.href='#'" role="button" class="ux-button sm primary ml-0" data-toggle="modal" data-target="#importantNotice">Important Notice</button>
+                        </div>
+                        <div class="secure-img">
+                            <img src="../assets/images/icons/secure.png" alt="secure">
+                        </div>
+                        <div class="keyboard-section">
+                            <div class="keyboard-inner">
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Banner Container End -->
+
+                    <!-- Loginform Container Start -->
+                    <div class="col-12 col-sm-12 d-block d-sm-block d-lg-none d-md-none">
+                        <div class="row1">
+                            <div class="login-section">
+                                <div class="vspacer5"></div>
+                                <div class="row1">
+                                    <div class="col-12">
+                                        <h3>Login to Internet Banking</h3>
+                                        <h6>Welcome back, Please login to your Mobile banking account</h6>
+                                    </div>
+                                    <!-- <div class="vspacer20 d-block d-sm-block d-md-block d-lg-none d-xl-block"></div>  -->
+                                    <div class="col-sm-12 col-12 col-md-12">
+                                        <div class="col-12">
+                                            <!-- Nav tabs -->
+                                            <div class="ux-nav-tabs" style="margin: 0">
+                                                <ul class="nav nav-tabs nav-justified" role="tablist">
+                                                    <li class="nav-item">
+                                                        <a class="nav-link active account-details" data-toggle="tab" href="#user">User Name</a>
+                                                    </li>
+                                                    <li class="nav-item">
+                                                        <a class="nav-link recent-trans" data-toggle="tab" href="#mpin">MPIN</a>
+                                                    </li>
+                                                </ul>
+
+                                                <!-- Tab panes -->
+                                                <div class="tab-content">
+                                                    <div id="user" class=" tab-pane active">
+                                                        <form action="#" method="#">
+                                                            <div class="row1">
+                                                                <div Class="col-12">
+                                                                    <div class="ux-input">
+                                                                        <label>User Name</label>
+                                                                        <input type="text" placeholder="" required>
+                                                                        <a href="#" class="show-keyboard"></a>
+                                                                        <p class="error-message"></p>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-12 col-md-12">
+                                                                    <div class="text-right">
+                                                                        <!-- <a href="javascript:;"  data-toggle="modal" data-target="#usernamePolicy" class="reg-txt">{{'USERNAME_POLICY' |translate}}</a> -->
+                                                                        <a href="javascript:;" class="reg-txt check-availability">Forgot Username?</a>
+                                                                    </div>
+                                                                </div>
+                                                                <div Class="col-12">
+                                                                    <div class="ux-input">
+                                                                        <label>Password</label>
+                                                                        <input type="password" placeholder="" required>
+                                                                        <a href="#" class="show-keyboard"></a>
+                                                                        <p class="error-message"></p>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-12 col-md-12">
+                                                                    <div class="text-right">
+                                                                        <!-- <a href="javascript:;"  data-toggle="modal" data-target="#usernamePolicy" class="reg-txt">{{'USERNAME_POLICY' |translate}}</a> -->
+                                                                        <a href="javascript:;" class="reg-txt check-availability">Forgot Password?</a>
+                                                                    </div>
+                                                                </div>
+                                                                <div Class="col-12">
+                                                                    <div class="ux-input">
+                                                                        <label>Enter the text as shown in the image</label>
+                                                                        <input type="password" placeholder="" required>
+                                                                         <p class="error-message"></p>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-12">
+                                                                    <div class="ux-selection">
+                                                                        <label class="ux-selection2">Image Captcha
+                                                                            <input type="radio" checked="checked" name="radioboxdemo">
+                                                                            <span class="checkmark"></span>
+                                                                        </label>
+                                                                    </div>
+                                                                    <div class="ux-selection">
+                                                                        <label class="ux-selection2">Audio Captcha
+                                                                            <input type="radio" name="radioboxdemo">
+                                                                            <span class="checkmark"></span>
+                                                                        </label>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="vspacer20"></div>
+                                                                <div class="col-12">
+                                                                    <div class="captcha-container">
+                                                                        <div class="captcha-box">
+
+                                                                        </div>
+                                                                        <div class="refresh-btn">
+                                                                            <img src="../assets/images/icons/refresh.svg">
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="vspacer20"></div>
+                                                            <div class="row1">
+                                                                <div Class="col-12">
+                                                                    <div class="formfooter">
+
+                                                                        <button onclick="window.location.href='dashboard.html'" role="button" class="ux-button secondary float-left">register</button>
+                                                                        <button onclick="window.location.href='dashboard.html'" role="button" class="ux-button primary float-right">Login</button>
+                                                                    </div>
+                                                                </div>
+
+                                                            </div>
+                                                        </form>
+                                                    </div>
+                                                    <div id="mpin" class="tab-pane fade">
+                                                        <form action="#" method="#">
+                                                            <div class="row1">
+                                                                <div Class="col-12">
+                                                                    <div class="ux-input">
+                                                                        <label>MPIN</label>
+                                                                        <input type="text" placeholder="" required>
+                                                                        <p></p>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="row1">
+                                                                <div class="col-12 col-md-12">
+                                                                    <div class="text-right">
+                                                                        <a href="javascript:;" class="reg-txt">Forgot MPIN?</a>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="vspacer20"></div>
+                                                            <div class="row1">
+                                                                <div class="col-sm-12 col-12 col-md-12 text-center">
+                                                                    <button class="ux-button primary md" onclick="window.location.href = '#'">Login</button>
+                                                                </div>
+
+
+
+
+                                                            </div>
+                                                        </form>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="vspacer20"></div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    
+                    <div class="loginform-container">
+                        <div class="login-form  d-none d-sm-none d-lg-block d-md-block">
+                            <!-- <div class="vspacer10"></div> -->
+                            <div class="login-heading">
+                                <!-- <div class="brand-logo">
+                                        <img src="../assets/images/logo/logo1.png" alt="kiya-logo">  
+                                    </div> -->
+                                <div class="vspacer5"></div>
+                                <h3>Login to Internet Banking</h3>
+                                <h5>Welcome back, Please login to your internet banking</h5>
+                            </div>
+
+                            <!-- <div class="vspacer10"></div> -->
+                            <div class="row1">
+                                <div class="col-12">
+
+                                    <form action="#" method="#">
+                                        <div class="row1">
+                                            <div Class="col-12">
+                                                <div class="ux-input">
+                                                    <label>User Name</label>
+                                                    <input type="text" placeholder="Enter User Naame" required>
+                                                    <a href="#" class="show-keyboard"></a>
+                                                    <p class="text-right"><a href="javascript:;" class="reg-txt check-availability">Forgot Username?</a></p>
+                                                    <p class="error-message"></p>
+                                                </div>
+                                            </div>
+                                             <div Class="col-12">
+                                                <div class="ux-input">
+                                                    <label>Password</label>
+                                                    <input type="password" placeholder="Enter Password" required>
+                                                    <a href="#" class="show-keyboard"></a>
+                                                    <p class="text-right"><a href="javascript:;" class="reg-txt check-availability">Forgot Password?</a></p>
+                                                    <p class="error-message"></p>
+                                                </div>
+                                            </div>
+                                             <div Class="col-12">
+                                                <div class="ux-input">
+                                                    <label>Enter the text as shown in the image</label>
+                                                    <input type="password" placeholder="Enter Captcha" required>
+                                                    <p class="error-message"></p>
+                                                </div>
+                                            </div>
+                                            <div class="vspacer5"></div>
+                                            <div class="col-12">
+                                                <div class="ux-selection">
+                                                    <label class="ux-selection2">Image Captcha
+                                                        <input type="radio" checked="checked" name="radioboxdemo">
+                                                        <span class="checkmark"></span>
+                                                    </label>
+                                                </div>
+                                                <div class="ux-selection">
+                                                    <label class="ux-selection2">Audio Captcha
+                                                        <input type="radio" name="radioboxdemo">
+                                                        <span class="checkmark"></span>
+                                                    </label>
+                                                </div>
+                                            </div>
+                                            <div class="vspacer10"></div>
+                                            <div class="col-12">
+                                                <div class="captcha-container">
+                                                    <div class="captcha-box">
+
+                                                    </div>
+                                                    <div class="refresh-btn">
+                                                        <img src="../assets/images/svg/refresh-g.svg" alt="refresh-icon">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="vspacer20"></div>
+                                        <div class="row1">
+                                            <div Class="col-12">
+                                                <div class="formfooter">
+
+                                                    <button onclick="window.location.href='#'" role="button" class="ux-button secondary float-left">register</button>
+                                                    <button onclick="window.location.href='#'" role="button" class="submit-btn ux-button primary float-right">Login</button>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+
+
+
+
+                        <div class="bfooter">
+                            <div class="row1">
+                                <div class="col-12 col-lg-12 col-xl-12 col-md-12 col-sm-12 ">
+                                    <nav class="ios-global-nav">
+                                        <ul class="lst-ios-nav">
+                                            <li>
+                                                <a href="javascript:;">
+                                                    <span class="inav-icon">
+                                                        <img src="../assets/images/svg/translate.svg" alt="translate-icon">
+                                                    </span>
+                                                    Language
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="javascript:;">
+                                                    <span class="inav-icon">
+                                                        <img src="../assets/images/svg/location-g.svg" alt="location-icon">
+                                                    </span>
+                                                    Locate Us
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="javascript:;">
+                                                    <span class="inav-icon">
+                                                        <img src="../assets/images/svg/contact-g.svg" alt="contact-icon">
+                                                    </span>
+                                                    Contact Us
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="javascript:;">
+                                                    <span class="inav-icon">
+                                                        <img src="../assets/images/svg/more.svg" alt="contact-icon">
+                                                    </span>
+                                                    More Services
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </nav>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Loginform Container End -->
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <!-- .full-container -->
+
+        <!-- Footer Code Starts Here -->
+        <footer>
+            <div class="global-footer full-footer">
+                <div class="in-glfooter">
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-4 col-xl-6 col-lg-6 col-md-6 col-sm-4">
+                                <div class="glfooter-content">
+                                    <div class="glfooter-box">
+                                        <div class="glcopyright-text">
+                                            <em>Powered by</em> <img src="../assets/images/kiya-logo.png">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-8 col-xl-6 col-lg-6 col-md-6 col-sm-8">
+                                <div class="glfooter-content">
+                                    <div class="glfooter-box">
+                                        <div class="glcopyright-text1">
+                                            <em>Copyright © 2020 Infrasoft Technologies Ltd. All rights reserved.</em>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+        <!-- Footer Code Ends -->
+
+
+    </div>
+    <!-- .prelogin-page -->
+
+    <div id="importantNotice" class="modal fade " role="dialog">
+        <div class="modal-dialog modal-dialog-centered modal-lg ">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <div class="mh-bottom">
+                        <div class="row1">
+                            <div class="col-10">
+                                <h6>Important Notice</h6>
+                            </div>
+                            <div class="col-2"><a href="javascript:;" data-dismiss="modal"><span class="mh-cross"></span></a></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-body">
+                    <p>"Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit..."
+                        "There is no one who loves pain itself, who seeks after it and wants to have it, simply because it is pain..."</p>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+
+    <!--.toast-messages-->
+    <div class="toast-messages3"></div>
+    <!--.toast-messages-->
+
+
+    <script src="../js/lib/jquery.min.js"></script>
+    <script src="../js/lib/bootstrap.min.js"></script>
+    <script src="../js/lib/jquery-ui.min.js"></script>
+    <script src="../js/lib/owl.carousel.min.js"></script>
+    <script src="../js/lib/popper.min.js"></script>
+    <script src="../js/lib/jquery.mousewheel.min.js"></script>
+    <script src="../js/lib/jquery.mCustomScrollbar.js"></script>
+    <script src="../js/lib/datatables.min.js"></script>
+    <script src="../js/common.js"></script>
+    <script src="../js/lib/chart2.min.js"></script>
+
+    <script>
+        $("ul.sim-list li a").click(function() {
+            console.log('its working');
+            $("ul.sim-list li a").removeClass("active");
+            if (!$(this).hasClass('active')) {
+                $(this).addClass('active');
+                // $( 'div.ios-nav-overlay' ).fadeIn( 400 );
+                // $( 'body' ).css( 'overflow', 'hidden' );
+            } else {
+                $(this).removeClass('active');
+                // $( 'div.ios-nav-overlay' ).fadeOut(  );
+                // $( 'body' ).css( 'overflow', 'auto' );
+            }
+        });
+
+        function showToast(messageText, messageType, autoDismiss, dismissDuration) {
+            if (messageText == "Product Service Error") messageText = "";
+            if (typeof messageType === "undefined" || messageType === null)
+                messageType = 'error';
+            if (typeof autoDismiss === "undefined" || autoDismiss === null)
+                autoDismiss = true;
+            if (typeof dismissDuration === "undefined" || dismissDuration === null)
+                dismissDuration = 5000;
+
+            var messageHTML = '<div class="msg-toast msg-' + messageType + '">  <em>' + messageText + '</em> </div>';
+            $('body').append('<div class="toast-messages3"></div>');
+            $('div.toast-messages3').html(messageHTML);
+            setTimeout(function() {
+                $('div.toast-messages3').find('.msg-toast').addClass('msg-showing');
+            }, 300);
+            if (autoDismiss) {
+                setTimeout(function() {
+                    $('div.toast-messages3').find('.msg-toast').removeClass('msg-showing');
+                }, dismissDuration);
+                setTimeout(function() {
+                    $('div.toast-messages3').html('');
+                }, dismissDuration + 400);
+            } else {
+                $('div.toast-messages3').find('.msg-toast').addClass('msg-close');
+            }
+        };
+
+
+        $("button.submit-btn").click(function() {
+            console.log('Yes working');
+            showToast('Your account is locked because you have exceeded maximum number of invalid log in attempts. Please try logging in after 24 hours', 'error2', true);
+        });
+    </script>
+
+</body>
+
+</html>

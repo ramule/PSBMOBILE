@@ -1,0 +1,1696 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+	<meta charset="UTF-8">
+    <title></title>
+	
+	<link href="../css/lib/bootstrap.min.css" rel="stylesheet">
+    <link href="../css/lib/owl.carousel.min.css" rel="stylesheet">
+    <link href="../css/lib/jquery-ui.min.css" rel="stylesheet">
+    <link href="../css/lib/datatables.min.css" rel="stylesheet" >
+	<link href="../css/lib/jquery.mCustomScrollbar.min.css" rel="stylesheet">
+	<link href="../css/main.css" rel="stylesheet">
+
+
+	<!--[if IE]>
+		<link rel="stylesheet" type="text/css" href="../styles/bahmas.min.ie.css" />
+	<![endif]-->
+
+	<style type="text/css">
+		/** {font-family: 'Montserrat', sans-serif;font-size: 1rem;}*/
+		/*body {background: #f0f0f0;}*/
+		h1 {background-color: #eee;word-break: break-all;font-weight: 100;font-size: 4rem;}
+		.lst-components {list-style: none;margin: 0;padding: 0; height:100vh;position: relative;overflow:auto;}
+		.lst-components li {padding: 0px 0;text-align: center;}
+		.lst-components li h5 {color: #444;}
+		.lst-components li h5 b {color: rgb(91, 91, 95);font-weight: normal;font-size: 80%;font-weight: 400;}
+		.comp {
+			background: rgba(240, 240, 240, 0.6);
+			/*height: 200px;*/
+			padding: 30px;
+			margin: 20px;
+			text-align: center;
+			vertical-align: center;
+			border: 1px solid #ddd;
+			border-radius: 10px;
+		}
+		.select2-container--default .select2-selection--multiple .select2-selection__clear {
+			cursor: pointer;
+			/* float: right; */
+			font-weight: bold;
+			margin-top: 5px;
+			margin-right: 10px;
+			position: absolute;
+			right: 0;
+			top: 6px;
+		}
+
+		.gradient-box::before {
+			position: absolute;
+			content: '';
+			left: 0;
+			right: 0;
+			top: 0;
+			bottom: 0;
+			width: 100%;
+			background-image:none;
+			background-repeat: no-repeat;
+			background-size: cover;
+			opacity: 0.2;
+			z-index: 0;
+         }
+	
+	</style>
+
+</head>
+
+<body>
+	
+	<div class="container-fluid">
+		<div class="row">
+			
+			<div class="col-md-12">
+				<ul class="lst-components mt-2">
+					<li>
+						<h5>Button <b>(Primary, Secondary, Disabled)</b></h5>
+						<div class="comp">
+							<a href="javascript:;">Hello</a>
+							 <button class="ux-button primary">Primary</button>
+							 <button class="ux-button secondary">Secondary</button>
+							 <button class="ux-button disable">Disabled</button>
+							  <a href="javascript:;" class="ux-button primary">Anchor</a>
+						  </div>
+					</li>
+					<li>
+						<h5>Button Small <b> (Primary, Secondary, Disabled)</b></h5>
+						<div class="comp">
+							 <button class="ux-button sm primary">Primary </button>
+							 <button class="ux-button sm secondary">Secondary</button>
+							 <button class="ux-button sm disable">Disabled</button>
+							 <a href="javascript:;" class="ux-button primary sm">Anchor</a>
+						  </div>
+					</li>
+					<li>
+						<h5>Link Button</h5>
+						<div class="comp">
+							<button class="ux-linkbutton">Default</button>
+							<button class="ux-linkbutton primary">Primary</button>	
+						    <button class="ux-linkbutton disable">Disabled</button>
+						    <a href="javascript:;" class="ux-linkbutton primary">Anchor</a>
+						 </div>
+					</li>
+					<li>
+					 <h5>Checkbox</h5>
+					 <div class="comp">
+						 <div class="ux-selection">
+							<label class="ux-selection1">One
+								<input type="checkbox" name="radioboxdemo">
+								<span class="checkmark"></span>
+							  </label>
+						 </div>	 
+						 <div class="ux-selection"> 
+							  <label class="ux-selection1">Two
+								<input type="checkbox" name="radioboxdemo" checked="checked">
+								<span class="checkmark"></span>
+							  </label>
+						  </div>
+						  <div class="ux-selection">	  
+							  <label class="ux-selection1 disabled">Three
+								<input type="checkbox" name="radioboxdemo" disabled="disabled">
+								<span class="checkmark disabled"></span>
+							  </label>
+						</div>
+						<div class="ux-selection">	  
+							  <label class="ux-selection1 disabled">Four
+								<input type="checkbox" name="radioboxdemo" checked="checked" disabled="disabled">
+								<span class="checkmark disabled"></span>
+							  </label> 
+						</div>
+							<!-- <div class="el-checkbox">
+							    <input type="checkbox" name="check" id="1_1">
+								<label class="el-checkbox-style" for="1_1"></label>
+								<span class="m">Unchecked</span>
+							</div>
+							<div class="el-checkbox">
+							    <input type="checkbox" name="check" id="1_2" checked>
+								<label class="el-checkbox-style" for="1_2"></label>
+								<span class="margin-r">Checked</span>
+							</div>
+							<div class="el-checkbox">
+							    <input type="checkbox" name="check" id="1_3" value="option" disabled>
+								<label class="el-checkbox-style" for="1_3"></label>
+								<span class="margin-r">Disabled</span>
+							</div>
+							<div class="el-checkbox">
+								 <input type="checkbox" name="check" id="1_4" checked disabled>
+								<label class="el-checkbox-style" for="1_4"></label>
+								<span class="margin-r">Checked && Disabled</span>
+							</div> -->
+							<div class="ux-selection">
+								<label>
+									<input type="checkbox" name="radioboxdemo">
+									<em>Option 1</em>
+								</label>
+							</div>
+							<div class="ux-selection">
+								<label>
+									<input type="checkbox" name="radioboxdemo">
+									<em>Option 2</em>
+								</label>
+							</div> 
+							<div class="ux-selection disabled">
+								<label>
+									<input type="checkbox" name="radioboxdemo" disabled="disabled">
+									<em>Option 1</em>
+								</label>
+							</div>
+							<div class="ux-selection disabled">
+								<label>
+									<input type="checkbox" name="disabledOption" disabled="disabled" checked="checked">
+									<em>Option 2</em>
+								</label>
+							</div> 
+						 
+						  <div class="errormsgs">
+								<p>this is error</p>
+							</div> 
+						</div>
+                    </li>
+					<li>
+						<h5>Radio</h5>
+						<div class="comp">
+						 <div class="ux-selection">	  
+							<label class="ux-selection2">One
+								<input type="radio" checked="checked" name="radioboxdemo">
+								<span class="checkmark"></span>
+							  </label>
+						  </div>
+						  <div class="ux-selection">	  
+							  <label class="ux-selection2">Two
+								<input type="radio" name="radioboxdemo">
+								<span class="checkmark"></span>
+							  </label>
+						  </div>
+						  <div class="ux-selection">	  	  
+							  <label class="ux-selection2 disabled">Three
+								<input type="radio" name="radioboxdemo2"  disabled="disabled">
+								<span class="checkmark disabled"></span>
+							  </label>
+						  </div>
+						  <div class="ux-selection">	  
+							  <label class="ux-selection2 disabled">Four
+								<input type="radio" name="radioboxdemo3" disabled="disabled" checked="checked">
+								<span class="checkmark disabled"></span>
+							  </label>
+						  </div>
+							<!-- <div class="el-radio">
+								 <input type="radio" name="radio1" id="1_5" value="option" checked>
+								<label class="el-radio-style" for="1_5"></label>
+								<span class="margin-r">Unchecked</span>
+							</div>
+							<div class="el-radio">
+								 <input type="radio" name="radio1" id="1_6" value="option" checked>
+								<label class="el-radio-style" for="1_6"></label>
+								<span class="margin-r">Checked</span>
+							</div>
+							<div class="el-radio">
+							    <input type="radio" id="1_7" value="option" disabled>
+								<label class="el-radio-style" for="1_7"></label>
+								<span class="margin-r">Disabled</span>
+							</div>
+							<div class="el-radio">
+							    <input type="radio" id="1_8" value="option" checked disabled>
+								<label class="el-radio-style" for="1_8"></label>
+								<span class="margin-r">Checked && Disabled</span>
+							</div> -->
+							<div class="ux-selection">
+								<label>
+									<input type="radio" name="radioboxdemo">
+									<em>Option 1</em>
+								</label>
+							</div> 
+							<div class="ux-selection">
+								<label>
+									<input type="radio" name="radioboxdemo">
+									<em>Option 2</em>
+								</label>
+							</div> 
+							<div class="ux-selection disabled">
+								<label>
+									<input type="radio" name="radioboxdemo" disabled="disabled">
+									<em>Option 1</em>
+								</label>
+							</div> 
+							<div class="ux-selection disabled">
+								<label>
+									<input type="radio" name="disabledOption" disabled="disabled" checked="checked">
+									<em>Option 2</em>
+								</label>
+							</div>  
+							
+							<div class="errormsgs">
+								<p>this is error</p>
+							</div>
+						</div>
+					</li>
+					<li>
+						<h5>Toggle Switch</h5>
+						<div class="comp">
+							<em>Test</em>
+							 <div class="custom-control custom-switch">
+							  	<input type="checkbox" class="custom-control-input" id="customSwitch1">
+								<label class="custom-control-label md" for="customSwitch1">Toggle this switch element</label>
+							  </div>
+							  <div class="custom-control custom-switch">
+								<input type="checkbox" class="custom-control-input" disabled id="customSwitch2">
+								<label class="custom-control-label" for="customSwitch2">Disabled switch element</label>
+							  </div>
+							  <div class="vspacer10"></div> 
+							  <div class="el-switch-main">
+								<em class="margin-r">switch</spanem>
+								<label class="el-switch  el-switch-sm">
+									<input type="checkbox" name="switch">
+									<span class="el-switch-style"></span>
+								</label>
+							</div>
+							 
+							<div class="el-switch-main">
+								<em class="margin-r">switch</em>
+								<label class="el-switch">
+									<input type="checkbox" name="switch" checked>
+									<span class="el-switch-style"></span>
+								</label>
+							</div>
+							 
+							<div class="el-switch-main">
+								<em class="margin-r">Disabled</em>
+								<label class="el-switch">
+									<input type="checkbox" name="switch" disabled>
+									<span class="el-switch-style"></span>
+								</label>
+							</div>
+						 	<div class="el-switch-main">
+								<em class="margin-r">Checked && Disabled</em>
+								<label class="el-switch">
+									<input type="checkbox" name="switch" checked disabled>
+									<span class="el-switch-style"></span>
+								</label>
+							</div> 
+							<div class="vspacer10"></div>
+							<label class="toggle">
+								<em>Inactive</em>
+								<input type="checkbox" checked="checked">
+								<b>Active</b>
+							</label>
+							<label class="toggle">
+								<input type="checkbox" name=""  disabled="disabled">
+							</label>
+							<label class="toggle label-inactive">
+								<em>Inactive</em>
+								<input type="checkbox" name="">
+								<b>Active</b>
+							</label>
+							<label class="toggle">
+								<input type="checkbox" checked="checked">
+							</label>
+							<label class="toggle">
+								<input type="checkbox" name="" disabled="disabled">
+							</label>
+							<label class="toggle">
+								<input type="checkbox" name="" checked="checked" disabled="disabled">
+							</label>
+							<div class="btn-group btn-toggle ml-1"> 
+								<button class="btn btn-xs btn-info1 active">Yes</button>
+								<button class="btn btn-xs btn-default">No</button>
+							</div>
+						</div>
+					</li>
+					<li>
+						<h5>Breadcrumbs</h5>
+						<div class="comp">
+							<div class="breadcrumb">
+								<ul class="lst-breadcrumb">
+									<li>
+										<a href="javascript:;">Dashboard</a>
+									</li>
+									<li>
+										<a href="javascript:;">My Account</a>
+									</li>
+									<li>
+										Own Account
+									</li>
+								</ul><!--.lst-breadcrumb-->
+							</div> <!-- .breadcrumb -->
+						</div>
+					</li>
+					<li>
+						<h5>Text Input Field & Upload File</h5>
+						<div class="comp">
+							<div class="row">
+								<div Class="col-12 col-xl-3 col-lg-4 col-sm-6 col-md-6">
+									<div class="ux-input">
+										<label>First Name</label>
+										<input type="text" placeholder="Enter your Label">
+										<p></p>
+									</div>
+								 </div> 
+								<div Class="col-12 col-xl-3 col-lg-4 col-sm-6 col-md-6">
+									<div class="ux-input input-error">
+										<label>First Name</label>
+										<input type="text" placeholder="Enter your Label">
+										<p>Please enter correct input</p>
+									</div>
+								 </div> 
+								 <div Class="col-12 col-xl-3 col-lg-4 col-sm-6 col-md-6">
+									<div class="ux-input input-success">
+										<label>First Name</label>
+										<input type="text" placeholder="Enter your Label" >
+										<p>Data matched</p>
+									</div>
+								</div> 
+								<div Class="col-12 col-xl-3 col-lg-4 col-sm-6 col-md-6">
+									<div class="ux-input ux-disabled">
+										<label>First Name</label>
+										<input type="text" placeholder="Enter your Label" disabled value="My Name">
+									 </div>
+								</div> 
+							</div><!-- row -->
+							<div class="row">
+							
+							</div><!-- row -->
+							 <div class="row">
+								<div Class="col-12 col-xl-3 col-lg-4 col-sm-6 col-md-6">
+									<div class="ux-input ux-readonly">
+										<label>First Name</label>
+										<input type="text" placeholder="Enter your Label" disabled  value="My Name">
+									 </div>
+								</div> 
+                           <div Class="col-12 col-xl-3 col-lg-4 col-sm-6 col-md-6">
+								<div class="ux-input">
+									<label>Amount</label>
+									<input type="text" placeholder="Enter Amount">
+									<a href="javascript:;" class="show-pwd"></a>
+								</div>
+							</div>
+							<div Class="col-12 col-xl-3 col-lg-4 col-sm-6 col-md-6">
+								<div class="ux-input">
+									<label>Amount</label>
+									<input type="text" placeholder="Enter Amount">
+									<a href="javascript:;" class="show-keyboard"></a>
+								</div>
+							</div>	
+							<div Class="col-12 col-xl-3 col-lg-4 col-sm-6 col-md-6">
+								<div class="ux-input">
+									<label>From Date</label>
+									<input type="text" class="datepicker1" type="text" placeholder="DD/MM/YYYY">
+									<em  class=" calendar-ic cal-top"></em>
+								 </div>
+							</div> 
+							<div Class="col-12 col-xl-3 col-lg-4 col-sm-6 col-md-6">
+								<div class="ux-input ux-disabled">
+									<label>From Date</label>
+									<input type="text" class="datepicker1" type="text" placeholder="10/07/2020" disabled>
+									<em class=" calendar-ic cal-top"></em>
+								 </div>
+							</div> 
+							<div Class="col-12 col-xl-3 col-lg-4 col-sm-6 col-md-6">
+								<div class="ux-input ux-readonly">
+									<label>From Date</label>
+									<input type="text" class="datepicker1" type="text" placeholder="10/07/2020" disabled>
+									<em class=" calendar-ic cal-top"></em>
+								 </div>
+							</div> 
+							 <div Class="col-12 col-xl-3 col-lg-4 col-sm-6 col-md-6">	
+								<div class="ux-input">
+									<label>Label</label>
+									<select required>
+										<option value="">Select</option>
+										<option value="Abc">Abc</option>
+										<option value="Def">Def</option>
+										<option value="Ghi">Ghi</option>
+									</select>
+								</div>
+							   </div>
+							   <div Class="col-12 col-xl-3 col-lg-4 col-sm-6 col-md-6">	
+								<div class="ux-input input-error">
+									<label>Label</label>
+									<select required>
+										<option value="">Select</option>
+										<option value="Abc">Abc</option>
+										<option value="Def">Def</option>
+										<option value="Ghi">Ghi</option>
+									</select>
+									<p>Please enter correct input</p>
+								</div>
+							   </div>
+							   <div Class="col-12 col-xl-3 col-lg-4 col-sm-6 col-md-6">	
+								<div class="ux-input input-success">
+									<label>Label</label>
+									<select required>
+										<option value="">Select</option>
+										<option value="Abc">Abc</option>
+										<option value="Def">Def</option>
+										<option value="Ghi">Ghi</option>
+									</select>
+									<p>Data matched</p>	
+								</div>
+							   </div>
+							   <div Class="col-12 col-xl-3 col-lg-4 col-sm-6 col-md-6">	
+								<div class="ux-input ux-disabled">
+									<label>Label</label>
+									<select required disabled>
+										<option value="">Select</option>
+										<option value="Abc" selected>Abc</option>
+										<option value="Def">Def</option>
+										<option value="Ghi">Ghi</option>
+									</select>
+								</div>
+							   </div>
+							   <div Class="col-12 col-xl-3 col-lg-4 col-sm-6 col-md-6">	
+								<div class="ux-input ux-readonly">
+									<label>Label</label>
+									<select required disabled>
+										<option value="">Select</option>
+										<option value="Abc" selected>Abc</option>
+										<option value="Def">Def</option>
+										<option value="Ghi">Ghi</option>
+									</select>
+								</div>
+							   </div>
+							   <div Class="col-12 col-xl-3 col-lg-4 col-sm-6 col-md-6">
+								<div class="ux-input ">
+									<label>Message</label>
+									 <textarea rows="3"></textarea>
+								 </div>
+							</div> 
+							<div Class="col-12 col-xl-3 col-lg-4 col-sm-6 col-md-6">
+								<div class="ux-input ux-disabled">
+									<label>Message</label>
+									 <textarea rows="3" disabled>Some Message</textarea>
+								 </div>
+							</div> 
+							<div Class="col-12 col-xl-3 col-lg-4 col-sm-6 col-md-6">
+								<div class="ux-input ux-readonly">
+									<label>Message</label>
+									 <textarea rows="3" disabled>Some Message</textarea>
+								 </div>
+							</div> 
+							 </div><!-- row -->
+						</div>
+					</li>
+					<li>
+						<h5>Round Content Scrollable 
+							<b>Use this component for horizontal scroll</b></h5>
+						<div class="comp">
+							<div class="row">
+						    <div class="col-12">
+									<!--************* scroll component visible in small devices start  ******** -->
+									<div class="ux-small-scroll d-lg-none d-md-none d-sm-none">
+										<a href="javascript:;">
+											<span>
+												<img src="../assets/images/svg/send-money.svg" alt="send-money">
+											</span>
+											<em>Send Money</em>
+										</a>
+										<a href="javascript:;">
+											<span>
+												<img src="../assets/images/svg/request.svg" alt="request">
+											</span>
+											<em>Pending Request</em>
+										</a>
+										<a href="javascript:;">
+											<span>
+												<img src="../assets/images/svg/billspay.svg" alt="billspay">
+											</span>
+											<em>Bill Pay</em>
+										</a>
+										<a href="javascript:;">
+											<span>
+												<img src="../assets/images/svg/request-money.svg" alt="request-money">
+											</span>
+											<em>Request Money</em>
+										</a>
+										<a href="javascript:;">
+											<span>
+												<img src="../assets/images/svg/accounts1.svg" alt="accounts">
+											</span>
+											<em>Accounts</em>
+										</a>
+									</div><!--.ux-small-scroll-->
+									<!--************* scroll component visible in small devices end  ******** -->
+	
+									<!--************* large ux-desk-scroll component visible in desktops start  ******** -->
+									<div class="ux-desk-scroll d-none d-sm-block">
+										<div class="owl-accounts-component ux-desk-content">
+											<div class="col-12">
+												<!--************* scroll component visible in small devices start  ******** -->
+												<div class="ux-small-scroll d-lg-none d-md-none d-sm-none">
+													<a href="javascript:;">
+														<span>
+															<img src="../assets/images/svg/send-money.svg" alt="send-money">
+														</span>
+														<em>Send Money</em>
+													</a>
+													<a href="javascript:;">
+														<span>
+															<img src="../assets/images/svg/request.svg" alt="request">
+														</span>
+														<em>Pending Request</em>
+													</a>
+													<a href="javascript:;">
+														<span>
+															<img src="../assets/images/svg/billspay.svg" alt="billspay">
+														</span>
+														<em>Bill Pay</em>
+													</a>
+													<a href="javascript:;">
+														<span>
+															<img src="../assets/images/svg/request-money.svg" alt="request-money">
+														</span>
+														<em>Request Money</em>
+													</a>
+													<a href="javascript:;">
+														<span>
+															<img src="../assets/images/svg/accounts1.svg" alt="accounts">
+														</span>
+														<em>Accounts</em>
+													</a>
+												</div><!--.ux-small-scroll-->
+												<!--************* scroll component visible in small devices end  ******** -->
+				
+												<!--************* large ux-desk-scroll component visible in desktops start  ******** -->
+												<div class="ux-desk-scroll d-none d-sm-block">
+													<div class="owl-accounts-component ux-desk-content">
+														<div class="owl-carousel owl-theme owl-rounded-item">
+															<div class="item">
+																<a href="javascript:;">
+																	<span>
+																		<img src="../assets/images/svg/request.svg" alt="request">
+																	</span>
+																	<em>Request</em>
+																</a>
+															</div>
+															<div class="item">
+																<a href="javascript:;">
+																	<span>
+																		<img src="../assets/images/svg/send-money.svg" alt="send-money">
+																	</span>
+																	<em>Send</em>
+																</a>
+															</div>
+															 <div class="item">
+																<a href="javascript:;">
+																	<span>
+																		<img src="../assets/images/svg/billspay.svg" alt="billspay">
+																	</span>
+																	<em>Bill Pay</em>
+																</a>
+															</div>
+															<div class="item">
+																<a href="javascript:;">
+																	<span>
+																		<img src="../assets/images/svg/request-money.svg" alt="request-money">
+																	</span>
+																	<em>Request Money</em>
+																</a>
+															</div>
+															<div class="item">
+																<a href="javascript:;">
+																	<span>
+																		<img src="../assets/images/svg/accounts1.svg" alt="accounts">
+																	</span>
+																	<em>Accounts</em>
+																</a>
+															</div>
+														    <div class="item">
+																<a href="javascript:;">
+																	<span>
+																		<img src="../assets/images/svg/billspay.svg" alt="billspay">
+																	</span>
+																	<em>Bill Pay</em>
+																</a>
+															</div>
+															<div class="item">
+																<a href="javascript:;">
+																	<span>
+																		<img src="../assets/images/svg/request-money.svg" alt="request-money">
+																	</span>
+																	<em>Request Money</em>
+																</a>
+															</div>
+															<div class="item">
+																<a href="javascript:;">
+																	<span>
+																		<img src="../assets/images/svg/accounts1.svg" alt="accounts">
+																	</span>
+																	<em>Accounts</em>
+																</a>
+															</div>
+															 
+														</div>
+													</div>
+												</div><!--.ux-desk-scroll-->
+												<!--************* large ux-desk-scroll component visible in desktops end  ******** -->
+											</div><!--.col-12-->
+										</div>
+									</div><!--.ux-desk-scroll-->
+									<!--************* large ux-desk-scroll component visible in desktops end  ******** -->
+								</div><!--.col-12-->
+							</div><!--.row-->
+						</div>
+					</li>
+					<li>
+						<h5>Ul li Component
+						  <b>Use ul li structure</b></h5>
+						<div class="comp">
+						  <div class="row">
+								<div class="col-12">
+									<div class="ux-content-ul">
+										<ul class="lst-ul-li-content">
+											<li>
+												<div class="row">
+													<div class="col-6">
+														<div class="transact-details text-left">
+															<h5>20 Apr'18</h5>
+															<em>VPS/NMMT/2018042114610/00</em>
+														</div><!--.transact-details-->
+													</div><!--.col-6-->
+													<div class="col-6">
+														<div class="transact-amt text-right">
+															<h5>110.00 <b class="debit">Dr</b> </h5>
+														</div><!--.transact-amt-->
+													</div><!--.col-6-->
+												</div><!--.row-->
+											</li>
+											<li>
+												<div class="row">
+													<div class="col-6">
+														<div class="transact-details text-left">
+															<h5>20 Apr'18</h5>
+															<em>VPS/NMMT/2018042114610/00</em>
+														</div><!--.transact-details-->
+													</div><!--.col-6-->
+													<div class="col-6">
+														<div class="transact-amt text-right">
+															<h5>110.00 <b class="debit">Dr</b> </h5>
+														</div><!--.transact-amt-->
+													</div><!--.col-6-->
+												</div><!--.row-->
+											</li>
+											<li>
+												<div class="row">
+													<div class="col-6">
+														<div class="transact-details text-left">
+															<h5>20 Apr'18</h5>
+															<em>VPS/NMMT/2018042114610/00</em>
+														</div><!--.transact-details-->
+													</div><!--.col-6-->
+													<div class="col-6">
+														<div class="transact-amt text-right">
+															<h5>110.00 <b class="debit">Dr</b> </h5>
+														</div><!--.transact-amt-->
+													</div><!--.col-6-->
+												</div><!--.row-->
+											</li>
+										</ul><!--.lst-ul-li-content-->
+									</div><!--.ux-content-ul-->
+								</div><!--.col-12-->
+							</div><!--.row-->
+						</div>
+					</li>
+					<li>
+						<h5>Card Slider 
+							<b>	Use this component for horizontal scroll</b></h5>
+						<div class="comp">
+							<div class="row">
+								 <div class="col-12">
+									<div class="gradient-box">
+									<div class="owl-carousel wc-cardlist" role="list">
+                                            <div class="item" role="listitem">
+												   <div class="ux-component2 pink1">
+														 <div class="ux-dropdown">
+															 <div class="drp-box">
+																 <a  href="javascript:;"  class="drp-enterdata" >
+																		<div class="card-actions">
+																				<div class="row1">
+																					<div class="col-6">
+																						<span>Saving Account</span>		
+																					</div> 
+																					<div class="col-6">
+																						<div class="text-right">
+																							<label class="toggle">
+																								<em>Show Balance</em>
+																								<input type="checkbox" checked="checked">
+																							</label>
+																						 </div> 
+																					</div> 
+																				</div> 
+																			</div>
+																			<div class="vspacer20"></div> 
+																			<span class="account-balance disable-status">
+																				<h5>001184918391</h5>
+																				<em class="entered-data pink1-a" amt="50,000.00">
+																					<i> <img src="../assets/images/svg/rupee.svg" alt="rupees-icon"> </i> <b>XXXXXX</b>
+																					<div class="refresh-amt card-actions"> 
+																						 <img src="../assets/images/svg/refresh.svg" alt="refresh-icon">  
+																					 </div>
+																			</em>
+																			</span>
+																			<div class="col-sm-12 col-12">
+																				<div class="total-target">
+																				<small>Total Available Balance</small>
+																			</div>
+																			</div> 
+																		</a>
+																		
+																		<div>
+																		
+																	</div>
+																</div> 
+															</div> 
+														</div> 
+													</div> 
+														<div class="item" role="listitem">
+															<div class="ux-component2 maroon1">
+																<div class="ux-dropdown">
+																	<div class="drp-box">
+																		<a  href="javascript:;"  class="drp-enterdata" >
+																		<div class="card-actions">
+																				<div class="row1">
+																					<div class="col-6">
+																						<span>Saving Account</span>		
+																					</div> 
+																					<div class="col-6">
+																						<div class="text-right">
+																							<label class="toggle">
+																								<em>Show Balance</em>
+																								<input type="checkbox" checked="checked">
+																							</label>
+																						 </div> 
+																					</div> 
+																				</div> 
+																			</div>
+																			<div class="vspacer20"></div> 
+																			<span class="account-balance disable-status">
+																				<h5>001184918391</h5>
+																				<em class="entered-data maroon1-a" amt="50,000.00">
+																					<i> 
+																						<img src="../assets/images/svg/rupee.svg" alt="rupees-icon">
+																					</i> <b>XXXXXX</b>
+																					<div class="refresh-amt card-actions"> 
+																						<img src="../assets/images/svg/refresh.svg" alt="refresh-icon">  
+																					</div>
+																			</em>
+																			</span>
+																			<div class="col-sm-12 col-12">
+																				<div class="total-target">
+																				<small>Total Available Balance</small>
+																			</div>
+																			</div> 
+																		</a>
+																		
+																		<div>
+																		
+																	</div>
+																</div> 
+															</div> 
+														</div> 
+													</div> 
+													<div class="item" role="listitem">
+														<div class="ux-component2 blue2">
+															<div class="ux-dropdown">
+																<div class="drp-box">
+																	<a  href="javascript:;"  class="drp-enterdata" >
+																	<div class="card-actions">
+																			<div class="row1">
+																				<div class="col-6">
+																					<span>Saving Account</span>		
+																				</div> 
+																				<div class="col-6">
+																					<div class="text-right">
+																						<label class="toggle">
+																							<em>Show Balance</em>
+																							<input type="checkbox" checked="checked">
+																						</label>
+																					 </div> 
+																				</div> 
+																			</div> 
+																		</div>
+																		<div class="vspacer20"></div> 
+																		<span class="account-balance disable-status">
+																			<h5>001184918391</h5>
+																			<em class="entered-data blue2-a" amt="50,000.00">
+																				<i> 
+																					<img src="../assets/images/svg/rupee.svg" alt="rupees-icon">
+																				</i> <b>XXXXXX</b>
+																				<div class="refresh-amt card-actions"> 
+																					<img src="../assets/images/svg/refresh.svg" alt="refresh-icon">  
+																				</div>
+																		</em>
+																		</span>
+																		<div class="col-sm-12 col-12">
+																			<div class="total-target">
+																			<small>Total Available Balance</small>
+																		</div>
+																		</div> 
+																	</a>
+																	
+																	<div>
+																	
+																</div>
+															</div> 
+														</div> 
+													</div> 
+												</div> 
+
+												<div class="item" role="listitem">
+													<div class="ux-component2 blue1">
+														<div class="ux-dropdown">
+															<div class="drp-box">
+																<a  href="javascript:;"  class="drp-enterdata" >
+																<div class="card-actions">
+																		<div class="row1">
+																			<div class="col-6">
+																				<span>Saving Account</span>		
+																			</div> 
+																			<div class="col-6">
+																				<div class="text-right">
+																					<label class="toggle">
+																						<em>Show Balance</em>
+																						<input type="checkbox" checked="checked">
+																					</label>
+																				 </div> 
+																			</div> 
+																		</div> 
+																	</div>
+																	<div class="vspacer20"></div> 
+																	<span class="account-balance disable-status">
+																		<h5>001184918391</h5>
+																		<em class="entered-data blue1-a" amt="50,000.00">
+																			<i> 
+																				<img src="../assets/images/svg/rupee.svg" alt="rupees-icon">
+																			</i> <b>XXXXXX</b>
+																			<div class="refresh-amt card-actions"> 
+																				<img src="../assets/images/svg/refresh.svg" alt="refresh-icon">  
+																			</div>
+																	</em>
+																	</span>
+																	<div class="col-sm-12 col-12">
+																		<div class="total-target">
+																		<small>Total Available Balance</small>
+																	</div>
+																	</div> 
+																</a>
+																
+																<div>
+																
+															</div>
+														</div> 
+													</div> 
+												</div> 
+											</div> 
+											 
+											<div class="item" role="listitem">
+												<div class="ux-component2 pink1">
+													<div class="ux-dropdown">
+														<div class="drp-box">
+															<a  href="javascript:;"  class="drp-enterdata" >
+															<div class="card-actions">
+																	<div class="row1">
+																		<div class="col-6">
+																			<span>Saving Account</span>		
+																		</div> 
+																		<div class="col-6">
+																			<div class="text-right">
+																				<label class="toggle">
+																					<em>Show Balance</em>
+																					<input type="checkbox" checked="checked">
+																				</label>
+																			 </div> 
+																		</div> 
+																	</div> 
+																</div>
+																<div class="vspacer20"></div> 
+																<span class="account-balance disable-status">
+																	<h5>001184918391</h5>
+																	<em class="entered-data pink1-a" amt="50,000.00">
+																		<i> <img src="../assets/images/svg/rupee.svg" alt="rupees-icon"> </i> <b>XXXXXX</b>
+																		<div class="refresh-amt card-actions"> 
+																			 <img src="../assets/images/svg/refresh.svg" alt="refresh-icon">  
+																		 </div>
+																</em>
+																</span>
+																<div class="col-sm-12 col-12">
+																	<div class="total-target">
+																	<small>Total Available Balance</small>
+																</div>
+																</div> 
+															</a>
+															
+															<div>
+															
+														</div>
+													</div> 
+												</div> 
+											</div> 
+										</div> 
+
+									   </div>
+								    </div>  
+								  </div>
+							</div>
+					     </div>				 
+					</li>
+					<li>
+						<h5>Tabs Component 
+							<b>Use of tabs selection</b></h5>
+						<div class="comp">
+							<div class="row">
+								 <div class="col-12">
+										<!-- Nav tabs -->
+										<div class="ux-nav-tabs" style="margin: 0">
+											<ul class="nav nav-tabs" role="tablist">
+												<li class="nav-item">
+													<a class="nav-link active account-details" data-toggle="tab" href="#home1">Account Details</a>
+												</li>
+												<li class="nav-item">
+													<a class="nav-link recent-trans" data-toggle="tab" href="#menu1">Recent Transactions</a>
+												</li>
+											</ul>
+		
+											<!-- Tab panes -->
+											<div class="tab-content">
+												<div id="home1" class=" tab-pane active">
+													<ul class="lst-acc-details">
+														<li>
+															<div class="ux-input">
+																<label>Name</label>
+																<h6>Ganesh Thakur</h6>
+															</div><!--.ux-input-->
+														</li>
+														<li>
+															<div class="ux-input">
+																<label>Wallet Account Number</label>
+																<h6>05235258447</h6>
+															</div><!--.ux-input-->
+														</li>
+														<li>
+															<div class="ux-input">
+																<label>Wallet Type</label>
+																<h6>MJBL</h6>
+															</div><!--.ux-input-->
+														</li>
+													</ul><!--.lst-acc-details-->
+												</div>
+												<div id="menu1" class="tab-pane fade">
+													<ul class="lst-recent-transact">
+														<li>
+															<div class="row">
+																<div class="col-6">
+																	<div class="transact-details text-left">
+																		<h5>20 Apr'18</h5>
+																		<em>VPS/NMMT/2018042114610/00</em>
+																	</div><!--.transact-details-->
+																</div><!--.col-6-->
+																<div class="col-6">
+																	<div class="transact-amt text-right">
+																		<h5>110.00 <b class="debit">Dr</b> </h5>
+																	</div><!--.transact-amt-->
+																</div><!--.col-6-->
+															</div><!--.row-->
+														</li>
+														<li>
+															<div class="row">
+																<div class="col-6">
+																	<div class="transact-details text-left">
+																		<h5>20 Apr'18</h5>
+																		<em>VPS/NMMT/2018042114610/00</em>
+																	</div><!--.transact-details-->
+																</div><!--.col-6-->
+																<div class="col-6">
+																	<div class="transact-amt text-right">
+																		<h5>110.00 <b class="credit">Cr</b> </h5>
+																	</div><!--.transact-amt-->
+																</div><!--.col-6-->
+															</div><!--.row-->
+														</li>
+														<li>
+															<div class="row">
+																<div class="col-6">
+																	<div class="transact-details text-left">
+																		<h5>20 Apr'18</h5>
+																		<em>VPS/NMMT/2018042114610/00</em>
+																	</div><!--.transact-details-->
+																</div><!--.col-6-->
+																<div class="col-6">
+																	<div class="transact-amt text-right">
+																		<h5>110.00 <b class="debit">Dr</b> </h5>
+																	</div><!--.transact-amt-->
+																</div><!--.col-6-->
+															</div><!--.row-->
+														</li>
+													</ul> 	
+												</div>
+											</div>   
+										</div> 
+									</div> 
+							 </div> 
+						</div>
+					</li>
+					<li>
+						<h5>Tabs Component - Nav Tab Justified 
+							<b>Use of tabs selection</b></h5>
+						<div class="comp">
+							<div class="row">
+								 <div class="col-12">
+										<!-- Nav tabs -->
+										<div class="ux-nav-tabs" style="margin: 0">
+											<ul class="nav nav-tabs nav-justified" role="tablist">
+												<li class="nav-item">
+													<a class="nav-link active account-details" data-toggle="tab" href="#home">Account Details</a>
+												</li>
+												<li class="nav-item">
+													<a class="nav-link recent-trans" data-toggle="tab" href="#menu">Recent Transactions</a>
+												</li>
+											</ul>
+		
+											<!-- Tab panes -->
+											<div class="tab-content">
+												<div id="home" class=" tab-pane active">
+													<ul class="lst-acc-details">
+														<li>
+															<div class="ux-input">
+																<label>Name</label>
+																<h6>Ganesh Thakur</h6>
+															</div><!--.ux-input-->
+														</li>
+														<li>
+															<div class="ux-input">
+																<label>Wallet Account Number</label>
+																<h6>05235258447</h6>
+															</div><!--.ux-input-->
+														</li>
+														<li>
+															<div class="ux-input">
+																<label>Wallet Type</label>
+																<h6>MJBL</h6>
+															</div><!--.ux-input-->
+														</li>
+													</ul><!--.lst-acc-details-->
+												</div>
+												<div id="menu" class="tab-pane fade">
+													<ul class="lst-recent-transact">
+														<li>
+															<div class="row">
+																<div class="col-6">
+																	<div class="transact-details text-left">
+																		<h5>20 Apr'18</h5>
+																		<em>VPS/NMMT/2018042114610/00</em>
+																	</div><!--.transact-details-->
+																</div><!--.col-6-->
+																<div class="col-6">
+																	<div class="transact-amt text-right">
+																		<h5>110.00 <b class="debit">Dr</b> </h5>
+																	</div><!--.transact-amt-->
+																</div><!--.col-6-->
+															</div><!--.row-->
+														</li>
+														<li>
+															<div class="row">
+																<div class="col-6">
+																	<div class="transact-details text-left">
+																		<h5>20 Apr'18</h5>
+																		<em>VPS/NMMT/2018042114610/00</em>
+																	</div><!--.transact-details-->
+																</div><!--.col-6-->
+																<div class="col-6">
+																	<div class="transact-amt text-right">
+																		<h5>110.00 <b class="credit">Cr</b> </h5>
+																	</div><!--.transact-amt-->
+																</div><!--.col-6-->
+															</div><!--.row-->
+														</li>
+														<li>
+															<div class="row">
+																<div class="col-6">
+																	<div class="transact-details text-left">
+																		<h5>20 Apr'18</h5>
+																		<em>VPS/NMMT/2018042114610/00</em>
+																	</div><!--.transact-details-->
+																</div><!--.col-6-->
+																<div class="col-6">
+																	<div class="transact-amt text-right">
+																		<h5>110.00 <b class="debit">Dr</b> </h5>
+																	</div><!--.transact-amt-->
+																</div><!--.col-6-->
+															</div><!--.row-->
+														</li>
+													</ul> 	
+												</div>
+											</div>   
+										</div> 
+									</div> 
+							 </div> 
+						</div>
+					</li>
+					 
+					<li>
+						<h5>Accordian Sample <b>Accordian with content show and hide</b> </h5>
+					   	<div class="comp">
+							<div class="col-12">
+								<!-- accordian starts here -->
+								<div class="ux-acc-container" style="margin: 0">
+									<div class="acc-slide">
+										<a href="javascript:;" class="arrow-toggle custom">
+											<h6 class="panel-title">
+												<em>Savings Account</em>	
+											</h6>
+											<i></i>
+										</a> <!-- arrow-toggle -->
+										<div class="acc-slide-content" style="display: none;">
+											<div class="slide-body">
+												<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+												tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+												quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo</p>
+											</div><!--.slide-body-->
+										</div><!--.acc-slide-content-->
+									</div><!--.acc-slide-->
+									<div class="acc-slide">
+										<a href="javascript:;" class="arrow-toggle custom">
+											<h6 class="panel-title">
+												<em>Current Account</em>	
+											</h6>
+											<i></i>
+										</a> <!-- arrow-toggle -->
+										<div class="acc-slide-content" >
+											<div class="slide-body">
+												<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+												tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+												quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo</p>
+											</div><!--.slide-body-->
+										</div><!--.acc-slide-content-->
+									</div><!--.acc-slide-->
+									<div class="acc-slide">
+										<a href="javascript:;" class="arrow-toggle">
+											<h6 class="panel-title">
+												<em>Loan Account</em>	
+											</h6>
+											<i></i>
+										</a> <!-- arrow-toggle -->
+										<div class="acc-slide-content" >
+											<div class="slide-body">
+												<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+												tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+												quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo</p>
+											</div><!--.slide-body-->
+										</div><!--.acc-slide-content-->
+									</div><!--.acc-slide-->
+								</div><!--.ux-acc-container-->
+							<!-- accordian starts ends -->
+							</div>
+						</div>
+					</li>
+					<li>
+						<h5>Data Table Example</h5>
+					   	<div class="comp">
+							<div class="col-12">
+								<div class="datatable-box">
+									<div class="table-responsive">
+										<table id="dt-sample"
+											class="table display table-hover">
+											<thead>
+												<tr>
+												   <th scope="col">Date</th>
+												   <th scope="col">Transaction No.</th>
+												   <th scope="col">Transaction Remark</th>
+												   <th scope="col">Cheque Number</th>
+												   <th scope="col">Amount</th>
+												   <th scope="col">Balance</th>
+												</tr>
+											</thead>
+											<tbody>
+												<tr>
+													<td>01 May 19, 10:45 am</td>
+													<td>8793672136</td>
+													<td>Lorum Ipsum </td>
+													<td>254618</td>
+													<td> <span class="success mr-3">CR</span>
+														<span class="fa fa-inr" aria-hidden="true"></span> 2,000.00
+													</td>
+													<td>
+													   <span class="fa fa-inr" aria-hidden="true"></span> 50,000.00
+													</td> 
+											   </tr>
+											   <tr>
+													<td>01 May 19, 10:45 am</td>
+													<td>8793672136</td>
+													<td>Lorum Ipsum </td>
+													<td>254618</td>
+													<td> <span class="danger mr-3">DR</span>
+														<span class="fa fa-inr" aria-hidden="true"></span> 2,000.00
+													</td>
+													<td>
+													   <span class="fa fa-inr" aria-hidden="true"></span> 50,000.00
+													</td> 
+											   </tr>
+											 </tbody>
+										</table>
+									</div>
+									<!--.table-responsivebox-->
+								</div>
+								<!--.datatable-box-->
+								</div>
+							</div>
+					</li>					
+					<li>
+						<h5>Single Card Component</b>Single card without scroll</h5>
+					   	<div class="comp">
+							<div class="col-12">
+								<div class="ux-card-content">
+									<a href="javascript:;" class="card-tile">
+										<div class="acct-name">
+											<h5>Wallet Account</h5>
+										</div><!--.acct-name-->
+										<div class="show-bal text-right">
+											<span> <img src="../assets/images/icons/visible.png"> Show Balance</span>
+										</div><!--.show-bal-->
+										<div class="acct-number">
+											<b>0012XXXX324</b>
+											<span>Account Number</span>
+										</div><!--.acct-number-->
+										<div class="avail-balance text-right">
+											<b>12,500.75</b>
+											<span>Available Balance</span>
+										</div><!--.avail-balance-->
+									</a><!--.my-accounts-->
+									<!-- <div class="reward-points">
+										<a href="javascript:;">
+											<span><img src="assets/images/wallet/reward.png"> <b>230</b>Reward Points </span>
+										</a>
+									</div> -->
+								</div><!--.wallet-content-->
+							</div> 
+						</div>
+					</li>
+					<!-- <li>
+						<h5>Accordian</h5>
+						<div class="comp">
+							<div id="accordion" class="accordion-container" >
+								<div class="card">
+									<a class="card-link collapsed" data-toggle="collapse" href="#collapse-us-address"  >
+										<div class="card-header">
+												Card Heading
+											<em></em>
+										</div>  
+									</a> 
+									<div id="collapse-us-address" class="collapse" data-parent="#accordion">
+										<div class="card-body">
+											<div class="row1">
+												<div class="col-12">
+													<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+													tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+													quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+													consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+													cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+													proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+												</div> 
+
+											</div>
+										</div>
+									</div>
+								</div> 
+									<div class="card">
+									<a class="card-link collapsed" data-toggle="collapse" href="#collapse-us-address1"  >
+										<div class="card-header">
+												Card Heading
+											<em></em>
+										</div> 
+									</a> 
+									<div id="collapse-us-address1" class="collapse" data-parent="#accordion">
+										<div class="card-body">
+											<div class="row1">
+												<div class="col-12">
+													<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+													tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+													quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+													consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+													cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+													proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+												</div> 
+
+											</div>
+										</div>
+									</div>
+								</div> 
+								<div class="card">
+									<a class="card-link collapsed" data-toggle="collapse" href="#collapse-us-address2"  >
+										<div class="card-header">
+												Card Heading
+											<em></em>
+										</div> 
+									</a> 
+									<div id="collapse-us-address2" class="collapse" data-parent="#accordion">
+										<div class="card-body">
+											<div class="row1">
+												<div class="col-12">
+													<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+													tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+													quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+													consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+													cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+													proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+												</div> 
+
+											</div>
+										</div>
+									</div>
+								</div> 
+								<div class="card">
+									<a class="card-link collapsed" data-toggle="collapse" href="#collapse-us-address3"  >
+										<div class="card-header">
+												Card Heading
+											<em></em>
+										</div> 
+									</a> 
+									<div id="collapse-us-address3" class="collapse" data-parent="#accordion">
+										<div class="card-body">
+											<div class="row1">
+												<div class="col-12">
+													<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+													tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+													quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+													consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+													cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+													proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+												</div> 
+
+											</div>
+										</div>
+									</div>
+								</div> 
+
+							</div> 
+						</div>
+					</li> -->
+					 
+					<li>
+						<h5>Bootstrap Modals</h5>
+						<div class="comp">
+							<button class="ux-button sm primary btn-full" data-toggle="modal" data-target="#largeModal">Full Screen</button>
+							<button class="ux-button sm primary btn-medium" data-toggle="modal" data-target="#mediumModal">Medium</button>
+							<button class="ux-button sm primary btn-small" data-toggle="modal" data-target="#smallModal">Small</button>
+						</div>
+					</li>
+				</ul><!--.lst-components-->
+			</div><!--.col-9-->
+		</div><!--.row-->
+	</div><!--.container-->
+	
+	<div class="modal-sandbox">
+		<!-- Full size Modal starts-->
+		<div id="largeModal" class="modal fade " role="dialog">
+			<div class="modal-dialog modal-dialog-scrollable modal-full ">
+
+			<!-- Modal content-->
+			<div class="modal-content">
+				<div class="modal-header">
+					<div class="mh-top">
+						<h4>top heading</h4>
+					</div>
+					<div class="mh-bottom">
+						<div class="row1">
+							<div class="col-10"><h6>Main heading</h6></div>
+							<div class="col-2"><a href="javascript:;" data-dismiss="modal"><span class="mh-cross" ></span></a></div>
+						</div>
+					</div>
+				</div>
+				<div class="modal-body">
+					<p>Some text in the modal.Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+					tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+					quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+					consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+					cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+					proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+					<p>Some text in the modal.Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+					tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+					quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+					consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+					cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+					proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+					<p>Some text in the modal.Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+					tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+					quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+					consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+					cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+					proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+					<p>Some text in the modal.Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+					tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+					quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+					consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+					cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+					proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+					<p>Some text in the modal.Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+					tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+					quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+					consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+					cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+					proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+					<p>Some text in the modal.Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+					tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+					quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+					consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+					cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+					proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+					<p>Some text in the modal.Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+					tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+					quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+					consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+					cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+					proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+					<p>Some text in the modal.Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+					tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+					quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+					consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+					cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+					proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+					<p>Some text in the modal.Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+					tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+					quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+					consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+					cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+					proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p><p>Some text in the modal.Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+					tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+					quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+					consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+					cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+					proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p><p>Some text in the modal.Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+					tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+					quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+					consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+					cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+					proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p><p>Some text in the modal.Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+					tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+					quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+					consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+					cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+					proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p><p>Some text in the modal.Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+					tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+					quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+					consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+					cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+					proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p><p>Some text in the modal.Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+					tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+					quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+					consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+					cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+					proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p><p>Some text in the modal.Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+					tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+					quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+					consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+					cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+					proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="ux-button sm secondary" data-dismiss="modal">Close</button>
+						<button type="button" class="ux-button sm primary">Submit</button>
+				</div>
+			</div>
+
+			</div><!-- modal-dialog -->
+		</div> <!-- modal -->
+		<!-- Full size Modal ends-->
+		<!-- Mdium size Modal starts-->
+		<div id="mediumModal" class="modal fade " role="dialog">
+			<div class="modal-dialog modal-dialog-scrollable modal-lg ">
+
+				<!-- Modal content-->
+				<div class="modal-content">
+					<div class="modal-header">
+						<div class="mh-top">
+							<h4>top heading</h4>
+						</div>
+						<div class="mh-bottom">
+							<div class="row1">
+								<div class="col-10"><h6>Main heading</h6></div>
+								<div class="col-2"><a href="javascript:;" data-dismiss="modal"><span class="mh-cross" ></span></a></div>
+							</div>
+						</div>
+					</div>
+					<div class="modal-body">
+						<p>Some text in the modal.Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+						tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+						quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+						consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+						cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+						proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+						<p>Some text in the modal.Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+						tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+						quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+						consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+						cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+						proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+						<p>Some text in the modal.Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+						tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+						quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+						consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+						cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+						proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+						<p>Some text in the modal.Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+						tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+						quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+						consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+						cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+						proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+						<p>Some text in the modal.Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+						tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+						quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+						consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+						cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+						proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+						<p>Some text in the modal.Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+						tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+						quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+						consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+						cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+						proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+						<p>Some text in the modal.Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+						tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+						quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+						consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+						cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+						proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+						<p>Some text in the modal.Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+						tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+						quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+						consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+						cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+						proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+						<p>Some text in the modal.Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+						tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+						quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+						consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+						cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+						proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p><p>Some text in the modal.Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+						tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+						quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+						consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+						cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+						proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p><p>Some text in the modal.Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+						tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+						quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+						consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+						cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+						proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p><p>Some text in the modal.Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+						tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+						quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+						consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+						cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+						proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p><p>Some text in the modal.Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+						tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+						quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+						consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+						cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+						proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p><p>Some text in the modal.Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+						tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+						quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+						consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+						cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+						proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p><p>Some text in the modal.Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+						tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+						quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+						consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+						cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+						proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="ux-button sm secondary" data-dismiss="modal">Close</button>
+						<button type="button" class="ux-button sm primary">Submit</button>
+					</div>
+				</div>
+
+			</div><!-- modal-dialog -->
+		</div> <!-- modal -->
+		<!-- Mdium size Modal ends-->
+
+		<!-- Small size Modal starts-->
+
+		<div id="smallModal" class="modal fade " role="dialog">
+			<div class="modal-dialog modal-dialog-centered">
+                  <div class="modal-content">
+					<div class="modal-header">
+						 <div class="mh-bottom">
+							<div class="row1">
+								<div class="col-10"><h6>Main heading</h6></div>
+								<div class="col-2"><a href="javascript:;" data-dismiss="modal"><span class="mh-cross" ></span></a></div>
+							</div>
+						</div>
+					</div>
+					<div class="modal-body">
+						<p>Some text in the modal.Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+						tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+						quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+						consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+						cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+						proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+						
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="ux-button sm secondary" data-dismiss="modal">Close</button>
+						<button type="button" class="ux-button sm primary">Submit</button>
+					</div>
+				</div>
+
+			</div> 
+		</div> 
+ 	<!-- Small size Modal ends-->
+
+     </div>
+
+	<!--.modal-sandbox-->
+
+	 
+	<div class="toast-messages"></div><!--.toast-messages-->
+
+	 
+	 
+	<script src="../js/lib/jquery.min.js"></script>
+	<script src="../js/lib/bootstrap.min.js"></script>
+	<script src="../js/lib/jquery-ui.min.js"></script>
+	<script src="../js/lib/owl.carousel.min.js"></script>
+	<script src="../js/lib/popper.min.js"></script>
+    <script src="../js/lib/jquery.mousewheel.min.js"></script>
+	<script src="../js/lib/jquery.mCustomScrollbar.js"></script>
+   <script src="../js/lib/datatables.min.js"></script>
+	<script src="../js/common.js"></script>
+	<script  src="../js/lib/chart2.min.js"></script>
+
+	<script type="text/javascript">
+	   mycardCarousel();
+	   dashboardCarousel ()
+	   showToastMessage( '<b>Heads Up!</b> This alert needs your attention</b>', 'info', true );
+ 	</script>
+ 
+	
+</body>
+</html>

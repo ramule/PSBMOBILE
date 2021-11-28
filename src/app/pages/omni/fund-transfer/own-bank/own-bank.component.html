@@ -1,0 +1,365 @@
+<div class="main">
+
+    <div class="nav-overlay"></div>
+
+
+    <div class="right-main-column">
+        <div class="right-col-container full-width">
+            <div class="body-page-container main-dashborad fundtransfer">
+                <div class="container-fluid">
+
+                    <div class="row">
+                        <div class="col-12 p-0">
+                            <div class="breadcrumb">
+                                <ul class="lst-breadcrumb">
+                                    <!-- <li>
+                                        <a>{{"SEND_MONEY" | translate }}</a>
+                                    </li>
+                                    <li>
+                                        {{"INITIATE_SEND_MONEY" | translate }}
+                                    </li> -->
+                                    <li *ngFor="let name of DataService.breadcrumblist">
+                                        <a (click)="DataService.breadcrumroute(name.routeName)">{{name.currentRoute | translate}}</a>
+                                </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <!--.row -->
+                    <div class="vspacer30 customize"></div>
+                    <div class="row no-gutters">
+                        <div class="col-12">
+                            <form [formGroup]="fundTransfer" (ngSubmit)="onFundTransfer()">
+                                <div class="row1">
+                                    <div class="col-12 col-sm-12 col-md-8 col-lg-9  col-xl-9">
+                                        <div class="ux-acc-container" style="margin: 0">
+                                            <div class="greenCard sendMoney">
+                                                <h4>Send Money</h4>
+                                                <div class="outer-layer">
+                                                    <div class="info-box">
+                                                        <label>From Account</label>
+                                                        <select (change)="onAccountNoChange($event.target.value)" formControlName="fromAccount" >
+                                                            <option *ngFor="let account of accountList; let i = index"
+                                                                [value]="account.accountNumber">{{account.sbAccount}}
+                                                            </option>
+                                                        </select>
+
+                                                        <span><i>Available Balance</i><img
+                                                                src="assets/images/svg/rupee.svg"
+                                                                class="rupee">{{selectedAccount.sbBalance}}</span>
+                                                        <i><img src="assets/images/svg/visible.svg"></i>
+                                                        <i><img src="assets/images/svg/refresh.svg"></i>
+                                                        <small>Last refreshed on 12<sup>th</sup> Oct 2020 21:22</small>
+
+                                                    </div>
+                                                    <ul class="transferTo hfancy-scroll">
+                                                        <li><a [class.active]="paymentType=='self'" (click)="paymentType='self';setBenificiaryList()">Self Account</a></li>
+                                                        <li><a [class.active]="paymentType=='within'" (click)="paymentType='within';setBenificiaryList()">Within Bank Account</a>
+                                                        </li>
+                                                        <li><a [class.active]="paymentType=='outside'" (click)="paymentType='outside';setBenificiaryList()">Outside Bank Account</a>
+                                                        </li>
+                                                        <li><a [class.active]="paymentType=='mmid'" (click)="paymentType='mmid';setBenificiaryList()">MMID</a></li>
+                                                        <li><a [class.active]="paymentType=='vpa'" (click)="paymentType='vpa';setBenificiaryList()">VPA (UPI)</a></li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                            <div class="fund-transfer-wrapp overlap">
+                                                <div class="tab-container">
+                                                    <div class="row1">
+                                                        <div class="col-md-8">
+                                                            <div class="row1 extra-margin">
+                                                                <div class="col-md-6">
+
+                                                                    <div class="send-input"
+                                                                        (click)="onAccountSel = !onAccountSel;">
+                                                                        <label>Send to Account</label>
+
+                                                                        <span class="placeholder" *ngIf="selBenificiary == ''" >Search / Select Payee</span>
+                                                                        <span class="sendDisplay" [ngStyle]="{'display': selBenificiary != '' ? 'block' : 'none' }" ><img src="assets/images/icons/hdfc-icon.png" alt="bank"><b>{{selBenificiary?.benefName}} {{selBenificiary?.beneficiary_account_no}}</b></span>
+                                                                        <span class="errormsg" *ngIf="formErrors.toAccount">{{ formErrors.toAccount }}</span>
+                                                                        <ul [class.active]="onAccountSel">
+                                                                            <li  *ngFor="let benList of benificiaryList; let i = index" ><input type="radio" name="toAccount" formControlName="toAccount" [value]="benList.beneficiary_account_no" (click)="getToAccValue(benList)" ><img src="assets/images/icons/hdfc-icon.png">
+                                                                                <div class="acc-info"><b>{{benList.beneficiary_bank_name}} - <span>{{benList.benefName}}</span></b><small>{{benList.beneficiary_account_no}}</small></div>
+                                                                            </li>
+                                                                            <!-- <li><input type="radio" name="toAccount" formControlName="toAccount" value="test2" (click)="getToAccValue($event.target.value)" ><img src="assets/images/icons/icici-icon.png">
+                                                                                <div class="acc-info"><b>ICICI Bank - <span>Rajesh Nadar</span></b><small>0359 445 3557 5522</small></div>
+                                                                            </li> -->
+                                                                        </ul>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-md-6 ">
+                                                                    <div class="addPayee-wrapp" *ngIf="paymentType!='self'" >
+                                                                        <a><img src="assets/images/svg/add-user.svg" (click)="gotoAddPayee(paymentType)">Add Payee </a>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row1 ">
+                                                        <div class="col-md-8">
+                                                            <div class="row1">
+                                                                <div class="col-md-6">
+
+                                                                    <div class="ux-input">
+                                                                        <label>How much amount?</label>
+                                                                        <input type="text" placeholder="Enter Amount" class="amount-input" formControlName="amount" limit-to="15">
+                                                                        <span class="errormsg" *ngIf="formErrors.amount">{{ formErrors.amount }}</span>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-md-6 ">
+                                                                    <div class="ux-input">
+                                                                        <label>What's this for?</label>
+                                                                        <input type="text" placeholder="Enter Remarks" formControlName="remark" >
+                                                                        <span class="errormsg" *ngIf="formErrors.remark">{{ formErrors.remark }}</span>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="vspacer20"></div>
+                                                    <div class="payment-method" *ngIf="paymentType=='within' || paymentType=='outside'">
+                                                        <h4>Payment Method</h4>
+                                                        <div class="row1 ">
+                                                            <div class="col-md-4 col-12" *ngFor="let item of paymentMethod" >
+                                                                <div class="ux-selection">
+                                                                    <label class="ux-selection2">{{item.type}}
+                                                                        <input type="radio" name="paymentMethod" [checked]="item.checked"  [value]="item.type" formControlName="paymentMethod" >
+                                                                        <span class="checkmark"></span>
+                                                                    </label>
+                                                                    <em>{{item.desc}}</em>
+                                                                </div>
+                                                            </div>
+                                                            <span class="errormsg radio-optn" *ngIf="formErrors.paymentMethod">{{ formErrors.paymentMethod }}</span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!-- schedule payment starts -->
+                                            <div class="schedule-payment">
+                                                <div class="sp-header">
+                                                    <div class="sp-title">
+                                                        <div class="ux-selection">
+                                                            <label class="ux-selection1">Schedule Payment<em>(you can do
+                                                                    auto payment by searching date)</em>
+                                                                <input type="checkbox" name="radioboxdemo"
+                                                                    checked="checked">
+                                                                <span class="checkmark"></span>
+                                                            </label>
+                                                        </div>
+                                                    </div>
+                                                    <i></i>
+                                                </div>
+                                                <div class="sp-body">
+                                                    <div class="row">
+                                                        <div class="col-md-4">
+
+                                                            <div class="ux-input">
+                                                                <label>Date</label>
+                                                                <input type="text" class="datepicker1"
+                                                                    placeholder="DD/MM/YYYY" id="">
+                                                                <em class=" calendar-ic cal-top"></em>
+                                                            </div>
+                                                        </div>
+                                                        <div class="vspacer10"></div>
+                                                        <div class="col-md-4">
+                                                            <div class="ux-input">
+                                                                <label>Payment Type</label>
+                                                                <select required="">
+                                                                    <option value="">Select</option>
+                                                                    <option value="Abc">Recurring</option>
+                                                                    <option value="Def">Fixed</option>
+                                                                </select>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-4">
+                                                            <div class="ux-input">
+                                                                <label>Frequency</label>
+                                                                <select required="">
+                                                                    <option value="">Select</option>
+                                                                    <option value="Abc">Monthly</option>
+                                                                    <option value="Def">Quarterly</option>
+                                                                    <option value="Ghi">Yearly</option>
+                                                                </select>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-4">
+                                                            <div class="ux-input">
+                                                                <label>Number of Installment</label>
+                                                                <select required="">
+                                                                    <option value="">Select</option>
+                                                                    <option value="Abc">12</option>
+                                                                    <option value="Def">8</option>
+                                                                    <option value="Ghi">3</option>
+                                                                </select>
+                                                            </div>
+                                                        </div>
+
+                                                    </div> <!-- row -->
+                                                </div>
+                                            </div><!-- schedule-payment -->
+                                            <!-- schedule payment ends -->
+                                        </div>
+
+                                        <!-- <div class="panel-footer text-right pb-0">
+                                         <button class="secondary ux-button sm ">Cancel</button>
+                                         <button class="primary ux-button sm ">Submit</button>
+                                     </div> -->
+
+                                        <div class="action-btns">
+                                            <!-- <button class=" ux-button secondary backbutton sm"><i></i>Back</button> -->
+                                            <div class="text-right">
+                                                <button class=" ux-button secondary sm">Cancel</button>
+                                                <button class=" ux-button primary sm">Submit</button>
+                                            </div>
+                                        </div>
+
+
+                                    </div>
+                                    <div class="col-12 col-md-4 col-lg-3 col-xl-3 d-none d-md-block">
+                                        <div class="inner-right-block ">
+                                            <div class="header-block clearfix">
+                                                <h5>Recent Payments</h5>
+                                            </div>
+                                            <div class="panel-body">
+                                                <div class="recentpayment-control">
+                                                    <ul>
+                                                        <li>
+                                                            <span class="img-control">
+                                                                <img src="assets/images/icons/girl.png">
+                                                            </span>
+                                                            <span class="account-control">
+                                                                <b>Ashmitha</b>
+                                                                <i>*** *** 09767</i>
+                                                            </span>
+                                                            <span class="amount-control">
+                                                                <b>350.00</b>
+                                                                <i>28 sep 2020</i>
+                                                            </span>
+                                                            <span class="btn-pay">
+                                                                <button class="ux-button sm secondary">Pay</button>
+                                                            </span>
+
+                                                        </li>
+                                                        <li>
+                                                            <span class="img-control">
+                                                                <img src="assets/images/icons/girl.png">
+                                                            </span>
+                                                            <span class="account-control">
+                                                                <b>Ashmitha</b>
+                                                                <i>*** *** 09767</i>
+                                                            </span>
+                                                            <span class="amount-control">
+                                                                <b>350.00</b>
+                                                                <i>28 sep 2020</i>
+                                                            </span>
+                                                            <span class="btn-pay">
+                                                                <button class="ux-button sm secondary">Pay</button>
+                                                            </span>
+
+                                                        </li>
+                                                        <li>
+                                                            <span class="img-control">
+                                                                <b>A</b>
+                                                            </span>
+                                                            <span class="account-control">
+                                                                <b>Ashmitha</b>
+                                                                <i>*** *** 09767</i>
+                                                            </span>
+                                                            <span class="amount-control">
+                                                                <b>350.00</b>
+                                                                <i>28 sep 2020</i>
+                                                            </span>
+                                                            <span class="btn-pay">
+                                                                <button class="ux-button sm secondary">Pay</button>
+                                                            </span>
+
+                                                        </li>
+                                                        <li>
+                                                            <span class="img-control">
+                                                                <b>A</b>
+                                                            </span>
+                                                            <span class="account-control">
+                                                                <b>Ashmitha</b>
+                                                                <i>*** *** 09767</i>
+                                                            </span>
+                                                            <span class="amount-control">
+                                                                <b>350.00</b>
+                                                                <i>28 sep 2020</i>
+                                                            </span>
+                                                            <span class="btn-pay">
+                                                                <button class="ux-button sm secondary">Pay</button>
+                                                            </span>
+
+                                                        </li>
+                                                        <li>
+                                                            <span class="img-control">
+                                                                <b>A</b>
+                                                            </span>
+                                                            <span class="account-control">
+                                                                <b>Ashmitha</b>
+                                                                <i>*** *** 09767</i>
+                                                            </span>
+                                                            <span class="amount-control">
+                                                                <b>350.00</b>
+                                                                <i>28 sep 2020</i>
+                                                            </span>
+                                                            <span class="btn-pay">
+                                                                <button class="ux-button sm secondary">Pay</button>
+                                                            </span>
+
+                                                        </li>
+                                                        <li>
+                                                            <span class="img-control">
+                                                                <b>A</b>
+                                                            </span>
+                                                            <span class="account-control">
+                                                                <b>Ashmitha</b>
+                                                                <i>*** *** 09767</i>
+                                                            </span>
+                                                            <span class="amount-control">
+                                                                <b>350.00</b>
+                                                                <i>28 sep 2020</i>
+                                                            </span>
+                                                            <span class="btn-pay">
+                                                                <button class="ux-button sm secondary">Pay</button>
+                                                            </span>
+
+                                                        </li>
+
+                                                    </ul>
+                                                </div><!-- .recentpayment-control -->
+
+                                            </div>
+
+                                        </div>
+                                        <div class="offers-card">
+                                            <div class="header-block clearfix">
+                                                <h5>Offers on your card</h5>
+                                            </div>
+                                            <div class="panel-body">
+                                                <div class="recentpayment-control">
+                                                    <ul>
+                                                        <li>
+                                                            <img src="assets/images/slides/dashboard-banner.png">
+                                                        </li>
+                                                        <li>
+                                                            <img src="assets/images/card/latest-offers.png">
+                                                        </li>
+                                                    </ul>
+                                                </div><!-- .recentpayment-control -->
+
+                                            </div>
+                                        </div><!-- offers-card -->
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <!--.container-fluid-->
+            </div>
+            <!--.body-page-container-->
+
+        </div>
+    </div>
+</div>

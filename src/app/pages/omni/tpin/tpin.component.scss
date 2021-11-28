@@ -1,0 +1,21 @@
+span.mydisabled {
+  pointer-events: none;
+  cursor: default;
+  color: #bebebe;
+}
+
+span.resendActive {
+  color: #007C3D;
+}
+
+.fund-transfer-wrapp .otp-container .otp-control label {
+  text-transform: none;
+}
+// .popup-bottom.popup-active {
+//   visibility: hidden;
+//   zoom: 1;
+//   filter: alpha(opacity=100);
+//   opacity: 1;
+//   transform: translate(0);
+//   transition: opacity 0.3s, visibility 0.2s, transform 0.4s;
+// }

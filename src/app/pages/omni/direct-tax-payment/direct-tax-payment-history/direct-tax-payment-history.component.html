@@ -1,0 +1,479 @@
+<div class="main bg-m">
+	<div class="nav-overlay"></div>
+	<div class="right-main-column ">
+		<div class="right-col-container pad-b full-width">
+			<!-- ======== body page content start from here ======== -->
+			<div class="body-page-container main-dashborad manage-payee">
+				<div class="container-fluid">
+					<div class="row">
+						<div class="col-12 p-0">
+							<div class="breadcrumb">
+								<ul class="lst-breadcrumb">
+									<!-- <li> <a (click)="goBack()">{{"DASHBOARD" | translate}}</a> </li>
+									<li> <a >{{"TAX" | translate}}</a> </li>
+									<li>{{"DIRECT_TAX_PAYMENT" | translate}}</li> -->
+									<li *ngFor="let name of DataService.breadcrumblist">
+                                        <a (click)="DataService.breadcrumroute(name.routeName)">{{name.currentRoute | translate}}</a>
+                                	</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+					<!--.row -->
+					<div class="vspacer15 customize d-none d-md-block d-lg-block d-xl-block"></div>
+					<div class="row no-gutters">
+						<div class="col-12">
+							<div class="row1">
+								<div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-9">
+									<!-- Greencard2 Start here -->
+									<div class="greencard2">
+										<div class="row1 hide-m">
+											<div class="col-md-8 col-12">
+												<h4></h4> </div>
+											<div class="col-md-4 col-12"> </div>
+										</div>
+										<div class="row1">
+											<div class="col-sm-12 col-12 col-md-12">
+												<!-- dark green menu headers start -->
+												<div class="flex-container pl-2 pr-2 pt-0 pb-0 dir-taxpayment">
+													<div class="full-info">
+														<div class="row1">
+															<div class="col-12 col-md-12 col-lg-12 col-xl-12">
+																<div class="ac-info frm-lbl">
+																	<div class="greenbg-input ux-input">
+																		<label for="fromaccount " class="">{{"FROM_ACCOUNT" | translate}}</label>
+																	</div>
+																</div>
+																<!-- ac-info -->
+																<div class="ac-info sel">
+																	<div class="select-saving-acc">
+																		<select>
+                                      <option *ngFor="let account of accountList" [value]="account.accountNo" >{{account.sbAccount}}</option>
+																		</select>
+																	</div>
+																</div>
+																<!-- ac-info -->
+																<div class="ac-info">
+																	<div class="greenbg-input ux-input">
+																		<p class="info-message2 with-bg bl-tot"> <i>{{"TOTAL_AVAL_BAL" | translate}}</i> <span 	src="assets/images/svg/rupee.svg"
+                                      alt="rupees-icon">{{totalWorth}}</span></p>
+																	</div>
+																</div>
+																<!-- ac-info -->
+																<div class="ac-info hide-m">
+																	<button class="refresh-btn"><img src="assets/images/svg/visible.svg" alt="visibleicon"></button>
+																</div>
+																<!-- ac-info -->
+																<div class="ac-info hide-m">
+																	<button class="refresh-btn"><img src="assets/images/svg/refresh.svg" alt="refresh-icon"></button> <span class="refresh-text"> Last refreshed on 12th Oct 2020, 21:22</span> </div>
+																<!-- ac-info -->
+															</div>
+														</div>
+													</div>
+													<!-- full-info -->
+												</div>
+												<!-- flex-container -->
+												<!-- dark green menu headers end -->
+											</div>
+											<!-- col-sm-12 col-12 col-md-12 -->
+											<div class="col-12 col-md-12">
+												<div class="tab-content bg-transparent mt-2">
+													<div id="within" class=" tab-pane active">
+														<div class="row1">
+															<div class="col-sm-12 col-12 col-md-12">
+																<div class="widget-box5 mb-3">
+																	<div class="bg-white1 pad-custom">
+																		<div class="row1">
+																			<div class="col-md-12 col-12">
+																				<div class="row1">
+																					<div class="col-md-6 col-lg-4 col-xl-4 col-12">
+																						<div class="ux-input ux-disabled">
+																							<label>{{"MAJOR_HEAD" | translate}}</label>
+																							<input type="text" placeholder="" disabled value="(0020)Income tax on Companies(Corparative)">
+																							<p class="error-message"></p>
+																						</div>
+																					</div>
+																					<div class="col-md-6 col-lg-4 col-xl-4 col-12">
+																						<div class="ux-input ux-disabled">
+																							<label>{{"MINOR_HEAD" | translate}}</label>
+																							<input type="text" placeholder="" disabled value="(106) Tax on Distributed Profits">
+																							<p class="error-message"></p>
+																						</div>
+																					</div>
+																				</div>
+																			</div>
+																		</div>
+																		<div class="row1">
+																			<div class="col-md-12 col-12">
+																				<div class="row1">
+																					<div class="col-md-6 col-lg-4 col-xl-4 col-12">
+																						<div class="ux-input ux-disabled">
+																							<label>{{"NATURE_OF_PAYMENT" | translate}}</label>
+																							<input type="text" placeholder="" disabled value="94A-Interest other than interest securities">
+																							<p class="error-message"></p>
+																						</div>
+																					</div>
+																					<div class="col-md-6 col-lg-4 col-xl-4 col-12">
+																						<div class="ux-input ux-disabled">
+																							<label>{{"TAX" | translate}}</label>
+																							<input type="text" placeholder="Enter your PAN number" disabled value="₹ 110.00">
+																							<p class="error-message"></p>
+																						</div>
+																					</div>
+																					<div class="col-md-6 col-lg-4 col-xl-4 col-12">
+																						<div class="ux-input ux-disabled">
+																							<label>{{"SURCHARGE" | translate}}</label>
+																							<input type="text" placeholder="Enter your PAN number" disabled value="₹ 110.00">
+																							<p class="error-message"></p>
+																						</div>
+																					</div>
+																				</div>
+																			</div>
+																		</div>
+																		<div class="row1">
+																			<div class="col-md-12 col-12">
+																				<div class="row1">
+																					<div class="col-md-6 col-lg-4 col-xl-4 col-12">
+																						<div class="ux-input ux-disabled">
+																							<label>{{"EDUCATION_CESS" | translate}}</label>
+																							<input type="text" placeholder="" disabled value="₹ 110.00">
+																							<p class="error-message"></p>
+																						</div>
+																					</div>
+																					<div class="col-md-6 col-lg-4 col-xl-4 col-12">
+																						<div class="ux-input ux-disabled">
+																							<label>{{"INTEREST" | translate}}</label>
+																							<input type="text" placeholder="Enter your PAN number" disabled value="₹ 110.00">
+																							<p class="error-message"></p>
+																						</div>
+																					</div>
+																					<div class="col-md-6 col-lg-4 col-xl-4 col-12">
+																						<div class="ux-input ux-disabled">
+																							<label>{{"PENALTY" |translate}}</label>
+																							<input type="text" placeholder="Enter your PAN number" disabled value="₹ 110.00">
+																							<p class="error-message"></p>
+																						</div>
+																					</div>
+																				</div>
+																			</div>
+																		</div>
+																		<div class="row1">
+																			<div class="col-md-12 col-12">
+																				<div class="row1">
+																					<div class="col-md-6 col-lg-4 col-xl-4 col-12">
+																						<div class="ux-input ux-disabled">
+																							<label>{{"OTHER" |translate}}</label>
+																							<input type="text" placeholder="Enter your PAN number" disabled value="₹ 110.00">
+																							<p class="error-message"></p>
+																						</div>
+																					</div>
+																				</div>
+																			</div>
+																		</div>
+																		<div class="row1">
+																			<div class="col-md-12 col-12">
+																				<div class="row1">
+																					<div class="col-md-6 col-lg-4 col-xl-4 col-12 ">
+																						<div class="ux-input ux-disabled mb-0">
+																							<label>{{"TOTAL_AMOUNT" | translate}}</label>
+																							<input type="text" placeholder="Enter your PAN number" disabled value="₹ 110.00" class="mb-0">
+																							<p class="error-message"></p>
+																						</div> <small>{{"TOTAL_AMOUNT_MSG" | translate}}</small> </div>
+																					<div class="col-md-6 col-lg-6 col-xl-4 col-12">
+																						<div class="ux-input ux-disabled">
+																							<label>{{"REMARKS" | translate}}</label>
+																							<input type="text" placeholder="Enter your PAN number" disabled value="CBDT Shopping Mall Payment">
+																							<p class="error-message"></p>
+																						</div>
+																					</div>
+																				</div>
+																			</div>
+																		</div>
+																	</div>
+																</div>
+															</div>
+															<div class="col-12 col-md-12">
+																<ul class="bottom-footer1">
+																	<li>
+																		<div class="btn-div">
+																			<button class=" ux-button secondary sm-mob" >{{"CANCEL" | translate}}</button>
+																		</div>
+																		<div class="btn-div">
+																			<button class=" ux-button primary sm-mob" >{{"PROCEED" | translate}}</button>
+																		</div>
+																	</li>
+																</ul>
+															</div>
+														</div>
+													</div>
+													<div id="outsidebank" class="tab-pane fade">
+														<div class="row1">
+															<div class="col-sm-12 col-12 col-md-12">
+																<div class="widget-box5 mb-3">
+																	<div class="bg-white1 pad-custom">
+																		<div class="row1">
+																			<div class="col-md-12 col-12">
+																				<div class="row1">
+																					<div class="col-md-6 col-lg-6 col-xl-4 col-12">
+																						<div class="ux-input">
+																							<label for="payeeName">{{"PAYEE_NAME" | translate}}</label>
+																							<input type="text" name="payeeName" placeholder="Enter Payee Name">
+																							<p class="error-message"></p>
+																						</div>
+																					</div>
+																					<div class="col-md-6 col-lg-6 col-xl-4 col-12">
+																						<div class="ux-input">
+																							<label for="payeeaccountType">{{"PAYEE_ACCOUNT_TYPE" | translate}}</label>
+																							<select required="">
+																								<option value="select">{{"SELECT" | translate}}}</option>
+																								<option value="Saving">{{"SAVING" | translate}}</option>
+																								<option value="Current">{{"CURRENT" | translate}}</option>
+																							</select>
+																							<p class="error-message"></p>
+																						</div>
+																					</div>
+																				</div>
+																			</div>
+																		</div>
+																		<div class="row1">
+																			<div class="col-md-12 col-12">
+																				<div class="row1">
+																					<div class="col-md-6 col-lg-6 col-xl-4 col-12">
+																						<div class="ux-input">
+																							<label for="payeeaccountNumber">{{"PAYEE_ACCOUNT_NUM" | translate}}</label>
+																							<input type="text" name="payeeaccountNumber" alphaNumericOnly placeholder="Enter Payee Account Number">
+																							<p class="error-message"></p>
+																						</div>
+																					</div>
+																					<div class="col-md-6 col-lg-6 col-xl-4 col-12">
+																						<div class="ux-input">
+																							<label for="confirmaccountNumber">{{"CONFIRM_ACCOUNT_NUMBER" | translate}}</label>
+																							<input type="text" name="confirmaccountNumber" placeholder="Enter Confirm Account Number">
+																							<p class="error-message"></p>
+																						</div>
+																					</div>
+																					<div class="col-md-6 col-lg-6 col-xl-4 col-12">
+																						<div class="ux-input">
+																							<label for="ifsc">{{"IFSC" | translate}}</label>
+																							<input type="text" name="ifsc" placeholder="Enter IFSC"> <em class="show-search"></em>
+																							<p class="info-message"> </p>
+																							<!-- <p class="info-message">ICICI Bank, Andheri (west)</p> -->
+																							<p class="error-message"></p>
+																						</div>
+																					</div>
+																				</div>
+																			</div>
+																		</div>
+																		<div class="row1">
+																			<div class="col-md-12 col-12">
+																				<div class="row1">
+																					<div class="col-md-6 col-lg-6 col-xl-4 col-12">
+																						<div class="ux-input">
+																							<label class="payeenickName">{{"PAYEE_NICK_NAME" | translate}}</label>
+																							<input type="text" name="payeenickName" placeholder="Enter Payee Nick Name" limit-to="20">
+																							<p class="error-message"></p>
+																						</div>
+																					</div>
+																					<div class="col-md-6 col-lg-6 col-xl-4 col-12">
+																						<div class="ux-input">
+																							<label class="transactionLimit">{{"TRANSACTION_LIMIT" |translate}}( ₹ )</label>
+																							<input type="text" name="transactionLimit" placeholder="Enter Transaction Limit">
+																							<p class="info-message text-right">{{"MAX_TRANSACTION_LIMIT" | translate}}</p>
+																							<p class="error-message"></p>
+																						</div>
+																					</div>
+																				</div>
+																			</div>
+																		</div>
+																	</div>
+																</div>
+															</div>
+															<div class="col-12 col-md-12">
+																<ul class="bottom-footer1">
+																	<li>
+																		<div class="btn-div">
+																			<button class=" ux-button secondary sm-mob" >{{"CANCEL" | translate}}</button>
+																		</div>
+																		<div class="btn-div">
+																			<button class=" ux-button primary sm-mob" >{{"SUBMIT" | translate}}</button>
+																		</div>
+																	</li>
+																</ul>
+															</div>
+														</div>
+													</div>
+													<div id="mmid" class="tab-pane fade">
+														<div class="row1">
+															<div class="col-sm-12 col-12 col-md-12">
+																<div class="widget-box5 mb-3">
+																	<div class="bg-white1 pad-custom">
+																		<div class="row1">
+																			<div class="col-md-12 col-12">
+																				<div class="row1">
+																					<div class="col-md-6 col-lg-6 col-xl-4 col-12">
+																						<div class="ux-input">
+																							<label for="mobileNumber">{{"MOBILE_NUMBER" |translate}}</label>
+																							<input type="text" name="mobileNumber" placeholder="Enter Mobile Number">
+																							<p class="error-message"></p>
+																						</div>
+																					</div>
+																					<div class="col-md-6 col-lg-6 col-xl-4 col-12">
+																						<div class="ux-input">
+																							<label for="mmid">{{"MMID" | translate}}</label>
+																							<input type="text" name="mmid" placeholder="Enter MMID">
+																							<p class="error-message"></p>
+																						</div>
+																					</div>
+																				</div>
+																			</div>
+																		</div>
+																		<div class="row1">
+																			<div class="col-md-12 col-12">
+																				<div class="row1">
+																					<div class="col-md-6 col-lg-6 col-xl-4 col-12">
+																						<div class="ux-input">
+																							<label for="payeeName">{{"PAYEE_NAME" | translate}}</label>
+																							<input type="text" name="payeeName" placeholder="Enter Payee Name">
+																							<p class="error-message"></p>
+																						</div>
+																					</div>
+																					<div class="col-md-6 col-lg-6 col-xl-4 col-12">
+																						<div class="ux-input">
+																							<label class="payeenickName">{{"PAYEE_NICK_NAME" | translate}}</label>
+																							<input type="text" name="payeenickName" placeholder="Enter Payee Nick Name" limit-to="20">
+																							<p class="error-message"></p>
+																						</div>
+																					</div>
+																				</div>
+																			</div>
+																		</div>
+																		<div class="row1">
+																			<div class="col-md-12 col-12">
+																				<div class="row1">
+																					<div class="col-md-6 col-lg-6 col-xl-4 col-12">
+																						<div class="ux-input">
+																							<label class="transactionLimit">{{"TRANSACTION_LIMIT"| translate}} ( ₹ )</label>
+																							<input type="text" name="transactionLimit" placeholder="Enter Transaction Limit">
+																							<p class="info-message text-right">{{"MAX_TRANSACTION_LIMIT" | translate}}</p>
+																							<p class="error-message"></p>
+																						</div>
+																					</div>
+																				</div>
+																			</div>
+																		</div>
+																	</div>
+																</div>
+															</div>
+															<div class="col-12 col-md-12">
+																<ul class="bottom-footer1">
+																	<li>
+																		<div class="btn-div">
+																			<button class="ux-button secondary sm-mob" >{{"CANCEL" | translate }}}</button>
+																		</div>
+																		<div class="btn-div">
+																			<button class="ux-button primary sm-mob" >{{"SUBMIT" | translate}}</button>
+																		</div>
+																	</li>
+																</ul>
+															</div>
+														</div>
+													</div>
+													<div id="vpa" class=" tab-pane fade">
+														<div class="row1">
+															<div class="col-sm-12 col-12 col-md-12">
+																<div class="widget-box5 mb-3">
+																	<div class="bg-white1 pad-custom">
+																		<div class="row1">
+																			<div class="col-md-12 col-12">
+																				<div class="row1">
+																					<div class="col-md-6 col-lg-6 col-xl-4 col-12">
+																						<div class="ux-input">
+																							<label for="vpa">{{"VPA" | translate}}</label>
+																							<input type="text" name="vpa" placeholder="Enter VPA"> <a href="#" class="show-link3">Verify</a>
+																							<p class="error-message"></p>
+																						</div>
+																					</div>
+																					<div class="col-md-6 col-lg-6 col-xl-4 col-12">
+																						<div class="ux-input">
+																							<label for="payeeName">{{"PAYEE_NAME" | translate}}</label>
+																							<input type="text" name="payeeName" placeholder="Enter Payee Name">
+																							<p class="error-message"></p>
+																						</div>
+																					</div>
+																				</div>
+																			</div>
+																		</div>
+																		<div class="row1">
+																			<div class="col-md-12 col-12">
+																				<div class="row1">
+																					<div class="col-md-6 col-lg-6 col-xl-4 col-12">
+																						<div class="ux-input">
+																							<label class="payeenickName">{{"PAYEE_NICK_NAME" | translate}}</label>
+																							<input type="text" name="payeenickName" placeholder="Enter Payee Nick Name" limit-to="20">
+																							<p class="error-message"></p>
+																						</div>
+																					</div>
+																					<div class="col-md-6 col-lg-6 col-xl-4 col-12">
+																						<div class="ux-input">
+																							<label class="transactionLimit">{{"TRANSACTION_LIMIT" | translate}} ( ₹ )</label>
+																							<input type="text" name="transactionLimit" placeholder="Enter Transaction Limit">
+																							<p class="info-message text-right">{{"MAX_TRANSACTION_LIMIT" | translate}}</p>
+																							<p class="error-message"></p>
+																						</div>
+																					</div>
+																				</div>
+																			</div>
+																		</div>
+																	</div>
+																</div>
+															</div>
+															<div class="col-12 col-md-12">
+																<ul class="bottom-footer1">
+																	<li>
+																		<div class="btn-div">
+																			<button class="ux-button secondary sm-mob" >{{"CANCEL" | translate}}</button>
+																		</div>
+																		<div class="btn-div">
+																			<button class="ux-button primary sm-mob" >{{"SUBMIT" | translate}}</button>
+																		</div>
+																	</li>
+																</ul>
+															</div>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+									<!-- Greencard2 End here -->
+								</div>
+								<!-- Right Column Ads Start -->
+								<div class="col-12 col-md-12 col-lg-12 col-xl-3 d-none d-xl-block">
+									<div class="right-ads">
+										<a> <img src="assets/images/banner/my-card-banner.jpg"> </a>
+									</div>
+									<div class="vspacer30"></div>
+									<!-- <div class="offers-card">
+										<div class="header-block clearfix">
+											<h5>Offers on your card</h5> </div>
+										<div class="panel-body">
+											<div class="recentpayment-control">
+												<ul>
+													<li> <img src="assets/images/banner/offer-banner.png"> </li>
+												</ul>
+											</div>
+										</div>
+									</div> -->
+								</div>
+								<!-- Right Column Ads Ends -->
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!--.right-col-container-->
+	</div>
+	<!--.right-main-column-->
+</div>
+<!-- main -->

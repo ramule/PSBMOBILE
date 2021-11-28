@@ -1,0 +1,306 @@
+<div class="right-main-column minus-rt-col mar-custom">
+  <div class="right-col-container pad-b">
+    <div class="body-page-container">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="bg-section">
+            <div class="col-12">
+              <div class="row1">
+                <div class="col-sm-12 col-12 col-md-12">
+                  <div class="row1">
+                    <div class="col-sm-12 col-12 col-md-12">
+                      <div class="ux-nav-tabs" style="margin:0">
+                        <div class="responsive3">
+                          <ul class="nav nav-tabs nav-justified bor-n" role="tablist">
+                            <li class="nav-item">
+                              <a class="nav-link" id="meTab" data-toggle="tab" href="#me">
+                                {{'PENDING_WITH_ME' | translate}}
+                              </a>
+                            </li>
+                            <li class="nav-item">
+                              <a class="nav-link" id="payerTab" data-toggle="tab" href="#payer">
+                                {{'PENDING_WITH_PAYER' | translate}}
+                              </a>
+                            </li>
+                          </ul>
+
+                          <!-- Tab panes -->
+                          <div class="tab-content custom-tab-content pt-0 pb-0">
+                            <div id="me" class="tab-pane active">
+                              <div class="row1">
+                                <div class="col-sm-12 col-12 col-md-12">
+
+                                  <!-- No Record Found Section -->
+                                  <div class="unfound-info" *ngIf="pendingWithMeList.length == 0">
+                                    <h6> {{'NO_RECORD_FOUND' | translate}}</h6>
+                                  </div>
+                                  <!-- No Record Found Section End-->
+
+                                  <ul class="payment-list" *ngIf="pendingWithMeList.length > 0">
+                                    <li *ngFor="let pendingByMe of pendingWithMeList"
+                                      [ngClass]="!pendingByMe.isSeen ? 'payment-list active' : ''">
+                                      <div class="full-container mb-0">
+                                        <!--(click)="goToPendingWithMeDetailPage(pendingByMe)"-->
+                                        <div class="row1">
+                                          <div class="col-8 col-md-6">
+                                            <div class="left-info1">
+                                              <h6 class="heading" *ngIf="pendingByMe.notificationType == 'MANDATE_NOTIFICATION'"> {{'TO_BE_SENT_TO' | translate}}
+                                                {{pendingByMe.payeeName}} </h6>
+                                              <h6 class="heading" *ngIf="pendingByMe.notificationType != 'MANDATE_NOTIFICATION'"> {{'REQUESTED_BY' | translate}}
+                                                {{pendingByMe.payeeName}} </h6>
+                                              <h5>{{'UPI_ID' | translate }} : {{pendingByMe.payeeAddress}}</h5>
+                                            </div>
+                                          </div>
+                                          <div class="col-4 col-md-6">
+                                            <div class="right-info mt-2">
+                                              <h5 class="cust-mar">
+                                                <!-- <img
+																									src="assets/images/svg/rupee-bl.svg"
+																									alt="rupees-icon"> -->
+                                                {{pendingByMe.amount | customcurrency:'symbol'}}
+                                                <!-- to differentiate between mandate and collect -->
+                                                <div class="overlap-badge2"
+                                                  *ngIf="pendingByMe.notificationType == 'MANDATE_NOTIFICATION'">
+                                                  <em>{{'MANDATE' | translate}}</em>
+                                                </div>
+                                                <!-- end of to differentiate between mandate and collect -->
+                                              </h5>
+                                            </div>
+                                          </div>
+                                        </div>
+                                        <div class="row1 mt-2">
+                                          <div class="col-6 col-md-6">
+                                            <div class="left-info3">
+                                              <div class="icon-info">
+                                                <span>
+                                                  <img src="assets/images/svg/expiry-date.svg" alt="expiry-date-icon">
+                                                </span>
+                                              </div>
+                                              <em>{{'EXPIRY_DATE_AND_TIME' | translate}}</em>
+                                              <h6>
+                                                <!-- {{pendingByMe.expiredDate | date : 'dd MMM yyyy' }}<br />  {{pendingByMe.expiredDate | date: 'hh:mm:ss:aa'}} -->
+                                                {{pendingByMe.expiredDate}}
+                                              </h6>
+                                            </div>
+                                          </div>
+                                          <div class="col-6 col-md-6">
+                                            <div class="left-info3">
+                                              <div class="icon-info">
+                                                <span>
+                                                  <img src="assets/images/svg/requested-date.svg"
+                                                    alt="request-date-icon">
+                                                </span>
+                                              </div>
+                                              <em>{{'REQUESTED_DATE_TIME' | translate}}</em>
+                                              <h6>
+                                                <!-- {{pendingByMe.requestedDate | date : 'dd MMM yyyy' }}<br /> {{pendingByMe.requestedDate | date : 'hh:mm:ss:aa' }} -->
+                                                {{pendingByMe.requestedDate}}
+                                              </h6>
+
+                                            </div>
+                                          </div>
+                                        </div>
+                                        <div class="row1 mt-2">
+                                          <div class="col-12 col-md-12">
+                                            <div class="full-info2">
+                                              <em> {{'PLEASE_NOTE_REQUESTED_AMOUNT_GET_DEBITED_FROM ' | translate}}
+                                                <br />{{'YOUR_ACCOUNT ' | translate}}
+                                              </em>
+                                            </div>
+                                          </div>
+                                        </div>
+                                        <div class="row1 mt-2">
+                                          <div class="col-5 col-md-6 pr-1 pl-2">
+                                            <div class="text-left">
+                                              <button class="ux-linkbutton small-link-text default"
+                                                (click)="navigateToPendingRequestDetails('setReminder',pendingByMe)">
+                                                <img src="assets/images/svg/reminder-g.svg" alt="reminder-icon">
+                                                {{ 'SET_REMINDER' | translate }} </button>
+                                              <button class="ux-linkbutton small-link-text default"
+                                                (click)="navigateToPendingRequestDetails('blockUPIId',pendingByMe)">
+                                                <img src="assets/images/svg/block-r.svg" alt="block-icon">
+                                                {{'BLOCK_UPI_ID' | translate}}</button>
+                                            </div>
+                                          </div>
+                                          <div class="col-7 col-md-6 pl-1">
+                                            <div class="btn-section">
+                                              <div class="text-right">
+                                                <button class="ux-button secondary sm5"
+                                                  (click)="navigateToPendingRequestDetails('reject',pendingByMe)">{{'REJECT' | translate}}</button>
+                                                <button class="ux-button primary sm5"
+                                                  (click)="acceptPendingReq('pendingConfirmation',pendingByMe)">{{pendingByMe.notificationType == 'MANDATE_NOTIFICATION' ? ('EXECUTE' | translate) : ('ACCEPT' | translate)}}</button>
+                                              </div>
+                                            </div>
+                                          </div>
+                                        </div>
+                                      </div>
+                                    </li>
+                                  </ul>
+                                </div>
+                              </div>
+                            </div>
+
+                            <div id="payer" class="tab-pane fade">
+                              <div class="row1">
+                                <div class="col-sm-12 col-12 col-md-12">
+
+                                  <!-- No Record Found Section -->
+                                  <div class="unfound-info" *ngIf="pendingWithPayerList.length == 0">
+                                    <h6> {{'NO_RECORD_FOUND' | translate}}</h6>
+                                  </div>
+                                  <!-- No Record Found Section END -->
+
+                                  <ul class="payment-list" *ngIf="pendingWithPayerList.length > 0">
+                                    <li *ngFor="let pendingWithPayer of pendingWithPayerList" [hidden]="pendingWithPayer.frequency == 'ONETIME'">
+                                      <div class="full-container mb-0">
+                                        <div class="row1">
+                                          <div class="col-8 col-md-6">
+                                            <div class="left-info1">
+                                              <h6 class="heading" *ngIf="pendingWithPayer?.notificationType == 'MANDATE_NOTIFICATION'"> {{'TO_BE_RECEIVED_FROM' | translate}}
+                                                {{pendingWithPayer.payerName}} </h6>
+                                              <h6 class="heading" *ngIf="!pendingWithPayer?.notificationType">{{'REQUESTED_TO' | translate}}
+                                                {{pendingWithPayer.payerName}}</h6>
+                                              <h5>{{'UPI_ID' | translate }} : {{pendingWithPayer.payerAddress}}</h5>
+                                            </div>
+                                          </div>
+                                          <div class="col-4 col-md-6">
+                                            <div class="right-info mt-2">
+                                              <h5>
+                                                <!-- <img src="assets/images/svg/rupee-bl.svg" alt="rupees-icon">-->{{pendingWithPayer.amount | customcurrency:'symbol'}}
+                                              </h5>
+                                            </div>
+                                          </div>
+                                        </div>
+                                        <div class="row1 mt-2">
+                                          <div class="col-6 col-md-6">
+                                            <div class="left-info3">
+                                              <div class="icon-info">
+                                                <span>
+                                                  <img src="assets/images/svg/expiry-date.svg" alt="expiry-date-icon">
+                                                </span>
+                                              </div>
+                                              <em>{{'EXPIRY_DATE_AND_TIME' | translate}}</em>
+                                              <h6>
+                                                <!-- {{pendingWithPayer.expiredDate | date : 'dd MMM yyyy' }} <br /> {{pendingWithPayer.expiredDate | date: 'hh:mm:ss:aa'}} -->
+                                                {{pendingWithPayer.expiredDate}}
+                                              </h6>
+                                            </div>
+                                          </div>
+                                          <div class="col-6 col-md-6">
+                                            <div class="left-info3">
+                                              <div class="icon-info">
+                                                <span>
+                                                  <img src="assets/images/svg/requested-date.svg"
+                                                    alt="request-date-icon">
+                                                </span>
+                                              </div>
+                                              <em> {{'REQUESTED_DATE_TIME' | translate}}</em>
+                                              <h6>
+                                                <!-- {{pendingWithPayer.requestedDate | date : 'dd MMM yyyy' }}<br /> {{pendingWithPayer.requestedDate | date : 'hh:mm:ss:aa' }} -->
+                                                {{pendingWithPayer.requestedDate}}
+                                              </h6>
+
+                                            </div>
+                                          </div>
+                                        </div>
+                                        <div class="row1 mt-2">
+                                          <div class="col-5 col-md-6 pr-1 pl-2">
+
+                                          </div>
+                                          <div class="col-7 col-md-6 pl-1">
+                                            <div class="btn-section">
+                                              <div class="text-right">
+                                                <button class="ux-button secondary sm5"
+                                                  (click)="goToPendingByPayerDetailPage(pendingWithPayer,'pendingPayerView')">{{'VIEW' | translate}}</button>
+                                              </div>
+                                            </div>
+                                          </div>
+                                        </div>
+                                      </div>
+                                    </li>
+
+                                  </ul>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- main -->
+<!-- =========== modal popup start ===============  -->
+<!-- Filter Popup Start -->
+<div class="popup-bottom filter1">
+  <div class="row1">
+    <div class="col-10">
+      <h4>Filter</h4>
+    </div>
+    <div class="col-2">
+      <button class="ux-button-icon"> <img src="assets/images/svg/close-b.svg" alt="cross-icon" class="img-vsmall">
+      </button>
+    </div>
+  </div>
+  <form action="#" id="filter-form">
+    <div class="row1 mt-2">
+      <div class="col-12 col-sm-12 col-md-12 col-lg-12">
+        <div class="ux-input">
+          <label for="upiId">UPI ID</label>
+          <select required="">
+            <option value="">Select</option>
+            <option value="9768245145@psb">9768245145@psb</option>
+          </select>
+          <p class="mb-0"></p>
+        </div>
+      </div>
+    </div>
+    <div class="row1">
+      <div class="col-6">
+        <div class="ux-input">
+          <label>Start Date</label>
+          <input type="text" class="datepicker1" placeholder="DD/MM/YYYY"> <em class="calendar-ic cal-top"></em> </div>
+      </div>
+      <div class="col-6">
+        <div class="ux-input">
+          <label>End Date</label>
+          <input type="text" class="datepicker1" placeholder="DD/MM/YYYY"> <em class="calendar-ic cal-top"></em> </div>
+      </div>
+    </div>
+    <div class="row1">
+      <div class="col-12 col-sm-12 col-md-12 col-lg-12">
+        <div class="ux-input">
+          <label for="">Transaction Type</label>
+          <select required="">
+            <option value="">Select</option>
+            <option value="Collect">Collect</option>
+          </select>
+          <p class="mb-0"></p>
+        </div>
+      </div>
+    </div>
+    <div class="row1 mt-2">
+      <div class="col-6 text-center">
+        <button class="ux-button secondary  md" onclick="window.location.href = '#'">Clear</button>
+      </div>
+      <div class="col-6 text-center">
+        <button class="ux-button primary md" onclick="window.location.href = 'transaction-success.html'">Apply</button>
+      </div>
+    </div>
+  </form>
+</div>
+<!-- Filter Popup End -->
+<div class="ios-nav-overlay"></div>

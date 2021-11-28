@@ -1,0 +1,8 @@
+[2019-9-6 12:19:55] layer "XXXXX.XX LAk": Expected end of input but "L" found.
+[2019-9-6 12:19:55] layer "+": Expected Either a default asset specification or a layer asset specification but "+" found.
+[2019-9-6 12:19:55] layer "XXXXX.XX LAk": Expected end of input but "L" found.
+[2019-9-6 12:19:55] layer "XXXXX.XX LAk": Expected end of input but "L" found.
+[2019-9-6 12:19:55] layer "XXXXX.XX LAk": Expected end of input but "L" found.
+[2019-9-6 12:19:55] layer "XXXXX.XX LAk": Expected end of input but "L" found.
+[2019-9-6 12:19:55] layer "+": Expected Either a default asset specification or a layer asset specification but "+" found.
+[2019-9-6 12:19:55] layer "logout.png": Duplicate path: logout.png

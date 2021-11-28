@@ -1,0 +1,208 @@
+<div class="main">
+	<div class="right-main-column minus-rt-col mar-custom">
+		<div class="right-col-container">
+			<div class="body-page-container">
+				<div class="container-fluid">
+					<div class="row">
+						<div class="bg-section">
+							<div class="col-12">
+								<div class="row1">
+									<div class="col-sm-12 col-12 col-md-12">
+										<div class="white-bg1">
+											<div class="profile-container">
+												<div class="profile-bg">
+													<div class="row">
+														<div class="col-md-12 col-12">
+															<div class="profile2">
+																<h3>RS</h3>
+																<!-- <img src="assets/images/svg/profile-icon.svg" class="img-responsive"> -->
+																<!-- <img src="assets/images/icons/user1.png" class="img-responsive"> --><em class="cam-click">
+													<a class="btn-profile"><img src="assets/images/svg/camera.svg"></a>
+												</em> </div>
+														</div>
+														<div class="row1">
+															<div class="col-12 col-md-12">
+																<h6>Name</h6>
+																<h5>{{DataService.userName}}</h5>
+																<!-- <h5>Test</h5> </div> -->
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+									<div class="col-sm-12 col-12 col-md-12">
+										<div class="white-bg1">
+											<form [formGroup]="changeEmailForm">
+												<div class="row1">
+													<div class="col-md-12 col-12">
+														<div class="ux-input mt-0">
+															<!-- <p class="info-message">Your existing email ID <span class="success">eefjdnj@dmcdsjd</span></p> -->
+															<p class="info-message">Your existing email ID <span class="success">{{DataService.upiUserEmailAdress}}</span></p>
+														</div>
+													</div>
+													<div class="col-md-12 col-12">
+														<div class="ux-input">
+															<label for="newemailId">New Email ID</label>
+															<input type="email" name="newEmailId" placeholder="Enter New Email ID" formControlName="newEmailId">
+															<p class="error-message" *ngIf="changeEmailForm.controls['newEmailId'].hasError('required') && (changeEmailForm.controls['newEmailId'].dirty || changeEmailForm.controls['newEmailId'].touched)">Please select Value</p>
+															<p class="error-message" *ngIf="changeEmailForm.controls['newEmailId'].hasError('email') && (changeEmailForm.controls['newEmailId'].dirty || changeEmailForm.controls['newEmailId'].touched)">not a proper email</p>
+														</div>
+													</div>
+												</div>
+											</form>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- Bottom Button section start -->
+			<div class="footer-container sticky-actions">
+				<div class="footer-inactions minus-rt-col">
+					<div class="container-fluid">
+						<div class="row">
+							<div class="col-12 col-md-12 col-lg-12 text-center">
+								<button type="submit" class="proceed-btn ux-button primary md" (click)="changeEmailSubmit()">Proceed</button>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- Bottom Button section end -->
+		</div>
+	</div>
+</div>
+<!-- main -->
+<!-- =========== modal popup start ===============  -->
+<!-- Upload Profile Picture Popup Start -->
+<div class="popup-bottom profile1">
+	<div class="row1">
+		<div class="col-10">
+			<h4>Upload Profile Picture</h4> </div>
+		<div class="col-2">
+			<button class="ux-button-icon close-btn"> <img src="assets/images/svg/close-b.svg" alt="cross-icon" class="img-vsmall"> </button>
+		</div>
+	</div>
+	<div class="row1">
+		<div class="col-12">
+			<ul class="profile-list">
+				<li>
+					<a> <img src="assets/images/svg/gallery1.svg" alt="gallery-icon"> Select From Gallery </a>
+				</li>
+				<li>
+					<a> <img src="assets/images/svg/photo-camera.svg" alt="camera-icon"> Take Photo </a>
+				</li>
+				<li>
+					<a class="delete-btn"> <img src="assets/images/svg/delete.svg" alt="remove-icon"> Remove Profile Pitcute </a>
+				</li>
+			</ul>
+		</div>
+	</div>
+	<div class="row mt-2">
+		<div class="col-12 text-center">
+			<button class="ux-button primary submit-btn">Confirm</button>
+		</div>
+	</div>
+</div>
+<!-- Upload Profile Picture Popup End -->
+<!-- OTP Popup Start -->
+<div class="popup-bottom otp-popup">
+	<div class="row1">
+		<div class="col-10">
+			<h4 class="text-left">OTP </h4> </div>
+		<div class="col-2">
+			<button class="ux-button-icon close-btn" (click)="closeAllPopUp()"> <img src="assets/images/svg/close-b.svg" alt="cross-icon" class="img-vsmall"> </button>
+		</div>
+	</div>
+	<div class="row1 mb-2">
+		<div class="col-12 col-md-12">
+			<h6 class="">Please enter 6 digit OPT sent on Email ID <br/> ******shah@gmail.com</h6> </div>
+	</div>
+	<div class="row1">
+		<div class="col-12 col-md-12">
+			<div class="row1">
+				<div class="col-12 col-md-12">
+					<div class="row4">
+						<div class="col-sm-2 col-2 col-md-2">
+							<div class="ux-input password1 mb-1">
+								<input id="otppassword1" type="password" maxlength="1" placeholder="●" onkeyup="onKeyupEvent(1, event)" onfocus="onfocusEvent(1)" /> </div>
+						</div>
+						<div class="col-sm-2 col-2 col-md-2">
+							<div class="ux-input password1 mb-1">
+								<input id="otppassword2" type="password" maxlength="1" placeholder="●" onkeyup="onKeyupEvent(2, event)" onfocus="onfocusEvent(2)" /> </div>
+						</div>
+						<div class="col-sm-2 col-2 col-md-2">
+							<div class="ux-input password1 mb-1">
+								<input id="otppassword3" type="password" maxlength="1" placeholder="●" onkeyup="onKeyupEvent(3, event)" onfocus="onfocusEvent(3)" /> </div>
+						</div>
+						<div class="col-sm-2 col-2 col-md-2">
+							<div class="ux-input password1 mb-1">
+								<input id="otppassword4" type="password" maxlength="1" placeholder="●" onkeyup="onKeyupEvent(4, event)" onfocus="onfocusEvent(4)" /> </div>
+						</div>
+						<div class="col-sm-2 col-2 col-md-2">
+							<div class="ux-input password1 mb-1">
+								<input id="otppassword5" type="password" maxlength="1" placeholder="●" onkeyup="onKeyupEvent(5, event)" onfocus="onfocusEvent(5)" /> </div>
+						</div>
+						<div class="col-sm-2 col-2 col-md-2">
+							<div class="ux-input password1 mb-1">
+								<input id="otppassword6" type="password" maxlength="1" placeholder="●" onkeyup="onKeyupEvent(6, event)" onfocus="onfocusEvent(6)" /> </div>
+						</div>
+					</div>
+					<div class="row1">
+						<div class="col-12">
+							<div class="ux-input password1 mt-0 mb-0">
+								<p class="error-message"></p>
+							</div>
+						</div>
+					</div>
+					<div class="row4">
+						<div class="col-6 col-md-6">
+							<div class="text-left">
+								<p class="text-left"> <span class="success-text">00.20</span> </p>
+							</div>
+						</div>
+						<div class="col-6 col-md-6">
+							<div class="text-right">
+								<button class="ux-linkbutton default-underline mt-3">{{ 'RESEND' | translate }}</button>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="row1 mt-2">
+		<div class="col-12 col-md-12">
+			<div class="row1">
+				<div class="col-12 text-center">
+					<button class="ux-button primary otp-submit">Proceed</button>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- OTP Popup End-->
+<!-- Success Popup Start -->
+<div class="popup-bottom success-popup">
+	<div class="row1">
+		<div class="col-12">
+			<h4 class="text-center"> <img src="assets/images/svg/success-circle.svg" alt="success-icon"> Success</h4> </div>
+	</div>
+	<div class="row1">
+		<div class="col-12">
+			<p>Email ID has been Changed
+				<br/> Successfully</p>
+		</div>
+	</div>
+	<div class="row1 mt-2">
+		<div class="col-12 text-center">
+			<button class="ux-button primary md ok-btn" onclick="">Ok</button>
+		</div>
+	</div>
+</div>
+<!-- Success Popup End -->
+<div class="ios-nav-overlay"></div>
+<!-- =========== modal popup end ===============  -->

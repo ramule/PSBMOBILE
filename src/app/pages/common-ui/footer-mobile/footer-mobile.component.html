@@ -1,0 +1,71 @@
+<div class="bfooter">
+    <div class="row1">
+        <div class="col-12 col-lg-12 col-xl-12 col-md-12 col-sm-12 ">
+            <nav class="ios-global-nav">
+                <ul class="lst-ios-nav">
+                    <li>
+                        <a (click)="routeTo('/languageChange')">
+                            <span class="inav-icon">
+                                <img src="./assets/images/svg/language-g.svg" alt="translate-icon">
+                            </span> {{'LANGUAGE' | translate}}
+                        </a>
+                    </li>
+
+                    <li class="d-block d-sm-block d-xl-none d-lg-none d-md-none "  *ngIf="currentRouteUrl == '/upiLogin' || currentRouteUrl == '/loginMobile'" >
+                        <!-- <a class="d-none d-sm-none d-xl-block d-lg-block d-md-block">
+                            (click)="routeTo('/alreadyRegistered')"
+                            <span class="inav-icon">
+                                <img src="./assets/images/svg/whatsnew.svg" alt="whats-new-icon">
+                            </span> {{'WHATS_NEW' | translate}}
+                        </a> -->
+                        <!-- <a (click)="routeTo('/upiDashboard')"  class="d-block d-sm-block d-xl-none d-lg-none d-md-none ">
+                            <span class="inav-icon">
+                              <img src="assets/images/svg/upi-icon1.svg" alt="upi-icon">
+
+                            </span>
+                            UPI
+                        </a> -->
+                        <!-- <a (click)="routeTo('/selectSim'); setUpiFlag()" class="d-block d-sm-block d-xl-none d-lg-none d-md-none "> -->
+                    <ng-container *ngIf= "currentRouteUrl == '/upiLogin'">
+                        <a class="d-block d-sm-block d-xl-none d-lg-none d-md-none ">
+                            <span class="inav-icon">
+                              <img src="./assets/images/svg/mobile-banking-g.svg" alt="upi-icon">
+                            </span> {{'MOBILE_BANKING' | translate}}
+                        </a>
+                    </ng-container>
+                    <ng-container *ngIf= "currentRouteUrl == '/loginMobile'">
+                        <a (click)="checkFlow();" class="d-block d-sm-block d-xl-none d-lg-none d-md-none ">
+                            <span class="inav-icon">
+                              <img src="./assets/images/svg/upi-icon1.svg" alt="upi-icon">
+                            </span> {{'UPI' | translate }}
+                        </a>
+                    </ng-container>
+                    </li>
+                    <li>
+                        <a (click)="routeTo('/locateUs')">
+                            <span class="inav-icon">
+                                <img src="./assets/images/svg/location-g.svg" alt="location-icon">
+                            </span> {{'LOCATE_US' | translate}}
+                        </a>
+                    </li>
+                    <li>
+                        <a (click)="routeTo('/contactUs')">
+                            <span class="inav-icon">
+                                <img src="./assets/images/svg/contact-g.svg" alt="contact-icon">
+                            </span> {{'CONTACT_US' | translate}}
+                        </a>
+                    </li>
+                    <li>
+                        <a (click)="routeTo('/moreServices')" class="moreOptions">
+                          <!-- <a (click)="goToMoreServices()" class="moreOptions"> -->
+                            <span class="inav-icon">
+                                <img src="./assets/images/svg/more.svg" alt="more-icon">
+                            </span> {{'MORE_SERVICES' | translate}}
+                        </a>
+                    </li>
+
+                </ul>
+            </nav>
+        </div>
+    </div>
+</div>

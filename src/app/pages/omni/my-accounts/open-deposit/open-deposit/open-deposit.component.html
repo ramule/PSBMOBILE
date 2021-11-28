@@ -1,0 +1,1165 @@
+<div class="main bg-m">
+	<div class="nav-overlay"></div>
+	<!-- End Global Nav -->
+	<div class="right-main-column ">
+		<div class="right-col-container pad-b full-width">
+			<!-- ======== body page content start from here ======== -->
+			<div class="body-page-container main-dashborad manage-payee">
+				<div class="container-fluid">
+					<div class="row">
+						<div class="col-12 p-0">
+							<div class="breadcrumb">
+								<ul class="lst-breadcrumb">
+									<li *ngFor="let name of DataService.breadcrumblist">
+										<a (click)="DataService.breadcrumroute(name.routeName)">{{name.currentRoute | translate}}</a>
+									</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+					<!--.row -->
+					<div class="vspacer15 customize d-none d-md-block d-lg-block d-xl-block"></div>
+					<div class="row no-gutters">
+						<div class="col-12">
+							<div class="row1">
+								<div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-9">
+									<!-- Greencard2 Start here -->
+									<div class="greencard2">
+										<div class="row1">
+											<div class="col-sm-12 col-12 col-md-12">
+												<div class="widget-box5 mb-3">
+													<div class="bg-white1 pad-custom">
+														<div class="row1 hide-m">
+															<div class="col-12 col-md-12">
+																<h4 class="green-heading">Open Deposit Account</h4> </div>
+														</div>
+														<div class="row1">
+															<div class="col-sm-12 col-12 col-md-12">
+																<h6 class="bold-text mar-t">Deposit Type</h6>
+																<div>
+																	<ul class="tabs info-list2" role="tablist">
+																		<li role="presentation"  [ngClass]="openDepositTabSelection == 'fixed' ? 'active' : '' ">
+																			<a class="nav-link cust-pad2"   (click)="tabSelection('fixed')">
+																				<div class="round-circle">
+																					<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 35.922 28.49">
+																						<g data-name="19705859691600702437" transform="translate(-3 -9)">
+																							<path id="Path_43911" data-name="Path 43911" d="M35.7,9H6.283A3.3,3.3,0,0,0,3,12.283V31.792a3.292,3.292,0,0,0,3.283,3.221H7.459A1.874,1.874,0,0,0,9.193,37.49h4.335a1.848,1.848,0,0,0,1.734-2.477h11.4a1.874,1.874,0,0,0,1.734,2.477h4.335a1.848,1.848,0,0,0,1.734-2.477H35.64a3.3,3.3,0,0,0,3.283-3.283V12.283A3.292,3.292,0,0,0,35.7,9ZM13.529,36.251H9.193a.619.619,0,1,1,0-1.239h4.335a.619.619,0,0,1,0,1.239Zm19.2,0H28.393a.619.619,0,0,1,0-1.239h4.335a.619.619,0,1,1,0,1.239Zm4.955-4.459a2.062,2.062,0,0,1-2.044,2.044H6.221a2.14,2.14,0,0,1-1.982-2.044V12.283a2.062,2.062,0,0,1,2.044-2.044H35.7a2.062,2.062,0,0,1,2.044,2.044V31.792Z" transform="translate(0 0)" />
+																							<path id="Path_43912" data-name="Path 43912" d="M26.429,12.6H10.635a3.3,3.3,0,0,0-3.283,3.283v.681H6.919a.585.585,0,0,0-.619.619v3.9a.585.585,0,0,0,.619.619h.434v3.344H6.919a.585.585,0,0,0-.619.619v3.9a.585.585,0,0,0,.619.619h.434a3.325,3.325,0,0,0,3.283,3.964H26.429a3.3,3.3,0,0,0,3.283-3.283V15.821A3.333,3.333,0,0,0,26.429,12.6ZM8.406,28.951H7.539V26.288h.867Zm0-8.485H7.539V17.8h.867Zm20,10.467a2.062,2.062,0,0,1-2.044,2.044H10.635a2.062,2.062,0,0,1-2.044-2.044v-.743h.434a.585.585,0,0,0,.619-.619v-3.9a.585.585,0,0,0-.619-.619H8.592V21.7h.434a.585.585,0,0,0,.619-.619v-3.9a.585.585,0,0,0-.619-.619H8.592v-.743a2.062,2.062,0,0,1,2.044-2.044H26.429a2.062,2.062,0,0,1,2.044,2.044V30.933Z" transform="translate(-1.256 -1.37)" />
+																							<path id="Path_43913" data-name="Path 43913" d="M19,27.345a4.335,4.335,0,1,0,8.671,0A4.309,4.309,0,0,0,19,27.345Zm4.335,3.1a3.1,3.1,0,0,1,0-6.193A3.1,3.1,0,0,1,23.335,30.442Z" transform="translate(-6.09 -5.339)" />
+																							<path id="Path_43914" data-name="Path 43914" d="M52.813,27.1H51.574a.47.47,0,0,0-.124-.248l.867-.867a.613.613,0,0,0-.867-.867l-.867.867c-.062-.062-.186-.062-.248-.124V24.619a.619.619,0,0,0-1.239,0v1.239a.47.47,0,0,0-.248.124l-.867-.867a.613.613,0,0,0-.867.867l.867.867c-.062.062-.062.186-.124.248H46.619a.619.619,0,0,0,0,1.239h1.239a.47.47,0,0,0,.124.248l-.867.867a.6.6,0,0,0,0,.867.6.6,0,0,0,.867,0l.867-.867c.062.062.186.062.248.124v1.239a.619.619,0,0,0,1.239,0V29.574a.47.47,0,0,0,.248-.124l.867.867a.6.6,0,0,0,.867,0,.6.6,0,0,0,0-.867l-.867-.867c.062-.062.062-.186.124-.248h1.239a.619.619,0,1,0,0-1.239Zm-3.1,1.3a.681.681,0,1,1,.681-.681A.687.687,0,0,1,49.716,28.4Z" transform="translate(-16.368 -5.71)" />
+																							<path id="Path_43927" data-name="Path 43927" d="M2.562-12.665a.945.945,0,0,1-.334.526,1.553,1.553,0,0,1-.551.281l1.33,1.753h-.7l-.985-1.307a3.035,3.035,0,0,0-.259-.314.329.329,0,0,0-.242-.1v-.406h.328a1.093,1.093,0,0,0,.5-.1.556.556,0,0,0,.281-.331H.72l.167-.473H1.938a.476.476,0,0,0-.181-.278.668.668,0,0,0-.37-.111H.72L.887-14H3.329l-.167.473H2.45a.985.985,0,0,1,.128.389h.751l-.167.473Z" transform="translate(15.204 34.34)" /> </g>
+																					</svg>
+																				</div>
+																				<div class="text-center"> <em>Fixed Deposit</em> </div>
+																			</a>
+																		</li>
+																		<li role="presentation" [ngClass]="openDepositTabSelection == 'recurring' ? 'active' : '' " *ngIf="this.DataService.isNRENRO!=true">
+																			<a class="nav-link cust-pad2"  (click)="tabSelection('recurring')">
+																				<div class="round-circle">
+																					<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 34.2 35.6">
+																						<g transform="translate(-3.495 -2.087)">
+																							<circle data-name="Ellipse 2748" cx="4.5" cy="4.5" r="4.5" transform="translate(28.095 2.688)" fill="none" stroke-width="1.2" />
+																							<circle data-name="Ellipse 2749" cx="4.5" cy="4.5" r="4.5" transform="translate(4.095 2.688)" fill="none" stroke-width="1.2" />
+																							<path id="Path_43919" data-name="Path 43919" d="M21.526,35.175H20.351V34H19.175v1.175H18v1.175h1.175v1.175h1.175V36.351h1.175Z" transform="translate(-5.773 -12.821)" />
+																							<path id="Path_43921" data-name="Path 43921" d="M20.351,34H19.175v1.175H18v1.175h1.175v1.175h1.175V36.351h1.175V35.175H20.351Z" transform="translate(-5.773 -12.821)" />
+																							<path id="Path_43922" data-name="Path 43922" d="M32.219,31.175l-7.044-.008V30H24v1.167a1.185,1.185,0,0,0,1.184,1.184h7.036A1.185,1.185,0,0,0,33.4,31.167V30H32.227Z" transform="translate(-8.247 -11.172)" />
+																							<path id="Subtraction_1" data-name="Subtraction 1" d="M18.619,24H16.291a.591.591,0,0,1-.581-.6V21.587c-.2.009-.39.013-.582.013s-.387,0-.582-.013V23.4a.592.592,0,0,1-.583.6h-2.33a.579.579,0,0,1-.556-.426L10.239,20.7A11.59,11.59,0,0,1,3.879,15H.581A.591.591,0,0,1,0,14.4V7.2a.592.592,0,0,1,.581-.6h3.3A10.576,10.576,0,0,1,5.746,3.9,5.5,5.5,0,0,1,4.654.6.591.591,0,0,1,5.235,0h5.273a4.883,4.883,0,0,0,.3,1.2H5.859a4.19,4.19,0,0,0,1.1,2.313.614.614,0,0,1-.023.857A9.369,9.369,0,0,0,4.782,7.444.582.582,0,0,1,4.25,7.8H1.162v6H4.25a.583.583,0,0,1,.532.357,10.521,10.521,0,0,0,2.512,3.406,10.166,10.166,0,0,0,3.613,2.107.6.6,0,0,1,.366.395l.795,2.735h1.313v-1.85a.61.61,0,0,1,.187-.442.563.563,0,0,1,.391-.158l.053,0c.37.032.745.049,1.115.049s.745-.016,1.115-.049l.053,0a.562.562,0,0,1,.391.158.61.61,0,0,1,.187.442V22.8h1.313l.8-2.732a.594.594,0,0,1,.366-.4A10.08,10.08,0,0,0,26,12.479a.589.589,0,0,1,.57-.479h0a4.174,4.174,0,0,0,2.986-1.259,4.434,4.434,0,0,0,1.276-3.055A5.7,5.7,0,0,1,26.6,9.6H26.58A.6.6,0,0,1,26,9.12a9.093,9.093,0,0,0-2.377-4.461,11.149,11.149,0,0,0-4.494-2.81A4.863,4.863,0,0,0,19.6.746a11.276,11.276,0,0,1,7.431,7.631A4.6,4.6,0,0,0,30.2,6.6l.76-.981a.572.572,0,0,1,.454-.223.582.582,0,0,1,.193.034A.6.6,0,0,1,32,6V7.613a5.677,5.677,0,0,1-1.431,3.779,5.356,5.356,0,0,1-3.533,1.788,10.384,10.384,0,0,1-2.487,4.5A12.218,12.218,0,0,1,20.014,20.7l-.839,2.872A.588.588,0,0,1,18.619,24Z" transform="translate(5.095 13.688)" />
+																							<circle data-name="Ellipse 2750" cx="4.5" cy="4.5" r="4.5" transform="translate(16.095 8.688)" fill="none" stroke-width="1.2" />
+																							<path id="Path_43924" data-name="Path 43924" d="M3.045-12.314a1.193,1.193,0,0,1-.421.664,1.96,1.96,0,0,1-.7.355L3.607-9.083H2.722L1.479-10.734a3.831,3.831,0,0,0-.327-.4.415.415,0,0,0-.306-.123v-.513h.414a1.38,1.38,0,0,0,.629-.13.7.7,0,0,0,.355-.418H.72l.211-.6H2.258a.6.6,0,0,0-.228-.351.844.844,0,0,0-.467-.14H.72L.931-14H4.014l-.211.6H2.9a1.244,1.244,0,0,1,.162.492h.948l-.211.6Z" transform="translate(6.271 19.031)" />
+																							<path id="Path_43925" data-name="Path 43925" d="M3.045-12.314a1.193,1.193,0,0,1-.421.664,1.96,1.96,0,0,1-.7.355L3.607-9.083H2.722L1.479-10.734a3.831,3.831,0,0,0-.327-.4.415.415,0,0,0-.306-.123v-.513h.414a1.38,1.38,0,0,0,.629-.13.7.7,0,0,0,.355-.418H.72l.211-.6H2.258a.6.6,0,0,0-.228-.351.844.844,0,0,0-.467-.14H.72L.931-14H4.014l-.211.6H2.9a1.244,1.244,0,0,1,.162.492h.948l-.211.6Z" transform="translate(18.228 24.729)" />
+																							<path id="Path_43926" data-name="Path 43926" d="M3.045-12.314a1.193,1.193,0,0,1-.421.664,1.96,1.96,0,0,1-.7.355L3.607-9.083H2.722L1.479-10.734a3.831,3.831,0,0,0-.327-.4.415.415,0,0,0-.306-.123v-.513h.414a1.38,1.38,0,0,0,.629-.13.7.7,0,0,0,.355-.418H.72l.211-.6H2.258a.6.6,0,0,0-.228-.351.844.844,0,0,0-.467-.14H.72L.931-14H4.014l-.211.6H2.9a1.244,1.244,0,0,1,.162.492h.948l-.211.6Z" transform="translate(30.186 18.729)" /> </g>
+																					</svg>
+																				</div>
+																				<div class="text-center"> <em>Recurring Deposit</em> </div>
+																			</a>
+																		</li>
+																	</ul>
+																</div>
+															</div>
+															<div class="col-12 col-md-12">
+																<div class="panel entry-content tab-pane" id="fixed" *ngIf="openDepositTabSelection == 'fixed'">
+																	<form [formGroup]="fixedForm"  >
+																	<div class="row1">
+																		<div class="col-12 col-md-6 col-lg-6 col-xl-4">
+																			<div class="ux-input">
+																				<label for="debitAccount">Debit Account</label>
+																				<select formControlName="debitAccount" (change)="onFromAccountSelect($event.target.value, 'fixedForm')">
+																					<option value="">Select</option>
+																					<option  *ngFor="let item of accountList; let i = index" [value]="item.accountNo">{{item.SchemeCode}} {{item.sbAccount}}</option>
+																				</select>
+																				<p *ngIf="accBalance" class="info-message text-right">Available Balance <span class="success ml-2">{{accBalance | customcurrency}} </span></p>
+																				<p class="error-message" *ngIf="fixedForm.controls['debitAccount'].hasError('required') && (fixedForm.controls['debitAccount'].dirty || fixedForm.controls['debitAccount'].touched)">This field is required</p>
+																			</div>
+																		</div>
+																		<div class="col-12 col-md-6 col-lg-6 col-xl-4">
+																			<div class="ux-input">
+																				<label for="choosedepositScheme">Choose Deposit Scheme</label>
+																				<select formControlName="chooseDepositScheme" (change)="onDepistSchemeChange($event)">
+																					<option value="">Select Deposit Scheme</option>
+																					<option *ngFor="let item of depositSchemeList; let i = index" [value]="item.schemeType">{{item.depositScheme}}</option>
+																				</select>
+																				<p class="error-message" *ngIf="fixedForm.controls['chooseDepositScheme'].hasError('required') && (fixedForm.controls['chooseDepositScheme'].dirty || fixedForm.controls['chooseDepositScheme'].touched)">This field is required</p>
+																			</div>
+																		</div>
+																		<div class="col-12 col-md-6 col-lg-6 col-xl-4">
+																			<div class="ux-input ux-disabled">
+																				<label for="depositorType">Depositor Type</label>
+                                       	<input type="text" disabled formControlName="depositorType"/>
+																				<p class="error-message" *ngIf="fixedForm.controls['depositorType'].hasError('required') && (fixedForm.controls['depositorType'].dirty || fixedForm.controls['depositorType'].touched)">This field is required</p>
+																			</div>
+																		</div>
+																	</div>
+																	<div class="row1">
+																		<div class="col-12 col-md-6 col-lg-6 col-xl-4">
+																			<div class="ux-input">
+																				<label class="depositAmount">How much do you want to invest</label>
+																				<input type="text" autocomplete="off" appTwoDigitDecimaNumberss numbersOnly inputmode="decimal" placeholder="Enter Deposit Amount" formControlName="amount" limit-to="8" (blur)="formatCurrency($event.target.value, 'fixedForm')" (input)="OnInput($event.target.value, fixedForm)" id="amt"  data-a-sign="Rs.">
+																				<p class="info-message text-right" *ngIf="this.fixedForm.controls['chooseDepositScheme'].value == 'T'">(min ₹ 5000.00 and max ₹ 1,99,99,999.00)</p>
+																				<p class="info-message text-right" *ngIf="this.fixedForm.controls['chooseDepositScheme'].value != 'T'">(min ₹ 500.00 and max ₹ 1,99,99,999.00)</p>
+																				<p class="error-message" *ngIf="fixedForm.controls['amount'].hasError('required') && (fixedForm.controls['amount'].dirty || fixedForm.controls['amount'].touched)">This field is required</p>
+																				<p class="error-message" *ngIf="exceedMaxAmt && (fixedForm.controls['amount'].dirty && fixedForm.controls['amount'].touched)">Amount can't be more than ₹ 1,99,99,999.00 </p>
+																				<p class="error-message" *ngIf="exceedMinAmt && (fixedForm.controls['amount'].dirty && fixedForm.controls['amount'].touched) && this.fixedForm.controls['chooseDepositScheme'].value != 'T' ">Amount can't be less than ₹ 500 </p>
+																				<p class="error-message" *ngIf="multipleof && (fixedForm.controls['amount'].dirty && fixedForm.controls['amount'].touched) && this.fixedForm.controls['chooseDepositScheme'].value == 'T'">The Amount for Tax Saver FDR should be in multiples of ₹ 500 </p>
+																				<p class="error-message" *ngIf="taxminAmt && (fixedForm.controls['amount'].dirty && fixedForm.controls['amount'].touched) && this.fixedForm.controls['chooseDepositScheme'].value == 'T'">Minimum Amount for Tax Saver FDR should be ₹ 5000 </p>
+																				<p class="error-message" *ngIf="invalidAmount">Insufficient Balance</p>
+																			</div>
+																		</div>
+
+																		<div class="col-12 col-md-6 col-lg-6 col-xl-4">
+																			<div class="ux-input">
+																				<label for="interestPayout">Interest Payout</label>
+																				<select formControlName="interestPayout" (change)="onInterestPayoutChange($event)">
+																					<option value="">Select Interest Payout</option>
+																					<option  *ngFor="let item of maturityPayout; let i = index" [value]="item.payoutType">{{item.interestPayout| translate}}</option>
+																				</select>
+                                        <p *ngIf="fixedForm.value.chooseDepositScheme == 'G' && (fixedForm.value.interestPayout == 'M' || fixedForm.value.interestPayout == 'Q')" class="info-message">FD shall be opened for minimum 1 year and maximum 10 years</p>
+                                        <p *ngIf="fixedForm.value.chooseDepositScheme == 'G' && (fixedForm.value.interestPayout == 'C')" class="info-message">FD shall be opened for minimum 15 days and maximum 10 years</p>
+                                        <p *ngIf="fixedForm.value.chooseDepositScheme == 'T'" class="info-message">FD shall be opened for minimum 5 years and maximum 10 years</p>
+																				<p class="error-message" *ngIf="fixedForm.controls['interestPayout'].hasError('required') && (fixedForm.controls['interestPayout'].dirty || fixedForm.controls['interestPayout'].touched)">This field is required</p>
+																			</div>
+																		</div>
+																	</div>
+
+                                  <div *ngIf="fixedForm.value.chooseDepositScheme != '' && fixedForm.value.interestPayout != '' ">
+                                    <div class="row1">
+                                      <div class="col-md-12 col-12">
+                                        <div class="row1">
+                                          <div class="col-md-6 col-lg-6 col-xl-4 col-12">
+                                            <h5 class="detail-heading">Tenure</h5>
+                                          </div>
+                                        </div>
+                                        <div class="row1">
+                                          <div class="col-12">
+                                            <div class="ux-selection" *ngIf="fixedForm.controls['chooseDepositScheme'].value != 'T' && fixedForm.controls['interestPayout'].value != 'M' && fixedForm.controls['interestPayout'].value != 'Q'">
+                                              <label class="ux-selection2"> Days
+                                                <input type="radio" [(ngModel)]="tenureType"  [checked]="tenureType == 'days'" value="days" name="selectOption" formControlName="selectOption" (change)="daysSelection(tenureType)">
+                                                <span class="checkmark"></span>
+                                              </label>
+                                            </div>
+                                            <div class="ux-selection">
+                                              <label class="ux-selection2"> Year/Months/Days
+                                                <input type="radio" [(ngModel)]="tenureType" [checked]="tenureType == 'yearMonthDays'" value="yearMonthDays" name="selectOption" formControlName="selectOption" (change)="daysSelection(tenureType)">
+                                                <span class="checkmark"></span>
+                                              </label>
+                                            </div>
+                                           </div>
+                                           </div>
+                                      </div>
+                                    </div>
+
+                                    <div class="row1 mt-3">
+                                      <div class="col-md-12 col-12">
+                                        <div *ngIf="tenureType == 'days'" >
+                                          <div class="row1">
+                                            <div class="col-md-6 col-lg-6 col-xl-4 col-12">
+                                              <div class="ux-input">
+                                                <label>Days</label>
+                                                <input autocomplete="off" formControlName="dayField" numbersOnly limit-to="3" type="text" name="days" placeholder="Enter Days" (change)="onDayfieldInput()"/>
+                                                <p class="error-message" *ngIf="fixedForm.controls['dayField'].hasError('required') && (fixedForm.controls['dayField'].dirty || fixedForm.controls['dayField'].touched)">{{'THIS_FIELD_IS_REQUIRED' | translate}}</p>
+                                                <p class="error-message" *ngIf="fixedForm.controls['dayField'].hasError('min') && (fixedForm.controls['dayField'].dirty || fixedForm.controls['dayField'].touched)">{{'DAYS_CANT_BE_LESS_THAN_15' | translate}}</p>
+                                                <p class="error-message" *ngIf="fixedForm.controls['dayField'].hasError('max') && (fixedForm.controls['dayField'].dirty || fixedForm.controls['dayField'].touched)">{{'DAYS_CANT_BE_MORE_THAN_999' | translate}}</p>
+                                              </div>
+                                            </div>
+                                          </div>
+                                        </div>
+
+                                        <div *ngIf="tenureType == 'yearMonthDays'" >
+                                        <div class="row1">
+                                          <div class="col-md-6 col-lg-6 col-xl-4 col-12">
+                                            <div class="ux-input">
+                                              <label for="interestPayout">Year</label>
+                                              <select formControlName="year" (change)="onYearChange($event)">
+                                              <option value="">Select Year</option>
+                                              <option *ngFor="let year of yearsArray" [value]="year">{{year}}</option>
+                                              </select>
+                                              <p class="error-message" *ngIf="fixedForm.controls['year'].hasError('required') && (fixedForm.value.chooseDepositScheme == 'G' && (fixedForm.value.interestPayout == 'M' || fixedForm.value.interestPayout == 'Q'))">This field is required</p>
+                                            </div>
+                                          </div>
+                                          <div class="col-md-6 col-lg-6 col-xl-4 col-12"  >
+                                            <div class="ux-input" [ngClass]="{'ux-disabled': isYearExceeds}">
+                                              <label for="interestPayout">Month</label>
+                                              <select formControlName="month" (change)="onMonthChange($event)" [disabled]="isYearExceeds">
+                                              <option value="">Select Month</option>
+                                              <option *ngFor="let month of monthsArray" [value]="month">{{month}}</option>
+                                              </select>
+                                              <p class="error-message" *ngIf="fixedForm.controls['month'].hasError('required') && (fixedForm.controls['month'].dirty || fixedForm.controls['month'].touched)">This field is required</p>
+                                            </div>
+                                          </div>
+
+                                          <div class="col-md-6 col-lg-6 col-xl-4 col-12">
+                                            <div class="ux-input" [ngClass]="{'ux-disabled': isYearExceeds}">
+                                              <label for="interestPayout">Days</label>
+                                              <select formControlName="day" [disabled]="isYearExceeds" (change)="onDayChange($event)">
+                                              <option value="">Select Day</option>
+                                              <option *ngFor="let day of daysArray" [value]="day">{{day}}</option>
+                                              </select>
+                                              <p class="error-message" *ngIf="fixedForm.controls['day'].hasError('required') && (fixedForm.controls['day'].dirty || fixedForm.controls['day'].touched)">This field is required</p>
+                                              <p class="error-message" *ngIf="fixedForm.controls['day'].hasError('min')">{{'DAYS_CANT_BE_LESS_THAN_15' | translate}}</p>
+
+                                            </div>
+                                          </div>
+                                        </div>
+                                        <p class="error-message" *ngIf="isYearMonthDayZero">Tenure period cannot be zero</p>
+                                      </div>
+
+                                      <div class="row1 mt-3">
+                                          <div class="col-md-6 col-lg-6 col-xl-4 col-12">
+                                            <button class="calc-btn ux-button secondary sm-mob2" (click)="tabSelection('fixedMaturity')">Calculate Maturity</button>
+                                          </div>
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </div>
+
+																	<div class="row1">
+																		<div class="border-line"></div>
+																	</div>
+																	<div class="row1">
+																		<div class="cal-info" [ngStyle]="{display : fixedMaturity ? 'block' : 'none' }">
+																			<div class="info-bottom">
+																				<div class="info-details">
+																					<div class="row">
+																						<h6>Estimated Maturity Amount</h6>
+																						<h5> {{maturityValue | customcurrency}}</h5> </div>
+																				</div>
+																				<div class="info-details">
+																					<div class="row">
+																						<h6>Estimated Rate of Interest</h6>
+																						<h5>{{rateOfInterest}}%</h5> <a href="https://punjabandsindbank.co.in//content/interestdom/" target="_blank"  class="success-text">Check Current FD Interest Rate</a> </div>
+																				</div>
+																				<div class="info-details">
+																					<div class="row">
+																						<h6>Estimated Total Interest Earned</h6>
+																						<h5> {{totalInterest | customcurrency }}</h5> </div>
+																				</div>
+																				<div class="info-details">
+																					<div class="row">
+																						<h6>Tenure</h6>
+																						<h5 *ngIf="tenureType == 'days'">{{tenureDays}} Days</h5>
+																						<h5 *ngIf="tenureType == 'yearMonthDays'">{{tenureMonths}} Months {{tenureDays}} Days</h5>
+                                          										</div>
+																				</div>
+																				<div class="info-details">
+																					<div class="row">
+																						<h6>Maturity Date</h6>
+																						<h5>{{maturityDate}}</h5> </div>
+																				</div>
+																			</div>
+																		</div>
+																	</div>
+																	<div class="row1 mt-3">
+																		<div class="col-12 col-md-6 col-lg-6 col-xl-4">
+																			<div class="ux-input ux-disabled">
+																				<label for="modeOperation">Mode of Operation</label>
+																				<!-- <select required formControlName="modeOperation">
+																					<option value="">Select Mode of Operation</option>
+																					<option *ngFor="let item of modeOfOperationList; let i = index" [value]="item.accountNo">{{item.sbAccount}}</option>
+																				</select> -->
+                                        										<input type="text" disabled [value]="001" formControlName="modeOperation"/>
+																				<p class="error-message" *ngIf="fixedForm.controls['modeOperation'].hasError('required') && (fixedForm.controls['modeOperation'].dirty || fixedForm.controls['modeOperation'].touched)">This field is required</p>
+																			</div>
+																		</div>
+																	</div>
+																	<div class="row1">
+																		<div class="col-12 col-md-6 col-lg-6 col-xl-4">
+																			<div class="ux-input">
+																				<label class="maturityInstruction">Maturity Instruction</label>
+																				<select formControlName="maturityInstruction">
+																					<option value="">Select Maturity Instruction</option>
+																					<option *ngFor="let item of maturityInstructionsList; let i = index" [value]="item">{{item}}</option>
+																				</select>
+																				<p class="error-message" *ngIf="fixedForm.controls['maturityInstruction'].hasError('required') && (fixedForm.controls['maturityInstruction'].dirty || fixedForm.controls['maturityInstruction'].touched)">This field is required</p>
+																			</div>
+																		</div>
+																		<div class="col-12 col-md-6 col-lg-6 col-xl-4">
+																			<div class="ux-input ux-disabled">
+																				<label class="maturitypayoutAccount">Maturity Payout Account</label>
+																				<!-- <select disabled formControlName="maturityPayoutAccount" > -->
+                                         											<!-- <option value="">Select</option> -->
+																					<!-- <option  *ngFor="let item of accountList; let i = index" [value]="item.accountNo">{{item.sbAccount}}</option> -->
+																					<input type="text" disabled [value]="accountList.accountNo" placeholder="SELF" formControlName="maturityPayoutAccount" />
+
+
+																				<!-- </select> -->
+																				<p class="error-message" *ngIf="fixedForm.controls['maturityPayoutAccount'].hasError('required') && (fixedForm.controls['maturityPayoutAccount'].dirty || fixedForm.controls['maturityPayoutAccount'].touched)">This field is required</p>
+																			</div>
+																		</div>
+																	</div>
+																	<!-- <div class="row1 mt-3">
+																		<div class="col-md-12 col-12">
+																			<div class="ux-selection" id="nomination">
+																				<label class="ux-selection1">Nomination Same as Saving Account
+																					<input type="checkbox"  name="savingAccount" checked  (click)="nominationSelection('nomination')" > <span class="checkmark" ></span> </label>
+																			</div>
+																		</div>
+																		<div class="col-md-12 col-12">
+																			<div class="ux-input m-0">
+																				<p class="error-message"></p>
+																			</div>
+																		</div>
+																	</div> -->
+
+
+																	<div class="row1" >
+																		<div class="nomination-info"  id="nomination-info" [ngStyle]="{display : !nomination ? 'block' : 'none' }">
+                                      <div class="row1">
+																				<div class="col-sm-12 col-12 col-md-12">
+																					<h6 class="bold-text mar-t">Nominee Details</h6>
+                                        </div>
+																			</div>
+																			<div class="row1 ">
+																				<div class="col-12 col-md-6 col-lg-6 col-xl-4">
+																					<div class="ux-input" >
+																						<label for="nomineeName">Nominee Name</label>
+																						<input type="text" autocomplete="off" name="nomineeName" placeholder="Enter Nominee Name" formControlName="nomineeName">
+																						<p class="error-message" *ngIf="fixedForm.controls['nomineeName'].hasError('required') && (fixedForm.controls['nomineeName'].dirty || fixedForm.controls['nomineeName'].touched)">This field is required</p>
+																					</div>
+																				</div>
+																				<div class="col-12 col-md-6 col-lg-6 col-xl-4">
+																					<div class="ux-input">
+																						<label class="maturityInstruction">Relationship with Nominee</label>
+																						<select  formControlName="maturityInstruction2">
+																							<option value="">Select</option>
+                                             												<option *ngFor="let item of nomineeRelationshipList; let i = index" [value]="item.ref_code">{{item.DESCRIPTION}}</option>
+																						</select>
+																						<p class="error-message" *ngIf="fixedForm.controls['maturityInstruction2'].hasError('required') && (fixedForm.controls['maturityInstruction2'].dirty || fixedForm.controls['maturityInstruction2'].touched)">This field is required</p>
+																					</div>
+																				</div>
+																			</div>
+																			<div class="row1">
+																				<div class="col-12 col-md-6 col-lg-6 col-xl-4">
+																					<div class="ux-input">
+																						<label class="communicationAddress">Communication Address</label>
+																					</div>
+																					<div class="ux-selection">
+																						<label class="ux-selection1">Same as applicant permanent address
+																							<input type="checkbox" name="sameAddress" formControlName="sameAddress" (click)="applicantAddressSelection()" > <span class="checkmark" ></span> </label>
+																					</div>
+																				</div>
+																				<div class="col-12 col-md-6 col-lg-6 col-xl-4">
+																					<div class="ux-input">
+																						<label class="birthDate">Date of Birth</label>
+																						<!-- <input type="text" class="datepicker1" placeholder="DD/MM/YYYY" formControlName="datepicker1"> <em class="calendar-enable"></em> -->
+																						<input type="text" [owlDateTime]="dt1" [owlDateTimeTrigger]="dt1" placeholder="Enter Date Of Birth" readonly  formControlName="datepicker1" (ngModelChange)="onDateChange($event)" [max]="currentDate">
+																						<owl-date-time [pickerType]="'calendar'" #dt1></owl-date-time><em class=" calendar-ic cal-top"></em>
+																						<p class="error-message" *ngIf="fixedForm.controls['datepicker1'].hasError('required') && (fixedForm.controls['datepicker1'].dirty || fixedForm.controls['datepicker1'].touched)">This field is required</p>
+																					</div>
+																				</div>
+																			</div>
+
+
+
+																			<div class="row1">
+																				<div class="col-sm-12 col-12 col-md-12">
+																					<h6 class="bold-text mar-t">Nominee Address</h6> </div>
+																			</div>
+																			<div class="row1">
+																				<div class="col-12 col-md-6 col-lg-6 col-xl-4">
+																					<div class="ux-input" [ngClass]="isAddress ? 'ux-disabled' : ''">
+																						<label>Address 1</label>
+																						<input type="text" autocomplete="off" name="custaddress1" placeholder="Enter Address" formControlName="custaddress1" [readonly]="isAddress">
+																						<p class="error-message" *ngIf="fixedForm.controls['custaddress1'].hasError('required') && (fixedForm.controls['custaddress1'].dirty || fixedForm.controls['custaddress1'].touched)">This field is required</p>
+																					</div>
+																				</div>
+																				<div class="col-12 col-md-6 col-lg-6 col-xl-4">
+																					<div class="ux-input" [ngClass]="isAddress ? 'ux-disabled' : ''">
+																						<label>Address 2</label>
+																						<input type="text" autocomplete="off" name="custaddress2" placeholder="Enter Address" formControlName="custaddress2" [readonly]="isAddress">
+																						<p class="error-message" *ngIf="fixedForm.controls['custaddress2'].hasError('required') && (fixedForm.controls['custaddress2'].dirty || fixedForm.controls['custaddress2'].touched)">This field is required</p>
+																					</div>
+																				</div>
+																			</div>
+																			<div class="row1 ">
+																				<div class="col-12 col-md-6 col-lg-6 col-xl-4">
+																					<div class="ux-input" [ngClass]="isAddress ? 'ux-disabled' : ''">
+																						<label class="State">State</label>
+																						<select formControlName="custstate" (change)="onStateSelect($event.target.value, 'nominee')" *ngIf="!isAddress">
+																							<option value="">Select State</option>
+                                              												<option *ngFor="let item of stateList; let i = index" [value]="item.ID">{{item.state}}</option>
+																						</select>
+
+																						<input *ngIf="isAddress" type="text" formControlName="custstate" [readonly]="isAddress">
+
+																						<p class="error-message" *ngIf="fixedForm.controls['custstate'].hasError('required') && (fixedForm.controls['custstate'].dirty || fixedForm.controls['custstate'].touched)">This field is required</p>
+
+																					</div>
+																				</div>
+																				<div class="col-12 col-md-6 col-lg-6 col-xl-5">
+																					<div class="row1">
+																						<div class="col-12 col-md-6 col-lg-6 col-xl-6">
+																							<div class="ux-input"   [ngClass]="isAddress ? 'ux-disabled' : ''">
+																								<label class="city">City</label>
+																								<select formControlName="custcity" *ngIf="!isAddress" [readonly]="isAddress">
+																									<option value="">Select City</option>
+                               																			<option *ngFor="let item of cityList; let i = index" [value]="item.ID">{{item.city}}</option>
+																								</select>
+																								<input *ngIf="isAddress"type="text" formControlName="custcity">
+																								<p class="error-message" *ngIf="fixedForm.controls['custcity'].hasError('required') && (fixedForm.controls['custcity'].dirty || fixedForm.controls['custcity'].touched)">This field is required</p>
+
+																							</div>
+																						</div>
+																						<div class="col-12 col-md-6 col-lg-6 col-xl-6">
+																							<div class="ux-input" [ngClass]="isAddress ? 'ux-disabled' : ''">
+																								<label class="pincode">Pincode</label>
+																								<input type="text" autocomplete="off" name="custpincode" limit-to="6" numbersOnly placeholder="Enter Pincode" formControlName="custpincode" [readonly]="isAddress">
+																								<p class="error-message" *ngIf="fixedForm.controls['custpincode'].hasError('required') && (fixedForm.controls['custpincode'].dirty || fixedForm.controls['custpincode'].touched)">This field is required</p>
+																							</div>
+																						</div>
+																					</div>
+																				</div>
+																			</div>
+
+
+																		<div *ngIf="minorFlag" >
+																			<div class="row1">
+																				<div class="col-sm-12 col-12 col-md-12">
+																					<h6 class="bold-text mar-t">Please Provide Guardian Details</h6> </div>
+																			</div>
+																			<div class="row1">
+																				<div class="col-12 col-md-6 col-lg-6 col-xl-4">
+																					<div class="ux-input">
+																						<label for="guardianName">Guardian Name</label>
+																						<input type="text" autocomplete="off" name="guardianName" placeholder="Enter Guardian Name" formControlName="guardianName">
+																						<p class="error-message" *ngIf="fixedForm.controls['guardianName'].hasError('required') && (fixedForm.controls['guardianName'].dirty || fixedForm.controls['guardianName'].touched)">This field is required</p>
+																					</div>
+																				</div>
+																				<div class="col-12 col-md-6 col-lg-6 col-xl-4">
+																					<div class="ux-input">
+																						<label class="guardianType">Guardian Type</label>
+																						<select  formControlName="guardianType">
+																							<option value="">Select Guardian Type</option>
+                                              												<option *ngFor="let item of gardianTypeList; let i = index" [value]="item.ref_code">{{item.DESCRIPTION}}</option>
+																						</select>
+																						<p class="error-message" *ngIf="fixedForm.controls['guardianType'].hasError('required') && (fixedForm.controls['guardianType'].dirty || fixedForm.controls['guardianType'].touched)">This field is required</p>
+																					</div>
+																				</div>
+																			</div>
+																			<div class="row1">
+																				<div class="col-sm-12 col-12 col-md-12">
+																					<h6 class="bold-text mar-t">Guardian Address</h6> </div>
+																			</div>
+																			<div class="row1">
+																				<div class="col-12 col-md-6 col-lg-6 col-xl-4">
+																					<div class="ux-input">
+																						<label for="address1">Address 1</label>
+																						<input type="text" autocomplete="off" name="address1" placeholder="Enter Address" formControlName="address1">
+																						<p class="error-message" *ngIf="fixedForm.controls['address1'].hasError('required') && (fixedForm.controls['address1'].dirty || fixedForm.controls['address1'].touched)">This field is required</p>
+																					</div>
+																				</div>
+																				<div class="col-12 col-md-6 col-lg-6 col-xl-4">
+																					<div class="ux-input">
+																						<label for="address2">Address 2</label>
+																						<input type="text" autocomplete="off" name="address2" placeholder="Enter Address" formControlName="address2">
+																						<p class="error-message" *ngIf="fixedForm.controls['address2'].hasError('required') && (fixedForm.controls['address2'].dirty || fixedForm.controls['address2'].touched)">This field is required</p>
+																					</div>
+																				</div>
+																			</div>
+																			<div class="row1 ">
+																				<div class="col-12 col-md-6 col-lg-6 col-xl-4">
+																					<div class="ux-input">
+																						<label class="State">State</label>
+																						<select  formControlName="state" (change)="onStateSelect($event.target.value, 'guardian')">
+																							<option value="">Select State</option>
+                                             												<option *ngFor="let item of stateList; let i = index" [value]="item.ID">{{item.state}}</option>
+																						</select>
+																						<p class="error-message" *ngIf="fixedForm.controls['state'].hasError('required') && (fixedForm.controls['state'].dirty || fixedForm.controls['state'].touched)">This field is required</p>
+
+																					</div>
+																				</div>
+																				<div class="col-12 col-md-6 col-lg-6 col-xl-5">
+																					<div class="row1">
+																						<div class="col-12 col-md-6 col-lg-6 col-xl-6">
+																							<div class="ux-input">
+																								<label class="city">City</label>
+																								<select  formControlName="city" >
+																									<option value="">Select City</option>
+                                                  													<option *ngFor="let item of guardianCityList; let i = index" [value]="item.ID">{{item.city}}</option>
+																								</select>
+																								<p class="error-message" *ngIf="fixedForm.controls['city'].hasError('required') && (fixedForm.controls['city'].dirty || fixedForm.controls['city'].touched)">This field is required</p>
+																							</div>
+																						</div>
+																						<div class="col-12 col-md-6 col-lg-6 col-xl-6">
+																							<div class="ux-input">
+																								<label class="pincode" >Pincode</label>
+																								<input type="text" autocomplete="off" numbersOnly maxlength="6" name="pincode" placeholder="Enter Pincode" formControlName="pincode">
+																								<p class="error-message" *ngIf="fixedForm.controls['pincode'].hasError('required') && (fixedForm.controls['pincode'].dirty || fixedForm.controls['pincode'].touched)">This field is required</p>
+																							</div>
+																						</div>
+																					</div>
+																				</div>
+																			</div>
+																		</div>
+																		</div>
+																	</div>
+																	<div class="row1 mt-2">
+																		<div class="col-md-12 col-12">
+																			<div class="ux-selection">
+																				<div class="ux-selection1 mar-rcustom p-0">
+																					<label>I accept <a (click)="termsConditionPopup('fixed')"  href="javascript:void(0)">Terms and Conditions</a>
+																						<input  required type="checkbox" name="termsCondition" formControlName="termsCondition" > <span class="checkmark"></span> </label> <!--(change)="onTermsAndCondition($event.target.value , 'fixed')"-->
+																				</div>
+																			</div>
+																		</div>
+																		<div class="col-md-12 col-12">
+																			<div class="ux-input m-0">
+																				<p class="error-message" *ngIf="fixedForm.controls['termsCondition'].hasError('required') && (fixedForm.controls['termsCondition'].dirty || fixedForm.controls['termsCondition'].touched)">This field is required</p>
+																			</div>
+																		</div>
+																	</div>
+																</form>
+																</div>
+																<!-- Recurring Section Start -->
+																<div class="panel  entry-content tab-pane" id="recurring" *ngIf="openDepositTabSelection == 'recurring'">
+																	<form [formGroup]="recurringForm">
+																	<div class="row1">
+																		<div class="col-12 col-md-6 col-lg-6 col-xl-4">
+																			<div class="ux-input">
+																				<label for="debitAccount">Debit Account</label>
+																				<select  formControlName="debitAccount" (change)="onFromAccountSelect($event.target.value, 'recurringForm')">
+																					<option value="">Select Debit Account</option>
+																					<option *ngFor="let item of accountList; let i = index" [value]="item.accountNo">{{item.SchemeCode}} {{item.sbAccount}}</option>
+																				</select>
+																				<p *ngIf="accBalance" class="info-message text-right">Ledger Balance <span class="success ml-2">{{accBalance | customcurrency}}</span></p>
+																				<p class="error-message" *ngIf="recurringForm.controls['debitAccount'].hasError('required') && (recurringForm.controls['debitAccount'].dirty || recurringForm.controls['debitAccount'].touched)">This field is required</p>
+
+																			</div>
+																		</div>
+
+																		<div class="col-12 col-md-6 col-lg-6 col-xl-4">
+																			<div class="ux-input">
+																				<label class="depositAmount">How much do you want to invest</label>
+																				<input type="text" autocomplete="off" appTwoDigitDecimaNumberss numbersOnly inputmode="decimal" placeholder="Enter Deposit Amount" formControlName="amount" limit-to="8" (blur)="formatCurrency($event.target.value, 'recurringForm')" (input)="OnInput($event.target.value, recurringForm)" id="amt"  data-a-sign="Rs.">
+																				<p class="info-message text-right">(min ₹ 500.00 and max ₹ 1,99,99,999.00)</p>
+																				<p class="error-message" *ngIf="recurringForm.controls['amount'].hasError('required') && (recurringForm.controls['amount'].dirty || recurringForm.controls['amount'].touched)">This field is required</p>
+																				<p class="error-message" *ngIf="exceedMaxAmt && (recurringForm.controls['amount'].dirty && recurringForm.controls['amount'].touched)">Amount can't be more than ₹ 1,99,99,999.00 </p>
+																				<p class="error-message" *ngIf="exceedMinAmt && (recurringForm.controls['amount'].dirty && recurringForm.controls['amount'].touched)">Amount can't be less than ₹ 500 </p>
+																				<p class="error-message" *ngIf="invalidAmount">Insufficient Balance</p>
+																			</div>
+																		</div>
+
+																		<div class="col-12 col-md-6 col-lg-6 col-xl-4">
+																			<div class="ux-input ux-disabled">
+																				<label for="depositorType">Depositor Type</label>
+																				<!-- <select formControlName="depositorType">
+																					<option value="">Select Depositor Type</option>
+																					<option *ngFor="let item of depositorTypeList; let i = index" [value]="item.accountNo">{{item.sbAccount}}</option>
+																				</select> -->
+                                       											 <input type="text" disabled formControlName="depositorType"/>
+																				<p class="error-message" *ngIf="recurringForm.controls['depositorType'].hasError('required') && (recurringForm.controls['depositorType'].dirty || recurringForm.controls['depositorType'].touched)">This field is required</p>
+
+																			</div>
+																		</div>
+																	</div>
+																	<div class="row1">
+																		<div class="col-md-12 col-12">
+																			<div class="row1">
+																				<div class="col-md-6 col-lg-6 col-xl-4 col-12">
+																					<h6 class="detail-heading">Tenure</h6> </div>
+																			</div>
+																		</div>
+																	</div>
+																	<div class="row1">
+																		<div class="col-md-12 col-12">
+																			<div class="row1">
+																				<!-- <div class="col-md-6 col-lg-6 col-xl-4 col-12">
+																					<div class="slider-info p-0">
+																						<div class="col-12 p-0">
+																							<div class="row1">
+																								<div class="col-md-6 col-lg-6 col-xl-6 col-6"> <small>Months</small> </div>
+																								<div class="col-md-6 col-lg-6 col-xl-6 col-6">
+																									<input class="sliderInput ux-input" min=0 [max]="12"  [(ngModel)]="recurringMonth"  (ngModelChange)="sliderInput($event , 'recurringMonth')" /> </div>
+																							</div>
+																						</div>
+																						<div class="row1">
+																							<div class="col-12">
+																								<div class="limit-slider2 my-2 mx-1"></div>
+																								<div class="sliderticks">
+																									<p>0</p>
+																									<p>120</p>
+																								</div>
+																							</div>
+																						</div>
+																					</div>
+																				</div> -->
+
+																					<div class="col-md-6 col-lg-6 col-xl-4 col-12">
+																					<div class="ux-input">
+																						<label for="interestPayout">Year</label>
+																						<select formControlName="year" (change)="onRDYearChange($event)">
+																						<option value="">Select Year</option>
+																						<option *ngFor="let year of yearsArray" [value]="year">{{year}}</option>
+																						</select>
+																						<p class="error-message" *ngIf="recurringForm.controls['year'].hasError('required') && (recurringForm.controls['year'].dirty || recurringForm.controls['year'].touched)">This field is required</p>
+																					</div>
+																				</div>
+																				<div class="col-md-6 col-lg-6 col-xl-4 col-12">
+																					<div class="ux-input" [ngClass]="{'ux-disabled': isRDYearExceeds}">
+																						<label for="interestPayout">Month</label>
+																						<select formControlName="month" [disabled]="isRDYearExceeds" (change)="onRDMonthChange($event)">
+																						<option value="">Select Month</option>
+																						<option *ngFor="let month of RDMonthsArray" [value]="month">{{month}}</option>
+																						</select>
+																						<p class="error-message" *ngIf="recurringForm.controls['month'].hasError('required') && (recurringForm.controls['month'].dirty || recurringForm.controls['month'].touched)">This field is required</p>
+																						<p class="error-message" *ngIf="recurringForm.controls['month'].hasError('min')">Month cannot be less than 6</p>
+																					</div>
+																				</div>
+
+																				<div class="col-md-6 col-lg-6 col-xl-4 col-12">
+																					<button class="calc-btn ux-button secondary sm-mob2" (click)="tabSelection('recurringMaturity')">Calculate Maturity</button>
+																				</div>
+																			</div>
+																		</div>
+																	</div>
+																	<div class="row1">
+																		<div class="border-line"></div>
+																	</div>
+																	<div class="row1">
+																		<div class="cal-info mb-0" [ngStyle]="{display : recurringMaturity ? 'block' : 'none' }">
+																			<div class="info-bottom">
+																				<div class="info-details">
+																					<div class="row">
+																						<h6>Estimated Maturity Amount</h6>
+																						<h5> {{maturityValue | customcurrency}}</h5> </div>
+																				</div>
+																				<div class="info-details">
+																					<div class="row">
+																						<h6>Estimated Rate of Interest</h6>
+																						<h5>{{rateOfInterest}}%</h5> <em class="success-text">Check Current FD Interest Rate</em> </div>
+																				</div>
+																				<div class="info-details">
+																					<div class="row">
+																						<h6>Estimated Total Interest Earned</h6>
+																						<h5>{{totalInterest | customcurrency}}</h5> </div>
+																				</div>
+																				<div class="info-details">
+																					<div class="row">
+																						<h6>Tenure</h6>
+																						<h5>{{tenureMonths}} Months</h5>
+                                          </div>
+																				</div>
+																				<div class="info-details">
+																					<div class="row">
+																						<h6>Maturity Date</h6>
+																						<h5>{{maturityDate}}</h5> </div>
+																				</div>
+																			</div>
+																		</div>
+
+																		<div class="cal-info2">
+																			<div class="row1">
+																				<div class="col-12 col-md-12 col-lg-12 text-right">
+																					<div class="ux-input mt-0">
+																						<p class="info-message text-right">First installment would be deducted today</p>
+																					</div>
+																				</div>
+																			</div>
+																		</div>
+																	</div>
+																	<div class="row1 mt-3">
+																		<div class="col-12 col-md-6 col-lg-6 col-xl-4">
+																			<div class="ux-input ux-disabled">
+																				<label for="monthlyDebitDate">Monthly Auto Debit Start Date</label>
+																				<!-- <select formControlName="monthlyDebitDate">
+																					<option value="">Select Monthly Debit Date</option>
+																					<option value="Option1">Option1</option>
+																				</select> -->
+                                       											 <input type="text" disabled [value]="todayDate" formControlName="monthlyDebitDate"/>
+																				<p class="error-message" *ngIf="recurringForm.controls['monthlyDebitDate'].hasError('required') && (recurringForm.controls['monthlyDebitDate'].dirty || recurringForm.controls['monthlyDebitDate'].touched)">This field is required</p>
+
+																			</div>
+																		</div>
+																		<div class="col-12 col-md-6 col-lg-6 col-xl-4">
+																			<div class="ux-input ux-disabled">
+																				<label for="modeOperation">Mode of Operation</label>
+																				<!-- <select formControlName="modeOperation">
+																					<option value="">Select Mode of Operation</option>
+																					<option *ngFor="let item of modeOfOperationList; let i = index" [value]="item.accountNo">{{item.sbAccount}}</option>
+																				</select> -->
+                                        <input type="text" disabled formControlName="modeOperation"/>
+																				<p class="error-message" *ngIf="recurringForm.controls['modeOperation'].hasError('required') && (recurringForm.controls['modeOperation'].dirty || recurringForm.controls['modeOperation'].touched)">This field is required</p>
+
+																			</div>
+																		</div>
+																	</div>
+																	<div class="row1 mt-3">
+																		<div class="col-12 col-md-4 col-lg-4 col-xl-4">
+																		   <ul class="switchinfo-list">
+																			  <li>
+																				   <div class="grid-info">
+																					  <div class="full-info">
+																						  <div class="left-info">
+																							  <h6> Auto closure on maturity</h6>
+																						  </div>
+																						  <div class="left-info">
+																							  <div class="toggle-col card-toggle float-right">
+																								  <input type="checkbox" (change)="onToggleChange()" name="close-maturity" checked="">
+																								  <div class="flat-toggle "></div>
+																							  </div>
+																						  </div>
+																					  </div>
+																				  </div>
+																			  </li>
+																		  </ul>
+																		</div>
+																	</div>
+
+
+																	<div class="row1">
+																		<!-- <div class="col-12 col-md-6 col-lg-6 col-xl-4">
+																			<div class="ux-input">
+																				<label class="maturityInstruction">Maturity Instruction</label>
+																				<select formControlName="maturityInstruction">
+																					<option value="">Select Maturity Instruction</option>
+																					<option *ngFor="let item of maturityInstructionsList; let i = index" [value]="item.accountNo">{{item.sbAccount}}</option>
+																				</select>
+																				<p class="error-message" *ngIf="recurringForm.controls['maturityInstruction'].hasError('required') && (recurringForm.controls['maturityInstruction'].dirty || recurringForm.controls['maturityInstruction'].touched)">This field is required</p>
+
+																			</div>
+																		</div> -->
+																		<div class="col-12 col-md-6 col-lg-6 col-xl-4">
+																			<div class="ux-input ux-disabled">
+																				<label class="maturitypayoutAccount">Maturity Payout Account</label>
+																				<!-- <select disabled formControlName="maturityPayoutAccount"> -->
+																					<!-- <option value="">Select Maturity account</option>
+																					<option *ngFor="let item of accountList; let i = index" [value]="item.accountNo">{{item.sbAccount}}</option> -->
+
+                                       											 <input type="text" disabled placeholder="maturityPayoutAccount" formControlName="maturityPayoutAccount" [value]="accountList.accountNo"/>
+
+																				<!-- </select> -->
+																				<!-- <p class="error-message" *ngIf="recurringForm.controls['maturityPayoutAccount'].hasError('required') && (recurringForm.controls['maturityPayoutAccount'].dirty || recurringForm.controls['maturityPayoutAccount'].touched)">This field is required</p> -->
+																			</div>
+																		</div>
+																	</div>
+																	<!-- <div class="row1 mt-3">
+																		<div class="col-md-12 col-12">
+																			<div class="ux-selection" id="nomination">
+																				<label class="ux-selection1">Nomination Same as Saving Account
+																					<input type="checkbox" name="saving-account" checked (click)="nominationSelection('recurringNomination')" > <span class="checkmark"></span> </label>
+																			</div>
+																		</div>
+																		<div class="col-md-12 col-12">
+																			<div class="ux-input m-0">
+																				<p class="error-message"></p>
+																			</div>
+																		</div>
+																	</div> -->
+
+																	<div class="row1">
+																		<div class="nomination-info" id="nomination-info" [ngStyle]="{display : !recurringNomination ? 'block' : 'none' }">
+                                      <div class="row1">
+																				<div class="col-sm-12 col-12 col-md-12">
+																					<h6 class="bold-text mar-t">Nominee Details</h6>
+                                        </div>
+																			</div>
+																			<div class="row1 ">
+																				<div class="col-12 col-md-6 col-lg-6 col-xl-4">
+																					<div class="ux-input">
+																						<label for="nomineeName">Nominee Name</label>
+																						<input type="text" autocomplete="off" autocomplete="off" formControlName="nomineeName" name="nomineeName" placeholder="Enter Nominee Name">
+																						<p class="error-message" *ngIf="recurringForm.controls['nomineeName'].hasError('required') && (recurringForm.controls['nomineeName'].dirty || recurringForm.controls['nomineeName'].touched)">This field is required</p>
+
+																					</div>
+																				</div>
+																				<div class="col-12 col-md-6 col-lg-6 col-xl-4">
+																					<div class="ux-input">
+																						<label class="maturityInstruction">Relationship with Nominee</label>
+																						<select formControlName="maturityInstruction2">
+																							<option value="">Select</option>
+                                             	<option *ngFor="let item of nomineeRelationshipList; let i = index" [value]="item.ref_code">{{item.DESCRIPTION}}</option>
+																						</select>
+																						<p class="error-message" *ngIf="recurringForm.controls['maturityInstruction2'].hasError('required') && (recurringForm.controls['maturityInstruction2'].dirty || recurringForm.controls['maturityInstruction2'].touched)">This field is required</p>
+
+																					</div>
+																				</div>
+																			</div>
+																			<div class="row1">
+																				<div class="col-12 col-md-6 col-lg-6 col-xl-4">
+																					<div class="ux-input">
+																						<label class="communicationAddress">Communication Address</label>
+																					</div>
+																					<div class="ux-selection">
+																						<label class="ux-selection1">Same as applicant permanent address
+																							<input type="checkbox" formControlName="sameAddress" name="sameAddress" (click)="applicantAddressSelection()"> <span class="checkmark"></span> </label>
+																					</div>
+																				</div>
+																				<div class="col-12 col-md-6 col-lg-6 col-xl-4">
+																					<div class="ux-input">
+																						<label class="birthDate">Date of Birth</label>
+																						<!-- <input type="text" formControlName="datepicker1" class="datepicker1" placeholder="DD/MM/YYYY"> <em class="calendar-enable"></em> -->
+																						<input type="text" [owlDateTime]="dt1" [owlDateTimeTrigger]="dt1" placeholder="Enter Date Of Birth" readonly  formControlName="datepicker1" (ngModelChange)="onDateChange($event)" [max]="currentDate">
+																						<owl-date-time [pickerType]="'calendar'" #dt1></owl-date-time><em class=" calendar-ic cal-top"></em>
+																						<p class="error-message" *ngIf="recurringForm.controls['datepicker1'].hasError('required') && (recurringForm.controls['datepicker1'].dirty || recurringForm.controls['datepicker1'].touched)">This field is required</p>
+
+																					</div>
+																				</div>
+																			</div>
+																			<div>
+																				<div class="row1">
+																					<div class="col-sm-12 col-12 col-md-12">
+																						<h6 class="bold-text mar-t">Nominee Address</h6> </div>
+																				</div>
+																				<div class="row1">
+																					<div class="col-12 col-md-6 col-lg-6 col-xl-4">
+																						<div class="ux-input" [ngClass]="recurringIsAddress ? 'ux-disabled' : ''">
+																							<label>Address 1</label>
+																							<input type="text" autocomplete="off" name="custaddress1" placeholder="Enter Address" formControlName="custaddress1" [readonly]="recurringIsAddress">
+																							<p class="error-message" *ngIf="recurringForm.controls['custaddress1'].hasError('required') && (recurringForm.controls['custaddress1'].dirty || recurringForm.controls['custaddress1'].touched)">This field is required</p>
+																						</div>
+																					</div>
+																					<div class="col-12 col-md-6 col-lg-6 col-xl-4">
+																						<div class="ux-input" [ngClass]="recurringIsAddress ? 'ux-disabled' : ''">
+																							<label>Address 2</label>
+																							<input type="text" autocomplete="off" name="custaddress2" placeholder="Enter Address" formControlName="custaddress2" [readonly]="recurringIsAddress">
+																							<p class="error-message" *ngIf="recurringForm.controls['custaddress2'].hasError('required') && (recurringForm.controls['custaddress2'].dirty || recurringForm.controls['custaddress2'].touched)">This field is required</p>
+																						</div>
+																					</div>
+																				</div>
+																				<div class="row1 ">
+																					<div class="col-12 col-md-6 col-lg-6 col-xl-4">
+																						<div class="ux-input" [ngClass]="recurringIsAddress ? 'ux-disabled' : ''">
+																							<label class="State">State</label>
+																							<select formControlName="custstate" (change)="onStateSelect($event.target.value, 'nominee')" *ngIf="!recurringIsAddress">
+																								<option value="">Select State</option>
+																								  <option *ngFor="let item of stateList; let i = index" [value]="item.ID">{{item.state}}</option>
+																							</select>
+
+																							<input *ngIf="recurringIsAddress" type="text" formControlName="custstate" [readonly]="recurringIsAddress">
+
+																							<p class="error-message" *ngIf="recurringForm.controls['custstate'].hasError('required') && (recurringForm.controls['custstate'].dirty || recurringForm.controls['custstate'].touched)">This field is required</p>
+
+																						</div>
+																					</div>
+																					<div class="col-12 col-md-6 col-lg-6 col-xl-5">
+																						<div class="row1">
+																							<div class="col-12 col-md-6 col-lg-6 col-xl-6">
+																								<div class="ux-input"   [ngClass]="recurringIsAddress ? 'ux-disabled' : ''">
+																									<label class="city">City</label>
+																									<select formControlName="custcity" *ngIf="!recurringIsAddress" >
+																										<option value="">Select City</option>
+																										  <option *ngFor="let item of cityList; let i = index" [value]="item.ID">{{item.city}}</option>
+																									</select>
+																									<input *ngIf="recurringIsAddress" type="text" formControlName="custcity" [readonly]="recurringIsAddress">
+																									<p class="error-message" *ngIf="recurringForm.controls['custcity'].hasError('required') && (recurringForm.controls['custcity'].dirty || recurringForm.controls['custcity'].touched)">This field is required</p>
+
+																								</div>
+																							</div>
+																							<div class="col-12 col-md-6 col-lg-6 col-xl-6">
+																								<div class="ux-input" [ngClass]="recurringIsAddress ? 'ux-disabled' : ''">
+																									<label>Pincode</label>
+																									<input type="text" autocomplete="off" limit-to="6" numbersOnly name="custpincode" placeholder="Enter Pincode" formControlName="custpincode" [readonly]="recurringIsAddress">
+																									<p class="error-message" *ngIf="recurringForm.controls['custpincode'].hasError('required') && (recurringForm.controls['custpincode'].dirty || recurringForm.controls['custpincode'].touched)">This field is required</p>
+																								</div>
+																							</div>
+																						</div>
+																					</div>
+																				</div>
+																			</div>
+
+
+																			<div *ngIf="recurringMinorFlag" >
+																			<div class="row1">
+																				<div class="col-sm-12 col-12 col-md-12">
+																					<h6 class="bold-text mar-t">Please Provide Guardian Details</h6> </div>
+																			</div>
+																			<div class="row1">
+																				<div class="col-12 col-md-6 col-lg-6 col-xl-4">
+																					<div class="ux-input">
+																						<label for="guardianName">Guardian Name</label>
+																						<input type="text" autocomplete="off" name="guardianName" placeholder="Enter Guardian Name" formControlName="guardianName">
+																						<p class="error-message" *ngIf="recurringForm.controls['guardianName'].hasError('required') && (recurringForm.controls['guardianName'].dirty || recurringForm.controls['guardianName'].touched)">This field is required</p>
+
+																					</div>
+																				</div>
+																				<div class="col-12 col-md-6 col-lg-6 col-xl-4">
+																					<div class="ux-input">
+																						<label class="guardianType">Guardian Type</label>
+																						<select formControlName="guardianType">
+																							<option value="">Select Guardian Type</option>
+                                              												<option *ngFor="let item of gardianTypeList; let i = index" [value]="item.ref_code">{{item.DESCRIPTION}}</option>
+																						</select>
+																						<p class="error-message" *ngIf="recurringForm.controls['guardianType'].hasError('required') && (recurringForm.controls['guardianType'].dirty || recurringForm.controls['guardianType'].touched)">This field is required</p>
+
+																					</div>
+																				</div>
+																			</div>
+																			<div class="row1">
+																				<div class="col-sm-12 col-12 col-md-12">
+																					<h6 class="bold-text mar-t">Communication Address</h6> </div>
+																			</div>
+																			<div class="row1">
+																				<div class="col-12 col-md-6 col-lg-6 col-xl-4">
+																					<div class="ux-input">
+																						<label for="address1">Address 1</label>
+																						<input type="text" autocomplete="off" name="address1" placeholder="Enter Address" formControlName="address1" limit-to="30">
+																						<p class="error-message" *ngIf="recurringForm.controls['address1'].hasError('required') && (recurringForm.controls['address1'].dirty || recurringForm.controls['address1'].touched)">This field is required</p>
+
+																					</div>
+																				</div>
+																				<div class="col-12 col-md-6 col-lg-6 col-xl-4">
+																					<div class="ux-input">
+																						<label for="address2">Address 2</label>
+																						<input type="text" autocomplete="off" name="address2" placeholder="Enter Address" formControlName="address2"  limit-to="30">
+																						<p class="error-message" *ngIf="recurringForm.controls['address2'].hasError('required') && (recurringForm.controls['address2'].dirty || recurringForm.controls['address2'].touched)">This field is required</p>
+																					</div>
+																				</div>
+																			</div>
+																			<div class="row1 ">
+																				<div class="col-12 col-md-6 col-lg-6 col-xl-4">
+																					<div class="ux-input">
+																						<label class="State">State</label>
+																						<select formControlName="state" (change)="onStateSelect($event.target.value, 'guardian')">
+																							<option value="">Select State</option>
+                                              <option *ngFor="let item of stateList; let i = index" [value]="item.ID">{{item.state}}</option>
+																						</select>
+																						<p class="error-message" *ngIf="recurringForm.controls['state'].hasError('required') && (recurringForm.controls['state'].dirty || recurringForm.controls['state'].touched)">This field is required</p>
+
+																					</div>
+																				</div>
+																				<div class="col-12 col-md-6 col-lg-6 col-xl-5">
+																					<div class="row1">
+																						<div class="col-12 col-md-6 col-lg-6 col-xl-6">
+																							<div class="ux-input">
+																								<label class="city">City</label>
+																								<select formControlName="city">
+																									<option value="">Select City</option>
+                                                  <option *ngFor="let item of guardianCityList; let i = index" [value]="item.ID">{{item.city}}</option>																								</select>
+																								<p class="error-message" *ngIf="recurringForm.controls['city'].hasError('required') && (recurringForm.controls['city'].dirty || recurringForm.controls['city'].touched)">This field is required</p>
+
+																							</div>
+																						</div>
+																						<div class="col-12 col-md-6 col-lg-6 col-xl-6">
+																							<div class="ux-input">
+																								<label class="pincode">Pincode</label>
+																								<input type="text" autocomplete="off" limit-to="6" numbersOnly name="pincode" placeholder="Enter Pincode" formControlName="pincode" limit-to="6">
+																								<p class="error-message" *ngIf="recurringForm.controls['pincode'].hasError('required') && (recurringForm.controls['pincode'].dirty || recurringForm.controls['pincode'].touched)">This field is required</p>
+
+																							</div>
+																						</div>
+																					</div>
+																				</div>
+																			</div>
+																			</div>
+																		</div>
+																	</div>
+																	<div class="row1 mt-2">
+																		<div class="col-md-12 col-12">
+																			<div class="ux-selection">
+																				<div class="ux-selection1 mar-rcustom p-0">
+																					<label>I accept <a (click)="termsConditionPopup('recurring')" href="javascript:void(0)">Terms and Conditions</a>
+																						<input required type="checkbox" name="termsCondition" formControlName="termsCondition"> <span class="checkmark"></span> </label> <!-- (change)="onTermsAndCondition($event.target.value , 'recurring')"-->
+																				</div>
+																			</div>
+																		</div>
+																		<div class="col-md-12 col-12">
+																			<div class="ux-input m-0">
+																				<!-- <p class="error-message" *ngIf="recurringisTermsAndCondition == false">This field is required</p> -->
+																				<p class="error-message" *ngIf="recurringForm.controls['termsCondition'].hasError('required') && (recurringForm.controls['termsCondition'].dirty || recurringForm.controls['termsCondition'].touched)"> This field is required </p>
+																			</div>
+																		</div>
+																	</div>
+																	</form>
+																</div>
+																<!-- Recurring Section End -->
+															</div>
+														</div>
+													</div>
+												</div>
+											</div>
+											<div class="col-12 col-md-12">
+												<ul class="bottom-footer1">
+													<li>
+														<div class="btn-div">
+															<button class=" ux-button secondary sm-mob" (click)="onCancelClick()">Cancel</button>
+														</div>
+														<div class="btn-div">
+															<button class=" ux-button primary sm-mob" (click)="depositSubmit(openDepositTabSelection)">Proceed</button>
+														</div>
+													</li>
+												</ul>
+											</div>
+										</div>
+									</div>
+									<!-- Greencard2 End here -->
+								</div>
+								<!-- Right Column Ads Start -->
+								<div class="col-12 col-md-12 col-lg-12 col-xl-3 d-none d-xl-block">
+									<div class="right-ads">
+										<a> <img src="assets/images/banner/my-card-banner.jpg"> </a>
+									</div>
+									<div class="vspacer30"></div>
+									<!-- <div class="offers-card">
+											<div class="header-block clearfix">
+												<h5>Offers on your card</h5>
+											</div>
+
+											<div class="panel-body">
+												<div class="recentpayment-control">
+													<ul>
+													    <li>
+															<img src="assets/images/banner/offer-banner.png">
+														</li>
+													</ul>
+												</div>
+											 </div>
+										</div>  --></div>
+								  <!-- Right Column Ads Ends -->
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!--.right-col-container-->
+	</div>
+	<!--.right-main-column-->
+</div>
+<!-- main -->
+
+<!-- OPEN FD  : Terms & Conditions Popup End-->
+
+<div class="popup-bottom lg-popup terms-conditions-popup">
+    <div class="row1">
+        <div class="col-10">
+            <h4 class="text-center">Terms and Conditions</h4>
+        </div>
+        <div class="col-2">
+            <button class="ux-button-icon close-btn" (click)="closeTerms()">
+                <img src="assets/images/svg/close-b.svg" alt="cross-icon" class="img-vsmall">
+            </button>
+        </div>
+    </div>
+  <div class="row1 mt-2">
+     <div class="scroll-content">
+         <div class="content-scroll">
+            <div class="col-12 p-2">
+                <ol class="order-list">
+                    <li>
+                        <!-- <h5 class="text-left bold">DEFINITIONS</h5>  -->
+                          <!-- <p class="m-text  mt-2 mb-2">In these Terms and Conditions, unless the context indicates otherwise, the following words and phrases shall have the meanings indicated against them:
+                           </p> -->
+                            <ul class="orderlist">
+                                <li>The Online Fixed Deposit in INR will be opened in the same name(s) of the account holder(s) as in account from which it is funded</li>
+                                <li>The Online Fixed Deposit will be opened in the same branch where the debit account belongs.</li>
+								<li>The interest on the Term Deposit, and the proceeds of the Term Deposit upon maturity, will be credited to the account from which the Term Deposit was funded.</li>
+								<li>Bank will deduct the TDS as per the law applicable and in case no tax is to be deducted, form 15H/G has to be submitted by the depositor to the branch just after opening the Term Deposit and at the beginning the Financial Year in the subsequent Financial Years.</li>
+								<li>Online Fixed Deposit with additional rate of interest for Senior Citizens will be issued if the age of customer is 60 years or above, on the date of creating the fixed deposit, as per date of birth recorded with the Bank. The minimum days applicable for additional rate of interest for senior citizen will be as per Bank's policy.</li>
+								<li>Online Fixed Deposit will be disposed of according to the Maturity Instruction given at the time of opening the deposit. In case of auto renewal, the deposit will be renewed for the same duration for which it was originally kept or maximum 12 months (whichever is lower), at the rate of interest prevailing on the date of renewal for that duration. If auto renewal instructions are given, the instructions will continue to executed till terminated by the account holder.</li>
+								<li>The stipulation as to the payment of interest is subject to the condition that the rate of interest agreed to be paid by the Bank will be liable to revision (up or down) in accordance with directives (if any) issued by the Reserve bank of India, in exercise of the powers conferred on it by Section’s 21 & 35A of the Banking Regulations Act, 194 to such extent as may be applicable to this fixed deposit.</li>
+								<li>The Bank shall have the first Lien on all kinds of deposits and securities in its possession for any kind of liability in favour of or for monies due to the Bank.</li>
+								<li>In case deposit is not renewed interest on deposit ceases from due date.</li>
+								<li>Where Interest on FDR’s exceeds or is likely to exceed a specific limit (fixed by I.T. Department from time to time) per depositor during a financial year, the depositor(s) is required to submit the form No. 15G/15H, as applicable invariably for non deduction of tax at source failing which bank will deduct T.D.S. as per Income Tax Rules.</li>
+
+                            </ul>
+
+                     </li>
+                </ol>
+            </div>
+         </div>
+      </div>
+  </div>
+ </div>
+<!-- Terms & Conditions Popup End-->
+
+<!-- OPEN RD  : Terms & Conditions Popup End-->
+
+<div class="popup-bottom lg-popup terms-conditions-popup-recurring">
+    <div class="row1">
+        <div class="col-10">
+            <h4 class="text-center">Terms and Conditions</h4>
+        </div>
+        <div class="col-2">
+            <button class="ux-button-icon close-btn" (click)="closeTerms()">
+                <img src="assets/images/svg/close-b.svg" alt="cross-icon" class="img-vsmall">
+            </button>
+        </div>
+    </div>
+  <div class="row1 mt-2">
+     <div class="scroll-content">
+         <div class="content-scroll">
+            <div class="col-12 p-2">
+                <ol class="order-list">
+                    <li>
+                        <!-- <h5 class="text-left bold">DEFINITIONS</h5>  -->
+                          <!-- <p class="m-text  mt-2 mb-2">In these Terms and Conditions, unless the context indicates otherwise, the following words and phrases shall have the meanings indicated against them:
+                           </p> -->
+                            <ul class="orderlist">
+                                <li>The Online Recurring Deposit in INR is opened in the same name(s) of the account holder(s) as in account from which it is funded./li>
+                                <li>The Online Recurring Deposit will be opened in the same branch where the debit account belongs.</li>
+								<li>The interest on the Term Deposit, and the proceeds of the Term Deposit upon maturity, will be credited to the account from which the Term Deposit was funded.</li>
+								<li>Bank will deduct the TDS as per the law applicable and in case no tax is to be deducted, form 15H/G has to be submitted by the depositor to the branch just after opening the Term Deposit and at the beginning the Financial Year in the subsequent Financial Years.</li>
+								<li>Online Recurring Deposit with additional rate of interest for Senior Citizens will be issued if the age of customer is 60 years or above, on the date of creating the Recurring deposit, as per date of birth recorded with the Bank. The minimum days applicable for additional rate of interest for senior citizen will be as per Bank's policy.</li>
+								<li>Online Recurring Deposit will be disposed of according to the Maturity Instruction given at the time of opening the deposit. In case of auto renewal, the deposit will be renewed for the same duration for which it was originally kept or maximum 12 months (whichever is lower), at the rate of interest prevailing on the date of renewal for that duration. If auto renewal instructions are given, the instructions will continue to executed till terminated by the account holder.</li>
+								<li>The stipulation as to the payment of interest is subject to the condition that the rate of interest agreed to be paid by the Bank will be liable to revision (up or down) in accordance with directives (if any) issued by the Reserve bank of India, in exercise of the powers conferred on it by Section’s 21 & 35A of the Banking Regulations Act, 194 to such extent as may be applicable to this Recurring deposit.</li>
+								<li>The Bank shall have the first Lien on all kinds of deposits and securities in its possession for any kind of liability in favour of or for monies due to the Bank.</li>
+								<li>In case deposit is not renewed interest on deposit ceases from due date..</li>
+								<li>Where Interest on FDR’s exceeds or is likely to exceed a specific limit (fixed by I.T. Department from time to time) per depositor during a financial year, the depositor(s) is required to submit the form No. 15G/15H, as applicable invariably for non deduction of tax at source failing which bank will deduct T.D.S. as per Income Tax Rules.</li>
+								<li>The above guidelines are subject to change as per Income Tax regulations /directives of Finance Ministry Govt of India prevalent from time to time.</li>
+
+                            </ul>
+
+                     </li>
+                </ol>
+            </div>
+         </div>
+      </div>
+  </div>
+ </div>
+<!-- Terms & Conditions Popup End-->
+
+<div class="popup-bottom sm-popup calculate-maturity-popup">
+  <div class="row1">
+      <div class="col-12">
+          <h4 class="text-center"> <img src="./assets/images/svg/information.svg" alt="information-icon"> {{'INFORMATION' | translate}}</h4>
+      </div>
+  </div>
+  <div class="row1">
+      <div class="col-12">
+          <p>Please click on Calculate Maturity</p>
+      </div>
+  </div>
+  <div class="row1  mt-2">
+      <div class="col-12 text-center">
+          <button class="ux-button primary submit-btn" type="button" (click)="closePopup()">{{'OK' | translate}}</button>
+      </div>
+  </div>
+</div>
+
+<div class="popup-bottom tax sm-popup">
+    <div class="row1">
+        <div class="col-12">
+            <h4 class="text-center">
+                <img src="assets/images/svg/information.svg" alt="error-icon"> {{ 'INFORMATION' | translate }}
+            </h4>
+        </div>
+    </div>
+    <div class="row1">
+        <div class="col-12 mb-4">
+            <p>Lock-in period for Tax Saver FDR is 5 Years</p>
+        </div>
+    </div>
+    <div class="row1  mt-2">
+        <div class="col-12 text-center">
+            <button class="ux-button submit-btn" (click)="closePopup()">{{ 'CLOSE' | translate }}</button>
+        </div>
+    </div>
+</div>

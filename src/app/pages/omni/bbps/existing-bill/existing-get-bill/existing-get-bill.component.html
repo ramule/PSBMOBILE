@@ -1,0 +1,351 @@
+<div class="main bg-m">
+	<div class="right-main-column ">
+		<div class="right-col-container pad-b full-width">
+			<!-- ======== body page content start from here ======== -->
+			<div class="body-page-container main-dashborad bill-wrapper myprofile ">
+				<div class="container-fluid">
+					<div class="row">
+						<div class="col-12 p-0">
+							<div class="breadcrumb">
+								<ul class="lst-breadcrumb">
+                                    <li *ngFor="let name of DataService.breadcrumblist">
+                                        <a (click)="DataService.breadcrumroute(name.routeName)">{{name.currentRoute | translate}}</a>
+                                	</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+					<!--.row -->
+					<div class="vspacer15 customize d-none d-md-block d-lg-block d-xl-block"></div>
+					<div class="row no-gutters">
+						<div class="col-12">
+							<div class="row1">
+								<div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-9">
+									<!-- Greencard2 Start here -->
+									<div class="greencard2">
+										<div class="row1 hide-m">
+											<div class="col-md-10 col-12">
+												<h4>Existing Biller Payment</h4> </div>
+											<div class="col-md-2 col-12">
+												<div class="header-actions"> <img src="assets/images/icons/billpay.png" alt="billpay-img" class="small-img"> </div>
+											</div>
+										</div>
+										<div class="row1">
+											<div class="col-sm-12 col-12 col-md-12">
+												<div class="white-box2 mb-3 mt-0 p-0">
+													<div class="bill-info-card green-light m-0">
+														<ul class="comp-info2">
+															<li>
+																<div class="grid-info ">
+																	<div class="full-info">
+																		<h5>Adani Electricity</h5>
+																		<h6>Due Date {{billdetails.billduedate}}</h6> </div>
+																</div>
+																<div class="grid-info d-block">
+																	<div class="full-info">
+																		<h5 class="my-4 greentext"><img src="assets/images/svg/rupee-g2.svg" alt="rupees-icon"> {{billdetails.billamount}}</h5> </div>
+																</div>
+															</li>
+														</ul>
+													</div>
+												</div>
+											</div>
+											<div class="col-sm-12 col-12 col-md-12">
+												<div class="widget-box5 mb-3">
+													<div class="bg-white1 pad-custom py-2">
+														<div class="row1">
+															<div class="col-md-12 col-12">
+																<div id="accordion1" class="accordion-container parent-accordion">
+																	<div class="card4">
+																		<a class="card-link" data-toggle="collapse" href="#consumer" aria-expanded="false">
+																			<div class="card-header3">
+																				<div class="panel-title3">
+																					<h6 class="detail-heading">Consumer Details</h6> </div> <em></em> </div>
+																			<!--card-header-->
+																		</a>
+																		<div id="consumer" class="collapse show" data-parent="#accordion1">
+																			<div class="white-box2 m-0 p-0 shadow-none">
+																				<div class="info-bottom pad-custom swap-div-mob p-0">
+																					<div class="info-details">
+																						<div class="row">
+																							<h6>Bill ID</h6>
+																							<h5>{{billdetails.billid}}</h5>
+																						 </div>
+																					</div>
+																					<div class="info-details">
+																						<div class="row">
+																							<div class="left-info"> <span class="biller-icon">
+                                                                                                        <img src="assets/images/icons/adani.png" alt="adani-logo">
+                                                                                                    </span> </div>
+																							<div class="right-info">
+																								<h6>Biller Name</h6>
+																								<h5>{{billername}}</h5> </div>
+																						</div>
+																					</div>
+																					<div class="info-details pl-40">
+																						<div class="row">
+																							<h6>Biller Account ID</h6>
+																							<h5>{{billdetails.billeraccountid}}</h5> </div>
+																					</div>
+																					<div class="info-details">
+																						<div class="row">
+																							<h6>Consumer Number</h6>
+																							<h5>{{custId}}</h5> </div>
+																					</div>
+																					<div class="info-details  pl-40">
+																						<div class="row">
+																							<h6>Customer Name </h6>
+																							<h5>{{billdetails.customer_name}}</h5> </div>
+																					</div>
+																					<!-- <div class="info-details pl-40">
+																						<div class="row">
+																							<h6>Customer Mobile Number</h6>
+																							<h5>986587867</h5> </div>
+																					</div> -->
+																					<div class="info-details">
+																						<div class="row">
+																							<h6>Short Name </h6>
+																							<h5>Home Electricity</h5> </div>
+																					</div>
+																				</div>
+																			</div>
+																		</div>
+																	</div>
+																</div>
+															</div>
+														</div>
+													</div>
+												</div>
+											</div>
+											<div class="col-sm-12 col-12 col-md-12">
+												<div class="widget-box5 mb-3">
+													<div class="bg-white1 pad-custom">
+														<div class="row1">
+															<div class="col-md-12 col-12">
+																<div class="row1 mb-1">
+																	<div class="col-md-4 col-lg-4 col-xl-4 col-12">
+																		<h6 class="detail-heading">Payment Mode</h6> </div>
+																</div>
+															</div>
+														</div>
+                                                        <form [formGroup]="paymentTypeForm">
+														<div class="row1">
+															<div class="col-12">
+																<div class="ux-selection">
+																	<label class="ux-selection2">Pay via UPI
+																		<input type="radio" value="upi" name="paymentMode" autocomplete="off" formControlName="paymentMode"> <span class="checkmark"></span> </label>
+																</div>
+																<div class="ux-selection">
+																	<label class="ux-selection2">Pay via Account
+																		<input type="radio" value="account" name="paymentMode" autocomplete="off" formControlName="paymentMode"> <span class="checkmark"></span> </label>
+																</div>
+															</div>
+														</div>
+                                                    </form>
+														<div class="row1">
+															<div class="col-12">
+																<div class="ux-input m-0">
+                                                                    <p class="error-message" *ngIf="paymentTypeForm.controls['paymentMode'].hasError('required') && (paymentTypeForm.controls['paymentMode'].dirty || paymentTypeForm.controls['paymentMode'].touched)"> Please select payment mode for transaction </p>
+																</div>
+															</div>
+														</div>
+													</div>
+												</div>
+											</div>
+											<div class="col-sm-12 col-12 col-md-12 hide-m">
+												<div class="row1">
+													<div class="ux-selection">
+														<div class="ux-selection1 mar-rcustom ">
+															<label>Add as registered biller
+																<input type="checkbox" name="" autocomplete="off"> <span class="checkmark"></span> </label>
+														</div>
+													</div>
+												</div>
+												<div class="row1">
+													<div class="col-12">
+														<div class="ux-input m-0">
+															<p class="error-message"></p>
+														</div>
+													</div>
+												</div>
+											</div>
+											<div class="col-12 col-md-12">
+												<ul class="bottom-footer1">
+													<li>
+														<div class="btn-div">
+															<button class="ux-button secondary sm-mob">Cancel</button>
+														</div>
+														<div class="btn-div">
+															<button class="ux-button primary  sm-mob" (click)="existingGetBillSubmit()" >Submit</button>
+														</div>
+													</li>
+												</ul>
+											</div>
+										</div>
+									</div>
+									<!-- Greencard2 End here -->
+								</div>
+								<!-- Right Column Ads Start -->
+								<div class="col-12 col-md-12 col-lg-12 col-xl-3 d-none d-xl-block">
+									<div class="right-ads">
+										<a> <img src="assets/images/banner/my-card-banner.jpg"> </a>
+									</div>
+									<div class="vspacer30"></div>
+									<!-- <div class="offers-card">
+											<div class="header-block clearfix">
+												<h5>Offers on your card</h5>
+											</div>
+
+											<div class="panel-body">
+												<div class="recentpayment-control">
+													<ul>
+													    <li>
+															<img src="assets/images/banner/offer-banner.png">
+														</li>
+													</ul>
+												</div> 
+											 </div>
+										</div>  --></div>
+								<!-- Right Column Ads Ends -->
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!--.right-col-container-->
+	</div>
+	<!--.right-main-column-->
+	<!-- Footer Code Starts Here -->
+	<footer>
+		<div class="global-footer">
+			<div class="in-glfooter">
+				<div class="container-fluid">
+					<div class="row">
+						<div class="col-4 col-xl-6 col-lg-6 col-md-6 col-sm-4">
+							<div class="glfooter-content">
+								<div class="glfooter-box">
+									<div class="glcopyright-text"> <em>Powered by</em> <img src="assets/images/kiya-logo.png"> </div>
+								</div>
+							</div>
+						</div>
+						<div class="col-8 col-xl-6 col-lg-6 col-md-6 col-sm-8">
+							<div class="glfooter-content">
+								<div class="glfooter-box">
+									<div class="glcopyright-text1"> <em>Copyright © 2020 Infrasoft Technologies Ltd. All rights reserved.</em> </div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</footer>
+	<!-- Footer Code Ends -->
+</div>
+<!-- main -->
+<aside class="notification-panel sticky-panel ">
+	<div class="notp-header">
+		<a href="javascript:;" class="btn-closenoty"></a>
+		<h5>Theme Customizer</h5> </div>
+	<div class="notp-content">
+		<div class="notp-innercontent">
+			<div class="notp-nodatafound">
+				<div class="col-12">
+					<h5>Navigation</h5>
+					<div>
+						<label class="ux-selection2">Vertical
+							<input type="radio" checked="checked" name="radioboxdemo"> <span class="checkmark"></span> </label>
+						<label class="ux-selection2">Horizontal
+							<input type="radio" name="radioboxdemo"> <span class="checkmark"></span> </label>
+					</div>
+					<div class="vspacer20"></div>
+					<h5>Theam Color</h5>
+					<div class="row1 mb-1">
+						<div class="col-12">
+							<ul class="theme-list">
+								<li class="blue"></li>
+								<li class="green"></li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="vspacer20"></div>
+			<div class="vspacer20"></div>
+			<div class="row1">
+				<div class="col-12 col-xl-12 col-lg-12 col-md-12 ">
+					<div class="ux-footer">
+						<button class="ux-button sm primary float-right">Submit</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- <div class="notp-footer">
+			<p>Test</p>
+		</div>  -->
+	<!-- <div class="page-tools">
+			<div class="lst-page-tools">
+				  <a href="#" class="rightpannel">
+					  <img src="assets/images/svg/adjust.svg" alt="adjust-icon"> 
+					</a>
+			 </div>
+		 </div> -->
+</aside>
+<div class="notpanel-overlay"></div>
+<!-- logout Modal Starts-->
+<div id="logoutModal" class="modal fade " role="dialog">
+	<div class="modal-dialog modal-dialog-centered">
+		<div class="modal-content">
+			<div class="modal-header">
+				<div class="mh-bottom">
+					<div class="row1">
+						<div class="col-10">
+							<h6>Confirmation</h6> </div>
+						<div class="col-2"><a href="javascript:;" data-dismiss="modal"><span
+                                        class="mh-cross"></span></a></div>
+					</div>
+				</div>
+			</div>
+			<div class="modal-body">
+				<p>Do you want logout from this application?</p>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="ux-button sm secondary" data-dismiss="modal">No</button>
+				<button type="button" class="ux-button sm primary" onclick=" location.href='login.html'">Yes</button>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- logout Modal Ends-->
+<!-- delete-biller Modal Starts-->
+<div class="popup-bottom sm-popup delete-biller-popup popup1">
+	<div class="row1">
+		<div class="col-10 col-md-10 col-lg-10 col-xl-10">
+			<h4 class="text-left">Confirmation</h4> </div>
+		<div class="col-2 col-md-2 col-lg-2 col-xl-2">
+			<button class="ux-button-icon close-btn"> <img src="assets/images/svg/close-b.svg" alt="cross-icon" class="img-vsmall"> </button>
+		</div>
+	</div>
+	<div class="row1">
+		<div class="col-12">
+			<div class="row1">
+				<div class="col-12 co-md-12 col-xl-12 col-lg-12">
+					<p>Are you sure you want to delete this biller?</p>
+				</div>
+			</div>
+			<div class="row1 mt-2">
+				<div class="col-6 col-md-6 text-center">
+					<button class="ux-button secondary sm-mob close-btn" >No</button>
+				</div>
+				<div class="col-6 col-md-6 text-center">
+					<button class="download-btn  ux-button primary sm-mob">Yes</button>
+				</div>
+			</div>
+		</div>
+		<!-- col-12 -->
+	</div>
+</div>
+<!-- delete-biller Modal Starts-->
+<div class="ios-nav-overlay"></div>

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<plugin xmlns="http://apache.org/cordova/ns/plugins/1.0"
+  id="cordova-plugin-screen-mirror-detect-ios"
+  version="0.0.1">
+    <name>ScreenMirrorDetectIosPlugin</name>
+    <description>Screen Mirror Detection iOS Functionality in your application.</description>
+    <engines>
+        <engine name="cordova" version=">=3.5.0" />
+    </engines>
+    <js-module src="www/index.js" name="ScreenMirrorDetectIosPlugin">
+        <clobbers target="cordova.plugins.ScreenMirrorDetectIosPlugin" />
+    </js-module>
+    <platform name="ios">
+        <config-file target="config.xml" parent="/*">
+            <feature name="HandlerClass">
+                <param name="ios-package" value="HandlerClass" />
+            </feature>
+        </config-file>
+        <header-file src="src/ios/HandlerClass.h" target-dir="src/ios" />
+        <source-file src="src/ios/HandlerClass.m" target-dir="src/ios" />
+        <header-file src="src/ios/ScreenMirrorDetectorClass.h" target-dir="src/ios" />
+        <source-file src="src/ios/ScreenMirrorDetectorClass.m" target-dir="src/ios" />
+        <dependency id="cordova-plugin-add-swift-support" version="2.0.2"/>
+    </platform>
+</plugin>

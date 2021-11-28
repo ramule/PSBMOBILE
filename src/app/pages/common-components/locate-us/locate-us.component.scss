@@ -1,0 +1,33 @@
+.ng-autocomplete {
+    width:100%;
+    max-width: 600px;
+    display: table;
+    margin: 0 auto;
+  }
+
+  .paddingTop300px{
+    padding-top: 300px;
+    @media (max-width: 767px) {
+      padding-top:20px;
+      padding-bottom:20px;
+  }
+}
+
+.locate-us .findby-detail ul li input{
+  cursor: pointer;
+}
+
+// .mt-map-wrapper {
+//   width: 100%;
+//   height: 100%;
+//   overflow:hidden;
+//   position:relative;
+// }
+
+// .map-controller {
+//   width: 100%;
+//   height: 100%;
+//   left: 0;
+//   top:0;
+//   position:absolute !important;
+// }

@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 30 30">
+  <g id="Group_40091" data-name="Group 40091" transform="translate(-260 -10742)">
+    <g id="Rectangle_18710" data-name="Rectangle 18710" transform="translate(260 10742)" stroke="#707070" stroke-width="1" opacity="0">
+      <rect width="30" height="30" stroke="none"/>
+      <rect x="0.5" y="0.5" width="29" height="29" fill="none"/>
+    </g>
+    <g id="noun_statement_1239492" transform="translate(263.149 10745.15)">
+      <g id="Group_39587" data-name="Group 39587" transform="translate(-0.149 -0.15)">
+        <path id="Union_15" data-name="Union 15" d="M.753,1.509A.755.755,0,0,1,.753,0h9.9a.755.755,0,1,1,0,1.509Z" transform="translate(3.146 4.367)" fill="#007c3d"/>
+        <path id="Union_14" data-name="Union 14" d="M.753,1.509A.755.755,0,0,1,.753,0H4.474a.755.755,0,0,1,0,1.509Z" transform="translate(3.147 7.263)" fill="#007c3d"/>
+        <path id="Union_13" data-name="Union 13" d="M.753,1.509A.755.755,0,0,1,.753,0H3.306a.755.755,0,1,1,0,1.509Z" transform="translate(3.147 10.159)" fill="#007c3d"/>
+        <path id="Union_12" data-name="Union 12" d="M15.7,24a.088.088,0,0,1-.031,0H.753A.756.756,0,0,1,0,23.247V.755A.756.756,0,0,1,.753,0h16.1a.754.754,0,0,1,.753.755V7.781A8.212,8.212,0,0,1,15.786,24,.77.77,0,0,1,15.7,24ZM9.085,15.789a6.7,6.7,0,1,0,6.7-6.705A6.708,6.708,0,0,0,9.085,15.789Zm-7.576,6.7h9.539A8.21,8.21,0,0,1,15.786,7.575c.1,0,.2,0,.311.009V1.508H1.509Z" fill="#007c3d"/>
+        <path id="Union_11" data-name="Union 11" d="M3.025,7.854.194,4.554.187,3.726H1.614A1.745,1.745,0,0,0,2.6,3.464a1.081,1.081,0,0,0,.418-.526H0l.314-1.08H3A1.324,1.324,0,0,0,1.643,1.08H.009L.33,0H5.417L5.1,1.08H4.02a2.3,2.3,0,0,1,.287.778h1.11L5.1,2.938H4.328a1.962,1.962,0,0,1-.773,1.374A2.9,2.9,0,0,1,1.97,4.8L4.395,7.616v.238Z" transform="translate(12.898 12.305)" fill="#007c3d"/>
+      </g>
+    </g>
+  </g>
+</svg>

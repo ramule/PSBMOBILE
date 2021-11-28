@@ -1,0 +1,151 @@
+<div class="main">
+    <div class="right-main-column minus-rt-col mar-custom">
+        <div class="right-col-container cust-pb2">
+            <div class="body-page-container">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="bg-section">
+                            <div class="col-12">
+                                <div class="row1">
+                                    <div class="col-sm-12 col-12 col-md-12">
+                                        <!-- <div class="unfound-info" *ngIf="complaintList.length==0" style="background-color: white;">
+                      <h6>{{'NO_RECORD_FOUND' | translate}}</h6>
+                    </div> -->
+                                        <div class="white-bg1 pad-custom" *ngIf="complaintList.length==0">
+                                            <div class="unfound-info"> <img src="assets/images/svg/complaints-no-data.svg" alt="complaint-icon">
+                                                <h6>{{'YOU_DONT_HAVE_ANY_COMPLAINTS_RIGHT_NOW' | translate}}</h6>
+                                            </div>
+                                        </div>
+                                        <div class="white-bg1 pad-custom" *ngIf="complaintList.length > 0">
+                                            <ul class="complaint-list">
+                                                <li *ngFor="let complaint of complaintList" (click)="goToPage(complaint,'complaintDetails')">
+                                                    <div class="full-container">
+                                                        <div class="row1">
+                                                            <div class="col-7 col-md-6">
+                                                                <div class="left-info">
+                                                                    <h6>{{'COMPLAINT_ID' | translate}}</h6>
+                                                                    <h5>{{complaint.complaintNo}}</h5>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-5 col-md-6 ">
+                                                                <div class="right-info">
+                                                                    <div class="row text-right mt-1">
+                                                                        <div class="col-12 p-0">
+                                                                            <h6>{{'AMOUNT' | translate}}</h6>
+                                                                            <h5>{{complaint.txnAmount | customcurrency}}</h5>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="row1 mt-3">
+                                                            <div class="col-7 col-md-6">
+                                                                <div class="left-info">
+                                                                    <h6>{{'RRN_NUMBER' | translate}}</h6>
+                                                                    <h5>{{complaint.rrn}}</h5>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-5 col-md-6 mt-2">
+                                                                <div class="right-info">
+                                                                    <div class="row text-right">
+                                                                        <div class="col-12 p-0">
+                                                                            <button *ngIf="complaint.status == 'OPEN'" class="ux-linkbutton1 primary"> {{complaint.status | titlecase}}</button>
+                                                                            <!--(click)="goToPage('complaintDetails')"-->
+                                                                            <button *ngIf="complaint.status != 'OPEN'" class="ux-linkbutton1 info"> {{complaint.status | titlecase}}</button>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="clear-fix"></div>
+                                                                    <div class="row text-right mt-1">
+                                                                        <div class="col-12 p-0">
+                                                                            <!-- <em>{{complaint.feedbackTime | date:"dd MMM yyyy, HH:mm:ss"}}</em> -->
+                                                                            <em>{{complaint.feedbackTime}}</em>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <div class="col-12 col-md-12 col-lg-12 text-center mt-3">
+                                            <!-- <button class="ux-button primary md" (click)="goToRaiseComplaint()"  > {{'RAISE_COMPLAINT' | translate}}</button> -->
+
+                                            <button (click)="goToRaiseComplaint()" [ngClass]="complaintList.length > 1 ? 'raise-btn ux-button primary md' : 'raise-btn ux-button primary md mt-5' "> {{'RAISE_COMPLAINT' | translate}}</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- footer section start -->
+
+            <!-- <div class="footer-container sticky-actions ">
+				<div class="footer-inactions minus-rt-col">
+					<div class="container-fluid">
+						<div class="row">
+						   <div class="col-12 col-md-12 col-lg-12 text-center">
+							 	 <button class="ux-button primary md"  (click)="goToRaiseComplaint()">{{'RAISE_COMPLAINT' | translate}}</button>
+							 </div>
+						 </div> 
+					</div> 
+				</div> 
+			</div> 
+		  -->
+            <!-- footer section end -->
+        </div>
+    </div>
+</div>
+<!-- main -->
+
+<!-- Unblock UPI ID Popup Start -->
+
+<div class="popup-bottom unblock1">
+    <div class="row">
+        <div class="col-12">
+            <h4 class="text-center">Unblock UPI ID</h4>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12">
+            <p>
+                Do you want to unblock this UPI ID bhartis@okicici?
+            </p>
+        </div>
+    </div>
+    <div class="row1 mt-2">
+        <div class="col-6 text-center">
+            <button class="ux-button secondary no md close-btn">No</button>
+        </div>
+        <div class="col-6 text-center">
+            <button class="unblock-submit ux-button primary md">Yes</button>
+        </div>
+    </div>
+</div>
+
+<!--  Unblock UPI ID Popup End -->
+
+<!-- Unblock ID Success Popup Start -->
+
+<div class="popup-bottom block-success">
+    <form action="#" id="success-form">
+        <div class="row mt-3">
+            <div class="success">
+                <img src="assets/images/svg/check.svg" alt="success-icon">
+                <h3>Success</h3>
+                <h5>UPI ID bhartis@okicici Unblocked Successfully</h5>
+            </div>
+        </div>
+        <div class="row1 mt-3">
+            <div class="col-12 text-center">
+                <button class="ux-button primary md ">Ok</button>
+            </div>
+        </div>
+    </form>
+</div>
+
+<!-- Unblock ID Success Popup End -->
+
+<!-- <div class="ios-nav-overlay"></div> -->

@@ -1,0 +1,288 @@
+<div class="main">
+
+
+    <div class="right-main-column minus-rt-col mar-custom">
+        <div class="right-col-container">
+
+            <div class="body-page-container">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="bg-section">
+                            <div class="col-12">
+                                <div class="row1">
+                                    <div class="col-sm-12 col-12 col-md-12">
+                                        <div class="white-bg1">
+                                            <div class="row1">
+                                                <div class="col-12 col-sm-12 col-md-12">
+                                                    <div class="ux-input">
+                                                        <label for="complaintType">Complaint Type</label>
+                                                        <select required="" class="complaints">
+                                                            <option value="">Select</option>
+                                                            <option value="Service">Service</option>
+                                                            <option value="Transaction">Transaction</option>
+                                                        </select>
+                                                        <p></p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-12 col-12 col-md-12">
+                                        <div class="Service complaint-info" style="display:none;">
+                                            <div class="grey-bg5 mar-custom mb-0">
+                                                <div class="row1">
+                                                    <div class="col-12 col-sm-12 col-md-6">
+                                                        <div class="ux-input">
+                                                            <label for="participationType">Participation Type</label>
+                                                            <select required="" class="billertype">
+                                                                <option value="">Select</option>
+                                                                <option value="Biller">Biller</option>
+                                                            </select>
+                                                            <p></p>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-12 col-sm-12 col-md-6">
+                                                        <div class="ux-input">
+                                                            <label for="category">Biller Category</label>
+                                                            <select required="" class="">
+                                                                <option value="">Select</option>
+                                                                <option value="Water">Water</option>
+                                                            </select>
+                                                            <p></p>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-12 col-sm-12 col-md-6">
+                                                        <div class="ux-input">
+                                                            <label for="Location">Biller Location</label>
+                                                            <select required="" class="">
+                                                                <option value="">Select</option>
+                                                                <option value="Tamil Nadu">Tamil Nadu</option>
+                                                            </select>
+                                                            <p></p>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-12 col-sm-12 col-md-6">
+                                                        <div class="ux-input">
+                                                            <label for="biller">Biller</label>
+                                                            <select required="" class="">
+                                                                <option value="">Select</option>
+                                                                <option value="TN Metro Water Supply Board">TN Metro
+                                                                    Water Supply Board</option>
+                                                            </select>
+                                                            <p></p>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-12 col-sm-12 col-md-6">
+                                                        <div class="ux-input">
+                                                            <label for="reason">Complaint Reason</label>
+                                                            <select required="" class="">
+                                                                <option value="">Select</option>
+                                                                <option value="Incorrect bill details displayed">
+                                                                    Incorrect bill details displayed</option>
+                                                            </select>
+                                                            <p></p>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-12 col-sm-12 col-md-6">
+                                                        <div class="ux-input">
+                                                            <label for="description">Complaint Description</label>
+                                                            <textarea rows="3" placeholder="Enter Complaint Description"
+                                                                required></textarea>
+                                                            <p></p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-12 col-12 col-md-12">
+                                        <div class="Transaction complaint-info" style="display:none;">
+                                            <div class="grey-bg5 mar-custom mb-0">
+                                                <div class="row1">
+                                                    <div class="col-12">
+                                                        <div class="ux-input mb-0">
+                                                            <label>Search by</label>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-12 col-xl-12 col-lg-12 col-md-12 col-sm-12">
+                                                        <div class="row1">
+                                                            <div class="col-6 col-md-6">
+                                                                <div class="ux-selection mar-custom">
+                                                                    <label class="ux-selection2">Transaction ID
+                                                                        <input type="radio" checked="checked"
+                                                                            value="transaction" name="searchby">
+                                                                        <span class="checkmark"></span>
+                                                                    </label>
+                                                                    <div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-6 col-md-6">
+                                                                <div class="ux-selection mar-custom">
+                                                                    <label class="ux-selection2">Duration
+                                                                        <input type="radio" value="duration"
+                                                                            name="searchby">
+                                                                        <span class="checkmark"></span>
+                                                                    </label>
+                                                                    <div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div id="transaction">
+                                                    <div class="row1 mt-3">
+                                                        <div class="col-12 col-sm-12 col-md-12">
+                                                            <div class="ux-input">
+                                                                <label for="transactionNum">Transaction Number</label>
+                                                                <input type="text" placeholder="" required>
+                                                                <p></p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div id="duration" style="display:none;">
+                                                    <div class="row1 mt-3">
+                                                        <div class="col-6">
+                                                            <div class="ux-input mb-0">
+                                                                <label>From Date</label>
+                                                                <input type="text" class="datepicker1"
+                                                                    placeholder="DD/MM/YYYY">
+                                                                <em class="calendar-ic cal-top"></em>
+                                                                <p></p>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-6">
+                                                            <div class="ux-input mb-0">
+                                                                <label>To Date</label>
+                                                                <input type="text" class="datepicker1"
+                                                                    placeholder="DD/MM/YYYY">
+                                                                <em class="calendar-ic cal-top"></em>
+                                                                <p></p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+            <!-- </div>
+    </div>
+
+</div> -->
+
+
+            <!-- footer section start -->
+
+            <div class="footer-container sticky-actions">
+                <div class="footer-inactions minus-rt-col">
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-12 col-md-12 col-lg-12">
+                                <button class="submit1 ux-button primary md"
+                                    (click)="goToPage('billRaiseComplaintServiceConfirmation')">Submit</button>
+                                <button class="submit2 ux-button primary md"
+                                    (click)="goToPage('raiseComplaintTransactionSuccess')"
+                                    style="display: none;">Submit</button>
+                                <button class="search1 ux-button primary md"
+                                    (click)="goToPage('billRaiseDurationTransactionDetails')"
+                                    style="display: none;">Search</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="sticky-actions-spacer"></div>
+
+            <!-- footer section end -->
+
+        </div>
+    </div>
+
+</div>
+
+<!-- main -->
+
+
+<!-- =========== modal popup start ===============  -->
+
+
+<!-- Filter Popup Start -->
+
+<div class="popup-bottom filter1">
+    <div class="row1">
+        <div class="col-10">
+            <h4>Filter</h4>
+        </div>
+        <div class="col-2">
+            <button class="ux-button-icon close-btn">
+                <img src="assets/images/svg/close-b.svg" alt="cross-icon" class="img-vsmall">
+            </button>
+        </div>
+    </div>
+    <form action="#" id="filter-form">
+        <div class="row1 mt-2">
+            <div class="col-12 col-sm-12 col-md-12 col-lg-12">
+                <div class="ux-input">
+                    <label for="upiId">UPI ID</label>
+                    <select required="">
+                        <option value="">Select</option>
+                        <option value="9768245145@psb">9768245145@psb</option>
+                    </select>
+                    <p class="mb-0"></p>
+                </div>
+            </div>
+        </div>
+        <div class="row1">
+            <div class="col-6">
+                <div class="ux-input">
+                    <label>Start Date</label>
+                    <input type="text" class="datepicker1" placeholder="DD/MM/YYYY">
+                    <em class="calendar-ic cal-top"></em>
+                </div>
+            </div>
+            <div class="col-6">
+                <div class="ux-input">
+                    <label>End Date</label>
+                    <input type="text" class="datepicker1" placeholder="DD/MM/YYYY">
+                    <em class="calendar-ic cal-top"></em>
+                </div>
+            </div>
+        </div>
+        <div class="row1">
+            <div class="col-12 col-sm-12 col-md-12 col-lg-12">
+                <div class="ux-input">
+                    <label for="">Transaction Type</label>
+                    <select required="">
+                        <option value="">Select</option>
+                        <option value="Collect">Collect</option>
+                    </select>
+                    <p class="mb-0"></p>
+                </div>
+            </div>
+        </div>
+        <div class="row1 mt-2">
+            <div class="col-6 text-center">
+                <button class="ux-button secondary  md">Clear</button>
+            </div>
+            <div class="col-6 text-center">
+                <button class="ux-button primary md">Apply</button>
+            </div>
+        </div>
+    </form>
+</div>
+
+<!-- Filter Popup End -->
+<!-- <div class="ios-nav-overlay"></div> -->

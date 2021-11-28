@@ -1,0 +1,827 @@
+<div class="main main-bg">
+  <!-- <div class="nav-overlay"></div> -->
+
+  <!--  Right Main Column Section Start -->
+
+  <header class="global-header">
+    <div class="desk-header ">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-xl-1 col-lg-1 col-md-1 col-sm-1 col-2 d-lg-none">
+            <div class="header-actions">
+              <button class="ux-button-header menu-btn">
+                <img src="assets/images/svg/yellow-menu.svg" alt="open-menu-icon">
+              </button>
+            </div>
+          </div>
+          <div class="col-xl-1 col-lg-1 col-md-1 col-sm-1 col-2 pl-0 pr-0 d-none d-xl-block d-lg-block d-md-none d-sm-none ">
+              <div id="nav-icon1" (click)="menuClick()" >
+                <div class="inner-div">
+                  <span></span>
+                  <span></span>
+                  <span></span>
+                </div>
+              </div>
+          </div>
+          <div class="col-xl-5 col-lg-5 col-md-5 col-sm-6 col-6 position-static">
+            <div class="brand-heading">
+               <span class="logo-img">
+                  <img src="assets/images/svg/final-logo.svg" alt="psb-logo" class="normal d-none d-md-block d-lg-block d-xl-block" >
+                  <img src="assets/images/svg/psb-dark-logo.svg" alt="psb-logo" class="bw-logo">
+                  <img  src="assets/images/logo/psb-logo.svg" alt="psb-logo" class="text-left d-block d-md-none d-lg-none d-xl-none">
+               </span>
+            </div>
+          </div>
+          <div class="col-xl-6 col-lg-6 col-md-6 col-sm-5 col-4">
+            <div class="header-items">
+              <ul class="lst-header-items">
+                <li>
+                    <!-- <div class="user-details item-user" (click)="openProfile()">
+                    <span class="round-circle"><img [src]="dataService.profileImage" onError="this.onerror=null;this.src='./assets/images/svg/user-profile-w.svg';" alt=""></span>
+                    </div> -->
+                    <div class="user-details item-user" (click)="openProfile()">
+                      <span class="round-circle green">
+                          <h4 *ngIf="dataService.profileImage == '' ">{{ dataService.userName | firstLastChar | uppercase }}</h4>
+                          <img *ngIf="dataService.profileImage != '' " [src]="dataService.profileImage"  onerror="this.src='./assets/images/svg/user-profile-w.svg'"
+                          alt="user-img" alt="">
+                      </span>
+                  </div>
+
+                 <div class="bm-userprofile">
+                  <ul class="lst-userprofile">
+                    <li>
+                      <div class="userprofile-container">
+                        <div class="row1">
+                          <div class="col-12 col-sm-6">
+                            <span>John Smith</span>
+                            <em>Last login <i>12 Jan 2020,</i><b>16:25</b></em>
+                          </div>
+                          <div class="col-12 col-sm-6">
+                            <div class="profile-btn">
+                              <button class="ux-button sm secondary" (click)="goToPage('profileDetails')">My Profile</button>
+                            </div>
+                           </div>
+                        </div>
+                      </div>
+                     </li>
+                     <li>
+                      <a class="common-action change-pwd">
+                        <span> Change Password</span>
+                      </a>
+                     </li>
+                    <li>
+                      <a (click)="goToPage('login')" class="common-action logout" data-toggle="modal" data-target="#logoutModal">
+                        <span> Logout</span>
+                      </a>
+                   </li>
+                  </ul>
+                 </div>
+                 </li>
+                 <li class="hil-setting d-none d-md-inline-block d-lg-inline-block">
+                <a href="javascript:;" class="item-settings">
+                  <img src="assets/images/svg/psb-theme-icon.svg" alt="theme-icon">
+                 </a>
+              </li>
+               <li class="hil-setting d-none d-md-inline-block d-lg-inline-block">
+                <a href="javascript:;" class="translate-settings" (click)="goToPage('languageChange')">
+                  <img src="assets/images/svg/translate-w.svg" alt="translate-icon">
+                 </a>
+              </li>
+
+                 <li class="hil-notification">
+                  <a href="javascript:;" class="item-notification">
+                    <div class="notify">
+                      <!-- <span class="pulse"></span>  -->
+                      <!-- <span class="point">1</span> -->
+                    </div>
+                    <img src="assets/images/svg/bell1.svg" alt="bell-icon" (click)="getNotification()">
+                   </a>
+                  <div class="bm-notification">
+                    <div class="nf-header">
+                      <span class="nf-title">Notifications <b>2</b></span>
+                    </div>
+                    <!-- .nf-header -->
+                    <div class="nf-content">
+                      <div class="template-list">
+                        <dl class="dl-template-items">
+                          <div>
+                            <a href="javascript:;">
+                              <span>N</span>
+                              <dt>New data added to system</dt>
+                              <dd>System is updated with new reports</dd>
+                              <em>12 Jan 2020, 9:25 AM</em>
+                            </a>
+                          </div>
+                          <div>
+                            <a href="javascript:;">
+                              <span>E</span>
+                              <dt>Event Today</dt>
+                              <dd>Just a reminder of an event</dd>
+                              <em>11 Jan 2020, 08:00 AM</em>
+                            </a>
+                          </div>
+                          <div>
+                            <a href="javascript:;" class="nf-read">
+                              <span>S</span>
+                              <dt>System Maintenance</dt>
+                              <dd>System will be down from 5PM - 8PM today</dd>
+                              <em>10 Jan 2020, 07:00 AM</em>
+                            </a>
+                          </div>
+                        </dl>
+                      </div>
+                    </div>
+                    <div class="nf-footer ">
+                      <button class="ux-button sm secondary" (click)="goToPage('omniNotification')"> View all</button>
+                    </div>
+                    <!-- .nf-footer -->
+                  </div>
+                </li>
+                <li>
+                  <a href="javascript:;" class="item-logout1" data-toggle="modal" data-target="#logoutModal">
+                    <img src="assets/images/svg/logout-w.svg" alt="logout-icon">
+                   </a>
+                </li>
+               </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+   </header>
+   <app-side-nav-omni></app-side-nav-omni>
+
+  <div class="right-main-column dashboardMobile">
+    <div class="right-col-container pad-b1">
+      <div class="body-page-container">
+        <div class="vspacer5 d-sm-block d-none"></div>
+        <div class="upper-dashboard-wrapp">
+          <div class="container-fluid">
+            <div class="row">
+              <div class="col-12">
+                <div class="scroll-box2">
+                  <owl-carousel-o [options]="accountCarouselOptions" #cardsCarousel  class="card-carousal" >
+                    <ng-container class="item" role="listitem" style="padding: 5px;" *ngIf="totalSavingAcc > 0">
+                    <ng-template carouselSlide >
+                        <div class="item" role="listitem">
+                            <div class="ux-component5 ">
+                                <div class="ux-dropdown">
+                                    <div class="drp-box">
+                                        <a class="drp-enterdata">
+                                            <div class="card-section">
+                                                <div class="card-info">
+                                                    <div class="card-actions" (click)="goToMyAccount()">
+                                                        <h4>{{"MY_SAVING" | translate}} <span>({{totalSavingAcc}})</span></h4>
+                                                        <span class="d-block d-md-none d-lg-none d-xl-none text-left">{{"SAVING_CURR_OD" | translate}}</span>
+                                                    </div>
+                                                    <div class="show-btn">
+                                                        <button class="refresh-btn">
+                                                          <img
+                                                          src="assets/images/svg/eye-g.svg"   *ngIf="mySavingShow == true" (click)="$event.stopPropagation();mySavingShow = false">
+                                                          <img
+                                                          src="assets/images/svg/hide.svg"  *ngIf="mySavingShow == false" (click)="$event.stopPropagation();mySavingShow = true">
+                                                        </button>
+                                                    </div>
+                                                </div>
+
+                                                <div class="card-info">
+                                                    <div class="card-actions">
+                                                        <span class="account-balance disable-status">
+                                                            <em class="entered-data " amt="50,000.00">
+                                                                <i *ngIf="mySavingShow == false" > <img src="assets/images/svg/rupee-bl.svg" alt="rupees-icon"> </i>
+                                                                <b *ngIf="mySavingShow == false" >{{totalSavingMaskedAmt}}</b>
+                                                                <b *ngIf="mySavingShow == true" >{{totalSavingAmt}}</b>
+                                                                <strong style="display: none;">{{totalSavingAmt}}</strong>
+                                                            </em>
+                                                        </span>
+                                                        <div class="total-target">
+                                                            <small>{{"TOTAL_ACC_BAL" | translate}}</small>
+                                                        </div>
+                                                    </div>
+                                                    <div class="ref-btn">
+                                                        <button class="refresh-btn" (click)="$event.stopPropagation();setLastRefreshedDate()" >
+                                                            <img src="assets/images/svg/refresh-g.svg" alt="refresh-icon">
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </ng-template>
+                    </ng-container>
+                    <ng-container class="item" role="listitem" style="padding: 5px;"  *ngIf="totalDepositeAcc > 0">
+                      <ng-template carouselSlide >
+                          <div class="item" role="listitem">
+                              <div class="ux-component5">
+                                  <div class="ux-dropdown">
+                                      <div class="drp-box">
+                                          <a class="drp-enterdata">
+                                              <div class="card-section">
+                                                  <div class="card-info">
+                                                      <div class="card-actions" (click)="goToMyAccount()" >
+                                                          <h4>{{"MY_DEPOSITS" | translate}} <span>({{totalDepositeAcc}})</span></h4>
+                                                          <span class="d-block d-md-none d-lg-none d-xl-none text-left">{{"FD_RD_ACC" | translate}}</span>
+                                                      </div>
+                                                      <div class="show-btn">
+                                                          <button class="refresh-btn">
+                                                           <img	src="assets/images/svg/eye-g.svg"  *ngIf="myDepositShow == true" (click)="$event.stopPropagation();myDepositShow = false">
+                                                           <img	src="assets/images/svg/hide.svg" *ngIf="myDepositShow == false" (click)="$event.stopPropagation();myDepositShow = true">
+                                                          </button>
+                                                      </div>
+                                                  </div>
+
+                                                  <div class="card-info">
+                                                      <div class="card-actions">
+                                                          <span class="account-balance disable-status">
+                                                              <em class="entered-data " amt="50,000.00">
+                                                                  <i *ngIf="myDepositShow == false" > <img src="assets/images/svg/rupee-bl.svg" alt="rupees-icon"> </i>
+                                                                  <b *ngIf="myDepositShow == false" >{{totalDepositeMaskedAmt}}</b>
+                                                                  <b *ngIf="myDepositShow == true" >{{totalDepositeAmt}}</b>
+                                                                  <strong style="display: none;">{{totalDepositeAmt}}</strong>
+                                                              </em>
+                                                          </span>
+                                                          <div class="total-target">
+                                                              <small>{{"TOTAL_ACC_BAL" | translate}}</small>
+                                                          </div>
+                                                      </div>
+                                                      <div class="ref-btn">
+                                                          <button class="refresh-btn" (click)="$event.stopPropagation();setLastRefreshedDate()" >
+                                                              <img src="assets/images/svg/refresh-g.svg" alt="refresh-icon">
+                                                          </button>
+                                                      </div>
+                                                  </div>
+                                              </div>
+                                          </a>
+                                      </div>
+                                  </div>
+                              </div>
+                          </div>
+                      </ng-template>
+                      </ng-container>
+                      <ng-container class="item" role="listitem" style="padding: 5px;" *ngIf="totalBorrowingAcc > 0">
+                        <ng-template carouselSlide >
+                            <div class="item" role="listitem">
+                                <div class="ux-component5 no-margin">
+                                    <div class="ux-dropdown">
+                                        <div class="drp-box">
+                                            <a class="drp-enterdata">
+                                                <div class="card-section">
+                                                    <div class="card-info" (click)="goToMyAccount()" >
+                                                        <div class="card-actions">
+                                                            <h4>{{"MY_TERM_LOANS" | translate}} <span>({{totalBorrowingAcc}})</span></h4>
+                                                            <span class="d-block d-md-none d-lg-none d-xl-none text-left">{{"LOANS" | translate}}</span>
+                                                        </div>
+                                                        <div class="show-btn">
+                                                            <button class="refresh-btn">
+                                                              <img src="assets/images/svg/eye-g.svg"  *ngIf="myBrowsingShow == true" (click)="$event.stopPropagation();myBrowsingShow = false">
+                                                              <img 	src="assets/images/svg/hide.svg"  *ngIf="myBrowsingShow == false" (click)="$event.stopPropagation();myBrowsingShow = true">
+                                                            </button>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="card-info">
+                                                        <div class="card-actions">
+                                                            <span class="account-balance disable-status">
+                                                                <em class="entered-data " amt="50,000.00">
+                                                                    <i *ngIf="myBrowsingShow == false" > <img src="assets/images/svg/rupee-bl.svg" alt="rupees-icon"> </i>
+                                                                    <b *ngIf="myBrowsingShow == false" >{{totalBorrowingMaskedAmt}}</b>
+                                                                    <b *ngIf="myBrowsingShow == true" >{{totalBorrowingAmt}}</b>
+                                                                    <strong style="display: none;">{{totalBorrowingAmt}}</strong>
+                                                                </em>
+                                                            </span>
+                                                            <div class="total-target">
+                                                                <small>{{"TOTAL_ACC_BAL" | translate}}</small>
+                                                            </div>
+                                                        </div>
+                                                        <div class="ref-btn">
+                                                            <button class="refresh-btn" (click)="$event.stopPropagation();setLastRefreshedDate()" >
+                                                                <img src="assets/images/svg/refresh-g.svg" alt="refresh-icon">
+                                                            </button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </ng-template>
+                        </ng-container>
+                  </owl-carousel-o>
+                </div>
+              </div>
+            </div>
+
+            <div class="container-fluid">
+              <div class="row">
+                <div class="button-section3 psbomni">
+                  <div class="button-left">
+                    <button class="ux-custom-button primary" (click)="goToRoutePage('/instantPay')" >
+                      {{"INSTA_PAY" | translate}}
+                      <img src="assets/images/svg/insta-pay.svg" alt="rupee-icon" />
+                    </button>
+                  </div>
+                  <div class="button-right">
+                    <button
+                      class="ux-custom-button primary"
+                   (click)="navigateToUPIFlow()"
+                    >
+                      <img
+                        src="assets/images/svg/upi-col.svg"
+                        alt="rupee-icon"
+                      />
+                      {{"BHIM_UPI" | translate}}
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="below-dashboard-wrapp">
+            <div class="row">
+              <div class="col-12">
+                <div class="widget-box5">
+                  <div class="component-title6">
+                    <div class="row1">
+                      <div class="col-8 col-md-9">
+                        <h3>{{"BANKING_SERVICES" | translate}}</h3>
+                      </div>
+                      <!-- <div class="col-4 col-md-3" *ngIf="bankingServices.length > 0">
+                        <a class="ux-linkbutton sm float-right">{{"VIEW_ALL" | translate}}</a>
+                      </div> -->
+                    </div>
+                  </div>
+                  <div class="component-box">
+                    <div class="row">
+                    <div class="information-list-carousal mobiledashboard-owl1">
+                      <owl-carousel-o [options]="dashboardMobileServices" #carouselSlide>
+
+                        <ng-container class="item" role="listitem">
+
+                          <ng-template carouselSlide *ngFor="let bankservices of bankingServices,  let i= index">
+
+                            <div class="item" (click)="goToPage(bankservices)">
+                              <a >
+                                <div class="icon1">
+                                  <img [src]="bankservices.menuName == 'Open FD/RD' ? './assets/images/svg/investment-mob/open-fd-rd.svg' : './assets/images/svg/'+ bankservices.menuName+'.svg'" onError="this.onerror=null;this.src='./assets/images/svg/svg.svg';"
+                                    alt="{{bankservices.menuName}}" />
+                                </div>
+                                <!-- <em>{{bankservices.JSON_KEY}}</em> -->
+                                <em>{{bankservices.menuName }}</em>
+
+                              <span class="badge-upcoming" *ngIf="bankservices.menuName == 'token' || bankservices.menuName == 'registered-bill-pay' ||  bankservices.menuName == 'bills-recharges' ||  bankservices.menuName == 'scheduled-transaction' || bankservices.menuName == 'pending-bill' ||  bankservices.menuName == 'e-filling' || bankservices.menuName == 'etoken'  || bankservices.menuName == 'cardless-cash' || bankservices.menuName == 'e-mandate' || bankservices.menuName == 'e-tokenization' || bankservices.menuName == 'tax-center' || bankservices.menuName == 'schedule-pay'">
+                                Upcoming
+                            </span>
+                              </a>
+                            </div>
+                          </ng-template>
+
+
+                        </ng-container>
+                      </owl-carousel-o>
+                    </div>
+                    <div class="col-12 col-md-12" *ngIf="bankingServices.length == 0">
+
+                      <div class="unfound-info2">
+                        <h6> {{'NO_RECORD_FOUND' | translate}}</h6>
+                      </div>
+                    </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-12" style="display: none;">
+                <div class="widget-box5">
+                  <div class="component-title6">
+                    <div class="row1">
+                      <div class="col-8 col-md-9">
+                        <h3>{{"PAYMENT_RECHARGE" | translate}}</h3>
+                      </div>
+                      <!-- <div class="col-4 col-md-3" *ngIf="paymentRecharge.length > 0">
+                        <a class="ux-linkbutton sm float-right">{{"VIEW_ALL" | translate}}</a>
+                      </div> -->
+                    </div>
+                  </div>
+                  <div class="component-box" >
+                    <div class="row">
+                      <div class="information-list-carousal">
+                        <owl-carousel-o [options]="dashboardMobileServices" #carouselSlide>
+
+                          <ng-container class="item" role="listitem">
+
+                            <ng-template carouselSlide *ngFor="let bankservices of paymentRecharge,  let i= index">
+
+                              <div class="item"   (click)="goToPage(bankservices)">
+                                <a >
+                                  <div class="icon1">
+                                    <img [src]="'./assets/images/svg/investment-mob/'+ bankservices.URL+'.svg'" onError="this.onerror=null;this.src='./assets/images/svg/svg.svg';"
+                                      alt="{{bankservices.URL}}" />
+                                  </div>
+                                  <!-- <em>{{bankservices.JSON_KEY}}</em> -->
+                                  <em>{{bankservices.menuName }}</em>
+
+                                  <span class="badge-upcoming" *ngIf="bankservices.menuName == 'payments-history' || bankservices.menuName == 'pay-bills'  || bankservices.menuName == 'registered-biller' || bankservices.menuName == 'bill-reminder' || bankservices.menuName == 'pending-bills' || bankservices.menuName == 'tax-center'">
+                                    Upcoming
+                                </span>
+                                </a>
+                              </div>
+                            </ng-template>
+
+
+                          </ng-container>
+                        </owl-carousel-o>
+
+                        <div class="col-12 col-md-12" *ngIf="paymentRecharge.length == 0">
+
+                          <div class="unfound-info2">
+                            <h6> {{'NO_RECORD_FOUND' | translate}}</h6>
+                          </div>
+                        </div>
+
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-12">
+                <div class="widget-box5">
+                  <div class="component-title6">
+                    <div class="row1">
+                      <div class="col-8 col-md-9">
+                        <h3>{{"INVESTMENTS" | translate}}</h3>
+                      </div>
+                      <!-- <div class="col-4 col-md-3" *ngIf="investement.length > 0">
+                        <a class="ux-linkbutton sm float-right">{{"VIEW_ALL" | translate}}</a>
+                      </div> -->
+                    </div>
+                  </div>
+                  <div class="component-box">
+                    <div class="row">
+                      <div class="information-list-carousal">
+                        <owl-carousel-o [options]="dashboardMobileServices" #carouselSlide>
+
+                          <ng-container class="item" role="listitem">
+
+                            <ng-template carouselSlide *ngFor="let bankservices of investement,  let i= index">
+
+                              <div class="item"   (click)="goToPageInvestment(bankservices)">
+                                <a >
+                                  <div class="icon1">
+                                    <img [src]="bankservices.menuName == 'open-fd-rd' ?  './assets/images/svg/investment-mob/open-fd-rd.svg' : bankservices.menuName == 'gold-bonds' ?  './assets/images/svg/investment-mob/gold-bonds.svg' : bankservices.menuName == 'asba-ipo' ?  './assets/images/svg/investment-mob/asba-ipo.svg' : bankservices.menuName == 'gov-schemes' ?  './assets/images/svg/investment-mob/gov-schemes.svg' : bankservices.menuName == 'social-securities' ?  './assets/images/svg/APY.svg'  :  './assets/images/svg/investment-mob/'+ bankservices.menuName+'.svg'" onError="this.onerror=null;this.src='./assets/images/svg/svg.svg';"
+                                    alt="{{bankservices.menuName}}" />
+                                  </div>
+                                  <!-- <em>{{bankservices.JSON_KEY}}</em> -->
+                                  <em>{{bankservices.menuName }}</em>
+                                  <span class="badge-upcoming" *ngIf="bankservices.menuName == 'asba-ipo'  || bankservices.menuName == 'gov-schemes' || bankservices.menuName == 'insurance' || bankservices.menuName == 'gold-bonds' ">
+                                    Upcoming
+                                </span>
+                                </a>
+                              </div>
+                            </ng-template>
+
+
+                          </ng-container>
+                        </owl-carousel-o>
+                      </div>
+                      <div class="col-12 col-md-12" *ngIf="investement.length == 0">
+
+                        <div class="unfound-info2">
+                          <h6> {{'NO_RECORD_FOUND' | translate}}</h6>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-12">
+                <div class="widget-box5">
+                  <div class="component-title6">
+                    <div class="row1">
+                      <div class="col-8 col-md-9">
+                        <h3>{{"RECENT_TRANS" | translate}}</h3>
+                      </div>
+                      <div class="col-4 col-md-3" *ngIf="getFrequentTransactionss.length > 4">
+                        <a class="ux-linkbutton sm float-right" (click)="openRecentPayeeList()">{{"VIEW_ALL" | translate}}</a>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="component-box">
+                    <div class="row1">
+                      <div class="col-12">
+                        <ul class="recent-list" ><!--ux-small-scroll3-->
+                          <li *ngFor="let item of getFrequentTransactionss | slice:0:5; let i=index">
+                          <a (click)="transactiondetails(item)" >
+                            <span class="{{item.color}}">
+                              <!-- <img
+                                src="assets/images/icons/user2.png"
+                                alt="user-img"
+                              /> -->
+                              <h6>{{item.benefName  | firstLastChar | uppercase}}</h6>
+                            </span>
+                            <em>{{item.benefName}}</em>
+                          </a>
+                          <li>
+                        </ul>
+                        <!--.ux-small-scroll-->
+                      </div>
+                      <div class="col-12 col-md-12" *ngIf="getFrequentTransactionss.length == 0">
+
+                        <div class="unfound-info2">
+                          <h6> {{'NO_RECENT_PAYMENTS_AVAILABLE' | translate}}</h6>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-12">
+                <div class="widget-box5">
+                  <div class="component-box">
+                    <owl-carousel-o  [options]="recommendedCardCarouselOptions" #carouselSlide >
+                      <ng-container  *ngFor="let recommended of recommendedCard ; let i=index" >
+                        <ng-template carouselSlide >
+                           <div class="row">
+                             <div class=" card-details">
+                        <div class="row1">
+                          <div class="col-6 col-xl-6 col-lg-6 col-md-6 pr-0">
+                            <img [src]="'data:image/png;base64,'+recommended.base64Image" alt="card-icon">
+                          </div>
+                          <div class="col-6	 col-xl-6 col-lg-6 col-md-6">
+                            <div class="card-info">
+                               {{recommended.imageName}}
+                              <h4>{{"CONGRATS" | translate}}!</h4>
+                              <span>  {{"ELIGIBLE_CARD" | translate}}</span>
+                              <button class="ux-button sm secondary">{{"APPLY_NOW" | translate}}</button>
+                            </div>
+                          </div>
+
+                        </div>
+                      </div>
+                    </div>
+                  </ng-template>
+                </ng-container >
+                </owl-carousel-o>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-12 col-md-12">
+            <div class="row">
+                <!-- Banner Scroll Section Start -->
+                <div class="banner-section">
+                    <div class="scroll-section">
+                        <div class="owl-carousel img-owl" role="list">
+                            <div class="item ux-img-scroll" role="listitem">
+                                <a>
+                                    <span>
+                                        <img src="assets/images/slides/mob-dash-banner.png" style="height: 180px;" alt="banner1">
+                                    </span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Banner Scroll Section End -->
+            </div>
+        </div>
+        </div>
+      </div>
+    </div>
+
+    <!--  Right Main Column Section End -->
+  </div>
+
+  <!-- main -->
+
+
+
+  <!-- =========== modal popup start ===============  -->
+
+  <!-- Logout Popup Start -->
+
+  <div class="popup-bottom logout1">
+    <div class="row">
+      <div class="col-12">
+        <h4 class="text-center">{{"LOGOUT" | translate}}</h4>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-12">
+        <p>{{"LOGOUT_MESSAGE" | translate}}</p>
+      </div>
+    </div>
+    <div class="row1 mt-2">
+      <div class="col-6 text-center">
+        <button
+          class="ux-button secondary no md close-btn">
+          {{"NO" | translate}}
+        </button>
+      </div>
+      <div class="col-6 text-center">
+        <button
+          class="logout-btn ux-button primary md">
+          {{"YES" | translate}}
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Logout Popup End -->
+
+  <!-- Session Timeout Popup Start -->
+
+  <div class="popup-bottom timeout1">
+    <div class="row">
+      <div class="col-12">
+        <h4 class="text-center">{{"HEADING" | translate}}</h4>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-12">
+        <p>
+          Warning! Better check yourself, <br />
+          you're not looking too good.
+        </p>
+      </div>
+    </div>
+    <div class="row1 mt-2">
+      <div class="col-12 text-center">
+        <button
+          class="ux-button primary md">
+          Ok
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Session Timeout Popup End -->
+
+  <!-- Upload Profile Picture Popup Start -->
+
+  <div class="popup-bottom profile1">
+    <div class="row1">
+      <div class="col-10">
+        <h4>{{"UPLOAD_PROFILE_PIC" | translate}}</h4>
+      </div>
+      <div class="col-2">
+        <button class="ux-button-icon close-btn">
+          <img
+            src="assets/images/svg/close-b.svg"
+            alt="cross-icon"
+            class="img-vsmall"
+          />
+        </button>
+      </div>
+    </div>
+    <div class="row1">
+      <div class="col-12">
+        <ul class="profile-list">
+          <li>
+            <a>
+              <img src="assets/images/svg/gallery1.svg" alt="gallery-icon" />
+              {{"SELECT_FROM_GALLERY" | translate}}
+            </a>
+          </li>
+          <li>
+            <a>
+              <img
+                src="assets/images/svg/photo-camera.svg"
+                alt="camera-icon"
+              />
+              {{"TAKE_PHOTO" | translate}}
+            </a>
+          </li>
+          <li>
+            <a class="delete-btn">
+              <img src="assets/images/svg/delete.svg" alt="remove-icon" />
+              {{"REMOVE_PROFILE_PICTURE" | translate}}
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="row mt-2">
+      <div class="col-12 text-center">
+        <button
+          class="ux-button primary submit-btn">
+          {{"CONFIRM" | translate}}
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Upload Profile Picture Popup End -->
+
+  <!-- Delete Profile Picture Popup Start -->
+
+  <div class="popup-bottom delete-profile-pic">
+    <div class="row">
+      <div class="col-12">
+        <h4 class="text-center">{{"DELETE_PROFILE_PICTURE" | translate}}</h4>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-12">
+        <p>{{"PROFILE_DELETE_MSG" | translate}}</p>
+      </div>
+    </div>
+    <div class="row1 mt-2">
+      <div class="col-6 text-center">
+        <button
+          class="ux-button secondary no md close-btn">
+          {{"NO" | translate}}
+        </button>
+      </div>
+      <div class="col-6 text-center">
+        <button
+          class="logout-btn ux-button primary md">
+          {{"YES" | translate}}
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Delete Profile Picture Popup End -->
+
+  <!-- <div class="ios-nav-overlay"></div> -->
+
+  <!-- =========== modal popup end ===============  -->
+</div>
+
+
+
+<div class="popup-bottom location-permission-denied">
+  <div class="row1">
+      <div class="col-12">
+          <h4 class="text-center">
+              <img src="./assets/images/svg/information.svg" alt="information-icon"> {{'INFORMATION' | translate}}
+          </h4>
+      </div>
+  </div>
+  <div class="row1">
+      <div class="col-12">
+          <p>
+              {{'LOCATION_ENABLE_PERMISSION_INFORMATION' | translate}}
+          </p>
+      </div>
+  </div>
+  <div class="row1 mt-2">
+      <div class="col-12 text-center">
+          <button class="logout-btn ux-button primary md" (click)="goToSettings()">{{'SETTINGS' | translate}}</button>
+      </div>
+  </div>
+</div>
+
+
+<div class="popup-bottom location-permission-denied-once">
+  <div class="row1">
+      <div class="col-12">
+          <h4 class="text-center">
+              <img src="./assets/images/svg/information.svg" alt="information-icon"> {{'INFORMATION' | translate}}
+          </h4>
+      </div>
+  </div>
+  <div class="row1">
+      <div class="col-12">
+          <p>
+              {{'LOCATION_ENABLE_PERMISSION_INFORMATION' | translate}}
+          </p>
+      </div>
+  </div>
+  <div class="row1 mt-2">
+      <div class="col-12 text-center">
+          <button class="logout-btn ux-button primary md" (click)="closePopup('div.popup-bottom.location-permission-denied-once');checkIfLocationEnabled()">{{'ALLOW' | translate}}</button>
+      </div>
+  </div>
+</div>
+
+<!-- Coming Soon Popup Start -->
+<div class="popup-bottom comingSoonPopup">
+  <div class="row">
+    <div class="col-12">
+      <h4 class="text-center">
+        <img src="./assets/images/svg/information.svg" alt="information-icon"> {{ 'INFORMATION' | translate }}
+      </h4>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-12">
+      <p>
+        {{ 'COMING_SOON' | translate }}
+      </p>
+    </div>
+  </div>
+  <div class="row1 mt-2">
+    <div class="col-12 text-center">
+      <button class="ux-button primary md" (click)="closePopup('div.popup-bottom.comingSoonPopup')">
+        {{ 'OK' | translate }}
+      </button>
+    </div>
+  </div>
+</div>
+<!-- Coming Soon Popup End-->

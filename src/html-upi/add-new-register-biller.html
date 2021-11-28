@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+
+	<html>
+	
+	<head>
+		<meta charset="UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+	    <title>Add - Register Biller</title>
+		<link href="../css/lib/bootstrap.min.css" rel="stylesheet">
+	    <link href="../css/lib/jquery-ui.min.css" rel="stylesheet">
+	 	<link href="../css/lib/jquery.mCustomScrollbar.min.css" rel="stylesheet">
+		<link href="../css/main.css" rel="stylesheet">
+		
+	</head>	
+
+<body>
+ 
+    
+	<div class="main">
+
+		<!--  Header Section Start -->
+		  
+		<header class="global-header brand-bg2  minus-nav">
+			<div class="in-header">
+				<div class="header-icons-lft">   
+					<div class="header-actions">
+						<button class="ux-button-header">
+							<img src="../assets/images/svg/left-arrow.svg"  alt="left-arrow-icon" class="img-small"/>
+						</button>
+				   </div> 
+				</div>  
+				 <div class="brand-logo">
+				    <h3>Register New Biller</h3>
+				 </div> 
+			   <div class="header-icons-rit">
+					<div class="header-actions">
+						<img src="../assets/images/icons/billpay.png"  alt="billpay-img" class="small-img"/>
+					 </div> 
+				</div> 
+			</div> 
+		</header> 
+
+<!-- Header Section End -->
+ 
+ <div class="right-main-column minus-rt-col mar-custom">
+   <div class="right-col-container">
+                
+    <div class="body-page-container">
+		<div class="container-fluid">
+		      <div class="row">
+				<div class="bg-section">
+				<div class="col-12">
+					<div class="row1">
+						<div class="col-sm-12 col-12 col-md-12">
+							  <div class="white-bg1">
+								 <div class="row1">
+									  <div class="col-12 col-sm-12 col-md-6">
+										  <div class="ux-input">
+													<label for="">Biller Category</label>
+														 <select required="" class="biller">
+															 <option value="">Select</option>
+															 <option value="Electricity">Electricity</option>
+														 </select>
+														<p></p>
+													 </div>
+												 </div>
+												 <div class="col-sm-12 col-12 col-md-6">
+													 <div class="ux-input">
+														 <label for="">Biller Location</label>
+															  <select required="" class="biller">
+																  <option value="">Select</option>
+																  <option value="Maharashtra">Maharashtra</option>
+															  </select>
+															 <p></p>
+														  </div>
+														</div>
+														<div class="col-sm-12 col-12 col-md-6">
+														  <div class="ux-input">
+															 <label for="">Biller Name</label>
+																<select required="" class="biller">
+																	<option value="">Select</option>
+																	<option value="Adani Electricity">Adani Electricity</option>
+																</select>
+															   <p></p>
+														  </div>
+														</div>
+														  <div class="col-sm-12 col-12 col-md-6">
+															<div class="ux-input">
+																<label for="consumerNumber">Consumer Number</label>
+																  <input type="text" name="consumerNumber" placeholder="Enter Consumer Number" required >
+																<p></p>
+															</div> 
+														</div> 
+														<div class="col-sm-12 col-12 col-md-6">
+															<div class="ux-input">
+																<label for="shortName">Short Name</label>
+																  <input type="text" name="shortName" placeholder="Enter Short Name" required>
+																<p></p>
+															</div> 
+														</div>  
+													 
+												   </div>
+											 
+							             </div>
+							         </div>
+					         
+                           </div> 
+					     </div> 
+					   </div>	 	 
+				  </div> 
+			 	</div> 
+			</div> 
+			  <!-- footer section start -->
+	
+				<div class="footer-container sticky-actions">
+					<div class="footer-inactions minus-rt-col">
+						<div class="container-fluid">
+							<div class="row">
+							<div class="col-12 col-md-12 col-lg-12  text-center">
+									<button class="proceed1 ux-button primary md" onclick="window.location.href = 'add-new-register-biller-confirmation.html'">Proceed</button>
+								</div> 
+							</div> 
+						</div> 
+					</div> 
+				</div> 
+			 
+             <!-- footer section end -->
+
+		  </div>  
+        </div> 
+        
+    </div> 
+ 
+    
+  <!-- main -->
+	
+
+
+
+<!-- =========== modal popup start ===============  -->
+
+ 
+
+<!-- =========== modal popup end ===============  -->
+
+<script src="../js/lib/jquery.min.js"></script>
+<script src="../js/lib/bootstrap.min.js"></script>
+<script src="../js/lib/jquery-ui.min.js"></script>
+<script src="../js/lib/popper.min.js"></script>
+<script src="../js/lib/jquery.mousewheel.min.js"></script>
+<script src="../js/lib/jquery.mCustomScrollbar.js"></script>
+<script src="../js/lib/datatables.min.js"></script>
+<script src="../js/common.js"></script>
+
+<script type="text/javascript">
+	//  createGlobalNavMore();
+
+	$('button.proceed1').attr('disabled', true);
+    $('button.proceed1').addClass('disable');
+  
+	$("select.biller").on('change',function() {
+		$(this).find("option:selected").each(function(){
+			var optionValue = $(this).attr("value");
+	   if(optionValue){	
+			$('button.proceed1').attr('disabled' , false);
+			$('button.proceed1').removeClass('disable');
+	  }else{
+			$('button.proceed1').attr('disabled' , true);
+			$('button.proceed1').addClass('disable');
+		  }
+	   });
+	});
+	
+	$("input[name='consumerNumber']").on('keyup',function() {
+		if($(this).val() != '') {
+			$('button.proceed1').attr('disabled' , false);
+			$('button.proceed1').removeClass('disable');
+	    }else{
+			$('button.proceed1').attr('disabled' , true);
+			$('button.proceed1').addClass('disable');
+	    }
+	});
+	$("input[name='shortName']").on('keyup',function() {
+		if($(this).val() != '') {
+			$('button.proceed1').attr('disabled' , false);
+			$('button.proceed1').removeClass('disable');
+	    }else{
+			$('button.proceed1').attr('disabled' , true);
+			$('button.proceed1').addClass('disable');
+	    }
+	});
+ 
+  
+  
+</script>
+
+</body>
+</html>

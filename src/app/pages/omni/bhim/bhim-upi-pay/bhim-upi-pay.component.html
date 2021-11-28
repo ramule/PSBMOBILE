@@ -1,0 +1,977 @@
+<div class="row1" *ngIf='type =="vpa"' (click)="clickedOut($event)">
+  <div class="col-sm-12 col-12 col-md-12">
+    <div class="widget-box5 overflow mb-3">
+      <div class="bg-white1 bor-rad pad-custom">
+        <div *ngIf="DataService.vpaAddressList.length == 0">
+          To avail UPI Services, please register
+        </div>
+        <div id="payee-type-info" *ngIf="DataService.vpaAddressList.length > 0">
+          <div class="row1">
+            <div class="col-12 col-md-12">
+              <!-- <div class="row1 mb-3" *ngIf="!DataService.fromInstaPay">
+                <div class="col-12">
+                  <div class="ux-selection">
+                    <label class="ux-selection2">{{'REGISTERED_PAYEE' | translate}}
+                      <input type="radio" [checked]="payeeType == 'registered-payee' "
+                        [(ngModel)]="payeeType" value="registered-payee" name="payee-type"
+                        (click)="typeSelection('registered-payee')"> <span
+                        class="checkmark"></span> </label>
+                  </div>
+                  <div class="ux-selection">
+                    <label class="ux-selection2">{{'NON_REGISTERED_PAYEE' | translate}}
+                      <input type="radio" [checked]="payeeType == 'non-registered-payee' "
+                        [(ngModel)]="payeeType" value="non-registered-payee"
+                        name="payee-type" (click)="typeSelection('non-registered-payee')">
+                      <span class="checkmark"></span> </label>
+                  </div>
+                </div>
+                <div class="col-12">
+                  <div class="ux-input mt-0 mb-0">
+                    <p class="error-message"></p>
+                  </div>
+                </div>
+              </div> -->
+              <div id="registered"
+                [ngStyle]="{'display': payeeType == 'registered-payee' ? 'block' : 'none' }">
+                <form [formGroup]="registeredForm">
+                  <div class="row1">
+                    <div class="col-md-6 col-lg-4 col-xl-4 col-12">
+                      <div class="ux-input">
+                        <label
+                          for="registerPayee">{{'SELECT_REGISTER_PAYEE' | translate}}</label>
+                        <div class="send-input"> <span class="placeholder"
+                            (click)="openSearchPayee('upid', $event)"
+                            [ngStyle]="{'display': selAccOfBenificiary != '' ? 'none' : 'block' }">Select
+                            Payee</span>
+
+                          <span class="sendDisplay"
+                            (click)="openSearchPayee('upid', $event)"
+                            [ngStyle]="{'display': selAccOfBenificiary != '' ? 'block' : 'none' }"><b>
+                              {{selAccOfBenificiary}}</b></span>
+                          <ul id="upid" *ngIf='payeeType == "registered-payee"'>
+                            <li *ngFor="let payee of payeeList" (click)="selectVPA(payee)">
+                              <input type="radio" name="registerPayee"
+                                formControlName="registerPayee">
+                              <div class="acc-info"><b><span>{{payee.benefName}}</span>
+                                </b><small>{{payee.VPA}}</small></div>
+                            </li>
+                          </ul>
+                        
+                        </div>
+                        <span class="show-link4"> <em>OR</em> <a (click)="gotoAddPayee('Vpa')"><img src="assets/images/svg/add-user.svg" alt="add-user-icon"> {{'ADD_PAYEE' | translate}}</a> </span>
+
+                        <p class="error-message"
+                          *ngIf="registeredForm.controls['registerPayee'].hasError('required') && (registeredForm.controls['registerPayee'].dirty || registeredForm.controls['registerPayee'].touched)">
+                          {{"REQUIRED_MSG" | translate}}</p>
+
+                      </div>
+                      <!-- hide in mobile -->
+                    </div>
+                  </div>
+                  <div id="payee-info"
+                    [ngStyle]="{'display': showUserInfo ? 'block' : 'none' }"
+                    *ngIf="showUserInfo && payeeType == 'registered-payee'">
+                    <div class="row1">
+                      <div class="col-12 col-md-12">
+                        <div class="register-payee">
+                          <div class="full-container">
+                            <div class="left-info">
+                              <div class="user-info">
+                                <span class="green">
+                                  <h6>
+                                    {{DataService.validateAddressResp.MASKNAME | firstLastChar}}
+                                  </h6>
+                                  <!-- <img src="assets/images/icons/user14.png" alt="payee-img"> -->
+                                </span>
+                              </div>
+                              <h5>{{DataService.validateAddressResp.MASKNAME}}</h5>
+                              <h6>{{'UPI_ID' | translate }} :
+                                {{DataService.validateAddressResp.validatedVpa}}</h6>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row1">
+                      <div class="col-md-6 col-lg-5 col-xl-4 col-12">
+                        <div class="ux-input">
+                          <label for="amount">{{'AMOUNT' | translate}}</label>
+                          <input name="amount" type='text' inputmode="decimal" autocomplete="off" size="10" numbersOnly  (blur)="checkLimit($event.target.value)"
+                          formControlName="amount"  placeholder="Enter Amount"  id="amt2" data-a-sign="Rs." >
+                          <p class="error-message"
+                            *ngIf="registeredForm.controls['amount'].hasError('required')  && registeredForm.controls['amount'].touched">
+                            {{ 'REQUIRED_MSG' | translate }}</p>
+                            <p class="error-message" *ngIf="!registeredForm.controls['amount'].hasError('required')  && registeredForm.controls['amount'].touched && isAmountLimitExceeded">
+                               Enter Amount less than ten thousand
+                          </p>
+                        </div>
+                      </div>
+                      <div class="col-md-6 col-lg-5 col-xl-4 col-12">
+                        <div class="ux-input">
+                          <label for="remark">{{'REMARKS' | translate}}</label>
+                          <input type="text" name="remark" formControlName="remark"
+                            placeholder="Enter Remarks">
+                          <p class="error-message"
+                            *ngIf="registeredForm.controls['remark'].hasError('pattern')">
+                            {{ 'ENTER_SPECIAL_CHARACTOR_ERROR' | translate}}</p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </form>
+              </div>
+              <div id="non-registered" 
+                [ngStyle]="{'display': payeeType == 'non-registered-payee' ? 'block' : 'none' }">
+                <form [formGroup]="nonRegisteredForm">
+                  <div class="row1" *ngIf="!showUserInfo && payeeType == 'non-registered-payee'">
+                    <div class="col-md-6 col-lg-4 col-xl-4 col-12">
+                      <div class="ux-input">
+                        <label>{{"UPI_ID_MOBILE" | translate}}</label>
+                        <input type="text" name="upid" autocomplete="off"
+                          placeholder="Enter UPI ID/Mobile Number"
+                          formControlName="upidMobileNumber"> <a
+                          (click)="nonRegisteredVerify()"><em
+                            class="show-link3 ">{{'VERIFY' | translate}}</em></a>
+                        <span>e.g. name@psb/9820000000</span>
+                        <p class="error-message"
+                          *ngIf="nonRegisteredForm.controls['upidMobileNumber'].hasError('required') && (nonRegisteredForm.controls['upidMobileNumber'].dirty || nonRegisteredForm.controls['upidMobileNumber'].touched)">
+                          {{"ENTER_UPI_ID_MOBILE_NUMBER_ERROR" | translate}}</p>
+                        <p class="error-message"
+                          *ngIf="!nonRegisteredForm.controls['upidMobileNumber'].hasError('required')  && nonRegisteredForm.controls['upidMobileNumber'].touched && nonRegisteredForm.controls['upidMobileNumber'].hasError('pattern')">
+                          {{ 'ENTER_VALID_UPI_ID_MOBILE_NO' | translate }}
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                  <div id="payee-info-non-registered"
+                    [ngStyle]="{'display': showUserInfo ? 'block' : 'none' }"
+                    *ngIf="showUserInfo && payeeType == 'non-registered-payee'">
+                    <div class="row1">
+                      <div class="col-12 col-md-12">
+                        <div class="register-payee">
+                          <!-- <div class="full-container" *ngIf="!DataService.isCordovaAvailable">
+                            <div class="left-info">
+                              <div class="user-info">
+                                <span class="green">
+                                  <h6>
+                                    {{DataService.validateAddressResp.MASKNAME | firstLastChar}}
+                                  </h6>
+                                </span>
+                              </div>
+                              <h5>{{DataService.validateAddressResp.MASKNAME}}</h5>
+                              <h6>{{'UPI_ID' | translate }} :
+                                {{DataService.validateAddressResp.validatedVpa}}</h6>
+                            </div>
+                          </div> -->
+                          <div class="userinfo" *ngIf="showUserInfo">
+                            <div class="payee-info">
+                              <div class="info-lft">
+                                <span class="green1">
+                                  <h6>{{DataService.validateAddressResp.MASKNAME | firstLastChar}}</h6>
+                                  <!-- <img src="assets/images/icons/user5.png" alt="user-img"> -->
+                                </span>
+                              </div>
+                              <div class="info-rit">
+                                <h5>{{DataService.validateAddressResp.MASKNAME}}</h5>
+                                <h6>{{'UPI_ID' | translate }} : {{DataService.validateAddressResp.validatedVpa}}</h6>
+                                <em
+                                  *ngIf="DataService.validateAddressResp?.mobileNumber">{{DataService.validateAddressResp?.mobileNumber}}</em>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row1">
+                      <div class="col-md-6 col-lg-5 col-xl-4 col-12">
+                        <div class="ux-input">
+                          <label for="amount">{{'AMOUNT' | translate}}</label>
+                          <input name="amount" type='text' autocomplete="off"  inputmode="decimal" autocomplete="off" size="10" numbersOnly
+                            formControlName="amount"  placeholder="Enter Amount"  id="amt1" data-a-sign="Rs." (input)="checkLimit($event.target.value)" (blur)="checkLimit($event.target.value)">
+                          <p class="error-message"
+                            *ngIf="nonRegisteredForm.controls['amount'].hasError('required')  && nonRegisteredForm.controls['amount'].touched">
+                            {{ 'REQUIRED_MSG' | translate }}</p>
+                            <p class="error-message" *ngIf="!nonRegisteredForm.controls['amount'].hasError('required')  && nonRegisteredForm.controls['amount'].touched && isAmountLimitExceeded">
+                              {{ 'ENTER_AMOUNT_LESS_THAN_TEN_THOUSAND' | translate }}
+                          </p>
+                        </div>
+                      </div>
+                      <div class="col-md-6 col-lg-5 col-xl-4 col-12">
+                        <div class="ux-input">
+                          <label for="remark">{{'REMARKS' | translate}}</label>
+                          <input type="text" name="remark" formControlName="remark" alphanumericOnly limit-to="30"
+                            placeholder="Enter Remarks">
+                          <p class="error-message"
+                            *ngIf="nonRegisteredForm.controls['remark'].hasError('pattern')">
+                            {{ 'ENTER_SPECIAL_CHARACTOR_ERROR' | translate}}</p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+        </div>
+    </div>
+
+    <div class="widget-box5 overflow mb-3" id="upi-id-details" *ngIf="vpaAddressList.length > 0">
+      <div class="bg-white1 bor-rad pad-custom"  (click)="clickedOut($event)">
+          <div class="row1">
+              <div class="col-12 col-md-12">
+                  <div class="ux-input">
+                      <label>{{'FROM_UPI_ID' | translate}}</label>
+                    </div>
+              </div>
+          </div>
+          <div class="row1">
+              <div class="col-12 col-md-12">
+                  <ul class="register-payee2">
+                      <li>
+                          <div class="full-container">
+                              <div class="left-info">
+                                  <!-- <div class="user-info">
+                                      <span class="green">
+                                          <h6>
+                                            {{defaultVPAAccountDetails.vpaDetails.defaultAccName | firstLastChar}}</h6>
+
+                                      </span>
+                                  </div> -->
+                                    <div class="user-info ux-small-scroll3">
+                                      <span class="green">
+                                        <a href="javascript:void(0)">
+                                        <h6 class="insta-pay-user">
+                                          {{defaultVPAAccountDetails.vpaDetails.defaultAccName | firstLastChar}}
+                                        </h6>
+                                        <!-- <img src="assets/images/icons/user14.png" alt="payee-img"> -->
+                                      </a>
+                                      </span>
+                                    </div>
+                                   
+                                  <div class="ux-input m-0">
+                                      <div id="upiInput" class="send-input border-0 " >
+                                          <span class="placeholder" (click)="openSearchPayee('vpaAddress', $event)" [ngStyle]="{'display': defaultVPAAccountDetails.vpaDetails.paymentAddress != '' ? 'none' : 'block' }">{{defaultVPAAccountDetails.vpaDetails.paymentAddress == "" ? 'Search / Select Payee' : defaultVPAAccountDetails.vpaDetails.paymentAddress}}</span>
+                                          <span class="sendDisplay1" (click)="openSearchPayee('vpaAddress',$event)" [ngStyle]="{'display': defaultVPAAccountDetails.vpaDetails.paymentAddress != '' ? 'block' : 'none' }"><b>{{defaultVPAAccountDetails.vpaDetails.paymentAddress}}</b></span>
+
+                                          <ul id="vpa">
+                                            <li class="search-payee">
+                                              <input type="text" autocomplete="off" name="search" placeholder="Type UPI ID" (click)="stopsearchUpiId($event)" (input)="searchUpiId($event)" [ngModelOptions]="{standalone: true}" >
+                                            </li>
+                                              <li  *ngFor="let vpa of tempVpaAddressList;index as i;" [hidden]="vpa.accounts.length == 0">
+                                                  <input type="radio" name="register-payee" [checked]="vpa.isSelected" (change)="getSelectedAccount(i,0)" >
+                                                  <div class="acc-info"><b><span>{{vpa.paymentAddress}}</span></b></div>
+                                              </li>
+                                              <!-- <li>
+                                                  <input type="radio" name="register-payee">
+                                                  <div class="acc-info"><b><span>454534341@psb</span></b></div>
+                                              </li> -->
+                                          </ul>
+                                      </div>
+                                      <p class="error-message"></p>
+                                  </div> <!-- hide in mobile -->
+                                  <!-- <h6> </h6> -->
+                              </div>
+                          </div>
+                          <div class="full-container mar-b">
+                              <ul class="custom-radio-list2">
+                                  <li class="active" *ngFor="let account of defaultVPAAccountDetails.vpaDetails.accounts;index as j">
+                                      <div class="ux-selection w-100">	  
+                                          <label class="ux-selection2 pad-custom2 mb-0">
+                                              <input type="radio" name="account-type"  [checked]="defaultVPAAccountDetails.vpaDetails.isSelected && account.isSelected" [disabled]="isWeb && !account.ifsc.includes('PSIB')"
+                                              name="radioboxdemo{{j}}"
+                                             (change)="setSelectedAccount(j)">
+                                              <span class="checkmark"></span>
+                                              <span class="fs-1">{{account.accType}}  <b>{{account.maskedAccountNumber}}</b></span>
+                                              <p class="m-0"><small>{{account.bankName}}</small></p>
+                                              <p class="mb-0">{{account?.custName ? account.custName : 'NA'}}</p>
+                                            </label>
+                                         </div> 
+                                    </li>
+                                    <!-- <li>
+                                      <div class="ux-selection w-100">	  
+                                          <label class="ux-selection2 pad-custom2 mb-0">
+                                              <input type="radio" name="account-type" value="current">
+                                              <span class="checkmark"></span>
+                                              <span class="fs-1">Current <b>XXXX XXXX 8930</b></span>
+                                              <p class="m-0"><small>Kotak Mahindra Bank</small></p>
+                                              <p class="mb-0">Rajesh Omprakash Shah</p>
+                                           </label>
+                                       </div> 
+                                  </li> -->
+                              </ul>
+                          </div>
+                      </li>
+                  </ul>
+              </div>
+          </div>
+      </div>
+  </div>
+  </div>
+  <div class="col-12 col-md-12" id="btn-section"  *ngIf="DataService.vpaAddressList.length > 0">
+    <ul class="bottom-footer1">
+      <li>
+        <div class="btn-div">
+          <button class="ux-button secondary sm-mob"
+            (click)="cancel()">{{'CANCEL' | translate}}</button>
+        </div>
+        <div class="btn-div">
+          <button class="ux-button primary sm-mob"
+            (click)="proceed('vpa')">{{'PROCEED' | translate}}</button>
+        </div>
+      </li>
+    </ul>
+  </div>
+</div>
+
+<div class="main bg-m" *ngIf='type !="vpa"'>
+  <div class="right-main-column ">
+    <div class="right-col-container pad-b full-width">
+      <!-- ======== body page content start from here ======== -->
+      <div class="body-page-container">
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col-12 p-0">
+              <div class="breadcrumb">
+                <ul class="lst-breadcrumb">
+                  <li> <a>BHIM UPI</a> </li>
+                  <li> Pay </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <!--.row -->
+          <div class="vspacer15 customize d-none d-md-block d-lg-block d-xl-block"></div>
+          <div class="row no-gutters">
+            <div class="col-12">
+              <div class="row1">
+                <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-9">
+                  <!-- Greencard2 Start here -->
+                  <div class="greencard2">
+                    <div class="row1 hide-m">
+                      <div class="col-md-8 col-12">
+                        <h4>Pay</h4>
+                      </div>
+                      <div class="col-md-4 col-12"> </div>
+                    </div>
+                    <div class="row1">
+                      <div class="col-sm-12 col-12 col-md-12">
+                        <div class="ux-nav-tabs" style="margin:0">
+                          <div class="flex-container">
+                            <div class="full-info" >
+                              <div class="responsive6 custom-card bg-custom pad-custom2 mar-custom3">
+                                <div class="custom-width pb-0">
+                                  <ul class="nav nav-tabs nav-justified bor-n mb-0" role="tablist">
+                                    <li class="nav-item2"> <a class="nav-link active" data-toggle="tab"
+                                        href="#upiid">UPI ID</a> </li>
+                                    <li class="nav-item2"> <a class="nav-link " data-toggle="tab"
+                                        href="#account">Account & IFSC</a> </li>
+                                    <li class="nav-item2"> <a class="nav-link" data-toggle="tab" href="#mmid">MMID</a>
+                                    </li>
+                                    <li class="nav-item2"> <a class="nav-link" data-toggle="tab" href="#selft">Self
+                                        Transfer</a> </li>
+                                  </ul>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-12 col-md-12">
+                        <div class="tab-content bg-transparent  mt-2">
+                          <div id="upiid" class=" tab-pane active">
+                            <div class="row1">
+                              <div class="col-sm-12 col-12 col-md-12">
+                                <div class="widget-box5 overflow mb-3">
+                                  <div class="bg-white1 bor-rad pad-custom">
+                                    <div id="payee-type-info">
+                                      <div class="row1">
+                                        <div class="col-12 col-md-12">
+                                          <div class="row1 mb-3">
+                                            <div class="col-12">
+                                              <div class="ux-selection">
+                                                <label class="ux-selection2">{{'REGISTERED_PAYEE' | translate}}
+                                                  <input type="radio" [checked]="payeeType == 'registered-payee' "
+                                                    [(ngModel)]="payeeType" value="registered-payee" name="payee-type"
+                                                    (click)="typeSelection('registered-payee')"> <span
+                                                    class="checkmark"></span> </label>
+                                              </div>
+                                              <div class="ux-selection">
+                                                <label class="ux-selection2">{{'NON_REGISTERED_PAYEE' | translate}}
+                                                  <input type="radio" [checked]="payeeType == 'non-registered-payee' "
+                                                    [(ngModel)]="payeeType" value="non-registered-payee"
+                                                    name="payee-type" (click)="typeSelection('non-registered-payee')">
+                                                  <span class="checkmark"></span> </label>
+                                              </div>
+                                            </div>
+                                            <div class="col-12">
+                                              <div class="ux-input mt-0 mb-0">
+                                                <p class="error-message"></p>
+                                              </div>
+                                            </div>
+                                          </div>
+                                          <div id="registered"
+                                            [ngStyle]="{'display': payeeType == 'registered-payee' ? 'block' : 'none' }">
+                                            <form [formGroup]="registeredForm">
+                                              <div class="row1">
+                                                <div class="col-md-6 col-lg-4 col-xl-4 col-12">
+                                                  <div class="ux-input">
+                                                    <label
+                                                      for="registerPayee">{{'SELECT_REGISTER_PAYEE' | translate}}</label>
+                                                    <div class="send-input"> <span class="placeholder"
+                                                        (click)="openSearchPayee('upid', $event)"
+                                                        [ngStyle]="{'display': selAccOfBenificiary != '' ? 'none' : 'block' }">Select
+                                                        Payee</span>
+
+                                                      <span class="sendDisplay"
+                                                        (click)="openSearchPayee('upid', $event)"
+                                                        [ngStyle]="{'display': selAccOfBenificiary != '' ? 'block' : 'none' }"><b>
+                                                          {{selAccOfBenificiary}}</b></span>
+                                                      <ul id="upid" *ngIf='payeeType == "registered-payee"'>
+                                                        <li *ngFor="let payee of payeeList" (click)="selectVPA(payee)">
+                                                          <input type="radio" name="registerPayee"
+                                                            formControlName="registerPayee">
+                                                          <div class="acc-info"><b><span>{{payee.benefName}}</span>
+                                                            </b><small>{{payee.VPA}}</small></div>
+                                                        </li>
+                                                      </ul>
+                                                    </div>
+                                                    <p class="error-message"
+                                                      *ngIf="registeredForm.controls['registerPayee'].hasError('required') && (registeredForm.controls['registerPayee'].dirty || registeredForm.controls['registerPayee'].touched)">
+                                                      {{"REQUIRED_MSG" | translate}}</p>
+
+                                                  </div>
+                                                  <!-- hide in mobile -->
+                                                </div>
+                                              </div>
+                                              <div id="payee-info"
+                                                [ngStyle]="{'display': showUserInfo ? 'block' : 'none' }"
+                                                *ngIf="showUserInfo && payeeType == 'registered-payee'">
+                                                <div class="row1">
+                                                  <div class="col-12 col-md-12">
+                                                    <div class="register-payee">
+                                                      <div class="full-container">
+                                                        <div class="left-info">
+                                                          <div class="user-info">
+                                                            <span class="green">
+                                                              <h6>
+                                                                {{DataService.validateAddressResp.MASKNAME | firstLastChar}}
+                                                              </h6>
+                                                              <!-- <img src="assets/images/icons/user14.png" alt="payee-img"> -->
+                                                            </span>
+                                                          </div>
+                                                          <h5>{{DataService.validateAddressResp.MASKNAME}}</h5>
+                                                          <h6>{{'UPI_ID' | translate }} :
+                                                            {{DataService.validateAddressResp.validatedVpa}}</h6>
+                                                        </div>
+                                                      </div>
+                                                    </div>
+                                                  </div>
+                                                </div>
+                                                <div class="row1">
+                                                  <div class="col-md-6 col-lg-5 col-xl-4 col-12">
+                                                    <div class="ux-input">
+                                                      <label for="amount">{{'AMOUNT' | translate}}</label>
+                                                      <input name="amount" type='text' inputmode="decimal" autocomplete="off" size="10" numbersOnly  (blur)="checkLimit($event.target.value)"
+                                                      formControlName="amount"  placeholder="Enter Amount"  id="amt2" data-a-sign="Rs." >
+                                                      <p class="error-message"
+                                                        *ngIf="registeredForm.controls['amount'].hasError('required')  && registeredForm.controls['amount'].touched">
+                                                        {{ 'REQUIRED_MSG' | translate }}</p>
+                                                        <p class="error-message" *ngIf="!registeredForm.controls['amount'].hasError('required')  && registeredForm.controls['amount'].touched && isAmountLimitExceeded">
+                                                          {{ 'ENTER_AMOUNT_LESS_THAN_TEN_THOUSAND' | translate }}
+                                                      </p>
+                                                    </div>
+                                                  </div>
+                                                  <div class="col-md-6 col-lg-5 col-xl-4 col-12">
+                                                    <div class="ux-input">
+                                                      <label for="remark">{{'REMARKS' | translate}}</label>
+                                                      <input type="text" name="remark" formControlName="remark"
+                                                        placeholder="Enter Remarks" limit-to="30">
+                                                      <p class="error-message"
+                                                        *ngIf="registeredForm.controls['remark'].hasError('pattern')">
+                                                        {{ 'ENTER_SPECIAL_CHARACTOR_ERROR' | translate}}</p>
+                                                    </div>
+                                                  </div>
+                                                </div>
+                                              </div>
+                                            </form>
+                                          </div>
+                                          <div id="non-registered" 
+                                            [ngStyle]="{'display': payeeType == 'non-registered-payee' ? 'block' : 'none' }">
+                                            <form [formGroup]="nonRegisteredForm">
+                                              <div class="row1" *ngIf="!showUserInfo && payeeType == 'non-registered-payee'">
+                                                <div class="col-md-6 col-lg-4 col-xl-4 col-12">
+                                                  <div class="ux-input">
+                                                    <label>{{"UPI_ID_MOBILE" | translate}}</label>
+                                                    <input type="text" name="upid" autocomplete="off"
+                                                      placeholder="Enter UPI ID/Mobile Number"
+                                                      formControlName="upidMobileNumber"> <a
+                                                      (click)="nonRegisteredVerify()"><em
+                                                        class="show-link3 ">{{'VERIFY' | translate}}</em></a>
+                                                    <span>e.g. name@psb/9820000000</span>
+                                                    <p class="error-message"
+                                                      *ngIf="nonRegisteredForm.controls['upidMobileNumber'].hasError('required') && (nonRegisteredForm.controls['upidMobileNumber'].dirty || nonRegisteredForm.controls['upidMobileNumber'].touched)">
+                                                      {{"ENTER_UPI_ID_MOBILE_NUMBER_ERROR" | translate}}</p>
+                                                    <p class="error-message"
+                                                      *ngIf="!nonRegisteredForm.controls['upidMobileNumber'].hasError('required')  && nonRegisteredForm.controls['upidMobileNumber'].touched && nonRegisteredForm.controls['upidMobileNumber'].hasError('pattern')">
+                                                      {{ 'ENTER_VALID_UPI_ID_MOBILE_NO' | translate }}
+                                                    </p>
+                                                  </div>
+                                                </div>
+                                              </div>
+                                              <div id="payee-info-non-registered"
+                                                [ngStyle]="{'display': showUserInfo ? 'block' : 'none' }"
+                                                *ngIf="showUserInfo && payeeType == 'non-registered-payee'">
+                                                <div class="row1">
+                                                  <div class="col-12 col-md-12">
+                                                    <div class="register-payee">
+                                                      <div class="full-container">
+                                                        <div class="left-info">
+                                                          <div class="user-info">
+                                                            <span class="green">
+                                                              <h6>
+                                                                {{DataService.validateAddressResp.MASKNAME | firstLastChar}}
+                                                              </h6>
+                                                              <!-- <img src="assets/images/icons/user14.png" alt="payee-img"> -->
+                                                            </span>
+                                                          </div>
+                                                          <h5>{{DataService.validateAddressResp.MASKNAME}}</h5>
+                                                          <h6>{{'UPI_ID' | translate }} :
+                                                            {{DataService.validateAddressResp.validatedVpa}}</h6>
+                                                        </div>
+                                                      </div>
+                                                    </div>
+                                                  </div>
+                                                </div>
+                                                <div class="row1">
+                                                  <div class="col-md-6 col-lg-5 col-xl-4 col-12">
+                                                    <div class="ux-input">
+                                                      <label for="amount">{{'AMOUNT' | translate}}</label>
+                                                      <input name="amount" type='text' autocomplete="off"  inputmode="decimal" autocomplete="off" size="10" numbersOnly
+                                                        formControlName="amount"  placeholder="Enter Amount"  id="amt1" data-a-sign="Rs." (input)="checkLimit($event.target.value)" (blur)="checkLimit($event.target.value)">
+                                                      <p class="error-message"
+                                                        *ngIf="nonRegisteredForm.controls['amount'].hasError('required')  && nonRegisteredForm.controls['amount'].touched">
+                                                        {{ 'REQUIRED_MSG' | translate }}</p>
+                                                        <p class="error-message" *ngIf="!nonRegisteredForm.controls['amount'].hasError('required')  && nonRegisteredForm.controls['amount'].touched && isAmountLimitExceeded">
+                                                          {{ 'ENTER_AMOUNT_LESS_THAN_TEN_THOUSAND' | translate }}
+                                                      </p>
+                                                    </div>
+                                                  </div>
+                                                  <div class="col-md-6 col-lg-5 col-xl-4 col-12">
+                                                    <div class="ux-input">
+                                                      <label for="remark">{{'REMARKS' | translate}}</label>
+                                                      <input type="text" name="remark" formControlName="remark" alphanumericOnly
+                                                        placeholder="Enter Remarks" limit-to="30">
+                                                      <p class="error-message"
+                                                        *ngIf="nonRegisteredForm.controls['remark'].hasError('pattern')">
+                                                        {{ 'ENTER_SPECIAL_CHARACTOR_ERROR' | translate}}</p>
+                                                    </div>
+                                                  </div>
+                                                </div>
+                                              </div>
+                                            </form>
+                                          </div>
+                                        </div>
+                                      </div>
+                                    </div>
+                                    <!-- <div id="payee-info" [ngStyle]="{'display': showUserInfo ? 'block' : 'none' }"
+                                      *ngIf="showUserInfo">
+                                      <div class="row1">
+                                        <div class="col-12 col-md-12">
+                                          <div class="register-payee">
+                                            <div class="full-container">
+                                              <div class="left-info">
+                                                <div class="user-info">
+                                                  <span class="green">
+                                                    <h6>{{DataService.validateAddressResp.MASKNAME | firstLastChar}}
+                                                    </h6>
+                                                  </span>
+                                                </div>
+                                                <h5>{{DataService.validateAddressResp.MASKNAME}}</h5>
+                                                <h6>{{'UPI_ID' | translate }} :
+                                                  {{DataService.validateAddressResp.validatedVpa}}</h6>
+                                              </div>
+                                            </div>
+                                          </div>
+                                        </div>
+                                      </div>
+                                      <div class="row1">
+                                        <div class="col-md-6 col-lg-5 col-xl-4 col-12">
+                                          <div class="ux-input">
+                                            <label for="amount">{{'AMOUNT' | translate}}</label>
+                                            <input name="amount" type='tel' limit-to="12"  formControlName="amount" numericOnly placeholder="Enter Amount">
+                                            <p class="error-message"  *ngIf="nonRegisteredForm.controls['amount'].hasError('required')  && nonRegisteredForm.controls['amount'].touched">
+                                              {{ 'REQUIRED_MSG' | translate }}</p>
+                                          </div>
+                                        </div>
+                                        <div class="col-md-6 col-lg-5 col-xl-4 col-12">
+                                          <div class="ux-input">
+                                            <label for="remarks">{{'REMARKS' | translate}}</label>
+                                            <input type="text" name="remarks"  formControlName="remarks" placeholder="Enter Remarks" >
+                                            <p class="error-message" *ngIf="nonRegisteredForm.controls['remarks'].hasError('pattern')"> {{ 'ENTER_SPECIAL_CHARACTOR_ERROR' | translate}}</p>
+                                          </div>
+                                        </div>
+                                      </div>
+                                    </div> -->
+                                  </div>
+                                </div>
+                                <div class="widget-box5 overflow mb-3" id="upi-id-details"
+                                  [ngStyle]="{'display': vpaAddressList.length > 0 ? 'block' : 'none' }">
+                                  <div class="bg-white1 bor-rad pad-custom">
+                                    <div class="row1">
+                                      <div class="col-12 col-md-12">
+                                        <div class="ux-input">
+                                          <label>{{'FROM_UPI_ID' | translate}}</label>
+                                        </div>
+                                      </div>
+                                    </div>
+                                    <div class="row1">
+                                      <div class="col-12 col-md-12" *ngFor="let vpa of vpaAddressList;index as i;">
+                                        <ul class="register-payee2">
+                                          <li>
+                                            <div class="full-container">
+                                              <div class="">
+                                                <div class="">
+                                                  <!-- <span class="green">
+                                                    <img src="assets/images/icons/user11.png" alt="payee-img">
+                                                  </span> -->
+                                                </div>
+                                                <h5>{{'UPI_ID' | translate}} : {{vpa.paymentAddress}}</h5>
+                                                <!-- <h6> </h6> -->
+                                              </div>
+                                            </div>
+                                            <div class="full-container mar-b">
+                                              <ul class="custom-radio-list2">
+                                                <li class="active" *ngFor="let account of vpa.accounts;index as j">
+                                                  <div class="ux-selection w-100">
+                                                    <label class="ux-selection2 pad-custom2 mb-0">
+                                                      <input type="radio"
+                                                        [checked]="vpa.isSelected && account.isSelected" [disabled]="isWebMob && !account.ifsc.includes('PSIB')"
+                                                        name="account-type" name="radioboxdemo{{j}}"
+                                                        (change)="getSelectedAccount(i,j)">
+                                                      <span class="checkmark"></span>
+                                                      <span
+                                                        class="fs-1">{{account?.custName && account?.custName.trim() ? account.custName : 'NA'}}</span>
+                                                      <br />
+                                                      <span><b>{{account.accType}}
+                                                          {{account.maskedAccountNumber}}</b></span>
+                                                      <br />
+                                                      <span class="fs-2">{{account.bankName}}</span>
+                                                      <br />
+
+                                                    </label>
+                                                  </div>
+                                                </li>
+                                              </ul>
+                                            </div>
+                                          </li>
+                                        </ul>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                              <div class="col-12 col-md-12" id="btn-section">
+                                <ul class="bottom-footer1">
+                                  <li>
+                                    <div class="btn-div">
+                                      <button class="ux-button secondary sm-mob"
+                                        (click)="cancel()">{{'CANCEL' | translate}}</button>
+                                    </div>
+                                    <div class="btn-div">
+                                      <button class="ux-button primary sm-mob"
+                                        (click)="proceed('vpa')">{{'PROCEED' | translate}}</button>
+                                    </div>
+                                  </li>
+                                </ul>
+                              </div>
+                            </div>
+                          </div>
+                          <div id="account" class="tab-pane fade">
+                            <form [formGroup]="accountForm">
+                              <div class="row1">
+                                <div class="col-sm-12 col-12 col-md-12">
+                                  <div class="widget-box5 overflow mb-3">
+                                    <div class="bg-white1 bor-rad pad-custom">
+                                      <div class="row1">
+                                        <div class="col-sm-12 col-12 col-md-12">
+                                          <div class="row1">
+                                            <div class="col-md-6 col-lg-5 col-xl-4 col-12">
+                                              <div class="ux-input">
+                                                <label for="accountNum">Account Number</label>
+                                                <input type="text" numbersOnly limit-to="16" name="accountNumber"
+                                                  placeholder="Enter Account Number" formControlName="accountNumber">
+                                                <p class="error-message"
+                                                  *ngIf="accountForm.controls['accountNumber'].hasError('required') && (accountForm.controls['accountNumber'].dirty || accountForm.controls['accountNumber'].touched)">
+                                                  This field is required</p>
+                                              </div>
+                                            </div>
+                                            <div class="col-md-6 col-lg-5 col-xl-4 col-12">
+                                              <div class="ux-input">
+                                                <label for="reaccountNum">Re-enter Account Number</label>
+                                                <input type="text" numbersOnly limit-to="16" name="reAccountNumber"
+                                                  placeholder="Enter Re-enter Account Number"
+                                                  formControlName="reAccountNumber">
+                                                <p class="error-message"
+                                                  *ngIf="accountForm.controls['reAccountNumber'].hasError('required') && (accountForm.controls['reAccountNumber'].dirty || accountForm.controls['reAccountNumber'].touched)">
+                                                  This field is required</p>
+                                              </div>
+                                            </div>
+                                          </div>
+                                          <div class="row1">
+                                            <div class="col-md-6 col-lg-5 col-xl-4 col-12">
+                                              <div class="ux-input">
+                                                <label>Select Bank</label>
+                                                <select formControlName="selectBank" class="sBank">
+                                                  <option value="">Select</option>
+                                                  <option value="Punjab & Sind Bank">Punjab & Sind Bank</option>
+                                                  <option value="State Bank of India">State Bank of India</option>
+                                                </select>
+                                                <p class="error-message"
+                                                  *ngIf="accountForm.controls['selectBank'].hasError('required') && (accountForm.controls['selectBank'].dirty || accountForm.controls['selectBank'].touched)">
+                                                  This field is required</p>
+                                              </div>
+                                            </div>
+                                            <div class="col-md-6 col-lg-5 col-xl-4 col-12">
+                                              <div class="custom-input3 ux-input">
+                                                <label for="ifsc">IFSC Code</label>
+                                                <input type="text" name="ifsc" placeholder="Enter IFSC Code"
+                                                  formControlName="ifscCode"> <span class="show-bankinfo">PSIB</span> <a
+                                                  class="show-link">Verify Branch</a>
+                                                <div class="info"> <em class="message">Branch Name: <span
+                                                      class="success">Sector 26, Vashi, Navi Mumbai, MH
+                                                      400703</span></em> </div>
+                                                <p class="error-message"
+                                                  *ngIf="accountForm.controls['ifscCode'].hasError('required') && (accountForm.controls['ifscCode'].dirty || accountForm.controls['ifscCode'].touched)">
+                                                  This field is required</p>
+                                              </div>
+                                            </div>
+                                          </div>
+                                          <div class="row1">
+                                            <div class="col-md-6 col-lg-5 col-xl-4 col-12">
+                                              <div class="ux-input">
+                                                <label for="payeeName">Payee Name</label>
+                                                <input type="text" name="payeeName" placeholder="Enter Payee Name"
+                                                  formControlName="payeeName">
+                                                <p class="error-message"
+                                                  *ngIf="accountForm.controls['payeeName'].hasError('required') && (accountForm.controls['payeeName'].dirty || accountForm.controls['payeeName'].touched)">
+                                                  This field is required</p>
+                                              </div>
+                                            </div>
+                                          </div>
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            </form>
+                            <div class="col-12 col-md-12">
+                              <ul class="bottom-footer1">
+                                <li>
+                                  <div class="btn-div">
+                                    <button class=" ux-button secondary sm-mob">Cancel</button>
+                                  </div>
+                                  <div class="btn-div">
+                                    <button class=" ux-button primary sm-mob" type="submit"
+                                      (click)="bhimPaySubmit('account')">Proceed</button>
+                                  </div>
+                                </li>
+                              </ul>
+                            </div>
+                          </div>
+                          <div id="mmid" class="tab-pane fade">
+                            <form [formGroup]="mmidForm">
+                              <div class="row1">
+                                <div class="col-sm-12 col-12 col-md-12">
+                                  <div class="widget-box5 overflow mb-3">
+                                    <div class="bg-white1 bor-rad pad-custom">
+                                      <div class="row1">
+                                        <div class="col-md-6 col-lg-5 col-xl-4 col-12">
+                                          <div class="ux-input">
+                                            <label for="mobile">Mobile Number</label>
+                                            <input type="text" name="mobile" placeholder="Enter mobile number"
+                                              numbersOnly limit-to="10" formControlName="mobileNumber">
+                                            <p class="error-message"
+                                              *ngIf="mmidForm.controls['mobileNumber'].hasError('required') && (mmidForm.controls['mobileNumber'].dirty || mmidForm.controls['mobileNumber'].touched)">
+                                              This field is required</p>
+                                            <p class="error-message"
+                                              *ngIf="mmidForm.controls['mobileNumber'].hasError('pattern') && (mmidForm.controls['mobileNumber'].dirty || mmidForm.controls['mobileNumber'].touched)">
+                                              Please enter correct mobile Number</p>
+                                            <p class="error-message"
+                                              *ngIf="mmidForm.controls['mobileNumber'].hasError('min') && (mmidForm.controls['mobileNumber'].dirty || mmidForm.controls['mobileNumber'].touched)">
+                                              Number can't be 0</p>
+                                            <p class="error-message"
+                                              *ngIf="mmidForm.controls['mobileNumber'].hasError('minlength') && (mmidForm.controls['mobileNumber'].dirty || mmidForm.controls['mobileNumber'].touched)">
+                                              Please enter 10 digit mobile number</p>
+
+                                          </div>
+                                        </div>
+                                        <div class="col-md-6 col-lg-5 col-xl-4 col-12">
+                                          <div class="ux-input">
+                                            <label for="mmid">MMID</label>
+                                            <input type="text" name="mmid" placeholder="Enter MMID"
+                                              formControlName="mmid">
+                                            <p class="error-message"
+                                              *ngIf="mmidForm.controls['mmid'].hasError('required') && (mmidForm.controls['mmid'].dirty || mmidForm.controls['mmid'].touched)">
+                                              This field is required</p>
+
+                                          </div>
+                                        </div>
+                                      </div>
+                                      <div class="row1">
+                                        <div class="col-md-6 col-lg-5 col-xl-4 col-12">
+                                          <div class="ux-input">
+                                            <label for="payeeName">Payee Name</label>
+                                            <input type="text" name="payeeName" placeholder="Enter Payee name"
+                                              formControlName="payeeName">
+                                            <p class="error-message"
+                                              *ngIf="mmidForm.controls['payeeName'].hasError('required') && (mmidForm.controls['payeeName'].dirty || mmidForm.controls['payeeName'].touched)">
+                                              This field is required</p>
+
+                                          </div>
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                                <div class="col-12 col-md-12">
+                                  <ul class="bottom-footer1">
+                                    <li>
+                                      <div class="btn-div">
+                                        <button class="ux-button secondary sm-mob">Cancel</button>
+                                      </div>
+                                      <div class="btn-div">
+                                        <button class="ux-button primary sm-mob" type="submit"
+                                          (click)="bhimPaySubmit('mmid')">Proceed</button>
+                                      </div>
+                                    </li>
+                                  </ul>
+                                </div>
+                              </div>
+                            </form>
+                          </div>
+                          <div id="selft" class=" tab-pane fade">
+                            <div class="row1">
+                              <div class="col-sm-12 col-12 col-md-12">
+                                <div class="widget-box5 overflow mb-3">
+                                  <div class="bg-white1 bor-rad pad-custom">
+                                    <div class="row1">
+                                      <div class="col-12 col-md-12">
+                                        <h5>Transfer From</h5>
+                                      </div>
+                                      <div class="col-sm-12 col-12 col-md-12 ">
+                                        <ul class="radio-list mt-0">
+                                          <li>
+                                            <div class="ux-selection w-100 ">
+                                              <label class="ux-selection6  pad-custom1 mb-0">
+                                                <input type="radio" checked="checked" name="radioboxdemo"> <span
+                                                  class="checkmark"></span> <span> <img
+                                                    src="assets/images/icons/psb-icon.png" alt="psb-icon"></span> <span
+                                                  class="fs-1">Punjab & Sind Bank </span>
+                                                <br /> <span class="fs-2">Savings XXXXXXXXXXXX2522</span>
+                                                <br /> </label>
+                                            </div>
+                                          </li>
+                                          <li>
+                                            <div class="ux-selection  w-100">
+                                              <label class="ux-selection6 pad-custom1 mb-0">
+                                                <input type="radio" name="radioboxdemo"> <span class="checkmark"></span>
+                                                <span> <img src="assets/images/icons/hdfc-icon.png"
+                                                    alt="hdfc-icon"></span> <span class="fs-1">HDFC Bank</span>
+                                                <br /> <span class="fs-2">Savings XXXX XXXX XXXX 2541</span>
+                                                <br /> </label>
+                                            </div>
+                                          </li>
+                                          <li>
+                                            <div class="ux-selection w-100">
+                                              <label class="ux-selection6 pad-custom1 mb-0">
+                                                <input type="radio" name="radioboxdemo"> <span class="checkmark"></span>
+                                                <span> <img src="assets/images/icons/icici-icon.png"
+                                                    alt="ICICI-Bank-icon"></span> <span class="fs-1">ICICI Bank</span>
+                                                <br /> <span class="fs-2">Savings XXXX XXXX XXXX 5487</span>
+                                                <br /> </label>
+                                            </div>
+                                          </li>
+                                        </ul>
+                                      </div>
+                                      <div class="col-12 col-md-12">
+                                        <div class="text-right"> <a class="link-txt">Add More Accounts</a> </div>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                              <div class="col-sm-12 col-12 col-md-12">
+                                <div class="widget-box5 overflow mb-3">
+                                  <div class="bg-white1 bor-rad pad-custom">
+                                    <div class="row1">
+                                      <div class="col-12 col-md-12">
+                                        <h5>Deposit Into</h5>
+                                      </div>
+                                      <div class="col-sm-12 col-12 col-md-12 ">
+                                        <ul class="radio-list mt-0 mb-0">
+                                          <li>
+                                            <div class="ux-selection w-100 ">
+                                              <label class="ux-selection6  pad-custom1 mb-0">
+                                                <input type="radio" checked="checked" name="radioboxdemo1"> <span
+                                                  class="checkmark"></span> <span> <img
+                                                    src="assets/images/icons/psb-icon.png" alt="psb-icon"></span> <span
+                                                  class="fs-1">Punjab & Sind Bank </span>
+                                                <br /> <span class="fs-2">Savings XXXXXXXXXXXX2522</span>
+                                                <br /> </label>
+                                            </div>
+                                          </li>
+                                          <li>
+                                            <div class="ux-selection w-100">
+                                              <label class="ux-selection6 pad-custom1 mb-0">
+                                                <input type="radio" name="radioboxdemo1"> <span
+                                                  class="checkmark"></span> <span> <img
+                                                    src="assets/images/icons/icici-icon.png"
+                                                    alt="ICICI-Bank-icon"></span> <span class="fs-1">ICICI Bank</span>
+                                                <br /> <span class="fs-2">Savings XXXX XXXX XXXX 5487</span>
+                                                <br /> </label>
+                                            </div>
+                                          </li>
+                                        </ul>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                              <div class="col-12 col-md-12">
+                                <ul class="bottom-footer1">
+                                  <li>
+                                    <div class="btn-div">
+                                      <button class="ux-button secondary sm-mob">Cancel</button>
+                                    </div>
+                                    <div class="btn-div">
+                                      <button class="ux-button primary sm-mob">Proceed</button>
+                                    </div>
+                                  </li>
+                                </ul>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <!-- Greencard2 End here -->
+                </div>
+                <!-- Right Column Ads Start -->
+                <div class="col-12 col-md-12 col-lg-12 col-xl-3 "  *ngIf="DataService.vpaAddressList.length > 0">
+                <app-recent-payee [type]="'vpa'" (payeeUpdate)="goToSendMoneyPayee($event)"></app-recent-payee>
+                  </div>
+                <!-- Right Column Ads Ends -->
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!--.right-col-container-->
+  </div>
+  <!--.right-main-column-->
+</div>
+<!-- main -->

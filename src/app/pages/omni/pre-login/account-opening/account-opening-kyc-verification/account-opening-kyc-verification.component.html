@@ -1,0 +1,176 @@
+<div  class="prelogin-page">
+    <div class="registration-steps ">
+        <div class="row">
+            <div class="col-12 position-static">
+
+                <div class="inner-header">
+                    <div class="registration-container">
+                       <a class="prev-tab" (click)="goBack()"><img src="assets/images/svg/left-arrow.svg">Back to Login</a>
+                        <a class="closewindow close-registration" (click)="goBack()"><img src="assets/images/svg/close-w.svg" ></a>
+                        <h4>{{'ACCOUNT_OPENING' | translate }}</h4>
+                        <!-- <a class="close-registration" ><img (click)="mobPrevclick('cross')" src="assets/images/svg/close-w.svg"></a> -->
+                    </div>
+                </div>
+
+                <div class="registrationsteps-block registration-container acc-opening-page">
+                    <div class="row">
+                     <div class="background-block" style="background-image: url(assets/images/background/kyc-details.png);">
+
+                     </div>
+                     <div class="middle-block">
+                         <div class="pageHeader">
+                             <h3>{{'KYC_VERIFY' | translate }}</h3>
+                             <span>{{'ENTER_PAN_AADHAR' | translate }}</span>
+                         </div>
+                         <form [formGroup]="kycValidtionForm" >
+                             <div class="ux-input  ">
+                                 <label>{{'PAN_NUMBER_EXPANDED' | translate }}</label>
+
+                                 <input id="panNumber" [readonly]="verifyAadhar" [type]="panhide ? 'password' : 'text'" placeholder='Please enter PAN Number' autocomplete="off"
+                                 autocorrect="off" autocapitalize="none" spellcheck="false"
+                                     formControlName="panNumber" limit-to="10"  (input)="panInput()">
+                                     <img (click)="panShow()"[src]="panhide ? 'assets/images/icons/hide.png' : 'assets/images/icons/visible.png'" style="
+                                     float: right;
+                                     margin-top: -35px;
+                                     width: 20px;
+                                 ">
+                                     <span class="errormsg"
+                                     *ngIf="kycValidtionForm.controls['panNumber'].hasError('required')  && kycValidtionForm.controls['panNumber'].touched">
+                                     Please Enter Pan Number
+                                   </span>
+                                   <span class="errormsg"
+                                     *ngIf="kycValidtionForm.controls['panNumber'].hasError('pattern') && kycValidtionForm.controls['panNumber'].touched">
+                                     {{ 'INVALID_PAN' | translate }}
+                                   </span>
+
+                             </div>
+                             <div class="ux-input ">
+                                 <label>{{'AADHAAR_NO' | translate }}</label>
+
+                                 <input id="aadharNumber" [readonly]="verifyAadhar" [type]="addharhide ? 'password' : 'text'" autocomplete="off" autocorrect="off"
+                            autocapitalize="none" spellcheck="false"  placeholder='{{"ENTER_AADHAR_NO" | translate }}'
+                                     formControlName="aadhaarNumber" limit-to="12"  numbersOnly>
+                                     <img (click)="aadharShow()" [src]="addharhide ? 'assets/images/icons/hide.png' : 'assets/images/icons/visible.png'" style="
+                                     float: right;
+                                     margin-top: -35px;
+                                     width: 20px;
+                                 ">
+                                     <span class="errormsg"
+                                     *ngIf="kycValidtionForm.controls['aadhaarNumber'].hasError('required')  && kycValidtionForm.controls['aadhaarNumber'].touched">
+                                     {{ 'ENTER_AADHAR_ERROR' | translate }}
+                                   </span>
+                                   <span class="errormsg" *ngIf="kycValidtionForm.controls['aadhaarNumber'].touched &&  (kycValidtionForm.controls['aadhaarNumber'].hasError('pattern') || kycValidtionForm.controls['aadhaarNumber'].hasError('minlength'))">
+                                     {{ 'INVALID_AADHAR_NUMBER' | translate }}
+                                   </span>
+                             </div>
+                             <div class="ux-input  " [ngClass]="{'opacity0': !verifyAadhar}" >
+                                 <label>{{'AADHAAR_OTP' | translate }}</label>
+
+                                 <input id="aadhaarOtp" type="password"  autocomplete="new-password"  placeholder='{{"ENTER_AADHAR_OTP" | translate }}'
+                                     formControlName="aadharOTP" limit-to="6" username >
+                                     <div class="text-right">
+                                          <a (click)="validateAadharNoSendOtp('resend')" >{{ 'RESEND' | translate }}</a>
+                                     </div>
+                             </div>
+
+
+                              <div class="ux-selection ">
+                                 <label class="ux-selection1">{{'KYC_CONFIRM_1' | translate }}
+                                     <input type="checkbox" name="acceptTerms1"  formControlName="acceptTerms1" required>
+                                     <span class="checkmark"></span>
+                                   </label>
+                                   <span class="errormsg"
+                                   *ngIf="kycValidtionForm.controls['acceptTerms1'].hasError('required') && (kycValidtionForm.controls['acceptTerms1'].dirty || kycValidtionForm.controls['acceptTerms1'].touched)"
+                                   >
+                                   {{ 'ACCEPT_TERMS' | translate }}
+                                 </span>
+                              </div>
+                              <div class="ux-selection mb-5">
+                                 <label class="ux-selection1">{{'KYC_CONFIRM_TERMS_2' | translate }}
+                                     <input type="checkbox" name="acceptTerms2"  formControlName="acceptTerms2" required>
+                                     <span class="checkmark"></span>
+                                   </label>
+                                   <span class="errormsg"
+                                   *ngIf="kycValidtionForm.controls['acceptTerms2'].hasError('required') && (kycValidtionForm.controls['acceptTerms2'].dirty || kycValidtionForm.controls['acceptTerms2'].touched)"
+                                   >
+                                   {{ 'ACCEPT_TERMS' | translate }}
+                                 </span>
+                              </div>
+                             <div class="text-center button-block">
+                                 <a   class="ux-button primary"  (click)="verifyAadharclick()" *ngIf="!verifyAadhar">{{ 'VERIFY' | translate }}</a>
+                                 <button  type="submit" class="ux-button primary"  *ngIf="verifyAadhar" (click)="submitForm()"> {{ 'CONTINUE' | translate }}</button>
+                             </div>
+                         </form>
+                     </div>
+                    </div>
+                 </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="popup-bottom not-a-valid-pan md-popup">
+    <div class="row1">
+      <div class="col-12">
+        <h4 class="text-center">
+          <img src="assets/images/svg/information.svg" alt="information-icon"> {{ 'INFORMATION' | translate }}
+        </h4>
+      </div>
+    </div>
+    <div class="row1">
+      <div class="col-12">
+        <p>
+          {{ notValidPanMsg }}
+          <!-- All permissions are utilized for specific feature(s) within PSB UPI Application. Kindly allow/grant permissions as and when prompted so as to continue accessing that specific feature. -->
+        </p>
+      </div>
+    </div>
+    <div class="row1 mt-2">
+      <div class="col-12 text-center" (click)="closePopup('not-a-valid-pan')">
+        <button class="ux-button primary submit-btn" type="button">{{ 'Ok' | translate}}</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="popup-bottom invalid-pan-aadhar">
+    <div class="row1">
+      <div class="col-12">
+        <h4 class="text-center">
+          <img src="assets/images/svg/information.svg" alt="information-icon"> {{ 'INFORMATION' | translate }}
+        </h4>
+      </div>
+    </div>
+    <div class="row1">
+      <div class="col-12">
+        <p>
+          {{errorMsg}}
+          <!-- All permissions are utilized for specific feature(s) within PSB UPI Application. Kindly allow/grant permissions as and when prompted so as to continue accessing that specific feature. -->
+        </p>
+      </div>
+    </div>
+    <div class="row1 mt-2">
+      <div class="col-12 text-center" (click)="closePopup('invalid-pan-aadhar')">
+        <button class="ux-button primary submit-btn" type="button">{{ 'Ok' | translate}}</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="popup-bottom aadhar-otp-confirm sm-popup">
+    <div class="row1">
+        <div class="col-12">
+            <h4 class="text-center">
+                <img src="assets/images/svg/information.svg" alt="error-icon"> {{ 'INFORMATION' | translate }}
+            </h4>
+        </div>
+    </div>
+    <div class="row1">
+        <div class="col-12 mb-4">
+            <p>OTP has been sent on Aadhaar Linked Mobile</p>
+        </div>
+    </div>
+    <div class="row1  mt-2">
+        <div class="col-12 text-center">
+            <button class="ux-button submit-btn" (click)="closePopup('aadhar-otp-confirm')">{{ 'CLOSE' | translate }}</button>
+        </div>
+    </div>
+</div>

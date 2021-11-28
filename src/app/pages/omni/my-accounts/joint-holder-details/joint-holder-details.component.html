@@ -1,0 +1,1014 @@
+<div class="main bg-m">
+	<div class="right-main-column">
+		<div class="right-col-container pad-b full-width">
+			<!-- ======== body page content start from here ======== -->
+			<div class="body-page-container">
+				<div class="container-fluid">
+					<div class="row">
+						<div class="col-12 p-0">
+							<div class="breadcrumb">
+								<ul class="lst-breadcrumb">
+									<li *ngFor="let name of DataService.breadcrumblist">
+										<a (click)="DataService.breadcrumroute(name.routeName)">{{name.currentRoute | translate}}</a>
+								</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+					<!--.row -->
+					<div class="vspacer15 customize d-none d-md-block d-lg-block d-xl-block"></div>
+					<div class="row no-gutters">
+						<div class="col-12">
+							<div class="row1">
+								<div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-9">
+									<!-- Greencard2 Start here -->
+									<div class="greencard2">
+										<div class="row1 hide-m">
+											<div class="col-md-8 col-12">
+												<h4>Joint Holder Details</h4> </div>
+											<div class="col-md-4 col-12"> </div>
+										</div>
+										<div class="no-accounts text-center statement-table widget-box5	 mb-0 py-5" *ngIf="jointHolderDtl.length == 0"  >
+											<img src="assets/images/svg/no-rec-found.svg" class="mb-3">
+											<h5 class="mb-5">No Records found </h5>
+											<button class="ux-button primary submit-btn " (click)="goToPage('myAccountsInfo')">Back</button>
+										</div>
+										<div class="row1" *ngIf="jointHolderDtl.length > 0" >
+											<div class="col-sm-12 col-12 col-md-12" *ngIf="powerOfAttorney.length > 0">
+												<div class="white-box2 mar-t mb-4">
+													<div class="row1">
+														<div class="col-12 col-md-12">
+															<h4 class="black-h4">Power of Attorney</h4> </div>
+													</div>
+													<div class="row1">
+														<div class="col-sm-12 col-12 col-md-12">
+															<div id="accordion" class="accordion-container info-card2">
+																<div class="card2" *ngFor="let powerOfAttorneyData of powerOfAttorney; index as i" >
+																	<a class="card-link" data-toggle="collapse" href="#attorney{{i}}" aria-expanded="true">
+																		<div class="card-header3">
+																			<div class="panel-title3">
+																				<h4>{{i+1}}. Power of Attorney</h4> </div> <em></em> </div>
+																	</a>
+																	<div id="attorney{{i}}" class="collapse show" data-parent="#accordion">
+																		<div class="card-body">
+																			<div class="row1">
+																				<div class="col-12">
+																					<div class="info-bottom pad-custom">
+																						<div class="info-details">
+																							<div class="row">
+																								<h6>Customer ID</h6>
+																								<h5>{{powerOfAttorneyData.customerId}}</h5> </div>
+																						</div>
+																						<div class="info-details">
+																							<div class="row">
+																								<h6>Customer Name</h6>
+																								<h5>{{powerOfAttorneyData.name | titlecase }}</h5> </div>
+																						</div>
+																						<div class="info-details">
+																							<div class="row">
+																								<h6>Date of Birth</h6>
+																								<h5>{{powerOfAttorneyData.dateOfBirth}}</h5> </div>
+																						</div>
+																						<div class="info-details">
+																							<div class="row">
+																								<h6>Constitution</h6>
+																								<h5> - </h5> </div>
+																						</div>
+																						<div class="info-details">
+																							<div class="row">
+																								<h6>Gender</h6>
+																								<h5>{{powerOfAttorneyData.gender}}</h5> </div>
+																						</div>
+																						<div class="info-details">
+																							<div class="row">
+																								<h6>Address</h6>
+																								<h5>{{powerOfAttorneyData.Address1}},{{powerOfAttorneyData.Address2}},{{powerOfAttorneyData.Address3}}</h5> </div>
+																						</div>
+																						<div class="info-details">
+																							<div class="row">
+																								<h6>City</h6>
+																								<h5>{{powerOfAttorneyData.cityCode}}</h5> </div>
+																						</div>
+																						<div class="info-details">
+																							<div class="row">
+																								<h6>State</h6>
+																								<h5>{{powerOfAttorneyData.stateCode}}</h5> </div>
+																						</div>
+																						<div class="info-details">
+																							<div class="row">
+																								<h6>Country</h6>
+																								<h5>-</h5> </div>
+																						</div>
+																						<div class="info-details">
+																							<div class="row">
+																								<h6>Mobile Number</h6>
+																								<h5>{{powerOfAttorneyData.MobileNo}}</h5> </div>
+																						</div>
+																						<div class="info-details">
+																							<div class="row">
+																								<h6>KYC Compliance Flag</h6>
+																								<h5>{{powerOfAttorneyData.kyc}}</h5> </div>
+																						</div>
+																					</div>
+																				</div>
+																			</div>
+																		</div>
+																	</div>
+																</div>
+															</div>
+														</div>
+													</div>
+												</div>
+											</div>
+											<div class="col-sm-12 col-12 col-md-12" *ngIf="authSignator.length > 0">
+												<div class="white-box2 mar-t mb-4">
+													<div class="row1">
+														<div class="col-12 col-md-12">
+															<h4 class="black-h4">Auth Signatroy</h4> </div>
+													</div>
+													<div class="row1">
+														<div class="col-sm-12 col-12 col-md-12">
+															<div id="accordion" class="accordion-container info-card2">
+																<div class="card2" *ngFor="let authSignatorData of authSignator; index as i" >
+																	<a class="card-link collapsed" data-toggle="collapse" href="#auth1" aria-expanded="false">
+																		<div class="card-header3">
+																			<div class="panel-title3">
+																				<h4>{{i+1}}. Auth Signatroy</h4> </div> <em></em> </div>
+																	</a>
+																	<div id="auth1" class="collapse" data-parent="#accordion">
+																		<div class="card-body">
+																			<div class="row1">
+																				<div class="col-12">
+																					<div class="info-bottom pad-custom">
+																						<div class="info-details">
+																							<div class="row">
+																								<h6>Customer ID</h6>
+																								<h5>{{authSignatorData.customerId}}</h5> </div>
+																						</div>
+																						<div class="info-details">
+																							<div class="row">
+																								<h6>Customer Name</h6>
+																								<h5>{{authSignatorData.name | titlecase }}</h5> </div>
+																						</div>
+																						<div class="info-details">
+																							<div class="row">
+																								<h6>Date of Birth</h6>
+																								<h5>{{authSignatorData.dateOfBirth}}</h5> </div>
+																						</div>
+																						<div class="info-details">
+																							<div class="row">
+																								<h6>Constitution</h6>
+																								<h5> - </h5> </div>
+																						</div>
+																						<div class="info-details">
+																							<div class="row">
+																								<h6>Gender</h6>
+																								<h5>{{authSignatorData.gender}}</h5> </div>
+																						</div>
+																						<div class="info-details">
+																							<div class="row">
+																								<h6>Address</h6>
+																								<h5>{{authSignatorData.Address1}},{{authSignatorData.Address2}},{{authSignatorData.Address3}}</h5> </div>
+																						</div>
+																						<div class="info-details">
+																							<div class="row">
+																								<h6>City</h6>
+																								<h5>{{authSignatorData.cityCode}}</h5> </div>
+																						</div>
+																						<div class="info-details">
+																							<div class="row">
+																								<h6>State</h6>
+																								<h5>{{authSignatorData.stateCode}}</h5> </div>
+																						</div>
+																						<div class="info-details">
+																							<div class="row">
+																								<h6>Country</h6>
+																								<h5>-</h5> </div>
+																						</div>
+																						<div class="info-details">
+																							<div class="row">
+																								<h6>Mobile Number</h6>
+																								<h5>{{authSignatorData.MobileNo}}</h5> </div>
+																						</div>
+																						<div class="info-details">
+																							<div class="row">
+																								<h6>KYC Compliance Flag</h6>
+																								<h5>{{authSignatorData.kyc}}</h5> </div>
+																						</div>
+																					</div>
+																				</div>
+																			</div>
+																		</div>
+																	</div>
+																</div>
+															</div>
+														</div>
+													</div>
+												</div>
+											</div>
+											<div class="col-sm-12 col-12 col-md-12" *ngIf="letterOfAuthority.length > 0">
+												<div class="white-box2 mar-t mb-4">
+													<div class="row1">
+														<div class="col-12 col-md-12">
+															<h4 class="black-h4">Letter of Authority</h4> </div>
+													</div>
+													<div class="row1">
+														<div class="col-sm-12 col-12 col-md-12">
+															<div id="accordion" class="accordion-container info-card2">
+																<div class="card2" *ngFor="let letterOfAuthorityData of letterOfAuthority; index as i" >
+																	<a class="card-link collapsed" data-toggle="collapse" href="#letter{{i}}" aria-expanded="false">
+																		<div class="card-header3">
+																			<div class="panel-title3">
+																				<h4>{{i+1}}. Letter of Authority</h4> </div> <em></em> </div>
+																	</a>
+																	<div id="auth{{i}}" class="collapse" data-parent="#accordion">
+																		<div class="card-body">
+																			<div class="row1">
+																				<div class="col-12">
+																					<div class="info-bottom pad-custom">
+																						<div class="info-details">
+																							<div class="row">
+																								<h6>Customer ID</h6>
+																								<h5>{{letterOfAuthorityData.customerId}}</h5> </div>
+																						</div>
+																						<div class="info-details">
+																							<div class="row">
+																								<h6>Customer Name</h6>
+																								<h5>{{letterOfAuthorityData.name | titlecase }}</h5> </div>
+																						</div>
+																						<div class="info-details">
+																							<div class="row">
+																								<h6>Date of Birth</h6>
+																								<h5>{{letterOfAuthorityData.dateOfBirth}}</h5> </div>
+																						</div>
+																						<div class="info-details">
+																							<div class="row">
+																								<h6>Constitution</h6>
+																								<h5> - </h5> </div>
+																						</div>
+																						<div class="info-details">
+																							<div class="row">
+																								<h6>Gender</h6>
+																								<h5>{{letterOfAuthorityData.gender}}</h5> </div>
+																						</div>
+																						<div class="info-details">
+																							<div class="row">
+																								<h6>Address</h6>
+																								<h5>{{letterOfAuthorityData.Address1}},{{letterOfAuthorityData.Address2}},{{letterOfAuthorityData.Address3}}</h5> </div>
+																						</div>
+																						<div class="info-details">
+																							<div class="row">
+																								<h6>City</h6>
+																								<h5>{{letterOfAuthorityData.cityCode}}</h5> </div>
+																						</div>
+																						<div class="info-details">
+																							<div class="row">
+																								<h6>State</h6>
+																								<h5>{{letterOfAuthorityData.stateCode}}</h5> </div>
+																						</div>
+																						<div class="info-details">
+																							<div class="row">
+																								<h6>Country</h6>
+																								<h5>-</h5> </div>
+																						</div>
+																						<div class="info-details">
+																							<div class="row">
+																								<h6>Mobile Number</h6>
+																								<h5>{{letterOfAuthorityData.MobileNo}}</h5> </div>
+																						</div>
+																						<div class="info-details">
+																							<div class="row">
+																								<h6>KYC Compliance Flag</h6>
+																								<h5>{{letterOfAuthorityData.kyc}}</h5> </div>
+																						</div>
+																					</div>
+																				</div>
+																			</div>
+																		</div>
+																	</div>
+																</div>
+															</div>
+														</div>
+													</div>
+												</div>
+											</div>
+											<div class="col-sm-12 col-12 col-md-12" *ngIf="jtHolder.length > 0">
+												<div class="white-box2 mar-t mb-4">
+													<div class="row1">
+														<div class="col-12 col-md-12">
+															<h4 class="black-h4">Joint Holder</h4> </div>
+													</div>
+													<div class="row1">
+														<div class="col-sm-12 col-12 col-md-12">
+															<div id="accordion" class="accordion-container info-card2">
+																<div class="card2" *ngFor="let jtHolderData of jtHolder; index as i" >
+																	<a class="card-link collapsed" data-toggle="collapse" href="#joint{{i}}" aria-expanded="false">
+																		<div class="card-header3">
+																			<div class="panel-title3">
+																				<h4>{{i+1}}. Joint Holder</h4> </div> <em></em> </div>
+																	</a>
+																	<div id="joint{{i}}" class="collapse" data-parent="#accordion">
+																		<div class="card-body">
+																			<div class="row1">
+																				<div class="col-12">
+																					<div class="info-bottom pad-custom">
+																						<div class="info-details">
+																							<div class="row">
+																								<h6>Customer ID</h6>
+																								<h5>{{jtHolderData.customerId}}</h5> </div>
+																						</div>
+																						<div class="info-details">
+																							<div class="row">
+																								<h6>Customer Name</h6>
+																								<h5>{{jtHolderData.name | titlecase }}</h5> </div>
+																						</div>
+																						<div class="info-details">
+																							<div class="row">
+																								<h6>Date of Birth</h6>
+																								<h5>{{jtHolderData.dateOfBirth}}</h5> </div>
+																						</div>
+																						<div class="info-details">
+																							<div class="row">
+																								<h6>Constitution</h6>
+																								<h5> - </h5> </div>
+																						</div>
+																						<div class="info-details">
+																							<div class="row">
+																								<h6>Gender</h6>
+																								<h5>{{jtHolderData.gender}}</h5> </div>
+																						</div>
+																						<div class="info-details">
+																							<div class="row">
+																								<h6>Address</h6>
+																								<h5>{{jtHolderData.Address1}},{{jtHolderData.Address2}},{{jtHolderData.Address3}}</h5> </div>
+																						</div>
+																						<div class="info-details">
+																							<div class="row">
+																								<h6>City</h6>
+																								<h5>{{jtHolderData.cityCode}}</h5> </div>
+																						</div>
+																						<div class="info-details">
+																							<div class="row">
+																								<h6>State</h6>
+																								<h5>{{jtHolderData.stateCode}}</h5> </div>
+																						</div>
+																						<div class="info-details">
+																							<div class="row">
+																								<h6>Country</h6>
+																								<h5>-</h5> </div>
+																						</div>
+																						<div class="info-details">
+																							<div class="row">
+																								<h6>Mobile Number</h6>
+																								<h5>{{jtHolderData.MobileNo}}</h5> </div>
+																						</div>
+																						<div class="info-details">
+																							<div class="row">
+																								<h6>KYC Compliance Flag</h6>
+																								<h5>{{jtHolderData.kyc}}</h5> </div>
+																						</div>
+																					</div>
+																				</div>
+																			</div>
+																		</div>
+																	</div>
+																</div>
+															</div>
+														</div>
+													</div>
+												</div>
+											</div>
+											<div class="col-sm-12 col-12 col-md-12" *ngIf="guarantor.length > 0">
+												<div class="white-box2 mar-t mb-4">
+													<div class="row1">
+														<div class="col-12 col-md-12">
+															<h4 class="black-h4">Guarantor</h4> </div>
+													</div>
+													<div class="row1">
+														<div class="col-sm-12 col-12 col-md-12">
+															<div id="accordion" class="accordion-container info-card2">
+																<div class="card2" *ngFor="let guarantorData of guarantor; index as i" >
+																	<a class="card-link collapsed" data-toggle="collapse" href="#guarantor{{i}}" aria-expanded="false">
+																		<div class="card-header3">
+																			<div class="panel-title3">
+																				<h4>{{i+1}}. Guarantor</h4> </div> <em></em> </div>
+																	</a>
+																	<div id="guarantor{{i}}" class="collapse" data-parent="#accordion">
+																		<div class="card-body">
+																			<div class="row1">
+																				<div class="col-12">
+																					<div class="info-bottom pad-custom">
+																						<div class="info-details">
+																							<div class="row">
+																								<h6>Customer ID</h6>
+																								<h5>{{guarantorData.customerId}}</h5> </div>
+																						</div>
+																						<div class="info-details">
+																							<div class="row">
+																								<h6>Customer Name</h6>
+																								<h5>{{guarantorData.name | titlecase}}</h5> </div>
+																						</div>
+																						<div class="info-details">
+																							<div class="row">
+																								<h6>Date of Birth</h6>
+																								<h5>{{guarantorData.dateOfBirth}}</h5> </div>
+																						</div>
+																						<div class="info-details">
+																							<div class="row">
+																								<h6>Constitution</h6>
+																								<h5> - </h5> </div>
+																						</div>
+																						<div class="info-details">
+																							<div class="row">
+																								<h6>Gender</h6>
+																								<h5>{{guarantorData.gender}}</h5> </div>
+																						</div>
+																						<div class="info-details">
+																							<div class="row">
+																								<h6>Address</h6>
+																								<h5>{{guarantorData.Address1}},{{guarantorData.Address2}},{{guarantorData.Address3}}</h5> </div>
+																						</div>
+																						<div class="info-details">
+																							<div class="row">
+																								<h6>City</h6>
+																								<h5>{{guarantorData.cityCode}}</h5> </div>
+																						</div>
+																						<div class="info-details">
+																							<div class="row">
+																								<h6>State</h6>
+																								<h5>{{guarantorData.stateCode}}</h5> </div>
+																						</div>
+																						<div class="info-details">
+																							<div class="row">
+																								<h6>Country</h6>
+																								<h5>-</h5> </div>
+																						</div>
+																						<div class="info-details">
+																							<div class="row">
+																								<h6>Mobile Number</h6>
+																								<h5>{{guarantorData.MobileNo}}</h5> </div>
+																						</div>
+																						<div class="info-details">
+																							<div class="row">
+																								<h6>KYC Compliance Flag</h6>
+																								<h5>{{guarantorData.kyc}}</h5> </div>
+																						</div>
+																					</div>
+																				</div>
+																			</div>
+																		</div>
+																	</div>
+																</div>
+															</div>
+														</div>
+													</div>
+												</div>
+											</div>
+											<div class="col-sm-12 col-12 col-md-12" *ngIf="legalHirer.length > 0">
+												<div class="white-box2 mar-t mb-4">
+													<div class="row1">
+														<div class="col-12 col-md-12">
+															<h4 class="black-h4">Legal Hirer</h4> </div>
+													</div>
+													<div class="row1">
+														<div class="col-sm-12 col-12 col-md-12">
+															<div id="accordion" class="accordion-container info-card2">
+																<div class="card2" *ngFor="let legalData of legalHirer; index as i" >
+																	<a class="card-link collapsed" data-toggle="collapse" href="#legal{{i}}" aria-expanded="false">
+																		<div class="card-header3">
+																			<div class="panel-title3">
+																				<h4>{{i+1}}. Legal Hirer</h4> </div> <em></em> </div>
+																	</a>
+																	<div id="legal{{i}}" class="collapse" data-parent="#accordion">
+																		<div class="card-body">
+																			<div class="row1">
+																				<div class="col-12">
+																					<div class="info-bottom pad-custom">
+																						<div class="info-details">
+																							<div class="row">
+																								<h6>Customer ID</h6>
+																								<h5>{{legalData.customerId}}</h5> </div>
+																						</div>
+																						<div class="info-details">
+																							<div class="row">
+																								<h6>Customer Name</h6>
+																								<h5>{{legalData.name | titlecase}}</h5> </div>
+																						</div>
+																						<div class="info-details">
+																							<div class="row">
+																								<h6>Date of Birth</h6>
+																								<h5>{{legalData.dateOfBirth}}</h5> </div>
+																						</div>
+																						<div class="info-details">
+																							<div class="row">
+																								<h6>Constitution</h6>
+																								<h5> - </h5> </div>
+																						</div>
+																						<div class="info-details">
+																							<div class="row">
+																								<h6>Gender</h6>
+																								<h5>{{legalData.gender}}</h5> </div>
+																						</div>
+																						<div class="info-details">
+																							<div class="row">
+																								<h6>Address</h6>
+																								<h5>{{legalData.Address1}},{{legalData.Address2}},{{legalData.Address3}}</h5> </div>
+																						</div>
+																						<div class="info-details">
+																							<div class="row">
+																								<h6>City</h6>
+																								<h5>{{legalData.cityCode}}</h5> </div>
+																						</div>
+																						<div class="info-details">
+																							<div class="row">
+																								<h6>State</h6>
+																								<h5>{{legalData.stateCode}}</h5> </div>
+																						</div>
+																						<div class="info-details">
+																							<div class="row">
+																								<h6>Country</h6>
+																								<h5>-</h5> </div>
+																						</div>
+																						<div class="info-details">
+																							<div class="row">
+																								<h6>Mobile Number</h6>
+																								<h5>{{legalData.MobileNo}}</h5> </div>
+																						</div>
+																						<div class="info-details">
+																							<div class="row">
+																								<h6>KYC Compliance Flag</h6>
+																								<h5>{{legalData.kyc}}</h5> </div>
+																						</div>
+																					</div>
+																				</div>
+																			</div>
+																		</div>
+																	</div>
+																</div>
+															</div>
+														</div>
+													</div>
+												</div>
+											</div>
+											<div class="col-sm-12 col-12 col-md-12" *ngIf="lvhHirer.length > 0" >
+												<div class="white-box2 mar-t mb-4">
+													<div class="row1">
+														<div class="col-12 col-md-12">
+															<h4 class="black-h4">LHV Hirer</h4> </div>
+													</div>
+													<div class="row1">
+														<div class="col-sm-12 col-12 col-md-12">
+															<div id="accordion" class="accordion-container info-card2">
+																<div class="card2" *ngFor="let lvhData of lvhHirer; index as i" >
+																	<a class="card-link collapsed" data-toggle="collapse" href="#lvh{{i}}" aria-expanded="false">
+																		<div class="card-header3">
+																			<div class="panel-title3">
+																				<h4>{{i+1}}. LHV Hirer</h4> </div> <em></em> </div>
+																	</a>
+																	<div id="lvh{{i}}" class="collapse" data-parent="#accordion">
+																		<div class="card-body">
+																			<div class="row1">
+																				<div class="col-12">
+																					<div class="info-bottom pad-custom">
+																						<div class="info-details">
+																							<div class="row">
+																								<h6>Customer ID</h6>
+																								<h5>{{lvhData.customerId}}</h5> </div>
+																						</div>
+																						<div class="info-details">
+																							<div class="row">
+																								<h6>Customer Name</h6>
+																								<h5>{{lvhData.name | titlecase}}</h5> </div>
+																						</div>
+																						<div class="info-details">
+																							<div class="row">
+																								<h6>Date of Birth</h6>
+																								<h5>{{lvhData.dateOfBirth}}</h5> </div>
+																						</div>
+																						<div class="info-details">
+																							<div class="row">
+																								<h6>Constitution</h6>
+																								<h5> - </h5> </div>
+																						</div>
+																						<div class="info-details">
+																							<div class="row">
+																								<h6>Gender</h6>
+																								<h5>{{lvhData.gender}}</h5> </div>
+																						</div>
+																						<div class="info-details">
+																							<div class="row">
+																								<h6>Address</h6>
+																								<h5>{{lvhData.Address1}},{{lvhData.Address2}},{{lvhData.Address3}}</h5> </div>
+																						</div>
+																						<div class="info-details">
+																							<div class="row">
+																								<h6>City</h6>
+																								<h5>{{lvhData.cityCode}}</h5> </div>
+																						</div>
+																						<div class="info-details">
+																							<div class="row">
+																								<h6>State</h6>
+																								<h5>{{lvhData.stateCode}}</h5> </div>
+																						</div>
+																						<div class="info-details">
+																							<div class="row">
+																								<h6>Country</h6>
+																								<h5>-</h5> </div>
+																						</div>
+																						<div class="info-details">
+																							<div class="row">
+																								<h6>Mobile Number</h6>
+																								<h5>{{lvhData.MobileNo}}</h5> </div>
+																						</div>
+																						<div class="info-details">
+																							<div class="row">
+																								<h6>KYC Compliance Flag</h6>
+																								<h5>{{lvhData.kyc}}</h5> </div>
+																						</div>
+																					</div>
+																				</div>
+																			</div>
+																		</div>
+																	</div>
+																</div>
+															</div>
+														</div>
+													</div>
+												</div>
+											</div>
+											<div class="col-sm-12 col-12 col-md-12" *ngIf="coObligant.length > 0" >
+												<div class="white-box2 mar-t mb-4">
+													<div class="row1">
+														<div class="col-12 col-md-12">
+															<h4 class="black-h4">Co-Obligant</h4> </div>
+													</div>
+													<div class="row1">
+														<div class="col-sm-12 col-12 col-md-12">
+															<div id="accordion" class="accordion-container info-card2">
+																<div class="card2" *ngFor="let coObligantData of coObligant; index as i" >
+																	<a class="card-link collapsed" data-toggle="collapse" href="#obligant{{i}}" aria-expanded="false">
+																		<div class="card-header3">
+																			<div class="panel-title3">
+																				<h4>{{i+1}}. Co-Obligant</h4> </div> <em></em> </div>
+																	</a>
+																	<div id="obligant{{i}}" class="collapse" data-parent="#accordion">
+																		<div class="card-body">
+																			<div class="row1">
+																				<div class="col-12">
+																					<div class="info-bottom pad-custom">
+																						<div class="info-details">
+																							<div class="row">
+																								<h6>Customer ID</h6>
+																								<h5>{{coObligantData.customerId}}</h5> </div>
+																						</div>
+																						<div class="info-details">
+																							<div class="row">
+																								<h6>Customer Name</h6>
+																								<h5>{{coObligantData.name | titlecase}}</h5> </div>
+																						</div>
+																						<div class="info-details">
+																							<div class="row">
+																								<h6>Date of Birth</h6>
+																								<h5>{{coObligantData.dateOfBirth}}</h5> </div>
+																						</div>
+																						<div class="info-details">
+																							<div class="row">
+																								<h6>Constitution</h6>
+																								<h5> - </h5> </div>
+																						</div>
+																						<div class="info-details">
+																							<div class="row">
+																								<h6>Gender</h6>
+																								<h5>{{coObligantData.gender}}</h5> </div>
+																						</div>
+																						<div class="info-details">
+																							<div class="row">
+																								<h6>Address</h6>
+																								<h5>{{coObligantData.Address1}},{{coObligantData.Address2}},{{coObligantData.Address3}}</h5> </div>
+																						</div>
+																						<div class="info-details">
+																							<div class="row">
+																								<h6>City</h6>
+																								<h5>{{coObligantData.cityCode}}</h5> </div>
+																						</div>
+																						<div class="info-details">
+																							<div class="row">
+																								<h6>State</h6>
+																								<h5>{{coObligantData.stateCode}}</h5> </div>
+																						</div>
+																						<div class="info-details">
+																							<div class="row">
+																								<h6>Country</h6>
+																								<h5>-</h5> </div>
+																						</div>
+																						<div class="info-details">
+																							<div class="row">
+																								<h6>Mobile Number</h6>
+																								<h5>{{coObligantData.MobileNo}}</h5> </div>
+																						</div>
+																						<div class="info-details">
+																							<div class="row">
+																								<h6>KYC Compliance Flag</h6>
+																								<h5>{{coObligantData.kyc}}</h5> </div>
+																						</div>
+																					</div>
+																				</div>
+																			</div>
+																		</div>
+																	</div>
+																</div>
+															</div>
+														</div>
+													</div>
+												</div>
+											</div>
+											<div class="col-sm-12 col-12 col-md-12" *ngIf="dsa.length > 0" >
+												<div class="white-box2 mar-t mb-4">
+													<div class="row1">
+														<div class="col-12 col-md-12">
+															<h4 class="black-h4">DSA</h4> </div>
+													</div>
+													<div class="row1">
+														<div class="col-sm-12 col-12 col-md-12">
+															<div id="accordion" class="accordion-container info-card2">
+																<div class="card2" *ngFor="let dsaData of dsa; index as i">
+																	<a class="card-link collapsed" data-toggle="collapse" href="#dsa{{i}}" aria-expanded="false">
+																		<div class="card-header3">
+																			<div class="panel-title3">
+																				<h4>{{i+1}}. DSA</h4> </div> <em></em> </div>
+																	</a>
+																	<div id="dsa{{i}}" class="collapse" data-parent="#accordion">
+																		<div class="card-body">
+																			<div class="row1">
+																				<div class="col-12">
+																					<div class="info-bottom pad-custom">
+																						<div class="info-details">
+																							<div class="row">
+																								<h6>Customer ID</h6>
+																								<h5>{{dsaData.customerId}}</h5> </div>
+																						</div>
+																						<div class="info-details">
+																							<div class="row">
+																								<h6>Customer Name</h6>
+																								<h5>{{dsaData.name | titlecase}}</h5> </div>
+																						</div>
+																						<div class="info-details">
+																							<div class="row">
+																								<h6>Date of Birth</h6>
+																								<h5>{{dsaData.dateOfBirth}}</h5> </div>
+																						</div>
+																						<div class="info-details">
+																							<div class="row">
+																								<h6>Constitution</h6>
+																								<h5> - </h5> </div>
+																						</div>
+																						<div class="info-details">
+																							<div class="row">
+																								<h6>Gender</h6>
+																								<h5>{{dsaData.gender}}</h5> </div>
+																						</div>
+																						<div class="info-details">
+																							<div class="row">
+																								<h6>Address</h6>
+																								<h5>{{dsaData.Address1}},{{dsaData.Address2}},{{dsaData.Address3}}</h5> </div>
+																						</div>
+																						<div class="info-details">
+																							<div class="row">
+																								<h6>City</h6>
+																								<h5>{{dsaData.cityCode}}</h5> </div>
+																						</div>
+																						<div class="info-details">
+																							<div class="row">
+																								<h6>State</h6>
+																								<h5>{{dsaData.stateCode}}</h5> </div>
+																						</div>
+																						<div class="info-details">
+																							<div class="row">
+																								<h6>Country</h6>
+																								<h5>-</h5> </div>
+																						</div>
+																						<div class="info-details">
+																							<div class="row">
+																								<h6>Mobile Number</h6>
+																								<h5>{{dsaData.MobileNo}}</h5> </div>
+																						</div>
+																						<div class="info-details">
+																							<div class="row">
+																								<h6>KYC Compliance Flag</h6>
+																								<h5>{{dsaData.kyc}}</h5> </div>
+																						</div>
+																					</div>
+																				</div>
+																			</div>
+																		</div>
+																	</div>
+																</div>
+															</div>
+														</div>
+													</div>
+												</div>
+											</div>
+											<div class="col-sm-12 col-12 col-md-12" *ngIf="others.length > 0" >
+												<div class="white-box2 mar-t mb-4">
+													<div class="row1">
+														<div class="col-12 col-md-12">
+															<h4 class="black-h4">Other</h4> </div>
+													</div>
+													<div class="row1">
+														<div class="col-sm-12 col-12 col-md-12">
+															<div id="accordion" class="accordion-container info-card2">
+																<div class="card2" *ngFor="let data of others; index as i" >
+																	<a class="card-link collapsed" data-toggle="collapse" href="#other{{i}}" aria-expanded="false">
+																		<div class="card-header3">
+																			<div class="panel-title3">
+																				<h4>{{i+1}}. Other</h4> </div> <em></em> </div>
+																	</a>
+																	<div id="other{{i}}" class="collapse" data-parent="#accordion">
+																		<div class="card-body">
+																			<div class="row1">
+																				<div class="col-12">
+																					<div class="info-bottom pad-custom">
+																						<div class="info-details">
+																							<div class="row">
+																								<h6>Customer ID</h6>
+																								<h5>{{data.customerId}}</h5> </div>
+																						</div>
+																						<div class="info-details">
+																							<div class="row">
+																								<h6>Customer Name</h6>
+																								<h5>{{data.name | titlecase }}</h5> </div>
+																						</div>
+																						<div class="info-details">
+																							<div class="row">
+																								<h6>Date of Birth</h6>
+																								<h5>{{data.dateOfBirth}}</h5> </div>
+																						</div>
+																						<div class="info-details">
+																							<div class="row">
+																								<h6>Constitution</h6>
+																								<h5> - </h5> </div>
+																						</div>
+																						<div class="info-details">
+																							<div class="row">
+																								<h6>Gender</h6>
+																								<h5>{{data.gender}}</h5> </div>
+																						</div>
+																						<div class="info-details">
+																							<div class="row">
+																								<h6>Address</h6>
+																								<h5>{{data.Address1}},{{data.Address2}},{{data.Address3}}</h5> </div>
+																						</div>
+																						<div class="info-details">
+																							<div class="row">
+																								<h6>City</h6>
+																								<h5>{{data.cityCode}}</h5> </div>
+																						</div>
+																						<div class="info-details">
+																							<div class="row">
+																								<h6>State</h6>
+																								<h5>{{data.stateCode}}</h5> </div>
+																						</div>
+																						<div class="info-details">
+																							<div class="row">
+																								<h6>Country</h6>
+																								<h5>-</h5> </div>
+																						</div>
+																						<div class="info-details">
+																							<div class="row">
+																								<h6>Mobile Number</h6>
+																								<h5>{{data.MobileNo}}</h5> </div>
+																						</div>
+																						<div class="info-details">
+																							<div class="row">
+																								<h6>KYC Compliance Flag</h6>
+																								<h5>{{data.kyc}}</h5> </div>
+																						</div>
+																					</div>
+																				</div>
+																			</div>
+																		</div>
+																	</div>
+																</div>
+															</div>
+														</div>
+													</div>
+												</div>
+											</div>
+											<div class="col-sm-12 col-12 col-md-12" *ngIf="portfolio.length > 0" >
+												<div class="white-box2 mar-t mb-4">
+													<div class="row1">
+														<div class="col-12 col-md-12">
+															<h4 class="black-h4">Portfolio Statement</h4> </div>
+													</div>
+													<div class="row1">
+														<div class="col-sm-12 col-12 col-md-12">
+															<div id="accordion" class="accordion-container info-card2">
+																<div class="card2" *ngFor="let item of portfolio; index as i" >
+																	<a class="card-link collapsed" data-toggle="collapse" href="#portfolio{{i}}" aria-expanded="false">
+																		<div class="card-header3">
+																			<div class="panel-title3">
+																				<h4>{{i+1}}. Portfolio Statement</h4> </div> <em></em> </div>
+																	</a>
+																	<div id="portfolio{{i}}" class="collapse" data-parent="#accordion">
+																		<div class="card-body">
+																			<div class="row1">
+																				<div class="col-12">
+																					<div class="info-bottom pad-custom">
+																						<div class="info-details">
+																							<div class="row">
+																								<h6>Customer ID</h6>
+																								<h5>{{item.customerId}}</h5> </div>
+																						</div>
+																						<div class="info-details">
+																							<div class="row">
+																								<h6>Customer Name</h6>
+																								<h5>{{item.name | titlecase}}</h5> </div>
+																						</div>
+																						<div class="info-details">
+																							<div class="row">
+																								<h6>Date of Birth</h6>
+																								<h5>{{item.dateOfBirth}}</h5> </div>
+																						</div>
+																						<div class="info-details">
+																							<div class="row">
+																								<h6>Constitution</h6>
+																								<h5> - </h5> </div>
+																						</div>
+																						<div class="info-details">
+																							<div class="row">
+																								<h6>Gender</h6>
+																								<h5>{{item.gender}}</h5> </div>
+																						</div>
+																						<div class="info-details">
+																							<div class="row">
+																								<h6>Address</h6>
+																								<h5>{{item.Address1}},{{item.Address2}},{{item.Address3}}</h5> </div>
+																						</div>
+																						<div class="info-details">
+																							<div class="row">
+																								<h6>City</h6>
+																								<h5>{{item.cityCode}}</h5> </div>
+																						</div>
+																						<div class="info-details">
+																							<div class="row">
+																								<h6>State</h6>
+																								<h5>{{item.stateCode}}</h5> </div>
+																						</div>
+																						<div class="info-details">
+																							<div class="row">
+																								<h6>Country</h6>
+																								<h5>-</h5> </div>
+																						</div>
+																						<div class="info-details">
+																							<div class="row">
+																								<h6>Mobile Number</h6>
+																								<h5>{{item.MobileNo}}</h5> </div>
+																						</div>
+																						<div class="info-details">
+																							<div class="row">
+																								<h6>KYC Compliance Flag</h6>
+																								<h5>{{item.kyc}}</h5> </div>
+																						</div>
+																					</div>
+																				</div>
+																			</div>
+																		</div>
+																	</div>
+																</div>
+															</div>
+														</div>
+													</div>
+												</div>
+											</div>
+											<div class="col-12 col-md-12">
+												<ul class="bottom-footer1">
+													<li>
+														<div class="btn-div w100">
+															<button class=" ux-button secondary sm-mob" (click)="goToPage('myAccount')" >Back</button>
+														</div>
+													</li>
+												</ul>
+											</div>
+										</div>
+									</div>
+									<!-- Greencard2 End here -->
+								</div>
+								<!-- Right Side Column Start -->
+								<div class="col-12 col-md-12 col-lg-12 col-xl-3 d-none d-xl-block">
+									<div class="right-ads">
+										<a> <img src="assets/images/banner/my-card-banner.jpg"> </a>
+									</div>
+									<div class="vspacer30"></div>
+								</div>
+								<!-- Right Side Column End -->
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!--.right-col-container-->
+	</div>
+	<!--.right-main-column-->
+</div>
+<!-- main -->

@@ -1,0 +1,87 @@
+{
+  "_from": "git+https://github.com/NiklasMerz/cordova-plugin-fingerprint-aio.git",
+  "_id": "cordova-plugin-fingerprint-aio@4.0.1",
+  "_inBundle": false,
+  "_integrity": "",
+  "_location": "/cordova-plugin-fingerprint-aio",
+  "_phantomChildren": {},
+  "_requested": {
+    "type": "git",
+    "raw": "git+https://github.com/NiklasMerz/cordova-plugin-fingerprint-aio.git",
+    "rawSpec": "git+https://github.com/NiklasMerz/cordova-plugin-fingerprint-aio.git",
+    "saveSpec": "git+https://github.com/NiklasMerz/cordova-plugin-fingerprint-aio.git",
+    "fetchSpec": "https://github.com/NiklasMerz/cordova-plugin-fingerprint-aio.git",
+    "gitCommittish": null
+  },
+  "_requiredBy": [
+    "#USER",
+    "/"
+  ],
+  "_resolved": "git+https://github.com/NiklasMerz/cordova-plugin-fingerprint-aio.git#628e2a3542832a0f3c7775bb6eb4f2183f677d2e",
+  "_spec": "git+https://github.com/NiklasMerz/cordova-plugin-fingerprint-aio.git",
+  "_where": "D:\\Sachin\\Office Projects\\PSB-Theme",
+  "author": {
+    "name": "Niklas Merz"
+  },
+  "bugs": {
+    "url": "https://github.com/niklasmerz/cordova-plugin-fingerprint-aio/issues"
+  },
+  "bundleDependencies": false,
+  "cordova": {
+    "id": "cordova-plugin-fingerprint-aio",
+    "platforms": [
+      "android",
+      "ios"
+    ]
+  },
+  "deprecated": false,
+  "description": "Cordova plugin to use fingerprint authentication on Android and iOS",
+  "devDependencies": {
+    "cordova-paramedic": "git+https://github.com/apache/cordova-paramedic.git",
+    "cordova-plugin-xml": "^0.1.2",
+    "eslint": "^6.5.1",
+    "jasmine": "^3.2.0"
+  },
+  "engines": {
+    "cordovaDependencies": {
+      ">=3.0.0": {
+        "cordova-android": ">=8.0.0"
+      }
+    }
+  },
+  "funding": "https://github.com/sponsors/NiklasMerz",
+  "homepage": "https://github.com/niklasmerz/cordova-plugin-fingerprint-aio#readme",
+  "keywords": [
+    "cordova",
+    "plugin",
+    "android",
+    "fingerprint",
+    "authentication",
+    "ecosystem:cordova",
+    "cordova-android",
+    "cordova-ios",
+    "ios"
+  ],
+  "license": "MIT",
+  "name": "cordova-plugin-fingerprint-aio",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/niklasmerz/cordova-plugin-fingerprint-aio.git"
+  },
+  "scripts": {
+    "eslint": "npx eslint www",
+    "plugin-version": "cordova-plugin-xml setVersion",
+    "test": "npm run eslint",
+    "test-android": "npx cordova-paramedic --platform android --plugin  $(pwd) --verbose",
+    "test-appveyor": "npm run test-browser",
+    "test-browser": "npx cordova-paramedic --platform browser --plugin  $(pwd)",
+    "test-ios": "npx cordova-paramedic --platform ios --plugin  $(pwd) --verbose",
+    "test-local": "npm run test-browser && npm run test-android && npm run test-ios",
+    "test-saucelabs": "npm run test-saucelabs-ios && npm run test-saucelabs-android",
+    "test-saucelabs-android": "npx cordova-paramedic --config ./pr/android-7.0 --plugin  $(pwd) --shouldUseSauce",
+    "test-saucelabs-ios": "npx cordova-paramedic --config ./pr/ios-10.0 --plugin  $(pwd) --shouldUseSauce",
+    "test-travis": "npm run test-ios",
+    "test-windows": "npx cordova-paramedic --platform windows --plugin  $(pwd)"
+  },
+  "version": "4.0.1"
+}

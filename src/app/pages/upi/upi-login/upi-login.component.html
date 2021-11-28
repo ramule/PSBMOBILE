@@ -1,0 +1,586 @@
+<div class="prelogin-page bg2 bg-custom upi-login">
+
+    <!-- Loginform Container Start -->
+    <div class="col-12 col-sm-12 h100">
+        <div class="row h100">
+            <div class="login-bg">
+                <div class="row1">
+                    <div class="col-12">
+                        <div class="login-header">
+                            <div class="brand-logo">
+                                <img src="assets/images/logo/psb-logo.png" alt="psb-logo">
+                            </div>
+                            <div class="brand-logo2">
+                                <img src="assets/images/logo/bhim-upi-logo.svg" alt="bhim-upi-logo">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-12 col-12 col-md-12 mb-1">
+                        <form [formGroup]="MPINForm">
+                            <div class="whitebg-input mar-custom">
+                                <div class="row1">
+                                    <div Class="col-12">
+                                        <div class="ux-input password1 mt-0 mb-0">
+                                            <label>{{"LOGIN_WITH_MPIN" | translate}}</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-md-12">
+                                        <div class="row">
+                                            <div class="col-12">
+                                                <div class="password1 ux-input  p1 mb-0 mt-3">
+                                                    <label for="sapassword" class="mb0">{{"ENTER_MPIN" |
+                            translate}}</label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row3">
+                                            <div class="col-sm-2 col-2 col-md-2" *ngFor="let mpinInput of formInput | slice:0:6; index as i">
+                                                <div class="ux-input password1 p1 mb-1">
+                                                    <input #mPINformRow numbersOnly id="spassword{{i}}" type="tel" maxlength="1" class="mpinLogin-password-field" placeholder="&#9679;" (keyup)="onKeyUpEvent(i, $event, 'spassword')" formControlName="{{mpinInput}}" pattern="\d*" />
+                                                </div>
+                                            </div>
+                                        </div>
+
+
+                                        <div class="row">
+                                            <div class="col-12">
+                                                <div class="ux-input input-error password1 p1 mt-0 mb-0">
+                                                    <p> </p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row1" *ngIf="isBiometricAvailable && isBiometicChanges">
+                                    <div class="col-12">
+                                        <div class="ux-input">
+                                            <label class="small-message text-center mb-0">{{"OR" |
+                        translate}}</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-md-12" *ngIf="(biometricType == 'finger' || biometricType == 'biometric') && isBiometicChanges">
+                                        <div class="text-center">
+                                            <a (click)="showBiometricLoginModal(true)">
+                                                <span class="round-circle1">
+                          <img src="./assets/images/svg/biometric.svg" alt="biometric-icon">
+                        </span>
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-md-12" *ngIf="biometricType == 'face' && isBiometicChanges">
+                                        <div class="text-center">
+                                            <a (click)="showBiometricLoginModal(false)">
+                                                <span class="round-circle1">
+                          <img src="./assets/images/svg/face-g.svg" alt="face-login-icon">
+                        </span>
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-md-12" *ngIf="(biometricType == 'finger' || biometricType == 'biometric') && isBiometicChanges ">
+                                        <div class="ux-input pb-0">
+                                            <div class="text-center">
+                                                <em class="message">{{"LOGIN_WITH_BIOMETRIC" | translate}}</em>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-md-12" *ngIf="biometricType == 'face' && isBiometicChanges ">
+                                        <div class="ux-input pb-0">
+                                            <div class="text-center">
+                                                <em class="message">{{"LOGIN_WITH_FACE_ID" | translate}}</em>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- </div> -->
+                            </div>
+                        </form>
+                    </div>
+
+                    <div class="col-12">
+                        <div class="white-radius-container" (click)="forgotMPINFlow('N')">
+                            <a class="fogot-mpin link-text">{{"FORGOT_MPIN" | translate}}</a>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="row1">
+                    <div class="col-sm-12 col-12 col-md-12">
+                        <div class="slider-section pos-custom">
+                            <div class="scroll-box mt-0">
+                                <div class="owl-carousel box-owl" role="list">
+                                    <div class="item ux-small-scroll2" role="listitem">
+                                        <a href="javascript:;">
+                                            <span>
+                        <img src="./assets/images/slides/dashboard-banner.png" alt="banner1">
+                      </span>
+                                        </a>
+                                    </div>
+                                    <div class="item ux-small-scroll2" role="listitem">
+                                        <a href="javascript:;">
+                                            <span>
+                        <img src="./assets/images/slides/dashboard-banner.png" alt="banner2">
+                      </span>
+                                        </a>
+                                    </div>
+                                    <div class="item ux-small-scroll2" role="listitem">
+                                        <a href="javascript:;">
+                                            <span>
+                        <img src="./assets/images/slides/dashboard-banner.png" alt="banner3">
+                      </span>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- footer section start -->
+                <footer>
+                    <nav class="ios-global-nav3 bottom-border" id="upiLoginFooter" [ngClass]="{'footer-non-landing': DataService.bezellessIphone}">
+                        <ul class="lst-ios-nav">
+                            <li>
+                                <a (click)="routeTo('/languageChange')">
+                                    <span class="inav-icon">
+                    <img src="assets/images/svg/translate1-w.svg" alt="translate-icon">
+                  </span> {{'LANGUAGE' | translate}}
+                                </a>
+                            </li>
+                            <!-- <li>
+                        <a href="javascript:;">
+                            <span class="inav-icon">
+                            <img src="assets/images/svg/mobile banking-w.svg" alt="mobile-banking">  
+                            </span>
+                            Mobile Banking
+                        </a>
+                    </li> -->
+                            <li>
+                                <a (click)="gotoRegister()">
+                                    <span class="inav-icon">
+                    <img src="assets/images/svg/MobileBanking.svg" alt="bank-icon">
+                  </span> {{'MOBILE_BANKING' | translate}}
+                                </a>
+                            </li>
+                            <li>
+                                <a (click)="routeTo('/locateUs')">
+                                    <span class="inav-icon">
+                    <img src="assets/images/svg/pin1-w.svg" alt="location-icon">
+                  </span> {{'LOCATE_US' | translate}}
+                                </a>
+                            </li>
+                            <li>
+                                <a (click)="routeTo('/contactUs')">
+                                    <span class="inav-icon">
+                    <img src="assets/images/svg/phone1-w.svg" alt="contact-icon">
+                  </span> {{'CONTACT_US' | translate}}
+                                </a>
+                            </li>
+                        </ul>
+                    </nav>
+                </footer>
+                <!-- footer section end -->
+
+            </div>
+        </div>
+    </div>
+
+    <!-- <div class="ios-nav-overlay"></div> -->
+
+</div>
+
+<!-- =========== modal popup start ===============  -->
+
+
+<div id="loginModal" class="modal fade " role="dialog">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content pad-custom">
+            <div class="modal-header  bor-n cust-pad">
+                <div class="mh-bottom">
+                    <div class="row1">
+                        <div class="col-12">
+                            <h6 class="success">{{"LOGIN_TO_PUNJAB_SIND_BANK" | translate}}</h6>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-body pt-0 cust-pad">
+                <p>{{'USE_YOUR_FINGERPRINT_FOR_FASTER_EASIER_ACCESS_TO_YOUR_ACCOUNT' | translate}}</p>
+                <div class="custom-list">
+                    <div class="list-lft">
+                        <a>
+                            <span class="round-circle1">
+                <img src="./assets/images/svg/biometric.svg" alt="biometric-icon">
+              </span>
+                        </a>
+                    </div>
+                    <div class="list-rit">
+                        <h6>{{"TOUCH_THE_SENSOR" | translate}}</h6>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer1 cust-pad  float-right">
+                <button type="button" class="ux-linkbutton secondary" data-dismiss="modal" (click)="hideBiometricLoginModal()">{{"CANCEL" | translate}}</button>
+                <button type="button" class="ux-linkbutton primary ml-3" (click)="hideBiometricLoginModal()">{{"USE_MPIN" |
+          translate}}</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<!-- Select MPIN Info Popup Start -->
+
+<div class="popup-bottom mpin-info" id="forgotMpinPopup">
+    <div class="row1">
+        <div class="col-10">
+            <h4>{{"FORGOT_MPIN" | translate}}</h4>
+        </div>
+        <div class="col-2">
+            <button class="ux-button-icon close-btn" (click)="closeForgotMpinPopup()">
+        <img src="./assets/images/svg/close-b.svg" alt="cross-icon" class="img-vsmall">
+      </button>
+        </div>
+    </div>
+    <form [formGroup]="otpForm" id="mpin-form">
+        <div class="row1">
+            <div class="col-12 col-md-12" *ngIf="showActOtpScreen == 'ACT'">
+                <!-- <div class="ux-input digit-input forgotmpin">
+                    <label for="">{{"LINKED_ACCOUNT_NUMBER" | translate}}</label> -->
+                <!-- <span class="show-digit1">{{unmaskedSubAccountNo}}</span> -->
+                <!-- <span class="show-digit">{{unmaskedSubAccountNo}}</span> -->
+                <!-- <em class="small-message">{{"ENTER_YOUR_ACCOUNT_NUMBER_LINKED_WITH_PRIMARY_UPI_ID" | translate}}</em> -->
+                <!-- <span class="show-digit">{{unmaskedSubAccountNo}}</span>
+                    <input type="text" placeholder="" formControlName="accountNo" limit-to="{{maxLengthOfAccount}}" numbersOnly>
+                    <em class="small-message">{{"ENTER_YOUR_ACCOUNT_NUMBER_LINKED_WITH_PRIMARY_UPI_ID" | translate}}</em>
+                    
+                    <p class="mb-0 error-message"
+                        *ngIf="otpForm.controls['accountNo'].hasError('required') && otpForm.controls['accountNo'].touched"> -->
+                <!-- <span class="errormsg" *ngIf="otpForm.controls['accountNo'].hasError('required') && otpForm.controls['accountNo'].touched"> -->
+                <!-- {{"ENTER_ACCOUNT_NUMBER" | translate}} -->
+                <!-- </span> -->
+                <!-- </p>
+                </div> -->
+
+                <!-- Sarfaraj -->
+
+                <!-- <div class="ux-input digit-input1">
+                    <label for="">{{"LINKED_ACCOUNT_NUMBER" | translate}}</label>
+                      <input type="text" placeholder="XXXX XXXX XX" formControlName="accountNo" limit-to="{{maxLengthOfAccount}}" numbersOnly>
+                      <span class="show-digit1">{{unmaskedSubAccountNo}}</span>
+                       <em class="info-message">{{"ENTER_YOUR_ACCOUNT_NUMBER_LINKED_WITH_PRIMARY_UPI_ID" | translate}}</em>
+                       <p class="mb-0 error-message"
+                        *ngIf="otpForm.controls['accountNo'].hasError('required') && otpForm.controls['accountNo'].touched"> -->
+                <!-- <span class="errormsg" *ngIf="otpForm.controls['accountNo'].hasError('required') && otpForm.controls['accountNo'].touched"> -->
+                <!-- {{"ENTER_ACCOUNT_NUMBER" | translate}} -->
+                <!-- </span> -->
+                <!-- </p>
+                  </div> -->
+
+
+                <div class="ux-input digit-input2">
+                    <label for="">{{"LINKED_ACCOUNT_NUMBER" | translate}}</label>
+                    <!-- <input type="text" placeholder="XXXX XXXX XXXX" name="card-number" id="card"  value="" minlength="14" maxlength="14"  > -->
+                    <input type="password" alphaNumericOnly placeholder="XXXX XXXX XXXX" formControlName="accountNo" limit-to="{{maxLengthOfAccount}}">
+                    <span class="show-digit2">{{unmaskedSubAccountNo}}</span>
+                    <p class="mb-0 error-message" *ngIf="otpForm.controls['accountNo'].hasError('required') && otpForm.controls['accountNo'].touched">
+                        {{"ENTER_ACCOUNT_NUMBER" | translate}}
+                    </p>
+                    <p class="text-center error-message" *ngIf="otpForm.controls['accountNo'].hasError('pattern')">{{ 'ENTER_ALPHABET_NUMBER_ERROR' | translate}}</p>
+                    <em class="info-message">{{"ENTER_FULL_ACCOUNT_NO_ENDING_WITH" | translate}}
+            xxxxxxxxxx{{unmaskedSubAccountNo}}</em>
+                </div>
+                <div class="row mt-2">
+                    <div class="col-12 text-center">
+                        <button class="ux-button primary debit-details" (click)="submitOTP('N')" [disabled]="otpForm.controls['accountNo'].invalid">{{"PROCEED" | translate}}</button>
+                    </div>
+                </div>
+            </div>
+            <!-- <div class="col-12">
+                <div class="ux-input">
+                    <label>{{"OTP" | translate}}</label>
+                    <input type="password" placeholder="Enter OTP" formControlName="otp" limit-to="6" >
+                    <em class="small-message">{{"ENTER_OTP_RECEIVED_IN_YOUR_EMAIL" | translate}}</em>
+                    <p class="mb-0">
+                        <span class="errormsg" *ngIf="otpForm.controls['otp'].hasError('required') && otpForm.controls['otp'].touched">
+              {{"ENTER_OTP" | translate}}
+            </span>
+                    </p>
+                </div>
+            </div> -->
+
+            <div class="col-12 col-md-12" *ngIf="showActOtpScreen == 'OTP'">
+                <div class="row1">
+                    <div class="col-12">
+                        <div class="ux-input  p1 mb-0 mt-3 mb-3">
+                            <label for="otp" class="mb0">{{'ENTER_OTP' | translate}}</label>
+                            <em class="info-message">{{'PLEASE_ENTER_SIX_DIGIT_OTP' | translate}} <br /> {{userMailId}} <br /> </em>
+                            <!-- {{userMobNo}}> -->
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12 pl-2 pr-2">
+                        <!-- <div class="row3">
+              <div class="col-sm-2 col-2 col-md-2">
+                <div class="ux-input password1 p1 mb-1">
+                  <input id="otppassword1" type="password" maxlength="1" placeholder="&#9679;" />
+                </div>
+              </div>
+              <div class="col-sm-2 col-2 col-md-2">
+                <div class="ux-input password1 p1 mb-1">
+                  <input id="otppassword2" type="password" maxlength="1" placeholder="&#9679;" />
+                </div>
+              </div>
+              <div class="col-sm-2 col-2 col-md-2">
+                <div class="ux-input password1 p1 mb-1">
+                  <input id="otppassword3" type="password" maxlength="1" placeholder="&#9679;" />
+                </div>
+              </div>
+              <div class="col-sm-2 col-2 col-md-2">
+                <div class="ux-input password1 p1 mb-1">
+                  <input id="otppassword4" type="password" maxlength="1" placeholder="&#9679;" />
+                </div>
+              </div>
+              <div class="col-sm-2 col-2 col-md-2">
+                <div class="ux-input password1 p1 mb-1">
+                  <input id="otppassword5" type="password" maxlength="1" placeholder="&#9679;" />
+                </div>
+              </div>
+              <div class="col-sm-2 col-2 col-md-2">
+                <div class="ux-input password1 p1 mb-1">
+                  <input id="otppassword6" type="password" maxlength="1" placeholder="&#9679;" />
+                </div>
+              </div>
+            </div> -->
+                        <div class="row3">
+                            <div class="col-sm-2 col-2 col-md-2" *ngFor="let otpInput of otpFormInput | slice:0:6; index as j">
+                                <div class="ux-input password1 p1 mb-1">
+                                    <input #OTPformRow numbersOnly id="emailotp{{j}}" type="tel" maxlength="1" placeholder="&#9679;" (keyup)="onKeyUpEvent(j, $event, 'emailotp')" (focus)="onFocusEvent(j, 'emailotp')" formControlName="{{otpInput}}" pattern="\d*" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row1">
+                            <div class="col-12">
+                                <div class="ux-input password1 p1 mt-0 mb-0">
+                                    <p class="error-message"></p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row1">
+                            <div class="col-6 col-md-6" *ngIf="!otpMaxReachedFlag && !showResendBtn">
+                                <div class="text-left">
+                                    <p class="text-left">
+                                        <span class="success-text">{{otpSendTime}} {{'SECONDS' | translate}}</span>
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="col-6 col-md-6" *ngIf="showResendBtn">
+                                <div class="text-left">
+                                    <p class="text-left">
+                                        <span class="success-text" (click)="forgotMPINFlow('Y')">{{'RESEND_OTP' | translate}}</span>
+                                    </p>
+                                </div>
+                            </div>
+                            <!--<div class="col-6 col-md-6" *ngIf="showResendBtn">
+                <div class="text-right mt-3">
+                  <p class="text-right">
+                    <span class="success-text">{{otpAttemptRemain }} {{'OTP_ATTEMPT_REMAIN' | translate}}</span>
+                  </p>
+                </div>
+              </div>
+               <div class="col-6 col-md-6">
+                <div class="text-right mt-3">
+                  <button class="ux-linkbutton default-underline">{{'RESEND_OTP' | translate}}</button>
+                </div>
+              </div> -->
+                        </div>
+                    </div>
+                </div>
+                <div class="row mt-2">
+                    <div class="col-12 text-center">
+                        <button class="ux-button primary debit-details" (click)="submitOTP('Y')" [disabled]="!emailOtp">{{"PROCEED"
+              | translate}}</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+
+<div class="popup-bottom show-biometric-info">
+    <div class="row1">
+        <div class="col-12">
+            <h4 class="text-center"> <img src="./assets/images/svg/information.svg" alt="information-icon"> {{'INFORMATION' | translate}}</h4>
+        </div>
+    </div>
+    <div class="row1">
+        <div class="col-12">
+            <p>{{ information | translate}}</p>
+        </div>
+    </div>
+    <div class="row1  mt-2">
+        <div class="col-12 text-center" (click)="closePopup('div.popup-bottom.show-biometric-info')">
+            <button class="ux-button primary submit-btn" type="button">{{'OK' | translate}}</button>
+        </div>
+    </div>
+</div>
+
+<!-- Select MPIN Info Popup End -->
+
+<!-- <div class="ios-nav-overlay"></div> -->
+
+<div class="popup-bottom enable-gps">
+    <div class="row1">
+        <div class="col-12">
+            <h4 class="text-center"> <img src="./assets/images/svg/information.svg" alt="information-icon"> {{'INFORMATION' | translate}}</h4>
+        </div>
+    </div>
+    <div class="row1">
+        <div class="col-12">
+            <p>{{ 'GPS_ENABLE_PERMISSION_INFORMATION' | translate}}</p>
+        </div>
+    </div>
+    <div class="row1  mt-2">
+        <div class="col-12 text-center" (click)="closePopup('div.popup-bottom.enable-gps')">
+            <button class="ux-button primary submit-btn" type="button" (click)="enableGPS()">{{'OK' | translate}}</button>
+        </div>
+    </div>
+</div>
+
+<div class="popup-bottom enable-location-permission">
+    <div class="row1">
+        <div class="col-12">
+            <h4 class="text-center"> <img src="./assets/images/svg/information.svg" alt="information-icon"> {{'INFORMATION' | translate}}</h4>
+        </div>
+    </div>
+    <div class="row1">
+        <div class="col-12">
+            <p>{{ 'LOCATION_ENABLE_PERMISSION_INFORMATION' | translate}}</p>
+        </div>
+    </div>
+    <div class="row1  mt-2">
+        <div class="col-12 text-center" (click)="closePopup('div.popup-bottom.enable-location-permission')">
+            <button class="ux-button primary submit-btn" type="button" (click)="enableLocation()">{{'OK' |
+        translate}}</button>
+        </div>
+    </div>
+</div>
+
+<!-- Show Common Error Popup Start -->
+<div class="popup-bottom show-forgotMpin-error">
+    <div class="row1">
+        <div class="col-12">
+            <h4 class="text-center"> <img src="./assets/images/svg/error.svg" alt="error-icon"> {{'ERROR' | translate}}</h4>
+        </div>
+    </div>
+    <div class="row1">
+        <div class="col-12">
+            <p>{{accountValidError}}</p>
+        </div>
+    </div>
+    <div class="row1  mt-2">
+        <div class="col-12 text-center">
+            <button class="ux-button primary submit-btn" (click)="closeInvalidAccPopup()">{{'OK'| translate}}</button>
+        </div>
+    </div>
+</div>
+
+
+
+<div class="popup-bottom location-permission">
+    <div class="row1">
+        <div class="col-12">
+            <h4 class="text-center">
+                <img src="./assets/images/svg/information.svg" alt="information-icon"> {{'INFORMATION' | translate}}
+            </h4>
+        </div>
+    </div>
+    <div class="row1">
+        <div class="col-12">
+            <p>
+                {{'ALLOW_PERMISSION_MSG' | translate}}
+            </p>
+        </div>
+    </div>
+    <div class="row1 mt-2">
+        <div class="col-12 text-center" (click)="closePopup('div.popup-bottom.location-permission')">
+            <button class="ux-button primary submit-btn" type="button">{{'OK' | translate}}</button>
+        </div>
+    </div>
+</div>
+
+
+<div class="popup-bottom location-permission-deniedAlways">
+    <div class="row1">
+        <div class="col-12">
+            <h4 class="text-center">
+                <img src="./assets/images/svg/information.svg" alt="information-icon"> {{'INFORMATION' | translate}}
+            </h4>
+        </div>
+    </div>
+    <div class="row1">
+        <div class="col-12">
+            <p>
+                {{'ALLOW_PERMISSION_MSG' | translate}}
+            </p>
+        </div>
+    </div>
+    <div class="row1 mt-2">
+        <div class="col-6 text-center">
+            <button class="ux-button secondary no md close-btn" (click)="closePopup('div.popup-bottom.location-permission-deniedAlways')">{{'CANCEL' | translate}}</button>
+        </div>
+        <div class="col-6 text-center">
+            <button class="logout-btn ux-button primary md" (click)="goToSettings()">{{'SETTINGS' | translate}}</button>
+        </div>
+    </div>
+</div>
+
+
+<div class="popup-bottom blocked-user sm-popup">
+    <div class="row1">
+        <div class="col-12">
+            <h4 class="text-center">
+                <img src="./assets/images/svg/information.svg" alt="error-icon"> {{ 'INFORMATION' | translate }}
+            </h4>
+        </div>
+    </div>
+    <div class="row1">
+        <div class="col-12 mb-4">
+            <p> Mobile Number Is Blocked.Please Contact Bank </p>
+        </div>
+    </div>
+    <div class="row1  mt-2">
+        <div class="col-12 text-center">
+            <button class="ux-button submit-btn" (click)="closePopup('blocked-user')">{{ 'CLOSE' | translate }}</button>
+        </div>
+    </div>
+</div>
+
+
+
+    <!-- non-psb user Popup Start -->
+    <div class="popup-bottom non-psb">
+        <div class="row1">
+            <div class="col-12">
+                <h4 class="text-center">
+                    <img src="./assets/images/svg/information.svg" alt="error-icon"> {{'INFORMATION' | translate}}
+                </h4>
+            </div>
+        </div>
+        <div class="row1">
+            <div class="col-12 mb-4">
+                <p>You are not an esteemed customer of our Bank. Please open an account with us</p>
+            </div>
+        </div>
+        <div class="row1  mt-2">
+            <div class="col-12 text-center">
+                <button class="ux-button primary submit-btn" (click)="closePopup('div.popup-bottom.non-psb')">
+                    {{ 'OK' | translate }}</button>
+            </div>
+        </div>
+    </div>
+    <!-- non-psb user Popup End -->

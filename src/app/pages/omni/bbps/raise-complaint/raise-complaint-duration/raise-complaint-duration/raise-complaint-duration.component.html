@@ -1,0 +1,180 @@
+<div class="main bg-m">
+	<div class="right-main-column ">
+		<div class="right-col-container pad-b full-width">
+			<!-- ======== body page content start from here ======== -->
+			<div class="body-page-container main-dashborad mycards bill-wrapper">
+				<div class="container-fluid">
+					<div class="row">
+						<div class="col-12 p-0">
+							<div class="breadcrumb">
+								<ul class="lst-breadcrumb">
+									<li *ngFor="let name of DataService.breadcrumblist">
+                                        <a (click)="DataService.breadcrumroute(name.routeName)">{{name.currentRoute | translate}}</a>
+                                </li>
+								</ul>
+							</div>
+						</div>
+					</div>
+					<!--.row -->
+					<div class="vspacer15 customize d-none d-xl-block d-lg-block d-md-none d-sm-none "></div>
+					<div class="row no-gutters">
+						<div class="col-12">
+							<div class="row1">
+								<div class="col-12 col-sm-12 col-md-12 col-lg-12  col-xl-9">
+									<div class="greencard2 tracklist">
+										<div class="row1 hide-m">
+											<div class="col-md-8 col-12">
+												<h4>Raise Complaint</h4> </div>
+											<div class="col-md-4 col-12">
+												<div class="header-actions"> <img src="assets/images/icons/billpay.png" alt="billpay-img" class="small-img"> </div>
+											</div>
+										</div>
+										<div class="row1">
+											<div class="col-12 col-sm-12 col-md-12 col-lg-12">
+												<div class="widget-box5 mb-3">
+													<div class="bg-white1 pad-custom p-0">
+														<ul class="bill-reminder-list payment-history-grid">
+															<li class="grey-th">
+																<div class="grid-info">
+																	<div class="full-info">
+																		<h6>Biller Name</h6> </div>
+																</div>
+																<div class="grid-info">
+																	<div class="full-info">
+																		<h6>Due Date</h6> </div>
+																</div>
+																<div class="grid-info">
+																	<div class="full-info">
+																		<h6>Status</h6> </div>
+																</div>
+																<div class="grid-info">
+																	<div class="full-info">
+																		<h6>Amount</h6> </div>
+																</div>
+															</li>
+															<li onclick="location.href='raise-complaint-duration-suucess.html'">
+																<div class="grid-info">
+																	<div class="full-info">
+																		<div class="list-full">
+																			<div class="icon1"> <img src="assets/images/icons/airtel.png" alt="airtel-logo"> </div>
+																			<h5>Monthly Mobile Bill</h5>
+																			<h6 class="display-mt">Bill Payment due on <span>25 March 2020</span> </h6> </div>
+																	</div>
+																</div>
+																<div class="grid-info d-none d-sm-block">
+																	<div class="full-info">
+																		<h5>25 March 2020</h5> </div>
+																</div>
+																<div class="grid-info">
+																	<div class="full-info text-status"> <em class="text-reject">Payment Failed</em> </div>
+																</div>
+																<div class="grid-info">
+																	<div class="full-info">
+																		<h5><img src="assets/images/svg/rupee-bl.svg" alt="rupee-icon">900</h5> </div>
+																</div>
+															</li>
+															<li onclick="location.href='raise-complaint-duration-suucess.html'">
+																<div class="grid-info">
+																	<div class="full-info">
+																		<div class="list-full">
+																			<div class="icon1"> <img src="assets/images/icons/tata-sky.png" alt="airtel-logo"> </div>
+																			<h5>Monthly DTH Bill</h5>
+																			<h6 class="display-mt">Bill Payment due on <span>25 March 2020</span> </h6> </div>
+																	</div>
+																</div>
+																<div class="grid-info d-none d-sm-block">
+																	<div class="full-info">
+																		<h5>25 March 2020</h5> </div>
+																</div>
+																<div class="grid-info">
+																	<div class="full-info text-status"> <em class="text-success">Payment Successful</em> </div>
+																</div>
+																<div class="grid-info">
+																	<div class="full-info">
+																		<h5><img src="assets/images/svg/rupee-bl.svg" alt="rupee-icon">900</h5> </div>
+																</div>
+															</li>
+															<li onclick="location.href='raise-complaint-duration-suucess.html'">
+																<div class="grid-info">
+																	<div class="full-info">
+																		<div class="list-full">
+																			<div class="icon1"> <img src="assets/images/icons/mahanagar-gas.png" alt="airtel-logo"> </div>
+																			<h5>Monthly Gas Bill</h5>
+																			<h6 class="display-mt">Bill Payment due on <span>25 March 2020</span> </h6> </div>
+																	</div>
+																</div>
+																<div class="grid-info d-none d-sm-block">
+																	<div class="full-info">
+																		<h5>25 March 2020</h5> </div>
+																</div>
+																<div class="grid-info">
+																	<div class="full-info text-status"> <em class="text-reject">Payment Failed</em> </div>
+																</div>
+																<div class="grid-info">
+																	<div class="full-info">
+																		<h5><img src="assets/images/svg/rupee-bl.svg" alt="rupee-icon">900</h5> </div>
+																</div>
+															</li>
+															<li>
+																<div class="col-12">
+																	<div class="row  mt-3 mb-2">
+																		<div class="col-12 col-lg-6 col-md-6 col-sm-6 px-0 d-none d-sm-none d-xl-block d-lg-block d-md-block">
+																			<div id="dt-sample_wrapper" class="dataTables_wrapper dt-bootstrap4 no-footer">
+																				<div class="dataTables_info pt-2" id="dt-sample_info" role="status" aria-live="polite">Showing 1 to 2 of <b>2</b> entries</div>
+																			</div>
+																		</div>
+																		<div class="col-12 col-lg-6 col-md-6 px-0 d-none d-sm-none d-xl-block d-lg-block d-md-block text-right">
+																			<div class="custom-paging">
+																				<div class="dataTables_wrapper">
+																					<div class="dataTables_paginate">
+																						<ul class="pagination">
+																							<li class="page-item previous disabled"> <a href="javascript:;" class="page-link">Previous</a> </li>
+																							<li class="page-item active"> <a href="javascript:;" class="page-link">1</a> </li>
+																							<li class="page-item"> <a href="javascript:;" class="page-link">2</a> </li>
+																							<li class="page-item next"> <a href="javascript:;" class="page-link">Next</a> </li>
+																						</ul>
+																						<!--.pagination-->
+																					</div>
+																					<!--.dataTables_paginate-->
+																				</div>
+																				<!--.dataTables_wrapper-->
+																			</div>
+																		</div>
+																	</div>
+																</div>
+															</li>
+														</ul>
+													</div>
+												</div>
+											</div>
+											<div class="col-12 col-md-12 hide-m">
+												<ul class="bottom-footer1">
+													<li>
+														<div class="btn-div w100">
+															<button class="ux-button primary sm-mob" >Add Bill Reminder</button>
+														</div>
+													</li>
+												</ul>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="col-12 col-md-12 col-lg-12 col-xl-3 d-none d-xl-block">
+									<div class="right-ads">
+										<a> <img src="assets/images/banner/my-card-banner.jpg"> </a>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!--.container-fluid-->
+			</div>
+			<!--.body-page-container-->
+		</div>
+		<!--.right-col-container-->
+	</div>
+	<!--.right-main-column-->
+
+</div>
+<!-- main -->

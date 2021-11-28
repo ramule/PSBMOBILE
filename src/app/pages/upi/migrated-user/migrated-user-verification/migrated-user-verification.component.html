@@ -1,0 +1,235 @@
+<div class="main">
+  <header class="global-header brand-bg1 minus-nav">
+    <div class="in-header">
+      <div class="header-icons-lft show1">
+        <div class="header-actions">
+          <button class="ux-button-header ml-2">
+            <img src="assets/images/svg/left-arrow.svg" alt="left-arrow-icon" />
+          </button>
+        </div>
+      </div>
+      <div class="brand-logo">
+        <h4>{{'VERIFICATION' | translate}}</h4>
+      </div>
+      <div class="header-icons-rit">
+        <div class="header-actions">
+          <!-- <button class="ux-button-header mr-2">
+							<img src="assets/images/svg/question-w.svg"  alt="question-icon"/>
+						</button> -->
+        </div>
+      </div>
+    </div>
+  </header>
+
+
+
+  <div class="right-main-column minus-rt-col">
+    <div class="right-col-container">
+
+      <div class="body-page-container">
+        <div class="container-fluid">
+          <div class="row">
+            <div class="bg-section">
+              <div class="col-12">
+				<form id="migrated-form" [formGroup]="migratedUserForm">
+                <div class="row1">
+                  <div class="col-sm-12 col-12 col-md-12">
+                    <div class="white-bg1">
+                      <div class="upiId">
+                        <div class="row1">
+                          <div class="col-12 col-sm-12 col-md-12">
+                            <div class="ux-input">
+                              <label for="upiId">{{'UPI_ID' | translate}}</label>
+                              <select  formControlName="upiId"  (change)="getBankListAndAccontListByVPA($event.target.value,true)">
+                                <option value="">{{'SELECT' | translate}}</option>
+                                <option  [value]="vpa.paymentAddress" *ngFor="let vpa of vpaList" >{{vpa.paymentAddress}}</option>
+                              </select>
+                              <p class="error-message"
+                              *ngIf="migratedUserForm.controls['upiId'].hasError('required')  && migratedUserForm.controls['upiId'].touched">
+                              {{ 'PLEASE_SELECT_UPI_ID' | translate }}
+                            </p>
+                            <p class="error-message"
+                              *ngIf="migratedUserForm.controls['upiId'].hasError('pattern')">
+                              {{ 'ENTER_VALID_UPI_ADDRESS' | translate }}
+                            </p>
+                            </div>
+                          </div>
+
+                          <div class="col-12 col-sm-12 col-md-12">
+                            <div class="ux-input">
+                              <label for="bank">{{'BANK' | translate}}</label>
+                              <select  formControlName="bank">
+                                <option value="">{{'SELECT' | translate}}</option>
+                                <option [value]="bank.ifsc" *ngFor="let bank of bankList">{{bank.bankName}}</option>
+                              </select>
+							  <p class="error-message"
+                              *ngIf="migratedUserForm.controls['bank'].hasError('required')  && migratedUserForm.controls['bank'].touched">
+                              {{ 'PLEASE_SELECT_BANK' | translate }}
+                            </p>
+                            </div>
+                          </div>
+
+                          <div class="col-12 col-sm-12 col-md-12">
+                            <div class="ux-input" *ngIf="bankList.length > 1">
+                              <label for="account">{{'ACCOUNT' | translate}}</label>
+                              <select  formControlName="maskedAccountNumber"  (change)="updateValue($event.target.value,true)">
+                                <option value="">{{'SELECT' | translate}}</option>
+                                <option [value]="account.maskedAccountNumber" *ngFor="let account of accountList">{{account.maskedAccountNumber}}</option>
+                              </select>
+							  <p class="error-message"
+                              *ngIf="migratedUserForm.controls['maskedAccountNumber'].hasError('required')  && migratedUserForm.controls['maskedAccountNumber'].touched">
+                              {{ 'PLEASE_SELECT_ACCOUNT' | translate }}
+                            </p>
+                            <p class="text-center error-message" *ngIf="migratedUserForm.controls['maskedAccountNumber'].hasError('pattern')">{{ 'ENTER_ALPHABET_NUMBER_ERROR' | translate}}</p>
+                                            </div>
+                          </div>
+                          
+                          <div class="col-12 col-sm-12 col-md-12">
+                            <div class="ux-input digit-input2 show-digit-accNo">
+                              <label for="accountnumber">{{"ENTER_ACCOUNT_NUMBER" | translate}}</label>
+                                 <input type="text" placeholder="XXXX XXXX XXXX"  name="card-number" id="card" formControlName="accountnumber" limit-to="{{limit}}" numbersOnly>
+                                 <span class="show-digit2">{{maskedAccountNumber | Last4Char}}</span> 
+                                 <p class="mb-0 error-message"
+                                 *ngIf="migratedUserForm.controls['accountnumber'].hasError('required')  && migratedUserForm.controls['accountnumber'].touched">
+                                 {{ 'PLEASE_ENTER_ACC_NO' | translate }}
+                               </p>
+                               <p class="text-center error-message" *ngIf="migratedUserForm.controls['accountnumber'].hasError('pattern')">{{ 'ENTER_ALPHABET_NUMBER_ERROR' | translate}}</p>
+                                            <!-- <p class="error-message"
+                               *ngIf="!migratedUserForm.controls['accountnumber'].hasError('required')  && migratedUserForm.controls['accountnumber'].touched && migratedUserForm.controls['accountnumber'].hasError('minLength')">
+                               {{ 'LENGTH_IS_TOO_SHORT' | translate }}
+                             </p> -->
+                            </div>
+                          </div>
+
+
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+				</form>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- main -->
+
+<!-- footer section start -->
+
+<div class="footer-container sticky-actions">
+  <div class="footer-inactions minus-rt-col">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-12 col-md-3 col-lg-4">
+        </div>
+        <div class="col-12 col-md-6 col-lg-4">
+          <div class="row">
+            <button id="select-account" class="ux-button primary md" (click)="validateUser()">{{'PROCEED' | translate}}</button>
+          </div>
+        </div>
+        <div class="col-12 col-md-3 col-lg-4">
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="sticky-actions-spacer"></div>
+
+<!-- footer section end -->
+
+<!-- =========== modal popup start ===============  -->
+
+
+<!-- Select Account Popup Start -->
+
+
+<!-- Select Account Popup End -->
+
+<!-- Select Debit Card Popup Start -->
+
+
+<!-- Select Debit Card Popup End -->
+
+
+<!-- Verification Popup Start -->
+
+<div class="popup-bottom verification1">
+  <div class="row">
+    <div class="col-12">
+      <h4 class="text-center">{{'VERIFICATION' | translate}}</h4>
+    </div>
+  </div>
+  <form action="#" id="verification-form">
+    <div class="row">
+      <div class="col-12">
+        <p>
+         {{'SOMETHING_TECHNICAL_ERROR_OCCURED' | translate}}
+        </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-12 text-center">
+        <button class="ux-button primary" (click)="closePopup('verification1')">{{'OK' | translate}}</button>
+      </div>
+    </div>
+  </form>
+</div>
+
+
+
+
+<div class="popup-bottom verification2">
+  <div class="row">
+    <div class="col-12">
+      <h4 class="text-center">{{'VERIFICATION' |  translate}}</h4>
+    </div>
+  </div>
+  <form action="#" id="verification-form3">
+    <div class="row">
+      <div class="col-12">
+        <p>
+         {{'ACCOUNT_VERIFICATION_UNSUCCESSFUL' | translate}}
+        </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-12 text-center">
+        <button class="ux-button primary" (click)="closePopup('verification2')">{{'OK' | translate}}</button>
+      </div>
+    </div>
+  </form>
+</div>
+
+<div class="popup-bottom verification3">
+  <div class="row">
+    <div class="col-12">
+      <h4 class="text-center">{{'VERIFICATION' | translate}}</h4>
+    </div>
+  </div>
+  <form action="#" id="verification-form2">
+    <div class="row">
+      <div class="col-12">
+        <p>
+          {{'ACCOUNT_VERIFICATION_MAXIMUM_LIMIT_EXCEEDED' | translate}}
+        </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-12 text-center">
+        <button class="ux-button primary" (click)="closePopup('verification3')">{{'OK' | translate}}</button>
+      </div>
+    </div>
+  </form>
+</div>
+
+
+<!-- Verification Popup End -->
+
+<!-- <div class="ios-nav-overlay"></div>  -->

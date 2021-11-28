@@ -1,0 +1,1855 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <title>Login | Direct Tax</title>
+    <link href="../css/lib/bootstrap.min.css" rel="stylesheet" />
+    <link href="../css/lib/owl.carousel.min.css" rel="stylesheet" />
+    <link href="../css/lib/jquery-ui.min.css" rel="stylesheet" />
+    <link href="../css/lib/datatables.min.css" rel="stylesheet" />
+    <link href="../css/lib/jquery.mCustomScrollbar.min.css" rel="stylesheet" />
+    <link href="../css/main.css" rel="stylesheet" />
+</head>
+
+<body>
+
+    <div class="prelogin-page login-page direct-tax-login">
+
+        <!-- header section Start -->
+        <header class="global-header">
+            <div class="desk-header">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-xl-3 col-lg-3 col-md-3 col-sm-2 col-2 d-none d-md-block d-lg-block d-xl-block">
+                            <ul class="headerlist">
+                                <li>
+                                    <a href="#"> <img src="../assets/images/svg/home1.svg" alt="home-icon"> <em>Home</em></a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
+                            <div class="brand-heading text-center m-auto">
+                                <span class="logo-img2">
+                                    <img src="../assets/images/svg/final-logo.svg" alt="psb-logo">
+                                </span>
+                            </div>
+                        </div>
+                        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-2 col-2 d-none d-md-block d-lg-block d-xl-block">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <!-- header section End -->
+
+        <div class="full-container  halfBackground forLogin">
+            <div class="login-container">
+                <div class="central-box">
+
+
+                    <!-- Loginform Container Start -->
+
+                    <div class="loginform-container">
+                        <div class="login-form">
+                            <div class="login-heading">
+                                <div class="row1">
+                                    <div class="col-12">
+                                        <div class="ux-selection">
+                                            <label class="ux-selection2">Retail Banking
+                                                <input type="radio" value="retaile-banking" checked name="login-type" />
+                                                <span class="checkmark"></span>
+                                            </label>
+                                        </div>
+                                        <div class="ux-selection">
+                                            <label class="ux-selection2">Corporate Banking
+                                                <input type="radio" value="corporate-banking" name="login-type" />
+                                                <span class="checkmark"></span>
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div class="col-12">
+                                        <div class="ux-input">
+                                            <p class="error-message"></p>
+                                        </div>
+                                    </div>
+                                </div>
+ 
+
+                                <!-- <h3>Login</h3>
+                                <h5>Please login to your Retail banking account</h5> -->
+                            </div>
+
+                            <div class="vspacer20"></div>
+
+                            <div id="retail-info">
+                                <div class="login-heading">
+                                     <h3>Login</h3>
+                                     <h5>Please login to your Retail Banking</h5>
+                                </div>
+                                <div class="row1 mt-3">
+                                    <div class="col-12">
+                                        <form action="#" method="#">
+                                            <div class="row1">
+                                                <div class="col-12">
+                                                    <div class="ux-input">
+                                                        <label>Username</label>
+                                                        <input type="text" placeholder="Enter Username" required />
+                                                        <a href="#" class="show-keyboard"></a>
+                                                        <p class="text-right"><a href="javascript:;" class="reg-txt check-availability">Forgot Username?</a></p>
+                                                        <p class="error-message"></p>
+                                                    </div>
+                                                </div>
+                                                 <div class="col-12">
+                                                    <div class="ux-input">
+                                                        <label>Password</label>
+                                                        <input type="password" placeholder="Enter Password" required />
+                                                        <a href="#" class="show-keyboard"></a>
+                                                        <p class="text-right"><a href="javascript:;" class="reg-txt check-availability">Forgot Password?</a></p>
+                                                        <p class="error-message"></p>
+                                                    </div>
+                                                </div>
+                                                <div class="col-12">
+                                                    <div class="ux-input">
+                                                        <label>Enter the text as shown in the image</label>
+                                                        <input type="password" placeholder="Enter Captcha" required />
+                                                        <p></p>
+                                                    </div>
+                                                </div>
+                                                <div class="col-12">
+                                                    <div class="ux-selection">
+                                                        <label class="ux-selection2"> Image Captcha
+                                                            <input type="radio" checked="checked" value="image-captcha" name="captcha-type" />
+                                                            <span class="checkmark"></span>
+                                                        </label>
+                                                    </div>
+                                                    <div class="ux-selection">
+                                                        <label class="ux-selection2"> Audio Captcha
+                                                            <input type="radio" value="audio-captcha" name="captcha-type" />
+                                                            <span class="checkmark"></span>
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                                <div class="col-12">
+                                                    <div class="ux-input">
+                                                        <p class="error-message"></p>
+                                                    </div>
+                                                </div>
+
+                                                <div class="vspacer5"></div>
+
+                                                <div class="col-12">
+                                                    <div class="captcha-container">
+                                                        <div class="captcha-box">
+    
+                                                        </div>
+                                                        <div class="refresh-btn">
+                                                            <img src="../assets/images/svg/refresh-g.svg" alt="refresh-icon">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="vspacer20"></div>
+
+                                            <div class="row1">
+                                                <div class="col-6 col-md-6 text-center">
+                                                    <button onclick="window.location.href='#'" role="button" class="ux-button secondary ">Cancel Payment</button>
+                                                </div>
+                                                <div class="col-6 col-md-6 text-center">
+                                                    <button onclick="window.location.href='direct-tax-payment-history.html'" role="button" class="ux-button primary ">Login</button>
+                                                </div>
+                                            </div>
+                                            <div class="row1">
+                                                 <div class="col-12">
+                                                    <div class="secure-img ">
+                                                        <img src="../assets/images/icons/secure.png" alt="secure-img" />
+                                                    </div>
+                                                </div>
+                                             </div>
+                                             <div class="row1">
+                                                <div class="col-12">
+                                                    <div class="mt-2">
+                                                        <ul class="link-list4">
+                                                            <li>
+                                                                <a href="#" class="terms-link">Terms & Conditions</a>
+                                                            </li>
+                                                            <li>
+                                                                <a href="#" class="privacy-policy-link">Privacy Policy</a>
+                                                            </li>
+                                                            <li>
+                                                                <a href="#" class="disclaimer-link">Disclaimer</a> 
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                             </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div id="corporate-info" style="display:none;">
+                                <div class="login-heading">
+                                    <h3>Login</h3>
+                                    <h5>Please login to your Corporate Banking</h5>
+                               </div>
+                                <div class="row1 mt-3">
+                                    <div class="col-12">
+                                        <form action="#" method="#">
+                                            <div class="row1">
+                                                <div class="col-12">
+                                                    <div class="ux-input">
+                                                        <label>Corporate ID</label>
+                                                        <input type="text" placeholder="Enter Corporate ID" required />
+                                                        <a href="#" class="show-keyboard"></a>
+                                                        <p class="error-message"></p>
+                                                    </div>
+                                                </div>
+                                                <div class="col-12">
+                                                    <div class="ux-input">
+                                                        <label>User ID</label>
+                                                        <input type="text" placeholder="Enter User ID" required />
+                                                        <a href="#" class="show-keyboard"></a>
+                                                        <p class="text-right"><a href="javascript:;" class="reg-txt check-availability">Forgot User ID?</a></p>
+                                                        <p class="error-message"></p>
+                                                    </div>
+                                                </div>
+                                                <div class="col-12">
+                                                    <div class="ux-input">
+                                                        <label>Password</label>
+                                                        <input type="password" placeholder="Enter Password" required />
+                                                        <a href="#" class="show-keyboard"></a>
+                                                        <p class="text-right"><a href="javascript:;" class="reg-txt check-availability">Forgot Password?</a></p>
+                                                        <p class="error-message"></p>
+                                                    </div>
+                                                </div>
+                                                <div class="col-12">
+                                                    <div class="ux-input">
+                                                        <label>Enter the text as shown in the image</label>
+                                                        <input type="password" placeholder="Enter Captcha" required />
+                                                        <p class="error-message"></p>
+                                                    </div>
+                                                </div>
+                                                <div class="vspacer5"></div>
+                                                <div class="col-12">
+                                                    <div class="ux-selection">
+                                                        <label class="ux-selection2"> Image Captcha
+                                                            <input type="radio" checked="checked" value="image-captcha" name="captcha-type" />
+                                                            <span class="checkmark"></span>
+                                                        </label>
+                                                    </div>
+                                                    <div class="ux-selection">
+                                                        <label class="ux-selection2"> Audio Captcha
+                                                            <input type="radio" value="audio-captcha" name="captcha-type" />
+                                                            <span class="checkmark"></span>
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                                <div class="col-12">
+                                                    <div class="ux-input">
+                                                        <p class="error-message"></p>
+                                                    </div>
+                                                </div>
+                                                <div class="vspacer10"></div>
+                                                <div class="col-12">
+                                                    <div class="captcha-container">
+                                                        <div class="captcha-box">
+    
+                                                        </div>
+                                                        <div class="refresh-btn">
+                                                            <img src="../assets/images/svg/refresh-g.svg" alt="refresh-icon">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="vspacer20"></div>
+
+                                            <div class="row1">
+                                                <div class="col-6 col-md-6 text-center">
+                                                    <button onclick="window.location.href='#'" role="button" class="ux-button secondary ">Cancel Payment</button>
+                                                </div>
+                                                <div class="col-6 col-md-6 text-center">
+                                                    <button onclick="window.location.href='direct-tax-payment-history.html'" role="button" class="ux-button primary ">Login</button>
+                                                </div>
+                                            </div>
+                                            <div class="row1">
+                                                <div class="col-12">
+                                                    <div class="secure-img ">
+                                                        <img src="../assets/images/icons/secure.png" alt="secure-img" />
+                                                    </div>
+                                                </div>
+                                                <div class="col-12">
+                                                    <div class="tax-wrapper">
+                                                        <ol class="order-list">
+                                                            <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit,</li>
+                                                            <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit,</li>
+                                                            <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit,</li>
+                                                        </ol>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                        <!-- Loginform Container End -->
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- .full-container -->
+
+        <!-- Footer Code Starts Here -->
+        <footer>
+            <div class="global-footer full-footer">
+                <div class="in-glfooter">
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-4 col-xl-6 col-lg-6 col-md-6 col-sm-4">
+                                <div class="glfooter-content">
+                                    <div class="glfooter-box">
+                                        <div class="glcopyright-text"><em>Powered by</em> <img src="../assets/images/kiya-logo.png" /></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-8 col-xl-6 col-lg-6 col-md-6 col-sm-8">
+                                <div class="glfooter-content">
+                                    <div class="glfooter-box">
+                                        <div class="glcopyright-text1">
+                                            <em>Copyright © 2020 Infrasoft Technologies Ltd. All rights reserved.</em>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+        <!-- Footer Code Ends -->
+    </div>
+
+
+    <!-- .prelogin-page -->
+    <div id="importantNotice" class="modal fade" role="dialog">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <div class="mh-bottom">
+                        <div class="row1">
+                            <div class="col-10">
+                                <h6>Important Notice</h6>
+                            </div>
+                            <div class="col-2">
+                                <a href="javascript:;" data-dismiss="modal"><span class="mh-cross"></span></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-body">
+                    <p>"Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit..." "There is no one who loves pain itself, who seeks after it and wants to have it, simply because it is pain..."</p>
+                    <p>"Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit..." "There is no one who loves pain itself, who seeks after it and wants to have it, simply because it is pain..."</p>
+                    <p>"Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit..." "There is no one who loves pain itself, who seeks after it and wants to have it, simply because it is pain..."</p>
+                    <p>"Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit..." "There is no one who loves pain itself, who seeks after it and wants to have it, simply because it is pain..."</p>
+                    <p>"Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit..." "There is no one who loves pain itself, who seeks after it and wants to have it, simply because it is pain..."</p>
+                    <p>"Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit..." "There is no one who loves pain itself, who seeks after it and wants to have it, simply because it is pain..."</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+      <!-- Guidelines Info Popup Start-->
+
+      <div class="popup-bottom lg-popup guidelines-popup">
+        <div class="row1">
+            <div class="col-10">
+                <h4 class="text-left">Guidelines For Online Security</h4>
+            </div>
+            <div class="col-2">
+                <button class="ux-button-icon close-btn">
+                    <img src="../assets/images/svg/close-b.svg" alt="cross-icon" class="img-vsmall">
+                </button>
+            </div>
+        </div>
+        <div class="row1 mt-2">
+            <div class="scroll-content">
+                <div class="content-scroll">
+                   <div class="col-12 p-2">
+                        <p class="m-text"> 
+                            <b>Dear Customer </b> <br/><br/>
+                                With the increase in the popularity of Internet banking, web based frauds are also increasing. So there is a need to understand the modus operandi followed by the attackers and some tips/instructions to be followed to prevent the online fraud. <br/><br/>
+                               To ensure secure access to Internet Banking portal, please use Browser enabled with TLS 1.2 protocol. <a href="https://punjabandsindbank.co.in/document/digital-banking/How-to-Enable-TLS-1-2.pdf" target="_blank">Click Here</a> to view how to enable TLS1.2 in browser 
+                            </p> 
+                            <p class="m-text red-text mt-3">
+                                Phishing Alert- Never respond to emails asking for your Internet Banking Passwords. Never share your Account no/Card no/PIN/password/OTP with anyone over phone, SMS or e-mail. It may lead to fraud. Bank never asks such information
+                            </p>
+                            <div class="clearfix"></div>
+
+                            <h4 class="text-left primary-text mt-5">Tips on Creating Strong Password</h4>
+                            <p class="m-text">Strong passwords are important protections to help you have safer online transactions.</p>
+
+                            <p class="m-text mt-3"> <b>Keys to password strength: length and complexity</b></p>
+                            <p class="m-text mt-2">An ideal password is long and has letters, punctuation, symbols, and numbers.</p>
+                            
+                            <ul class="unorderlist  mt-2">
+                                <li>Whenever possible, use at least 14 characters or more.</li>
+                                <li>The greater the variety of characters in your password, the better.</li>
+                                <li>Use the entire keyboard, not just the letters and characters you use or see most often.</li>
+                            </ul>
+
+                           <p class="m-text mt-3"> <b>Create a strong password you can remember</b></p>
+                           <p class="m-text mt-2">There are many ways to create a long, complex password. Here is one way that may make remembering it easier:</p>
+
+                           <div class="clearfix"></div>
+
+                           <div class="datatable-box1 mt-3 mb-3">
+                            <div class="table-responsivebox">
+                                <table id="dt" class="table border1 table-striped display">
+                                    <thead>
+                                        <tr>
+                                            <th>What to do</th>
+                                            <th>Suggestion</th>
+                                            <th>Example</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr class="no-borders">
+                                            <td>Start with a sentence or two (about 10 words total).</td>
+                                            <td>Think of something meaningful to you.</td>
+                                            <td>Long and complex passwords are safest. I keep mine secret. (10 words)</td>
+                                        </tr>
+                                        <tr class="no-borders">
+                                            <td>Turn your sentences into a row of letters.</td>
+                                            <td>Use the first letter of each word.</td>
+                                            <td>lacpasikms (10 characters)</td>
+                                        </tr>
+                                        <tr class="no-borders">
+                                            <td>Add complexity.</td>
+                                            <td>Make only the letters in the first half of the alphabet uppercase.</td>
+                                            <td>lACpAsIKMs (10 characters)</td>
+                                        </tr>
+                                        <tr class="no-borders">
+                                            <td>Add length with numbers.</td>
+                                            <td>Put two numbers that are meaningful to you between the two sentences.</td>
+                                            <td>lACpAs56IKMs (12 characters)</td>
+                                        </tr>
+                                        <tr class="no-borders">
+                                            <td>Add length with punctuation.</td>
+                                            <td>Put a punctuation mark at the beginning.</td>
+                                            <td>?lACpAs56IKMs (13 characters)</td>
+                                        </tr>
+                                        <tr class="no-borders">
+                                            <td>Add length with symbols.</td>
+                                            <td>Put a symbol at the end.</td>
+                                            <td>?lACpAs56IKMs" (14 characters)</td>
+                                        </tr>
+                                     </tbody>
+                                </table>
+                            </div>
+                         </div>
+
+                         <div class="clearfix"></div>
+
+                                <h4 class="text-left primary-text mt-5">5 Tips to Keep Your Password Secret</h4>
+                                <p class="m-text mt-3"> <b>Follow these 5 Tips to Keep Your Password Secret!!!</b></p>
+                                <ul class="unorder-list-custom3">
+                                    <li>Tip # 1: Don't enter your password in unsafe computers. <br/>
+                                        Computers placed in public places such as- Internet Cafes, airport lounges, & conferences are considered unsafe for doing online transactions. So avoid using such computers for your online financial transactions.</li>
+                                    <li>Tip # 2: Don't reveal your password. <br/>
+                                        Don't provide/ divulge your password<br/>
+                                            <ul class="unorderlist">
+                                                <li>to friends, and family members.</li>
+                                                <li>in response to an E-mail purportedly coming from your Bank.</li>
+                                                <li>to a person over phone posing himself as IT computer security staff/ Computer administrator of your Bank.</li>
+                                            </ul>
+                                    </li>
+                                    <li>Tip # 3: Don't store your password on computer <br/>
+                                        Don't store password in a file in your computer because hackers can search such files. Ideally avoid writing down your password… memorize them!!!</li>
+                                    <li>Tip # 4: Use different password for different account and service <br/>
+                                        Never use same password for all your online accounts, such as- E-mail, Internet Banking, & online services.</li>
+                                    <li>Tip # 5: Change password frequently <br/>
+                                        Change your password on regular interval.</li>
+                                </ul>   
+                                <div class="clearfix"></div>
+            
+                                <h4 class="text-left primary-text mt-5">Prevent Shoulder Surfing</h4>
+                                <p class="m-text mt-3"><b>Shoulder surfing and Prevention</b></p>
+                                <p class="m-text">Shoulder surfing is a technique wherein someone looks over you shoulder, to get information about what you are writing or typing. Shoulder surfing is an effective way to get information in crowded places, such as cyber caffe, 
+                                    because it's relatively easy to stand next to someone and watch as they fill out a form, enter e-Banking User ID and Password, or enter a PIN number at an ATM machine. Shoulder surfing can also be done long distance with the aid of binoculars or other vision-enhancing devices.</p>
+                                <p class="m-text mt-3"><b>To prevent shoulder surfing</b></p>
+                                <p class="m-text">It is recommended that you shield paperwork or your keyboard from view by using your body or cupping your hand. So watch out around you before you use e-Banking from crowded place.</p>
+
+                                <div class="clearfix"></div>
+            
+                                <h4 class="text-left primary-text mt-5">Ensure You are visiting a Legitimate Website</h4>
+                                <p class="m-text mt-3">Cyber criminals use Phishing scams to set up convincing spoofs of legitimate Web sites. They then try to trick users into visiting these Web sites and disclosing personal information, such as your Passwords, ATM Pin etc. <br/><br/>
+                                    Cyber criminals use Web addresses that resemble the name of a well-known company but are slightly altered by adding, omitting, or transposing letters. For example, the address "www.microsoft.com" could appear instead as:
+                                </p>
+                                <ul class="unorderlist mt-3">
+                                    <li>
+                                        <!-- <a href="#" target="_blank">www.micosoft.com </a> -->
+                                        www.micosoft.com 
+                                        </li>
+                                    <li>
+                                        <!-- <a href="#" target="_blank">www.verify-microsoft.com </a> -->
+                                        www.verify-microsoft.com 
+                                    </li>
+                                </ul>
+                                <p class="m-text mt-3"> 
+                                    This is called "typo-squatting" or "cybersquatting." <br/> 
+                                    Typo-squatters and cybersquatters can also create more insidious scams, such as downloading malicious software applications and spyware onto unprotected computers that connect to their sites.<br/><br/>
+                                    So look closely the URL in the address field of your browser when you do online banking or online shopping.
+                                </p>
+
+                                <div class="clearfix"></div>
+            
+                                <h4 class="text-left primary-text mt-5">Protection Against Phishing Attack</h4>
+                                <p class="m-text mt-3"><b>What is Phishing Attack?</b></p>
+                                <p class="m-text"> 
+                                    Phishing is a technique used by scamsters to illegally procure personal information, like Internet Banking User Id and Passwords, Credit Card Number and ATM PIN etc., by sending e-mail.<br/><br/>
+                                    The e-mail appears to be sent by Bank or a well-established organization providing online services. The content of the e-mail is framed in a manner that creates a sense of urgency in the mind of recipient, for example- "We are upgrading our system to make it more secure. Therefore, click on the link below and provide your Internet Banking User ID & Passwords at the earliest; otherwise your Internet Banking services will be de-activated." Customers of leading Banks throughout the world have been targeted by such Phishing e-mails.
+                                </p>
+                                
+                                <p class="m-text mt-3"><b>Types of Phishing Attacks</b></p> 
+                                <ul class="unorderlist mt-3">
+                                    <li>
+                                        <p class="m-text">
+                                            <b>E-mail-based Phishing attacks:</b>
+                                        </p> 
+                                        <p class="m-text  mt-2">
+                                            Where millions of e-mails are distributed randomly. The e-mail typically includes a hyperlink, which is often codified so that the destination of hyperlink is not apparent to the recipient. Once the recipient clicks on the hyperlink he/she is taken to a spoofed Website, which is a copy of a Bank's Website. The recipient is asked to enter Internet Banking User ID and Passwords. The User ID & Password collected are then stored and forwarded to cyper-criminals.
+                                        </p>
+                                    </li>
+                                    <li>
+                                        <p class="m-text">
+                                            <b>Malware-based Phishing attacks:</b>
+                                        </p> 
+                                        <p class="m-text  mt-2">
+                                            Where a piece of Trojan (malware) is loaded onto user's computer by exploiting vulnerability in Operating System or Browser software. This Trojan can have many capabilities but typically it identifies when the user accesses a Bank's Internet Banking website and then either logs the subsequent keys or takes a screen image. This information is then forwarded to the cyber-criminals.
+                                        </p>
+                                    </li>
+                                </ul>
+
+                                <div class="clearfix"></div>
+
+                                <p class="m-text mt-3"><b>Protection Against Phishing Attack</b></p> 
+                                <ul class="unorderlist mt-3">
+                                    <li>
+                                        <p class="m-text">
+                                            <b>Do not click on hyperlinks in e-mails</b>
+                                        </p> 
+                                        <p class="m-text  mt-2">
+                                            Never click on hyperlinks in e-mails unless you are sure about the destination of the hyperlink. The hyperlink may take you to a spoofed website asking you to enter personal sensitive information or the hyperlink can secretly installed malicious software in your computer.
+                                        </p>
+                                    </li>
+                                    <li>
+                                        <p class="m-text">
+                                            <b>Verify SSL Certification (https://)</b>
+                                        </p> 
+                                        <p class="m-text  mt-2">
+                                            Whenever you enter your Internet Banking User ID and Passwords or any other sensitive information, always check that the website address (URL) starts with https:// not http:// (notice 's' in https://). Also check the validity of SSL Certificate used in the URL.
+                                        </p>
+                                    </li>
+                                    <li>
+                                        <p class="m-text">
+                                            <b>Never Enter personal sensitive information in a pop-up window</b>
+                                        </p> 
+                                        <p class="m-text  mt-2">
+                                            A common Phishing technique is to open a pop-up window when you click on a hyperlink in Phishing e-mail.
+                                        </p>
+                                    </li>
+                                    <li>
+                                        <p class="m-text">
+                                            <b>Never download software or files from an unknown source</b>
+                                        </p> 
+                                        <p class="m-text  mt-2">
+                                            Downloading software or file from unknown sources can secretly install malicious program (Trojan) into your computer. This malicious program then captures your sensitive information (as you type from keyboard) and sends the same to hacker sitting on remote computer on Internet.
+                                        </p>
+                                    </li>
+                                    <li>
+                                        <p class="m-text">
+                                            <b>Use an Antivirus and keep it up-to-date</b>
+                                        </p> 
+                                        <p class="m-text  mt-2">
+                                            Regularly scan your computer with Antivirus to detect and remove any malicious program got installed into your computer.
+                                        </p>
+                                    </li>
+                                    <li>
+                                        <p class="m-text">
+                                            <b>And last, get educated</b>
+                                        </p> 
+                                        <p class="m-text  mt-2">
+                                            Educate yourself on the trend of attacks and how to prevent these types of attacks. This is because hackers also employ new techniques of attack. Various online resources are available to get yourself updated.
+                                        </p>
+                                    </li>
+                                </ul>
+
+                                <div class="clearfix"></div>
+
+                                <h4 class="text-left primary-text mt-5">How Hackers Attack</h4>
+                                 <ul class="unorder-list-custom3 mt-3">
+                                    <li>
+                                        <p class="m-text">
+                                            <b>How Attack Starts:</b>
+                                        </p> 
+                                        <p class="m-text  mt-2">
+                                            Online Banking frauds rely on a sophisticated scheme but starts with a mundane activity: an employee checking his/her e-mail. The employee unwittingly clicks on a link or attachment that contains malware, such as a keylogging virus.
+                                        </p>
+                                    </li>
+                                    <li>
+                                        <p class="m-text">
+                                            <b>Next: Modus Operandi</b>
+                                        </p> 
+                                        <p class="m-text  mt-2">
+                                            The hacker then hacks into online Banking account with stolen login credentials. The hackers usually hack into systems using IP Spoofing so that Bank doesn't recognize them. The money stolen from the hacked accounts are transferred to Bank account of 'money mules'. <br/><br/>
+                                            People become 'money mules' by answering vaguely worded classified ads offering opportunity to work flexible hours from home as, say, a bookkeeper or funds-transfer agent. They are instructed to open a bank account to handle transactions for the supposed employer, into which the stolen money is deposited, and then to wire it to an overseas account from a commercial wire service such as Western Union.<br/><br/>
+                                            The hackers generally keep transactions under some amount because a withdrawal of that amount or higher requires the bank to file a currency transaction report to RBI.
+                                         </p>
+                                    </li>
+                                    <li>
+                                        <p class="m-text">
+                                            <b>Prevention:</b>
+                                        </p> 
+                                        <ul class="unorderlist mt-3">
+                                            <li>
+                                               If you don't know what it is, no matter what it is, never click on it. Never, never, never. If there's something you come across that looks like something you would be interested in, such as- 'Invest in XYZ fund and get 30% return or your money will double in three years!' As a thumb rule don't click it and make it your habit.
+                                            </li>
+                                            <li>
+                                              Company should disable e-mail access from its Banking computer, create clear policies for handling unsolicited e-mails, and consider requiring multiple officers using different computers to approve bank transaction.
+                                            </li>
+                                        </ul>
+                                    </li>
+                                 </ul>
+
+                                 <div class="clearfix"></div>
+
+                                 <h4 class="text-left primary-text mt-5">Preventing Spyware/ Malware</h4>
+                                  <ul class="unorder-list-custom3 mt-3">
+                                     <li>
+                                         <p class="m-text">
+                                             <b>IMPORTANT : </b>
+                                         </p> 
+                                         <p class="m-text  mt-2">
+                                            Ensure that the Computer, Mobile Phone, Smart Phone used for conducting Internet Banking Transactions are regularly updated with antivirus/firewall and the same are up-to-date
+                                         </p>
+                                     </li>
+                                     <li>
+                                         <p class="m-text">
+                                             <b>The very first thing</b>
+                                         </p> 
+                                         <p class="m-text  mt-2">
+                                            Install a good Spyware Blocker/ Antivirus. <br/>
+                                            There are two ways to purchase a Security Application: (a) Buy a comprehensive Security Suite that include all such as: an antivirus, anti spyware, and a firewall. And, (b) buy separate application for each of them.<br/><br/>
+                                            Decision is based on the capacity of your computer, if it can handle the load of a comprehensive Security Suite, then go for it. Otherwise purchase different products.<br/><br/>
+                                            But be sure you have one .... 
+                                          </p>
+                                     </li>
+                                     <li>
+                                         <p class="m-text">
+                                             <b>Install a Good Firewall</b>
+                                         </p> 
+                                         <p class="m-text  mt-2">
+                                            A firewall is a barrier against anything that could compromise the security of your computer and keeps out things such as spyware, viruses, malware, hackers, etc.<br/><br/>
+                                            Internet is a public network, which means that any computer that is connected to the Internet can connect to another one. A firewall scans all incoming and outgoing traffic and upon examination stops or approves that traffic. Combined with anti-spyware programs firewall boosts the security of your computer.
+                                          </p> 
+                                     </li>
+                                     <li>
+                                        <p class="m-text">
+                                            <b>Update, update, and update !</b>
+                                        </p> 
+                                        <p class="m-text  mt-2">
+                                            Because new spyware and viruses are written everyday and it is essential that you keep up-to-date your computer. Windows updates, security updates, patches, definitions, your firewall, your anti-virus program, your anti-spyware program - make sure all are current. You can configure your programs to update automatically or you can do them yourself.   
+                                       </p> 
+                                    </li>
+                                    <li>
+                                        <p class="m-text">
+                                            <b>Be Safe</b>
+                                        </p> 
+                                        <p class="m-text  mt-2">
+                                            Follow these tips while you surf Internet:
+                                       </p> 
+                                    </li>
+                                    <li>
+                                        <p class="m-text">
+                                            <b>Don't Click On It</b>
+                                        </p> 
+                                        <p class="m-text  mt-2">
+                                            Online Banking frauds rely on a sophisticated scheme but starts with a mundane activity: a customer checking his/her e-mail. The customer unwittingly clicks on a link or attachment that contains malware, such as a keylogging virus. <br/><br/>
+                                            If you don't know what it is, no matter what it is, never click on it. Never, never, never. If there's something you come across that looks like something you would be interested in, such as- 'Want to lose 25 pounds in 25 hours? Click here for this free easy tip!' As a thumb rule don't click it and make it your habit.<br/><br/>
+                                            Below is a pop-up that it very tempting to click on; in fact, you almost automatically do it because it looks legitimate and you need to know if you're infected, right? Well, it's not legitimate; in reality it is an advertisement that probably contains adware or spyware or a Trojan of some type. How can you tell? Look in the lower left-hand corner, all the way at the bottom. circled it in red.<br/><br/>
+                                        </p> 
+                                        <p class="text-center">
+                                            <img src="../assets/images/banner/popup-img.jpg" alt="popup-img" class="popup-img img-fluid">
+                                        </p>
+                                     </li>
+                                    <li>
+                                       <p class="m-text mt-2">
+                                            <b>
+                                                Now How to Close a Pop-up, if one pop-ups on your screen: <br/>
+                                                Now you have come to know that the pop-up that you have come across is not legitimate. How to close it?
+                                           </b>
+                                        </p>
+                                        <p class="m-text  mt-2">
+                                            Take a look at the below pop-up:
+                                       </p> 
+                                       <p class="text-center">
+                                            <img src="../assets/images/banner/popup-img2.jpg" alt="popup-img2" class="popup-img img-fluid">
+                                        </p>
+                                       <p class="m-text  mt-2">
+                                            Note that there are two X's to close the pop up with. Now companies are putting an X in the upper-right hand corner inside the pop up so that they can confuse you. The X that you should always click on to close the pop-up is circled red; it is on the outside of the pop-up itself. If you close the pop up by clicking the inner X (circled in green) then you have just activated the adware/spyware. In other words, never click inside the box! <br/><br/>
+                                            Now if you are still confused which X to choose to close the pop-up, just press down Alt key on your keyboard and then press F4 key. Note that Alt key should remain down when you click F4. This is for windows operating system. And, for Mac use CMD and W.
+                                        </p>
+ 
+                                    </li>
+                                    <li>
+                                        <p class="m-text mt-2">
+                                             <b>
+                                                One More Sample of Pop-up
+                                            </b>
+                                         </p>
+                                         <p class="m-text  mt-2">
+                                            Be careful of pop-ups that include free download/ install of a program, such as this:
+                                        </p> 
+                                        <p class="text-center ">
+                                             <img src="../assets/images/banner/popup-img3.jpg" alt="popup-img3" class="popup-img img-fluid">
+                                         </p>
+                                        <p class="m-text  mt-2">
+                                            All downloads have this warning (circled in red) that you would normally adhere to on the bottom. Just accept this as normal - for a good and bad download and check out the rest of the download box. Since this is an unwanted download, close the box with the X in the upper right-hand corner and don't click on the "Don't Instal" button, as shown below:
+                                         </p>
+                                         <p class="text-center ">
+                                            <img src="../assets/images/banner/popup-img4.jpg" alt="popup-img4" class="popup-img img-fluid">
+                                        </p>
+                                     </li>
+                                     <li>
+                                        <p class="m-text mt-2">
+                                             <b>
+                                                Prevent Phishing
+                                            </b>
+                                         </p>
+                                         <p class="m-text  mt-2">
+                                            How many times have you gotten an e-mail from someone you don't know, has your name on it and looks enticing enough to open it? Just clicking on a link within that particular e-mail can get you in trouble. If the sender is not who they portray themselves to be, then someone is Phishing. With you as the fish, and the e-mail as the bait. For example, you get an e-mail from your Bank asking you to provide your User ID and Password because Bank is doing some sort of enhancements in their computer system and alike.
+                                             The content of the e-mail will have a sense of urgency that if you don't provide the details your online Banking account will be de-activated. Keep this in mind:<br/><br/>
+                                            "Legitimate businesses don't ever ask you for personal information in an e-mail. It's as simple as that."<br/><br/>
+                                            The best practice is to never click on a link in an e-mail. If you really want to know what's up, then go and type the exact address of the link in the address bar of your browser and see what's up. If there is nothing there, you know somebody has been Phishing.
+                                         </p> 
+                                    </li>
+                                    <li>
+                                        <p class="m-text mt-2">
+                                             <b>
+                                                Be Vigilant & Read All   
+                                            </b>
+                                         </p>
+                                         <p class="m-text  mt-2">
+                                            Read everything! If you go to install a program, don't believe if it's been recommended as a safe program by anyone, read the "fine print" that comes before you start installing. There is a EULA (End User License Agreement) at the beginning of any programs installation. Read it! Most are fine, but others have what is called bundled software. See this installation image:
+                                        </p> 
+                                        <p class="text-center ">
+                                             <img src="../assets/images/banner/popup-img5.jpg" alt="popup-img5" class="popup-img img-fluid">
+                                         </p>
+                                        <p class="m-text  mt-2">
+                                            It's very easy to whip through an install and just click on "I agree to the terms above" just to get the installation over, but if you don't read through that whole EULA (or the rest of the installation), you may find that you have not only installed a program you wanted, but one (or more) that you didn't want, as well.
+                                         </p>
+                                    </li>
+                                    <li>
+                                        <p class="m-text mt-2">
+                                             <b>
+                                                Be Secure, Maintain your Privacy 
+                                            </b>
+                                         </p>
+                                         <p class="m-text  mt-2">
+                                            Identity theft (ID) is a huge problem these days. And at the heart of every ID theft is a computer or computer network. Maintain privacy of your personal financial information such as- ATM card number, ATM Pin, Credit card number, CVV number, Internet Banking User ID, & Password, and so on. Ensure nobody gets these details when you shop, eat in a restaurant, operating your account in a cyber cafe, and any such public places. Secure these details as you secure your wallet in busy market.
+                                        </p> 
+                                    </li>
+                                    <li>
+                                        <p class="m-text mt-2">
+                                             <b>
+                                                Use a Good Password
+                                            </b>
+                                         </p>
+                                         <p class="m-text  mt-2">
+                                            A secure password is one that can't be guessed. For example, if your name is Amit Kumar then Amit1234, kumar1234, amit999, kumar888, or alike are not good passwords. Hackers have amazing password cracking capabilities, so the longer and more jumbled the password, the better. And don't use the same password for each account because if they get one account, they get them all.
+                                        </p> 
+                                    </li>
+                              </ul>
+
+                            <div class="clearfix"></div>
+            
+                                <h4 class="text-left primary-text mt-5">Procedure to Report Unauthorized Access</h4>
+                                <p class="m-text mt-3"> "If there is an unauthorized access of your information, accounts or disputed transactions in Internet Banking Service. Kindly report the same immediately to Customer Care at 1800 419 8300 or visit your nearest branch."</p>
+                      
+                        </div>
+                    </div>       
+              </div>
+         </div>
+    </div>
+
+    <!-- Guidelines Info Popup End-->
+
+
+
+     <!-- Privacy Policy Popup Start-->
+
+     <div class="popup-bottom lg-popup privacy-policy-popup">
+        <div class="row1">
+            <div class="col-10">
+                <h4 class="text-left">Privacy Policy</h4>
+            </div>
+            <div class="col-2">
+                <button class="ux-button-icon close-btn">
+                    <img src="../assets/images/svg/close-b.svg" alt="cross-icon" class="img-vsmall">
+                </button>
+            </div>
+        </div>
+        <div class="row1 mt-2">
+            <div class="scroll-content">
+                <div class="content-scroll">
+                   <div class="col-12 p-2">
+                        <p class="m-text"> 
+                            Punjab & Sind Bank recognizes your need for privacy and security as you visit our website. 
+                            By maintaining our commitment to your privacy, we at Punjab & Sind Bank will ensure that 
+                            we respect the inherent trust that you place in us. <br/><br/> 
+
+                            While your privacy is important for us and keeping customer information secure, and using 
+                            it only as our customers would want us to, is a top priority for all of us at Punjab & Sind 
+                            Bank. Hence, Punjab & Sind Bank will only use these personal data in accordance with the 
+                            purposes set forth in this Privacy Statement and is committed to safeguarding the personal 
+                            information collected. Here then, is our promise to our individual customers:   
+                        </p> 
+                          <div class="clearfix"></div>
+
+                          <ul class="unorderlist  mt-2">
+                                <li>We have adopted strict standards of security and confidentiality in maintaining personal 
+                                    information of users shared with us.
+                                </li>
+                                <li>We will limit the collection and use of customer information to the minimum required to 
+                                    deliver superior service to our customers, that includes advising our customers about 
+                                    our products, services and other opportunities, and to administer our business. 
+                                </li>
+                                <li>We will permit only authorized employees, who are trained in the proper handling of 
+                                    customer information, to have access to that information. Employees who violate our 
+                                    Privacy Promise will be subject to our normal disciplinary process.
+                                </li>
+                                <li>
+                                    We will not reveal customer information to any external organization unless we have 
+                                    previously informed the customer in disclosures or agreements, or authorized by the 
+                                    customer, or are required by law. Punjab & Sind Bank disclaims any liability arising from 
+                                    use or disclosure of information to any external organization. 
+                                </li>
+                                <li>
+                                    We will always maintain control over the confidentiality of our customer information. We 
+                                    may, however, facilitate relevant offers from reputable companies. These companies are 
+                                    not permitted to retain any customer information unless the customer has specifically 
+                                    expressed interest in their products or services. 
+                                </li>
+                                <li>
+                                    Whenever we hire other organizations to provide support services, we will require them 
+                                    to conform to our policy standards and to allow us to audit them for compliance.
+                                </li>
+                                <li>
+                                    We  will  not  use  or  share  -  internally  or  externally  -  personally identifiable  medical 
+                                    information  for  any  purpose  other  than  the  underwriting  or  administration  of  a 
+                                    customer's  policy,  claim  or  account,  or  as  disclosed  to  the  customer  when  the 
+                                    information is collected, or to which the customer consents. 
+                                </li>
+                                <li>
+                                    We will attempt to keep customer files complete, up to date, and accurate. We will 
+                                    inform  customers  how  and  where  to  conveniently  access  their  account  information 
+                                    (except when we are prohibited by law), and how to notify us about errors which we will 
+                                    promptly correct.
+                                </li>
+                                <li>
+                                    We will continuously assess ourselves to ensure that customer privacy is respected. 
+                                </li>
+                             </ul>
+ 
+                         <div class="clearfix"></div>
+
+                                <h4 class="text-left mt-5">Internet Privacy Policy </h4>
+                                <p class="m-text mt-3">  
+                                    Personally  Identifiable  Information  ("Information")  means  information  that  is  collected 
+                                    through web site operated by Punjab & Sind Bank ("we" or "us") and how it may later be 
+                                    disclosed. <br/><br/> 
+
+                                    Punjab & Sind Bank endeavors to safeguard and ensure the security of the information 
+                                    provided by the Customer. The privacy and protection of your personal information is vitally 
+                                    important to us. We use firewalls, Intrusion prevention system (IPS) and routers to create a 
+                                    gateway between the Internet and our internal computer network. This gateway restricts 
+                                    access to our internal computer network. Data transmissions that are sent through our 
+                                    firewall and routers to our internal computer network are subject to verification by the 
+                                    firewalls and routers. We are able, thus, to control the data transmissions that gain access 
+                                    to our internal computer network. We use 128-bit encryption, for the transmission of the 
+                                    information, which is currently the permitted level of encryption in India. 
+                                    Unfortunately,  no  data  transmission  over  the  Internet  can  be  guaranteed  to  be  fully 
+                                    secured. Accordingly, despite our efforts to protect your personal information, we cannot 
+                                    ensure or warrant the security of any information you transmit to us. You transmit all such 
+                                    information at your own risk. However, once we receive your transmission, we make our 
+                                    best effort to ensure its security on our systems.<br/><br/> 
+
+                                    The Customer would be required to cooperate with Punjab & Sind Bank in order to ensure 
+                                    the security of the information, and it is recommended that the Customers necessarily 
+                                    choose their passwords carefully such that no unauthorized access is made by a third party. 
+                                    To make the password complex and difficult for others to guess, the Customers should use 
+                                    combination  of  alphabets,  numbers  and  special  characters  (like  !,  @,  #,  $  etc.).  The 
+                                    Customers should undertake not to disclose their password to anyone or keep any written 
+                                    or other record of the password such that a third party could access it.  
+                                    You can visit our web site and find out about Punjab & Sind Bank products and services and 
+                                    use value-added services that may be available without giving us any Information about 
+                                    you. If you must register at a web site to use one of its features or are interested in being 
+                                    contacted  by  Punjab  &  Sind  Bank  about  its  products  and/or  services,  you  may  input 
+                                    Information about yourself at the web site. Where available, you may update your contact 
+                                    Information online. Otherwise, you will need to contact Punjab & Sind Bank at the telephone 
+                                    number provided in order to do so. Any Information you provide to us will be handled in 
+                                    accordance with the "Punjab & Sind Bank Privacy Policy."
+                                </p>
+                                  
+                                <div class="clearfix"></div>
+            
+                                <h4 class="text-left mt-5">Sources of Information</h4>
+                                <p class="m-text mt-3">
+                                    When you visit this web site Punjab & Sind Bank may collect personal information about 
+                                    you, either directly (where you are asked to provide the information) or indirectly. The 
+                                    Information we collect about you comes from the following sources:
+                                </p>
+
+                                <ul class="orderlist mt-3">
+                                    <li>
+                                        <p class="m-text">
+                                            Information we receive from you on applications or other forms, such as your name, 
+                                            address, and telephone number etc.
+                                        </p> 
+                                     </li>
+                                    <li>
+                                        <p class="m-text">
+                                            Information about your transactions with us, our affiliates, or non-affiliated third parties, 
+                                            such as your account balances, payment history, and account activity. 
+                                        </p>
+                                    </li>
+                                    <li>
+                                        <p class="m-text">
+                                            Information we receive from a Customer reporting agency such as your credit bureau 
+                                            reports and other information relating to your creditworthiness, and 
+                                        </p>
+                                    </li>
+                                    <li>
+                                        <p class="m-text">
+                                            Information we receive about you from other sources, such as your employer and other 
+                                            third parties.  
+                                        </p>
+                                    </li>
+                                </ul>
+                                 
+                                <div class="clearfix"></div>
+            
+                                <h4 class="text-left mt-5">Purposes of information processing</h4>
+                                <p class="m-text mt-3">
+                                    Punjab & Sind Bank respects the privacy of your personal information. Any personal 
+                                    information provided by you to Punjab & Sind Bank through this website will be used solely 
+                                    for the purpose of providing you with the services you have requested at this website and 
+                                    for other related purposes including improving the design and marketing of our range of 
+                                    services and related products for customer use, updating and enhancing Punjab & Sind 
+                                    Bank's records, development of web statistics, understanding your financial needs, advising 
+                                    you of other products and services which may be of interest to you and for fraud prevention 
+                                    purposes. The information you provide will be used to contact you when necessary, e.g. to 
+                                    notify you about functionality changes to the web site and to offer services that you may 
+                                    find helpful (provided you have not opted out to receive such services). <br/><br/>
+
+                                    Other  than  to  those  individuals  and  entities  listed  below  who  are  under  a  duty  of 
+                                    confidentiality to Punjab & Sind Bank, your details will not be revealed by Punjab & Sind 
+                                    Bank to any external body, unless Punjab & Sind Bank has your permission, or is under a 
+                                    legal obligation or to protect and defend Punjab & Sind Bank's or its Affiliates/ Members/ 
+                                    Constituents/  Other  persons  rights,  interests  or  property  or  to  enforce  the  terms  and 
+                                    conditions of the products or services or any other duty to do so. The information provided 
+                                    by you at this website may be disclosed by Punjab & Sind Bank to:-
+                                </p>
+                                <ul class="unorderlist mt-3">
+                                    <li>Regulators</li>
+                                    <li>Lawyers</li>
+                                    <li>External Auditors</li>
+                                    <li>To any agent, contractor or third party service provider who provides administrative, 
+                                        telecommunications,  computer,  payment  or  securities  clearing,  credit  bureaus  or 
+                                        other services to us in connection with the operation of its business.
+                                    </li>
+                                </ul>
+                                <p class="m-text mt-3"> 
+                                    The customer hereby  grants his consent to  Punjab & Sind Bank for use, disclosure  or 
+                                    sharing of this aforesaid information at the discretion of the Bank and shall not hold the 
+                                    Bank liable for such use, disclosure or sharing of information. <br/><br/>
+                                    Punjab & Sind Bank disclaims any liability for any damage or loss suffered by the Customer 
+                                    as a result of sharing of information with any of the parties as mentioned above. 
+                                </p>
+
+                                <div class="clearfix"></div>
+            
+                                <h4 class="text-left mt-5">Data Retention</h4>
+                                <p class="m-text mt-3"> 
+                                    Data provided by you is retained as long as the purpose for which the data was collected 
+                                    continues.  The  data  is  then  destroyed  unless  its  retention  is  required  to  satisfy  legal, 
+                                    regulatory or accounting requirements or to protect Punjab & Sind Bank's interests. 
+                                 </p>
+                               
+                                <div class="clearfix"></div>
+
+                                <h4 class="text-left mt-5">Third party sites</h4>
+                                <p class="m-text mt-3"> 
+                                    Please note that this Privacy Statement does not extend to third party sites linked to this web site.
+                                 </p>
+                               
+                                <div class="clearfix"></div>
+
+                                <h4 class="text-left mt-5">Internet Communications</h4>
+                                <p class="m-text mt-3"> 
+                                    In order to maintain the security of our systems, protect our staff, record transactions, and, 
+                                    in certain circumstances, to prevent and detect crime or unauthorized activities, Punjab & 
+                                    Sind Bank reserves the right to monitor all internet communications including web and 
+                                    email traffic into and out of its domains. 
+                                 </p>
+                               
+                                <div class="clearfix"></div>
+
+                                <h4 class="text-left mt-5">Customer Obligations </h4>
+                                <p class="m-text mt-3"> 
+                                    The Customers shall not disclose to any other person, in any manner whatsoever, any 
+                                    information relating to Punjab & Sind Bank or its group companies of a confidential nature 
+                                    obtained in the course of availing the services through the website. Failure to comply with 
+                                    this obligation shall be deemed a serious breach of the terms herein and shall entitle Punjab 
+                                    & Sind Bank or its group companies to terminate the services, without prejudice to any 
+                                    damages, to which the customer may be entitled otherwise. 
+                                 </p>
+                               
+                                <div class="clearfix"></div>
+
+                                <h4 class="text-left mt-5">How to Contact Us</h4>
+                                <p class="m-text mt-3"> 
+                                    If you have any query or clarifications about this Privacy Statement you can send us an 
+                                    email at <a href="mailto:hoit_ibc@psb.org.in" target="_blank">hoit_ibc@psb.org.in</a> or contact us at the following address:- 
+                                 </p>
+                                 <p class="m-text mt-3">
+                                    <b>
+                                        The In-charge,<br/>
+                                        Punjab & Sind Bank<br/> 
+                                        Internet Banking Cell,<br/> 
+                                        HO Information Technology Department,<br/>  
+                                        2nd Floor, 21, Rajendra Place,<br/> 
+                                        New Delhi – 110008.
+                                    </b>
+                                 </p>
+                               
+                                <div class="clearfix"></div>
+
+                                <h4 class="text-left mt-5">Contacting You</h4>
+                                <p class="m-text mt-3"> 
+                                    In providing your telephone, facsimile number, postal and e-mail address or similar details, 
+                                    you  agree  that  Punjab  &  Sind  Bank  may  contact  you  by  these  methods  to  keep  you 
+                                    informed about Punjab & Sind Bank products and services or for any other reason. If you 
+                                    prefer not to be kept informed of Punjab & Sind Bank products and services, please contact 
+                                    Punjab & Sind Bank by E-mail. 
+                                 </p>
+                               
+                                <div class="clearfix"></div>
+
+                                <h4 class="text-left mt-5">Amendments</h4>
+                                <p class="m-text mt-3"> 
+                                    Punjab & Sind Bank reserves the right to revise and amend sections of its prevailing Privacy 
+                                    Statement at any time and will place any such amendments on this website. Please check 
+                                    this statement from time to time for any changes. The revised version will be deemed to be 
+                                    applicable from the first date of publication on this website. The effective date of this policy, 
+                                    as stated below, indicates the last time this policy was revised  or materially changed. 
+                                    Checking  the  effective  date  below  allows  you  to  determine  whether  there  have  been 
+                                    changes since the last time you reviewed the policy.  <br/><br/>
+                                    <b class="mt-2">Effective Date: 07-12-2010 </b> <br/><br/>
+                                    
+                                    This  Privacy  Statement  is  not  intended  to,  nor  does  it,  create  any  contractual  rights 
+                                    whatsoever or any other legal rights, nor does it create any obligations on Punjab & Sind 
+                                    Bank in respect of any other party or on behalf of any party. 
+                                 </p>
+                               
+                                <div class="clearfix"></div>
+                        </div>
+                    </div>       
+              </div>
+         </div>
+    </div>
+
+    <!-- Privacy Policy Popup End-->
+
+
+    <!-- Disclaimer Popup Start -->
+
+    <div class="popup-bottom lg-popup disclaimer-popup">
+        <div class="row1">
+            <div class="col-10">
+                <h4 class="text-left">Disclaimer Policy</h4>
+            </div>
+            <div class="col-2">
+                <button class="ux-button-icon close-btn">
+                    <img src="../assets/images/svg/close-b.svg" alt="cross-icon" class="img-vsmall">
+                </button>
+            </div>
+        </div>
+        <div class="row1 mt-2">
+            <div class="scroll-content">
+                <div class="content-scroll">
+                   <div class="col-12 p-2">
+                        <p class="m-text"> 
+                            Punjab & Sind Bank has made all efforts to ensure that the contents of this website do not 
+                            contain  any  mistakes,  omissions,  inaccuracies,  typographical  and  other  errors.  However 
+                            Punjab & Sind Bank assumes no responsibility if any such error is there in the contents of 
+                            the website. Punjab & Sind Bank makes no warranty or representation that the contents of 
+                            such websites are error free, correct and accurate.<br/><br/> 
+
+                            Though Punjab & Sind Bank has taken all commercially reasonable care to prevent any virus 
+                            or other harmful components or other destructive material to enter the site however, it does 
+                            not guarantee or warrant that this website or the material that may be downloaded from the 
+                            website  does  not  contain  any  virus  or  other  harmful  components  or  other  destructive 
+                            material.  Punjab  &  Sind  Bank  expressly  disclaims  any  liability  for  any  harm  or  damage 
+                            which may be caused due to such virus or harmful components in this website. <br/><br/> 
+
+                            Punjab  &  Sind  Bank  has  taken  all  steps  to  protect  the  customer  information.  However  it 
+                            shall not be liable or responsible and expressly disclaims any liability or responsibility arising 
+                            on account of disclosure of such information through unauthorized access of the website or 
+                            otherwise. <br/><br/> 
+
+                            This Website contains hyper-links to web sites, which are not maintained by Punjab & Sind 
+                            Bank.  Links  to  other  websites  are  provided  for  the  convenience  of  users.  A  link  to  an 
+                            external site does not imply an endorsement of the views, information or products provided 
+                            or held by such websites. Punjab & Sind Bank is not responsible for the contents of those 
+                            websites  and  shall  not  be  liable  for  any  damages  or  loss  arising  from  access  to  those 
+                            websites. Use of the hyper-links and access to such linked websites are entirely at user's 
+                            own risk.. The contents of these sites are not verified or endorsed by Punjab & Sind Bank in 
+                            any  way.  Punjab  &  Sind  Bank  makes  no  guarantee,  warranty  or  representation  that  the 
+                            contents  of  such  websites  are  error  free  and  correct  and  do  not  contain  any  harmful 
+                            contents. <br/><br/> 
+
+                             User specifically agrees that Punjab & Sind Bank shall not be responsible for any harm or 
+                            damage which may be caused due to any virus or harmful components which may be there 
+                            or enter in the contents of the website. User agrees that Punjab & Sind Bank shall not be 
+                            responsible  for  any  unauthorized  access  to  or  alteration  of,  transmissions  of  data  or  any 
+                            material sent or received or any transaction entered into through Punjab & Sind Bank site / 
+                            service. User specifically agrees that Punjab & Sind Bank is not responsible or liable for any 
+                            threatening, defamatory, obscene, offensive or illegal contents or conduct of any other party 
+                            or any infringement of other rights including intellectual property rights. Punjab & Sind Bank 
+                            is  not  responsible  for  any  content  sent  using  and/or  included  in  Punjab  &  Sind  Bank 
+                            site/service by any third party. <br/><br/>
+
+                            All information submitted to Punjab & Sind Bank via this site shall be deemed and remain 
+                            the property of Punjab & Sind Bank. Punjab & Sind Bank shall be free to use any ideas, 
+                            concepts, know-how or techniques contained in information provided by a visitor to this site. <br/><br/>
+
+                            Not  all  products  and  services  are  available in  all locations.  User's  eligibility  for  particular 
+                            products  and  services  is  subject  to  final  determination  and  acceptance  of  Punjab  &  Sind 
+                            Bank.
+                         </p> 
+                          <p class="m-text mt-3">
+                                Users agree to indemnify and to keep Punjab & Sind Bank fully and effectively indemnified 
+                                against any action, liability, cost, claim, damage, proceeding or expense suffered or incurred 
+                                by Punjab & Sind Bank arising from or which is directly or indirectly related to  
+                         </p>
+                         <div class="clearfix"></div>
+
+                         <ul class="unorderlist  mt-2">
+                                <li>User's  access  to  and  /or  user  of  Punjab  &  Sind  Bank's  website  and  /or  any  other 
+                                    person or entity's use of this service or website where such person or entity was able 
+                                    to access the service or website using legitimate user's id and/or password; or 
+                                </li>
+                                <li>Any breach or non-observance of any of these terms and conditions by users or any 
+                                    other person or entity's use of this service or website where such person or entity 
+                                    was able to access the service or website using legitimate user's id and/or password  
+                                </li>
+                            </ul>
+
+                            <div class="clearfix"></div>
+ 
+                            <p class="m-text">
+                                This  website  and  disclaimer  shall  be  governed  by  and  constructed  in  accordance  with  all 
+                                applicable laws of India.  All disputes arising out of or in connection with this disclaimer shall 
+                                be submitted to the exclusive jurisdiction of the courts of Delhi. <br/><br/> 
+
+                                Punjab & Sind Bank reserves the right to revise and amend this disclaimer notice from time 
+                                to  time  and  any  revised  version  will  be  deemed  to  be  applicable  from  the  first  date  of 
+                                publication on this website.  <br/><br/> 
+
+                                Please  read  above  terms  and  conditions  carefully.   By  accessing  this  site  and  any  pages 
+                                thereof, you agree to be bound by the terms and conditions stated above. If you do not 
+                                agree  to  the  terms  and  conditions  stated  above,  do  not  access  this  site  or  any  pages 
+                                thereof. 
+                            </p>
+                        </div>
+                    </div>       
+              </div>
+         </div>
+    </div>
+
+    <!-- Disclaimer Popup End -->
+
+
+    <!-- Terms & Conditions Popup Start-->
+
+    <div class="popup-bottom lg-popup terms-conditions-popup">
+        <div class="row1">
+            <div class="col-10">
+                <h4 class="text-left">Terms and Conditions</h4>
+            </div>
+            <div class="col-2">
+                <button class="ux-button-icon close-btn">
+                    <img src="../assets/images/svg/close-b.svg" alt="cross-icon" class="img-vsmall">
+                </button>
+            </div>
+        </div>
+	  <div class="row1 mt-2">
+         <div class="scroll-content">
+             <div class="content-scroll">
+                <div class="col-12 p-2">
+                    <ol class="orderlist-custom">
+                        <li>
+                            <h5 class="text-left bold">DEFINITIONS</h5> 
+                              <p class="m-text  mt-2 mb-2">In these Terms and Conditions, unless the context indicates otherwise, the following words and phrases shall have the meanings indicated against them: 
+                               </p>
+                                <ul class="unorder-list-custom">
+                                    <li><b>Account </b> refers to the User's Savings Bank Account and/or Current Account and/or Fixed Deposit Account or any other type of account so designated by the Bank to be eligible account(s) for the operations through the use of Digital Banking.</li>
+                                    <li><b>Digital Account </b> refers to the User’s Savings Bank Account opened online digitally using the new OMNI Channel Digital Banking Solution.</li>
+                                    <li><b>Bank</b> refers to the Punjab & Sind Bank, a body corporate under the Banking Companies (Acquisition and Transfer of Undertakings) Act of 1980, having its Head Office at 21, Bank House, Rajendra Place, New Delhi 110125. (This expression shall, unless it is repugnant to the subject or context thereof, includes its successors and assigns).</li>
+                                    <li><b>Customer</b> refers to Customer named in the Application Form and / or the person who logs in to OMNI Channel App and Portal using his/her ID & Password/MPIN [and shall, where the context requires, includes any authorized representative of the Customer, accepted by the Bank].</li>
+                                    <li><b>Confidential Information</b> refers to the information obtained by the customer from/or through the Bank for availing various services through Digital Banking.</li>
+                                    <li><b>Digital Banking</b> means the Omni Channel Digital Banking Services provided by the Bank to the Users on its digital platform Web Portal and or through mobile application (android and iOS) to access account information, products and other services (including Transaction of financial and non-financial in nature) as may be provided by the Bank from time to time in accordance with the terms and conditions.</li>
+                                    <li><b>Instruction</b> means any request or instruction that is received by the Bank from the customer through Digital Banking Services.</li>
+                                    <li><b>Loan Account</b> means any loan applied from the OMNI Channel App and Portal or any existing loan account with the bank.</li>
+                                    <li><b>Username</b> refers to the login ID that a customer sets for themselves to access the online services.</li>
+                                    <li><b>Login Password</b> refers to the alphanumeric password that Customers sets themselves against the Username.</li>
+                                    <li><b>MPIN</b> refers to the six-digit numeric password that Customers set themselves against the login credentials for easy access.</li>
+                                    <li><b>TPIN</b> refers to six-digit numeric password that Customers set themselves against the transaction credentials for transacting through OMNI Channel Platform.</li>
+                                    <li><b>Hard Token</b> A hard token is a secured way of authenticating transactions and is recommended for high value transactions. A Hard token is a hardware device that connects to your computing device through USB and stores digital signature certificates. Punjab and Sind Bank Omni channel solution supports Class 2 & Class 3 certificates issued by Certifying Authorities (CA) granted license to issue a digital signature certificate under Section 24 of the Indian IT-Act 2000.</li>
+                                    <li><b>Soft Token</b> A soft token is a secure alternative to mobile SMS based authentication where Punjab & Sind Bank OMNI Channel application, a mobile application installed on customer's mobile generates a one-time dynamic password known as soft token for authenticating transactions in Omnichannel Banking.</li>
+                                    <li><b>One Time Password (OTP)</b> refers to one time 6 digit (or such other higher digits/ lower digits as may be approved by the Bank) pass code that would be sent to a Customer's mobile number registered in the Bank's record.</li>
+                                    <li><b>Personal Information</b> refers to the information about the User submitted to the Bank in connection with the Digital Banking Service.</li>
+                                </ul>
+                                <p class="m-text mt-3 mb-2">The website means OMNI Channel Portal.</p>
+                                <ul class="unorder-list-custom">
+                                    <li><b>Apply Online Services</b> are the Bank's services which provide the facility of applying for account opening, ATM Services, Cheque Book services, Loan Products etc through the OMNI Channel App and Portal</li>
+                                    <li><b>"Applicant"</b> refers to an applicant named in the Application Form and shall, where the context requires, include Co-applicant(s) with the Applicant.</li>
+                                    <li><b>"Application"</b> refers to an Applicant's Account opening, Loan application etc to the Bank through OMNI Channel App and Portal. The Application Form referred herein includes but not limited to forms submitted/digitally in the OMNI Channel App and Portal.</li>
+                                    <li><b>"Eligibility"</b> refers to an Applicant's eligibility under the particular loan scheme. The eligibility displayed to an applicant in the OMNI Channel App and Portal depends upon the inputs provided by the applicant and will be subject to the final assessment by the Bank’s official.</li>
+                                    <li><b>In-Principle approval letter</b> refers to the letter conveying the indicative eligibility of the Customer for the loan and will be subject to the final assessment by the Bank’s official.</li>
+                                    <li><b>Third party</b> product refers to any product and/or service of a party other than the Bank which is offered through the OMNI Channel App and Portal or the Bank as an intermediary.</li>
+                                    <li><b>User</b> refers to a registered customer of the Bank using the Digital Banking and Financial services.</li>
+                                </ul>
+                         </li>
+                         <li>
+                            <h5 class="text-left bold">APPLICABILITY OF TERMS AND CONDITIONS</h5> 
+                              <p class="m-text  mt-2">These Terms and conditions (or 'Term') mentioned herein form the contract between the User and the Bank for using the Digital services on Digital Banking platform through the Bank’s OMNI Channel App or through the web portal. By applying for Digital Banking Services and accessing the service, the User acknowledges and accepts these Terms and conditions. Any conditions relating to the accounts of customer other than these Terms will continue to apply except that in the event of any conflict between these Terms and the account conditions, these Terms will continue to prevail. The Terms mentioned herein shall include any subsequent modifications or changes to it duly made by the Bank and published in the site or Bank's website www.punjabandsindbank.co.in. The agreement shall remain valid until it is replaced by another agreement or terminated by either party or account is closed, whichever is earlier.<br/><br/>
+                                     Any terms and conditions relating to the any schemes/ services of the Bank other than these Terms will continue to apply. 
+                               </p>
+                         </li>
+                         <li>
+                            <h5 class="text-left bold">APPLICATION FOR Digital Banking Services</h5> 
+                              <p class="m-text  mt-2">The Bank may offer Digital Banking Service to selected customers at its discretion. The customer would need to be an Internet Banking/ Mobile Banking user or have access to the Internet. The acceptance of the application and the acknowledgement thereof does not automatically imply the acceptance of application for Digital Banking Services. The Bank may advise from time to time the Web/APP software such as Browser, Android, and iOS versions, which are required for using Digital Banking Services. There will be no obligation on the part of the Bank to support all the versions of this Internet software.<br/> <br/> 
+                                Though the Digital Banking facility is very convenient, and the Bank uses the advanced technological/security features on account, the technological knowledge and discipline required for operating such accounts and because of the inherent risks involved in case of failure to comply the confidentiality and other obligations of the customers, all users are advised to familiarize themselves with the correct and proper use of Digital Banking Service and the terms and conditions mentioned herein, before opting or using the Digital Banking facility.<br/> <br/> 
+                                  Existing customers can access the OMNI Channel App and Portal by registering themselves using their existing Internet Banking User ID and Password/ Debit Card/ Bank Token. New Users who are not Punjab & Sind Bank customers will have to open a online Savings account or through Branch Visit and complete the creation of User ID and Password by registering themselves as new users. Users who are Punjab & Sind Bank customers and have ATM/Debit card will proceed with their registration by entering Debit card details and proceed with creation of new Username and password under Register button. Users who are Punjab & Sind Bank customers and do not have ATM/Debit card, may request for a Bank Token. The request will be acknowledged by the Bank Official of the user’s base branch post which a 6 digit OTP will be sent to the registered Mobile Number of the Customer present in Bank’s records. The user will enter this 6 digit OTP and proceed for registration. 
+                               </p>
+                         </li>
+                         <li>
+                            <h5 class="text-left bold">DIGITAL BANKING SERVICES </h5> 
+                            <p class="m-text  mt-2">
+                                The Bank shall endeavor to provide to the User through Digital Banking services such as inquiry about the balance in his/her account(s), details about transactions, statement of account, request for issue of cheque-books, request for transfer of funds between accounts of the same User and other accounts, International fund transfer, creation of Deposits (Fixed Deposit/ Recurring Deposit), Mobile Top Up, DTH Recharge, Utility Bill Payments, View Income Tax Statement (Form 26AS), Loan Interest Certificate, TDS enquiry, Generation of Form 15G/H, Loan against Fixed Deposit, Payment of Central and State Government taxes, Payment of fees of schools/colleges/universities, Donations and many other facilities as the Bank may decide to provide from time to time. These facilities shall be offered in a phased manner at the discretion of the Bank. The Bank at its sole discretion may also make additions/deletions to the Digital Banking Services being offered without giving any prior notices or reasons. The availability /non-availability of a particular service may be advised through the OMNI Channel App and Portal of the Bank or written communication or any other mode as the bank finds fit. The User shall not use or permit to use Digital Banking Service or any related service for any illegal or improper purposes.<br/><br/>
+                                The User would be asked to set a User ID and a Password (to be used at the time of login) by the Bank during registration. This User ID and Password will be used by the user access the Digital Banking Services. User can set an MPIN for easy access to the OMNI Channel Application on their mobile. User can set a TPIN to perform transactions in their account.<br/><br/>
+                                As a safety measure the User shall change the password as frequently as possible, at least once in 120 days. In addition to User ID and Password the Bank may, at its discretion, advise the User to adopt any other means of authentication including but not limited to ATM cards, One Time SMS Password, PKI and/or Digital Certification issued by Bank, licensed or approved Certifying Authorities or vendors.<br/><br/>
+                                The User shall not attempt or permit others to attempt accessing the account information stored in the computers and computer networks of the Bank through any means. In the event the Customer authorizes more than one person as the User, the Customer shall notify to the Bank the mode of operation by such persons (User), based on which the Bank shall issue necessary operational instructions to the User.<br/><br/>
+                                Non Internet Banking Customers can gain access to Digital Banking by registering themselves using their Debit/ATM card details or through Bank Token.
+                            </p>
+                        </li>
+
+                        <li>
+                            <h5 class="text-left bold">USER ID AND PASSWORD/MPIN/TPIN</h5> 
+                            <ol class="order-list-custom  mt-2">
+                                <li><h5 class="text-left bold">Username Policy</h5>
+                                    <p class="m-text">
+                                        The following rules are applicable for setting/ modifying the Username 
+                                    </p>
+                                    <ul class="unorder-list-custom2">
+                                        <li>The Username used in Omnichannel Digital Banking Solution shall be a minimum of 8 and a maximum of 20 characters with no spaces in-between.</li>
+                                        <li>Username can be alphanumeric with support for special characters like dot (.) and underscore (_)</li>
+                                    </ul>
+                                </li>
+                                <li><h5 class="text-left bold">PSB Password Creation and Maintenance.</h5>
+                                    <p class="m-text  mt-2">
+                                        The User shall :
+                                    </p>
+                                    <ul class="unorder-list-custom2">
+                                        <li>keep the Password totally confidential and not reveal them to any other person including any person representing or claimed to be representing the Bank;</li>
+                                        <li>Omnichannel Digital Banking application Password shall be a minimum of 8 and a maximum of 16 characters with no spaces in-between.</li>
+                                        <li>Password shall be alphanumeric and should contain at least</li>
+                                        <li>One Alphabet in upper case</li>
+                                        <li>One Alphabet in Lower case</li>
+                                        <li>One Numeral</li>
+                                        <li>One Special Character</li>
+                                        <li>The Password should not be a derivative of the user ID.</li>
+                                        <li>The Password should not be vulnerable to a dictionary attack.</li>
+                                        <li>Modified password cannot be same as any of the 3 previous passwords.</li>
+                                        <li>In case a customer does not login into his Internet Banking for more than 180 days, his password will expire and he will mandatorily be asked to change his password to access his Internet Banking.</li>
+                                     </ul>
+                                </li>
+                                <li><h5 class="text-left bold">MPIN & TPIN policy</h5>
+                                    <p class="m-text  mt-2">
+                                        Below rules should be considered while setting the MPIN/ TPIN
+                                    </p>
+                                    <ul class="unorder-list-custom2">
+                                        <li>MPIN/ TPIN should be 6-digit number</li>
+                                        <li>Set MPIN/ TPIN and Confirm MPIN/ TPIN should be same.</li>
+                                        <li>MPIN/ TPIN should not be simple</li>
+                                        <li>MPIN/ TPIN should not contain more than 2 sequential or 2 repetitive numbers like 123456 or 111111 or 123123 etc.</li>
+                                        <li>MPIN/ TPIN cannot be same as last 3 MPIN/ TPINs</li>
+                                        <li>MPIN and TPIN should be different. </li>
+                                        <li>MPIN and TPIN shall be changed every 6 months</li>
+                                     </ul>
+                                </li>
+                                <li><h5 class="text-left bold">Resetting of User ID/Password/MPIN/TPIN</h5>
+                                    <p class="m-text  mt-2">
+                                        User can reset the set User Id on OMNI Channel App and Portal<br/><br/>
+                                        In the event of forgetting Password, User can reset it by using the ‘Forgot Password?’ link available on the Login page of OMNI Channel App and Portal<br/><br/>
+                                        In the event of Forgetting MPIN, User can retrieve it by using User ID and Password on login page of the OMNI Channel App.<br/><br/>
+                                        In the event of Forgetting TPIN, User can regenerate it by using debit card or bank token(through branch visit)  on “My Profile” page after logging into the OMNI Channel portal or App.<br/>
+                                    </p>
+                                 </li>
+                                 <li><h5 class="text-left bold">Non-liability of the bank in case of Compromise of User ID and Password/ MPIN/TPIN/OTP/PKI Token(s)</h5>
+                                    <p class="m-text  mt-2">
+                                        The User agrees and acknowledges that Bank shall in no way be held responsible or liable if the User incurs any loss as a result of compromise of User ID and Password /MPIN/TPIN/OTP/PKI Token(s) by the User himself or User has failed to follow the Digital Banking Service instructions as published by the Bank on the site from time to time. User agrees to fully indemnify and hold harmless Bank in respect of the same.
+                                    </p>
+                                 </li>
+                                 <li><h5 class="text-left bold">Locking of User ID</h5>
+                                    <p class="m-text  mt-2">
+                                        Digital Banking Password / User ID/MPIN/TPIN shall get locked after a number of incorrect attempts, up to such number (at present 3 failed attempts) as may be decided by the Bank from time to time. The same shall be available after 30 mins or any subsequent modifications or changes to it duly made by the Bank.
+                                    </p>
+                                 </li>
+                                 <li><h5 class="text-left bold">Deactivation of User ID</h5>
+                                    <p class="m-text mt-2">
+                                        The Bank has the discretion to deactivate a Digital Banking User ID, if the same has not been used for a period defined by the Bank. Also the Bank has the right to deactivate the Digital Banking login of User due to unsatisfactory behavior in the account.
+                                    </p>
+                                 </li>
+                            </ol>
+                        </li>
+                        
+                        <li>
+                            <h5 class="text-left bold">CYBER CRIME</h5> 
+                            <p class="m-text  mt-2">
+                                The Internet user is susceptible to various cybercrimes like phishing, vishing (Voice phishing), SMSing (phishing through SMS), compromise of User's system security etc., that could affect Payment Instructions / other instructions to the Bank. Whilst the Bank shall endeavor to protect the interest of the customers, there cannot be any guarantee from such cybercrimes and other actions that could affect Payment Instructions / other instructions to the Bank including but not limited to delay or failure in processing the instructions. The User shall separately evaluate all such risks and the Bank shall not be held responsible for the losses arising out of such cybercrimes. The User understands that doing a digital Banking transaction at a Cybercafe/shared computer terminal is risky and shall avoid using the services of a Cybercafe/shared computer terminal to do any Digital Banking transactions. While accessing Bank's Digital Banking site from Bank's e-Corner or Kiosk, the User should ensure the confidentiality of his/her login credentials and should not allow anyone near him/her or take their help to complete the transactions.<br/><br/>
+                                Users are advised to take special care in respect of the mobile number/SIM card registered with the Digital banking facility. In case of loss of mobile handset bearing the number registered with the Bank or in case of change in the mobile number, the user is advised to take special care to ensure that the said number is not misused to carrying out unauthorized transactions in the Digital banking facility. The users are also advised to take appropriate steps for preventing the mobile service provider from issuing duplicate SIM card without the proper authentications of the user.
+                            </p>
+                        </li>
+
+                        <li>
+                            <h5 class="text-left bold">SOFTWARE COMPATIBILITY</h5> 
+                            <p class="m-text  mt-2">
+                                The Bank may advise from time to time, the Internet software such as Browser, Operating System for Mobile App which are required for using Digital Banking Services. There will be no obligation on the part of the Bank to support all the versions of such Internet software.
+                            </p>
+                        </li>
+
+                        <li>
+                            <h5 class="text-left bold">ERRORS OF OMMISION & COMMISSION</h5> 
+                            <p class="m-text  mt-2">
+                                The filling in of applicable data for transfer of funds and/or issue of Demand Drafts, cheques would require proper, accurate and complete details.<br/><br/>
+                                For instance, the customer is aware that:
+                            </p>
+                            <ul class="unorder-list-custom2 mt-2 mb-2">
+                                <li>
+                                    He/she would be required to fill in the correct account number of the person to whom the funds are to be transferred. 
+                                </li>
+                                <li>
+                                    he/she would be required to fill in the correct details such as the name of the payee (who may or may not have an account with the Bank), mailing address, amount of the Demand Draft and the city/state where the Demand Draft is payable.
+                                </li>
+                            </ul>
+                            <p class="m-text mt-2">
+                                In the event of any inaccuracy in this regard, the funds could be transferred to incorrect accounts, or the Demand Draft may be incorrectly issued or sent to a wrong address and there is no guarantee of recovery of the same thereafter. The User shall therefore take utmost care to ensure that there are no mistakes and errors and that the information given by him/her to the Bank or fed in the website or App in this regard are error free, accurate, proper and complete in all aspects. The User agrees to indemnify the Bank from any loss due to an error on his/her part. <b>As per Regulatory instructions credit will be effected based solely on the beneficiary account number information and the beneficiary name particulars will not be used there for. Hence the Bank shall not be responsible for any wrong credit on account of mistake in the account number provided by the User for availing such services.</b><br/><br/>
+                                On the other hand in the event of the User's account receiving an erroneous credit by reason of a mistake committed by some other person or for any other reason, the Bank shall be entitled to reverse the erroneous credit at any time whatsoever without his/her consent. The User shall be liable and responsible to the Bank and accede to accept the Bank's instructions without questions for any unfair or unjust gain obtained by him/her as a result of the same.
+                            </p>
+                        </li>
+
+                        <li>
+                            <h5 class="text-left bold">TECHNOLOGY RISKS</h5> 
+                            <p class="m-text  mt-2">
+                                The site of the Bank may require maintenance and during such time it may not be possible to process the request of the customers. This could result in delays and/or failure in the processing of instructions.<br/><br/>
+                                The User understands that the Bank disclaims all and any liability, whether direct or indirect, whether arising out of loss or otherwise arising out of any failure or inability by the Bank to honor any customer instruction for whatsoever reason.
+                            </p>
+                        </li>
+
+                        <li>
+                            <h5 class="text-left bold">JOINT ACCOUNTS</h5> 
+                            <p class="m-text  mt-2">
+                                The Digital Banking Services will be available in case of Joint accounts to primary account holder only if the mode of operation is indicated as 'either or survivor' or 'anyone or survivor' or 'former or survivor'. For 'former or survivor' account, Digital Banking facility may be available only to the 'former'. For 'either or survivor' and 'anyone or survivor' accounts, Digital Banking may be provided to anyone of the joint account holders on their request. All the other joint account holder/s shall expressly agree with this arrangement and give their consent on the application form for use of Digital Banking Services. In case of 'either or survivor' and 'anyone or survivor' accounts if any of the joint account holder(s) gives "stopping of operations" instructions for the use of Digital Banking Service in writing, all of the Digital Banking Services will be discontinued for the User. In case of 'former and survivor' account, such instructions will not be issued by other account holder.
+                            </p>
+                        </li>
+
+                        <li>
+                            <h5 class="text-left bold">FUTURE ACCOUNTS</h5> 
+                            <p class="m-text  mt-2">
+                                In the event of future accounts opened by the User under the same Customer ID/CIF, then the terms and conditions shall automatically apply to such further use of the OMNI Channel Digital Banking by the User.
+                            </p>
+                        </li>
+
+                        <li>
+                            <h5 class="text-left bold">LIMITS</h5> 
+                            <p class="m-text  mt-2">
+                                The User is aware that the Bank may from time to time impose maximum and minimum limits including daily limits on transfer of funds that may be transferred or amount of the Demand Draft that can be issued by virtue of the payment instructions given hereunder. The User acknowledges that the same is to reduce the risks on him/her. For instance, the Bank may impose transaction restrictions within particular periods or amount restrictions within a particular period or even each transaction limits. The User shall be bound by such limits imposed and shall strictly comply with them. The Bank shall put an appropriate message in this regard on the relevant page or the website/App.
+                            </p>
+                        </li>
+
+                        <li>
+                            <h5 class="text-left bold">CHARGES</h5> 
+                            <p class="m-text  mt-2">
+                                The Bank at its discretion from time to time may specify charges for usage of Digital Banking Services and/or additional charges for selected services which is published on the Website of the Bank ( <a href="https://punjabandsindbank.co.in/" target="_blank">www.punjabandsindbank.co.in </a>) and also at the Digital Banking website/ App and any further changes in the charges/fees shall also be notified on the above places. All out of pocket expenses where-ever applicable will be borne by the User. The User and the other account holder(s) (in case of Joint accounts) hereby authorize(s) the Bank to recover all charges related to Digital Banking Services as determined by the Bank from time to time by debiting the User(s) account or any of Joint account holder'(s) account(s).
+                            </p>
+                        </li>
+
+                        <li>
+                            <h5 class="text-left bold">MAINTENANCE OF SUFFICIENT BALANCE</h5> 
+                            <p class="m-text  mt-2">
+                                User shall ensure that there are sufficient funds (or drawing power for credit facilities) in any Account for transactions through the Digital Banking, and the Bank shall not be liable for any consequences arising out of its failure to carry out the instructions due to inadequacy of funds and/or credit facilities provided always that Bank shall at its sole discretion, be entitled to carry out the instructions notwithstanding such inadequacy without seeking the prior approval from or notice to user and the user shall be responsible to repay with interest the resulting overdraft, advance or credit thereby created and for all related to costs and charges at the rates as may be determined by the Bank. Bank may, at its discretion, levy penal charges for non-maintenance of the minimum balance. Bank may withdraw the provision of Digital Banking, wholly or partly, if at any time the amount of deposit falls short of the required minimum as aforesaid and / or if the service charges remain unpaid, without giving any further notice to the user and / or without incurring any liability or responsibility whatsoever by reason of such withdrawal.
+                            </p>
+                        </li>
+
+                        <li>
+                            <h5 class="text-left bold">RIGHT TO SET OFF AND LIEN</h5> 
+                            <p class="m-text  mt-2">
+                                Bank shall have the right of set off and lien, irrespective of any other lien or charge, present as well as future, on the account(s) held by user(s) or in any other account, whether in single name or joint names to the extent of all outstanding dues, whatsoever arising as a result of the Digital Banking services extended to and/or used by the user.
+                            </p>
+                        </li>
+
+                        <li>
+                            <h5 class="text-left bold">FUNDS TRANSFER</h5> 
+                            <p class="m-text  mt-2">
+                                The User shall not use or attempt to use Digital Banking Services for funds transfer without sufficient funds in the relative Digital Banking Services account or without a pre-existing arrangement with the Bank for the grant of an overdraft. The Bank will endeavor to effect such funds transfer transactions received through Digital Banking Services provided there are sufficient funds available in the User's account. The Bank shall not be liable for any omission to make all or any of the payments or for late payments due to circumstances beyond the control of the Bank. In the event of overdraft created due to oversight/inadvertently, the User will be liable to pay the interest on such overdrawn amount, as decided by the Bank from time to time. The above clause shall also be applicable in bulk fund transfers.
+                            </p>
+                            <ol class="order-list-custom  mt-2">
+                                <li><h5 class="text-left bold">FUNDS TRANSFER TO OTHER ACCOUNTS/Prepaid CARDS</h5>
+                                    <p class="m-text mt-2">
+                                        The User accepts that he/she will be responsible for keying in the correct account number/other particulars of the beneficiary for the funds transfer including bulk fund transfer request. In no case, the Bank will be held liable for any erroneous transactions incurred arising out of or relating to the User entering wrong/incorrect/incomplete account number, information of the beneficiary and/or any other particulars.<br/><br/>
+                                        If funds transfer including bulk fund transfer is made available to the User, it may be used for transfer of funds between users own accounts and/or from User account to accounts belonging to third parties maintained at the Bank and/or at other Banks. In the event, such transfer of funds is to accounts belonging to third parties maintained at any other Bank, which falls under the network of Reserve Bank of India's Electronic Fund Transfer System, the same shall be governed by the terms and conditions applicable to National Electronic Fund Transfer ("NEFT") and Real-Time Gross Settlement System ("RTGS") of the Reserve Bank of India as provided in the Site as well as corporate website of the Bank ( <a href="https://punjabandsindbank.co.in/" target="_blank">www.punjabandsindbank.co.in</a> ), and the website of Reserve Bank of India ( <a href="https://rbi.org.in/" target="_blank"> www.rbi.org.in</a> ).<br/><br/>
+                                        In case of fund transfer through IMPS/UPI, the same shall be governed by terms and conditions applicable to IMPS as provided in the website of the bank ( <a href="https://punjabandsindbank.co.in/" target="_blank">www.punjabandsindbank.co.in</a> ) as well as ( <a href="https://www.npci.org.in/" target="_blank">www.npci.org.in</a> ).
+                                    </p>
+                                 </li>
+                                <li><h5 class="text-left bold">BILL PAYMENTS</h5>
+                                    <p class="m-text mt-2">
+                                        The User agrees and accepts the Digital Banking Services as provided by the Bank at his/her requests to carry out his/her bill payments through Digital Banking Services of the Bank as made available to him/her from time to time. If the bill amount exceeds the maximum limit set up by the User for "Auto Pay", the bill will be set for manual payment. The User has to provide correct identification details as registered with the biller. 
+                                        In case of any change in the identification details, it is the User's responsibility to register the changes immediately. Any dispute on bill details will be settled directly by the User with the Biller and the Bank's responsibility is limited to provision of information only. The User shall make payments at least a few* working days prior to the due date of the bill. The User further agrees that it shall solely be the User's responsibility to schedule payments at least a few* working days prior to the due date of the bill. 
+                                        In the event of late payment, the User shall be liable for late payment charges and other consequence as may be enforced by the Biller. The User has no objection whatsoever to the billing company providing his/her billing details to the Bank. (* a few working days may mean 1 to 5 working days, depending upon biller and varies from biller to biller.)
+                                        <br/><br/>
+                                        The User unconditionally agrees that he/she shall not hold the Bank liable for:
+                                    </p>
+                                    <ul class="unorder-list-custom2">
+                                        <li>Such transactions that are carried out on his/her instructions by the Bank in good faith.</li>
+                                        <li>Not carrying out such instructions where the Bank has reason to believe (which decision of the Bank shall not be questioned/disputed by the User) that the instructions are not genuine or are otherwise unclear, improper, vague or doubtful</li>
+                                        <li>Accepting instructions given by any one of the users in case of joint accounts.</li>
+                                        <li>For any loss or damage incurred or suffered by him/her due to any error, defect, failure or interruption in the provision of bill payment services arising from or caused by any reason whatsoever.</li>
+                                        <li>Withdrawing/suspending the facility wholly/partially. However, the Bank will endeavor to notify the user through its website or through any legally recognized medium of communication or otherwise as found suitable by the Bank.</li>
+                                    </ul>
+                                    <p class="m-text mt-2">
+                                        The user agrees that the record of instructions given and transactions with the Bank shall be conclusive proof and binding for all purposes and can be used as evidence in any proceedings.
+                                    </p>
+                                </li>
+                                <li><h5 class="text-left bold">MERCHANT PAYMENTS</h5>
+                                    <p class="m-text mt-2">
+                                        The Bank provides the facility of payment for transactions executed on Internet through different sites. The Bank will execute such transactions and will be responsible for transferring the amount debited from the User's account to the Service /merchants' account. The Bank shall not be held responsible for failure of such transactions. In no event shall the Bank be held responsible/liable for any informational content provided on any such site or for any deficiency in the services/products offered by such sites.
+                                    </p>
+                                 </li>   
+                             </ol>   
+                        </li>
+
+                        <li>
+                            <h5 class="text-left bold">STANDING INSTRUCTIONS/SCHEDULED PAYMENTS</h5> 
+                            <p class="m-text  mt-2">
+                                The User can set 'Standing Instructions' or 'Schedule Payments' as on a required date i.e. the date on which the Users account shall get debited in the functionality where it is available. If the User wishes to modify / cancel this 'Standing Instruction / Scheduled Payments', the same should be done at least one day prior to the scheduled date. Users are advised to keep track of all such 'Standing Instructions' or 'Scheduled Payments' and the Bank shall not be responsible for not effecting any such transactions for whatsoever reasons. In the event, user de-links his account from digital banking, all the subsequent/ future scheduled payments will not be executed.
+                            </p>
+                        </li>
+
+                        <li>
+                            <h5 class="text-left bold">TRANSACTION PROCESSING TIME</h5> 
+                            <p class="m-text  mt-2">
+                                All the instructions for transactions received before the cut off time of the specified transaction, will be given effect to instantaneously unless until some processing work or maintenance activity is being done or some unavoidable circumstances beyond the control of the Bank occur. : Inter Bank Fund Transfer, Intra Bank Fund Transfer, IMPS, stop payment etc.
+                            </p>
+                        </li>
+
+                        <li>
+                            <h5 class="text-left bold">DOCUMENTS REQUIRED FOR TRANSACTION PROCESSING</h5> 
+                            <p class="m-text  mt-2">
+                                The User shall be responsible for submitting necessary documents and information that the Bank may require along with any request for any service under Digital Banking. If any request for a service is such that it cannot be given effect to unless it is followed up by requisite documentation, the Bank shall not be required to act on the request until it receives such documentation from the User.
+                            </p>
+                        </li>
+
+                        <li>
+                            <h5 class="text-left bold">AUTHORITY TO THE BANK</h5> 
+                            <p class="m-text  mt-2">
+                                Banking transactions in the User's account(s) are permitted through Digital Banking Channel only after authentication of the User ID and Password of the User. The User irrevocably and unconditionally authorizes the Bank to access all his/her linked account(s) for effecting banking and other transactions performed by the User through the Digital Banking Services. The instructions of the User shall be effected only when such information is in accordance with the prescribed procedure. The User grants express authority to the Bank for carrying out the banking transactions performed/requested by him/her through Digital Banking Services. The Bank shall have no obligation to verify the authenticity of any transaction received from the User through Digital Banking Service or purported to have been sent by the User via Digital Banking Services, other than by means of verification of the User ID and the Password. The display or printed output that is generated by the User at the time of operation of Digital Banking Services is a record of the operation of the Internet access and shall not be construed as the Bank's record of the relative transactions. The Bank's own records of transactions maintained through computer systems or otherwise shall be accepted as conclusive and binding for all purposes. All transactions arising from the use of Digital Banking Services to operate a joint account, shall be binding on all the joint account holders, jointly and severally, notwithstanding that one amongst such joint account holders only operates the accounts through Digital Banking Services.<br/><br/>
+                                The User irrevocably agrees to maintain safety and complete confidentiality of User ID and the Password/OTP/MPIN/TPIN/PKI Token(s). The User further agrees that the Bank shall in no event be liable for the transactions carried out through User ID and Password/OTP/MPIN/TPIN/PKI Token(s) and that user shall not be entitled to disown such transactions.<br/><br/>
+                                The Bank may at any time without giving notice or reasons, suspend or terminate all or any of the Digital Banking Services or their use by the User.
+                            </p>
+                        </li>
+
+                        <li>
+                            <h5 class="text-left bold">ACCURACY OF INFORMATION</h5> 
+                            <p class="m-text  mt-2">
+                                A customer shall provide such information as the Bank may from time to time reasonably request for the purposes of providing the services. The User is responsible for the correctness of information supplied to the Bank through the use of Digital Banking Services or through any other means such as electronic mail or written communication. The Bank accepts no liability for the consequences arising out of erroneous/incomplete/incorrect information supplied by the User. If the User suspects that there is an error in the information supplied to the Bank by him/her, he/she shall advise the Bank at the earliest. The Bank will endeavor to correct the error wherever possible on a 'best efforts' basis. If the User notices an error in the account information supplied to him/her through Digital Banking Service, he shall advise the Bank at the earliest. The Bank will endeavor to correct the error promptly and adjust any interest or charges arising out of the error. It is clarified that the information that may be sought by the Bank mentioned in the clause shall not include the User ID, Password, OTP, MPIN, TPIN or PKI Token(s) available to the User.
+                            </p>
+                        </li>
+
+                        <li>
+                            <h5 class="text-left bold">LIABILITY OF THE USER</h5> 
+                            <p class="m-text  mt-2">
+                                The User shall be liable for all consequences on account of:
+                            </p>
+                            <ol class="order-list  mt-2">
+                                <li> 
+                                    <p class="m-text">
+                                        Non-compliance of terms and conditions mentioned herein.
+                                    </p>    
+                                </li>
+                                <li> 
+                                    <p class="m-text">
+                                        If he/she has breached the Terms and conditions or contributed or caused the loss by negligent actions such as the following:
+                                    </p>  
+                                    <ul class="unorder-list-custom2 mt-2">
+                                        <li>In disclosing or failing to take all reasonable steps to prevent disclosure of the User ID and/or Passwords/OTP/MPIN/TPIN/PKI Token(s) to anyone including Bank staff and/or failing to advise the Bank of such disclosure immediately and thereby blocking the Digital Banking transaction in his account.</li> 
+                                        <li> Not advising the Bank immediately about unauthorized access to or erroneous transactions in the account(s) through the Digital Banking Services.</li>
+                                     </ul>    
+                                </li>
+                                <li> 
+                                    <p class="m-text">
+                                        Notwithstanding anything contained in clause (2) above, the User shall be liable for the consequences arising out of disclosure of User ID and/or Password (including MPIN, TPIN and PKI Token(s)) to anyone, unauthorized access to or erroneous transactions in his account, even if he inform the Bank about such things immediately or in a reasonable time of occurrence of the same.
+                                    </p>    
+                                </li>
+                                <li> 
+                                    <p class="m-text">
+                                        The User shall be liable and responsible for all transactions carried out through the User ID and Password of the User.
+                                    </p>    
+                                </li>
+                                <li> 
+                                    <p class="m-text">
+                                        In the event of inadvertent compromise of User ID and/or Password by the User, the User has to block/lock his Digital Banking facility through the options provided by the bank.  If the user has complied to the terms and conditions and has advised the bank through the options provided, immediately after he/she suspects that his/her password(s) is known to another person and/ or notices unauthorized transactions(s) in his/ her account, he/she shall not be liable for losses arising out of the unauthorized transaction(s) occurring in the accounts after the receipt of such advice by the BANK.
+                                    </p>    
+                                </li>
+                                <li> 
+                                    <p class="m-text">
+                                        As many of the services through the Digital are authenticated or permitted by the One Time Password sent to the customer's registered mobile number, it will be sole responsibility and obligations of the User to secure his mobile number registered with the Bank and also to ensure that the OTP or other messages emanated from the Bank are not accessed by any person.
+                                    </p>    
+                                </li>
+                            </ol>   
+                        </li>
+
+                        <li>
+                            <h5 class="text-left bold">LIABILITIES OF THE BANK</h5> 
+                            <ul class="unorder-list-custom2 mt-2">
+                                <li>The Bank shall not be liable for any unauthorized transactions in the account(s) through the use of Digital Banking Services which can be attributed to the fraudulent or negligent conduct of the User.</li> 
+                                <li>The Bank shall not be liable to the account holder(s) for any damages whatsoever whether such damages are direct, indirect, incidental, consequential and irrespective of whether any claim is based on investment or any other loss of any character or nature whatsoever and whether sustained by the account holder(s) or any other person, if Digital Banking access is not available in the desired manner for reasons including but not limited to natural calamity, fire and other natural disasters, legal restraints, faults in the telecommunication network or Internet or network failure, software or hardware error or any other reasons beyond the control of the Bank.</li>
+                                <li>The Bank shall endeavor to take all possible steps to maintain secrecy and confidentiality of its customer account(s)/information but shall not be liable to the account holder(s) for any damages whatsoever caused on account of breach of secrecy/confidentiality due to reasons beyond the control of the Bank.  The bank shall not be liable for any loss due to unauthorized transfer of funds through hacking, phishing, vishing, social engineering or any other fraudulent means.</li>
+                                <li>Bank at its discretion, for valid reasons, may refuse to execute any instructions / loan request placed by the User.</li>
+                                <li>The loan eligibility is tentative, and the Bank assumes no liability for such quote, which is based on the inputs provided by the User. Further, loan eligibility may vary depending upon the Bank’s assessment, changes in interest rate, margin, processing fee and/or terms and conditions of the respective loan scheme.</li>
+                                <li>The validity period of such "In-principle Approval" would be guided by the features of the product / scheme for which the Customer has submitted his loan application. Final sanction of the loan will depend on satisfactory KYC compliance, Income of the applicant/co-applicant, his/their credit worthiness, satisfactory status of documents submitted by the applicant, acceptance of the Collateral Security and/or Third Party Guarantee etc, wherever applicable and such other norms governing the product / scheme and as may be prescribed by the Bank from time to time.</li>
+                                <li>The Bank will in no way be held responsible or liable for delay, failure and/or untimely delivery of SMS password and/or SMS Alerts due to but not limited to network congestions, network failure, systems failure or any other reasons beyond the reasonable control of the Bank or its service provider(s).</li>
+                                <li>Notwithstanding anything contained herein, where Bank has reason to believe that any transaction or marking of liens, have been fraudulently made (hereinafter referred to as a "suspect transaction"), Bank shall be entitled to withhold payment pertaining to such suspect transaction in accordance with regulatory laws relating to Money Laundering or otherwise. If Bank determines after due enquiry and investigation that the transaction is a valid transaction and not a suspect transaction, Bank shall release such withheld payment subsequently.</li>
+                            </ul>  
+                        </li>
+
+                        <li>
+                            <h5 class="text-left bold">INDEMNITY</h5> 
+                            <p class="m-text  mt-2">
+                                The User agrees to indemnify, hold harmless and defend Bank, its officials, service providers and affiliates against any loss and damages that may be caused from or relating to :
+                            </p>
+                            <ul class="unorder-list-custom2 mt-2">
+                                <li>Breach of terms and conditions mentioned herein.</li> 
+                                <li>Improper use of the Digital Banking services by the User/customer.</li>
+                                <li>Any claims made by third parties arising from issues related to any failure, delay or interruption of the products and/or services as provided by the Bank's Digital Banking Services.</li>
+                                <li>The use of products/ Digital Banking Services in any manner which violates the terms and conditions or otherwise violates any law, rule, conditions or regulation.</li>
+                                <li>Any consequences arising out of the disclosure of User ID and Password of the User to any third parties.</li>
+                                <li>Any consequences on account of the failure of the User to maintain the confidentiality of User ID, Password, OTP (SMS Password), etc. of the User.</li>
+                            </ul>  
+                        </li>
+
+                        <li>
+                            <h5 class="text-left bold">DISCLOSURE OF PERSONAL INFORMATION</h5> 
+                            <p class="m-text  mt-2">
+                                The User agrees that the Bank or its service providers may hold and process his/her Personal/Technical Information on Computer/Mobile or otherwise in connection with Digital Banking Services as well as for statistical analysis.<br/><br/>
+                                The User agrees that the Bank may collect user system related information The User also agrees that the Bank may disclose, in strict confidence, to other institutions, such Personal Information as may be reasonably necessary for reasons inclusive of, but not limited to, the following:
+                            </p>
+                            <ul class="unorder-list-custom2 mt-2">
+                                <li>For participation in any electronic clearing network</li> 
+                                <li>In compliance with legal and/or Reserve Bank of India's directive</li>
+                                <li>for credit rating by recognized credit rating agencies</li>
+                                <li>For fraud prevention purposes.</li>
+                            </ul>
+                            <p class="m-text  mt-2">
+                                For the purpose of this clause, it is clarified that the 'User system related information' mentioned above shall not include any confidential information such as the User ID and/or Password/OTP/MPIN/TPIN/PKI Token(s) of the User. The Bank will not collect or disclose such details to any person
+                            </p>
+                        </li>
+
+                        <li>
+                            <h5 class="text-left bold">AMENDMENTS</h5> 
+                            <ul class="unorder-list-custom2 mt-2">
+                                <li>The Bank has the absolute discretion to amend or supplement any of the Terms and conditions at any time, without prior notice. However the Bank will endeavor to notify the changes by posting it on the website or through advertisement or any other means as the Bank may deem fit which will be binding on the User. The existence and availability of the new functionalities/facilities/features will be notified to the User as and when they are made available. By using these new services, the User agrees to be bound by the terms and conditions applicable there for.</li>
+                            </ul>
+                        </li>
+
+                        <li>
+                            <h5 class="text-left bold">NON-TRANSFERABILITY</h5> 
+                            <ul class="unorder-list-custom2 mt-2">
+                                <li>The grant of facility of Digital Banking Services to a User is non-transferable under any circumstances and shall be used by the User only.</li>
+                            </ul>
+                        </li>
+
+                        <li>
+                            <h5 class="text-left bold">PROPRIETARY RIGHTS</h5> 
+                            <p class="m-text  mt-2">
+                                The User acknowledges that the software underlying the Digital Banking Services as well as other Digital Banking related software which are required for accessing Digital Banking Services is the legal property of the Bank/respective service providers. The permission given by the Bank to access Digital Banking Services will not convey any proprietary or ownership rights in the above software. The User shall not attempt to modify, translate, disassemble, decompile or reverse engineer the software underlying Digital Banking Services or create any derivative product based on the software.
+                            </p>
+                        </li>
+
+                        <li>
+                            <h5 class="text-left bold">INTELLECTUAL PROPERTY RIGHTS</h5> 
+                            <p class="m-text  mt-2">
+                                The copyright, trademarks, logos, slogans and service marks displayed on the OMNI Channel App and Portal are registered and unregistered intellectual property rights of Bank or of respective intellectual property right owners.<br/><br/>
+                                Nothing contained on the OMNI Channel App and Portal should be construed as granting, by implication, estoppel, or otherwise, any license or right to use any intellectual property displayed on the website(s) without the written permission of Bank or such third party that may own the intellectual property displayed on the website(s).<br/><br/>
+                                Bank grants the right to access the App / website(s) to the User and use the Digital Banking Services in accordance with the terms conditions mentioned herein. The User acknowledges that the Services including, but not limited to, text, content, photographs, video, audio and/or graphics, are either the property of, or used with permission by, Bank and/or by the content providers and may be protected by applicable copyrights, trademarks, service marks, international treaties and/or other proprietary rights and laws of India and other countries, and the applicable Terms and Conditions.<br/><br/>
+                                The User should assume that everything he/she views or reads on the OMNI Channel App and Portal (collectively referred to as "content") is copyrighted/ protected by intellectual property laws unless otherwise provided and may not be used, except as provided in these terms and conditions, without the prior written permission of Bank or the relevant copyright owner.<br/><br/>
+                                Any breach of the restrictions on use provided in these terms is expressly prohibited by law, and may result in severe civil and criminal penalties. Bank shall be entitled to obtain equitable relief (including all damage, direct, indirect, consequential and exemplary) over and above all other remedies available to it, to protect its interests therein.
+                            </p>
+                        </li>
+
+                        <li>
+                            <h5 class="text-left bold">THIRD PARTY LINKS</h5> 
+                            <p class="m-text  mt-2">
+                                The OMNI Channel App and Portal may provide hyperlinks to websites not controlled by Digital Banking / Bank and such hyperlinks do not imply any endorsement, agreement on, or support of the content, products and / or services of such websites. The Bank doesn't editorially control the content, products and /or services on such websites and shall not be liable, in any nature whatsoever, for the access to, or the inability to access to, or the use, inability to use or content available on or through such websites.
+                            </p>
+                        </li>
+
+                        <li>
+                            <h5 class="text-left bold">DISABLE DIGITAL BANKING SERVICES</h5> 
+                            <p class="m-text  mt-2">
+                                The User may request to disable the Digital Banking Services facility any time by submitting an application at branch. The User will remain responsible for transactions made on his/her account(s) prior to the time of such disabling of the Digital Banking Services.<br/><br/>
+                                The Bank may at its sole discretion, at any time without giving notice or reasons disable all or any of the Digital Banking services offered by the Bank or there use by the User including for reasons such as:<br/><br/>
+                            </p>
+                            <ul class="unorder-list-custom2 mt-2">
+                                <li>Breach of these terms and conditions by the User.</li>
+                                <li>Knowledge or information about the death, bankruptcy or legal incapacity of the User.</li>
+                                <li>The closure of account by the user will automatically terminate the Omnichannel Digital Banking Services.</li>
+                            </ul>
+                        </li>
+
+                        <li>
+                            <h5 class="text-left bold">NOTICES</h5> 
+                            <p class="m-text  mt-2">
+                                Notices under these Terms and Conditions to the customer may be given through any medium of communication as may be deemed appropriate by the Bank i.e. Bank's website (www.punjabandsindbank.co.in / OMNI Channel portal or In App notification), email, SMS, public notification at Branches, or through newspapers, radio, TV etc. Such notices will have the same effect as a notice served individually to each customer.
+                            </p>
+                        </li>
+
+                        <li>
+                            <h5 class="text-left bold">FORCE MAJEURE</h5> 
+                            <p class="m-text  mt-2">
+                                The Bank shall not be liable for delay in performing or failure to perform any of its obligations under these Terms and conditions which is caused by circumstances beyond its reasonable control, including, but not limited to, the failure, malfunction or unavailability of telecommunications, data communications and computer systems and services, natural calamities, pandemic, war, civil unrest, government action, strikes, lock-outs or other industrial action or trade disputes (whether involving the Bank's employees or those of a third party). Any delay or failure of this kind will not be deemed to be a breach of the Terms and Conditions and the time for performance of the affected obligation will be extended by a period which is reasonable in the circumstances.
+                            </p>
+                        </li>
+
+                        <li>
+                            <h5 class="text-left bold">DISCLAIMER ON THE INFORMATION TECHNOLOGY ACT 2000</h5> 
+                            <p class="m-text  mt-2">
+                                The Bank has adopted the mode of authentication of the user by means of verification of the user ID and or through verification of password or through any other mode of verification as may be stipulated at the discretion of the Bank. The user hereby agrees/consents for the mode of verification adopted by the Bank. The user agrees that the transactions carried out or put through by the aforesaid mode shall be valid, binding and enforceable against the User and shall not be entitled to raise any dispute questioning the transactions.
+                            </p>
+                        </li>
+
+                        <li>
+                            <h5 class="text-left bold">DISCLAIMER ON ANTI VIRUS UPDATE</h5> 
+                            <p class="m-text  mt-2">
+                                The User needs to get his PCs/laptops/mobiles scanned on a regular basis and be updated with the latest anti-virus software available. The Bank shall not be responsible in case of any data loss or theft due to the virus transmitted in the system through the usage of Digital Banking.
+                            </p>
+                        </li>
+
+                        <li>
+                            <h5 class="text-left bold">GOVERNING LAWS</h5> 
+                            <p class="m-text  mt-2">
+                                These terms and conditions and/or operations in the accounts of the User maintained by the Bank and/or the use of services provided through Digital Banking Services are construed to be governed in accordance with the laws in India.<br/><br/>
+                                Bank accepts no liability whatsoever, direct or indirect for non-compliance with the laws of any country other than that of India. The mere fact that Digital Banking Service can be accessed through Internet by a User from a country other than India shall not be interpreted to imply that the laws of such countries govern these terms and conditions and/or the operations in the accounts of the User through Internet and/or the use of Digital Banking Services. The User agrees to abide by prevailing laws in respect of Digital Banking Services applicable in India. It is the responsibility of the User to comply with any regulations prevailing in the country from where he/she is accessing the Internet.<br/><br/>
+                                All disputes shall be subject to the jurisdiction of the Courts in Delhi, India. The Bank however, may, in its absolute discretion commence any legal action or proceedings arising out of these terms in any other court, tribunal or other appropriate forum, and the User hereby consents to that jurisdiction.
+                            </p>
+                        </li>
+
+                        <li>
+                            <h5 class="text-left bold">USE OF DIGITAL BANKING SERVICE</h5> 
+                            <p class="m-text  mt-2">
+                                The User agrees that these terms and conditions will constitute the reasonable security practices and procedures to be followed by the Bank in respect of the Digital Banking Service and its use by the User and this document will be construed as an agreement between the Bank and User in this regard. The User further agrees that by availing the Digital Banking Service of the Bank, the User accepts and agrees with these terms and conditions including all its amendments from time to time, and the User reiterates such acceptance and agreement at each time any transaction is carried out on the basis of the User ID and Password of the User.
+                            </p>
+                        </li>
+
+                        <li>
+                            <h5 class="text-left bold">DIGITAL BANKING SERVICE IN CORPORATE SINGLE USER & MULTI USER ENVIRONMENT</h5> 
+                            <p class="m-text  mt-2">
+                                The customer agrees that depending upon the type of user requirement mentioned in application form, the customer agrees to fully indemnify and hold harmless Bank in respect of any and all actions performed by these users. Bank is providing multiple users for ease of usage of Internet banking services. These users include regulator, administrator, maker, checker & approver. Bank may add or delete the roles offered in the Digital Banking Services without giving any prior notices or reasons. The availability /non-availability of a particular role may be advised through the OMNI Channel App and Portal of the Bank or written communication or any other mode as the bank finds fit.<br/><br/>
+                                Every user(s) based on the KYC document will be asked to setup credentials to use corporate digital banking. The customer shall ensure that the authenticity of the KYC documents.  A customer shall provide such information as the Bank may from time to time reasonably request for the purposes of providing the services. The customer is responsible for the correctness of information supplied to the Bank through the use of Digital Banking Services or through any other means such as electronic mail or written communication. The Bank accepts no liability for the consequences arising out of erroneous/incomplete/incorrect information supplied by the customer. If the Customer suspects that there is an error in the information supplied to the Bank by him/her, he/she shall advise the Bank at the earliest. The Bank will endeavor to correct the error wherever possible on a 'best efforts' basis. If the customer notices an error in the account information supplied to him/her through Digital Banking Service, he shall advise the Bank at the earliest. The Bank will endeavor to correct the error promptly and adjust any interest or charges arising out of the error. It is clarified that the information that may be sought by the Bank mentioned in the clause shall not include the User ID, Password, OTP, MPIN, TPIN or PKI Token(s) available to the User.<br/><br/>
+                                The users would be provided a User ID, a Password and a token for first time registration. The user will be asked to modify the system generated password. This User ID and Password will be used by the user access the Digital Banking Services. User can set an MPIN for easy access to the OMNI Channel Application on their mobile. User with transaction access can set a TPIN to perform transactions in their account.<br/><br/>
+                                As a safety measure the User shall change the password as frequently as possible, at least once in 120 days. In addition to User ID and Password the Bank may, at its discretion, advise the customer to adopt any other means of authentication including but not limited to ATM cards, One Time SMS Password, PKI and/or Digital Certification issued by Bank, licensed or approved Certifying Authorities or vendors.<br/><br/>
+                                The User shall not attempt or permit others to attempt accessing the account information stored in the computers and computer networks of the Bank through any means.<br/><br/>
+                                Though the Digital Banking facility is very convenient, and the Bank uses the advanced technological/security features on account, the technological knowledge and discipline required for operating such accounts and because of the inherent risks involved in case of failure to comply the confidentiality and other obligations of the customers, all users are advised to familiarize themselves with the correct and proper use of Digital Banking Service and the terms and conditions mentioned herein, before opting or using the Digital Banking facility.
+                            </p>
+                        </li>
+
+                        <li>
+                            <h5 class="text-left bold">Definition of Terminology used in the Terms and conditions</h5>
+                            <ol class="order-list-custom  mt-2">
+                                <li> 
+                                    <p class="m-text">
+                                        <b>OMNI Channel</b>: The branding name of the Bank’s App/Portal which will be made available for registered PSB customers.
+                                    </p>
+                                 </li> 
+                                 <li> 
+                                    <p class="m-text">
+                                        User/Customer/You: Refers to any active <b>PSB customer</b> who is registered on <b>OMNI Channel App</b>/Portal.  
+                                    </p>
+                                 </li> 
+                                 <li> 
+                                    <p class="m-text">
+                                        PSB/us/We: Refers to the Punjab and Sind Bank, having its Corporate Office at "<b>21, Bank House, Rajendra Place, New Delhi 110125</b> (which expression shall, unless it is repugnant to the subject or context thereof, includes its successors and assigns). 
+                                    </p>
+                                 </li> 
+                             </ol>    
+                         </li>
+
+                        <li>
+                            <h5 class="text-left bold">Fair Practices Code for Lenders and Customers</h5> 
+                            <p class="m-text  mt-2">
+                                You may refer <a href="https://punjabandsindbank.co.in/" target="_blank">www.punjabandsindbank.co.in</a>
+                            </p>
+                        </li>
+                    </ol>
+                </div>
+             </div>
+          </div>
+	  </div>
+     <div class="row1 mt-2">
+        <div class="col-md-12 col-12  text-center">
+            <div class="ux-selection1 mar-rcustom text-center">
+                <label>I have read and agreed to terms and conditions
+                    <input type="checkbox" name="read-agreed">
+                    <span class="checkmark"></span>
+                </label> 
+            </div>
+          </div>
+        <div class="col-12 text-center">
+            <button class="ux-button primary md agree-btn">I agree</button>
+        </div>
+    </div>
+ 	</div>
+
+    <!-- Terms & Conditions Popup End-->
+
+
+
+
+    <div class="ios-nav-overlay"></div>
+
+
+    <script src="../js/lib/jquery.min.js"></script>
+    <script src="../js/lib/bootstrap.min.js"></script>
+    <script src="../js/lib/jquery-ui.min.js"></script>
+    <script src="../js/lib/owl.carousel.min.js"></script>
+    <script src="../js/lib/popper.min.js"></script>
+    <script src="../js/lib/jquery.mousewheel.min.js"></script>
+    <script src="../js/lib/jquery.mCustomScrollbar.js"></script>
+    <script src="../js/lib/datatables.min.js"></script>
+    <script src="../js/common.js"></script>
+    <script src="../js/lib/chart2.min.js"></script>
+
+
+    <script>
+        $('input[name=login-type]').change(function() {
+            // console.log('Its working');
+            if ($(this).val() == "retail-banking") {
+                $('#retail-info').show();
+                $('#corporate-info').hide();
+            } else if ($(this).val() == "corporate-banking") {
+                $('#corporate-info').show();
+                $('#retail-info').hide();
+            } else {
+                $('#retail-info').show();
+                $('#corporate-info').hide();
+            }
+        });
+
+
+
+        $('a.show-keyboard').click(function() {
+            //  alert("Hello! I am an alert box!!");
+            $('.keyboard-section').toggleClass("show");
+
+        });
+
+        
+        $(".content-scroll").mCustomScrollbar({
+		    axis:"y",
+		    theme: "dark-2",
+            //theme:"dark-thin",
+			// autoExpandScrollbar:true,
+		   advanced:{autoExpandHorizontalScroll:true}
+		 });
+
+        $('body').on('click', 'button.guideline-btn' , function() {
+            console.log('working!')
+           if (!$('div.popup-bottom.guidelines-popup').hasClass('popup-active')) {
+                $('div.popup-bottom.guidelines-popup').addClass('popup-active');
+                $('div.ios-nav-overlay').fadeIn(400);
+            } else {
+                $('div.popup-bottom.guidelines-popup').removeClass('popup-active');
+                $('div.ios-nav-overlay').fadeOut(400);
+            }
+        });
+
+        $('body').on('click', 'a.disclaimer-link' , function() {
+            console.log('working!')
+           if (!$('div.popup-bottom.disclaimer-popup').hasClass('popup-active')) {
+                $('div.popup-bottom.disclaimer-popup').addClass('popup-active');
+                $('div.ios-nav-overlay').fadeIn(400);
+            } else {
+                $('div.popup-bottom.disclaimer-popup').removeClass('popup-active');
+                $('div.ios-nav-overlay').fadeOut(400);
+            }
+        });
+
+
+        $('body').on('click', 'a.terms-link', function() {
+            console.log('working!')
+            if (!$('div.popup-bottom.terms-conditions-popup').hasClass('popup-active')) {
+                $('div.popup-bottom.terms-conditions-popup').addClass('popup-active');
+                $('div.ios-nav-overlay').fadeIn(400);
+            } else {
+                $('div.popup-bottom.terms-conditions-popup').removeClass('popup-active');
+                $('div.ios-nav-overlay').fadeOut(400);
+            }
+        });
+
+        $('body').on('click', 'a.privacy-policy-link', function() {
+            console.log('working!')
+            if (!$('div.popup-bottom.privacy-policy-popup').hasClass('popup-active')) {
+                $('div.popup-bottom.privacy-policy-popup').addClass('popup-active');
+                $('div.ios-nav-overlay').fadeIn(400);
+            } else {
+                $('div.popup-bottom.privacy-policy-popup').removeClass('popup-active');
+                $('div.ios-nav-overlay').fadeOut(400);
+            }
+        });
+  
+        $('body').on('click', 'button.close-btn', function() {
+            $('div.popup-bottom.guidelines-popup').removeClass('popup-active');
+            $('div.popup-bottom.disclaimer-popup').removeClass('popup-active');
+            $('div.popup-bottom.terms-conditions-popup').removeClass('popup-active');
+            $('div.popup-bottom.privacy-policy-popup').removeClass('popup-active');
+            $('div.ios-nav-overlay').fadeOut(400);
+        });
+
+
+
+
+    </script>
+
+</body>
+
+</html>

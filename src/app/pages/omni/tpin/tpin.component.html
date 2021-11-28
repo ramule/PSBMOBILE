@@ -1,0 +1,911 @@
+<main>
+  <div class="nav-overlay"></div>
+  <div class="right-main-column">
+    <div class="right-col-container full-width">
+      <div class="body-page-container main-dashborad fundtransfer">
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col-12 p-0">
+              <div class="breadcrumb">
+                <ul class="lst-breadcrumb">
+                  <!-- <li *ngIf="dataService.screenType != 'freezeAccount'">
+                    <a>{{ "SEND_MONEY" | translate }}</a>
+                  </li>
+                  <li>
+                    <a (click)="prevOtpSessionPage()">{{
+                      dataService.authorizeHeader
+                    }}</a>
+                  </li>
+                  <li>
+                    {{ "AUTHORIZATION" | translate }}
+                  </li> -->
+                  <li *ngFor="let name of dataService.breadcrumblist">
+                    <a (click)="dataService.breadcrumroute(name.routeName)">{{name.currentRoute | translate}}</a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <!--.row -->
+          <div class="vspacer15 customize d-none d-md-block d-lg-block d-xl-block"></div>
+
+          <div class="row no-gutters">
+            <div class="col-12">
+              <div class="row1">
+                <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-9">
+                  <form
+                    [formGroup]="tpinForm"
+                    (ngSubmit)="confirmTPINClick()"
+                  >
+                    <div class="ux-acc-container" style="margin: 0">
+                      <div class="greenCard sendMoney">
+                        <h4>{{ "ENTER_TPIN" | translate }}</h4>
+                      </div>
+                      <div class="fund-transfer-wrapp overlap otp">
+                        <div class="tab-container">
+                          <div class="row1">
+                            <div class="col-md-12">
+                              <div class="otp-container">
+                                <div class="otp-control">
+                                  <!-- <label *ngIf="dataService.profileEmailEdit == ''" > {{ "OTP_REGISTER_NO" | translate }} ******{{mobNumber.slice(mobNumber.length - 4)}}</label>
+                                  <label *ngIf="dataService.profileEmailEdit != ''" > OTP Sent To Your New EmailId {{ emailId }}</label> -->
+                                  <div class="otp-input">
+                                    <div class="row1">
+                                      <div class="col-12">
+                                        <div class="ux-input expiry-input card-pin mx-1 password1">
+                                        <input
+                                          id="spassword1"
+                                          type="tel"
+                                          maxlength="1"
+                                          autocomplete="off"
+                                          numbersOnly
+                                          placeholder="●"
+                                          (input)="onSearchChange($event.target.value,1)"
+                                          formControlName="tpin1"
+                                        />
+                                      </div>
+                                      <div class="ux-input expiry-input card-pin mx-1 password1">
+                                        <input
+                                          id="spassword2"
+                                          type="tel"
+                                          maxlength="1"
+                                          autocomplete="off"
+                                          numbersOnly
+                                          placeholder="●"
+                                          (input)="onSearchChange($event.target.value,2)"
+                                          formControlName="tpin2"
+                                        />
+                                      </div>
+                                      <div class="ux-input expiry-input card-pin mx-1 password1">
+                                        <input
+                                          id="spassword3"
+                                          type="tel"
+                                          maxlength="1"
+                                          autocomplete="off"
+                                          numbersOnly
+                                          placeholder="●"
+                                          (input)="onSearchChange($event.target.value,3)"
+                                          formControlName="tpin3"
+                                        />
+                                      </div>
+                                      <div class="ux-input expiry-input card-pin mx-1 password1">
+
+                                        <input
+                                          id="spassword4"
+                                          type="tel"
+                                          maxlength="1"
+                                          autocomplete="off"
+                                          numbersOnly
+                                          placeholder="●"
+                                          (input)="onSearchChange($event.target.value,4)"
+                                          formControlName="tpin4"
+                                        />
+                                      </div>
+                                      <div class="ux-input expiry-input card-pin mx-1 password1">
+                                        <input
+                                          id="spassword5"
+                                          type="tel"
+                                          maxlength="1"
+                                          autocomplete="off"
+                                          numbersOnly
+                                          placeholder="●"
+                                          (input)="onSearchChange($event.target.value,5)"
+                                          formControlName="tpin5"
+                                        />
+                                      </div>
+                                      <div class="ux-input expiry-input card-pin mx-1 password1">
+                                        <input
+                                          id="spassword6"
+                                          type="tel"
+                                          maxlength="1"
+                                          autocomplete="off"
+                                          numbersOnly
+                                          placeholder="●"
+                                          (input)="onSearchChange($event.target.value,6)"
+                                          formControlName="tpin6"
+                                        />
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </div>
+                                  <div class="rstm-control">
+                                    <!-- <div class="row1">
+                                      <div class="col-12">
+                                        {{counter| formatTimer }}
+                                        <span
+                                          (click)="resendOTP(2)"
+                                          [ngClass]="counter > 0 ? 'rsnd-lnk mydisabled' : 'rsnd-lnk resendActive'"
+                                          >{{ "RESEND" | translate }}</span
+                                        >
+                                      </div>
+                                    </div> -->
+                                    <div class="row1">
+                                      <div class="col-12">
+                                        <span *ngIf="invalidTpin" style="color:red">Please enter valid TPIN</span>
+                                      </div>
+                                    </div>
+                                    <div class="row1" *ngIf="errorMsg" >
+                                      <div class="col-12">
+                                        <span  style="color:red">{{errorMsg}}</span>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+
+                                <div class="mobile-img">
+                                  <img src="assets/images/icons/mobile.svg" />
+                                </div>
+                              </div>
+                              <!-- otp-container -->
+                            </div>
+                          </div>
+                        </div>
+                        <div
+                          class="ftaccount-detail"
+                          *ngIf="dataService.screenType == 'fundTransfer'"
+                        >
+                          <div class="row1">
+                            <div
+                              class="
+                                col-12 col-xl-3 col-lg-6 col-md-6 col-sm-12
+                              "
+                            >
+                              <div class="ux-input ux-readonly">
+                                <label *ngIf='receiptResp.from_acc'>{{ "FROM_ACCOUNT" | translate }} </label>
+
+                                <h4 *ngIf='receiptResp.from_acc'>{{ receiptResp.from_acc }}</h4>
+                                <label *ngIf='!receiptResp.from_acc && receiptResp.type == "vpa"'>{{ "UPI_ID" | translate }} </label>
+
+                                <h4 *ngIf='!receiptResp.from_acc && receiptResp.type == "vpa"'>{{ receiptResp.payerAddr }}</h4>
+                              </div>
+                            </div>
+                            <div
+                              class="
+                                col-12 col-xl-3 col-lg-6 col-md-6 col-sm-12
+                              "
+                            >
+                              <div class="ux-input ux-readonly" >
+                                <label *ngIf='receiptResp.to_acc'>{{ "TO_ACCOUNT" | translate }}</label>
+
+                                <h4 *ngIf='receiptResp.to_acc'>{{ receiptResp.to_acc }}</h4>
+
+                                <label *ngIf='!receiptResp.to_acc && receiptResp.type == "vpa"'>{{ "TO_PAYEE" | translate }}</label>
+
+                                <h4 *ngIf='!receiptResp.to_acc && receiptResp.type == "vpa"'>{{'UPI_ID' | translate }} : {{receiptResp.payeeAddr}}</h4>
+                              </div>
+                            </div>
+                            <div
+                              class="
+                                col-12 col-xl-3 col-lg-6 col-md-6 col-sm-12
+                              "
+                            >
+                              <div class="ux-input ux-readonly">
+                                <label>{{ "PAYEE_NAME" | translate }}</label>
+
+                                <h4>{{ receiptResp.payee_name }}</h4>
+                              </div>
+                            </div>
+                            <div
+                              class="
+                                col-12 col-xl-3 col-lg-6 col-md-6 col-sm-12
+                              "
+                            >
+                              <div class="ux-input ux-readonly">
+                                <label>{{ "AMOUNT" | translate }}</label>
+
+                                <!-- <h4>
+                                  {{
+                                    receiptResp.amount
+                                      | customcurrency: "symbol"
+                                  }}
+                                </h4> -->
+                                <h4>
+                                  {{ receiptResp.amount}}
+                                </h4>
+                              </div>
+                            </div>
+                            <div
+                              class="
+                                col-12 col-xl-3 col-lg-6 col-md-6 col-sm-12
+                              "
+                            >
+                              <div class="ux-input ux-readonly">
+                                <label>{{ "REMARKS" | translate }}</label>
+
+                                <h4>
+                                  {{
+                                    receiptResp.remarks == ""
+                                      ? "-"
+                                      : receiptResp.remarks
+                                  }}
+                                </h4>
+                              </div>
+                            </div>
+                            <div
+                              class="
+                                col-12 col-xl-3 col-lg-6 col-md-6 col-sm-12
+                              "
+                            >
+                              <div class="ux-input ux-readonly">
+                                <label>{{ "TRANSACTION_DATE" | translate }}</label>
+
+                                <h4>
+                                  {{ receiptResp.date | date: "dd MMM yyyy" }}
+                                </h4>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+
+                        <div
+                          class="ftaccount-detail"
+                          *ngIf="
+                            dataService.screenType == 'addPayee' &&
+                            dataService.beneficiaryType == '1'
+                          "
+                        >
+                          <div class="row1">
+                            <div
+                              class="
+                                col-12 col-xl-3 col-lg-6 col-md-6 col-sm-12
+                              "
+                            >
+                              <div class="ux-input ux-readonly">
+                                <label>Payee Account Name </label>
+
+                                <h4>{{ receiptResp.payeeAccName }}</h4>
+                              </div>
+                            </div>
+                            <div
+                              class="
+                                col-12 col-xl-3 col-lg-6 col-md-6 col-sm-12
+                              "
+                            >
+                              <div class="ux-input ux-readonly">
+                                <label>Payee Account Number </label>
+
+                                <h4>{{ receiptResp.payeeAccNo }}</h4>
+                              </div>
+                            </div>
+                            <div
+                              class="
+                                col-12 col-xl-3 col-lg-6 col-md-6 col-sm-12
+                              "
+                            >
+                              <div class="ux-input ux-readonly">
+                                <label>Nick Name</label>
+
+                                <h4>{{ receiptResp.payeeNickName }}</h4>
+                              </div>
+                            </div>
+
+                            <div
+                              class="
+                                col-12 col-xl-3 col-lg-6 col-md-6 col-sm-12
+                              "
+                            >
+                              <div class="ux-input ux-readonly">
+                                <label>Transaction Limit</label>
+
+                                <h4>{{ receiptResp.payeeTransLimit | customcurrency}}</h4>
+                              </div>
+                            </div>
+
+                          </div>
+                        </div>
+                        <div
+                          class="ftaccount-detail"
+                          *ngIf="
+                            dataService.screenType == 'addPayee' &&
+                            dataService.beneficiaryType == '2'
+                          "
+                        >
+                          <div class="row1">
+                            <div
+                              class="
+                                col-12 col-xl-3 col-lg-6 col-md-6 col-sm-12
+                              "
+                            >
+                              <div class="ux-input ux-readonly">
+                                <label>Payee Account Name </label>
+
+                                <h4>{{ receiptResp.payeeAccName }}</h4>
+                              </div>
+                            </div>
+                            <div
+                              class="
+                                col-12 col-xl-3 col-lg-6 col-md-6 col-sm-12
+                              "
+                            >
+                              <div class="ux-input ux-readonly">
+                                <label>Payee Account Number</label>
+
+                                <h4>{{ receiptResp.payeeAccNo }}</h4>
+                              </div>
+                            </div>
+                            <div
+                              class="
+                                col-12 col-xl-3 col-lg-6 col-md-6 col-sm-12
+                              "
+                            >
+                              <div class="ux-input ux-readonly">
+                                <label>Nick Name</label>
+
+                                <h4>{{ receiptResp.payeeNickName }}</h4>
+                              </div>
+                            </div>
+                            <div
+                              class="
+                                col-12 col-xl-3 col-lg-6 col-md-6 col-sm-12
+                              "
+                            >
+                              <div class="ux-input ux-readonly">
+                                <label>Ifsc Code</label>
+
+                                <h4>{{ receiptResp.payeeIfsc }}</h4>
+                              </div>
+                            </div>
+
+                            <div
+                            class="
+                              col-12 col-xl-3 col-lg-6 col-md-6 col-sm-12
+                            "
+                          >
+                            <div class="ux-input ux-readonly">
+                              <label>Transaction Limit</label>
+
+                              <h4>{{ receiptResp.payeeTransLimit | customcurrency}}</h4>
+                            </div>
+                          </div>
+
+                          </div>
+                        </div>
+                        <div
+                          class="ftaccount-detail"
+                          *ngIf="
+                            dataService.screenType == 'freezeAccount'
+                          "
+                        >
+                          <div class="row1">
+                            <div
+                              class="
+                                col-12 col-xl-3 col-lg-6 col-md-6 col-sm-12
+                              "
+                            >
+                              <div class="ux-input ux-readonly">
+                                <label>Account Number </label>
+
+                                <h4>{{ receiptResp.accountNumber }}</h4>
+                              </div>
+                            </div>
+                            <div
+                              class="
+                                col-12 col-xl-3 col-lg-6 col-md-6 col-sm-12
+                              "
+                            >
+                              <div class="ux-input ux-readonly">
+                                <label>Type of Freeze</label>
+                                <h4 *ngIf="receiptResp.typeOfFreeze == 'C'">Credit Freeze Only</h4>
+                                <h4 *ngIf="receiptResp.typeOfFreeze == 'D'">Debit Freeze Only</h4>
+                                <h4 *ngIf="receiptResp.typeOfFreeze == 'T'">Total Freeze Only</h4>
+                              </div>
+                            </div>
+                            <div
+                              class="
+                                col-12 col-xl-3 col-lg-6 col-md-6 col-sm-12
+                              "
+                            >
+                              <div class="ux-input ux-readonly">
+                                <label>Remarks</label>
+                                <h4>{{ receiptResp.remarks }}</h4>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div
+                          class="ftaccount-detail"
+                          *ngIf="
+                            dataService.screenType == 'donationTransfer'
+                          "
+                        >
+                          <div class="row1">
+                            <div
+                              class="
+                                col-12 col-xl-3 col-lg-6 col-md-6 col-sm-12
+                              "
+                            >
+                              <div class="ux-input ux-readonly">
+                                <label>FROM_ACCOUNT </label>
+
+                                <h4>{{ receiptResp.accountNumber }}</h4>
+                              </div>
+                            </div>
+                            <div
+                              class="
+                                col-12 col-xl-3 col-lg-6 col-md-6 col-sm-12
+                              "
+                            >
+                              <div class="ux-input ux-readonly">
+                                <label>TO_ACCOUNT</label>
+
+                                <h4>{{ receiptResp.to_acc }}</h4>
+                              </div>
+                            </div>
+                            <div
+                              class="
+                                col-12 col-xl-3 col-lg-6 col-md-6 col-sm-12
+                              "
+                            >
+                              <div class="ux-input ux-readonly">
+                                <label>AMOUNT</label>
+                                <h4> {{ receiptResp.amount}}</h4>
+                              </div>
+                            </div>
+                            <div
+                              class="
+                                col-12 col-xl-3 col-lg-6 col-md-6 col-sm-12
+                              "
+                            >
+                              <div class="ux-input ux-readonly">
+                                <label>REMARKS </label>
+
+                                <h4>{{ receiptResp.remarks }}</h4>
+                              </div>
+                            </div>
+                            <div
+                              class="
+                                col-12 col-xl-3 col-lg-6 col-md-6 col-sm-12
+                              "
+                            >
+                              <div class="ux-input ux-readonly">
+                                <label>DATE </label>
+
+                                <h4>{{ receiptResp.date }}</h4>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div
+                          class="ftaccount-detail"
+                          *ngIf="
+                            dataService.screenType == 'addPayee' &&
+                            dataService.beneficiaryType == '3'
+                          "
+                        >
+                          <div class="row1">
+                            <div
+                              class="
+                                col-12 col-xl-3 col-lg-6 col-md-6 col-sm-12
+                              "
+                            >
+                              <div class="ux-input ux-readonly">
+                                <label>Payee Mobile Number </label>
+
+                                <h4>{{ receiptResp.payeeMobileNo }}</h4>
+                              </div>
+                            </div>
+                            <div
+                              class="
+                                col-12 col-xl-3 col-lg-6 col-md-6 col-sm-12
+                              "
+                            >
+                              <div class="ux-input ux-readonly">
+                                <label>MMID</label>
+
+                                <h4>{{ receiptResp.payeeMMID }}</h4>
+                              </div>
+                            </div>
+                            <div
+                              class="
+                                col-12 col-xl-3 col-lg-6 col-md-6 col-sm-12
+                              "
+                            >
+                              <div class="ux-input ux-readonly">
+                                <label>Payee Name</label>
+
+                                <h4>{{ receiptResp.payeeAccName }}</h4>
+                              </div>
+                            </div>
+                            <div
+                              class="
+                                col-12 col-xl-3 col-lg-6 col-md-6 col-sm-12
+                              "
+                            >
+                              <div class="ux-input ux-readonly">
+                                <label>Nick Name</label>
+
+                                <h4>{{ receiptResp.payeeNickName }}</h4>
+                              </div>
+                            </div>
+
+                            <div
+                            class="
+                              col-12 col-xl-3 col-lg-6 col-md-6 col-sm-12
+                            "
+                          >
+                            <div class="ux-input ux-readonly">
+                              <label>Transaction Limit</label>
+
+                              <h4>{{ receiptResp.payeeTransLimit | customcurrency}}</h4>
+                            </div>
+                          </div>
+
+                          </div>
+                        </div>
+                        <div
+                        class="ftaccount-detail"
+                        *ngIf="dataService.screenType == 'positivePay'" >
+                        <div class="row1">
+                          <div
+                            class="
+                              col-12 col-xl-3 col-lg-6 col-md-6 col-sm-12
+                            "
+                          >
+                          <div class="ux-input ux-readonly">
+                            <label>{{ "FROM_ACCOUNT" | translate }} </label>
+
+                            <h4>{{ receiptResp.accountNo }}</h4>
+                          </div>
+                          </div>
+                          <div
+                            class="
+                              col-12 col-xl-3 col-lg-6 col-md-6 col-sm-12
+                            "
+                          >
+                          <div class="ux-input ux-readonly">
+                            <label>{{ "PAYEE_NAME" | translate }}</label>
+
+                            <h4>{{ receiptResp.payee_name }}</h4>
+                          </div>
+                          </div>
+                          <div
+                            class="
+                              col-12 col-xl-3 col-lg-6 col-md-6 col-sm-12
+                            "
+                          >
+                          <div class="ux-input ux-readonly">
+                            <label>{{ "AMOUNT" | translate }}</label>
+
+                            <h4>
+                              {{
+                                receiptResp.amount
+                                  | customcurrency: "symbol"
+                              }}
+                            </h4>
+                          </div>
+                          </div>
+                        </div>
+                      </div>
+                        <div
+                        class="ftaccount-detail"
+                        *ngIf="
+                          dataService.screenType == 'addPayee' &&
+                          dataService.beneficiaryType == '4'
+                        "
+                      >
+                        <div class="row1">
+                          <div
+                            class="
+                              col-12 col-xl-3 col-lg-6 col-md-6 col-sm-12
+                            "
+                          >
+                            <div class="ux-input ux-readonly">
+                              <label>Payee Vpa </label>
+
+                              <h4>{{ receiptResp.payeeVpa }}</h4>
+                            </div>
+                          </div>
+
+                          <div
+                            class="
+                              col-12 col-xl-3 col-lg-6 col-md-6 col-sm-12
+                            "
+                          >
+                            <div class="ux-input ux-readonly">
+                              <label>Payee Name</label>
+
+                              <h4>{{ receiptResp.payeeAccName }}</h4>
+                            </div>
+                          </div>
+                          <div
+                            class="
+                              col-12 col-xl-3 col-lg-6 col-md-6 col-sm-12
+                            "
+                          >
+                            <div class="ux-input ux-readonly">
+                              <label>Nick Name</label>
+
+                              <h4>{{ receiptResp.payeeNickName }}</h4>
+                            </div>
+                          </div>
+
+                          <div
+                          class="
+                            col-12 col-xl-3 col-lg-6 col-md-6 col-sm-12
+                          "
+                        >
+                          <div class="ux-input ux-readonly">
+                            <label>Transaction Limit</label>
+
+                            <h4>{{ receiptResp.payeeTransLimit | customcurrency}}</h4>
+                          </div>
+                        </div>
+
+                        </div>
+                      </div>
+                      <!------------------- Physical Card ------------------>
+                      <div class="ftaccount-detail" *ngIf="dataService.screenType == 'getPhysicalCard'" >
+                        <div class="row1">
+                          <div class=" col-12 col-xl-3 col-lg-6 col-md-6 col-sm-12" >
+                            <div class="ux-input ux-readonly">
+                              <label>Debit Card Number</label>
+
+                              <h4>{{ receiptResp.CardNo }}</h4>
+                            </div>
+                          </div>
+
+                          <div class="col-12 col-xl-3 col-lg-6 col-md-6 col-sm-12" >
+                            <div class="ux-input ux-readonly">
+                              <label>Linked Account</label>
+
+                              <h4>{{ receiptResp.AccountNo }}</h4>
+                            </div>
+                          </div>
+
+                        </div>
+                      </div>
+
+
+                      <!------------------- Re Issue Card ------------------>
+                      <div class="ftaccount-detail" *ngIf="dataService.screenType == 'reissuecard'" >
+                        <div class="row1">
+                          <div class=" col-12 col-xl-3 col-lg-6 col-md-6 col-sm-12" >
+                            <div class="ux-input ux-readonly">
+                              <label>Debit Card Number</label>
+
+                              <h4>{{ receiptResp.CardNo }}</h4>
+                            </div>
+                          </div>
+
+                          <div class="col-12 col-xl-3 col-lg-6 col-md-6 col-sm-12" >
+                            <div class="ux-input ux-readonly">
+                              <label>Linked Account</label>
+
+                              <h4>{{ receiptResp.AccountNo }}</h4>
+                            </div>
+                          </div>
+
+                        </div>
+                      </div>
+
+                      <!------------------- hostlist Card ------------------>
+                      <div class="ftaccount-detail" *ngIf="dataService.screenType == 'blockCard'" >
+                        <div class="row1">
+                          <div class=" col-12 col-xl-3 col-lg-6 col-md-6 col-sm-12" >
+                            <div class="ux-input ux-readonly">
+                              <label>Debit Card Number</label>
+
+                              <h4>{{ hotlistCardObj.CardNo }}</h4>
+                            </div>
+                          </div>
+
+                          <div class="col-12 col-xl-3 col-lg-6 col-md-6 col-sm-12" >
+                            <div class="ux-input ux-readonly">
+                              <label>Linked Account</label>
+
+                              <h4>{{ hotlistCardObj.AccountNo }}</h4>
+                            </div>
+                          </div>
+
+                          <div class="col-12 col-xl-3 col-lg-6 col-md-6 col-sm-12" >
+                            <div class="ux-input ux-readonly">
+                              <label>Reason for Hotlisting</label>
+                              <h4>{{ hotlistCardObj.reason }}</h4>
+                            </div>
+                          </div>
+
+                        </div>
+                      </div>
+
+
+                      <!------------------- pay emi ---------------->
+                      <div class="ftaccount-detail" *ngIf="dataService.screenType == 'payemi'" >
+                        <div class="row1">
+                          <div class=" col-12 col-xl-3 col-lg-6 col-md-6 col-sm-12" >
+                            <div class="ux-input ux-readonly">
+                              <label>From Account</label>
+                              <h4>{{ receiptResp.from_acc }}</h4>
+                            </div>
+                          </div>
+
+                          <div class="col-12 col-xl-3 col-lg-6 col-md-6 col-sm-12" >
+                            <div class="ux-input ux-readonly">
+                              <label>To Account</label>
+
+                              <h4>{{ receiptResp.to_acc }}</h4>
+                            </div>
+                          </div>
+
+                          <div class="col-12 col-xl-3 col-lg-6 col-md-6 col-sm-12" >
+                            <div class="ux-input ux-readonly">
+                              <label>To Account Name</label>
+                              <h4>{{ receiptResp.payee_name }}</h4>
+                            </div>
+                          </div>
+
+                          <div class="col-12 col-xl-3 col-lg-6 col-md-6 col-sm-12" >
+                            <div class="ux-input ux-readonly">
+                              <label>Loan Type</label>
+                              <h4>{{ receiptResp.loanType }}</h4>
+                            </div>
+                          </div>
+
+                          <div class="col-12 col-xl-3 col-lg-6 col-md-6 col-sm-12" >
+                            <div class="ux-input ux-readonly">
+                              <label>IFSC</label>
+                              <h4>{{ receiptResp.ifscCode }}</h4>
+                            </div>
+                          </div>
+
+                          <div class="col-12 col-xl-3 col-lg-6 col-md-6 col-sm-12" >
+                            <div class="ux-input ux-readonly">
+                              <label>EMI Amount</label>
+                              <h4>{{ receiptResp.amount }}</h4>
+                            </div>
+                          </div>
+
+                          <div class="col-12 col-xl-3 col-lg-6 col-md-6 col-sm-12" >
+                            <div class="ux-input ux-readonly">
+                              <label>Remarks</label>
+                              <h4>{{ receiptResp.remarks }}</h4>
+                            </div>
+                          </div>
+
+                          <div class="col-12 col-xl-3 col-lg-6 col-md-6 col-sm-12" >
+                            <div class="ux-input ux-readonly">
+                              <label>Date</label>
+                              <h4>{{ receiptResp.Date }}</h4>
+                            </div>
+                          </div>
+
+                        </div>
+                      </div>
+
+
+
+                      </div>
+                      <div class="action-btns">
+                        <!-- <button class=" ux-button secondary backbutton sm"><i></i>Back</button> -->
+                        <div class="text-right">
+                          <button
+                            class="ux-button secondary sm"
+                            type="button"
+                            (click)="cancel()"
+                          >
+                            {{ "CANCEL" | translate }}
+                          </button>
+                          <button class="ux-button primary sm" type="submit" [disabled]="!tpinForm.valid">
+                            {{ "CONFIRM" | translate }}
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                  </form>
+                </div>
+                <div
+                  class="col-12 col-md-12 col-lg-12 col-xl-3 d-none d-xl-block"
+                >
+                  <div class="right-ads">
+                    <a>
+                      <img src="assets/images/banner/my-card-banner.jpg" />
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!--.container-fluid-->
+      </div>
+    </div>
+  </div>
+</main>
+
+<div class="popup-bottom sm-popup show-link-account-success">
+  <div class="row1">
+      <div class="col-12">
+          <h4 class="text-center"> <img src="assets/images/svg/success.svg" alt="success-icon"> Information
+          </h4>
+      </div>
+  </div>
+  <div class="row1">
+      <div class="col-12 mb-4">
+          <p> {{message}} </p>
+      </div>
+  </div>
+  <div class="row1  mt-2">
+      <div class="col-12 text-center">
+          <button class="ux-button primary submit-btn" (click)="closePopup('div.popup-bottom.show-link-account-success')">OK</button>
+      </div>
+  </div>
+</div>
+
+
+<div class="popup-bottom sm-popup show-link-account-failure">
+  <div class="row1">
+      <div class="col-12">
+          <h4 class="text-center"> <img src="assets/images/svg/success.svg" alt="success-icon"> Information
+          </h4>
+      </div>
+  </div>
+  <div class="row1">
+      <div class="col-12 mb-4">
+          <p> {{message}} </p>
+      </div>
+  </div>
+  <div class="row1  mt-2">
+      <div class="col-12 text-center">
+          <button class="ux-button primary submit-btn" (click)="closePopup('div.popup-bottom.show-link-account-failure')">OK</button>
+      </div>
+  </div>
+</div>
+
+<div class="popup-bottom sm-popup otp-attempt-expired">
+  <div class="row1">
+      <div class="col-12">
+          <h4 class="text-center"> <img src="assets/images/svg/success.svg" alt="success-icon"> Information
+          </h4>
+      </div>
+  </div>
+  <div class="row1">
+      <div class="col-12 mb-4">
+          <p> You have reached your maximum attempt.Please try again </p>
+      </div>
+  </div>
+  <div class="row1  mt-2">
+      <div class="col-12 text-center">
+          <button class="ux-button primary submit-btn" (click)="closePopup('div.popup-bottom.otp-attempt-expired')">OK</button>
+      </div>
+  </div>
+</div>
+
+<div class="popup-bottom sm-popup show-freeze-account">
+  <div class="row1">
+      <div class="col-12">
+          <h4 class="text-center"> <img src="assets/images/svg/success.svg" alt="success-icon"> Information
+          </h4>
+      </div>
+  </div>
+  <div class="row1">
+      <div class="col-12 mb-4">
+          <p> {{message}} </p>
+      </div>
+  </div>
+  <div class="row1  mt-2">
+      <div class="col-12 text-center">
+          <button class="ux-button primary submit-btn" (click)="closePopup('div.popup-bottom.show-freeze-account')">OK</button>
+      </div>
+  </div>
+</div>
+
+

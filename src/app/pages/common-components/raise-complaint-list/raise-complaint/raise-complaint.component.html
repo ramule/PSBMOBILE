@@ -1,0 +1,142 @@
+<div class="main">
+
+    <form [formGroup]="raiseComplaintForm" (ngSubmit)="raiseRequest()">
+
+        <div class="right-main-column minus-rt-col mar-custom">
+            <div class="right-col-container">
+
+                <div class="body-page-container">
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="bg-section">
+                                <div class="col-12">
+                                    <div class="row1">
+                                        <div class="col-sm-12 col-12 col-md-12">
+                                            <div class="white-bg1">
+                                                <div class="row1">
+                                                    <div class="col-12 col-sm-12 col-md-12">
+                                                        <div class="ux-input" [ngClass]="{'ux-disabled': DataService.isRaiseComplaint}">
+                                                            <label for="transactionID">{{'TRANSACTION_ID' | translate }}</label>
+                                                            <input type="text" name="transactionID" formControlName="transactionID" placeholder="{{'ENTER_TRANSACTION_ID' | translate}}" [readonly]="DataService.isRaiseComplaint">
+                                                            <p></p>
+                                                            <!-- <a (click)="selectTransaction()">{{'SELECT_TRANSACTION' | translate}}</a> -->
+                                                            <p class="text-center error-message" *ngIf="raiseComplaintForm.controls['transactionID'].hasError('pattern')">{{ 'ENTER_ALPHABET_NUMBER_ERROR' | translate}}</p>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-12 col-sm-12 col-md-12" *ngIf="!DataService.isTrackStatus">
+                                                        <a class="show-link2" (click)="selectTransaction()">{{'SELECT_TRANSACTION' | translate}}</a>
+                                                    </div>
+                                                    <div class="col-12 col-sm-12 col-md-12">
+                                                        <div class="ux-input">
+                                                            <label for="email">{{'EMAIL_ID' | translate}}</label>
+                                                            <input type="email" maxlength="100" formControlName="customerEmail" name="email" placeholder="{{'ENTER_EMAIL' | translate}}">
+
+                                                            <p class="error-message" *ngIf="raiseComplaintForm.controls['customerEmail'].hasError('required')  && raiseComplaintForm.controls['customerEmail'].touched">
+                                                                {{ 'ENTER_EMAIL_ID_ERROR' | translate }}
+                                                            </p>
+                                                            <p class="error-message" *ngIf="!raiseComplaintForm.controls['customerEmail'].hasError('required')  && raiseComplaintForm.controls['customerEmail'].touched && raiseComplaintForm.controls['customerEmail'].hasError('email')">
+                                                                {{ 'INVALID_EMAIL_ID_ERROR' | translate }}
+                                                            </p>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-12 col-sm-12 col-md-12">
+                                                        <div class="ux-input" [ngClass]="{'ux-disabled': DataService.isRaiseComplaint}">
+                                                            <label for="refeId">{{'RRN_NO_REFERENCE_ID' | translate}}</label>
+                                                            <input type="text" formControlName="rrn" name="refenId" placeholder="{{'ENTER_RRN_NO_REFERENCE_ID' | translate}}" [readonly]="DataService.isRaiseComplaint">
+                                                            <p class="text-center error-message" *ngIf="raiseComplaintForm.controls['rrn'].hasError('pattern')">{{ 'ENTER_ALPHABET_NUMBER_ERROR' | translate}}</p>
+                                                        </div>
+                                                    </div>
+
+                                                    <!-- Transaction Amount  -->
+                                                    <div class="col-12 col-sm-12 col-md-12">
+                                                        <div class="ux-input" [ngClass]="{'ux-disabled': DataService.isRaiseComplaint}">
+                                                            <label for="transactionAmt">{{'TRANSACTION_AMOUNT' | translate}}</label>
+                                                            <!-- Android Keyboard start -->
+                                                            <!-- <input id="amt" type="tel" autocomplete="off" formControlName="amount" placeholder="{{'ENTER_TRANSACTION_AMOUNT' | translate}}" limit-to="12" (blur)="formatCurrency($event.target.value)"> -->
+                                                            <!-- Android Keyboard end -->
+                                                            <!-- iOS Keyboard start -->
+                                                            <input id="amt" type="text" inputmode="decimal" autocomplete="off" formControlName="amount" placeholder="{{'ENTER_TRANSACTION_AMOUNT' | translate}}" limit-to="12" (blur)="formatCurrency($event.target.value)">
+                                                            <!-- iOS Keyboard End -->
+                                                            <p class="error-message" *ngIf="raiseComplaintForm.controls['amount'].hasError('required')  && raiseComplaintForm.controls['amount'].touched">
+                                                                {{ 'ENTER_AMOUNT_ERROR' | translate }}
+                                                            </p>
+                                                            <p class="text-center error-message" *ngIf="raiseComplaintForm.controls['amount'].hasError('pattern')">{{ 'ENTER_NUMBER_ERROR' | translate}}</p>
+                                                        </div>
+                                                    </div>
+                                                    <!-- <div class="col-12 col-sm-12 col-md-12">
+                                                        <div class="ux-input">
+                                                               <label for="chargebackReason">Chargeback Reason</label>
+                                                                    <select required="">
+                                                                        <option value="select">Select</option>
+                                                                        <option value="Goods/services are not received/pr…">Goods/services are not received/pr…</option>
+                                                                     </select>
+                                                                <p></p>
+                                                        </div>
+                                                    </div>  -->
+                                                    <div class="col-12 col-sm-12 col-md-12">
+                                                        <div class="ux-input">
+                                                            <label for="subject">{{'SUBJECT' | translate}}</label>
+                                                            <input type="text" alphaNumericAllowedSpecialChars formControlName="subject" name="subject" limit-to="60" placeholder="{{'ENTER_SUBJECT' | translate}}">
+                                                            <p class="error-message" *ngIf="raiseComplaintForm.controls['subject'].hasError('required')  && raiseComplaintForm.controls['subject'].touched">
+                                                                {{ 'ENTER_SUBJECT_ERROR' | translate }}
+                                                            </p>
+                                                            <p class="text-center error-message" *ngIf="raiseComplaintForm.controls['subject'].hasError('pattern')">{{ 'ENTER_DESCRIPTION_CHARACTOR_ERROR' | translate}}</p>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-12 col-sm-12 col-md-12">
+                                                        <div class="ux-input">
+                                                            <label for="description">{{'DESCRIPTION' | translate}}</label>
+                                                            <input limit-to="250" alphaNumericAllowedSpecialChars type="text" formControlName="description" name="description" placeholder="{{'ENTER_DESCRIPTION' | translate}}">
+                                                            <p class="error-message" *ngIf="raiseComplaintForm.controls['description'].hasError('required')  && raiseComplaintForm.controls['description'].touched">
+                                                                {{ 'ENTER_DESCRIPTION_ERROR' | translate }}
+                                                            </p>
+                                                            <p class="text-center error-message" *ngIf="raiseComplaintForm.controls['description'].hasError('pattern')">{{ 'ENTER_DESCRIPTION_CHARACTOR_ERROR' | translate}}</p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- <div class="footer-container sticky-actions  bg-transparent">
+              <div class="footer-inactions minus-rt-col">
+                <div class="container-fluid">
+                  <div class="row">
+                    <div class="col-12 text-center">
+                      <button class="ux-button primary" type="submit"
+                        [disabled]="raiseComplaintForm.invalid">{{'SUBMIT' | translate}}</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div> -->
+                        <!-- <div class="sticky-actions-spacer"></div> -->
+                    </div>
+                </div>
+                <!-- footer section start -->
+
+                <div class="footer-container sticky-actions">
+                    <div class="footer-inactions minus-rt-col">
+                        <div class="container-fluid">
+                            <div class="row">
+                                <div class="col-12 col-md-12 col-lg-12 text-center">
+                                    <button class="ux-button primary md" type="submit" [disabled]="raiseComplaintForm.invalid">{{'SUBMIT' | translate}}</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="sticky-actions-spacer"></div>
+
+                <!-- footer section end -->
+            </div>
+
+        </div>
+    </form>
+
+</div>
+
+<!-- main -->

@@ -1,0 +1,496 @@
+<div class="main">
+    <div class="right-main-column minus-rt-col mar-custom">
+        <div class="right-col-container pad-b">
+            <div class="body-page-container">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="bg-section">
+                            <div class="col-12">
+                                <div class="row1">
+                                    <div class="col-sm-12 col-12 col-md-12">
+                                        <div class="white-bg1 pad-tb">
+                                            <div class="row1">
+                                                <div class="col-sm-12 col-12 col-md-12">
+                                                    <div class="unfound-info" *ngIf="mandateHistoryList.length==0">
+                                                        <h6>{{'NO_RECORD_FOUND' | translate}}</h6>
+                                                    </div>
+                                                    <div class="row1" *ngIf="mandateHistoryList.length>0">
+                                                        <ul class="mandate-info-list">
+                                                            <li *ngFor="let mandateHistory of mandateHistoryList; index as i">
+                                                                <div class="full-container">
+                                                                    <div class="rupee-info" *ngIf="(mandateHistory.trnType == 'DR'  && mandateHistory.action == 'EXECUTION') || (mandateHistory.status == 'COMPLETED' || mandateHistory.status == 'CREATED') && mandateHistory.action != 'REVOKED'">
+                                                                        <span class="green">
+                                      <img src="assets/images/svg/up-arrow-r.svg" alt="send-money-icon">
+                                    </span> <em class="success">{{'SUCCESS' | translate}} </em>
+                                                                    </div>
+                                                                    <div class="rupee-info" *ngIf="(mandateHistory.trnType == 'CR' ||  mandateHistory.trnType=='RVSL' &&  mandateHistory.action == 'EXECUTION')">
+                                                                        <span class="green">
+                                      <img src="assets/images/svg/down-arrow-g.svg" alt="received-money-icon">
+                                    </span> <em class="success">{{'SUCCESS' | translate}}</em>
+                                                                    </div>
+                                                                    <div class="rupee-info" *ngIf="mandateHistory.status=='FAILED' || mandateHistory.status=='FAILURE'">
+                                                                        <span class="red">
+                                      <img src="assets/images/svg/failed.svg" alt="failed-icon">
+                                    </span> <em class="error">{{'FAILED' | translate}}</em>
+                                                                    </div>
+                                                                    <div class="rupee-info" *ngIf="mandateHistory.status=='PENDING'">
+                                                                        <span class="yellow">
+                                      <img src="assets/images/svg/pending-icon1.svg" alt="pending-icon">
+                                    </span> <em class="pending">{{'PENDING' | translate}}</em>
+                                                                    </div>
+                                                                    <div class="rupee-info" *ngIf="mandateHistory.status=='REJECTED' || mandateHistory.action=='REVOKED'">
+                                                                        <span class="red">
+                                    <img src="assets/images/svg/decined.svg" alt="decline-icon">
+                                  </span> <em class="error">{{mandateHistory.status=='REJECTED' ? ('DECLINED' | translate) : mandateHistory.action =='REVOKED' ?  ('REVOKED' | translate) : ''}}</em>
+                                                                    </div>
+                                                                    <div class="rupee-info" *ngIf="mandateHistory.status=='EXPIRED'">
+                                                                        <span class="grey">
+                                  <img src="assets/images/svg/polygon.svg" alt="polygon-icon">
+                                </span> <em class="expired">{{'EXPIRED' | translate}}</em>
+                                                                    </div>
+                                                                    <div class="row1">
+                                                                        <div class="col-7 col-md-6 pr-1">
+                                                                            <div class="left-info">
+                                                                                <h6>{{mandateHistory.initiatedBy == 'PAYER' && mandateHistory.createdBy == 'CREATED_BY_ME'? 'MANDATE_CREATED_FOR' : mandateHistory.initiatedBy == 'PAYER' && mandateHistory.createdBy
+                                                                                    == 'CREATED_BY_OTHERS' ? 'MANDATE_RECEIVED__FROM' : mandateHistory.initiatedBy == 'PAYEE' && mandateHistory.createdBy == 'CREATED_BY_OTHERS' ? 'MANDATE_REQUESTED_FROM'
+                                                                                    : ''}}</h6>
+                                                                                <!-- <h6>
+                                          {{mandateHistory.action == 'CREATED' ? ('MANDATE_CREATED_FOR' | translate) : mandateHistory.action == 'REVOKE' ? ('MANDATE_REVOKED_FOR' | translate) : mandateHistory.action == 'EXECUTE' ? ('MANDATE_EXECUTED_FOR' | translate) : mandateHistory.action == 'EXPIRE' ? ('MANDATE_EXPIRED_FOR' | translate) :
+                                            mandateHistory.action == 'UPDATE' ? ('MANDATE_MODIFIED_FOR' | translate) :
+                                            mandateHistory.action == 'PAUSE' ? ('MANDATE_PAUSED_FOR' | translate) :
+                                            mandateHistory.action == 'UNPAUSE' ? ('MANADATE_UNPAUSED_FOR' | translate) : ''}}
+                                        </h6> -->
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="col-5 col-md-6 pl-1">
+                                                                            <div class="right-info">
+                                                                                <h5>
+                                                                                    <!-- <img src="assets/images/svg/rupee-bl.svg"
+                                            alt="rupees-icon"> -->
+                                                                                    {{mandateHistory.txnAmount | customcurrency:'symbol'}}</h5>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="row1">
+                                                                        <div class="col-12 col-md-12">
+                                                                            <div class="left-info">
+                                                                                <h5>{{mandateHistory.initiatedBy == 'PAYER' && mandateHistory.createdBy == 'CREATED_BY_ME' ? mandateHistory.payeeName : mandateHistory.initiatedBy == 'PAYER' && mandateHistory.createdBy
+                                                                                    == 'CREATED_BY_OTHERS' ? mandateHistory.payerName : mandateHistory.initiatedBy == 'PAYEE' && mandateHistory.createdBy == 'CREATED_BY_OTHERS' ?mandateHistory.payeeName
+                                                                                    : ''}}</h5>
+                                                                                <h6><span>{{'UPI_ID' | translate}} : </span> {{mandateHistory.initiatedBy == 'PAYER' && mandateHistory.createdBy == 'CREATED_BY_ME' ? mandateHistory.payeeAddr : mandateHistory.initiatedBy
+                                                                                    == 'PAYER' && mandateHistory.createdBy == 'CREATED_BY_OTHERS' ? mandateHistory.payerAddr : mandateHistory.initiatedBy == 'PAYEE' && mandateHistory.createdBy == 'CREATED_BY_OTHERS'
+                                                                                    ? mandateHistory.payeeAddr : ''}}</h6>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="full-container2">
+                                                                    <div class="row1 mt-2">
+                                                                        <div class="col-6 col-md-6">
+                                                                            <div class="left-info3">
+                                                                                <div class="icon-info"> <span>
+                                            <img src="assets/images/svg/requested-date.svg" alt="request-date-icon">
+                                          </span> </div> <em>{{'CREATED_ON' | translate}}</em>
+                                                                                <!-- <h6>30 March 2021 18:25:25</h6> -->
+                                                                                <h6>{{mandateHistory.createdOn | dateFormat:'DD MMM yyyy'}}</h6>
+                                                                                <h6>{{mandateHistory.createdOn | timeFormat:'hh:mm A'}}</h6>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="col-6 col-md-6">
+                                                                            <div class="left-info3">
+                                                                                <div class="icon-info"> <span>
+                                            <img src="assets/images/svg/expiry-date.svg" alt="expiry-date-icon">
+                                          </span> </div>
+                                                                                <em>{{ mandateHistory.actionLabel | translate }}</em>
+                                                                                <!-- <em>{{mandateHistory.action == 'CREATED' ? 'EXECUTED_ON': mandateHistory.action == 'REVOKED' ? ('REVOKED_ON' | translate) : mandateHistory.action == 'EXECUTION' ? ('EXECUTED_ON' | translate) : mandateHistory.action == 'EXPIRED' ? ('EXPIRED_ON' | translate) :
+                                            mandateHistory.action == 'UPDATE' ? ('MODIFIED_ON' | translate) :
+                                            mandateHistory.action == 'PAUSE' ? ('PAUSED_ON' | translate) :
+                                            mandateHistory.action == 'UNPAUSE' ? ('UNPAUSED_ON' | translate) :  mandateHistory.action == 'FAILED' ? ('FAILED_ON' | translate) : ''}}</em> -->
+                                                                                <!--TODO : Add label conditionally once get params from MW-->
+                                                                                <h6 *ngIf="mandateHistory.action != 'CREATED'">{{mandateHistory.txnTime | dateFormat:'DD MMM yyyy'}}</h6>
+                                                                                <h6 *ngIf="mandateHistory.action != 'CREATED'">{{mandateHistory.txnTime | timeFormat:'hh:mm A'}}</h6>
+                                                                                <h6 *ngIf="mandateHistory.action == 'CREATED'">-</h6>
+
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="row1 mt-2">
+                                                                        <div class="col-6 col-md-6">
+                                                                            <div class="left-info"> <em>{{'TRANSACTION_ID' | translate}}</em>
+                                                                                <!-- <h6>....9891829189</h6> -->
+                                                                                <h6>{{mandateHistory.txnId}}</h6>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="col-6 col-md-6">
+                                                                            <div class="left-info"> <em>{{'FREQUENCY' | translate}}</em>
+                                                                                <h6>{{mandateHistory.frequency}}</h6>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="row1 mt-2">
+                                                                        <div class="col-12 col-md-12">
+                                                                            <div class="btn-section float-right">
+                                                                                <div class="text-right">
+                                                                                    <button class="ux-button secondary sm5" (click)="viewDetails(mandateHistory)">{{'VIEW' | translate}}</button>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </li>
+                                                            <!-- <li>
+                                <div class="full-container">
+                                  <div class="rupee-info"> <span class="green">
+                                      <img src="assets/images/svg/down-arrow-g.svg" alt="received-money-icon">
+                                    </span> <em class="success">SUCCESS</em> </div>
+                                  <div class="row1">
+                                    <div class="col-7 col-md-6 pr-1">
+                                      <div class="left-info">
+                                        <h6>Mandate Received From</h6>
+                                      </div>
+                                    </div>
+                                    <div class="col-5 col-md-6 pl-1">
+                                      <div class="right-info">
+                                        <h5> <img src="assets/images/svg/rupee-bl.svg" alt="rupees-icon">3000.00</h5>
+                                      </div>
+                                    </div>
+                                  </div>
+                                  <div class="row1">
+                                    <div class="col-12 col-md-12">
+                                      <div class="left-info">
+                                        <h5>Ruchi Arya </h5>
+                                        <h6><span>UPI ID</span> ruchiarya@psb</h6>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                                <div class="full-container2">
+                                  <div class="row1 mt-2">
+                                    <div class="col-6 col-md-6">
+                                      <div class="left-info3">
+                                        <div class="icon-info"> <span>
+                                            <img src="assets/images/svg/requested-date.svg" alt="request-date-icon">
+                                          </span> </div> <em>Created on</em>
+                                        <h6>30 March 2021 18:25:25</h6>
+                                      </div>
+                                    </div>
+                                    <div class="col-6 col-md-6">
+                                      <div class="left-info3">
+                                        <div class="icon-info"> <span>
+                                            <img src="assets/images/svg/expiry-date.svg" alt="expiry-date-icon">
+                                          </span> </div> <em>Executed on</em>
+                                        <h6>31 March 2021 12:36:56</h6>
+                                      </div>
+                                    </div>
+                                  </div>
+                                  <div class="row1 mt-2">
+                                    <div class="col-6 col-md-6">
+                                      <div class="left-info"> <em>Transaction ID</em>
+                                        <h6>....9891829189</h6>
+                                      </div>
+                                    </div>
+                                    <div class="col-6 col-md-6">
+                                      <div class="left-info"> <em>Frequency</em>
+                                        <h6>Monthly</h6>
+                                      </div>
+                                    </div>
+                                  </div>
+                                  <div class="row1 mt-2">
+                                    <div class="col-12 col-md-12">
+                                      <div class="btn-section float-right">
+                                        <div class="text-right">
+                                          <button class="ux-button secondary sm5">View</button>
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                              </li>
+                              <li>
+                                <div class="full-container">
+                                  <div class="rupee-info"> <span class="red">
+                                      <img src="assets/images/svg/failed.svg" alt="failed-icon">
+                                    </span> <em class="error">FAILED</em> </div>
+                                  <div class="row1">
+                                    <div class="col-7 col-md-6 pr-1">
+                                      <div class="left-info">
+                                        <h6>Mandate Requested From</h6>
+                                      </div>
+                                    </div>
+                                    <div class="col-5 col-md-6 pl-1">
+                                      <div class="right-info">
+                                        <h5> <img src="assets/images/svg/rupee-bl.svg" alt="rupees-icon">2500.00</h5>
+                                      </div>
+                                    </div>
+                                  </div>
+                                  <div class="row1">
+                                    <div class="col-12 col-md-12">
+                                      <div class="left-info">
+                                        <h5>Gurpeet Singh</h5>
+                                        <h6><span>UPI ID</span> gurpeetsingh@psb</h6>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                                <div class="full-container2">
+                                  <div class="row1 mt-2">
+                                    <div class="col-6 col-md-6">
+                                      <div class="left-info3">
+                                        <div class="icon-info"> <span>
+                                            <img src="assets/images/svg/requested-date.svg" alt="request-date-icon">
+                                          </span> </div> <em>Created on</em>
+                                        <h6>30 March 2021 18:25:25</h6>
+                                      </div>
+                                    </div>
+                                    <div class="col-6 col-md-6">
+                                      <div class="left-info3">
+                                        <div class="icon-info"> <span>
+                                            <img src="assets/images/svg/expiry-date.svg" alt="expiry-date-icon">
+                                          </span> </div> <em>Executed on</em>
+                                        <h6>31 March 2021 12:36:56</h6>
+                                      </div>
+                                    </div>
+                                  </div>
+                                  <div class="row1 mt-2">
+                                    <div class="col-6 col-md-6">
+                                      <div class="left-info"> <em>Transaction ID</em>
+                                        <h6>....9891829189</h6>
+                                      </div>
+                                    </div>
+                                    <div class="col-6 col-md-6">
+                                      <div class="left-info"> <em>Frequency</em>
+                                        <h6>Monthly</h6>
+                                      </div>
+                                    </div>
+                                  </div>
+                                  <div class="row1 mt-2">
+                                    <div class="col-12 col-md-12">
+                                      <div class="btn-section float-right">
+                                        <div class="text-right">
+                                          <button class="ux-button secondary sm5">View</button>
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                              </li>
+                              <li>
+                                <div class="full-container">
+                                  <div class="rupee-info"> <span class="yellow">
+                                      <img src="assets/images/svg/pending-icon1.svg" alt="pending-icon">
+                                    </span> <em class="pending">PENDING</em> </div>
+                                  <div class="row1">
+                                    <div class="col-7 col-md-6 pr-1">
+                                      <div class="left-info">
+                                        <h6>Mandate Requested From</h6>
+                                      </div>
+                                    </div>
+                                    <div class="col-5 col-md-6 pl-1">
+                                      <div class="right-info">
+                                        <h5> <img src="assets/images/svg/rupee-bl.svg" alt="rupees-icon">3000.00</h5>
+                                      </div>
+                                    </div>
+                                  </div>
+                                  <div class="row1">
+                                    <div class="col-12 col-md-12">
+                                      <div class="left-info">
+                                        <h5>Ajitesh Agrawal</h5>
+                                        <h6><span>UPI ID</span> ajiteshagrawal@psb</h6>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                                <div class="full-container2">
+                                  <div class="row1 mt-2">
+                                    <div class="col-6 col-md-6">
+                                      <div class="left-info3">
+                                        <div class="icon-info"> <span>
+                                            <img src="assets/images/svg/requested-date.svg" alt="request-date-icon">
+                                          </span> </div> <em>Created on</em>
+                                        <h6>30 March 2021 18:25:25</h6>
+                                      </div>
+                                    </div>
+                                    <div class="col-6 col-md-6">
+                                      <div class="left-info3">
+                                        <div class="icon-info"> <span>
+                                            <img src="assets/images/svg/expiry-date.svg" alt="expiry-date-icon">
+                                          </span> </div> <em>Executed on</em>
+                                        <h6>31 March 2021 12:36:56</h6>
+                                      </div>
+                                    </div>
+                                  </div>
+                                  <div class="row1 mt-2">
+                                    <div class="col-6 col-md-6">
+                                      <div class="left-info"> <em>Transaction ID</em>
+                                        <h6>....9891829189</h6>
+                                      </div>
+                                    </div>
+                                    <div class="col-6 col-md-6">
+                                      <div class="left-info"> <em>Frequency</em>
+                                        <h6>Daily</h6>
+                                      </div>
+                                    </div>
+                                  </div>
+                                  <div class="row1 mt-2">
+                                    <div class="col-12 col-md-12">
+                                      <div class="btn-section float-right">
+                                        <div class="text-right">
+                                          <button class="ux-button secondary sm5">View</button>
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                              </li>
+                              <li>
+                                <div class="full-container">
+                                  <div class="rupee-info"> <span class="red">
+                                      <img src="assets/images/svg/decined.svg" alt="decline-icon">
+                                    </span> <em class="error">DECLINE</em> </div>
+                                  <div class="row1">
+                                    <div class="col-7 col-md-6 pr-1">
+                                      <div class="left-info">
+                                        <h6>Mandate Requested From</h6>
+                                      </div>
+                                    </div>
+                                    <div class="col-5 col-md-6 pl-1">
+                                      <div class="right-info">
+                                        <h5> <img src="assets/images/svg/rupee-bl.svg" alt="rupees-icon">2500.00</h5>
+                                      </div>
+                                    </div>
+                                  </div>
+                                  <div class="row1">
+                                    <div class="col-12 col-md-12">
+                                      <div class="left-info">
+                                        <h5>Omkar Kant</h5>
+                                        <h6><span>UPI ID</span> omkarkant@psb</h6>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                                <div class="full-container2">
+                                  <div class="row1 mt-2">
+                                    <div class="col-6 col-md-6">
+                                      <div class="left-info3">
+                                        <div class="icon-info"> <span>
+                                            <img src="assets/images/svg/requested-date.svg" alt="request-date-icon">
+                                          </span> </div> <em>Created on</em>
+                                        <h6>30 March 2021 18:25:25</h6>
+                                      </div>
+                                    </div>
+                                    <div class="col-6 col-md-6">
+                                      <div class="left-info3">
+                                        <div class="icon-info"> <span>
+                                            <img src="assets/images/svg/expiry-date.svg" alt="expiry-date-icon">
+                                          </span> </div> <em>Executed on</em>
+                                        <h6>31 March 2021 12:36:56</h6>
+                                      </div>
+                                    </div>
+                                  </div>
+                                  <div class="row1 mt-2">
+                                    <div class="col-6 col-md-6">
+                                      <div class="left-info"> <em>Transaction ID</em>
+                                        <h6>....9891829189</h6>
+                                      </div>
+                                    </div>
+                                    <div class="col-6 col-md-6">
+                                      <div class="left-info"> <em>Frequency</em>
+                                        <h6>Daily</h6>
+                                      </div>
+                                    </div>
+                                  </div>
+                                  <div class="row1 mt-2">
+                                    <div class="col-12 col-md-12">
+                                      <div class="btn-section float-right">
+                                        <div class="text-right">
+                                          <button class="ux-button secondary sm5">View</button>
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                              </li>
+                              <li>
+                                <div class="full-container">
+                                  <div class="rupee-info"> <span class="grey">
+                                      <img src="assets/images/svg/polygon.svg" alt="polygon-icon">
+                                    </span> <em class="expired">EXPIRED</em> </div>
+                                  <div class="row1">
+                                    <div class="col-7 col-md-6 pr-1">
+                                      <div class="left-info">
+                                        <h6>Mandate Requested From</h6>
+                                      </div>
+                                    </div>
+                                    <div class="col-5 col-md-6 pl-1">
+                                      <div class="right-info">
+                                        <h5> <img src="assets/images/svg/rupee-bl.svg" alt="rupees-icon">3000.00</h5>
+                                      </div>
+                                    </div>
+                                  </div>
+                                  <div class="row1">
+                                    <div class="col-12 col-md-12">
+                                      <div class="left-info">
+                                        <h5>Omkar Kant</h5>
+                                        <h6><span>UPI ID</span> omkarkant@psb</h6>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                                <div class="full-container2">
+                                  <div class="row1 mt-2">
+                                    <div class="col-6 col-md-6">
+                                      <div class="left-info3">
+                                        <div class="icon-info"> <span>
+                                            <img src="assets/images/svg/requested-date.svg" alt="request-date-icon">
+                                          </span> </div> <em>Created on</em>
+                                        <h6>30 March 2021 18:25:25</h6>
+                                      </div>
+                                    </div>
+                                    <div class="col-6 col-md-6">
+                                      <div class="left-info3">
+                                        <div class="icon-info"> <span>
+                                            <img src="assets/images/svg/expiry-date.svg" alt="expiry-date-icon">
+                                          </span> </div> <em>Executed on</em>
+                                        <h6>31 March 2021 12:36:56</h6>
+                                      </div>
+                                    </div>
+                                  </div>
+                                  <div class="row1 mt-2">
+                                    <div class="col-6 col-md-6">
+                                      <div class="left-info"> <em>Transaction ID</em>
+                                        <h6>....9891829189</h6>
+                                      </div>
+                                    </div>
+                                    <div class="col-6 col-md-6">
+                                      <div class="left-info"> <em>Frequency</em>
+                                        <h6>Monthly</h6>
+                                      </div>
+                                    </div>
+                                  </div>
+                                  <div class="row1 mt-2">
+                                    <div class="col-12 col-md-12">
+                                      <div class="btn-section float-right">
+                                        <div class="text-right">
+                                          <button class="ux-button secondary sm5">View</button>
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                              </li> -->
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- main -->

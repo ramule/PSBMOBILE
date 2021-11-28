@@ -1,0 +1,43 @@
+<?xml version='1.0' encoding='utf-8' standalone="yes"?>
+<plugin id="cordova-plugin-npci-android" version="1.0.0" xmlns="http://apache.org/cordova/ns/plugins/1.0"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <name>NpciAndroidPlugin</name>
+    <description>NPCI Android Functionality in your application.</description>
+    <engines>
+        <engine name="cordova" version=">=7.1.0"/>
+        <engine name="cordova-android" version=">=6.3.0"/>
+    </engines>
+    <js-module name="NpciAndroidPlugin" src="www/NpciAndroidPlugin.js">
+        <clobbers target="cordova.plugins.npciAndroidPlugin" />
+    </js-module>
+    <platform name="android">
+        <config-file parent="/*" target="res/xml/config.xml">
+            <feature name="NpciAndroidPlugin">
+                <param name="android-package" value="com.cordova.plugins.ncp.NACP" />
+            </feature>
+        </config-file>
+        
+        <config-file parent="/*" target="AndroidManifest.xml"></config-file>
+        <source-file src="src/android/com/cordova/plugins/ncp/NACP.java" target-dir="src/com/cordova/plugins/ncp" />
+        <source-file src="src/android/androidx/appcompat/app/ActionBarActivity.java" target-dir="src/androidx/appcompat/app" />
+        <source-file src="src/android/com/infra/psbnpci/CommonUtils.java" target-dir="src/com/infra/psbnpci" />
+        <source-file src="src/android/com/infra/psbnpci/CryptLib.java" target-dir="src/com/infra/psbnpci" />
+        <source-file src="src/android/com/infra/psbnpci/NHCP.java" target-dir="src/com/infra/psbnpci" />
+        <source-file src="src/android/com/infra/psbnpci/TCA.java" target-dir="src/com/infra/psbnpci" />
+        <source-file src="src/android/com/infra/psbnpci/TrustCreator.java" target-dir="src/com/infra/psbnpci" />
+        <source-file src="src/android/com/infra/psbnpci/Utilities.java" target-dir="src/com/infra/psbnpci" />
+        <source-file src="src/android/com/infra/ecp/ENCP.java" target-dir="src/com/infra/ecp" />
+        
+        <framework src="src/android/npciplugin.gradle" custom="true" type="gradleReference"/>
+        <framework src="com.android.support:support-v13:+"/>
+        <lib-file src="src/android/secure-component-sdk.jar"/>
+        <lib-file src="src/android/SecureComponent-release.aar"/>
+        <lib-file src="src/android/sun.misc.BASE64Decoder.jar"></lib-file>
+        <preference name="ANDROID_SUPPORT_V4_VERSION" default="27.+"/>
+    </platform>
+</plugin>
+
+
+
+
+

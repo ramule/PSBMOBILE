@@ -1,0 +1,305 @@
+<div class="main bg-m">
+
+
+    <!-- End Global Nav -->
+
+
+    <div class="right-main-column ">
+        <div class="right-col-container pad-b full-width">
+
+
+            <!-- ======== body page content start from here ======== -->
+
+            <div class="body-page-container main-dashborad manage-payee">
+                <div class="container-fluid">
+
+                    <div class="row">
+                        <div class="col-12 p-0">
+                            <div class="breadcrumb">
+                                <ul class="lst-breadcrumb">
+                                    <li *ngFor="let name of dataService.breadcrumblist">
+                                        <a (click)="breadcrumroute(name.routeName)">{{name.currentRoute | translate}}</a>
+                                    </li>
+                                    <!-- <li>
+                                        {{"FREEZE_ACCOUNT" | translate}}
+                                    </li> -->
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <!--.row -->
+
+                    <div class="vspacer15 customize d-none d-md-block d-lg-block d-xl-block"></div>
+
+                    <div class="row no-gutters">
+                        <div class="col-12">
+                            <div class="row1">
+
+                                <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-9">
+
+                                    <!-- Greencard2 Start here -->
+
+                                    <div class="greencard2">
+
+                                        <div class="row1 hide-m">
+                                            <div class="col-md-8 col-12">
+                                                <h4>{{"FREEZE_ACCOUNT" | translate}}</h4>
+                                            </div>
+                                            <div class="col-md-4 col-12">
+
+                                            </div>
+                                        </div>
+                                        <form [formGroup]="freezeAccountForm" (ngSubmit)="submit()">
+                                            <div class="row1">
+                                                <div class="col-sm-12 col-12 col-md-12">
+                                                    <div class="widget-box5 mb-3">
+                                                        <div class="bg-white1 pad-custom">
+                                                            <div class="vspacer10 customize d-none d-md-block d-lg-block d-xl-block"></div>
+                                                                    <div class="row1">
+                                                                        <div class="col-md-12 col-12">
+                                                                            <div class="row1">
+                                                                                <div class="col-md-6 col-lg-6 col-xl-4 col-12">
+                                                                                    <div class="ux-input">
+                                                                                        <label for="accountNumber">{{"ACC_NUM" | translate}}</label>
+                                                                                        <!-- (change)="getAccount($event.target.value)" -->
+                                                                                        <select  class="hide-m d-none d-md-inline-block d-lg-inline-block"  name="accountNumber" formControlName="accountNumber"  >
+                                                                                          <!-- <option value="">Select Account Number</option> -->
+                                                                                          <option *ngFor="let account of accountList" [value]="account.accountNo"  >{{account.SchemeCode}} {{account.sbAccount}}</option>
+                                                                                          <option value="all">{{"ALL" | translate}}</option>
+
+                                                                                        </select>
+                                                                                        <div class="custom-selectbox2" (click)="selectAccount()" >
+                                                                                            <span>{{selectedAccountNo  | translate}} </span>
+                                                                                            <span class="right-arrow"  ></span>
+                                                                                          </div>
+   
+                                                                                        <p class="error-message" *ngIf="freezeAccountForm.controls['accountNumber'].hasError('required') && (freezeAccountForm.controls['accountNumber'].dirty || freezeAccountForm.controls['accountNumber'].touched)"> {{"REQUIRED_MSG" | translate}} </p>
+                                                                                    </div>
+                                                                                </div>
+                                                                                <div class="col-md-6 col-lg-6 col-xl-4 col-12">
+                                                                                    <div class="ux-input ux-disabled">
+                                                                                        <label for="typeoffreeze">{{"FREEZE_TYPES" | translate}}</label>
+                                                                                        <!-- <select name="typeoffreeze" formControlName="typeoffreeze">
+                                                                                            <option value="">{{"SELECT_FREEZE_TYPES" | translate}}</option>
+                                                                                            <option value="D" selected>{{"DEBIT" | translate}}</option>
+                                                                                            <option value="C">{{"CREDIT" | translate}}</option>
+                                                                                            <option value="T">{{"TOTAL" | translate}}</option>
+                                                                                        </select> -->
+                                                                                        <input type="text" readonly name="typeoffreeze" formControlName="typeoffreeze" placeholder="Enter Freeze Type">
+                                                                                        <p class="info-message">
+                                                                                          <span *ngIf="freezeAccountForm.value.typeoffreeze == 'D'">{{"NO_DEBIT_TRANSACTION_ALLOWED" | translate}} </span>
+                                                                                          <span *ngIf="freezeAccountForm.value.typeoffreeze == 'C'">{{"NO_CREDIT_TRANSACTION_ALLOWED" | translate}}</span>
+                                                                                          <span *ngIf="freezeAccountForm.value.typeoffreeze == 'T'">{{"NO_DEBIT_CREDIT_TRANSACTION_ALLOWED" | translate}} </span>
+                                                                                        </p>
+                                                                                        <p class="error-message" *ngIf="freezeAccountForm.controls['typeoffreeze'].hasError('required') && (freezeAccountForm.controls['typeoffreeze'].dirty || freezeAccountForm.controls['typeoffreeze'].touched)"> {{"REQUIRED_MSG" | translate}}</p>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+
+                                                                    <div class="row1">
+                                                                        <div class="col-md-6 col-lg-6 col-xl-4 col-12">
+                                                                            <div class="ux-input">
+                                                                                <label class="remarks">{{"REMARKS" | translate}} ({{"OPTIONAL" | translate}})</label>
+                                                                                <input type="text" name="remarks" formControlName="remarks" placeholder='{{"ENTER_REMARKS" | translate}}' limit-to="50">
+                                                                                <!-- <p class="error-message" *ngIf="freezeAccountForm.controls['remarks'].hasError('pattern') && (freezeAccountForm.controls['remarks'].dirty || freezeAccountForm.controls['remarks'].touched)">Remarks should be alphanumber only</p> -->
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+
+                                                                    <div class="vspacer30 customize d-none d-md-block d-lg-block d-xl-block"></div>
+
+                                                                </div>
+                                                            </div>
+                                                </div>
+
+                                                <div class="col-12 col-md-12">
+                                                    <ul class="bottom-footer1">
+                                                        <li>
+                                                            <div class="btn-div">
+                                                                <button class="ux-button secondary sm-mob" type="button" (click)="goBack()">{{"CANCEL" | translate}}</button>
+                                                            </div>
+                                                            <div class="btn-div">
+                                                                <button class=" ux-button primary sm-mob" type="submit">{{"SUBMIT" | translate}}</button>
+                                                            </div>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+
+
+                                            </div>
+                                        </form>
+
+                                      </div>
+                                    <!-- Greencard2 End here -->
+
+                                </div>
+
+
+
+                                <!-- Right Column Ads Start -->
+
+                                <div class="col-12 col-md-12 col-lg-12 col-xl-3 d-none d-xl-block">
+                                    <div class="right-ads">
+                                        <a href="#">
+                                            <img src="assets/images/banner/my-card-banner.jpg">
+                                        </a>
+                                    </div>
+                                </div>
+                                <!-- Right Column Ads Ends -->
+
+                            </div>
+
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+
+        </div>
+        <!--.right-col-container-->
+    </div>
+    <!--.right-main-column-->
+
+</div> <!-- main -->
+
+<aside class="notification-panel sticky-panel ">
+    <div class="notp-header">
+        <a href="javascript:;" class="btn-closenoty"></a>
+        <h5>{{"THEME_CUTOMIZER" | translate}}</h5>
+    </div>
+    <div class="notp-content">
+        <div class="notp-innercontent">
+            <div class="notp-nodatafound">
+                <div class="col-12">
+                    <h5>{{"NAVIGATION" | translate}}</h5>
+                    <div>
+                        <label class="ux-selection2">{{"VERTICAL" | translate}}
+                            <input type="radio" checked="checked" name="radioboxdemo">
+                            <span class="checkmark"></span>
+                        </label>
+                        <label class="ux-selection2">{{"HORIZONTAL" | translate}}
+                            <input type="radio" name="radioboxdemo">
+                            <span class="checkmark"></span>
+                        </label>
+                    </div>
+                    <div class="vspacer20"></div>
+                    <h5>Theam Color</h5>
+                    <div class="row1 mb-1">
+                        <div class="col-12">
+                            <ul class="theme-list">
+                                <li class="blue"></li>
+                                <li class="green"></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="vspacer20"></div>
+            <div class="vspacer20"></div>
+            <div class="row1">
+                <div class="col-12 col-xl-12 col-lg-12 col-md-12 ">
+                    <div class="ux-footer">
+                        <button class="ux-button sm primary float-right">{{"SUBMIT" | translate}}</button>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <!-- <div class="notp-footer">
+        <p>Test</p>
+    </div>  -->
+    <!-- <div class="page-tools">
+        <div class="lst-page-tools">
+              <a href="#" class="rightpannel">
+                  <img src="assets/images/svg/adjust.svg" alt="adjust-icon">
+                </a>
+         </div>
+     </div> -->
+</aside>
+<div class="notpanel-overlay"></div>
+
+<!-- Confirmation Popup Start -->
+
+<div class="popup-bottom sm-popup confirmation1">
+    <div class="row">
+        <div class="col-12">
+            <h4 class="text-center">{{"CONFIRMATION" | translate}} </h4>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12">
+            <p>
+                 {{"CONFIRM" | translate}} {{type}}  {{"FREEZE_ACTION_ON_ACCOUNT" | translate}}
+            </p>
+        </div>
+    </div>
+    <div class="row1 mt-2">
+        <div class="col-6 text-center">
+            <button class="ux-button secondary no md close-btn" (click)="cancel()">{{"CANCEL" | translate}}</button>
+        </div>
+        <div class="col-6 text-center">
+            <button class="ux-button primary md" (click)="proceed()">{{"PROCEED" | translate}}</button>
+        </div>
+    </div>
+</div>
+
+<!-- Confirmation Popup End -->
+
+<!-- already freeze Popup Start -->
+
+<div class="popup-bottom sm-popup acc-already-freeze">
+    <div class="row1">
+        <div class="col-12">
+            <h4 class="text-center"> <img src="./assets/images/svg/information.svg" alt="information-icon"> {{'INFORMATION' | translate}}
+            </h4>
+        </div>
+    </div>
+    <div class="row1">
+        <div class="col-12">
+            <p> {{'ACCOUNT_ALREADY_FREEZE' | translate}}</p>
+        </div>
+    </div>
+    <div class="row1  mt-2">
+        <div class="col-12 text-center" (click)="closePopup('div.popup-bottom.acc-already-freeze')">
+            <button class="ux-button primary submit-btn" type="button">{{'OK' | translate}}</button>
+        </div>
+    </div>
+</div>
+
+<!-- already freeze Popup End --> 
+
+
+<div class="popup-bottom sel-account">
+    <div class="row1">
+        <div class="col-10">
+            <h4>Select From Account</h4>
+        </div>
+        <div class="col-2">
+            <button class="ux-button-icon close-btn" (click)="closePopups()">
+                <img src="assets/images/svg/close-b.svg" alt="cross-icon" class="img-vsmall">
+            </button>
+        </div>
+    </div>
+    <div class="row1">
+        <div class="col-12">
+            <div class="row1">
+              <div class="col-12 col-md-12" *ngFor="let account of accountList">
+                <div class="ux-selection mar-custom"  (click)="getSelectedAccount(account)"> 
+                  <label class="ux-selection2">{{account?.SchemeCode}} {{account?.sbAccount}}                 
+                    <input type="radio" [value]="account?.accountNo" name="upi-account"  [ngModelOptions]="{standalone: true}" > <span class="checkmark"></span> </label>
+                </div>
+              </div>              
+            </div>
+         </div>
+    </div>
+  
+    <div class="row mt-2">
+        <div class="col-12 text-center">
+            <button class="ux-button primary submit-btn2" (click)="closePopups()" >Submit</button>
+        </div>
+    </div>
+  </div>

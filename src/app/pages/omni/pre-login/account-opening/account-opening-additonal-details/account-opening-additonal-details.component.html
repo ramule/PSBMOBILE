@@ -1,0 +1,196 @@
+<div class="row">
+    <div class="col-12 col-lg-6 col-md-10 col-sm-12 position-static">
+        <div class="row1">
+            <div class="col-12 position-static">
+                <ul class="step-list">
+                    <li class="step-matched">
+                        <em> <span class="primary">{{'STEP' | translate }} 2 </span> <span class="secondary">{{'OF_STEP' | translate }} 6</span> </em>
+                    </li>
+                </ul>
+                <div class="tab-header">
+                    <h4>{{'ADDITIONAL_DETAILS' | translate }}</h4>
+                </div>
+
+            </div>
+            <div class="col-12 position-static">
+                <form [formGroup]="addittonalInfoForm" (ngSubmit)="submitForm()">
+                    <div class="details-section">
+                        <div class="row1">
+                            <div class="col-12">
+                                <div class="ux-input">
+                                    <label> {{ 'YOUR_FATHERS_NAME' | translate }}</label>
+                                    <input type="text"  placeholder="Enter Father's Name" formControlName="fathersName">
+                                    <p></p>
+                                    <span class="errormsg"
+                                        *ngIf="addittonalInfoForm.controls['fathersName'].hasError('required')  && addittonalInfoForm.controls['fathersName'].touched">
+                                        {{ 'ENTER_NAME' | translate }}
+                                    </span>
+                                    <span class="errormsg"
+                                        *ngIf="addittonalInfoForm.controls['fathersName'].hasError('pattern') && addittonalInfoForm.controls['fathersName'].touched">
+                                        {{ 'INVALID_NAME' | translate }}</span>
+                                </div>
+
+                            </div>
+                            <div class="col-12">
+                                <div class="ux-input">
+                                    <label> {{ 'YOUR_MOTHERS_NAME' | translate }}</label>
+                                    <input type="text"  placeholder="Enter Mother's Name" formControlName="mothersName">
+
+                                    <p></p>
+                                    <span class="errormsg"
+                                        *ngIf="addittonalInfoForm.controls['mothersName'].hasError('required')  && addittonalInfoForm.controls['mothersName'].touched">
+                                        {{ 'ENTER_NAME' | translate }}
+                                    </span>
+                                    <span class="errormsg"
+                                        *ngIf="addittonalInfoForm.controls['mothersName'].hasError('pattern') && addittonalInfoForm.controls['mothersName'].touched">
+                                        {{ 'INVALID_NAME' | translate }}</span>
+                                </div>
+                            </div>
+                            <div Class="col-12">
+                                <div class="ux-selection mt-3 mb-2">
+                                    <h4>{{'COMMUNICATION_ADDRESS' | translate }}</h4>
+                                    <label class="ux-selection1">{{'SAME_AS_APPLICANT_PERMANENT_ADD' | translate }}
+                                        <input type="checkbox" name="address" (change)="changeAddress($event)"
+                                            formControlName="address">
+                                        <span class="checkmark"></span>
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <div class="row1 " id="addrssblock">
+                                    <div Class="col-12 col-md-12 col-lg-12 col-xl-12">
+                                        <div class="ux-input pb-0">
+                                            <label for="upiId">{{'ADDRESS_LINE_1' | translate }}</label>
+                                            <input type="text" name="NomcommAddLine1" placeholder="Enter Address"
+                                                formControlName="commAddLine1">
+
+                                            <span class="errormsg"
+                                                *ngIf="addittonalInfoForm.controls['commAddLine1'].hasError('required')  && addittonalInfoForm.controls['commAddLine1'].touched">
+                                                {{ 'ENTER_ADDRESS' | translate }}
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <div Class="col-12 col-md-12 col-lg-12 col-xl-12">
+                                        <div class="ux-input pb-0">
+                                            <label for="upiId">{{'ADDRESS_LINE_2' | translate }}</label>
+                                            <input type="text" name="commAddLine2" placeholder="Enter Address 2"
+                                                formControlName="commAddLine2">
+                                        </div>
+                                    </div>
+
+
+
+                                    <div Class="col-12 ">
+                                        <div class="ux-input pb-0">
+                                            <label>{{'STATE' | translate }}</label>
+                                            <select  (change)="getCity($event.target.value)"  formControlName="commAddState" >
+                                                <option value="" >{{'SELECT_STATE' | translate }}</option>
+                                                <option *ngFor="let stateDtl of stateList" [value]="stateDtl.ID" >{{stateDtl.state}}</option>
+                                            </select>
+                                            <span class="errormsg"
+                                                *ngIf="addittonalInfoForm.controls['commAddState'].hasError('required')  && addittonalInfoForm.controls['commAddState'].touched">
+                                                {{ 'SELECT_STATE' | translate }}
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <div Class="col-12 col-md-6 col-lg-6 col-xl-6">
+                                        <div class="ux-input pb-0">
+                                            <label>{{'CITY' | translate }}</label>
+                                            <select formControlName="commAddCity">
+                                                <option value="" >{{'SELECT_CITY' | translate }}</option>
+                                                <option *ngFor="let cityDtl of cityList" [value]="cityDtl.ID" >{{cityDtl.city}}</option>
+                                            </select>
+                                            <span class="errormsg"
+                                                *ngIf="addittonalInfoForm.controls['commAddCity'].hasError('required')  && addittonalInfoForm.controls['commAddCity'].touched">
+                                                {{ 'SELECT_CITY' | translate }}
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <div Class="col-12 col-md-6 col-lg-6 col-xl-6">
+                                        <div class="ux-input pb-0">
+                                            <label>{{'PINCODE' | translate }}</label>
+                                            <input type="tel" placeholder='Enter Pincode' formControlName="commAddPincode" limit-to="6" >
+                                            <span class="errormsg"
+                                                *ngIf="addittonalInfoForm.controls['commAddPincode'].hasError('required')  && addittonalInfoForm.controls['commAddPincode'].touched">
+                                                {{ 'ENTER_PINCODE' | translate }}
+                                            </span>
+                                        </div>
+                                    </div>
+
+
+
+                                </div>
+                            </div>
+                            <div class="col-12 ">
+                                <div class="ux-input">
+                                    <label> {{ 'OCCUPATION' | translate }}</label>
+                                    <select formControlName="occupation">
+                                        <option value="" >{{'SELECT_OCCUPATION' | translate }}</option>
+                                        <option *ngFor="let occupation of occupationList" [value]="occupation.ref_code">
+                                            {{occupation.DESCRIPTION}}</option>
+                                    </select>
+
+                                    <span class="errormsg"
+                                        *ngIf="addittonalInfoForm.controls['occupation'].hasError('required')  && addittonalInfoForm.controls['occupation'].touched">
+                                        {{ 'SELECT_OCCUPATION' | translate }}
+                                    </span>
+                                </div>
+                            </div>
+                            <div Class="col-12 ">
+                                <div class="ux-input">
+                                    <label> {{ 'ANNUAL_INCOME' | translate }}</label>
+                                    <select formControlName="income">
+                                        <option value="" >{{'SELECT_ANNUAL_INCOME' | translate }}</option>
+                                        <option *ngFor="let annualIncome of annualIncomeList"
+                                            [value]="annualIncome.code">{{annualIncome.DESCRIPTION}}</option>
+                                    </select>
+                                    <span class="errormsg"
+                                        *ngIf="addittonalInfoForm.controls['income'].hasError('required')  && addittonalInfoForm.controls['income'].touched">
+                                        {{ 'SELECT_ANNUAL_INCOME' | translate }}
+                                    </span>
+                                </div>
+                            </div>
+                            <div Class="col-12 ">
+                                <h4>{{'AADHAR_LINKING_DECLARTION' | translate }}</h4>
+                                <div class="ux-selection mt-3 mb-2">
+                                    <label class="ux-selection1">{{'AADHAR_LINKING_DBT_1' | translate }}
+                                        <input type="checkbox" id="check1" name="radioboxdemo" formControlName="acceptTerms1" (change)="onCheckboxChange($event)">
+                                        <span class="checkmark"></span>
+                                    </label>
+                                </div>
+                                <div class="ux-selection ">
+                                    <label class="ux-selection1">{{'AADHAR_LINKING_DBT_2' | translate }}
+                                        <input type="checkbox" id="check2" name="radioboxdemo" formControlName="acceptTerms2" (change)="onCheckboxChange($event)">
+                                        <span class="checkmark"></span>
+                                    </label>
+                                </div>
+                                <span class="errormsg"
+                                    *ngIf="addittonalInfoForm.value.acceptTerms1==false &&  addittonalInfoForm.value.acceptTerms2==false && addittonalInfoForm.controls['acceptTerms1'].touched && addittonalInfoForm.controls['acceptTerms2'].touched">
+                                    {{ 'ACCEPT_TERMS' | translate }}
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 col-lg-10 col-md-12 col-sm-12 m-auto position-static">
+                        <div class="ux-footer border-n">
+                            <div class="row1">
+                                <div class="col-6 col-lg-6 col-md-6 col-sm-6">
+
+                                </div>
+                                <div class=" col-lg-6 col-md-6 col-sm-6 text-right col-12">
+                                    <button class="ux-button sm secondary cancel-btn" (click)="prevtab()">{{ 'PREVIOUS' | translate }}</button>
+                                    <button class="ux-button primary sm  ml-2" type="submit" [disabled]="addittonalInfoForm.value.acceptTerms1==false &&  addittonalInfoForm.value.acceptTerms2==false"> {{ 'NEXT' | translate
+                                        }}</button>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="col-12 col-lg-6 col-md-2 col-sm-12 d-none d-lg-block d-xl-block">
+        <img src="assets/images/svg/ChannelCredentials.svg" class="right-regImg">
+    </div>
+</div>

@@ -1,0 +1,53 @@
+{
+  "_from": "cordova-plugin-qrcodejs",
+  "_id": "cordova-plugin-qrcodejs@1.0.0",
+  "_inBundle": false,
+  "_integrity": "sha1-DyqOePIngoGvX8mrNhORHtuRwKg=",
+  "_location": "/cordova-plugin-qrcodejs",
+  "_phantomChildren": {},
+  "_requested": {
+    "type": "tag",
+    "registry": true,
+    "raw": "cordova-plugin-qrcodejs",
+    "name": "cordova-plugin-qrcodejs",
+    "escapedName": "cordova-plugin-qrcodejs",
+    "rawSpec": "",
+    "saveSpec": null,
+    "fetchSpec": "latest"
+  },
+  "_requiredBy": [
+    "#DEV:/",
+    "#USER"
+  ],
+  "_resolved": "https://registry.npmjs.org/cordova-plugin-qrcodejs/-/cordova-plugin-qrcodejs-1.0.0.tgz",
+  "_shasum": "0f2a8e78f2278281af5fc9ab3613911edb91c0a8",
+  "_spec": "cordova-plugin-qrcodejs",
+  "_where": "D:\\Project\\PunjabSindhBank\\Source\\MOBILE\\PSB THEME\\V1.0",
+  "author": {
+    "name": "Menelic Limited"
+  },
+  "bugs": {
+    "url": "https://github.com/MenelicSoftware/cordova-plugin-qrcodejs/issues"
+  },
+  "bundleDependencies": false,
+  "deprecated": false,
+  "description": "Cordova plugin for generating QR code",
+  "homepage": "https://github.com/MenelicSoftware/cordova-plugin-qrcodejs",
+  "keywords": [
+    "QRCodeJS",
+    "plugin",
+    "qr",
+    "qr code"
+  ],
+  "license": "Apache-2.0",
+  "main": "index.js",
+  "name": "cordova-plugin-qrcodejs",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MenelicSoftware/cordova-plugin-qrcodejs.git"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "version": "1.0.0"
+}

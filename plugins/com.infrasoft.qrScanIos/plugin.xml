@@ -1,0 +1,33 @@
+<?xml version='1.0' encoding='utf-8'?>
+<plugin id="com.infrasoft.qrScanIos" version="1.0.0" xmlns="http://www.phonegap.com/ns/plugins/1.0">
+    <name>qrScan</name>
+    <description>
+        plugin to scan qr for PSB
+    </description>
+    <engines>
+     <engine name="cordova" version=">=3.4.0"/>
+    </engines>
+
+  <asset src="www/index.js" target="js/index.js"/>
+  <js-module src="www/index.js" name="qrScanIos">
+    <merges target="window.plugins.qrscan" />
+  </js-module>
+
+<platform name="ios">
+    <config-file target="config.xml" parent="/widget">
+      <feature name="qrScanIos">
+        <param name="ios-package" value="BarcodeReader" />
+      </feature>
+    </config-file> 
+    <header-file src="src/ios/BarcodeReader.h"/>
+    <source-file src="src/ios/BarcodeReader.m"/>
+    <header-file src="src/ios/BarcodeScannerVC.h"/>
+    <source-file src="src/ios/BarcodeScannerVC.m"/>
+    <resource-file src="src/ios/BarcodeScannerVC.xib" />
+    <resource-file src="src/ios/upi.png" />
+    <resource-file src="src/ios/backbuttoniconred@3x.png" />
+    <resource-file src="src/ios/bharatqr.png" />
+    <resource-file src="src/ios/gallery.png" />
+    <resource-file src="src/ios/ubilogo@3x.png" />
+</platform>
+</plugin>

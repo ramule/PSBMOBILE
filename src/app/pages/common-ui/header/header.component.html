@@ -1,0 +1,730 @@
+<em class="copyrighttext">Copyright © 2021 Infrasoft Technologies Ltd. All rights reserved. 
+  Powered by Kiya.ai
+</em>
+<header class="global-header"  *ngIf="commonPageComponent?.headerType === 'innerHeader'">
+	<div class="desk-header ">
+		<div class="container-fluid">
+			<div class="row">
+				<div class="col-xl-1 col-lg-1 col-md-1 col-sm-1 col-2 d-lg-none">
+					<div class="header-actions">
+						<button class="ux-button-header menu-btn">
+							<img src="assets/images/svg/yellow-menu.svg" alt="open-menu-icon">
+						</button>
+					</div>
+				</div>
+				<div class="col-xl-1 col-lg-1 col-md-1 col-sm-1 col-2 pl-0 pr-0 d-none d-xl-block d-lg-block d-md-none d-sm-none ">
+						<div id="nav-icon1" (click)="menuClick()" >
+							<div class="inner-div">
+								<span></span>
+								<span></span>
+								<span></span>
+							</div>
+						</div>
+				</div>
+				<div class="col-xl-5 col-lg-5 col-md-5 col-sm-6 col-6 position-static">
+					<div class="brand-heading">
+						 <span class="logo-img">
+                <img src="assets/images/svg/final-logo.svg" alt="psb-logo" class="normal d-none d-md-block d-lg-block d-xl-block" >
+                <img src="assets/images/svg/psb-dark-logo.svg" alt="psb-logo" class="bw-logo">
+                <img  src="assets/images/logo/logo1.png" alt="psb-logo" class="text-left d-block d-md-none d-lg-none d-xl-none">
+						 </span>
+					</div>
+				</div>
+				<div class="col-xl-6 col-lg-6 col-md-6 col-sm-5 col-4">
+					<div class="header-items">
+						<ul class="lst-header-items">
+							<li>
+							  	<!-- <div class="user-details item-user" (click)="openProfile()">
+									<span class="round-circle"><img [src]="DataService.profileImage" onError="this.onerror=null;this.src='./assets/images/svg/user-profile-w.svg';" alt=""></span>
+							  	</div> -->
+                  <div class="user-details item-user" (click)="openProfile()">
+                    <span class="round-circle green">
+                        <h4 *ngIf="DataService.profileImage == '' ">{{ DataService.profileName | firstLastChar | uppercase }}</h4>
+                        <img *ngIf="DataService.profileImage != '' " [src]="DataService.profileImage"  onerror="this.src='./assets/images/svg/user-profile-w.svg'"
+                        alt="user-img">
+                    </span>
+                </div>
+                 
+							 <div class="bm-userprofile">
+								<ul class="lst-userprofile">
+									<li>
+										<div class="userprofile-container">
+											<div class="row1">
+												<div class="col-12 col-sm-6">
+													<span>John Smith</span>
+													<em>Last login <i>12 Jan 2020,</i><b>16:25</b></em>
+												</div>
+												<div class="col-12 col-sm-6">
+													<div class="profile-btn">
+														<button class="ux-button sm secondary" (click)="goToPage(profileDetails)">My Profile</button>
+													</div>
+												 </div>
+											</div>
+										</div>
+									 </li>
+									 <li>
+										<a class="common-action change-pwd">
+											<span> Change Password</span>
+										</a>
+									 </li>
+									<li>
+										<a (click)="goToPage('login')" class="common-action logout" data-toggle="modal" data-target="#logoutModal">
+											<span> Logout</span>
+										</a>
+								 </li>
+								</ul>
+							 </div>
+						   </li>
+						   <li class="hil-setting d-none d-md-inline-block d-lg-inline-block">
+							<a href="javascript:;" class="item-settings">
+								<img src="assets/images/svg/psb-theme-icon.svg" alt="theme-icon">
+							 </a>
+						</li>
+             <li class="hil-setting d-none d-md-inline-block d-lg-inline-block">
+							<a href="javascript:;" class="translate-settings" (click)="goToPage('languageChange')">
+								<img src="assets/images/svg/translate-w.svg" alt="translate-icon">
+							 </a>
+						</li>
+            
+							 <li class="hil-notification">
+								<a href="javascript:;" class="item-notification">
+									<div class="notify">
+										<!-- <span class="pulse"></span>  -->
+										<span class="point" (click)="getNotification()">{{this.DataService.notificationBadge}}</span>
+									</div>
+									<img src="assets/images/svg/bell1.svg" alt="bell-icon" (click)="getNotification()">
+								 </a>
+								<div class="bm-notification">
+									<div class="nf-header">
+										<span class="nf-title">Notifications <b>2</b></span>
+									</div>
+									<!-- .nf-header -->
+									<div class="nf-content">
+										<div class="template-list">
+											<dl class="dl-template-items">
+												<div>
+													<a href="javascript:;">
+														<span>N</span>
+														<dt>New data added to system</dt>
+														<dd>System is updated with new reports</dd>
+														<em>12 Jan 2020, 9:25 AM</em>
+													</a>
+												</div>
+												<div>
+													<a href="javascript:;">
+														<span>E</span>
+														<dt>Event Today</dt>
+														<dd>Just a reminder of an event</dd>
+														<em>11 Jan 2020, 08:00 AM</em>
+													</a>
+												</div>
+												<div>
+													<a href="javascript:;" class="nf-read">
+														<span>S</span>
+														<dt>System Maintenance</dt>
+														<dd>System will be down from 5PM - 8PM today</dd>
+														<em>10 Jan 2020, 07:00 AM</em>
+													</a>
+												</div>
+											</dl>
+										</div>
+									</div>
+									<div class="nf-footer ">
+										<button class="ux-button sm secondary" (click)="goToPage('omniNotification')"> View all</button>
+									</div>
+									<!-- .nf-footer -->
+								</div>
+							</li>
+							<li>
+							  <a href="javascript:;" class="item-logout1" data-toggle="modal" data-target="#logoutModal">
+								  <img src="assets/images/svg/logout-w.svg" alt="logout-icon">
+								 </a>
+							</li>
+						 </ul>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+ </header>
+
+
+
+
+
+
+<header class="global-header " *ngIf="commonPageComponent?.headerType == 'preloginHeader'">
+  <div class="desk-header">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-xl-3 col-lg-3 col-md-3 col-sm-2 col-2 d-none d-md-block d-lg-block d-xl-block">
+          <ul class="headerlist">
+            <li >
+              <a (click)="goToPage('/nliLanding')"> <img src="./assets/images/svg/home1.svg" alt="home-icon">
+                <em>Home</em></a>
+            </li>
+           
+          </ul>
+        </div>
+          <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
+            <div class="brand-heading text-center m-auto">
+                <span class="logo-img">
+                    <img src="assets/images/svg/final-logo.svg" alt="psb-logo " class="d-none d-md-block d-lg-block d-xl-block">
+                    <img src="assets/images/svg/psb-dark-logo.svg" alt="psb-logo" class="bw-logo">
+                    <img  src="assets/images/logo/logo1.png" alt="psb-logo" class="text-left d-block d-md-none d-lg-none d-xl-none">
+                </span>
+            </div>
+        </div>
+        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-2 col-2 d-none d-md-block d-lg-block d-xl-block">
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+<header class="global-header login" *ngIf="commonPageComponent?.headerType == 'notLoginPrelogin' || commonPageComponent?.headerType == 'launchHeader' ">
+  <div class="desk-header">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-xl-3 col-lg-3 col-md-3 col-sm-2 col-2 d-none d-md-block d-lg-block d-xl-block">
+          <ul class="headerlist">
+         
+            <li (click)="goToPage('/login')">
+              <a  *ngIf="commonPageComponent?.headerType != 'launchHeader'">  <img src="assets/images/svg/home1.svg" alt="home-icon">
+                <em>Home</em></a>
+            </li>
+          </ul>
+        </div>
+      
+          <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
+            <div class="brand-heading text-center m-auto">
+                <span class="logo-img">
+                    <img src="assets/images/svg/final-logo.svg" alt="psb-logo" class="d-none d-md-block d-lg-block d-xl-block">
+                    <img src="assets/images/svg/psb-dark-logo.svg" alt="psb-logo" class="bw-logo">
+                    <img  src="assets/images/logo/logo1.png" alt="psb-logo" class="text-left d-block d-md-none d-lg-none d-xl-none">
+                </span>
+            </div>
+        </div>
+        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-2 col-2 d-none d-md-block d-lg-block d-xl-block">
+
+        </div>
+
+       
+      </div>
+    </div>
+  </div>
+</header>
+
+
+
+<header class="global-header  brand-bg2 minus-nav login" *ngIf="commonPageComponent?.headerType == 'preloginHeaderomni'">
+  <div class="desk-header">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-xl-3 col-lg-3 col-md-3 col-sm-2 col-2 d-none d-md-block d-lg-block d-xl-block">
+          <ul class="headerlist">
+            <li>
+              <a href="https://www.psbindia.com/"> <img src="assets/images/svg/home1.svg" alt="home-icon">
+                <em>Home</em></a>
+            </li>
+          </ul>
+        </div>
+        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
+          <div class="brand-heading text-center m-auto">
+              <span class="logo-img">
+                  <img src="assets/images/svg/final-logo.svg" alt="psb-logo" class="d-none d-md-block d-lg-block d-xl-block">
+                  <img src="assets/images/svg/psb-dark-logo.svg" alt="psb-logo" class="bw-logo">
+                  <img    src="assets/images/logo/logo1.png" alt="psb-logo" class="text-left d-block d-md-none d-lg-none d-xl-none">
+              </span> 
+          </div>
+      </div>
+      <div class="col-xl-6 col-lg-6 col-md-6 col-sm-2 col-2 d-none d-md-block d-lg-block d-xl-block">
+      </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+
+<!-- ---------------------------------------------Have with Page Header ------------------------------------------- -->
+<header class="global-header brand-bg2 minus-nav " *ngIf="commonPageComponent?.headerType == 'TitleHeader'">
+  <div class="in-header">
+    <div class="header-icons-lft show1">
+      <div class="header-actions">
+        <button class="ux-button-header" (click)="backbtnClick()">
+          <img class="img-small" src="assets/images/svg/left-arrow.svg" alt="left-arrow-icon" />
+        </button>
+      </div>
+    </div>
+    <div class="brand-logo">
+      <h3>{{commonPageComponent.titleName == 'PMSBY' || commonPageComponent.titleName == 'PMJJBY' ? commonPageComponent.titleName :  (commonPageComponent.titleName | translate  | titlecase)}}</h3>
+    </div>
+    <div class="header-icons-rit">
+      <div class="header-actions">
+        <button class="ux-button-header mr-2" (click)="goToDashboard()" *ngIf="DataService.omniUPIFlow">
+          <img src="assets/images/svg/home1.svg"  alt="home-icon" class="img-small" />
+      </button>
+      </div>
+    </div>
+  </div>
+</header>
+  
+
+<header class="global-header brand-bg2  minus-nav" *ngIf="commonPageComponent?.headerType == 'TitleCloseHeader'">
+  <div class="in-header">
+    <div class="header-icons-lft" (click)="close()">
+      <div class="header-actions">
+        <button class="ux-button-header">
+          <img src="assets/images/svg/close-w.svg" alt="close-b-icon" class="img-vsmall" />
+        </button>
+      </div>
+    </div>
+    <div class="brand-logo">
+      <h3 class="col-w">{{commonPageComponent.titleName | translate}}</h3>
+    </div>
+    <div class="header-icons-rit">
+      <div class="header-actions">
+      </div>
+    </div>
+  </div>
+</header>
+
+<header class="global-header"
+  *ngIf="commonPageComponent?.headerType == 'TitleClose' || commonPageComponent?.headerType == 'TitleCloseScanQr'">
+  <div class="in-header">
+    <div class="header-icons-lft">
+      <div class="header-actions">
+        <button class="ux-button-header" (click)="close()">
+          <img src="assets/images/svg/close-w.svg" alt="cross-icon" class="img-vsmall" />
+        </button>
+      </div>
+    </div>
+    <div class="brand-logo">
+      <h3>{{commonPageComponent.titleName | translate}}</h3>
+    </div>
+    <div class="header-icons-rit">
+      <div class="header-actions">
+        <button class="ux-button-header" *ngIf="commonPageComponent?.headerType == 'TitleCloseScanQr'">
+          <img src="assets/images/svg/scan-qr-w.svg" alt="scan-icon" class="img-small" />
+        </button>
+      </div>
+    </div>
+  </div>
+</header>
+
+<header class="global-header brand-bg2 minus-nav" *ngIf="commonPageComponent?.headerType == 'createUpiIdHeader'">
+  <div class="in-header">
+    <div class="header-icons-lft">
+      <div class="header-actions">
+        <button class="ux-button-header" (click)="backbtnClick()">
+          <img class="img-small" src="assets/images/svg/left-arrow.svg" alt="left-arrow-icon" />
+        </button>
+      </div>
+    </div>
+    <div class="brand-logo">
+      <h3>{{commonPageComponent.titleName | translate}}</h3>
+    </div>
+    <div class="header-icons-rit" (click)="showInfoPopup()" *ngIf="commonPageComponent.titleName == 'Create UPI ID'">
+      <div class="header-actions">
+        <button class="ux-button-header">
+          <img src="assets/images/svg/question-w.svg" alt="question-icon" />
+        </button>
+      </div>
+    </div>
+  </div>
+</header>
+
+<header class="global-header brand-bg2 minus-nav" *ngIf="commonPageComponent?.headerType == 'backUpiIdHeader'">
+  <div class="in-header">
+    <div class="header-icons-lft">
+      <div class="header-actions">
+        <button class="ux-button-header" (click)="backbtnClick()">
+          <img src="assets/images/svg/left-arrow.svg" alt="left-arrow-icon" class="img-small" />
+        </button>
+      </div>
+    </div>
+    <div class="brand-logo">
+      <h3>{{commonPageComponent.titleName | translate}}</h3>
+    </div>
+    <div class="header-icons-rit">
+      <div class="header-actions">
+      </div>
+    </div>
+  </div>
+</header>
+
+<header class="global-header brand-bg2 minus-nav" *ngIf="commonPageComponent?.headerType == 'filterHeader'">
+  <div class="in-header">
+    <div class="header-icons-lft show1">
+      <div class="header-actions">
+        <button class="ux-button-header" (click)="backbtnClick()">
+          <img class="img-small" src="assets/images/svg/left-arrow.svg" alt="left-arrow-icon" />
+        </button>
+      </div>
+    </div>
+    <div class="brand-logo">
+      <h3>{{commonPageComponent.titleName | translate}}</h3>
+    </div>
+    <div class="header-icons-rit" (click)="filterHeader()">
+      <div class="header-actions">
+        <button class="ux-button-header filter-btn">
+          <img src="assets/images/svg/filter.svg" alt="filter-icon" />
+        </button>
+      </div>
+    </div>
+  </div>
+</header>
+
+<header class="global-header brand-bg2 minus-nav" *ngIf="commonPageComponent?.headerType == 'CloseNewHeader'">
+  <div class="in-header">
+    <div class="header-icons-lft">
+      <div class="header-actions">
+        <button class="ux-button-header" (click)="backbtnClick()">
+          <img src="assets/images/svg/left-arrow.svg" alt="left-arrow-icon" class="img-small" />
+        </button>
+      </div>
+    </div>
+    <div class="brand-logo">
+      <h3>{{commonPageComponent.titleName | translate}}</h3>
+    </div>
+    <div class="header-icons-rit">
+      <div class="header-actions">
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ---------------------------------------------Have with UPI Header ------------------------------------------- -->
+<header class="global-header  brand-bg " *ngIf="commonPageComponent?.headerType == 'dashboardHeader'">
+  <div class="in-header">
+    <div class="header-icons-lft">
+      <div class="header-actions">
+        <button class="ux-button-header  menu-btn">
+          <img src="assets/images/svg/yellow-menu.svg" alt="open-menu-icon" />
+        </button>
+      </div>
+    </div>
+    <div class="brand-logo">
+      <img src="assets/images/logo/logo1.png" alt="PSB-logo" class="text-left">
+    </div>
+    <div class="header-icons-rit">
+      <div class="header-actions">
+        <button class="ux-button-header btn-notification-bell">
+          <img src="assets/images/svg/bell1.svg" class="img-small" alt="bell-icon" />
+          <!-- <span class="point">1</span> -->
+        </button>
+        <button class="ux-button-header btn-logout">
+          <img src="assets/images/svg/logout-w.svg" class="img-small" alt="logout-icon" />
+        </button>
+        <button class="ux-button-header btn-user">
+          <span class="round-circle"><img src="assets/images/icons/user1.png" alt="user-img"></span>
+        </button>
+      </div>
+    </div>
+  </div>
+</header>
+
+<header class="global-header primary-bg" *ngIf="commonPageComponent?.headerType == 'dashboardUpiHeader'">
+  <div class="in-header">
+    <div class="header-icons-lft">
+      <div class="header-actions">
+        <button class="ux-button-header  menu-btn d-lg-none d-md-block" (click)="closePopups()">
+          <img src="assets/images/svg/yellow-menu.svg" alt="open-menu-icon" />
+        </button>
+      </div>
+    </div>
+    <div class="brand-logo m-auto">
+      <img src="assets/images/logo/psb-logo.svg" alt="psb-logo" class="m-auto ">
+    </div>
+    <div class="header-icons-rit">
+      <div class="header-actions">
+        <button class="ux-button-header btn-notification-bell2" (click)="routeTo('notification')">
+          <img src="assets/images/svg/bell-w.svg" class="img-small" alt="bell-icon" />
+          <span class="red-dot" *ngIf="allPendingNotificationCount>0"></span>
+          <!-- <span class="point">1</span> -->
+        </button>
+        <button class="ux-button-header btn-logout" data-target="#logoutModal" (click)="openLogoutModal()">
+          <img src="assets/images/svg/shutdown-w.svg" class="img-small" alt="logout-icon" />
+        </button>
+        <button class="ux-button-header btn-user profile-btn" (click)="openProfilePopUp()">
+          <span class="round-circle"><img *ngIf="DataService.profileImage && DataService.profileImage != ''"
+              [src]="DataService.profileImage" onerror="this.src='./assets/images/svg/user-profile-w.svg'"
+              alt="user-img">
+            <h5 *ngIf="DataService.profileImage == ''">{{DataService.userName | firstLastChar}}</h5>
+          </span>
+        </button>
+      </div>
+    </div>
+  </div>
+</header>
+
+<header class="global-header brand-bg2 minus-nav" *ngIf="commonPageComponent?.headerType == 'UpiMainHeader'">
+  <div class="in-header">
+    <div class="header-icons-lft">
+      <div class="header-actions">
+      </div>
+    </div>
+    <div class="brand-logo m-auto text-center">
+      <img src="assets/images/logo/logo1.png" alt="psb-logo">
+    </div>
+    <div class="header-icons-rit">
+      <div class="header-actions">
+      </div>
+    </div>
+  </div>
+</header>
+
+<header class="global-header brand-bg2 minus-nav" *ngIf="commonPageComponent?.headerType == 'rechargeBillPay'">
+  <div class="in-header">
+    <div class="header-icons-lft">
+      <div class="header-actions">
+        <button class="ux-button-header">
+          <img src="assets/images/svg/left-arrow.svg" alt="left-arrow-icon" class="img-small" />
+        </button>
+      </div>
+    </div>
+    <div class="brand-logo">
+      <h3>{{commonPageComponent.titleName | translate}}</h3>
+    </div>
+    <div class="header-icons-rit">
+      <div class="header-actions">
+        <img src="assets/images/icons/billpay.png" alt="billpay-img" class="small-img" />
+      </div>
+    </div>
+  </div>
+</header>
+
+<header class="global-header brand-bg2 minus-nav" *ngIf="commonPageComponent?.headerType == 'rechargeBillPayClose'">
+  <div class="in-header">
+    <div class="header-icons-lft">
+      <div class="header-actions">
+        <button class="ux-button-header">
+          <img src="assets/images/svg/close-w.svg" alt="cross-icon" class="img-vsmall" />
+        </button>
+      </div>
+    </div>
+    <div class="brand-logo">
+      <h3>{{commonPageComponent.titleName | translate}}</h3>
+    </div>
+    <div class="header-icons-rit">
+      <div class="header-actions">
+        <img src="assets/images/icons/billpay.png" alt="billpay-img" class="small-img" />
+      </div>
+    </div>
+  </div>
+</header>
+
+
+<header class="global-header brand-bg2 minus-nav" *ngIf="commonPageComponent?.headerType == 'PayCloseHeader'">
+  <div class="in-header">
+    <div class="header-icons-lft">
+      <div class="header-actions">
+        <button class="ux-button-header">
+          <img src="assets/images/svg/close-w.svg" alt="close-b-icon" class="img-vsmall" />
+        </button>
+      </div>
+    </div>
+    <div class="brand-logo">
+      <h3>{{commonPageComponent.titleName | translate}}</h3>
+    </div>
+    <div class="header-icons-rit">
+      <div class="header-actions">
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- Success Header UPI -->
+
+<!-- <header class="global-header success-bg minus-nav"  *ngIf="commonPageComponent?.headerType == 'upiSuccessHeader' || commonPageComponent?.headerType == 'upiNonQrSuccessHeader'  ">
+    <div class="in-header">
+        <div class="header-icons-lft ">
+            <div class="header-actions">
+                <button class="ux-button-header">
+                    <img src="assets/images/svg/close-w.svg"  alt="left-arrow-icon" class="img-vsmall"/>
+                </button>
+           </div>
+        </div>
+         <div class="brand-logo">
+       </div>
+       <div class="header-icons-rit">
+            <div class="header-actions">
+                <div class="header-actions">
+                    <div class="header-actions">
+                    <button class="ux-button-header mr-2">
+                        <img src="assets/images/svg/download1-w.svg"  alt="download-icon" class="img-small" />
+                    </button>
+                    <button class="ux-button-header mr-2">
+                        <img src="assets/images/svg/share1-w.svg"  alt="share-icon" class="img-small" />
+                    </button>
+                     <button class="ux-button-header mr-2">
+                        <img src="assets/images/svg/star1-w.svg"  alt="star-icon" class="img-small" />
+                    </button>
+                    <button class="ux-button-header" *ngIf="commonPageComponent?.headerType != 'upiNonQrSuccessHeader'">
+                        <img src="assets/images/svg/scan-qr-w.svg"  alt="scan-icon" class="img-small"/>
+                    </button>
+                 </div>
+                </div>
+             </div>
+        </div>
+    </div>
+</header>  -->
+
+
+
+<!-- Upload Profile Picture Popup Start -->
+<div class="popup-bottom profile1">
+  <div class="row1">
+    <div class="col-10">
+      <h4>{{'UPLOAD_PROFILE_PICTURE' | translate}}</h4>
+    </div>
+    <div class="col-2">
+      <button class="ux-button-icon close-btn">
+        <img src="assets/images/svg/close-b.svg" alt="cross-icon" class="img-vsmall">
+      </button>
+    </div>
+  </div>
+  <div class="row1">
+    <div class="col-12">
+      <ul class="profile-list">
+        <li (click)="selectImageFromGallery('P')">
+          <a href="javascript:;">
+            <img src="assets/images/svg/gallery1.svg" alt="gallery-icon"> {{'SELECT_FROM_GALLERY' | translate}}
+          </a>
+        </li>
+        <li (click)="takePhoto('P')">
+          <a href="javascript:;">
+            <img src="assets/images/svg/photo-camera.svg" alt="camera-icon"> {{'TAKE_PHOTO' | translate}}
+          </a>
+        </li>
+        <li (click)="removeProfilePopUp()">
+          <a class="delete-btn">
+            <img src="assets/images/svg/delete.svg" alt="remove-icon"> {{'REMOVE_PROFILE_PICTURE' | translate}}
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <!-- <div class="row mt-2">
+        <div class="col-12 text-center">
+            <button class="ux-button primary submit-btn" (click)="closeProfilePopUp()" >{{'CONFIRM' | translate}}</button>
+        </div>
+    </div> -->
+</div>
+<!-- Upload Profile Picture Popup End -->
+
+<!-- Delete Profile Picture Popup Start -->
+<div class="popup-bottom delete-profile-pic">
+  <div class="row">
+    <div class="col-12">
+      <h4 class="text-center">{{'DELETE_PROFILE_PICTURE' | translate}}</h4>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-12">
+      <p>
+        {{'ARE_YOU_SURE_YOU_WANT_TO_DELETE' | translate}}
+      </p>
+    </div>
+  </div>
+  <div class="row1 mt-2">
+    <div class="col-6 text-center">
+      <button class="ux-button secondary no md close-btn"
+        (click)="closeRemoveProfilePopUp()">{{'NO' | translate}}</button>
+    </div>
+    <div class="col-6 text-center">
+      <button class="logout-btn ux-button primary md" (click)="removeProfilePicture('P')">{{'YES' | translate}}</button>
+    </div>
+  </div>
+</div>
+<!-- Delete Profile Picture Popup End -->
+
+<!-- Popup Start -->
+<div class="popup-bottom header-info">
+  <div class="row1">
+    <div class="col-12">
+      <h4 class="text-center"> <img src="assets/images/svg/information.svg" alt="information-icon">
+        {{'INFORMATION' | translate}}</h4>
+    </div>
+  </div>
+  <div class="row1">
+    <div class="col-12">
+      <p>{{information | translate}}</p>
+    </div>
+  </div>
+  <div class="row1  mt-2">
+    <div class="col-12 text-center">
+      <button class="ux-button primary submit-btn" type="button"
+        (click)="closePopup('div.popup-bottom.header-info')">{{'OK' | translate}}</button>
+    </div>
+  </div>
+</div>
+<!-- Popup End -->
+
+<div id="logoutModal" class="modal fade " role="dialog">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <div class="mh-bottom">
+          <div class="row1">
+            <div class="col-10">
+              <h6>{{'CONFIRMATION' | translate}}</h6>
+            </div>
+            <div class="col-2"><a href="javascript:;" data-dismiss="modal"><span class="mh-cross"></span></a></div>
+          </div>
+        </div>
+      </div>
+      <div class="modal-body">
+        <p>{{'DO_YOU_WANT_LOGOUT' | translate }}?</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="ux-button sm secondary" data-dismiss="modal">{{'NO' | translate }}</button>
+        <button type="button" class="ux-button sm primary" data-dismiss="modal"
+          (click)="logoutapp()">{{'YES' | translate }}</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- Show Intent Message Popup Start -->
+<div class="popup-bottom show-intent-message">
+  <div class="row1">
+    <div class="col-12">
+      <h4 class="text-center"> <img src="./assets/images/svg/information.svg"
+          alt="information-icon">{{informationLabel}}
+      </h4>
+    </div>
+  </div>
+  <div class="row1">
+    <div class="col-12">
+      <p>{{informationDetails}}</p>
+    </div>
+  </div>
+  <div class="row1 mt-2">
+    <div class="col-6 text-center">
+      <button class="ux-button secondary no md close-btn"
+        (click)="closePopup('div.popup-bottom.show-intent-message')">{{'NO' | translate}}</button>
+    </div>
+    <div class="col-6 text-center">
+      <button class="logout-btn ux-button primary md" (click)="handleIntentCallback()">{{'YES' |
+                translate}}</button>
+    </div>
+  </div>
+</div>
+<!-- Show Intent Message Popup Start -->
+
+<!-- <div class="popup-bottom header-info">
+    <div class="row1 mt-3">
+   <div class="success">
+     <h3>{{'INFORMATION' | translate }}</h3>
+     <h5>{{'NO_INTERNET_CONNECTION' | translate}}</h5>
+     </div>
+    </div>
+    <div class="row1 mt-3">
+     <div class="col-12 text-center" (click)="closePopup('div.popup-bottom.header-info')">
+      <button class="ux-button primary md"  type="button">{{'OK' | translate}}</button>
+    </div>
+    </div>
+</div>  -->
+
+

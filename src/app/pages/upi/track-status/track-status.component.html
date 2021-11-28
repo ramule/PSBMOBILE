@@ -1,0 +1,411 @@
+<div class="main">
+  <div class="right-main-column minus-rt-col mar-custom">
+    <div class="right-col-container ">
+      <div class="body-page-container">
+        <div class="container-fluid">
+          <div class="row">
+            <div class="bg-section">
+              <div class="col-12">
+                <div class="row1">
+                  <div class="col-sm-12 col-12 col-md-12">
+                    <div class="white-bg1 pad-0">
+                      <div class="status-info-container" *ngIf="trackStatusRes.responseResult == '000'">
+                        <div class="row1">
+                          <div class="col-12 col-md-12">
+                            <h4 class="mb-1">{{'TRANSACTION_STATUS' | translate}}</h4>
+                            <h6>{{'TRANSACTION_ID' | translate}} : {{transactionDetails.transactionID}}</h6>
+                          </div>
+                        </div>
+                        <div class="row1">
+                          <!-- Transaction Success -->
+                          <div class="col-12 col-sm-12 col-md-12">
+                            <div class="steps-block">
+                              <ul>
+                                <li [ngClass]="'active' ? 'completed' : 'rejected' ">
+                                  <!-- <li [ngClass]= "trackStatusRes.response_status == 'FAILURE' ? 'rejected' : 'inprogress' "> -->
+                                  <span class="step-icon">
+                                    <div class="icon"></div>
+                                    <div [ngClass]="'active' ? 'arrow' : 'arrow up-arrow' "></div>
+                                    <!-- <div  class= "arrow" ></div> -->
+                                  </span>
+                                  <b class="step-name"> {{'TRANSACTION_INITIATED' | translate}}</b>
+                                  <!-- <em class="info-text">{{'REVERSAL_COMPLETED' | translate}}</em> -->
+                                </li>
+                                <!-- <li class="completed">
+																		<span class="step-icon">
+																			<div class="icon"></div>
+																			<div class="arrow up-arrow"></div>
+																		</span>
+																		<b class="step-name"> Transaction Initiated</b>
+																		<em class="info-text">{{'REVERSAL_COMPLETED' | translate}}</em>
+																	</li> -->
+                                <!-- <li class="rejected"> -->
+                                <li class="completed">
+                                  <span class="step-icon">
+                                    <div class="icon"></div>
+                                    <div class="arrow"></div>
+                                  </span>
+                                  <b class="step-name"> {{'MONEY_DEBIT_BANK' | translate}}</b>
+                                  <!-- <em class="info-text">Money not Debited</em> -->
+                                </li>
+                                <!-- <li class="inprogress"> -->
+                                <li class="completed">
+                                  <span class="step-icon">
+                                    <div class="icon"></div>
+                                    <div class="arrow"></div>
+                                  </span>
+                                  <b class="step-name"> {{'MONEY_SEND_RECEIVER' | translate}}</b>
+                                  <em class="info-text"> </em>
+                                </li>
+                                <li class="completed">
+                                  <span class="step-icon">
+                                    <div class="icon"></div>
+                                    <div class="arrow"></div>
+                                  </span>
+                                  <b class="step-name"> {{'TRANSACTION_COMPLETED' | translate}}</b>
+                                  <em class="info-text"> </em>
+                                </li>
+                              </ul>
+                            </div>
+                          </div>
+                        </div>
+                        <div *ngIf="trackStatusRes.responseResult == '000'"> <em class="info">Your Transaction status is
+                            completed and you cannot raise a complaint for the same. In Case of any queries, please
+                            contact your bank for more details.</em>
+                        </div>
+                      </div>
+                      <!-- Debit failed or no response -->
+                      <div class="status-info-container" *ngIf="trackStatusRes.responseResult == '001'">
+                        <div class="row1">
+                          <div class="col-12 col-md-12">
+                            <h4 class="mb-1">{{'TRANSACTION_STATUS' | translate}}</h4>
+                            <h6>{{'TRANSACTION_ID' | translate}} : {{transactionDetails.transactionID}}</h6>
+                          </div>
+                        </div>
+                        <div class="row1">
+                          <!-- Transaction Success -->
+                          <div class="col-12 col-sm-12 col-md-12">
+                            <div class="steps-block">
+                              <ul>
+                                <li [ngClass]="'active' ? 'completed' : 'rejected' ">
+                                  <!-- <li [ngClass]= "trackStatusRes.responseResult == '000' ? 'completed' : 'rejected' "> -->
+                                  <span class="step-icon">
+                                    <div class="icon"></div>
+                                    <div [ngClass]="'active' ? 'arrow' : 'arrow up-arrow' "></div>
+                                    <!-- <div  class= "arrow" ></div> -->
+                                  </span>
+                                  <b class="step-name"> {{'TRANSACTION_INITIATED' | translate}}</b>
+                                  <!-- <em class="info-text">{{'REVERSAL_COMPLETED' | translate}}</em> -->
+                                </li>
+                                <!-- <li class="completed">
+																			<span class="step-icon">
+																				<div class="icon"></div>
+																				<div class="arrow up-arrow"></div>
+																			</span>
+																			<b class="step-name"> Transaction Initiated</b>
+																			<em class="info-text">{{'REVERSAL_COMPLETED' | translate}}</em>
+																		</li> -->
+                                <!-- <li class="rejected"> -->
+                                <li class="rejected">
+                                  <span class="step-icon">
+                                    <div class="icon"></div>
+                                    <div class="arrow"></div>
+                                  </span>
+                                  <b class="step-name"> {{'MONEY_DEBIT_BANK' | translate}}</b>
+                                  <!-- <em class="info-text">Money not Debited</em> -->
+                                </li>
+                                <!-- <li class="inprogress"> -->
+                                <li class=" ">
+                                  <span class="step-icon">
+                                    <div class="icon"></div>
+                                    <div class="arrow"></div>
+                                  </span>
+                                  <b class="step-name"> {{'MONEY_SEND_RECEIVER' | translate}}</b>
+                                  <em class="info-text"> </em>
+                                </li>
+                                <li class=" ">
+                                  <span class="step-icon">
+                                    <div class="icon"></div>
+                                    <div class="arrow"></div>
+                                  </span>
+                                  <b class="step-name"> {{'TRANSACTION_COMPLETED' | translate}}</b>
+                                  <em class="info-text"> </em>
+                                </li>
+                              </ul>
+                            </div>
+                          </div>
+                        </div>
+                        <div> <em class="info">Your transaction status is failed and you cannot raise a complaint for
+                            the same. In case any queries please contact your bank for more details.</em>
+                        </div>
+                      </div>
+                      <!-- Debit reversal confirmation(DRC) debit from account but got reverse on remitter account -->
+                      <div class="status-info-container"
+                        *ngIf="trackStatusRes.responseResult == '004' || complaintDetails.complaintResult == '009'">
+                        <div class="row1">
+                          <div class="col-12 col-md-12">
+                            <h4 class="mb-1">{{'TRANSACTION_STATUS' | translate}}</h4>
+                            <h6>{{'TRANSACTION_ID' | translate}} : {{transactionDetails.transactionID}}</h6>
+                          </div>
+                        </div>
+                        <div class="row1">
+                          <!-- Transaction Success -->
+                          <div class="col-12 col-sm-12 col-md-12">
+                            <div class="steps-block">
+                              <ul>
+                                <li [ngClass]="'active' ? 'completed' : 'rejected' ">
+                                  <!-- <li [ngClass]= "trackStatusRes.responseResult == '000' ? 'completed' : 'rejected' "> -->
+                                  <span class="step-icon">
+                                    <div class="icon"></div>
+                                    <div
+                                      [ngClass]="trackStatusRes.responseResult == '004' ? 'arrow' : complaintDetails.complaintResult == '009' ? 'arrow up-arrow' : 'arrow'">
+                                    </div>
+                                    <!-- <div  class= "arrow" ></div> -->
+                                  </span>
+                                  <b class="step-name"> {{'TRANSACTION_INITIATED' | translate}}</b>
+                                  <em class="info-text"
+                                    *ngIf="complaintDetails.complaintResult == '009'">{{'REVERSAL_COMPLETED' | translate}}</em>
+                                </li>
+                                <!-- <li class="completed">
+																			<span class="step-icon">
+																				<div class="icon"></div>
+																				<div class="arrow up-arrow"></div>
+																			</span>
+																			<b class="step-name"> Transaction Initiated</b>
+																			<em class="info-text">{{'REVERSAL_COMPLETED' | translate}}</em>
+																		</li> -->
+                                <!-- <li class="rejected"> -->
+                                <!-- <li class="rejected"> -->
+                                <li
+                                  [ngClass]="trackStatusRes.responseResult == '004' ? 'inprogress' : complaintDetails.complaintResult == '009' ? 'completed' : 'inprogress'">
+                                  <!-- <li [ngClass]= "trackStatusRes.response_status == 'FAILURE' ? 'rejected' : trackStatusRes.response_status == 'inprogress ' ? 'inprogress' : 'completed'"> -->
+                                  <span class="step-icon">
+                                    <div class="icon"></div>
+                                    <div class="arrow"></div>
+                                  </span>
+                                  <b class="step-name"> {{'MONEY_DEBIT_BANK' | translate}}</b>
+                                  <!-- <em class="info-text">Money not Debited</em> -->
+                                </li>
+                                <!-- <li class="inprogress"> -->
+                                <li class=" ">
+                                  <span class="step-icon">
+                                    <div class="icon"></div>
+                                    <div class="arrow"></div>
+                                  </span>
+                                  <b class="step-name"> {{'MONEY_SEND_RECEIVER' | translate}}</b>
+                                  <em class="info-text"> </em>
+                                </li>
+                                <li class=" ">
+                                  <span class="step-icon">
+                                    <div class="icon"></div>
+                                    <div class="arrow"></div>
+                                  </span>
+                                  <b class="step-name"> {{'TRANSACTION_COMPLETED' | translate}}</b>
+                                  <em class="info-text"> </em>
+                                </li>
+                              </ul>
+                            </div>
+                          </div>
+                        </div>
+                        <div> <em class="info">This transaction has failed. If any amount is deducted, it will be
+                            reversed in your a/c within a day. If not reversed, you may contact your Bank / raise a
+                            complaint.</em>
+                        </div>
+                      </div>
+                      <!-- Deemed debit success credit failed or no response -->
+                      <div class="status-info-container"
+                        *ngIf="trackStatusRes.responseResult == '005' || trackStatusRes.responseResult == '006' || complaintDetails.complaintResult == '010' || complaintDetails.complaintResult == '000'">
+                        <div class="row1">
+                          <div class="col-12 col-md-12">
+                            <h4 class="mb-1">{{'TRANSACTION_STATUS' | translate}}</h4>
+                            <h6>{{'TRANSACTION_ID' | translate}} : {{transactionDetails.transactionID}}</h6>
+                          </div>
+                        </div>
+                        <div class="row1">
+                          <!-- Transaction Success -->
+                          <div class="col-12 col-sm-12 col-md-12">
+                            <div class="steps-block">
+                              <ul>
+                                <li class="completed">
+                                  <!-- <li [ngClass]= "trackStatusRes.responseResult == '000' ? 'completed' : 'rejected' "> -->
+                                  <span class="step-icon">
+                                    <div class="icon"></div>
+                                    <div [ngClass]="complaintDetails.complaintResult == '010' ? 'arrow up-arrow' : 'arrow'"></div>
+                                    <!-- <div  class= "arrow" ></div> -->
+                                  </span>
+                                  <b class="step-name"> {{'TRANSACTION_INITIATED' | translate}}</b>
+                                  <em class="info-text" *ngIf="complaintDetails.complaintResult == '010'">{{'REVERSAL_COMPLETED' | translate}}</em>
+                                </li>
+                                <!-- <li class="completed">
+																			<span class="step-icon">
+																				<div class="icon"></div>
+																				<div class="arrow up-arrow"></div>
+																			</span>
+																			<b class="step-name"> Transaction Initiated</b>
+																			<em class="info-text">{{'REVERSAL_COMPLETED' | translate}}</em>
+																		</li> -->
+                                <!-- <li class="rejected"> -->
+                                <li class="completed">
+                                  <span class="step-icon">
+                                    <div class="icon"></div>
+                                    <div [ngClass]="complaintDetails.complaintResult == '010' ? 'arrow up-arrow' : 'arrow'"></div>
+                                  </span>
+                                  <b class="step-name"> {{'MONEY_DEBIT_BANK' | translate}}</b>
+                                  <!-- <em class="info-text">Money not Debited</em> -->
+                                </li>
+                                <!-- <li class="rejected"> -->
+                                <li [ngClass]="complaintDetails.complaintResult == '010' ? 'rejected' : complaintDetails.complaintResult == '000' ? 'completed' : 'inprogress'">
+                                  <span class="step-icon">
+                                    <div class="icon"></div>
+                                    <div class="arrow"></div>
+                                  </span>
+                                  <b class="step-name"> {{'MONEY_SEND_RECEIVER' | translate}}</b>
+                                  <em class="info-text"> </em>
+                                </li>
+                                <li [ngClass]="complaintDetails.complaintResult == '000' ? 'completed' : ' '">
+                                  <span class="step-icon">
+                                    <div class="icon"></div>
+                                    <div class="arrow"></div>
+                                  </span>
+                                  <b class="step-name"> {{'TRANSACTION_COMPLETED' | translate}}</b>
+                                  <em class="info-text"> </em>
+                                </li>
+                              </ul>
+                            </div>
+                          </div>
+                        </div>
+                        <div> <em class="info" *ngIf="trackStatusRes.responseResult=='005' && complaintDetails.complaintResult != '000'">Your transaction status is
+                            pending.Money will get credited in receiver‘s a/c within a day. If not credited, you may
+                            contact your Bank / raise a complaint.</em>
+                          <em class="info" *ngIf="trackStatusRes.responseResult=='006'">This transaction has failed. If
+                            any
+                            amount is deducted, it will be reversed in your a/c within a day. If not reversed, you may
+                            contact your Bank.</em>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="row1" *ngIf="trackStatusRes.COMPLAINT == true">
+                  <div class="col-sm-12 col-12 col-md-12">
+                    <div class="white-bg1 pad-0">
+                      <div class="status-info-container">
+                        <div class="row1">
+                          <div class="col-12 col-md-12">
+                            <h4 class="mb-1">{{'COMPLAINT_STATUS' | translate}}</h4>
+                            <h6>{{'COMPLAINT_ID' | translate }} : {{complaintDetails.CRN}}</h6>
+                          </div>
+                        </div>
+                        <div class="row1">
+                          <div class="col-12 col-sm-12 col-md-12">
+                            <div class="steps-block">
+                              <ul>
+                                <li class="completed">
+                                  <span class="step-icon">
+                                    <div class="icon"></div>
+                                    <div class="arrow"></div>
+                                  </span>
+                                  <b class="step-name"> {{'COMPLETED_RAISED' | translate}}</b>
+                                  <em class="info-text"> </em>
+
+                                </li>
+                                <li [ngClass]="complaintDetails.STATUS == 'closed' ? 'completed' : 'inprogress'">
+                                  <span class="step-icon">
+                                    <div class="icon"></div>
+                                    <div class="arrow"></div>
+                                  </span>
+                                  <b class="step-name"> {{'RESOLUTION_INPROGRESS' | translate}}</b>
+                                  <em class="info-text"> </em>
+                                </li>
+                                <li [ngClass]="complaintDetails.STATUS == 'closed' ? 'completed' : ''">
+                                  <span class="step-icon">
+                                    <div class="icon"></div>
+                                    <div class="arrow"></div>
+                                  </span>
+                                  <b class="step-name">{{'COMPLAINT_RESOLVED' | translate}}</b>
+                                  <em class="info-text" *ngIf="complaintDetails.STATUS == 'Open'">It may take upto 2 days.</em>
+                                  <em class="info-text" *ngIf="complaintDetails.complaintResult == '000'">Complaint resolved. Money credited to beneficiary.</em>
+                                  <em class="info-text" *ngIf="complaintDetails.complaintResult == '001'">Debit Reversal
+                                    Confirmation.</em>
+                                  <em class="info-text" *ngIf="complaintDetails.complaintResult == '009'">Complaint
+                                    Resolved and money is credited back to payer account.</em>
+                                  <em class="info-text" *ngIf="complaintDetails.complaintResult == '010'">Complaint
+                                    Resolved and money is credited back to payer account.</em>
+                                  <em class="info-text" *ngIf="complaintDetails.complaintResult == '011'">Merchant has
+                                    confirmed delivery of goods/Services for further concern please contact your
+                                    bank.</em>
+                                </li>
+                              </ul>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- footer section start -->
+      <div class="footer-container sticky-actions" *ngIf="trackStatusRes.complaintFlag == true && trackStatusRes.COMPLAINT == false">
+        <div class="footer-inactions minus-rt-col">
+          <div class="container-fluid">
+            <div class="row">
+              <div class="col-12 col-md-12 col-lg-12 text-center">
+                <button class="ux-button primary md"
+                  (click)="raiseComplaint()">{{'RAISE_COMPLAINT' | translate}}</button>
+              </div>
+              <div class="col-12 col-md-12 col-lg-12 text-center">
+								   <div class="powered-logo">
+									   <img src="assets/images/logo/powered-upi-logo.svg" alt="powered-upi-logo">
+								   </div>
+								</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- footer section end -->
+    </div>
+  </div>
+</div>
+<!-- main -->
+<!-- =========== modal popup start ===============  -->
+<!-- Select Account Popup Start -->
+<div class="popup-bottom selectaccount">
+  <div class="row1">
+    <div class="col-10">
+      <h4>Select Account</h4>
+    </div>
+    <div class="col-2">
+      <button class="ux-button-icon"> <img src="assets/images/svg/close-b.svg" alt="cross-icon" class="img-vsmall">
+      </button>
+    </div>
+  </div>
+  <form action="#" id="selectaccount-form">
+    <div class="row2">
+      <div class="col-12 p-0">
+        <ul class="list2  mb-4">
+          <li class="bor-n">
+            <div class="ux-selection mar-4">
+              <label class="ux-selection5">XXXXXXXX4918
+                <br />AU Small Finance Bank
+                <br /><span>Overdraft A/c</span>
+                <input type="radio" checked="checked" name="radioboxdemo"> <span class="checkmark"></span> </label>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-12 text-center">
+        <button class="ux-button primary">Proceed</button>
+      </div>
+    </div>
+  </form>
+</div>
+<!-- Select Account Popup End -->
+<div class="ios-nav-overlay"></div>
+<!-- =========== modal popup end ===============  -->

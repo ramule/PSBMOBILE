@@ -1,0 +1,132 @@
+<div class="main bg-m">
+	<div class="right-main-column ">
+		<div class="right-col-container pad-b full-width">
+			<div class="body-page-container main-dashborad manage-payee">
+				<div class="container-fluid">
+					<div class="row">
+						<div class="col-12 p-0">
+							<div class="breadcrumb">
+								<ul class="lst-breadcrumb">
+									<!-- <li> <a>Dashboard</a> </li>
+									<li> <a>Tax</a> </li>
+									<li> Direct Tax </li> -->
+									<li *ngFor="let name of dataService.breadcrumblist">
+										<a (click)="dataService.breadcrumroute(name.routeName)">{{name.currentRoute | translate}}</a>
+								</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+					<!--.row -->
+					<div class="vspacer15 customize d-none d-md-block d-lg-block d-xl-block"></div>
+					<div class="row no-gutters">
+						<div class="col-12">
+							<div class="row1">
+								<div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-9">
+									<!-- Greencard2 Start here -->
+									<div class="greencard2">
+										<div class="row1 hide-m">
+											<div class="col-12">
+												<h4>State Tax</h4> </div>
+										</div>
+										<div class="row1">
+											<div class="col-sm-12 col-12 col-md-12">
+												<div class="widget-box5 mb-3">
+													<div class="bg-white1 pad-custom tax-wrapper py-2">
+														<div class="row1">
+															<div class="col-md-12 col-12">
+																<div id="accordion2" class="accordion-container parent-accordion">
+																	<div class="card4 overflow-inherit">
+																		<a class="card-link" data-toggle="collapse" href="#dvat" aria-expanded="false">
+																			<div class="card-header3">
+																				<div class="panel-title3">
+																					<h4 class="black-h4">DVAT</h4> </div> <em></em> </div>
+																			<!--card-header-->
+																		</a>
+																		<div id="dvat" class="collapse show" data-parent="#accordion2">
+																			<div class="row1">
+																				<div class="col-12 col-md-12">
+																					<p>To pay Direct Taxes through internet, do the following
+																						<br/> </p>
+																					<ol class="order-list">
+																						<li>After clicking “Proceed” button, you will be leaving PSB Digital banking and will be redirected to a third party website, which is not controlled by the Bank. Bank will not be responsible/ liable for any action, dispute etc which arises at the third party website.</li>
+																						<li>On the Income Tax website, click on the challan Number that is applicable for your payment and enter all the relevant details.</li>
+																						<li>On Payment page, select Punjab and Sind Bank and login with your PSB Digital Banking User ID and Password. You can download the receipt on successful processing of your transaction.</li>
+																					</ol>
+																				</div>
+																			</div>
+																			<form [formGroup]="stateTaxForm">
+																				<div class="row1">
+																					<div class="col-12 col-md-12">
+																						<div class="ux-selection">
+																							<div class="ux-selection1 p-0">
+																								<label>I accept <a> Terms and Conditions</a>
+																									<input type="checkbox" name="termsCondition" formControlName="termsCondition" required> <span class="checkmark"></span> </label>
+																							</div>
+																						</div>
+																					</div>
+																					<div class="col-12 col-md-12">
+																						<div class="ux-input mt-0">
+																							<p class="error-message" *ngIf="stateTaxForm.controls['termsCondition'].hasError('required') && (stateTaxForm.controls['termsCondition'].dirty || stateTaxForm.controls['termsCondition'].touched)"> This field is required </p>
+																						</div>
+																					</div>
+																				</div>
+																			</form>
+																			<div class="border-top-container"> <!--border-top-container-->
+																				<div class="row1">
+																					<div class="col-12 col-md-12">
+																						<ul class="bottom-footer1">
+																							<li>
+																								<div class="btn-div w100">
+																									<button class="ux-button primary sm-mob" (click)="stateTaxSubmit()">Proceed</button>
+																								</div>
+																							</li>
+																						</ul>
+																					</div>
+																				</div>
+																			</div>
+																		</div>
+																	</div>
+																</div>
+															</div>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+									<!-- greencard2 -->
+								</div>
+								<!-- col-12 col-sm-12 col-md-12 col-lg-12 col-xl-9 -->
+								<!-- Right Column Ads Start -->
+								<div class="col-12 col-md-12 col-lg-12 col-xl-3 d-none d-xl-block">
+									<div class="right-ads">
+										<a > <img src="assets/images/banner/my-card-banner.jpg"> </a>
+									</div>
+									<div class="vspacer30"></div>
+									<!-- Offercard Start-->
+									<!-- <div class="offers-card">
+										<div class="header-block clearfix">
+											<h5>Offers on your card</h5> </div>
+										<div class="panel-body">
+											<div class="recentpayment-control">
+												<ul>
+													<li> <img src="assets/images/banner/offer-banner.png"> </li>
+												</ul>
+											</div>
+										</div>
+									</div> -->
+									<!-- Offercard Ends-->
+								</div>
+								<!-- Right Column Ads Ends -->
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!--.right-col-container-->
+	</div>
+	<!--.right-main-column-->
+</div>
+<!-- main -->

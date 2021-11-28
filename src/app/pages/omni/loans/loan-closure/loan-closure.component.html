@@ -1,0 +1,199 @@
+<div class="main bg-m">
+	<div class="nav-overlay"></div>
+	<div class="right-main-column ">
+		<div class="right-col-container pad-b full-width">
+			<!-- ======== body page content start from here ======== -->
+			<div class="body-page-container main-dashborad manage-payee">
+				<div class="container-fluid">
+					<div class="row">
+						<div class="col-12 p-0">
+							<div class="breadcrumb">
+								<ul class="lst-breadcrumb">
+									<!-- <li [routerLink]="['/myAccount']"> <a>My Accounts</a> </li>
+									<li [routerLink]="['/loanList']"> <a>My Borrowings</a> </li>
+									<li [routerLink]="['/loanDetailedStatement']"> <a> Loan Account Details</a> </li>
+									<li> Loan Closure / Pre Closure </li> -->
+									<li *ngFor="let name of dataService.breadcrumblist">
+										<a (click)="dataService.breadcrumroute(name.routeName)">{{name.currentRoute | translate}}</a>
+								</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+					<!--.row -->
+					<div class="vspacer15 customize d-none d-md-block d-lg-block d-xl-block"></div>
+					<div class="row no-gutters">
+						<div class="col-12">
+							<div class="row1">
+								<div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-9">
+									<!-- Greencard2 Start here -->
+									<div class="greencard2">
+										<div class="row1 hide-m">
+											<div class="col-md-8 col-12">
+												<h4>Loan Closure / Pre Closure</h4> </div>
+											<div class="col-md-4 col-12"> </div>
+										</div>
+										<div class="row1">
+											<!-- <div class="col-sm-12 col-12 col-md-12" style="display:none;">
+												<div class="white-box2 mar-t pad-custom custom-bor">
+													<div class="row1">
+														<div class="col-12 col-md-8 col-lg-9 col-xl-9">
+															<div class="row1">
+																<div class="col-12 col-md-12">
+																	<div class="ux-input"> <em class="info-message2">OTP sent on your
+                                                                                registered Mobile number ending with
+                                                                                ******0967</em> </div>
+																</div>
+																<div class="col-12 col-md-8 col-lg-8 col-xl-7">
+																	<div class="row">
+																		<div class="col-12 pl-2 pr-2">
+																			<div class="row3">
+																				<div class="col-sm-2 col-2 col-md-2">
+																					<div class="ux-input password1 mb-1">
+																						<input id="otppassword1" type="password" maxlength="1" placeholder="●" onkeyup="onKeyupEvent(1, event)" onfocus="onfocusEvent(1)"> </div>
+																				</div>
+																				<div class="col-sm-2 col-2 col-md-2">
+																					<div class="ux-input password1 mb-1">
+																						<input id="otppassword2" type="password" maxlength="1" placeholder="●" onkeyup="onKeyupEvent(2, event)" onfocus="onfocusEvent(2)"> </div>
+																				</div>
+																				<div class="col-sm-2 col-2 col-md-2">
+																					<div class="ux-input password1 mb-1">
+																						<input id="otppassword3" type="password" maxlength="1" placeholder="●" onkeyup="onKeyupEvent(3, event)" onfocus="onfocusEvent(3)"> </div>
+																				</div>
+																				<div class="col-sm-2 col-2 col-md-2">
+																					<div class="ux-input password1 mb-1">
+																						<input id="otppassword4" type="password" maxlength="1" placeholder="●" onkeyup="onKeyupEvent(4, event)" onfocus="onfocusEvent(4)"> </div>
+																				</div>
+																				<div class="col-sm-2 col-2 col-md-2">
+																					<div class="ux-input password1  mb-1">
+																						<input id="otppassword5" type="password" maxlength="1" placeholder="●" onkeyup="onKeyupEvent(5, event)" onfocus="onfocusEvent(5)"> </div>
+																				</div>
+																				<div class="col-sm-2 col-2 col-md-2">
+																					<div class="ux-input password1 mb-1">
+																						<input id="otppassword6" type="password" maxlength="1" placeholder="●" onkeyup="onKeyupEvent(6, event)" onfocus="onfocusEvent(6)"> </div>
+																				</div>
+																			</div>
+																			<div class="row1">
+																				<div class="col-12">
+																					<div class="ux-input password1 mt-0 mb-0">
+																						<p class="error-message"> </p>
+																					</div>
+																				</div>
+																			</div>
+																			<div class="row3">
+																				<div class="col-6 col-md-6">
+																					<div class="text-left">
+																						<p class="text-left"> <span class="success-text">00.20</span> </p>
+																					</div>
+																				</div>
+																				<div class="col-6 col-md-6">
+																					<div class="text-right">
+																						<button class="ux-linkbutton default-underline mt3">Resend</button>
+																					</div>
+																				</div>
+																			</div>
+																		</div>
+																	</div>
+																</div>
+															</div>
+														</div>
+														<div class="col-12 col-md-4 col-lg-3 col-xl-3 text-right hide-m">
+															<div class="mobile-img"> <img src="assets/images/icons/mobile.svg" alt="mobile-icon"> </div>
+														</div>
+													</div>
+												</div>
+											</div> -->
+											<div class="col-sm-12 col-12 col-md-12">
+												<div class="white-box2 mb-3 mt-0 p-0">
+													<div class="info-bottom pad-custom">
+														<div class="info-details">
+															<div class="row">
+																<h6>Outstanding Loan Amount</h6>
+																<h5><img src="assets/images/svg/rupee-bl.svg"
+                                                                            alt="rupees-icon"> 10,00,000</h5> </div>
+														</div>
+														<div class="info-details">
+															<div class="row">
+																<h6>Principal Loan Amount</h6>
+																<h5><img src="assets/images/svg/rupee-bl.svg"
+                                                                            alt="rupees-icon"> 4,00,000</h5> </div>
+														</div>
+														<div class="info-details">
+															<div class="row">
+																<h6>Interest Amount</h6>
+																<h5><img src="assets/images/svg/rupee-bl.svg"
+                                                                            alt="rupees-icon"> 90,000</h5> </div>
+														</div>
+														<div class="info-details">
+															<div class="row">
+																<h6>Other Charges</h6>
+																<h5><img src="assets/images/svg/rupee-bl.svg"
+                                                                            alt="rupees-icon"> 20,000</h5> </div>
+														</div>
+													</div>
+													<div class="vspacer40 d-none d-sm-block"></div>
+													<div class="vspacer20 d-none d-sm-block"></div>
+												</div>
+											</div>
+											<div class="col-sm-12 col-12 col-md-12 closure-div"  *ngIf="nextStep">
+												<div class="white-box2 mb-3 mt-0 p-0">
+													<div class="info-bottom pad-custom">
+														<div class="info-details col-12">
+															<div class="row">
+																<div class="closure-icon"> <img src="assets/images/svg/accounts-g.svg" alt=""> </div>
+																<h6>Final Closure Amount</h6>
+																<h5>₹ 10,00,000.00</h5> </div>
+														</div>
+													</div>
+												</div>
+											</div>
+											<div class="col-12 col-md-12">
+												<ul class="bottom-footer1">
+													<li>
+														<div class="btn-div hide-m">
+															<button class="ux-button secondary sm-mob" (click)="goToPage('loanDetails')" >Cancel</button>
+														</div>
+														<div class="btn-div w100">
+															<button class="ux-button primary  closure-btn" (click)="calculateClosure()" *ngIf="!nextStep">Calculate Closure Amount</button>
+															<button class="ux-button primary sm-mob  pay-now" (click)="goToPage('sendMoney')" *ngIf="nextStep">Pay Now</button>
+														</div>
+													</li>
+												</ul>
+											</div>
+										</div>
+									</div>
+									<!-- Greencard2 End here -->
+								</div>
+								<!-- Right Column Ads Start -->
+								<div class="col-12 col-md-12 col-lg-12 col-xl-3 d-none d-xl-block">
+									<div class="right-ads">
+										<a> <img src="assets/images/banner/my-card-banner.jpg"> </a>
+									</div>
+									<div class="vspacer30"></div>
+									<!-- <div class="offers-card">
+											<div class="header-block clearfix">
+												<h5>Offers on your card</h5>
+											</div>
+
+											<div class="panel-body">
+												<div class="recentpayment-control">
+													<ul>
+													    <li>
+															<img src="assets/images/banner/offer-banner.png">
+														</li>
+													</ul>
+												</div> 
+											 </div>
+										</div>  --></div>
+								<!-- Right Column Ads Ends -->
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!--.right-col-container-->
+	</div>
+	<!--.right-main-column-->
+</div>
+<!-- main -->

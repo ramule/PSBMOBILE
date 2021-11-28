@@ -1,0 +1,221 @@
+<div class="main">
+    <div class="right-main-column minus-rt-col mar-custom">
+        <div class="right-col-container cust-pb">
+            <div class="body-page-container">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="bg-section">
+                            <div class="col-12">
+                                <div class="row1">
+                                    <div class="col-sm-12 col-12 col-md-12">
+                                        <div class="white-bg1 pad-custom"
+                                            *ngIf="QRScanData.payType == 'UPI_ID'">
+                                            <ul class="complaint-list">
+                                                <li class="bor-n">
+                                                    <div class="full-container">
+                                                        <div class="row1">
+                                                            <div class="col-12 col-md-12">
+                                                                <div class="left-info">
+                                                                    <h6>{{'UPI_ID' | translate}}</h6>
+                                                                    <h5>{{DataService.selectedVpaDetailsPay.vpaDetails.paymentAddress}}
+                                                                    </h5>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                                <li class="bor-n">
+                                                    <div class="full-container">
+                                                        <div class="row1">
+                                                            <div class="col-12 col-md-12">
+                                                                <div class="left-info">
+                                                                    <h6>{{'LINKED_ACCOUNT' | translate}}</h6>
+                                                                    <h5>{{DataService.selectedVpaDetailsPay.accountDetails.maskedAccountNumber}}
+                                                                    </h5>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                                <li class="bor-n">
+                                                    <div class="full-container">
+                                                        <div class="row1">
+                                                            <div class="col-12 col-md-12">
+                                                                <div class="left-info">
+                                                                    <h6>{{'TO_PAYEE' | translate}}</h6>
+                                                                    <h5>{{'UPI_ID' | translate }} : {{DataService.payeeObj.payeeUpiAddress}}</h5>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                                <li class="bor-n">
+                                                    <div class="full-container">
+                                                        <div class="row1">
+                                                            <div class="col-12 col-md-12">
+                                                                <div class="left-info">
+                                                                    <h6>{{'PAYEE_NAME' | translate}}</h6>
+                                                                    <h5>{{DataService.payeeObj.payeeName}}</h5>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                                <li class="bor-n">
+                                                    <div class="full-container">
+                                                        <div class="row1">
+                                                            <div class="col-12 col-md-12">
+                                                                <div class="left-info">
+                                                                    <h6>{{'AMOUNT' | translate}}</h6>
+                                                                    <h5>
+                                                                        <img src="assets/images/svg/rupee-bl.svg"
+                                                                            alt="rupees-icon">
+                                                                        {{payeeAmt}}
+                                                                    </h5>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                                <li class="bor-n">
+                                                    <div class="full-container">
+                                                        <div class="row1">
+                                                            <div class="col-12 col-md-12">
+                                                                <div class="left-info">
+                                                                    <h6>{{'REMARKS' | translate}}</h6>
+                                                                    <h5>{{DataService.upiPayRequest.remarks ? DataService.upiPayRequest.remarks : '-'}}</h5>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <div class="white-bg1 pad-custom"
+                                            *ngIf="QRScanData.payType == 'BNK_ACT'">
+                                            <ul class="complaint-list">
+                                                <li class="bor-n">
+                                                    <div class="full-container">
+                                                        <div class="row1">
+                                                            <div class="col-12 col-md-12">
+                                                                <div class="left-info">
+                                                                    <h6>{{'UPI_ID' | translate}}</h6>
+                                                                    <h5>{{DataService.selectedVpaDetailsPay.vpaDetails.paymentAddress}}
+                                                                    </h5>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                                <li class="bor-n">
+                                                    <div class="full-container">
+                                                        <div class="row1">
+                                                            <div class="col-12 col-md-12">
+                                                                <div class="left-info">
+                                                                    <h6>{{'LINKED_ACCOUNT' | translate}}</h6>
+                                                                    <h5>{{DataService.selectedVpaDetailsPay.accountDetails.maskedAccountNumber}}
+                                                                    </h5>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                                <li class="bor-n">
+                                                    <div class="full-container">
+                                                        <div class="row1">
+                                                            <div class="col-12 col-md-12">
+                                                                <div class="left-info">
+                                                                    <h6>{{'PAYEE_NAME' | translate}}</h6>
+                                                                    <h5>{{DataService.payeeObj.payeeName}}</h5>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                                <li class="bor-n">
+                                                    <div class="full-container">
+                                                        <div class="row1">
+                                                            <div class="col-12 col-md-12">
+                                                                <div class="left-info">
+                                                                    <h6>{{'PAYEE_ACCOUNT' | translate}}</h6>
+                                                                    <h5>{{DataService.payeeObj.payeeActNo}}</h5>
+                                                                    <h5>{{DataService.payeeObj.payeeIfsc}}</h5>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                                <li class="bor-n">
+                                                    <div class="full-container">
+                                                        <div class="row1">
+                                                            <div class="col-12 col-md-12">
+                                                                <div class="left-info">
+                                                                    <h6>{{'PAYEE_BANK' | translate}}</h6>
+                                                                    <h5>{{DataService.payeeObj.payeeBankName ? DataService.payeeObj.payeeBankName : '-'}}</h5>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                                <li class="bor-n">
+                                                    <div class="full-container">
+                                                        <div class="row1">
+                                                            <div class="col-12 col-md-12">
+                                                                <div class="left-info">
+                                                                    <h6>{{'AMOUNT' | translate}}</h6>
+                                                                    <h5>
+                                                                        <img src="assets/images/svg/rupee-bl.svg"
+                                                                            alt="rupees-icon">
+                                                                        {{payeeAmt}}
+                                                                    </h5>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                                <li class="bor-n">
+                                                    <div class="full-container">
+                                                        <div class="row1">
+                                                            <div class="col-12 col-md-12">
+                                                                <div class="left-info">
+                                                                    <h6>{{'REMARKS' | translate}}</h6>
+                                                                    <h5>{{DataService.upiPayRequest.remarks ? DataService.upiPayRequest.remarks : '-'}}</h5>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-container sticky-actions">
+                <div class="footer-inactions minus-rt-col">
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-12 col-md-12 col-lg-12 text-center">
+                                <button class="ux-button primary md" (click)="onClickPayAmount()">{{'PAY_NOW' |
+                                    translate}}</button>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-12 col-md-12 col-lg-12 text-center">
+                                <div class="powered-logo">
+                                    <img src="assets/images/logo/powered-upi-logo.svg" alt="powered-upi-logo">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- footer section end -->
+        </div>
+    </div>
+</div>
+<!-- main -->
+<!-- <div class="ios-nav-overlay"></div>  -->

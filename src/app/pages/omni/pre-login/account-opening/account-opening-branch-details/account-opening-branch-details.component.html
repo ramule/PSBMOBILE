@@ -1,0 +1,157 @@
+<div class="row">
+    <div class="col-12 col-lg-6 col-md-10 col-sm-12 position-static">
+    
+        <div class="row1">
+            <div class="col-12">
+                <ul class="step-list">
+                    <li class="step-matched">
+                        <em> <span class="primary">{{'STEP' | translate }} 3 </span> <span class="secondary">{{'OF_STEP' | translate }} 6</span> </em>
+                     </li>
+                </ul>
+               <div class="tab-header">
+                  <h4>{{'BRANCH_DETAILS' | translate }}</h4>
+                
+                </div>
+                
+            </div>
+            <div class="col-12 position-static">
+                <form [formGroup]="searchForm" (ngSubmit)="submit()"> 
+                <div class="col-12">
+                    <div class="details-section">
+                        <div class="row1">
+                            <div class="col-12 mt-3">
+                                <label class="m-0">{{'SEARCH_BY' | translate }}</label>
+                                </div>
+                            <div class="col-4">
+                                <div class="ux-selection">	  
+                                    <label class="ux-selection2">{{'PIN_CODE' | translate }}
+                                        <input type="radio" [checked]="selectedOption == 'pincode'"  (change)="searchChange('pincode')" name="radioboxdemo">
+                                        <span class="checkmark"></span>
+                                    </label>
+                                    
+                                </div>    
+                            </div>
+                            <div class="col-4">
+                                <div class="ux-selection">	  
+                                    <label class="ux-selection2">{{'STATE' | translate }}
+                                        <input type="radio" [checked]="selectedOption == 'state'" (change)="searchChange('state')" name="radioboxdemo">
+                                        <span class="checkmark"></span>
+                                    </label>
+                                </div>    
+                            </div>
+                        </div>
+                    
+                        <div *ngIf="selectedOption == 'pincode'">
+                        
+                                <div class="row1 mt-5">
+                                    <div Class="col-12">
+                                        <div class="ux-input">
+                                            <label>{{'PIN_CODE' | translate }}</label>
+                                            <input type="text" placeholder='ENTER_PIN_CODE' formControlName="pinNumber" limit-to="6" numbersOnly (input)="onPinChange()" >
+                                            
+                                          
+                                            <span class="errormsg"
+                                                *ngIf="searchForm.controls['pinNumber'].hasError('required')  && searchForm.controls['pinNumber'].touched">
+                                                {{ 'ENTER_PINODE_ERROR' | translate }}
+                                            </span>
+                                            <span class="errormsg"
+                                                *ngIf="searchForm.controls['pinNumber'].hasError('pattern') && searchForm.controls['pinNumber'].touched">
+                                                {{ 'INVALID_PIN' | translate }}</span>
+                                                <div class="text-right" *ngIf="pinlength == 6" >
+                                                    <a class="check-availability" (click)="verifyPincode()" style="float: right;margin-top: -32px;">{{ 'VERIFY' | translate }}</a>
+                                                </div>
+                                                <p *ngIf="this.pinCodeBankList.length==0 && showerror" style="color: red;">No Branch found for the entered PIN Code, please search by selecting State and City</p>
+                                                
+                                        </div>
+                                    </div>
+                                    <div class="col-12" *ngIf="pinCodeBankList.length">
+                                        <div class="ux-input">
+                                            <label>{{'BRANCH' | translate }}</label>
+                                            <select formControlName="pinbranch" (change)="selPincodeBranch($event.target.value)" >
+                                                <option value="">{{'SELECT_BRANCH' | translate }}</option>
+                                                <option *ngFor="let branchDtl of pinCodeBankList" [value]="branchDtl.branchCode" >{{branchDtl.displayName}}</option>
+                                            </select>
+                                            <span class="errormsg"
+                                            *ngIf="searchForm.controls['pinbranch'].hasError('required')  && searchForm.controls['pinbranch'].touched">
+                                            {{ 'SELECT_BRANCH' | translate }}
+                                            </span>
+                                            <span class="gray-info">{{selBranchDtl}}</span>
+                                        </div> 
+                                    </div>
+                                </div>
+                            
+                        </div>
+                        <div *ngIf="selectedOption == 'state'">
+                            <div class="row1 mt-5">
+                            
+                                    <div class="col-12 ">
+                                        <div class="ux-input">
+                                            <label>{{'STATE' | translate }}</label>
+                                            <select  (change)="getCity($event.target.value)"  formControlName="state" >
+                                                <option value="">{{'SELECT_STATE' | translate }}</option>
+                                                <option *ngFor="let stateDtl of stateList" [value]="stateDtl.ID" >{{stateDtl.state}}</option>
+                                            </select>
+                                            <span class="errormsg"
+                                            *ngIf="searchForm.controls['state'].hasError('required')  && searchForm.controls['state'].touched">
+                                            {{ 'SELECT_STATE' | translate }}
+                                            </span>
+                                        </div>
+                                    </div> 
+                                    <div class="col-12 ">
+                                        <div class="ux-input">
+                                            <label>{{'CITY' | translate }}</label>
+                                            <select  (change)="getBranchLocFromCity($event.target.value)"  formControlName="city">
+                                                <option value="">{{'SELECT_CITY' | translate }}</option>
+                                                <option *ngFor="let cityDtl of cityList" [value]="cityDtl.ID" >{{cityDtl.city}}</option>
+                                            </select>
+                                            <span class="errormsg"
+                                            *ngIf="searchForm.controls['city'].hasError('required')  && searchForm.controls['city'].touched">
+                                            {{ 'SELECT_CITY' | translate }}
+                                            </span>
+                                        </div>
+                                    </div> 
+                                    <div class="col-12 ">
+                                        <div class="ux-input">
+                                            <label>{{'BRANCH' | translate }}</label>
+                                            <select  (change)="selCityBranch($event.target.value)"  formControlName="statebranch">
+                                                <option value="">{{'SELECT_BRANCH' | translate }}</option>
+                                                <option *ngFor="let branchDtl of CityBankList" [value]="branchDtl.branchCode" >{{branchDtl.displayName}} </option>
+                                            </select>
+                                            <span class="errormsg"
+                                            *ngIf="searchForm.controls['statebranch'].hasError('required')  && searchForm.controls['statebranch'].touched">
+                                            {{ 'SELECT_BRANCH' | translate }}
+                                            </span>
+                                            <span class="gray-info">{{selectedBranchFrmCityDtl}}</span>
+                                        </div>
+                                    </div> 
+                            
+                            </div>
+                        </div>
+                    
+                    </div>
+                
+                </div>
+                <div class="col-12 col-lg-10 col-md-12 col-sm-12 position-static">
+                    <div class="ux-footer border-n">
+                        <div class="row1">
+                            <div class="col-12 col-lg-6 col-md-6 col-sm-6">
+                                
+                            </div>
+                            <div class="col-12 col-lg-6 col-md-6 col-sm-6 text-right">
+                                <!-- <button class="ux-button secondary sm  cancel-btn" type="button" (click)="cancelbtn()" *ngIf="DataService.isFromOmniReg.isStepIII" >{{'PREVIOUS' | translate}}</button>
+                                <button class="ux-button primary sm  ml-2" type="submit">{{'NEXT' | translate}}</button> -->
+                                <button class="ux-button sm secondary cancel-btn" (click)="prevtab()"  >{{'PREVIOUS' | translate }}</button>
+                                <button class="ux-button sm primary  ml-2" type="submit" submit *ngIf="selectedOption == 'pincode'" [disabled]="searchForm.invalid" >{{'NEXT' | translate }}</button>
+                                <button class="ux-button sm primary  ml-2" type="submit" submit *ngIf="selectedOption == 'state'" [disabled]="searchForm.invalid" >{{'NEXT' | translate }}</button>
+                            </div>
+                        </div>
+                    </div> 
+                </div>
+                </form>
+            </div>
+        </div> 
+     </div> 
+     <div class="col-12 col-lg-6 col-md-2 col-sm-12 ">
+       
+    </div>
+</div>

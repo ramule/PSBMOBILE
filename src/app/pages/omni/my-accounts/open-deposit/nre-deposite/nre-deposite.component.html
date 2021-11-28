@@ -1,0 +1,374 @@
+<div class="main bg-m">
+	<div class="right-main-column ">
+		<div class="right-col-container pad-b full-width">
+			<!-- ======== body page content start from here ======== -->
+			<div class="body-page-container main-dashborad">
+				<div class="container-fluid">
+					<div class="row">
+						<div class="col-12 p-0">
+							<div class="breadcrumb">
+								<ul class="lst-breadcrumb">
+									<ul class="lst-breadcrumb">
+                                        <li *ngFor="let name of DataService.breadcrumblist">
+                                            <a (click)="DataService.breadcrumroute(name.routeName)">{{name.currentRoute | translate}}</a>
+                                    </li>
+									</ul>
+								</ul>
+							</div>
+						</div>
+					</div>
+					<!--.row -->
+					<div class="vspacer15 customize d-none d-md-block d-lg-block d-xl-block"></div>
+					<div class="row no-gutters">
+						<div class="col-12">
+							<div class="row1">
+								<div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+									<!-- Greencard2 Start here -->
+									<div class="greencard2 mycard">
+										<div class="info-box">
+											<div class="flex-container no-bg">
+												<div class="full-info">
+													<div class="ac-info hide-m">
+														<h4 class="mt-2">My Deposits</h4> </div>
+												</div>
+											</div>
+										</div>
+										<div class="row1">
+											<div class="col-12 col-sm-12 col-md-12 col-lg-12">
+												<div class="ux-nav-tabs" style="margin:0">
+													<div class="responsive3">
+														<ul class="nav nav-tabs custom-tabs bor-n mt-0" role="tablist">
+															<li class="nav-item"> <a class="nav-link active" data-toggle="tab" href="#domestic">Domestic Fixed Deposit (02)</a> </li>
+															<li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#fcnr">FCNR Deposit (01)</a> </li>
+														</ul>
+														<!-- Tab panes -->
+														<div class="tab-content custom-tab-content pad-n">
+															<div id="domestic" class=" tab-pane active">
+																<div class="row1">
+																	<div class="col-sm-12 col-12 col-md-12">
+																		<div class="widget-box5 custom-bg">
+																			<div class="component-title6 custom-pad">
+																				<div class="row1">
+																					<div class="col-7 col-md-6 col-lg-8 col-xl-8">
+																						<h4 class="default-grey">My Fixed Deposit Accounts</h4> </div>
+																					<div class="col-5 col-md-6 col-lg-4 col-xl-4">
+																						<div class="full-info text-right">
+																							<button class="ux-button sm-mob primary">Open FD</button>
+																						</div>
+																					</div>
+																				</div>
+																			</div>
+																			<div class="bg-white1 pt-0">
+																				<div class="row">
+																					<ul class="grid-list6">
+																						<li class="grey-th">
+																							<div class="grid-info">
+																								<div class="full-info">
+																									<h6>FD Account Number</h6> </div>
+																							</div>
+																							<div class="grid-info">
+																								<div class="full-info">
+																									<h6>FD Type</h6> </div>
+																							</div>
+																							<div class="grid-info">
+																								<div class="full-info">
+																									<h6>Interest Rate</h6> </div>
+																							</div>
+																							<div class="grid-info">
+																								<div class="full-info">
+																									<h6>Open Date</h6> </div>
+																							</div>
+																							<div class="grid-info">
+																								<div class="full-info">
+																									<h6>Maturity Date</h6> </div>
+																							</div>
+																							<div class="grid-info">
+																								<div class="full-info">
+																									<h6>Deposit Amount</h6> </div>
+																							</div>
+																							<div class="grid-info">
+																								<div class="full-info">
+																									<h6>Maturity Amount</h6> </div>
+																							</div>
+																							<div class="grid-info">
+																								<div class="full-info"> </div>
+																							</div>
+																						</li>
+																						<li>
+																							<div class="grid-info view-small ">
+																								<div class="full-info">
+																									<div class="display-mt">
+																										<h5>001198656721</h5> <em class="d-block d-md-none">Andheri -East</em> </div> <em></em> </div>
+																							</div>
+																							<div class="grid-info d-none d-md-block ">
+																								<div class="full-info">
+																									<h5>Saving with smile FD </h5> </div>
+																							</div>
+																							<div class="grid-info d-none d-md-block grid-info-3">
+																								<div class="full-info">
+																									<h5>5.15%</h5> </div>
+																							</div>
+																							<div class="grid-info d-none d-md-block">
+																								<div class="full-info">
+																									<h5>1 May 2021</h5> </div>
+																							</div>
+																							<div class="grid-info d-none d-md-block">
+																								<div class="full-info">
+																									<h5>1 July 2023</h5> </div>
+																							</div>
+																							<div class="grid-info d-none d-md-block">
+																								<div class="full-info">
+																									<h5>₹ 1,00,000.00</h5> </div>
+																							</div>
+																							<div class="grid-info view-small bal-view">
+																								<div class="full-info">
+																									<h5>₹ 1,40,500.00</h5> </div>
+																							</div>
+																							<div class="grid-info">
+																								<div class="full-info text-right">
+																									<button class="ux-button sm primary-custom md">More details</button>
+																								</div>
+																							</div>
+																						</li>
+																						<li>
+																							<div class="grid-info view-small">
+																								<div class="full-info">
+																									<div class="display-mt">
+																										<h5>001198656721</h5> <em class="d-block d-md-none">Andheri -East</em> </div> <em></em> </div>
+																							</div>
+																							<div class="grid-info d-none d-md-block">
+																								<div class="full-info">
+																									<h5>Saving with smile FD </h5> </div>
+																							</div>
+																							<div class="grid-info d-none d-md-block">
+																								<div class="full-info">
+																									<h5>5.15%</h5> </div>
+																							</div>
+																							<div class="grid-info d-none d-md-block">
+																								<div class="full-info">
+																									<h5>1 May 2021</h5> </div>
+																							</div>
+																							<div class="grid-info d-none d-md-block">
+																								<div class="full-info">
+																									<h5>1 July 2023</h5> </div>
+																							</div>
+																							<div class="grid-info d-none d-md-block">
+																								<div class="full-info">
+																									<h5>₹ 1,00,000.00</h5> </div>
+																							</div>
+																							<div class="grid-info view-small bal-view">
+																								<div class="full-info">
+																									<h5>₹ 1,40,500.00</h5> </div>
+																							</div>
+																							<div class="grid-info">
+																								<div class="full-info text-right">
+																									<button class="ux-button sm primary-custom md">More details</button>
+																								</div>
+																							</div>
+																						</li>
+																						<li class="d-none d-md-block d-lg-block d-xl-block">
+																							<div class="col-12">
+																								<div class="row  mt-3 mb-2 ">
+																									<div class="col-12 col-lg-6 col-md-6 col-sm-6 px-0 ">
+																										<div id="dt-sample_wrapper" class="dataTables_wrapper dt-bootstrap4 no-footer">
+																											<div class="dataTables_info pt-2" id="dt-sample_info" role="status" aria-live="polite">Showing 1 to 2 of <b>2</b> entries</div>
+																										</div>
+																									</div>
+																									<div class="col-12 col-lg-6 col-md-6 px-0 d-none d-sm-none d-xl-block d-lg-block d-md-block text-right">
+																										<div class="custom-paging">
+																											<div class="dataTables_wrapper">
+																												<div class="dataTables_paginate">
+																													<ul class="pagination">
+																														<li class="page-item previous disabled"> <a href="javascript:;" class="page-link">Previous</a> </li>
+																														<li class="page-item active"> <a href="javascript:;" class="page-link">1</a> </li>
+																														<li class="page-item"> <a href="javascript:;" class="page-link">2</a> </li>
+																														<li class="page-item next"> <a href="javascript:;" class="page-link">Next</a> </li>
+																													</ul>
+																												</div>
+																											</div>
+																										</div>
+																									</div>
+																								</div>
+																							</div>
+																						</li>
+																					</ul>
+																				</div>
+																			</div>
+																		</div>
+																	</div>
+																</div>
+															</div>
+															<div id="fcnr" class="tab-pane fade">
+																<div class="row1">
+																	<div class="col-sm-12 col-12 col-md-12">
+																		<div class="widget-box5 custom-bg">
+																			<div class="component-title6 custom-pad">
+																				<div class="row1">
+																					<div class="col-7 col-md-6 col-lg-8 col-xl-8">
+																						<h4 class="default-grey">My Fixed Deposit Accounts</h4> </div>
+																					<div class="col-5 col-md-6 col-lg-4 col-xl-4">
+																						<div class="full-info text-right">
+																							<button class="ux-button sm-mob primary">Open FD</button>
+																						</div>
+																					</div>
+																				</div>
+																			</div>
+																			<div class="bg-white1 pt-0">
+																				<div class="row">
+																					<ul class="grid-list6">
+																						<li class="grey-th">
+																							<div class="grid-info">
+																								<div class="full-info">
+																									<h6>FD Account Number</h6> </div>
+																							</div>
+																							<div class="grid-info">
+																								<div class="full-info">
+																									<h6>FD Type</h6> </div>
+																							</div>
+																							<div class="grid-info">
+																								<div class="full-info">
+																									<h6>Interest Rate</h6> </div>
+																							</div>
+																							<div class="grid-info">
+																								<div class="full-info">
+																									<h6>Open Date</h6> </div>
+																							</div>
+																							<div class="grid-info">
+																								<div class="full-info">
+																									<h6>Maturity Date</h6> </div>
+																							</div>
+																							<div class="grid-info">
+																								<div class="full-info">
+																									<h6>Deposit Amount</h6> </div>
+																							</div>
+																							<div class="grid-info">
+																								<div class="full-info">
+																									<h6>Maturity Amount</h6> </div>
+																							</div>
+																							<div class="grid-info">
+																								<div class="full-info"> </div>
+																							</div>
+																						</li>
+																						<li>
+																							<div class="grid-info view-small ">
+																								<div class="full-info">
+																									<div class="display-mt">
+																										<h5>001198656721</h5> <em class="d-block d-md-none">Andheri -East</em> </div> <em></em> </div>
+																							</div>
+																							<div class="grid-info d-none d-md-block ">
+																								<div class="full-info">
+																									<h5>Saving with smile FD </h5> </div>
+																							</div>
+																							<div class="grid-info d-none d-md-block grid-info-3">
+																								<div class="full-info">
+																									<h5>5.15%</h5> </div>
+																							</div>
+																							<div class="grid-info d-none d-md-block">
+																								<div class="full-info">
+																									<h5>1 May 2021</h5> </div>
+																							</div>
+																							<div class="grid-info d-none d-md-block">
+																								<div class="full-info">
+																									<h5>1 July 2023</h5> </div>
+																							</div>
+																							<div class="grid-info d-none d-md-block">
+																								<div class="full-info">
+																									<h5>₹ 1,00,000.00</h5> </div>
+																							</div>
+																							<div class="grid-info view-small bal-view">
+																								<div class="full-info">
+																									<h5>₹ 1,40,500.00</h5> </div>
+																							</div>
+																							<div class="grid-info">
+																								<div class="full-info text-right">
+																									<button class="ux-button sm primary-custom md">More details</button>
+																								</div>
+																							</div>
+																						</li>
+																						<li>
+																							<div class="grid-info view-small">
+																								<div class="full-info">
+																									<div class="display-mt">
+																										<h5>001198656721</h5> <em class="d-block d-md-none">Andheri -East</em> </div> <em></em> </div>
+																							</div>
+																							<div class="grid-info d-none d-md-block">
+																								<div class="full-info">
+																									<h5>Saving with smile FD </h5> </div>
+																							</div>
+																							<div class="grid-info d-none d-md-block">
+																								<div class="full-info">
+																									<h5>5.15%</h5> </div>
+																							</div>
+																							<div class="grid-info d-none d-md-block">
+																								<div class="full-info">
+																									<h5>1 May 2021</h5> </div>
+																							</div>
+																							<div class="grid-info d-none d-md-block">
+																								<div class="full-info">
+																									<h5>1 July 2023</h5> </div>
+																							</div>
+																							<div class="grid-info d-none d-md-block">
+																								<div class="full-info">
+																									<h5>₹ 1,00,000.00</h5> </div>
+																							</div>
+																							<div class="grid-info view-small bal-view">
+																								<div class="full-info">
+																									<h5>₹ 1,40,500.00</h5> </div>
+																							</div>
+																							<div class="grid-info">
+																								<div class="full-info text-right">
+																									<button class="ux-button sm primary-custom md">More details</button>
+																								</div>
+																							</div>
+																						</li>
+																						<li class="d-none d-md-block d-lg-block d-xl-block">
+																							<div class="col-12">
+																								<div class="row  mt-3 mb-2 ">
+																									<div class="col-12 col-lg-6 col-md-6 col-sm-6 px-0 ">
+																										<div id="dt-sample_wrapper" class="dataTables_wrapper dt-bootstrap4 no-footer">
+																											<div class="dataTables_info pt-2" id="dt-sample_info" role="status" aria-live="polite">Showing 1 to 2 of <b>2</b> entries</div>
+																										</div>
+																									</div>
+																									<div class="col-12 col-lg-6 col-md-6 px-0 d-none d-sm-none d-xl-block d-lg-block d-md-block text-right">
+																										<div class="custom-paging">
+																											<div class="dataTables_wrapper">
+																												<div class="dataTables_paginate">
+																													<ul class="pagination">
+																														<li class="page-item previous disabled"> <a href="javascript:;" class="page-link">Previous</a> </li>
+																														<li class="page-item active"> <a href="javascript:;" class="page-link">1</a> </li>
+																														<li class="page-item"> <a href="javascript:;" class="page-link">2</a> </li>
+																														<li class="page-item next"> <a href="javascript:;" class="page-link">Next</a> </li>
+																													</ul>
+																												</div>
+																											</div>
+																										</div>
+																									</div>
+																								</div>
+																							</div>
+																						</li>
+																					</ul>
+																				</div>
+																			</div>
+																		</div>
+																	</div>
+																</div>
+															</div>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+									<!-- Greencard2 End here -->
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!--.right-col-container-->
+	</div>
+	<!--.right-main-column-->
+</div>
+<!-- main -->

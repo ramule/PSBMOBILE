@@ -1,0 +1,217 @@
+<div class="main">
+
+
+
+    <div class="right-main-column minus-rt-col mar-custom">
+        <div class="right-col-container cust-pb">
+
+            <div class="body-page-container">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="bg-section">
+                            <div class="col-12">
+                                <div class="row1">
+                                    <div class="col-sm-12 col-12 col-md-12">
+
+                                        <div class="white-bg1 pad-custom">
+                                            <ul class="complaint-list">
+                                                <li class="bor-n">
+                                                    <div class="full-container">
+                                                        <div class="row1">
+                                                            <div class="col-12 col-md-12">
+                                                                <div class="left-info">
+                                                                    <h6>{{'REQUEST_FROM_UPI_ID' | translate}}</h6>
+                                                                    <h5>{{'UPI_ID' | translate }} : {{mandateDetails.payerAddress}}</h5>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                                <li class="bor-n">
+                                                    <div class="full-container">
+                                                        <div class="row1">
+                                                            <div class="col-12 col-md-12">
+                                                                <div class="left-info">
+                                                                    <h6>{{'LINKED_ACCOUNT' | translate}}</h6>
+                                                                    <h5> {{VPAAccountDetails.accType}} {{VPAAccountDetails.maskedAccountNumber}}
+                                                                    </h5>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                                <li class="bor-n">
+                                                    <div class="full-container">
+                                                        <div class="row1">
+                                                            <div class="col-12 col-md-12">
+                                                                <div class="left-info">
+                                                                    <h6>{{'PAYEE_UPI_ID' | translate}}</h6>
+                                                                    <h5>{{'UPI_ID' | translate }} : {{mandateDetails.payeeAddress}}</h5>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                                <li class="bor-n">
+                                                    <div class="full-container">
+                                                        <div class="row1">
+                                                            <div class="col-12 col-md-12">
+                                                                <div class="left-info">
+                                                                    <h6>{{'PAYEE_NAME' | translate}}</h6>
+                                                                    <h5>{{mandateDetails.payeeName}}</h5>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                                <li class="bor-n">
+                                                    <div class="full-container">
+                                                        <div class="row1">
+                                                            <div class="col-12 col-md-12">
+                                                                <div class="left-info">
+                                                                    <h6>{{'AMOUNT' | translate}}</h6>
+                                                                    <h5>
+                                                                        <!-- <img src="assets/images/svg/rupee-bl.svg"
+                                                                            alt="rupees-icon"> -->
+                                                                        {{DataService.modifyMandateDetails.amount | customcurrency:'symbol'}}
+                                                                    </h5>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                                <li class="bor-n">
+                                                    <div class="full-container">
+                                                        <div class="row1">
+                                                            <div class="col-12 col-md-12">
+                                                                <div class="left-info">
+                                                                    <h6>{{'FREQUENCY' | translate}}</h6>
+                                                                    <h5>{{mandateDetails.frequency}}</h5>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                                <li class="bor-n">
+                                                    <div class="full-container">
+                                                        <div class="row1">
+                                                            <div class="col-12 col-md-12">
+                                                                <div class="left-info">
+                                                                    <h6>{{'VALIDITY' | translate}}</h6>
+                                                                    <h5>{{mandateDetails.validityStart | formatDate }} - {{ DataService.modifyMandateDetails.validyEndDate}}
+                                                                    </h5>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                                <li class="bor-n" *ngIf="mandateDetails.frequency != 'ONETIME' && mandateDetails.frequency != 'DAILY' && mandateDetails.frequency != 'ASPRESENTED'">
+                                                    <div class="full-container">
+                                                        <div class="row1">
+                                                            <div class="col-12 col-md-12">
+                                                                <div class="left-info">
+                                                                    <h6>{{'DEBIT_DAY' | translate}}</h6>
+                                                                    <h5>{{mandateDetails.recurrenceRuleType}}</h5>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                                <li class="bor-n">
+                                                    <div class="full-container">
+                                                        <div class="row1">
+                                                            <div class="col-12 col-md-12">
+                                                                <div class="left-info">
+                                                                    <h6>{{'REMARKS' | translate}}</h6>
+                                                                    <h5>{{mandateDetails.remarks ? mandateDetails.remarks : '-'}}</h5>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- <div class="col-12">
+                                <div class="row1 mt-2">
+                                    <div class="col-12 col-lg-12 col-md-12 col-sm-12 text-center">
+                                        <button class="ux-button primary"
+                                            (click)="modifyMandate()">{{'CONFIRM' | translate
+                                            }}</button>
+                                    </div>
+                                </div>
+                            </div> -->
+                            <!-- <div class="col-12 text-center mb-3">
+                                <div class="powered-logo">
+                                    <img src="assets/images/logo/powered-upi-logo.svg" alt="powered-upi-logo">
+                                </div>
+                            </div> -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- </div>
+    </div>
+
+</div> -->
+
+
+
+            <!-- footer section start -->
+
+            <div class="footer-container sticky-actions">
+                <div class="footer-inactions minus-rt-col">
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-12 col-md-12 col-lg-12 text-center">
+                                <button class="ux-button primary md" (click)="modifyMandate()">{{'CONFIRM' | translate }} </button>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-12 col-md-12 col-lg-12 text-center">
+                                <div class="powered-logo">
+                                    <img src="assets/images/logo/powered-upi-logo.svg" alt="powered-upi-logo">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- <div class="sticky-actions-spacer"></div> -->
+
+            <!-- footer section end -->
+
+        </div>
+    </div>
+
+</div>
+
+<!-- main -->
+
+<!-- =========== modal popup start ===============  -->
+
+
+<!-- Complaint Success Popup Start -->
+
+<div class="popup-bottom success">
+    <form action="#" id="success-form">
+        <div class="row mt-3">
+            <div class="success">
+                <img src="assets/images/svg/check.svg" alt="success-icon">
+                <h3>{{'SUCCESS' | translate}}</h3>
+                <h5>Your complaint has been successfully escalated and reported to <a>digitalsupport@psb.com</a></h5>
+            </div>
+        </div>
+        <div class="row1 mt-3">
+            <div class="col-12 text-center">
+                <button class="ux-button primary md ">{{"OK" | translate}}</button>
+            </div>
+        </div>
+    </form>
+</div>
+
+<!-- Complaint Success Popup End -->
+
+<!-- <div class="ios-nav-overlay"></div> -->

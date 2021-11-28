@@ -1,0 +1,315 @@
+<div class="main bg-m frwk-changes">
+	<div class="nav-overlay"></div>
+	<div class="right-main-column ">
+		<div class="right-col-container pad-b full-width">
+			<!-- ======== body page content start from here ======== -->
+			<div class="body-page-container main-dashborad mycards">
+				<div class="container-fluid">
+					<div class="row">
+						<div class="col-12 p-0">
+							<div class="breadcrumb">
+								<ul class="lst-breadcrumb">
+									<!-- <li> <a [routerLink]="['/myCardsDetails']">My Cards</a> </li>
+									<li> <a [routerLink]="['/debitCards']">Debit Cards</a> </li>
+									<li> Reissue Card </li> -->
+									<li *ngFor="let name of DataService.breadcrumblist">
+										<a (click)="DataService.breadcrumroute(name.routeName)">{{name.currentRoute | translate}}</a>
+								</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+					<!--.row -->
+					<div class="vspacer15 customize d-none d-xl-block d-lg-block d-md-none d-sm-none "></div>
+					<div class="row no-gutters">
+						<div class="col-12">
+							<div class="row1">
+								<div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-9">
+									<!-- Greencard2 Start here -->
+                  <form [formGroup]="reissueDebitCardForm">
+									<div class="greencard2">
+										<div class="flex-container no-bg">
+											<div class="full-info">
+												<div class="row1">
+													<div class="col-12">
+														<div class="ac-info">
+															<div class="greenbg-input ux-input">
+																<label for="debitCard" class="largeview-enable">Debit Card</label>
+															</div>
+														</div>
+														<!-- <div class="ac-info">
+															<div class="greenbg-input ux-input">
+																<select id="custom-icon-selectbox" class="hide-m">
+																	<option data-img_src="assets/images/icons/icici-icon.png"> XXXX XXXX XXXX 9876</option>
+																	<option data-img_src="assets/images/icons/hdfc-icon.png"> XXXX XXXX XXXX 4545</option>
+																	<option data-img_src="assets/images/icons/icici-icon.png"> XXXX XXXX XXXX 6675</option>
+																</select>
+																<div class="custom-selectbox"> <span>
+                                                                            <img src="assets/images/icons/icici-icon.png" class="bank-icon">
+                                                                            XXXX XXXX XXXX 9897
+                                                                        </span> <span class="right-arrow"></span> </div>
+																<p class="error-message"></p>
+															</div>
+														</div> -->
+														<div class="ac-info">
+															<div class="greenbg-input ux-input" (click)="onAccountSelectType()">
+																<ul class="list-unstyled hide-m" id="custom-icon-selectbox"  (click)="toggleOpen()" >
+																	<li class="init" *ngIf="selectedDataCard == '' ">Select Account</li>
+																	<li class="init"  *ngIf="selectedDataCard != '' ">
+																		<img *ngIf="selectedDataCard.card_network == 'VS' " src="assets/images/icons/visa-icon.svg" alt="visa-logo" style="width: 19% !important;" >
+																		<img *ngIf="selectedDataCard.card_network == '' " src="assets/images/svg/Rupay-01.svg" alt="rupay-logo" style="width: 19% !important;" >
+																		<img *ngIf="selectedDataCard.card_network == 'RS' " src="assets/images/svg/Rupay-02.svg" alt="rupay-logo" style="width: 19% !important;" >
+																		<img *ngIf="selectedDataCard.card_network == 'MS' " src="assets/images/icons/visa-icon.svg" alt="master-logo" style="width: 19% !important;" >
+																		{{selectedDataCard?.MaskCardNumber}}</li>
+																	<!-- <li style="display: none;" [ngStyle]="{display : openDropDown ? 'list-item' : 'none' }" *ngFor="let accountListData of DataService.cardList ; index as i" (click)="dataSelection(accountListData)">{{accountListData?.MaskCardNumber}}</li> -->
+
+
+																	<!-- <li style="display: none;"><img src="assets/images/icons/hdfc-icon.png" alt=""> XXXX XXXX XXXX 4545</li>
+																	<li style="display: none;"><img src="assets/images/icons/icici-icon.png" alt=""> XXXX XXXX XXXX 6675</li>  -->
+
+                                                                    <!-- <span class="right-arrow"></span>  -->
+																</ul>
+																<div class="custom-selectbox">
+                                                                    <span *ngIf="selectedDataCard == '' ">Select Account </span>
+                                                                    <span *ngIf="selectedDataCard != '' ">
+																		<img *ngIf="selectedDataCard.card_network == 'VS' " src="assets/images/icons/visa-icon.svg" alt="visa-logo" style="width: 19% !important;" >
+																		<img *ngIf="selectedDataCard.card_network == '' " src="assets/images/svg/Rupay-01.svg" alt="rupay-logo" style="width: 19% !important;" >
+																		<img *ngIf="selectedDataCard.card_network == 'RS' " src="assets/images/svg/Rupay-02.svg" alt="rupay-logo" style="width: 19% !important;" >
+																		<img *ngIf="selectedDataCard.card_network == 'MS' " src="assets/images/icons/visa-icon.svg" alt="master-logo" style="width: 19% !important;" >
+																		{{selectedDataCard?.MaskCardNumber}}</span> 
+																</div>
+																<p class="error-message"></p>
+															</div>
+														</div>
+														<div class="ac-info d-none">
+															<button class="refresh-btn d-block ml-auto"><img src="assets/images/svg/eye-g.svg" alt="view-icon"></button>
+														</div>
+													</div>
+													<div class="col-2 d-none">
+														<div class="ac-info d-none">
+															<button class="refresh-btn d-block ml-auto"><img src="assets/images/svg/eye-g.svg" alt="view-icon"></button>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+										<div class="vspacer10 customize d-block d-xl-none d-lg-none d-md-none d-sm-none "></div>
+										<div class="row1">
+											<div class="col-12 col-sm-12 col-md-12 col-lg-12">
+												<div class="widget-box5 mb-2">
+													<div class="card-info">
+														<div class="row1">
+															<div class="col-xl-12 col-12">
+																<ul class="account-list2  custm-margin">
+																	<li>
+																		<div class="d-inline-block">Linked Saving Account</div>
+																		<div class="d-inline-block ml-5"> <strong>{{maskedAccNo}}</strong> </div>
+																	</li>
+																</ul>
+															</div>
+														</div>
+														<div class="row1 border-bottom d-none d-sm-block"></div>
+														<div class="custom-p">
+															<div class="row1">
+																<div class="col-md-6 col-lg-6 col-xl-4 col-12">
+																	<div class="ux-input">
+																		<label class="reason">Reason (Optional)</label>
+																		<input type="text" name="reason" placeholder="Enter Reason" formControlName="reason" limit-to="40">
+																		<p class="info-message"> Please note old card will stop working as soon as user starts using new card </p>
+																		<p class="error-message"> </p>
+																	</div>
+																</div>
+															</div>
+															<div class="row1">
+																<div class="col-md-6 col-lg-6 col-xl-4 col-12 mycardCollapse">
+																	<div class="grey-box">
+																		<label>Require physical card?</label>
+																		<div class="toggle-col card-toggle float-right">
+																			<input type="checkbox" name="ecom" checked="" formControlName="physicalCard" (change)="physicalEnabled()" >
+																			<div class="flat-toggle "></div>
+																		</div>
+																	</div>
+																</div>
+															</div>
+															<div class="vspacer10 customize "></div>
+															<div class="row1">
+																<div class="col-12">
+																	<p class="user-message" *ngIf="isPhysicalEnable" >You will have to visit home branch to collect your Debit Card after 7-8 working days
+																	</p>
+																	<p class="user-message" *ngIf="!isPhysicalEnable" >You will get your virtual Card instantly
+																	</p>
+																</div>
+															</div>
+															<div class="vspacer30 customize "></div>
+															<div class="row1">
+																<div class="col-12">
+																	<div class="ux-input m-0">
+																		<label class="ux-selection1">I accept the <a   href="javascript:void(0)" class="reg-txt" (click)="openchargespopup()">Terms & Condition and Charges</a>
+																			<input type="checkbox" name="radioboxdemo"  formControlName="termCondition" autocomplete="off" required >
+																			<span class="checkmark"></span>
+																			<span class="errormsg" style="color: #c51523 !important;"
+                                                                                *ngIf="reissueDebitCardForm.controls['termCondition'].hasError('required') && reissueDebitCardForm.controls['termCondition'].touched">
+                                                                                {{ 'REQUIRED_MSG' | translate }}
+                                                                              </span>
+																		  </label>
+																	</div>
+																</div>
+															</div>
+															<div class="vspacer20 customize "></div>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+										<div class="row1">
+											<div class="col-12 col-md-12">
+												<ul class="bottom-footer1">
+													<li>
+														<div class="btn-div">
+															<button class=" ux-button secondary sm-mob"  (click)="cancel()">Cancel</button>
+														</div>
+														<div class="btn-div">
+															<button class=" ux-button primary sm-mob" (click)="onSubmit()">Submit</button>
+														</div>
+													</li>
+												</ul>
+											</div>
+										</div>
+									</div>
+                  </form>
+									<!-- Greencard2 End here -->
+								</div>
+								<div class="col-12 col-md-12 col-lg-12 col-xl-3 d-none d-xl-block">
+									<div class="right-ads">
+										<a > <img src="assets/images/banner/my-card-banner.jpg"> </a>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!--.container-fluid-->
+			</div>
+			<!--.body-page-container-->
+		</div>
+		<!--.right-col-container-->
+	</div>
+	<!--.right-main-column-->
+</div>
+<!-- main -->
+
+<!-- Select Accounts Popup Start-->
+<div class="popup-bottom sel-account">
+	<div class="row1">
+		<div class="col-10">
+			<h4>Select From Account</h4> </div>
+		<div class="col-2">
+			<button class="ux-button-icon close-btn" (click)="closePopup()"> <img src="assets/images/svg/close-b.svg" alt="cross-icon" class="img-vsmall"> </button>
+		</div>
+	</div>
+	<div class="row1">
+		<div class="col-12">
+			<div class="row1">
+				<div class="col-12 col-md-12" *ngFor="let account of accountList; let i = index" (click)="getToAccValue(account.bankImage,account)">
+					<div class="ux-selection mar-custom">
+						<label class="ux-selection2"> <img src="{{account.bankImage}}" class="bank-icon">{{account.accountNo}}
+							<input type="radio"  [value]="account" name="upi-account"> <span class="checkmark"></span> </label>
+					</div>
+				</div>
+				<!-- <div class="col-12 col-md-12">
+					<div class="ux-selection mar-custom">
+						<label class="ux-selection2"> <img src="assets/images/icons/hdfc-icon.png" class="bank-icon"> XXXX XXXX XXXX 9897
+							<input type="radio" value=" XXXX XXX 968" name="upi-account"> <span class="checkmark"></span> </label>
+					</div>
+				</div>
+				<div class="col-12 col-md-12">
+					<div class="ux-selection mar-custom">
+						<label class="ux-selection2"> <img src="assets/images/icons/icici-icon.png" class="bank-icon"> XXXX XXXX XXXX 9897
+							<input type="radio" value=" XXXX XXX 969" name="upi-account"> <span class="checkmark"></span> </label>
+					</div>
+				</div> -->
+				<div class="col-12 col-md-12">
+					<div class="ux-input">
+						<!-- <p class="error-message"> Error show</p> -->
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="row mt-2">
+		<div class="col-12 text-center">
+			<button class="ux-button primary submit-btn2" (click)="selectCardNo(accountValue);closePopup()"> Submit</button>
+		</div>
+	</div>
+</div>
+<!-- Select Accounts Popup End-->
+
+
+<div class="popup-bottom md-popup chargesPopup" >
+	<div class="row">
+		<div class="col-12">
+
+			<h4 class="text-center">Applicable Charges</h4>
+
+				<div class="popup-body">
+                    <ul>
+                        <li>ATM/Debit card annual charges from 2nd year onwards: Rs. 100/- + Applicable taxes, per annum</li>
+                        <li> Re-issue of ATM/Debit card: Rs. 150/- + Applicable GST, per instance </li>
+                        <li>Charges for Issue of Duplicate ATM/Debit Card/Replacement of ATM/Debit Card : Rs 150/- + GST</li>
+                        <li>Issuance charge for Rupay Platinum card is Rs. 100/- + GST</li>
+                        <li>Customer are advised to enable contactless flag after receiving physical card</li>
+                    </ul>
+				</div>
+			</div>
+	</div>
+
+	<div class="row1 mt-2">
+		<div class="col-12 text-center">
+			<button class="ux-button secondary no md close-btn" (click)="_closePopup('div.popup-bottom.chargesPopup')">Cancel</button>
+		</div>
+
+	</div>
+</div>
+
+<!-- Show Common Info Popup Start -->
+<div class="popup-bottom min-balance-info sm-popup">
+	<div class="row1">
+		<div class="col-12">
+			<h4 class="text-center"> <img src="./assets/images/svg/information.svg" alt="information-icon">{{ 'INFORMATION' | translate }}
+			</h4>
+		</div>
+	</div>
+	<div class="row1">
+		<div class="col-12">
+			<p>You don't have enough balance to re-issue card</p>
+		</div>
+	</div>
+	<div class="row1  mt-2">
+		<div class="col-12 text-center" (click)="_closePopup('div.popup-bottom.min-balance-info')">
+			<button class="ux-button primary submit-btn" type="button">OK</button>
+		</div>
+	</div>
+</div>
+<!-- Show Common Info Popup End -->
+
+
+<!-- Show Common Info Popup Start -->
+<div class="popup-bottom re-issue-not-applicable sm-popup">
+	<div class="row1">
+		<div class="col-12">
+			<h4 class="text-center"> <img src="./assets/images/svg/information.svg" alt="information-icon">{{ 'INFORMATION' | translate }}
+			</h4>
+		</div>
+	</div>
+	<div class="row1">
+		<div class="col-12">
+			<p>{{ 'RE_ISSUE_IS_NOT_APPLICABLE_FOR_THIS_ACCOUNT' | translate}}</p>
+		</div>
+	</div>
+	<div class="row1  mt-2">
+		<div class="col-12 text-center" (click)="_closePopup('div.popup-bottom.re-issue-not-applicable')">
+			<button class="ux-button primary submit-btn" type="button">OK</button>
+		</div>
+	</div>
+</div>
+<!-- Show Common Info Popup End -->

@@ -1,0 +1,190 @@
+<div class="main bg-m">
+	<div class="right-main-column">
+		<div class="right-col-container pad-b full-width">
+			<!-- ======== body page content start from here ======== -->
+			<div class="body-page-container main-dashborad manage-payee">
+				<div class="container-fluid">
+					<div class="row">
+						<div class="col-12 p-0">
+							<div class="breadcrumb">
+								<ul class="lst-breadcrumb">
+									<li *ngFor="let name of DataService.breadcrumblist">
+										<a (click)="DataService.breadcrumroute(name.routeName)">{{name.currentRoute | translate}}</a>
+								</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+					<!--.row -->
+					<div class="vspacer15 customize d-none d-md-block d-lg-block d-xl-block"></div>
+					<div class="row no-gutters">
+						<div class="col-12">
+							<div class="row1">
+								<div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-9">
+									<!-- Greencard2 Start here -->
+									<div class="greencard2">
+										<div class="row1 hide-m">
+											<div class="col-md-8 col-12">
+												<h4>Nominee Details Overview</h4> </div>
+											<div class="col-md-4 col-12"></div>
+										</div>
+										<div class="row1" *ngIf="nomineeList != 0">
+											<div class="col-sm-12 col-12 col-md-12" *ngFor= "let nomineeListData of nomineeList ; index as i ">
+												<div class="white-box2 mt-0 p-0">
+													<div class="info-bottom pad-custom" >
+														<div class="info-details">
+															<div class="row">
+																<h6>Nominee Name</h6>
+																<h5>{{nomineeListData.nomineeName}}</h5> </div>
+														</div>
+														<div class="info-details">
+															<div class="row">
+																<h6>Account Number</h6>
+																<!-- <h5>{{nomineeListData.accountNumber}}</h5>  -->
+																<h5>{{ accountData.account }}</h5>
+															</div>
+														</div>
+														<div class="info-details">
+															<div class="row">
+																<h6>Relationship with Nominee</h6>
+																<h5 *ngIf="relationname != '' ">{{relationname}}</h5>
+																<!-- <h5 *ngIf="nomineeListData?.nomineeRelation != '' ">{{nomineeListData?.nomineeRelation}}</h5>
+																<h5 *ngIf="nomineeListData?.nomineeRelationship != '' ">{{nomineeListData?.nomineeRelationship}}</h5>  -->
+															</div>
+														</div>
+														<div class="info-details">
+															<div class="row">
+																<h6>Date of Birth</h6>
+																<!-- <h5 *ngIf="nomineeListData?.nomineeDob != '' ">{{nomineeListData.nomineeDob }}</h5> -->
+																<h5 *ngIf="date != '' "> {{date }}</h5>
+															</div>
+
+														</div>
+														<div class="info-details"  *ngIf="DataService.minorFlagNominee == 'Y'">
+															<div class="row">
+																<h6>Guardian Name</h6>
+																<h5 >{{nomineeListData.guardianName}}</h5>
+																<!-- <h5 *ngIf="DataService.minorFlagNominee == 'Y' && DataService.previousPageUrl == 'addNomineeDetails'" >{{nomineeListData.guardianName }}</h5>
+																<h5 *ngIf="DataService.previousPageUrl == 'myAccountsInfo'" >{{nomineeListData.guardianName}}</h5> -->
+																<!-- <ng-template #myAccountIfos> <h5> {{nomineeListData.guardianName}} </h5></ng-template> -->
+															</div>
+														</div>
+														<!-- <div class="info-details">
+															<div class="row">
+																<h6>Relationship with Nominee</h6>
+																<h5>{{nomineeListData.guardianName}}</h5> </div>
+														</div> -->
+														<div class="info-details" *ngIf="DataService.minorFlagNominee == 'Y'">
+															<div class="row">
+																<h6>Guardian Address</h6>
+																<h5  >{{ nomineeListData.guardianAddress }}</h5>
+																<!-- <h5 *ngIf="DataService.minorFlagNominee == 'Y' && DataService.previousPageUrl == 'addNomineeDetails'" >{{nomineeListData.guardianAddress }}</h5>
+																<h5 *ngIf="DataService.previousPageUrl == 'myAccountsInfo'" > {{nomineeListData.guardianAddress  }} </h5> -->
+															</div>
+														</div>
+														<div class="info-details">
+															<div class="row">
+																<h6>Address Line 1</h6>
+																<h5> {{nomineeAddress1}}</h5>
+																<!-- <h5 *ngIf="nomineeListData?.nomineeAddress1 != '' ">{{nomineeListData.nomineeAddress1}}</h5>
+																<h5 *ngIf="nomineeListData?.address1 != '' ">{{nomineeListData?.address1 }}</h5> -->
+															</div>
+														</div>
+														<div class="info-details">
+															<div class="row">
+																<h6>Address Line 2</h6>
+																<h5> {{nomineeAddress2}}</h5>
+
+																<!-- <h5 *ngIf="nomineeListData?.nomineeAddress2 != '' ">{{nomineeListData.nomineeAddress2 }}</h5>
+																<h5 *ngIf="nomineeListData?.address2 != ''  ">{{nomineeListData.address2 }}  </h5> -->
+															</div>
+														</div>
+														 <div class="info-details">
+															<div class="row">
+																<h6>State</h6>
+																<h5> {{stateValue}}</h5>
+																<!-- <h5 *ngIf="nomineeListData?.stateCode != '' "> {{nomineeListData.stateCode   }} </h5> 
+																<h5 *ngIf="nomineeListData?.stateDtl != '' "> {{nomineeListData.stateDtl  }} </h5>  -->
+															
+															</div>
+														</div>
+														<div class="info-details">
+															<div class="row">
+																<h6 >City</h6>
+																<h5> {{cityValue}}</h5>
+																<!-- <h5 *ngIf="nomineeListData?.cityCode != '' ">{{nomineeListData.cityCode  }} </h5> 
+																<h5 *ngIf="nomineeListData?.cityDtl != '' "> {{nomineeListData.cityDtl  }}</h5>  -->
+
+															</div>
+														</div>
+														<!-- <div class="info-details">
+															<div class="row">
+																<h6>PIN</h6>
+																<h5>400073</h5> </div>
+														</div> -->
+													</div>
+												</div>
+											</div>
+											<div class="col-12 col-md-12">
+												<ul class="bottom-footer1" *ngIf="this.DataService.previousPageUrl == 'myAccountsInfo' ">
+													<li>
+														<div class="btn-div">
+															<button class="ux-button secondary sm-mob" (click)="goToPage('myAccountsInfo')">Back</button>
+														</div>
+														<div class="btn-div">
+															<button class="ux-button primary sm-mob" (click)="updateNominee()">Modify</button>
+														</div>
+													</li>
+												</ul>
+
+
+												<ul class="bottom-footer1" *ngIf="this.DataService.previousPageUrl == 'nomineeDetails' || this.DataService.previousPageUrl == 'addNomineeDetails'  ">
+													<li>
+														<div class="btn-div">
+															<button class="ux-button secondary sm-mob" (click)="goToPage('myAccountsInfo')">Cancel</button>
+														</div>
+														<div class="btn-div">
+															<button class="ux-button primary sm-mob" (click)="nomineeOverviewConfirm()" >Confirm </button>
+														</div>
+													</li>
+												</ul>
+											</div>
+										</div>
+
+
+									</div>
+									<!-- Greencard2 End here -->
+								</div>
+								<!-- Right Column Ads Start -->
+								<div class="col-12 col-md-12 col-lg-12 col-xl-3 d-none d-xl-block">
+									<div class="right-ads">
+										<a> <img src="assets/images/banner/my-card-banner.jpg" /> </a>
+									</div>
+									<div class="vspacer30"></div>
+									<!-- <div class="offers-card">
+											<div class="header-block clearfix">
+												<h5>Offers on your card</h5>
+											</div>
+
+											<div class="panel-body">
+												<div class="recentpayment-control">
+													<ul>
+													    <li>
+															<img src="assets/images/banner/offer-banner.png">
+														</li>
+													</ul>
+												</div>
+											 </div>
+										</div>  --></div>
+								<!-- Right Column Ads Ends -->
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!--.right-col-container-->
+	</div>
+	<!--.right-main-column-->
+</div>
+<!-- main -->

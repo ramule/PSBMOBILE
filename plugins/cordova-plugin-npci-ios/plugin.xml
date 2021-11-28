@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<plugin xmlns="http://apache.org/cordova/ns/plugins/1.0"
+  id="cordova-plugin-npci-ios"
+  version="0.0.1">
+    <name>NpciIosPlugin</name>
+    <description>Npci iOS Functionality in your application.</description>
+    <engines>
+        <engine name="cordova" version=">=3.5.0" />
+    </engines>
+    <js-module src="www/NpciIosPlugin.js" name="NpciIosPlugin">
+        <clobbers target="cordova.plugins.npciIosPlugin" />
+    </js-module>
+    <platform name="ios">
+        <config-file target="config.xml" parent="/*">
+            <feature name="NpciIosHandler">
+                <param name="ios-package" value="NpciIosHandler"/>
+            </feature>
+        </config-file>
+        <header-file src="src/ios/Constants.h" target-dir="src/ios"/>
+        <header-file src="src/ios/NpciIosHandler.h" target-dir="src/ios"/>
+        <source-file src="src/ios/NpciIosHandler.m" target-dir="src/ios"/>
+        <header-file src="src/ios/Encrypt.h" target-dir="src/ios"/>
+        <source-file src="src/ios/Encrypt.m" target-dir="src/ios"/>
+        <header-file src="src/ios/EncryptionWithAES128.h" target-dir="src/ios"/>
+        <source-file src="src/ios/EncryptionWithAES128.m" target-dir="src/ios"/>
+        <header-file src="src/ios/InitializeCommon.h" target-dir="src/ios"/>
+        <source-file src="src/ios/InitializeCommon.m" target-dir="src/ios"/>
+        <header-file src="src/ios/NSData+AES128.h" target-dir="src/ios"/>
+        <source-file src="src/ios/NSData+AES128.m" target-dir="src/ios"/>
+        <header-file src="src/ios/NSData+Base64.h" target-dir="src/ios"/>
+        <source-file src="src/ios/NSData+Base64.m" target-dir="src/ios"/>
+        <framework src="src/ios/CommonLibrary.framework" custom="true" embed="true"/>
+    </platform>
+</plugin>

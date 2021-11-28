@@ -1,0 +1,45 @@
+{
+    "author": {
+        "name": "Adobe PhoneGap Team"
+    },
+    "bundleDependencies": false,
+    "cordova": {
+        "id": "cordova-plugin-npci-android",
+        "platforms": [
+            "android"
+        ]
+    },
+    "dependencies": {
+        "nopt": "^4.0.1",
+        "shelljs": "^0.8.3"
+    },
+    "deprecated": false,
+    "description": "NPCI Android Functionality in your application.",
+    "devDependencies": {
+        "jasmine-node": "1.14.5",
+        "pluginpub": "^0.0.9"
+    },
+    "engines": {
+        "cordovaDependencies": {
+            "7.0.0": {
+                "cordova-android": ">=6.3.0"
+            },
+            "7.1.0": {
+                "cordova": ">=7.1.0",
+                "cordova-android": ">=6.3.0"
+            },
+            "8.0.0": {
+                "cordova": ">=7.1.0",
+                "cordova-android": ">=6.3.0"
+            },
+            "<7.0.0": {
+                "cordova-android": "<6.3.0"
+            }
+        }
+    },
+    "name": "cordova-plugin-npci-android",
+    "scripts": {
+        "test": "jasmine-node --color spec"
+    },
+    "version": "1.0.0"
+}

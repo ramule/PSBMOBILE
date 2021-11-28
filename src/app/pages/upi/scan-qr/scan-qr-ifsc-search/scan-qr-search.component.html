@@ -1,0 +1,59 @@
+<div class="main">
+	<div class="right-main-column minus-rt-col mar-custom">
+		<div class="right-col-container">
+			<div class="body-page-container">
+				<div class="container-fluid">
+					<form [formGroup]="ifscSearch">
+						<div class="row">
+							<div class="bg-section">
+								<div class="col-12">
+									<div class="row1">
+										<div class="col-sm-12 col-12 col-md-12">
+											<div class="white-bg1">
+												<div class="row1">
+													<div class="col-12 col-sm-12 col-md-12">
+														<div class="bank-details">
+															<div class="ux-input">
+																<label for="bank">{{'SELECT_BANK' | translate}}</label>
+																<select required="">
+																	<option value="">{{'SELECT_DROPDOWN' | translate}}</option>
+																	<option value="Punjab & Sind Bank">Punjab & Sind Bank</option>
+																</select>
+																<p></p>
+															</div>
+															<div class="ux-input">
+																<label for="stateCity">{{'STATE_OR_CITY' |translate}}</label>
+																<select required="">
+																	<option value="">{{'SELECT_DROPDOWN' | translate}}</option>
+																	<option value="Navi Mumbai">Navi Mumbai</option>
+																</select>
+																<p></p>
+															</div>
+															<div class="ux-input">
+																<label for="branch">{{'BRANCH' | translate}}</label>
+																<select required="" class="sBranch">
+																	<option value="">{{'SELECT_DROPDOWN' | translate}}</option>
+																	<option value="Sector 26, Vashi, Navi Mumbai, MH">Sector 26, Vashi, Navi Mumbai, MH</option>
+																</select>
+																<p></p>
+															</div>
+														</div>
+														<div class="ifsc-code" style="display:none;">
+															<div class="result-container">
+																<h6>IFSC Code</h6>
+																<h5>PSIB0000324</h5>
+															</div>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>

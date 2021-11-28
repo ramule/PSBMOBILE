@@ -1,0 +1,199 @@
+<div class="main bg-m">
+	<div class="right-main-column ">
+		<div class="right-col-container pad-b full-width">
+			<!-- ======== body page content start from here ======== -->
+			<div class="body-page-container main-dashborad bill-wrapper myprofile ">
+				<div class="container-fluid">
+					<div class="row">
+						<div class="col-12 p-0">
+							<div class="breadcrumb">
+								<ul class="lst-breadcrumb">
+                                    <li *ngFor="let name of DataService.breadcrumblist">
+                                        <a (click)="DataService.breadcrumroute(name.routeName)">{{name.currentRoute | translate}}</a>
+                                	</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+					<!--.row -->
+					<div class="vspacer15 customize d-none d-md-block d-lg-block d-xl-block"></div>
+					<div class="row no-gutters">
+						<div class="col-12">
+							<div class="row1">
+								<div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-9">
+									<!-- Greencard2 Start here -->
+									<div class="greencard2">
+										<div class="row1 hide-m">
+											<div class="col-md-10 col-12">
+												<h4>Payment</h4> </div>
+											<div class="col-md-2 col-12">
+												<div class="header-actions"> <img src="assets/images/icons/billpay.png" alt="billpay-img" class="small-img"> </div>
+											</div>
+										</div>
+										<div class="row1">
+											<div class="col-sm-12 col-12 col-md-12">
+												<!-- dark green menu headers start -->
+												<div class="flex-container py-1 mob-green-bg">
+													<div class="full-info">
+														<div class="ac-info">
+															<div class="greenbg-input ux-input">
+																<label for="fromaccount">From Account</label>
+															</div>
+														</div>
+														<!-- <div class="ac-info">
+															<div class="greenbg-input ux-input">
+																<select required="" class="hide-m">
+																	<option value="select">Select</option>
+																	<option value="saving" selected> **** **** 9897 </option>
+																	<option value="saving">**** **** 9897 </option>
+																</select>
+																<div class="custom-selectbox"> <span>**** **** 9897  </span> <span class="right-arrow"></span> </div>
+																<p class="error-message"></p>
+															</div>
+														</div> -->
+                                                        <div class="ac-info" (click)="onAccountSelectType()">
+                                                            <div class="greenbg-input ux-input">
+                                                                <select required="" class="hide-m">
+                                                                    <option value="select">Select</option>
+                                                                    <option [value]="account.accoutType" *ngFor="let account of accountList">{{account.accoutType}} {{account.accountNo}} </option>
+                                                                    <!-- <option value="saving">Saving Account XXX XXX 9897 </option>
+                                                                    <option value="saving">Saving Account XXX XXX 9897</option> -->
+                                                                </select>
+                                                                <div class="custom-selectbox"> 
+                                                                    <span *ngIf="accountValue == '' ">Select Account </span> 
+                                                                    <span *ngIf="accountValue != '' ">{{accountValue}}</span> 
+                                                                     <span class="right-arrow"></span> </div>
+                                                                <p class="error-message"></p>
+                                                            </div>
+                                                        </div>
+
+														<div class="ac-info">
+															<div class="greenbg-input ux-input">
+																<p class="info-message2"><i class="hide-d">Available Balance</i> <span>₹ 25,000.00</span></p>
+															</div>
+														</div>
+													</div>
+												</div>
+												<div class="vspacer10 d-block d-sm-none"></div>
+												<!-- dark green menu headers end -->
+											</div>
+											<div class="col-sm-12 col-12 col-md-12">
+												<div class="white-box2 mb-3 mt-0 p-0">
+													<div class="col-md-12 col-12">
+														<div class="row1">
+															<div class="col-md-6 col-lg-4 col-xl-4 col-12">
+																<div class="ux-input">
+																	<label>Remarks</label>
+																	<input type="text" placeholder="Enter Remark" value="Fastag Recharge">
+																	<p class="error-message"></p>
+																</div>
+															</div>
+														</div>
+													</div>
+													<div class="vspacer40"></div>
+													<div class="bill-info-card green-light m-0">
+														<ul class="comp-info2">
+															<li>
+																<div class="grid-info ">
+																	<div class="full-info">
+																		<h5 class="my-4">ICICI FASTag</h5> </div>
+																</div>
+																<div class="grid-info d-block">
+																	<div class="full-info">
+																		<h5 class="my-4 greentext"><img src="assets/images/svg/rupee-g2.svg" alt="rupees-icon"> 1200.00</h5> </div>
+																</div>
+															</li>
+														</ul>
+													</div>
+												</div>
+											</div>
+											<div class="col-12 col-md-12">
+												<ul class="bottom-footer1">
+													<li>
+														<div class="btn-div hide-m">
+															<button class="ux-button secondary sm-mob">Cancel</button>
+														</div>
+														<div class="btn-div w100">
+															<button class="ux-button primary  sm-mob" (click)="goToPage('existingBillPaymentAuth')">Proceed</button>
+														</div>
+													</li>
+												</ul>
+											</div>
+										</div>
+									</div>
+									<!-- Greencard2 End here -->
+								</div>
+								<!-- Right Column Ads Start -->
+								<div class="col-12 col-md-12 col-lg-12 col-xl-3 d-none d-xl-block">
+									<div class="right-ads">
+										<a> <img src="assets/images/banner/Banner-ad.png"> </a>
+									</div>
+									<div class="vspacer30"></div>
+									<!-- <div class="offers-card">
+											<div class="header-block clearfix">
+												<h5>Offers on your card</h5>
+											</div>
+
+											<div class="panel-body">
+												<div class="recentpayment-control">
+													<ul>
+													    <li>
+															<img src="assets/images/banner/offer-banner.png">
+														</li>
+													</ul>
+												</div> 
+											 </div>
+										</div>  --></div>
+								<!-- Right Column Ads Ends -->
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!--.right-col-container-->
+	</div>
+	<!--.right-main-column-->
+</div>
+<!-- main -->
+<!-- Select Accounts Popup Start-->
+<div class="popup-bottom sel-account">
+	<div class="row1">
+		<div class="col-10">
+			<h4>Select From Account</h4> </div>
+		<div class="col-2">
+			<button class="ux-button-icon close-btn" (click)="closePopup()"> <img src="assets/images/svg/close-b.svg" alt="cross-icon" class="img-vsmall"> </button>
+		</div>
+	</div>
+	<div class="row1">
+		<div class="col-12">
+			<div class="row1">
+			   <div class="col-12 col-md-12" *ngFor="let account of accountList; let i = index" (click)="getToAccValue(account.accoutType,account.accountNo )">
+                    <div class="ux-selection mar-custom">
+                        <label class="ux-selection2">{{account.accoutType}} : {{account.accountNo}}
+                            <input type="radio"  [value]="account.accountNo" name="upi-account"> <span class="checkmark"></span> 
+                        </label>
+                    </div>
+                </div>
+				<!-- <div class="col-12 col-md-12">
+					<div class="ux-selection mar-custom">
+						<label class="ux-selection2">Saving Account: XXXX XXX 968
+							<input type="radio" value=" XXXX XXX 968" name="upi-account"> <span class="checkmark"></span> </label>
+					</div>
+				</div>
+				<div class="col-12 col-md-12">
+					<div class="ux-selection mar-custom">
+						<label class="ux-selection2">Saving Account: XXXX XXX 969
+							<input type="radio" value=" XXXX XXX 969" name="upi-account"> <span class="checkmark"></span> </label>
+					</div>
+				</div> -->
+			</div>
+		</div>
+	</div>
+	<div class="row mt-2">
+		<div class="col-12 text-center">
+			<button class="ux-button primary submit-btn2" (click)="closePopup()">Submit</button>
+		</div>
+	</div>
+</div>
+<!-- Select Accounts Popup End-->

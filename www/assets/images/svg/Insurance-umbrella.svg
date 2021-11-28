@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32">
+  <g id="Group_40234" data-name="Group 40234" transform="translate(-284 -651)">
+    <g id="Group_40232" data-name="Group 40232" transform="translate(80 -1)" opacity="0">
+      <rect id="Rectangle_18711" data-name="Rectangle 18711" width="32" height="32" transform="translate(204 652)" fill="#fff"/>
+    </g>
+    <g id="noun_insurance_4250483" transform="translate(282 645)">
+      <g id="Group_40241" data-name="Group 40241" transform="translate(5 9)">
+        <path id="Path_44126" data-name="Path 44126" d="M15,13.375h1.625V21.5H15ZM15,2V4.438h1.625V2Z" transform="translate(-2.813 -0.375)" fill="#007c3d"/>
+        <path id="Path_44127" data-name="Path 44127" d="M12.563,21.875h1.625a3.25,3.25,0,0,1-6.5,0H9.313a1.625,1.625,0,0,0,3.25,0Zm12.188-6.5V17H23.125a2.667,2.667,0,0,0-2.844-2.437A2.667,2.667,0,0,0,17.438,17H15.813a2.438,2.438,0,1,0-4.875,0H9.313a2.667,2.667,0,0,0-2.844-2.437A2.667,2.667,0,0,0,3.625,17H2V15.375a11.375,11.375,0,0,1,22.75,0Zm-1.769-1.6a9.737,9.737,0,0,0-19.212,0,4.73,4.73,0,0,1,2.7-.834A4.61,4.61,0,0,1,10.09,14.63a4.034,4.034,0,0,1,6.57,0,4.61,4.61,0,0,1,3.621-1.692,4.73,4.73,0,0,1,2.7.834Z" transform="translate(-0.375 -0.75)" fill="#007c3d"/>
+        <rect id="Rectangle_18712" data-name="Rectangle 18712" width="26" height="26" fill="none"/>
+      </g>
+    </g>
+  </g>
+</svg>

@@ -1,0 +1,562 @@
+<div class="main bg-m">
+	<div class="right-main-column">
+		<div class="right-col-container pad-b full-width">
+			<!-- ======== body page content start from here ======== -->
+			<div class="body-page-container main-dashborad bill-wrapper myprofile">
+				<div class="container-fluid">
+					<div class="row">
+						<div class="col-12 p-0">
+							<div class="breadcrumb">
+								<ul class="lst-breadcrumb">
+									<li *ngFor="let name of DataService.breadcrumblist">
+										<a (click)="DataService.breadcrumroute(name.routeName)">{{name.currentRoute | translate}}</a>
+									</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+					<!--.row -->
+					<div class="vspacer15 customize d-none d-md-block d-lg-block d-xl-block"></div>
+					<div class="row no-gutters">
+						<div class="col-12">
+							<div class="row1">
+								<div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-9">
+									<!-- Greencard2 Start here -->
+									<div class="greencard2">
+										<div class="row1 hide-m">
+											<div class="col-md-10 col-12">
+												<h4> Recharge & Bill Pay</h4> </div>
+											<div class="col-md-2 col-12">
+												<div class="header-actions"> <img src="assets/images/icons/billpay.png" alt="billpay-img" class="small-img"> </div>
+											</div>
+										</div>
+										<div class="row1">
+											<div class="col-sm-12 col-12 col-md-12">
+												<div class="ux-nav-tabs" style="margin:0">
+													<div class="responsive3">
+														<ul class="nav nav-tabs nav-justified bor-n  d-flex d-sm-none mt-0" role="tablist">
+															<li class="nav-item"> <a class="nav-link active" data-toggle="tab" href="#instant-pay" data-target="#instant-pay, #instant-pay1">Instant Pay</a> </li>
+															<li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#register-pay">Registered Pay</a> </li>
+														</ul>
+														<!-- Tab panes -->
+														<div class="tab-content  custom-tab-content1 pad-b mb-0 row1">
+															<div id="instant-pay" class=" tab-pane active show col-12 p-0">
+																<div class="row1">
+																	<div class="col-sm-12 col-12 col-md-12">
+																		<div class="item" role="listitem">
+																			<div class="white-bg3 mar-b">
+																				<div class="row1 d-none d-sm-block">
+																					<div class="col-8 col-md-9">
+																						<h5 class="detail-heading mb-2">Instant Pay</h5> </div>
+																				</div>
+																				<ul class="information-list4">
+                                                                        				<owl-carousel-o [options]="rechargeBillPayOptions">
+                                                                            				<ng-container>
+                                                                                				<ng-template carouselSlide  *ngFor="let item of instantPayList; let i=index">
+																									<li  (click)="onIntaClick(item.instantPayName , item.category , item.routeUrl)">
+																										<a>
+																											<div class="icon1"> <img src="assets/images/svg/{{item.instantPayImage}}" alt="mobile-recharge-icon" /> </div>
+																											 <em>{{item.instantPayName}}</em> 
+																										</a>
+																									</li>
+                                                                                				</ng-template>
+                                                                            				</ng-container>
+                                                                        				</owl-carousel-o>
+																				</ul>
+																			</div>
+																		</div>
+                                                                            
+																		<!-- <div class="scroll-box5">
+																			<div class="owl-carousel  box-owl4" role="list">
+																				<div class="item" role="listitem">
+																					<div class="white-bg3 mar-b">
+																						<div class="row1 d-none d-sm-block">
+																							<div class="col-8 col-md-9">
+																								<h5 class="detail-heading mb-2">Instant Pay</h5> </div>
+																						</div>
+																						<ul class="information-list4">
+																							<li>
+																								<a>
+																									<div class="icon1"> <img src="assets/images/svg/mobile-recharge.svg" alt="mobile-recharge-icon" /> </div> <em>Mobile Postpaid</em> </a>
+																							</li>
+																							<li>
+																								<a>
+																									<div class="icon1"> <img src="assets/images/svg/dth.svg" alt="dth-icon" /> </div> <em>DTH</em> </a>
+																							</li>
+																							<li>
+																								<a>
+																									<div class="icon1"> <img src="assets/images/svg/electricity.svg" alt="electricity-icon" /> </div> <em>Electricity</em> </a>
+																							</li>
+																							<li>
+																								<a>
+																									<div class="icon1"> <img src="assets/images/svg/gas-g.svg" alt="gas-icon" /> </div> <em>Gas</em> </a>
+																							</li>
+																							<li>
+																								<a>
+																									<div class="icon1"> <img src="assets/images/svg/water-g.svg" alt="water-icon" /> </div> <em>Water</em> </a>
+																							</li>
+																							<li>
+																								<a>
+																									<div class="icon1"> <img src="assets/images/svg/landline-g.svg" alt="landline-icon" /> </div> <em>Landline Postpaid</em> </a>
+																							</li>
+																							<li>
+																								<a>
+																									<div class="icon1"> <img src="assets/images/svg/fast-tag1.svg" alt="fast-tag-icon" /> </div> <em>Fastage</em> </a>
+																							</li>
+																							<li>
+																								<a>
+																									<div class="icon1"> <img src="assets/images/svg/insurance-g.svg" alt="insurance-icon" /> </div> <em>Insurance</em> </a>
+																							</li>
+																						</ul>
+																					</div>
+																				</div>
+																				<div class="item" role="listitem">
+																					<div class="white-bg3 mar-b">
+																						<div class="row1 d-none d-sm-block">
+																							<div class="col-8 col-md-9">
+																								<h5 class="detail-heading mb-2">Instant Pay</h5> </div>
+																						</div>
+																						<ul class="information-list4">
+																							<li>
+																								<a>
+																									<div class="icon1"> <img src="assets/images/svg/mobile-recharge.svg" alt="mobile-recharge-icon" /> </div> <em>Mobile Postpaid</em> </a>
+																							</li>
+																							<li>
+																								<a>
+																									<div class="icon1"> <img src="assets/images/svg/dth.svg" alt="dth-icon" /> </div> <em>DTH</em> </a>
+																							</li>
+																							<li>
+																								<a>
+																									<div class="icon1"> <img src="assets/images/svg/electricity.svg" alt="electricity-icon" /> </div> <em>Electricity</em> </a>
+																							</li>
+																							<li>
+																								<a>
+																									<div class="icon1"> <img src="assets/images/svg/gas-g.svg" alt="gas-icon" /> </div> <em>Gas</em> </a>
+																							</li>
+																							<li>
+																								<a>
+																									<div class="icon1"> <img src="assets/images/svg/water-g.svg" alt="water-icon" /> </div> <em>Water</em> </a>
+																							</li>
+																							<li>
+																								<a>
+																									<div class="icon1"> <img src="assets/images/svg/landline-g.svg" alt="landline-icon" /> </div> <em>Landline Postpaid</em> </a>
+																							</li>
+																							<li>
+																								<a>
+																									<div class="icon1"> <img src="assets/images/svg/fast-tag1.svg" alt="fast-tag-icon" /> </div> <em>Fastage</em> </a>
+																							</li>
+																							<li>
+																								<a>
+																									<div class="icon1"> <img src="assets/images/svg/insurance-g.svg" alt="insurance-icon" /> </div> <em>Insurance</em> </a>
+																							</li>
+																						</ul>
+																					</div>
+																				</div>
+																			</div> -->
+																		<!-- </div> -->
+																	</div>
+																</div>
+															</div>
+															<div id="instant-pay1" class=" tab-pane active show col-xl-6 col-lg-12 col-md-12 col-sm-12 col-12 p-0">
+																<div class="row1">
+																	<div class="col-sm-12 col-12 col-md-12">
+																		<div class="widget-box7">
+																			<div class="component-title6">
+																				<div class="row1">
+																					<div class="col-8 col-md-9">
+																						<h3>Recent Transactions</h3> </div>
+																					<div class="col-4 col-md-3 d-none d-sm-block"> <a class="link-txt float-right" *ngIf="finalRecentTrans?.length > 5">View All</a> </div>
+																				</div>
+																			</div>
+																			<div class="component-box">
+																				<div class="row">
+																					<ul class="information-list5">
+																						<li *ngFor="let item of finalRecentTrans">
+																							<a (click)="billHistoryDetails(item)">
+																								<div class="icon1"> <img src="{{item.moreDetails.biller_logo}}" alt="airtel-logo" /> </div> <em>{{item.biller_name}}</em> </a>
+																						</li>
+																					
+																					</ul>
+																				</div>
+																			</div>
+																		</div>
+																	</div>
+																	<div class="col-sm-12 col-12 col-md-12" *ngIf="upaidBillerWithLogo.length > 0">
+																		<div class="widget-box7">
+																			<div class="component-title6">
+																				<div class="row1">
+																					<div class="col-8 col-md-9">
+																						<h3>Pending Bills</h3> </div>
+																					<div class="col-4 col-md-3 d-none d-sm-block"> <a class="link-txt float-right" (click)="goToPage('retailPendingBillReminder')"  *ngIf="finalUnpaidBillerDetails.length > 5" >View All</a> </div>
+																				</div>
+																			</div>
+																			<div class="component-box">
+																				<div class="row">
+																					<ul class="information-list6">
+																						<li *ngFor="let item of upaidBillerWithLogo" (click)="onpenbillClick(item)">
+																							<a>
+																								<div class="icon1" style="background-image: url({{item.moreDetails?.biller_logo}})"> </div>
+																								 <em><img src="assets/images/svg/rupee2.svg" alt="rupees-icon">{{item.billlist[0].billamount}}</em>
+																								  <span>Due {{item.billlist[0].billduedate}}</span> 
+																							</a>
+																						</li>
+																					</ul>
+																				</div>
+																			</div>
+																		</div>
+																	</div>
+																	<div class="col-sm-12 col-12 col-md-12">
+																		<div class="widget-box7">
+																			<div class="component-box">
+																				<div class="row">
+																					<div class="ad-wrapper"> <img src="assets/images/banner/billpay-dashboard.png" alt="ad-image" class="img-fluid"> </div>
+																				</div>
+																			</div>
+																		</div>
+																	</div>
+																</div>
+																<!-- footer section start -->
+																<div class="row1 d-block d-sm-none">
+																	<div class="footer-container sticky-actions ">
+																		<div class="footer-inactions minus-rt-col">
+																			<div class="container-fluid">
+																				<div class="row">
+																					<div class="col-6 text-center">
+																						<button class="ux-button secondary md">Complaints</button>
+																					</div>
+																					<div class="col-6 text-center">
+																						<button class="ux-button secondary md">Payment History</button>
+																					</div>
+																				</div>
+																			</div>
+																		</div>
+																	</div>
+																	<div class="sticky-actions-spacer"></div>
+																</div>
+																<!-- footer section end -->
+															</div>
+															<div id="register-pay" class="tab-pane active show col-xl-6 col-lg-12 col-md-12 col-sm-12 col-12 p-0 pl-m-15">
+																<div class="row1">
+																	<div class="col-sm-12 col-12 col-md-12">
+																		<div class="widget-box7">
+																			<div class="component-title6">
+																				<div class="row1">
+																					<div class="col-8 col-md-5  d-none d-sm-block">
+																						<h3>Registered Pay</h3> </div>
+																					<div class="col-4 col-md-7 d-none d-sm-block pl-0 text-right"> <a class="link-txt" (click)="goToPage('retailRegisterNewBiller')">Register New Biller</a> <a class="link-txt ml-3" (click)="goToPage('registerBillerView')" *ngIf="DataService.allregisteredBillerList?.length > 5">View All</a> </div>
+																				</div>
+																			</div>
+																			<div class="component-box">
+
+																				<p *ngIf="allfiveRegisteredBillers?.length <= 0" class="text-center py-5">No biller registered yet</p>
+																				<ul class="pay-list">
+																					<li *ngFor ="let item of allfiveRegisteredBillers">
+																						
+																						<div class="white-container">
+																							<div class="list-full">
+																								<div class="list-info">
+																									<div class="icon1"  style="background-image: url({{item.moreDetails?.biller_logo}})">
+																										
+																									</div>
+																									<h5>{{item.billeraccount.short_name}} - {{item.billeraccount.authenticators[0].value}}</h5>
+																									<h6 *ngIf = "item.billlist?.length > 0">Bill Payment due on <span>{{item.billlist[0].billduedate}}</span> </h6>
+																									<h6 *ngIf = "item.billlist?.length < 1">No Due Payment </h6> 
+																								</div>
+																								<div class="list-amount text-right  d-none d-sm-block">
+																									<h4 class="custom-m" *ngIf = "item.billlist?.length > 0"> 
+																										<img src="../assets/images/svg/rupee-bl.svg" alt="rupees-icon">{{item.billlist[0].net_billamount}}
+																									</h4>
+																								</div>
+																							</div>
+
+																							<div class="list-full2 " *ngIf = "item.billlist?.length > 0">
+																								<div class="list-day-info">
+																									<em> 
+																										<b>
+																											<span *ngIf="item.daysLeft > 0">{{item.daysLeft}}  Days left</span>
+																											<span *ngIf="item.daysLeft == 0"> Today's Due</span>
+																											<span *ngIf="item.daysLeft < 0"> Overdue</span>
+																										</b>
+																										
+																									</em>
+																									<div class="mob-amount d-sm-none d-block">
+																										<h4 class="custom-m" *ngIf = "item.billlist?.length > 0"> 
+																											<img src="../assets/images/svg/rupee-bl.svg" alt="rupees-icon">{{item.billlist[0].net_billamount}}
+																										</h4>
+																									</div>
+																								</div>
+																								<div class="list-btn">
+																									<button class="ux-button primary sm5 float-right ml-2" (click)="payPendingBill(item)" >Pay Now</button>
+																									<button class="ux-button secondary sm5 float-right" (click)="unpaidBillDetails(item)" >Details</button>
+																								</div>
+																							</div>
+																						</div>
+																					</li>
+																					
+																				</ul>
+																				<!-- footer section start -->
+																				<div class="row1 d-block d-sm-none">
+																					<div class="footer-container sticky-actions ">
+																						<div class="footer-inactions minus-rt-col">
+																							<div class="container-fluid">
+																								<div class="row">
+																									<div class="col-12 text-center">
+																										<button class="ux-button primary md">Add New Biller</button>
+																									</div>
+																								</div>
+																							</div>
+																						</div>
+																					</div>
+																					<div class="sticky-actions-spacer"></div>
+																				</div>
+																				<!-- footer section end -->
+																			</div>
+																		</div>
+																	</div>
+																</div>
+															</div>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+								<!-- Greencard2 End here -->
+								<!-- Right Column Ads Start -->
+								<div class="col-12 col-md-12 col-lg-12 col-xl-3 d-none d-md-block d-xl-block">
+									<div class="row1">
+										<div class="col-sm-12 col-12 col-md-12 col-xl-12">
+											<div class="widget-box7">
+												<div class="component-box">
+													<div class="ux-input pwd-input px-3">
+														<input type="text" name="" placeholder="Search your provider name" (input)="onProviderSearch($event.target.value)"> <em class=" search-ic cal-top"></em>
+														<ul class="searchResult">
+															<li *ngFor="let item of providerSearch"><a href="#">
+																	<span class="logo-span" style="background-image: url({{item.biller_logo}})"></span><b>{{item.biller_name}}</b>
+
+															</a></li>
+														</ul>
+													</div>
+												</div>
+											</div>
+										</div>
+										<div class="col-sm-12 col-12  col-md-6 col-xl-12">
+											<div class="widget-box7">
+												<div class="component-title6">
+													<div class="row1">
+														<div class="col-8 col-md-8">
+															<h6>Payment History</h6> </div>
+														<div class="col-4 col-md-4 d-none d-sm-block"> <a class="link-txt float-right" *ngIf="finalRecentTrans?.length > 5">View All</a> </div>
+													</div>
+												</div>
+												<div class="component-box">
+													<ul class="pay-list pendig-due-wrapper">
+														<li *ngFor="let item of finalRecentTrans">
+															<div class="white-container">
+																<div class="row1">
+																	<div class="col-12 col-lg-12 pr-0">
+																		<div class="list-full mb-1">
+																			<div class="icon1"> <img src="{{item.moreDetails.biller_logo}}" alt="adani-logo"> </div>
+																			<h5>{{item.moreDetails.biller_name}}</h5>
+																			<h6><span>{{item.txn_date_time}}</span> </h6> </div>
+																	</div>
+																</div>
+																<div class="list-full2">
+																	<div class="row1">
+																		<div class="col-6 col-lg-6"> 
+																			<em class="text-pass" *ngIf="item.biller_status == 'PAID'">Payment Successful</em>
+																			<em class="text-pass" *ngIf="item.biller_status == 'PENDING'">Payment Pending</em>
+																			<em class="text-reject" *ngIf="item.biller_status == 'FAILED'">Payment Unsuccessful</em>
+																			<em class="text-reject" *ngIf="item.biller_status == 'REJECTED'">Payment Rejected</em>
+																		
+																		</div>
+																		<div class="col-6 col-lg-6 pl-0">
+																			<div class="list-full pl-0">
+																				<h4 class="text-pass" 
+																				[ngClass]="{'text-pass': item.biller_status == 'PAID','text-del': item.biller_status == 'PENDING' ,'text-reject': item.biller_status == 'FAILED' , 'text-reject': item.biller_status == 'REJECTED'  }"> 
+                                                                                            ₹ {{item.debit_amount}}
+                                                                                        </h4> </div>
+																		</div>
+																	</div>
+																</div>
+															</div>
+														</li>
+													</ul>
+												</div>
+											</div>
+										</div>
+										<div class="col-sm-12 col-12 col-md-6 col-xl-12">
+											<div class="widget-box7">
+												<div class="component-title6">
+													<div class="row1">
+														<div class="col-8 col-md-8">
+															<h6>Recent Complaints</h6> </div>
+														<div class="col-4 col-md-4 d-none d-sm-block"> <a class="link-txt float-right">View All</a> </div>
+													</div>
+												</div>
+												<div class="component-box">
+													<div class="row">
+														<div class="no-complaint text-center col-12">
+															<div class="ad-wrapper"> <img src="assets/images/banner/no-complaints.png" alt="ad-image" class="img-fluid"> </div> <small>You don't have any complaint</small> </div>
+														<ul class="bill-complaint-grid-dashboard">
+															<li>
+																<div class="grid-info">
+																	<div class="full-info">
+																		<h6 class="display-mt">Complaint ID</h6>
+																		<h5>BD656567576</h5> </div>
+																</div>
+																<div class="grid-info">
+																	<div class="full-info">
+																		<h6 class="display-mt">Biller ID</h6>
+																		<h5>54545</h5> </div>
+																</div>
+																<div class="grid-info">
+																	<div class="full-info">
+																		<h6 class="display-mt">Service Provider</h6>
+																		<h5>Mahanagar Gas</h5> </div>
+																</div>
+																<div class="grid-info">
+																	<div class="full-info">
+																		<h5>8 Dec 2020, 12:18</h5> </div>
+																</div>
+																<div class="grid-info">
+																	<div class="full-info text-status">
+																		<button class="ux-linkbutton1 warning "> Asigned</button>
+																	</div>
+																</div>
+																<div class="grid-info">
+																	<div class="full-info">
+																		<h6 class="display-mt">Amount</h6>
+																		<h5>₹ 300</h5> </div>
+																</div>
+															</li>
+														</ul>
+													</div>
+												</div>
+												<div class="component-footer  border-top">
+													<div class="col-12 col-md-12">
+														<ul class="bottom-footer1">
+															<li>
+																<div class="btn-div">
+																	<button class="ux-button primary sm5 raise-btn" (click)="goToPage('retailRaiseComplaint')">Raise Complaint</button>
+																</div>
+															</li>
+														</ul>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+								<!-- Right Column Ads Ends -->
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- main -->
+<!-- =========== modal popup start ===============  -->
+<!-- Filter Popup Start -->
+<div class="popup-bottom filter1">
+	<div class="row1">
+		<div class="col-10">
+			<h4>Filter</h4> </div>
+		<div class="col-2">
+			<button class="ux-button-icon close-btn"> <img src="assets/images/svg/close-b.svg" alt="cross-icon" class="img-vsmall"> </button>
+		</div>
+	</div>
+	<form action="#" id="filter-form">
+		<div class="row1 mt-2">
+			<div class="col-12 col-sm-12 col-md-12 col-lg-12">
+				<div class="ux-input">
+					<label for="upiId">UPI ID</label>
+					<select required="">
+						<option value="">Select</option>
+						<option value="9768245145@psb">9768245145@psb</option>
+					</select>
+					<p class="mb-0"></p>
+				</div>
+			</div>
+		</div>
+		<div class="row1">
+			<div class="col-6">
+				<div class="ux-input">
+					<label>Start Date</label>
+					<input type="text" class="datepicker1" placeholder="DD/MM/YYYY"> <em class="calendar-ic cal-top"></em> </div>
+			</div>
+			<div class="col-6">
+				<div class="ux-input">
+					<label>End Date</label>
+					<input type="text" class="datepicker1" placeholder="DD/MM/YYYY"> <em class="calendar-ic cal-top"></em> </div>
+			</div>
+		</div>
+		<div class="row1">
+			<div class="col-12 col-sm-12 col-md-12 col-lg-12">
+				<div class="ux-input">
+					<label for="">Transaction Type</label>
+					<select required="">
+						<option value="">Select</option>
+						<option value="Collect">Collect</option>
+					</select>
+					<p class="mb-0"></p>
+				</div>
+			</div>
+		</div>
+		<div class="row1 mt-2">
+			<div class="col-6 text-center">
+				<button class="ux-button secondary  md">Clear</button>
+			</div>
+			<div class="col-6 text-center">
+				<button class="ux-button primary md">Apply</button>
+			</div>
+		</div>
+	</form>
+</div>
+<!-- Delete Biller Popup Start -->
+<div class="popup-bottom delete1">
+	<div class="row">
+		<div class="col-12">
+			<h4 class="text-center">Delete Biller</h4> </div>
+	</div>
+	<div class="row">
+		<div class="col-12">
+			<p> Are you sure you want to delete Biller Home Electricity? </p>
+		</div>
+	</div>
+	<div class="row1 mt-2">
+		<div class="col-6 text-center">
+			<button class="ux-button secondary no md close-btn">No</button>
+		</div>
+		<div class="col-6 text-center">
+			<button class="ux-button primary md" (click)="goToPage('deleteRegisterBillerSuccess')">Yes</button>
+		</div>
+	</div>
+</div>
+<!-- Delete Biller Popup End -->
+<!-- Filter Popup End -->
+<div class="ios-nav-overlay"></div>
+<!-- =========== modal popup end ===============  -->
+
+<div class="popup-bottom sm-popup errorMSg">
+	<div class="row1">
+		<div class="col-12">
+			<h4 class="text-center">
+				<img src="./assets/images/svg/information.svg" alt="error-icon"> Information
+			</h4>
+		</div>
+	</div>
+	<div class="row1">
+		<div class="col-12 mb-4">
+			<p>{{apiErrorMsg}}</p>
+		</div>
+	</div>
+	<div class="row1  mt-2">
+		<div class="col-12 text-center">
+			<button class="ux-button primary submit-btn" (click)="commonMethod.closeAllPopup()">Close</button>
+		</div>
+	</div>
+</div>

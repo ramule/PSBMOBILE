@@ -1,0 +1,315 @@
+<div class="prelogin-page">
+	<div class="registration-steps">
+		<div class="row1">
+			<div class="col-12 position-static">
+				<div class="inner-header">
+					<div class="registration-container">
+						<!-- <a class="prev-tab" (click)="mobPrevclick()"><img src="assets/images/svg/left-arrow.svg">Back to Login</a> -->
+						<h4>Contact Us</h4>
+						<a class="close-registration" (click)="cancelContact()"><img src="assets/images/svg/close-w.svg"></a>
+					</div>
+				</div>
+				<div class="registrationsteps-block custom-pad2 registration-container clearfix contact-us mb-0">
+					<div class="contact-us" *ngIf="headerContact.length != 0">
+						<div class="row1">
+							<div class="col-12">
+								<div class="contact-list3">
+									<ul>
+										<li>
+											<div class="full-info">
+												<div class="icon-info"> <span>
+                                                            <img src="assets/images/svg/Tollfree.svg" alt="Tollfree-icon">
+                                                        </span> </div>
+												<h6>{{headerContact[0].header}}</h6>
+												<h5><a href="tel:{{headerContact[0].phoneNumber}}" target="_blank">{{headerContact[0].phoneNumber}}</a> </h5> </div>
+										</li>
+										<li>
+											<div class="full-info">
+												<div class="icon-info"> <span>
+                                                            <img src="assets/images/svg/emailus.svg" alt="email-icon">
+                                                        </span> </div>
+												<h6>{{headerContact[3].header}}</h6>
+												<h5><a href="mailto:{{headerContact[3].email_id}}" target="_blank"></a> </h5>
+                                                <h5 [innerHTML]="headerContact[3].email_id" ><a href="mailto:{{headerContact[3].email_id}}" target="_blank"></a></h5>
+                                            </div>
+										</li>
+										<li (click)="openPopup('debitFreeze')">
+											<div class="full-info">
+												<div class="icon-info"> <span>
+                                                                <img src="assets/images/svg/BlockATM.svg" alt="debit-freeze-icon">
+                                                            </span> </div>
+												<h6><a class="debit-freeze-btn">Debit Freeze Account</a></h6>
+												<h5><a class="debit-freeze-btn">SMS to 8828837411</a></h5>
+											</div>
+										</li>
+										<li>
+											<div class="full-info" (click)="openCallBAckPoupup()" style="cursor: pointer;">
+												<div class="icon-info"> <span>
+                                                            <img src="assets/images/svg/requestcallback.svg" alt="request-icon">
+                                                        </span> </div>
+												<h6>{{headerContact[2].header}}</h6>
+												<h5>{{headerContact[2].phoneNumber}}</h5> </div>
+										</li>
+									</ul>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="contact-service">
+						<div class="row1">
+							<div class="col-12 col-sm-12 col-md-9 col-lg-6 col-xl-6">
+								<h5 class="contact-h5">Internet / Mobile Banking Support</h5>
+								<ul class="contact-info-list">
+									<li>
+										<div class="full-info">
+											<div class="left-info">
+												<h6>HO IT Department</h6> </div>
+											<div class="left-info">
+												<h5><img src="assets/images/svg/phone-call.svg" alt="phone-icon"> <a href="tel:0124-2544115/116" target="_blank">0124-2544115/116</a> </h5>
+												<h5><img src="assets/images/svg/email.svg" alt="email-icon"> <a href="mailto:omni_support@psb.co.in" target="_blank">  omni_support@psb.co.in</a></h5> </div>
+										</div>
+									</li>
+									<li>
+										<div class="full-info">
+											<div class="left-info">
+												<h6>Digital Banking Cell</h6> </div>
+											<div class="left-info">
+												<h5><img src="assets/images/svg/phone-call.svg" alt="phone-icon"><a href="tel:0124-2544115/116" target="_blank">0124-2544115/116</a> </h5>
+												<h5><img src="assets/images/svg/email.svg" alt="email-icon"> <a href="mailto:omni_support@psb.co.in" target="_blank"> omni_support@psb.co.in</a></h5> </div>
+										</div>
+									</li>
+									<li>
+										<div class="full-info">
+											<div class="left-info">
+												<h6>UPI Cell</h6> </div>
+											<div class="left-info">
+												<h5><img src="assets/images/svg/phone-call.svg" alt="phone-icon"><a href="tel:011-41671249" target="_blank"> 011-41671249</a> </h5>
+												<h5><img src="assets/images/svg/email.svg" alt="email-icon"> <a href="mailto:upi@psb.co.in" target="_blank"> upi@psb.co.in</a></h5> </div>
+										</div>
+									</li>
+									<li>
+										<div class="full-info">
+											<div class="left-info">
+												<h6>ATM Cell</h6> </div>
+											<div class="left-info">
+												<h5><img src="assets/images/svg/phone-call.svg" alt="phone-icon">  <a href="tel:0124-2544106/105/107" target="_blank"> 0124-2544106/105/107</a> </h5>
+												<h5><img src="assets/images/svg/email.svg" alt="email-icon"> <a href="mailto:atmcell@psb.co.in" target="_blank"> atmcell@psb.co.in</a></h5>
+												<h5><img src="assets/images/svg/email.svg" alt="email-icon"> <a href="mailto:atm.operations@psb.co.in" target="_blank"> atm.operations@psb.co.in</a></h5> </div>
+										</div>
+									</li>
+									<li>
+										<div class="full-info">
+											<div class="left-info">
+												<h6>HO ADC Cell</h6> </div>
+											<div class="left-info">
+												<h5><img src="assets/images/svg/phone-call.svg" alt="phone-icon">  <a href="tel:0124-2544103/104" target="_blank"> 0124-2544103/104 </a></h5>
+												<h5><img src="assets/images/svg/email.svg" alt="email-icon"> <a href="mailto:ho.adc@psb.co.in" target="_blank"> ho.adc@psb.co.in</a></h5> </div>
+										</div>
+									</li>
+									<li>
+										<div class="full-info">
+											<div class="left-info">
+												<h6>RTGS/NEFT Cell</h6> </div>
+											<div class="left-info">
+												<h5><img src="assets/images/svg/phone-call.svg" alt="phone-icon">   <a href="tel:011-25860657" target="_blank"> 011-25860657 </a></h5>
+												<h5><img src="assets/images/svg/email.svg" alt="email-icon"> <a href="mailto:rtgs@psb.co.in" target="_blank"> rtgs@psb.co.in</a></h5> </div>
+										</div>
+									</li>
+									<li>
+										<div class="full-info">
+											<div class="left-info">
+												<h6>Missed Call Balance Inquiry</h6> </div>
+											<div class="left-info">
+												<h5><img src="assets/images/svg/phone-call.svg" alt="phone-icon"> <a href="tel:7039035156" target="_blank">7039035156 ( Toll Free )</a></h5> </div>
+										</div>
+									</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+					<div class="query-service">
+						<div class="row1">
+							<div class="col-12">
+								<div class="contact-list4">
+									<ul>
+										<li>
+											<div class="full-info">
+												<div class="icon-info"> <span>
+                                                            <a>
+                                                                <img src="assets/images/icons/website.svg" alt="web-icon">
+                                                            </a>
+                                                        </span> </div>
+												<div class="content-info">
+													<h5 (click)="openWebsite()">Visit our <span>Website</span></h5> <em>https://punjabandsindbank.co.in</em>
+													<button class="ux-button sm primary" (click)="openWebsite()"> Visit Now</button>
+												</div>
+											</div>
+										</li>
+										<li (click)="openPopup('debitCardBlock')">
+											<div class="full-info">
+												<div class="icon-info"> <span>
+                                                            <a>
+                                                                <img src="assets/images/svg/BlockATM-b.svg" alt="atm-card-block-icon">
+                                                            </a>
+                                                        </span> </div>
+												<div class="content-info">
+													<h5>ATM / Debit Card <span>Block / Unblock</span></h5> <em><a class="atm-card-block-btn">Temporary/Permanent Block</a></em>
+													<button class="ux-button sm primary atm-card-block-btn">Proceed</button>
+												</div>
+											</div>
+										</li>
+										<li class="disabled">
+											<div class="full-info">
+												<div class="icon-info"> <span>
+                                                            <a>
+                                                                <img src="assets/images/icons/live-chat.svg" alt="live-chat-icon">
+                                                            </a>
+                                                        </span> </div>
+												<div class="content-info">
+													<h5>Live chat <span>Support</span></h5> <em>chat with us for quick resolution</em>
+													<button class="ux-button sm primary">chat Now</button>
+												</div>
+											</div>
+										</li>
+									</ul>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="social-links">
+						<div class="row1">
+							<div class="col-12">
+								<div class="sociallinks-control">
+									<h5>Follow us</h5>
+									<ul>
+										<li>
+											<a href="https://www.facebook.com/PSBIndOfficial" target="_blank" title="facebook"><img src="assets/images/icons/facebook.svg"></a>
+										</li>
+										<li>
+											<a href="https://www.instagram.com/psbindofficial/" target="_blank" title="instagram"><img src="assets/images/icons/instagram.svg"></a>
+										</li>
+										<li>
+											<a href="https://www.linkedin.com/company/psbindofficial" target="_blank"><img src="assets/images/icons/linkedin.svg"></a>
+										</li>
+										<li>
+											<a href="https://twitter.com/PSBIndOfficial" target="_blank"title="twitter"><img src="assets/images/icons/twitter.svg"></a>
+										</li>
+										<li>
+											<a href="https://www.youtube.com/channel/UCrJXQpL1mojvsJUkLs3PCIw" target="_blank"title="youtube"><img src="assets/images/icons/youtube.svg"></a>
+										</li>
+									</ul>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- .full-container -->
+
+</div>
+<!-- .prelogin-page -->
+<!-- Debit Freeze Account Popup Start-->
+<div class="popup-bottom md-popup debit-freeze-popup">
+	<div class="row1">
+		<div class="col-10">
+			<h4 class="text-left">Debit Freeze Account</h4> </div>
+		<div class="col-2">
+			<button class="ux-button-icon close-btn" (click)="closePopup()"> <img src="assets/images/svg/close-b.svg" alt="cross-icon" class="img-vsmall"> </button>
+		</div>
+	</div>
+	<div class="row1 mt-2">
+		<div class="col-12">
+			<p class="text-left">To debit freeze your Account, all you need is to type the following text and send an <b>SMS to 8828837411</b> from your registered mobile number - <b>Block &lt; space &gt; your 14 digits account number </b> </p>
+		</div>
+	</div>
+</div>
+<!-- Debit Freeze Account Popup End-->
+<!-- ATM/Debit Card Block Popup Start-->
+<div class="popup-bottom md-popup atm-card-block-popup">
+	<div class="row1">
+		<div class="col-10">
+			<h4 class="text-left">ATM/Debit Card Block/Unlock</h4> </div>
+		<div class="col-2">
+			<button class="ux-button-icon close-btn" (click)="closePopup()"> <img src="assets/images/svg/close-b.svg" alt="cross-icon" class="img-vsmall"> </button>
+		</div>
+	</div>
+	<div class="row1 mt-2">
+		<div class="col-12">
+			<p class="text-left"> <b>Hotlisting (Permanent Blocking) </b> your Debit Card in case <b>Lost/Stolen</b> by simply sending an SMS. To block your Debit Card, type the text in following format and send to 9223815844 from your registered mobile number</p>
+			<br/>
+			<p class="text-left"> <b>Temporary Block & Unblock Debit Card, </b> Cardholder need to type the text in the following format and send to 9223815844 from his/her registered mobile number</p>
+			<br/>
+			<p class="text-left">For blocking, <b>TBLOCK &lt; space &gt; last 4 digits of your Debit Card Number</b>
+				<br/> eg: TBLOCK 1234 </p>
+			<br/>
+			<p class="text-left">For unblocking, <b>UBLOCK &lt; space &gt; last 4 digits of your Debit Card Number</b>
+				<br/> eg: UBLOCK 1234 </p>
+		</div>
+	</div>
+</div>
+<!-- ATM/Debit Card Block Popup End-->
+
+<!-- callabck Popup Start-->
+<div class="popup-bottom md-popup collectPhoneNo" id="collectPhoneNo">
+	<div class="row1">
+		<div class="col-10">
+			<h4 class="text-left">Callback Request</h4> </div>
+		<div class="col-2">
+			<button class="ux-button-icon close-btn" (click)="closePopup()"> <img src="assets/images/svg/close-b.svg" alt="cross-icon" class="img-vsmall"> </button>
+		</div>
+	</div>
+	<div *ngIf="!callbackRequestFlag">
+	<form [formGroup]="callbackForm" (ngSubmit)="requestCallbackService()">
+		<div class="row1 mt-2">
+
+			<div class="col-6">
+				<div class="ux-input" >
+					<label>{{"MOBILE_NUMBER" | translate}}</label>
+					<input type="text" placeholder='{{"ENTER_MOBILE_NO" | translate}}' formControlName="mobNumber" numbersOnly limit-to="10">
+					<p class="error-message" *ngIf="callbackForm.controls['mobNumber'].touched && callbackForm.controls['mobNumber'].hasError('required')">{{"PLEASE_ENTER_MOBILE_NO" | translate }}</p>
+					<p class="error-message" *ngIf="!callbackForm.controls['mobNumber'].hasError('required') && callbackForm.controls['mobNumber'].hasError('pattern')">{{"PLEASE_ENTER_VALID_MOBILE_NO" | translate }}</p>
+				</div>	
+			</div>
+			<div class="col-6">
+				<div class="ux-input" >
+					<label>{{"TIME_SLOT" | translate}}</label>
+					<select formControlName="timeSlot">
+						<option value="">Select</option>
+						<option value="9-11">9AM - 11AM</option>
+						<option value="11-13">11AM - 1PM</option>
+						<option value="13-15">1PM - 3PM</option>
+						<option value="15-17">3PM - 5PM</option>
+						<option value="17-19">5PM - 7PM</option>
+					</select>
+					<p class="error-message" *ngIf="callbackForm.controls['timeSlot'].touched && callbackForm.controls['mobNumber'].hasError('required')">{{"PLEASE_SELECT_TIME_SLOT" | translate }}</p>
+					
+				</div>	
+			</div>
+			<div class="col-6">
+				<div class="ux-input" >
+					<label>{{"PREFERRED_LANGUAGE" | translate}}</label>
+					<select formControlName="language">
+						<option value="">Select</option>
+						<option value="ENGLISH">ENGLISH</option>
+						<option value="HINDI">HINDI</option>
+						<option value="PUNJABI">PUNJABI</option>
+					</select>
+					<p class="error-message" *ngIf="callbackForm.controls['language'].touched && callbackForm.controls['language'].hasError('required')">{{"PLEASE_SELECT_LANGUAGE" | translate }}</p>
+					
+				</div>	
+			</div>
+			<div class="col-6">
+				<button class="ux-button sm primary mt-4" type="submit">Call Back</button>
+			</div>
+		</div>
+	</form>
+	</div>
+	<div *ngIf="callbackRequestFlag" class="text-center">
+		<p class="my-4">A Callback request has been successfuly sent to <b>{{callbackForm.value.mobNumber}} </b><br>
+			Please provide this reference number during the call <b>{{referenceNo}} </b></p>
+			<button class="ux-button sm primary " (click)="closePopup()">OK</button>
+	</div>
+</div>
+<!-- callabck Popup End-->

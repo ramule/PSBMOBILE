@@ -1,0 +1,57 @@
+<div class=" prelogin-page">
+<div class="registration-steps ">
+    <div class="row">
+        <div class="col-12 position-static">
+
+            <div class="inner-header">
+                <div class="registration-container">
+                    <a class="prev-tab" (click)="gotoLogin()"><img src="assets/images/svg/left-arrow.svg">Back to Login</a>
+                    <a class="close-registration"><img src="assets/images/svg/close-w.svg" (click)="gotoLogin()" ></a>
+                    <h4>{{'ACCOUNT_OPENING' | translate }}</h4>
+                    <!-- <a class="close-registration" ><img (click)="mobPrevclick('cross')" src="assets/images/svg/close-w.svg"></a> -->
+                </div>
+            </div>
+
+            <div class="registrationsteps-block registration-container eq-pad ">
+                <div class="acc-opening-success text-center">
+                        <img src="assets/images/svg/Success-new.svg">
+                        <h3>{{'CONGRATULATIONS' | translate }}!</h3>
+                        <p>{{'ACCOUNT_OPEN_WITH_LIMITED_KYC' | translate }}</p>
+                        <button class="ux-button secondary" disabled>{{'COMPLETE_VIDEO_KYC' | translate }} <li _ngcontent-scv-c113="" class="errormsg text-center" style="                         
+                            color: #e82338;
+                            border-radius: 50px;
+                        ">Coming soon</li></button>
+                        <div class="accDetails text-left">
+                             <span class="">{{'ACCOUNT_DETAILS' | translate }}</span>
+                        </div>
+                        <div class="account-details text-left">
+                            <div class="row">
+                                <div class="col-xl-3 col-lg-3 col-md-3 col-12">
+                                    <label>{{'CUSTOMER_ID' | translate }}</label>
+                                    <b>{{accountDtl.customerID}}</b>
+                                </div>
+                                <div class="col-xl-3 col-lg-3 col-md-3 col-12">
+                                    <label>{{'SAVING_ACCOUNT_NUMBER' | translate }}  </label>
+                                    <b>{{accountDtl.accountNo}}</b>
+                                </div>
+                                <div class="col-xl-3 col-lg-3 col-md-3 col-12">
+                                    <label>{{'BRANCH_NAME' | translate }} </label>
+                                    <b> {{accountDtl.branch_name == "Not available in CBS" ? "-" : accountDtl.branch_name}}</b>
+                                </div>
+                                <div class="col-xl-3 col-lg-3 col-md-3 col-12">
+                                    <label>{{'UPI_ID' | translate }} </label>
+                                    <b>{{accountDtl.UPI_ADDRESS}}</b>
+                                </div>
+
+                            </div>
+                        </div>
+                        <h6>{{'BANKING_DETAILS_SENT_TO_EMAIL' | translate }}</h6>
+                    </div>
+                <div class="text-center">
+                    <button class="ux-button primary" (click)="gotoLogin()" >{{'START_BANKING' | translate }}</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>

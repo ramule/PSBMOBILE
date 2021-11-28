@@ -1,0 +1,246 @@
+<div class="main bg-m frwk-changes">
+	<div class="nav-overlay"></div>
+	<!-- End Global Nav -->
+	<div class="right-main-column ">
+		<div class="right-col-container pad-b full-width">
+			<!-- ======== body page content start from here ======== -->
+			<div class="body-page-container main-dashborad mycards">
+				<div class="container-fluid">
+					<div class="row">
+						<div class="col-12 p-0">
+							<div class="breadcrumb">
+								<ul class="lst-breadcrumb">
+									<!-- <li> <a [routerLink]="['/myCardsDetails']">My Cards</a> </li>
+									<li> Apply for Cards </li> -->
+									<li *ngFor="let name of DataService.breadcrumblist">
+										<a (click)="DataService.breadcrumroute(name.routeName)">{{name.currentRoute | translate}}</a>
+								</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+					<!--.row -->
+					<div class="vspacer15 customize d-none d-xl-block d-lg-block d-md-none d-sm-none "></div>
+					<div class="row no-gutters">
+						<div class="col-12">
+							<div class="row1">
+								<div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-9">
+									<!-- Greencard2 Start here -->
+									<div class="greencard2 applycard">
+										<div class="row1 hide-m">
+											<div class="col-md-8 col-12">
+												<h4>{{ 'APPLY_FOR_CARDS' | translate }}</h4> </div>
+											<div class="col-md-4 col-12"> </div>
+										</div>
+										<div class="row1">
+											<div class="col-12 col-sm-12 col-md-12 col-lg-12" *ngIf="!noAccountNoAvailable" >
+												<div class="ux-nav-tabs" style="margin:0">
+													<div class="flex-container">
+														<div class="full-info">
+															<div class="ac-info">
+																<div class="greenbg-input ux-input">
+																	<label for="fromaccount"> {{ 'ALL_OPERATIVE_ACCOUNTS' | translate }}</label>
+																</div>
+															</div>
+
+															<div class="ac-info" (click)="onAccountSelectType()">
+																<div class="greenbg-input ux-input">
+																	<select id="accountDtls"  class="hide-m" (change)="getSelAccNoDtl($event.target.value)" >
+																		<option *ngFor="let account of myCardArray" [value]="account.accountNo">{{account.SchemeCode}} {{account.sbAccount}}</option>
+																		<!-- <option value="saving">Saving Account XXX XXX 9897</option> -->
+																	</select>
+																	<div class="custom-selectbox">
+																		<span *ngIf="accNum == '' "> {{ 'SELECT_ACCOUNT' | translate }}</span>
+																		<span *ngIf="accNum != '' ">{{accNum}}</span>
+																		<span class="right-arrow"></span> </div>
+																	<p class="error-message"></p>
+																</div>
+															</div>
+
+
+														</div>
+													</div>
+												</div>
+											</div>
+
+
+											<div class="col-12 col-sm-12 col-md-12 col-lg-12">
+												<div class="row1">
+													<div class="col-md-6 col-12 col-sm-6 col-xl-4 col-lg-6" *ngFor= "let card of cardList">
+														<div class="card">
+															<div class="img-box"> <img [src]="card.image" alt="" class="img-fluid">
+																<div class="card-btn">
+																	<button type="button" class="ux-button sm3 secondary " (click)="goToPage('cardDetails',card)"> {{ 'VIEW_MORE' | translate }}</button>
+																</div>
+															</div>
+															<div class="card-body p-0">
+																<h5>{{card.cardName}}</h5>
+																<!-- <ul class="card-text unorderlist3">
+																	<li *ngFor="let offer of card.features" >{{offer}}</li>
+																	<p (click)="goToLink(card.offerUrl)" >view more</p>
+																</ul> -->
+															</div>
+														</div>
+													</div>
+													<div class="col-12" *ngIf="cardList.length == 0 && cardIsLoad && !noAccountNoAvailable ">
+														<div class="no-accounts text-center widget-box5	 mb-0 py-5" >
+															<img src="assets/images/svg/no-rec-found.svg" class="mb-3">
+															<h5 class="mb-5"> {{ 'NO_CARD_FOUND_FOR_THIS_ACCOUNT' | translate }}</h5>
+														</div>
+													</div>
+													<div class="no-accounts text-center widget-box5	 mb-0 py-5" *ngIf="noAccountNoAvailable"  >
+														<img src="assets/images/svg/no-rec-found.svg" class="mb-3">
+														<h5 class="mb-5"> {{ 'ALREADY_CARDS_FOR_ALL_YOUR_ACCOUNT' | translate }}</h5>
+													</div>
+													<div class="col-12" *ngIf="notValidAccount">
+														<div class="no-accounts text-center widget-box5	 mb-0 py-5" >
+															<img src="assets/images/svg/no-rec-found.svg" class="mb-3">
+															<h5 class="mb-5"> {{ 'CARD_IS_NOT_APPLICABLE_FOR_THIS_ACCOUNT' | translate }}</h5>
+														</div>
+													</div>
+													
+													<!-- <div class="col-md-6 col-12 col-sm-6 col-xl-4 col-lg-6">
+														<div class="card">
+															<div class="img-box"> <img src="assets/images/background/debit-card-orange.png" alt="" class="img-fluid">
+																<div class="card-btn">
+																	<button type="button" class="ux-button sm3 secondary " (click)="goToPage('cardDetails')">View Details</button>
+																</div>
+															</div>
+															<div class="card-body p-0">
+																<h5>Platinum Card</h5>
+																<ul class="card-text unorderlist3">
+																	<li>No joining fee. No Annual Fee</li>
+																	<li>Exclusive dinning offers</li>
+																	<li>Save on 1% fuel surcharge</li>
+																</ul>
+															</div>
+														</div>
+													</div>
+													<div class="col-md-6 col-12 col-sm-6 col-xl-4 col-lg-6">
+														<div class="card">
+															<div class="img-box"> <img src="assets/images/background/debit-card-black.png" alt="" class="img-fluid">
+																<div class="card-btn">
+																	<button type="button" class="ux-button sm3 secondary " (click)="goToPage('cardDetails')">View Details</button>
+																</div>
+															</div>
+															<div class="card-body p-0">
+																<h5>Platinum Card</h5>
+																<ul class="card-text unorderlist3">
+																	<li>No joining fee. No Annual Fee</li>
+																	<li>Exclusive dinning offers</li>
+																	<li>Save on 1% fuel surcharge</li>
+																</ul>
+															</div>
+														</div>
+													</div>
+													<div class="col-md-6 col-12 col-sm-6 col-xl-4 col-lg-6">
+														<div class="card">
+															<div class="img-box"> <img src="assets/images/background/debit-card-green.png" alt="" class="img-fluid">
+																<div class="card-btn">
+																	<button type="button" class="ux-button sm3 secondary " (click)="goToPage('cardDetails')">View Details</button>
+																</div>
+															</div>
+															<div class="card-body p-0">
+																<h5>Platinum Card</h5>
+																<ul class="card-text unorderlist3">
+																	<li>No joining fee. No Annual Fee</li>
+																	<li>Exclusive dinning offers</li>
+																	<li>Save on 1% fuel surcharge</li>
+																</ul>
+															</div>
+														</div>
+													</div>
+													<div class="col-md-6 col-12 col-sm-6 col-xl-4 col-lg-6">
+														<div class="card">
+															<div class="img-box"> <img src="assets/images/background/debit-card-orange.png" alt="" class="img-fluid">
+																<div class="card-btn">
+																	<button type="button" class="ux-button sm3 secondary " (click)="goToPage('cardDetails')">View Details</button>
+																</div>
+															</div>
+															<div class="card-body p-0">
+																<h5>Platinum Card</h5>
+																<ul class="card-text unorderlist3">
+																	<li>No joining fee. No Annual Fee</li>
+																	<li>Exclusive dinning offers</li>
+																	<li>Save on 1% fuel surcharge</li>
+																</ul>
+															</div>
+														</div>
+													</div>
+													<div class="col-md-6 col-12 col-sm-6 col-xl-4 col-lg-6">
+														<div class="card">
+															<div class="img-box"> <img src="assets/images/background/debit-card-black.png" alt="" class="img-fluid">
+																<div class="card-btn">
+																	<button type="button" class="ux-button sm3 secondary " (click)="goToPage('cardDetails')">View Details</button>
+																</div>
+															</div>
+															<div class="card-body p-0">
+																<h5>Platinum Card</h5>
+																<ul class="card-text unorderlist3">
+																	<li>No joining fee. No Annual Fee</li>
+																	<li>Exclusive dinning offers</li>
+																	<li>Save on 1% fuel surcharge</li>
+																</ul>
+															</div>
+														</div>
+													</div> -->
+												</div>
+											</div>
+										</div>
+									</div>
+									<!-- Greencard2 End here -->
+								</div>
+								<!-- Right Column Ads Start -->
+								<div class="col-12 col-md-12 col-lg-12 col-xl-3 d-none d-xl-block">
+									<div class="right-ads">
+										<a > <img src="assets/images/banner/my-card-banner.jpg"> </a>
+									</div>
+								</div>
+								<!-- Right Column Ads End -->
+							</div>
+						</div>
+					</div>
+				</div>
+				<!--.container-fluid-->
+			</div>
+			<!--.body-page-container-->
+		</div>
+		<!--.right-col-container-->
+	</div>
+	<!--.right-main-column-->
+</div>
+<!-- main -->
+
+
+<!-- Select Accounts Popup Start-->
+<div class="popup-bottom sel-account">
+	<div class="row1">
+		<div class="col-10">
+			<h4>Select From Account</h4> </div>
+		<div class="col-2">
+			<button class="ux-button-icon close-btn" (click)="closePopup()"> <img src="assets/images/svg/close-b.svg" alt="cross-icon" class="img-vsmall"> </button>
+		</div>
+	</div>
+	<div class="row1">
+		<div class="col-12">
+			<div class="row1">
+				<div class="col-12 col-md-12" *ngFor="let account of accountList; let i = index" (click)="getToAccValue(account)" >
+					<div class="ux-selection mar-custom">
+						<label class="ux-selection2">{{account.accountType}} : {{account.accountNo}}
+							<input type="radio" [value]="account.accountNo" name="upi-account" [checked]="accNum == account?.accountNo ? true : false" [(ngModel)]="accNum" [ngModelOptions]="{standalone: true}" > 
+							<span class="checkmark"></span> 
+						</label>
+					</div>
+				</div>
+
+			</div>
+		</div>
+	</div>
+	<div class="row mt-2">
+		<div class="col-12 text-center">
+			<button class="ux-button primary submit-btn2" (click)="selectAccount(accountValue);closePopup()">{{ 'SUBMIT' | translate }}</button>
+		</div>
+	</div>
+</div>
+<!-- Select Accounts Popup End-->
+

@@ -1,0 +1,593 @@
+<div class="main pre-login" [ngClass]="{'iphone12': dataService.bezellessIphone, 'iosAfterImageUpload' :dataService.imageUploadSelected}" id="mainDiv">
+    <app-header></app-header>
+    <app-notification *ngIf="showNotificationDetails"></app-notification>
+    <app-footer></app-footer>
+    <app-side-nav-omni *ngIf="showSideNavDetails && constant.getPlatform() == 'web'"></app-side-nav-omni>
+    <app-theme-settings class="d-none d-sm-none d-md-block d-lg-block d-xl-block" *ngIf="showThemeDetails">
+    </app-theme-settings>
+    <div class="modal fade" id="modal-idle" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <div class="mh-bottom">
+                        <div class="row1">
+                            <div class="col-10">
+                                <h6>{{"TIMEOUT" | translate }}</h6>
+                            </div>
+                            <!-- <div class="col-2"><a href="javascript:;" data-dismiss="modal"><span class="mh-cross" ></span></a></div> -->
+                        </div>
+                    </div>
+                </div>
+
+                <div class="modal-body">
+                    <p>{{idleState}}</p>
+                </div>
+                <!-- <div class="modal-footer">
+                    <button type="button" class="ux-linkbutton" data-dismiss="modal" (click)="logout()">{{"LOGOUT" | translate}}</button>
+                    <button type="button" class="ux-linkbutton primary" data-dismiss="modal" (click)="resetTimeOut()">{{"KEEP_ACTIVE" | translate }}</button>
+                </div> -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Permission Not Granted Popup Start -->
+    <div class="popup-bottom permission-not-granted">
+        <div class="row1">
+            <div class="col-12">
+                <h4 class="text-center">
+                    <img src="./assets/images/svg/information.svg" alt="information-icon"> {{ 'INFORMATION' | translate }}
+                </h4>
+            </div>
+        </div>
+        <div class="row1">
+            <div class="col-12">
+                <p>
+                    {{ 'ALLOW_PERMISSION_MSG' | translate }}
+                    <!-- All permissions are utilized for specific feature(s) within PSB UPI Application. Kindly allow/grant permissions as and when prompted so as to continue accessing that specific feature. -->
+                </p>
+            </div>
+        </div>
+        <div class="row1 mt-2">
+            <div class="col-12 text-center" (click)="getSIMSettings()">
+                <button class="ux-button primary submit-btn" type="button">{{ 'GRANT' | translate}}</button>
+            </div>
+            <div class="col-12 text-center" (click)="closePopup('div.popup-bottom.permission-not-granted')">
+                <button class="ux-button primary submit-btn" type="button">{{ 'CANCEL' | translate}}</button>
+            </div>
+        </div>
+    </div>
+    <!-- Permission Not Granted Popup End-->
+
+    <!-- Registered Sim Not Found Popup Start -->
+    <div class="popup-bottom registered-sim-not-found">
+        <div class="row1">
+            <div class="col-12">
+                <h4 class="text-center">
+                    <img src="./assets/images/svg/information.svg" alt="information-icon"> {{dataService.informationLabel}}
+                </h4>
+            </div>
+        </div>
+        <div class="row1">
+            <div class="col-12">
+                <p>
+                    {{dataService.simInfoDetails}}
+                </p>
+            </div>
+        </div>
+        <div class="row1 mt-2">
+            <div class="col-12 text-center" (click)="exitApp(true)">
+                <button class="ux-button primary submit-btn" type="button">{{dataService.primaryBtnText}}</button>
+            </div>
+        </div>
+    </div>
+    <!-- Registered Sim Not Found Popup End -->
+
+    <!-- No Sim Available Popup Start (Android) -->
+    <div class="popup-bottom no-sim-available">
+        <div class="row1">
+            <div class="col-12">
+                <h4 class="text-center">
+                    <img src="./assets/images/svg/information.svg" alt="information-icon"> {{dataService.informationLabel}}
+                </h4>
+            </div>
+        </div>
+        <div class="row1">
+            <div class="col-12">
+                <p>
+                    {{dataService.simInfoDetails}}
+                </p>
+            </div>
+        </div>
+        <div class="row1 mt-2">
+            <div class="col-12 text-center" (click)="exitApp()">
+                <button class="ux-button primary submit-btn" type="button">{{dataService.primaryBtnText}}</button>
+            </div>
+        </div>
+    </div>
+    <!-- No Sim Available Popup End (Android) -->
+
+    <!-- No Sim Available Popup Start (iOS) -->
+    <div class="popup-bottom no-sim-available-ios">
+        <div class="row1">
+            <div class="col-12">
+                <h4 class="text-center">
+                    <img src="./assets/images/svg/information.svg" alt="information-icon"> {{ 'INFORMATION' | translate }}
+                </h4>
+            </div>
+        </div>
+        <div class="row1">
+            <div class="col-12">
+                <p>
+                    {{'NO_SIM_AVAILABLE' | translate}}
+                </p>
+            </div>
+        </div>
+        <div class="row1 mt-2">
+            <div class="col-12 text-center">
+                <button class="ux-button primary submit-btn" type="button" (click)="closeNoSimPopup()">{{ 'OK' |
+                    translate}}</button>
+            </div>
+        </div>
+    </div>
+    <!-- No Sim Available Popup End (iOS) -->
+
+    <!--UPI Session Timeout Popup Start -->
+    <div class="popup-bottom timeout1 sm-popup">
+        <div class="row">
+            <div class="col-12">
+                <h4 class="text-center">{{timeOutLabel}}</h4>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <p>
+                    {{idleState}}
+                </p>
+            </div>
+        </div>
+        <div class="row1 mt-2">
+            <div class="col-6 text-center">
+                <button class="ux-button primary md" (click)="resetTimeOut()">{{keepActiveLabel}}</button>
+            </div>
+            <div class="col-6 text-center">
+                <button class="ux-button secondary no md close-btn" (click)="logout()">{{logoutLabel}}</button>
+            </div>
+        </div>
+    </div>
+    <!--UPI Session Timeout Popup End -->
+
+    <!-- Network Info Popup Start -->
+    <div class="popup-bottom network-info">
+        <div class="row1">
+            <div class="col-12">
+                <h4 class="text-center"> <img src="./assets/images/svg/information.svg" alt="information-icon"> {{dataService.informationLabel}}
+                </h4>
+            </div>
+        </div>
+        <div class="row1">
+            <div class="col-12">
+                <p>{{dataService.informationDetails}}</p>
+            </div>
+        </div>
+        <div class="row1  mt-2">
+            <div class="col-12 text-center" (click)="closePopup('div.popup-bottom.network-info')">
+                <button class="ux-button primary submit-btn" type="button">{{'OK' | translate}}</button>
+            </div>
+        </div>
+    </div>
+    <!-- Network Info Popup Start -->
+
+    <!-- Network Info Android Popup Start -->
+    <div class="popup-bottom network-info-android">
+        <div class="row1">
+            <div class="col-12">
+                <h4 class="text-center"> <img src="./assets/images/svg/information.svg" alt="information-icon"> {{dataService.informationLabel}}
+                </h4>
+            </div>
+        </div>
+        <div class="row1">
+            <div class="col-12">
+                <p>{{dataService.informationDetails}}</p>
+            </div>
+        </div>
+        <div class="row1 mt-2">
+            <div class="col-6 text-center">
+                <button class="ux-button primary md" (click)="exitAppForNoInternet()">{{dataService.primaryBtnText}}</button>
+            </div>
+            <div class="col-6 text-center">
+                <button class="ux-button secondary no md close-btn" (click)="retryInternetCheck('network-info-android')">{{dataService.secondaryBtnText}}</button>
+            </div>
+        </div>
+    </div>
+    <!-- Network Info Android Popup end -->
+
+    <!-- Network Info iOS Popup start -->
+    <div class="popup-bottom network-info-ios">
+        <div class="row1">
+            <div class="col-12">
+                <h4 class="text-center"> <img src="./assets/images/svg/information.svg" alt="information-icon"> {{dataService.informationLabel}}
+                </h4>
+            </div>
+        </div>
+        <div class="row1">
+            <div class="col-12">
+                <p>{{dataService.informationDetails}}</p>
+            </div>
+        </div>
+        <div class="row1  mt-2">
+            <div class="col-12 text-center" (click)="retryInternetCheck('network-info-ios')">
+                <button class="ux-button primary submit-btn" type="button">{{'RETRY' | translate}}</button>
+            </div>
+        </div>
+    </div>
+    <!-- Network Info iOS Popup end -->
+
+    <!-- Show Common Info Popup Start -->
+    <div class="popup-bottom show-common-info sm-popup">
+        <div class="row1">
+            <div class="col-12">
+                <h4 class="text-center"> <img src="./assets/images/svg/information.svg" alt="information-icon">{{ dataService.informationLabel}}
+                </h4>
+            </div>
+        </div>
+        <div class="row1">
+            <div class="col-12">
+                <p *ngIf="dataService.information != ''">{{ dataService.information}}</p>
+            </div>
+        </div>
+        <div class="row1  mt-2">
+            <div class="col-12 text-center" (click)="closePopup('div.popup-bottom.show-common-info')">
+                <button class="ux-button primary submit-btn" type="button">{{dataService.primaryBtnText}}</button>
+            </div>
+        </div>
+    </div>
+    <!-- Show Common Info Popup End -->
+
+    <!-- Show Common Error Popup Start -->
+    <div class="popup-bottom show-common-error sm-popup">
+        <div class="row1">
+            <div class="col-12">
+                <h4 class="text-center"> <img src="./assets/images/svg/error.svg" alt="error-icon"> {{ dataService.informationLabel}}
+                </h4>
+            </div>
+        </div>
+        <div class="row1">
+            <div class="col-12 mb-4">
+                <p *ngIf="dataService.errorMsg != ''">{{ dataService?.errorMsg}}</p>
+            </div>
+        </div>
+        <div class="row1  mt-2">
+            <div class="col-12 text-center">
+                <button class="ux-button primary submit-btn" (click)="closePopup('div.popup-bottom.show-common-error')">{{dataService.primaryBtnText}}</button>
+            </div>
+        </div>
+    </div>
+    <!-- Show Common Error Popup End -->
+
+    <!-- Show Intent Message Popup Start -->
+    <div class="popup-bottom show-intent-message">
+        <div class="row1">
+            <div class="col-12">
+                <h4 class="text-center"> <img src="./assets/images/svg/information.svg" alt="information-icon">{{informationLabel}}
+                </h4>
+            </div>
+        </div>
+        <div class="row1">
+            <div class="col-12">
+                <p>{{informationDetails}}</p>
+            </div>
+        </div>
+        <div class="row1 mt-2">
+            <div class="col-6 text-center">
+                <button class="ux-button secondary no md close-btn" (click)="closePopup('div.popup-bottom.show-intent-message')">{{'NO' | translate}}</button>
+            </div>
+            <div class="col-6 text-center">
+                <button class="logout-btn ux-button primary md" (click)="handleIntentCallback()">{{'YES' |
+                    translate}}</button>
+            </div>
+        </div>
+    </div>
+    <!-- Show Intent Message Popup Start -->
+
+    <!-- Logout Popup Start -->
+    <div class="popup-bottom logout1">
+        <div class="row">
+            <div class="col-12">
+                <h4 class="text-center">{{dataService.informationLabel | translate}}</h4>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <p>
+                    {{dataService.informationDetails | translate}}
+                </p>
+            </div>
+        </div>
+        <div class="row1 mt-2">
+            <div class="col-6 text-center">
+                <button class="ux-button secondary no md close-btn" (click)="closePopup('div.popup-bottom.logout1')">{{
+                    dataService.secondaryBtnText | translate}}</button>
+            </div>
+            <div class="col-6 text-center">
+                <button class="logout-btn ux-button primary md" (click)="logout()">{{dataService.primaryBtnText |
+                    translate}}</button>
+            </div>
+        </div>
+    </div>
+    <!-- Logout Popup End -->
+
+    <!-- App Minimized Popup Start -->
+    <div class="popup-bottom show-appminimized-message">
+        <div class="row1">
+            <div class="col-12">
+                <h4 class="text-center"> <img src="./assets/images/svg/information.svg" alt="information-icon">{{dataService.informationLabel}}
+                </h4>
+            </div>
+        </div>
+        <div class="row1">
+            <div class="col-12">
+                <p>{{dataService.informationDetails}}</p>
+            </div>
+        </div>
+        <div class="row1 mt-2">
+            <div class="col-6 text-center">
+                <button class="ux-button secondary no md close-btn" (click)="restartApplication()">{{dataService.primaryBtnText}}</button>
+            </div>
+            <div class="col-6 text-center">
+                <button class="logout-btn ux-button primary md" (click)="closePopup('div.popup-bottom.show-intent-message',true)">{{dataService.secondaryBtnText}}</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="popup-bottom show-sessionTimedOut-info sm-popup">
+        <div class="row1">
+            <div class="col-12">
+                <h4 class="text-center"> <img src="./assets/images/svg/information.svg" alt="information-icon">{{ dataService.informationLabel}}
+                </h4>
+            </div>
+        </div>
+        <div class="row1">
+            <div class="col-12">
+                <p *ngIf="dataService.information != ''">{{ dataService.information}}</p>
+            </div>
+        </div>
+        <div class="row1  mt-2">
+            <!-- <div class="col-12 text-center" (click)="redirecToLogin('show-sessionTimedOut-info')"> -->
+            <div class="col-12 text-center" (click)="navigateToLogin()">
+                <button class="ux-button primary submit-btn" type="button">{{dataService.primaryBtnText}}</button>
+            </div>
+        </div>
+    </div>
+    <!-- App Minimized Popup Start -->
+
+    <!-- Show Proxy IP Error Popup Start -->
+    <div class="popup-bottom proxy-ip-error">
+        <div class="row1">
+            <div class="col-12">
+                <h4 class="text-center"> <img src="./assets/images/svg/error.svg" alt="error-icon"> {{ dataService.informationLabel}}
+                </h4>
+            </div>
+        </div>
+        <div class="row1">
+            <div class="col-12 mb-4">
+                <p *ngIf="dataService.errorMsg != ''">{{ dataService?.errorMsg}}</p>
+            </div>
+        </div>
+        <div class="row1  mt-2">
+            <div class="col-12 text-center">
+                <button class="ux-button primary submit-btn" (click)="exitApp(true)">{{dataService.primaryBtnText}}</button>
+            </div>
+        </div>
+    </div>
+    <!-- Show Proxy IP Error Popup End -->
+
+    <!-- Force Update Popup Start -->
+    <div class="popup-bottom force-update-popup">
+        <div class="row1">
+            <div class="col-12">
+                <h4 class="text-center">
+                    <img src="./assets/images/svg/information.svg" alt="error-icon"> {{ dataService.informationLabel}}
+                </h4>
+            </div>
+        </div>
+        <div class="row1">
+            <div class="col-12 mb-4">
+                <p *ngIf="dataService.information != ''">{{ dataService.information}}</p>
+            </div>
+        </div>
+        <div class="row1  mt-2">
+            <div class="col-12 text-center">
+                <button class="ux-button primary submit-btn" (click)="updateApp()">{{dataService.primaryBtnText}}</button>
+            </div>
+        </div>
+    </div>
+    <!-- Force Update Popup End -->
+
+    <!-- Check Version API Error Popup Start -->
+    <div class="popup-bottom check-version-error">
+        <div class="row1">
+            <div class="col-12">
+                <h4 class="text-center">
+                    <img src="./assets/images/svg/information.svg" alt="error-icon"> {{ dataService.informationLabel}}
+                </h4>
+            </div>
+        </div>
+        <div class="row1">
+            <div class="col-12 mb-4">
+                <p *ngIf="dataService.errorMsg != ''">{{ dataService?.errorMsg}}</p>
+            </div>
+        </div>
+        <div class="row1  mt-2">
+            <div class="col-12 text-center">
+                <button class="ux-button primary submit-btn" (click)="blockUserFlow('check-version-error')">{{dataService.primaryBtnText}}</button>
+            </div>
+        </div>
+    </div>
+    <!-- Check Version API Error Popup End -->
+
+    <!-- Rooted Device Popup Start -->
+    <div class="popup-bottom rooted-device-popup">
+        <div class="row1">
+            <div class="col-12">
+                <h4 class="text-center">
+                    <img src="./assets/images/svg/information.svg" alt="error-icon"> {{ dataService.informationLabel }}
+                </h4>
+            </div>
+        </div>
+        <div class="row1">
+            <div class="col-12 mb-4">
+                <p>{{ 'ROOTED_DEVICE_MSG' | translate }}</p>
+            </div>
+        </div>
+        <div class="row1  mt-2">
+            <div class="col-12 text-center">
+                <button class="ux-button primary submit-btn" (click)="blockUserFlow('rooted-device-popup')">
+                    {{ 'OK' | translate }}</button>
+            </div>
+        </div>
+    </div>
+    <!-- Rooted Device Popup End -->
+
+    <!-- Rooted Device Popup Start -->
+    <div class="popup-bottom virtualDevice">
+        <div class="row1">
+            <div class="col-12">
+                <h4 class="text-center">
+                    <img src="./assets/images/svg/information.svg" alt="error-icon"> {{ dataService.informationLabel }}
+                </h4>
+            </div>
+        </div>
+        <div class="row1">
+            <div class="col-12 mb-4">
+                <p>{{'DEVICE_INCOMPATIBLE_MSG' | translate}}</p>
+            </div>
+        </div>
+        <div class="row1  mt-2">
+            <div class="col-12 text-center">
+                <button class="ux-button primary submit-btn" (click)="blockUserFlow('virtualDevice')">
+                    {{ 'OK' | translate }}</button>
+            </div>
+        </div>
+    </div>
+    <!-- Rooted Device Popup End -->
+
+    <!-- Rooted Device Popup Start -->
+    <div class="popup-bottom signedError">
+        <div class="row1">
+            <div class="col-12">
+                <h4 class="text-center">
+                    <img src="./assets/images/svg/information.svg" alt="error-icon"> {{ dataService.informationLabel }}
+                </h4>
+            </div>
+        </div>
+        <div class="row1">
+            <div class="col-12 mb-4">
+                <p *ngIf="dataService.errorMsg != ''">{{ dataService.errorMsg}}</p>
+            </div>
+        </div>
+        <div class="row1  mt-2">
+            <div class="col-12 text-center">
+                <button class="ux-button primary submit-btn" (click)="blockUserFlow('signedError')">
+                    {{dataService.primaryBtnText}}</button>
+            </div>
+        </div>
+    </div>
+    <!-- Rooted Device Popup End -->
+
+    <!-- Enable Camera Permission Popup Start -->
+    <div class="popup-bottom enable-camera-permission">
+        <div class="row1">
+            <div class="col-12">
+                <h4 class="text-center"> <img src="./assets/images/svg/information.svg" alt="information-icon"> {{'INFORMATION' | translate}}</h4>
+            </div>
+        </div>
+        <div class="row1">
+            <div class="col-12">
+                <p>{{ 'ENABLE_CAMERA_PERMISSION_MSG' | translate }}</p>
+            </div>
+        </div>
+        <div class="row1  mt-2">
+            <div class="col-12 text-center">
+                <button class="ux-button primary submit-btn" type="button" (click)="enableCameraPermission()">{{'OK' | translate}}</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Enable Camera Permission Popup End -->
+
+    <div class="ios-nav-overlay" ></div>
+        <div id="pageLoader" class="loading-backdrop" style="display:none;"><img src="assets/images/loader/pageloader.gif">
+    </div>
+    <router-outlet></router-outlet>
+
+</div>
+
+
+<!--Image Caching for UPI Dashboard-->
+<div class="main" style="opacity: 0;top: -100%;z-index: -1;position: absolute;">
+    <div class="main main-bg">
+        <div>
+            <!-- <div class="prelogin-page bg2 bg-custom"> -->
+        </div>
+    </div>
+</div>
+<ul style="display: none;">
+    <li><img src="assets/images/background/splash.jpg" alt="splassh-icon"></li>
+    <!-- <li><img src="assets/images/background/splash.png" alt="splassh-icon"></li> -->
+    <li> <img src="assets/images/svg/yellow-menu.svg" alt="open-menu-icon" />
+    </li>
+    <li> <img src="assets/images/logo/psb-logo.svg" alt="psb-logo" class="m-auto">
+    </li>
+    <li> <img src="assets/images/svg/bell-w.svg" class="img-small" alt="bell-icon" />
+    </li>
+    <li> <img src="assets/images/svg/bell1.svg" class="img-small" alt="bell1-icon" />
+    <li> <img src="assets/images/svg/shutdown-w.svg" class="img-small" alt="logout-icon" />
+    </li>
+    <li> <img src="assets/images/svg/logout-w.svg" class="img-small" alt="logout1-icon" />
+    </li>
+    <li> <img src="assets/images/svg/settings.svg" alt="setting-icon"></li>
+    <li><img src="assets/images/svg/arrow-back-bl.svg"></li>
+    <li><img src="assets/images/svg/add-g.svg" class="showAmt" alt="ad-icon"></li>
+    <li><img src="assets/images/svg/visible-bl.svg" alt="visible-icon"></li>
+    <li><img src="assets/images/svg/invisible-bl.svg" alt="hide-icon"></li>
+    <li> <img src="assets/images/svg/rupee-bl.svg" alt="rupees-icon"></li>
+    <li> <img src="assets/images/svg/refresh-bl.svg" alt="refresh-icon"></li>
+    <li><img src="assets/images/svg/rupee-left-g.svg" alt="rupee-icon" /></li>
+    <li><img src="assets/images/svg/rupee-right-g.svg" alt="rupee-icon" /></li>
+    <li> <img src="assets/images/svg/pending-request.svg" alt="pending-request-icon" /></li>
+    <li><img src="assets/images/svg/balance-enquiry.svg" alt="balance-enquiry-icon" /></li>
+    <li> <img src="assets/images/svg/settings.svg" alt="setting-icon" /></li>
+    <li> <img src="assets/images/svg/transaction.svg" alt="transaction-icon" /></li>
+    <li><img src="assets/images/svg/mobile-recharge.svg" alt="mobile-recharge-icon" /></li>
+    <li> <img src="assets/images/svg/dth.svg" alt="dth-icon" /></li>
+    <li> <img src="assets/images/svg/dth.svg" alt="dth-icon" /></li>
+    <li> <img src="assets/images/svg/electricity.svg" alt="electricity-icon" />
+    </li>
+    <li> <img src="assets/images/svg/fast-tag.svg" alt="fast-tag-icon" /></li>
+    <li><img src="assets/images/svg/error.svg" alt="error-icon"></li>
+    <li><img src="assets/images/svg/error.svg" alt="error-icon"></li>
+    <li> <img src="assets/images/svg/close-b.svg" alt="cross-icon" class="img-vsmall">
+    </li>
+    <li><img src="assets/images/svg/information.svg" alt="information-icon"></li>
+    <li><img src="assets/images/background/psb-pattern-grey-sm.png" alt="psb-pattern-grey-sm"></li>
+
+
+    <li><img src="assets/images/svg/financial.svg" alt="psb-pattern-grey-sm"></li>
+    <li><img src="assets/images/svg/loans-mob.svg" alt="psb-pattern-grey-sm"></li>
+    <li><img src="assets/images/svg/cashless-card.svg" alt="psb-pattern-grey-sm"></li>
+    <li><img src="assets/images/svg/send-money.svg" alt="psb-pattern-grey-sm"></li>
+    
+    <li><img src="assets/images/svg/Paybills.svg" alt="psb-pattern-grey-sm"></li>
+    <li><img src="assets/images/svg/Premiumpay.svg" alt="psb-pattern-grey-sm"></li>
+    <li><img src="assets/images/svg/fasttag.svg" alt="psb-pattern-grey-sm"></li>
+    <li><img src="assets/images/svg/Recharge2.svg" alt="psb-pattern-grey-sm"></li>
+    <li><img src="assets/images/svg/electricity.svg" alt="psb-pattern-grey-sm"></li>
+    <li><img src="assets/images/svg/dth.svg" alt="psb-pattern-grey-sm"></li>
+    <li><img src="aassets/images/logo/logo1.png" alt="psb-pattern-grey-sm"></li>
+
+    <li><img src="assets/images/svg/FD.svg" alt="psb-pattern-grey-sm"></li>
+    <li><img src="assets/images/svg/IPO.svg" alt="psb-pattern-grey-sm"></li>
+    <li><img src="assets/images/svg/PPF.svg" alt="psb-pattern-grey-sm"></li>
+    <li><img src="assets/images/svg/Insurance2.svg" alt="psb-pattern-grey-sm"></li>
+</ul>
+<!--Image Caching for UPI Dashboard-->

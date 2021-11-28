@@ -1,0 +1,167 @@
+<div class="row">
+    <div class="col-12 col-lg-6 col-md-10 col-sm-12 position-static">
+
+       <div class="row1">
+         <div class="col-12">
+            <ul class="step-list">
+                <li class="step-matched">
+                    <em> <span class="primary">{{'STEP' | translate }} 1 </span> <span class="secondary">{{'OF_STEP' | translate }} 6</span> </em>
+                 </li>
+            </ul>
+           <div class="tab-header">
+              <h4>{{'PERSONAL_DETAILS' | translate }}</h4>
+            </div>
+         </div>
+         <form [formGroup]="personalInfoForm" (ngSubmit)="submitForm()">
+         <div class="col-12">
+           <div class="details-section">
+             <div class="row1">
+                <div Class="col-3">
+                    <div class="ux-input ux-disabled" style="margin: 10px -5px;">
+                          <label>{{'GENDER' | translate }}</label>
+                            <input type="text" placeholder="Enter Gender" disabled formControlName="gender"  value="Male">
+                          <p></p>
+                        </div>
+
+                    </div>
+               <div Class="col-9">
+                 <div class="ux-input ux-disabled">
+                       <label>{{'FULL_NAME' | translate }}</label>
+                         <input type="text" placeholder="Enter Full Name" disabled formControlName="fullName" value="Sumeet Sharma" >
+                       <p></p>
+                     </div>
+
+                 </div>
+                 <div Class="col-12">
+                     <div class="ux-input ux-disabled">
+                         <label>{{'DATE_OF_BIRTH' | translate }}</label>
+                           <input type="text" placeholder='Enter Date of birth' disabled formControlName="dob"  value="16 July 1978" >
+
+                         <p></p>
+                       </div>
+                   </div>
+                   <div Class="col-12 ">
+                    <h4 >{{'PERMANENT_ADDRESS' | translate }}</h4>
+                       <div class="ux-input ux-disabled">
+                           <label>{{'ADDRESS_LINE_1' | translate }}</label>
+                             <input type="text" placeholder='Address' disabled formControlName="addline1" value="Content" >
+
+                           <p></p>
+                         </div>
+                     </div>
+                        <div Class="col-12 ">
+
+                           <div class="ux-input ux-disabled">
+                               <label>{{'ADDRESS_LINE_2' | translate }}</label>
+                                 <input type="text" placeholder='Address' disabled formControlName="addline2" value="Content" >
+
+                               <p></p>
+                             </div>
+                         </div>
+
+                         <div Class="col-12 ">
+                            <div class="ux-input ux-disabled">
+                                <label>{{'STATE' | translate }}</label>
+                                <!-- <select   disabled formControlName="state">
+                                    <option value="Abc">Maharashtra</option>
+                                    <option value="Def">Gujrath </option>
+                                    <option value="Ghi">Rajasthan</option>
+                                    <option value="Ghi">Bihar</option>
+                                    <option value="Ghi">Kerala</option>
+                                    <option value="Ghi">Karnataka</option>
+                                </select> -->
+                                <input type="text" placeholder='State' disabled formControlName="state" value="Content" >
+                                <!-- <select disabled name="state" formControlName="state">
+                                  <option value="">{{'SELECT_STATE' | translate }}</option>
+                                  <option *ngFor="let stateDtl of stateList" [value]="stateDtl.ID" >{{stateDtl.state}}</option>
+                              </select> -->
+                            </div>
+                        </div>
+                        <div Class="col-12 col-md-6 col-lg-6 col-xl-6" >
+                            <div class="ux-input ux-disabled">
+                                <label>{{'CITY' | translate }}</label>
+                                <input type="text" placeholder='City' disabled formControlName="city" value="Content" >
+                                <!-- <select disabled name="city" formControlName="city" >
+                                  <option value="">{{'SELECT_CITY' | translate }}</option>
+                                  <option *ngFor="let cityDtl of cityList" [value]="cityDtl.ID" >{{cityDtl.city}}</option>
+                              </select> -->
+                                <!-- <select   disabled formControlName="city">
+                                    <option value="Abc">Mumbai</option>
+                                    <option value="Def">Gujrath </option>
+                                    <option value="Ghi">Rajasthan</option>
+                                    <option value="Ghi">Bihar</option>
+                                    <option value="Ghi">Kerala</option>
+                                    <option value="Ghi">Karnataka</option>
+                                </select> -->
+                            </div>
+                        </div>
+                        <div Class="col-12 col-md-6 col-lg-6 col-xl-6">
+                            <div class="ux-input ux-disabled">
+                                <label>{{'PINCODE' | translate }}</label>
+                                  <input type="text" placeholder='ENTER_PINCODE' disabled formControlName="pincode"  value="400098" >
+
+                                <p></p>
+                              </div>
+                          </div>
+
+                          <div Class="col-12 ">
+
+                            <div class="ux-input ux-disabled">
+                                <label>{{'NATIONALITY' | translate }}</label>
+                                  <input type="text" placeholder='Select Nationality' disabled formControlName="nationality" value="Indian" >
+                                <p></p>
+                              </div>
+                          </div>
+                          <div Class="col-12 ">
+                            <div class="ux-input">
+                                <label>{{'MARITAL_STATUS' | translate }}</label>
+                                <select formControlName="maritalStatus">
+                                   <option>Select Status</option>
+                                    <option *ngFor="let maritalStatus of maritalStatusList" [value]="maritalStatus.ref_code">{{maritalStatus.DESCRIPTION}}</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div Class="col-12 ">
+                            <div class="ux-input">
+                                <label>{{'COMMUNITY' | translate }}</label>
+                                <select   formControlName="community">
+                                    <option>{{'SELECT_COMMUNITY' | translate }}</option>
+                                    <option *ngFor="let community of communityList" [value]="community.ref_code">{{community.DESCRIPTION}}</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div Class="col-12 ">
+                            <div class="ux-input">
+                                <label>{{'CATEGORY' | translate }}</label>
+                                <select   formControlName="category">
+                                     <option>{{'SELECT_CATEGORY' | translate }}</option>
+                                     <option *ngFor="let category of categoryList" [value]="category.ref_code">{{category.DESCRIPTION}}</option>
+                                </select>
+                            </div>
+                        </div>
+               </div>
+           </div>
+         </div>
+         <div class="col-12 col-lg-10 col-md-12 col-sm-12 m-auto position-static">
+           <div class="ux-footer border-n">
+             <div class="row1">
+               <div class="col-6 col-lg-6 col-md-6 col-sm-6">
+
+                 </div>
+               <div class="col-6 col-lg-6 col-md-6 col-sm-6 col-12 text-right">
+                  <!-- <button type="button" class="ux-button sm  secondary  cancel-btn " onclick="prevStep(1)"  >CANCEL</button>
+                 <button class="ux-button primary sm  ml-2" onclick="nextStep(1)">Next</button> -->
+                 <a  class="ux-button sm  secondary  cancel-btn " (click)="cancel()">{{'CANCEL' | translate }}</a>
+                 <button class="ux-button primary sm  ml-2" type="submit" >{{'NEXT' | translate }}</button>
+               </div>
+               </div>
+             </div>
+         </div>
+        </form>
+      </div>
+
+    </div>
+    <div class="col-12 col-lg-6 col-md-2 col-sm-12  d-none d-lg-block d-xl-block">
+        <img src="assets/images/svg/regImg1.svg" class="right-regImg">
+    </div>
+</div>

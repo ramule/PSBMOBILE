@@ -1,0 +1,1759 @@
+<div class="main bg-m">
+	<div class="right-main-column">
+		<div class="right-col-container pad-b full-width">
+			<!-- ======== body page content start from here ======== -->
+			<div class="body-page-container">
+				<div class="container-fluid">
+					<div class="row">
+						<div class="col-12 p-0">
+							<div class="breadcrumb">
+								<ul class="lst-breadcrumb">
+									<!-- <li> <a (click)="goToPage('myAccount')">My Accounts</a> </li>
+									<li *ngIf="dataService.accTypeSelected == 'Operative'" > <a (click)="goToPage('myAccount')">Operative Accounts</a> </li>
+									<li *ngIf="dataService.accTypeSelected == 'Deposits'" > <a (click)="goToPage('myDeposits')">My Deposits</a> </li>
+									<li *ngIf="dataService.accTypeSelected == 'Operative'" > Savings Account Details </li>
+									<li *ngIf="dataService.accTypeSelected == 'Deposits'" > Deposits Account Details </li> -->
+									<li *ngFor="let name of dataService.breadcrumblist">
+                                        <a (click)="breadcrumroute(name.routeName)">{{name.currentRoute | translate}}</a>
+                                    </li>
+								</ul>
+							</div>
+						</div>
+					</div>
+					<!--.row -->
+					<div class="vspacer15 customize d-none d-md-block d-lg-block d-xl-block"></div>
+					<div class="row no-gutters">
+						<div class="col-12">
+							<div class="row1">
+								<div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-9">
+									<div class="greencard2">
+										<div class="flex-container no-bg">
+											<div class="full-info">
+												<div class="row1">
+													<div class="col-12 col-md-8 col-lg-8 col-xl-8">
+														<div class="ac-info">
+															<div class="greenbg-input ux-input">
+																<label for="fromaccount" class="largeview-enable"> {{'ACCOUNT' | translate}}</label>
+															</div>
+														</div>
+														<div class="ac-info">
+															<div class="greenbg-input ux-input">
+																<select required="" class="hide-m" [(ngModel)]="selectedAccountNo" (change)=getSelectedAccount(selectedAccountNo)>
+																	<!-- <option value="select">Select</option> -->
+																	<option *ngFor="let item of totalAccountList" [value]="item.accountNo">{{item.SchemeCode}} {{item?.sbAccount}} </option>
+																	<!-- <option value="saving">Saving Account XXX XXX 9897</option> -->
+																</select>
+																<div class="custom-selectbox"> <span>{{selAccDtl?.SchemeCode}} {{selAccDtl?.sbAccount}} </span> <span class="right-arrow" (click)="openAccountList()" ></span> </div>
+																<p class="error-message"></p>
+															</div>
+														</div>
+														<div class="ac-info">
+															<div class="greenbg-input ux-input">
+																<!-- <p class="info-message2 hide-m"><span>₹ {{selAvlBal?.ledgerBalance |  customcurrency}}</span></p> -->
+																<p class="info-message2 hide-m"><span>{{selAccDtl?.acctBalance |  customcurrency : 'symbol' : selAccDtl?. currency}}</span></p>
+
+															</div>
+														</div>
+														<div class="ac-info hide-m">
+															<button class="refresh-btn" (click)="onRefresh()"><img src="assets/images/svg/refresh.svg" alt="refresh-icon"></button> <span class="refresh-text"> {{'LAST_REFRESH' | translate}}  {{refreshDate | date: 'dd MMM yyyy, hh:mm' }}</span> </div>
+													</div>
+													<div class="col-12 col-md-4 col-lg-4 col-xl-4 text-right pl-1">
+														<ul class="whitelink-list hide-m">
+															<!-- <li> <a class="lien-btn" (click)="openPopup('lienEnquiry')">Lien enquiry</a> </li> -->
+															<li> <a class="lien-btn" (click)="goToPage('lienEnquiry')">  {{'LIEN_ENQUIRY' | translate}}</a> </li>
+															<!-- <li *ngIf="dataService.accTypeSelected == 'Operative'" > <a class="lien-btn" (click)="goToPage('delinkAccount')">Delink Account</a> </li> -->
+															<li *ngIf="dataService.accTypeSelected == 'Operative' && selAccDtl?.accountFlag != 'P'" > <a class="lien-btn" (click)="delinkAccount('delinkAccount')">  {{'DELINK_ACCOUNT' | translate}}</a> </li>
+														</ul>
+													</div>
+												</div>
+											</div>
+										</div>
+
+										<div class="row1">
+											<div class="col-12">
+												<div class="inner-whitecard custom-pad">
+													<h4 class="hide-m"> {{'ACC_BAL' | translate}}</h4>
+													<div class="" (click)="listExpander('balanceList')" *ngIf="dataService.accTypeSelected == 'Operative'">
+														<ul class="accountinfo-grid" >
+															<li [ngClass]="totalAvailableBalance ? 'active' : '' " >
+																<div class="grid-info">
+																<div class="full-info">
+																		<div class="left-info">
+																			<h5>{{selAvlBal?.availableBalance | customcurrency : 'symbol' : selAccDtl?. currency}}</h5> </div>
+																		<div class="left-info">
+																			<h6> {{'ACC_BAL' | translate}}</h6> </div> <em></em> </div>
+																</div>
+																<div class="grid-info">
+																	<div class="full-info">
+																		<div class="left-info">
+																			<h5>{{selAvlBal?.ledgerBalance | customcurrency : 'symbol' : selAccDtl?. currency}} </h5> </div>
+																		<div class="left-info">
+																			<h6>{{"AVAILABLE_BAL" | translate}}</h6> </div></div>
+																</div>
+																<div class="grid-info">
+																	<div class="full-info">
+																		<div class="left-info">
+																			<h5>{{selAvlBal?.userDefinedBl < 0 ? 0 : selAvlBal?.userDefinedBl | customcurrency : 'symbol' : selAccDtl?. currency}}</h5> </div>
+																		<div class="left-info">
+																			<h6> {{"EFFECTIVE_BALANCE" | translate}}</h6> </div>
+																	</div>
+																</div>
+																<div class="grid-info" >
+																	<div class="full-info">
+																		<div class="left-info">
+																			<h5>{{selAvlBal?.floatBalance | customcurrency : 'symbol' : selAccDtl?. currency}}</h5> </div>
+																		<div class="left-info">
+																			<h6> {{"UNCLEAR_BALANCE" | translate}}</h6> </div>
+																	</div>
+																</div>
+																<div class="grid-info">
+																	<div class="full-info">
+																		<div class="left-info">
+																			<h5>{{lienEnqData?.totalLienAmount | customcurrency : 'symbol' : lienEnqData?.currencyCode}}</h5> </div>
+																		<div class="left-info">
+																			<h6> {{"LIEN_BALANCE" | translate}}</h6> </div>
+																	</div>
+																</div>
+                                <!-- <div class="grid-info" *ngIf="dataService.accTypeSelected == 'Operative'">
+																	<div class="full-info">
+																		<div class="left-info">
+																			<h5><img src="assets/images/svg/rupee-w.svg" alt="rupee-icon"> {{sanctionLimit}}</h5> </div>
+																		<div class="left-info">
+																			<h6>Sanction Limit</h6> </div>
+																	</div>
+																</div> -->
+                                <!-- <div class="grid-info" *ngIf="dataService.accTypeSelected == 'Operative'">
+																	<div class="full-info">
+																		<div class="left-info">
+																			<h5><img src="assets/images/svg/rupee-w.svg" alt="rupee-icon"> {{drawingPower}}</h5> </div>
+																		<div class="left-info">
+																			<h6>Drawing Power</h6> </div>
+																	</div>
+																</div> -->
+																<div *ngIf="selAccDtl.accountType == 'SBFSS' || selAccDtl.accountType == 'SBFSG' || selAccDtl.accountType == 'SBFFD'" class="grid-info">
+																	<div class="full-info">
+																		<div class="left-info">
+																			<h5>{{selAvlBal?.ffdBalance | customcurrency : 'symbol' : selAccDtl?. currency}} </h5> </div>
+																		<div class="left-info">
+																			<h6>  {{"FLEXI_FD_BALANCE" | translate}}</h6> </div>
+																	</div>
+																</div>
+
+																<!-- <div class="grid-info">
+																	<div class="full-info">
+																		<div class="left-info">
+																			<h5><img src="assets/images/svg/rupee-w.svg" alt="rupee-icon"> {{selAvlBal?.ledgerBalance | customcurrency}}</h5> </div>
+																		<div class="left-info">
+																			<h6>Closing Balance</h6> </div>
+																	</div>
+																</div> -->
+
+
+
+
+															</li>
+														</ul>
+													</div>
+													<div class="" (click)="listExpander('balanceList')" *ngIf="dataService.accTypeSelected != 'Operative'">
+														<ul class="accountinfo-grid" >
+															<li [ngClass]="totalAvailableBalance ? 'active' : '' " >
+																<div class="grid-info">
+																<div class="full-info">
+																		<div class="left-info">
+																			<h5>{{depositsDtl?.depositAmount | customcurrency : 'symbol' : depositsDtl?. accountCurrencyCode }}</h5> </div>
+																		<div class="left-info">
+																			<h6>   {{"DEPOSITE_AMOUNT" | translate}}</h6> </div> <em></em> </div>
+																</div>
+																<div class="grid-info">
+																	<div class="full-info">
+																		<div class="left-info">
+																			<h5>{{selAccDtl?.acctBalance | customcurrency : 'symbol' : selAccDtl?. currency }} </h5> </div>
+																		<div class="left-info">
+																			<h6>   {{'ACC_BAL' | translate}}</h6> </div> <em></em> </div>
+																</div>
+																<div class="grid-info">
+																	<div class="full-info">
+																		<div class="left-info">
+																			<h5>{{depositsDtl?.maturityAmount | customcurrency : 'symbol' : depositsDtl?. accountCurrencyCode }}</h5> </div>
+																		<div class="left-info">
+																			<h6>   {{"MATURITY_AMOUNT" | translate}}</h6> </div>
+																	</div>
+																</div>
+																<div class="grid-info" *ngIf="depositAccType != 'RD'">
+																	<div class="full-info">
+																		<div class="left-info">
+																			<h5>{{ assuredIntetest | customcurrency : 'symbol' : selAccDtl?. currency}}</h5> </div>
+																		<div class="left-info">
+																			<h6>  {{"ACCURED_INTEREST" | translate}}</h6> </div>
+																	</div>
+																</div>
+
+																<!-- <div class="grid-info">
+																	<div class="full-info">
+																		<div class="left-info">
+																			<h5><img src="assets/images/svg/rupee-w.svg" alt="rupee-icon"> {{selAvlBal?.ledgerBalance | customcurrency}}</h5> </div>
+																		<div class="left-info">
+																			<h6>Closing Balance</h6> </div>
+																	</div>
+																</div> -->
+
+
+
+
+															</li>
+														</ul>
+													</div>
+												</div>
+											</div>
+										</div>
+
+										<div class="row1" *ngIf="dataService.accTypeSelected == 'Operative'" >
+											<div class="col-12 text-right">
+												<div class="bottom-card-links2">
+													<div class="short-links box-shadow mar-b">
+														<div class="" [ngClass] ="showListAccount ? 'shortlink-control cust-p show-links' : 'shortlink-control cust-p' " > <!--[ngClass]="{'show-links': showListAccount }"-->
+															<div class="row">
+																<ul class="fund-list3">
+																	<li  class="hide-d" (click)="openSelectedAccountList('miniStatement')">
+																		<a>
+																			<div class="icon1"> <img src="assets/images/svg/manage-card.svg" alt="manage-card-icon"> </div> <em>{{"MINI_STATEMENT" | translate}}</em> </a>
+																	</li>
+																	<li (click)="openSelectedAccountList('accountDetail')" class="hide-d">
+																		<a>
+																			<div class="icon1"> <img src="assets/images/svg/Account-Details.svg" alt="Account-Details-icon"> </div> <em>  {{"ACCOUNT_DETAILS" | translate}}</em> </a>
+																	</li>
+																	<!-- <li>
+																		<a >
+																			<div class="icon1"> <img src="assets/images/svg/hotlist-card.svg" alt="hotlist-card-icon"> </div> <em>Pay Bills</em> </a>
+																	</li> -->
+																	<li>
+																		<a (click)="goToPage('sendMoney')">
+																			<div class="icon1"> <img src="assets/images/svg/hotlist-card.svg" alt="re-generate-pin-icon"> </div> <em> {{"SEND_MONEY" | translate}}</em> </a>
+																	</li>
+																	<li>
+																		<a (click)="goToPage('detailedStatement')">
+																			<div class="icon1"> <img src="assets/images/svg/Detailed-Statement.svg" alt="Detailed-Statement-icon"> </div> <em>  {{"DETAILED_STATEMENT" | translate}}</em> </a>
+																	</li>
+																	<li>
+																		<a (click)="goToPage('freezeAccount')">
+																			<div class="icon1"> <img src="assets/images/svg/manage-card.svg" alt="upgrade-card-icon"> </div> <em>  {{"FREEZE_ACCOUNT" | translate}}</em> </a>
+																	</li>
+																	<!-- assets/images/svg/upgrade-card.svg -->
+																<!-- <li>
+																		<a >
+																			<div class="icon1"> <img src="assets/images/svg/block-reissue-card.svg" alt="block-reissue-card-icon"> </div> <em>Spend Analyzer</em> </a>
+																	</li> -->
+
+																	<li class="hide-d">
+																		<!-- <a class="bal-btn" (click)="openPopup('balanceEnquiry')"> -->
+																		<a class="bal-btn" (click)="dwnldBalanceCertificate()">
+																			<div class="icon1"> <img src="assets/images/svg/Balance-Certificate.svg" alt="Balance-Certificate-icon"> </div> <em>  {{"BALANCE_CERTIFICATE" | translate}}</em> </a>
+																	</li>
+																	<li class="hide-d">
+																		<!-- <a class="lien-btn" (click)="openPopup('lienEnquiry')">  -->
+																		<a class="lien-btn" (click)="goToPage('lienEnquiry')">
+																			<div class="icon1"> <img src="assets/images/svg/manage-card.svg" alt="offers-icon"> </div> <em>  {{"LIEN_ENQUIRY" | translate}}</em> </a>
+																	</li>
+																	<li class="hide-d">
+																		<a (click)="goToPage('delinkAccount')">
+																			<div class="icon1"> <img src="assets/images/svg/manage-card.svg" alt="offers-icon"> </div> <em>  {{"DELINK_ACCOUNT" | translate}}</em> </a>
+																	</li>
+																</ul>
+															</div>
+														</div>
+														<div class="shortlinks-expander" id="test"   [ngClass]="{'active': showListAccount == false }">
+															<a href="javascript:;" (click)="listExpander('list')"><img src="assets/images/svg/arrow-right-g2.svg"></a>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+										<div class="row1" *ngIf="dataService.accTypeSelected != 'Operative'" >
+											<div class="col-12 text-right">
+												<div class="bottom-card-links2">
+													<div class="short-links box-shadow mar-b">
+														<div class="shortlink-control cust-p" [ngClass] ="showListAccount ? 'show-links' : '' " >
+															<div class="row">
+																<ul class="fund-list3">
+																	<li class="hide-d"  (click)="openSelectedAccountList('miniStatement')">
+																		<a>
+																			<div class="icon1">
+																				<img src="assets/images/svg/hotlist-card.svg" alt="hotlist-card-icon" />
+																			</div>
+
+																			<em>Mini Statement</em>
+																		</a>
+																	</li>
+																	<li  class="hide-d" (click)="openSelectedAccountList('accountDetail')">
+																		<a>
+																			<div class="icon1">
+																				<img src="assets/images/svg/Account-Details.svg" alt="Account-Details-icon" />
+																			</div>
+																			<em>Account Details</em>
+																		</a>
+																	</li>
+																	<li (click)="goToPage('closeFD')"  *ngIf="depositAccType == 'FD' " >
+																		<a>
+																			<!-- <div class="badge2 commingSoon">Coming Soon</div> -->
+																			<div class="icon1">
+																				<img src="assets/images/svg/hotlist-card.svg" alt="hotlist-card-icon" />
+																			</div>
+																			<em>Close Fixed Deposit</em>
+																		</a>
+																	</li>
+																	<li (click)="goToPage('closeRD')"  *ngIf="depositAccType == 'RD' ">
+																		<a>
+																			<!-- <div class="badge2 commingSoon">Coming Soon</div> -->
+																			<div class="icon1">
+																				<img src="assets/images/svg/hotlist-card.svg" alt="hotlist-card-icon" />
+																			</div>
+																			<em>Close Recurring Deposit</em>
+																		</a>
+																	</li>
+																	<li>
+																		<a (click)="goToPage('loanDetailedStatement')" *ngIf="depositAccType == 'FD' || depositAccType == 'RD' ">
+																			<div class="icon1"> <img src="assets/images/svg/Detailed-Statement.svg" alt="Detailed-Statement-icon"> </div> <em> {{"DETAILED_STATEMENT" | translate}}</em> </a>
+																	</li>
+
+																</ul>
+															</div>
+														</div>
+														<div class="shortlinks-expander" [ngClass]="{'active': showListAccount == false }">
+															<a href="javascript:;" (click)="listExpander('list')"><img src="assets/images/icons/arrow-down-r.png" /></a>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+
+
+
+
+										<div class=" dt-accounts transparent-bg mb-0 acc-info1">
+											<div class="widget-box5 mar-b">
+												<!--	<div class="">
+													<div class="ux-nav-tabs" style="margin:0">
+														<div class="responsive3">
+															<div class="custom-width1">
+																<ul class="nav nav-tabs nav-justified bor-n mt-0 d-block d-md-none d-lg-none d-xl-none" role="tablist">
+																	<li class="nav-item"> <a class="nav-link active" data-toggle="tab" href="#mini-statement">{{"MINI_STATEMENT" | translate}}</a> </li>
+																	<li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#more-services">More Services</a> </li>
+																	<li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#account-detail">Account Details</a> </li>
+																</ul>
+															</div> -->
+												<!-- Tab panes -->
+												<!-- <div class="tab-content custom-tab-content p-0"> -->
+												<!-- {{"MINI_STATEMENT" | translate}} Details Start here -->
+												<div class="show-div" id="mini-statement"  [ngStyle]="{display :  selectionValue == 'miniStatement' ? 'block' : 'none' }">
+													<div class="row1">
+														<div class="col-sm-12 col-12 col-md-12">
+															<div class=" widget-box5 border-n overflow  mb-0 br-m ">
+																<div class="component-title6 custom-pad  d-none d-md-block d-lg-block d-xl-block">
+																	<div class="row1">
+																		<div class="col-12 col-md-3 col-lg-3 col-xl-3 d-none d-md-block d-lg-block d-xl-block">
+																			<h4 class="default-grey"> {{"MINI_STATEMENT" | translate}}</h4> </div>
+																		<div class="col-12 col-md-9 col-lg-9 col-xl-9">
+																			<ul class="link-list2 hide-m">
+																				<li *ngIf="dataService.accTypeSelected != 'Operative'">
+																					<a (click)="openPopup('interestCertificate')"><img src="assets/images/svg/share.svg" alt="share-icon"> {{"INTEREST_CERTIFICATE" | translate}}</a>
+																				</li>
+																				<li>
+																					<!-- <a (click)="openPopup('balanceEnquiry')"><img src="assets/images/svg/share.svg" alt="share-icon">Balance Certificate</a> -->
+																					<a (click)="dwnldBalanceCertificate()"><img src="assets/images/svg/share.svg" alt="share-icon"> {{"BALANCE_CERTIFICATE" | translate}}</a>
+																				</li>
+																				<li>
+																					<a (click)="generatePDF()"><img src="assets/images/svg/download.svg" alt="download-icon"> {{"DOWNLOAD" | translate}}</a>
+																				</li>
+																				<li>
+																					<a (click)="generatePDF(true)"> <img src="assets/images/svg/print.svg" alt="print-icon"> {{"PRINT" | translate}}</a>
+																				</li>
+																			</ul>
+																		</div>
+																	</div>
+																</div>
+
+																<div class="bg-white1 bg-n pt-0">
+																	<div class="row">
+																		<ul class="grid-list3 nb-m" *ngIf="dataService.accTypeSelected == 'Operative'" >
+																			<li class="grey-th">
+																				<div class="grid-info">
+																					<div class="full-info">
+																						<h5 class="hide-d">{{"MINI_STATEMENT" | translate}}</h5>
+																						<h6 class="hide-m" > {{"TRANSACTION_DATE" | translate}}</h6> </div>
+																				</div>
+																				<div class="grid-info">
+																					<div class="full-info">
+																						<h6> {{"TRANSACTION_REFERENCE" | translate}} </h6> </div>
+																				</div>
+																				<div class="grid-info">
+																					<div class="full-info">
+																						<h6>CR/DR</h6> </div>
+																				</div>
+																				<div class="grid-info">
+																					<div class="full-info">
+																						<!-- <h6>Amount (₹)</h6>  -->
+																						<button class="ux-linkbutton link-text primary hide-d" (click)="generatePDF()" > <img src="assets/images/svg/download.svg"> Download</button>
+																						<h6 class="hide-m"> {{"AMOUNT" | translate}} ({{currency}})</h6> </div>
+																				</div>
+																			</li>
+																			<li *ngFor="let item of miniStatement | slice:0:10; let i=index">
+																				<div class="grid-info ">
+																					<div class="full-info">
+																						<h5>{{item?.TransactionDate }}</h5> <em class="d-block d-md-none">{{item?.transactionDetails}}</em> </div>
+																				</div>
+																				<div class="grid-info">
+																					<div class="full-info">
+																						<h5>{{item?.transactionDetails}} </h5> </div>
+																				</div>
+																				<div class="grid-info">
+																					<div class="full-info">
+																						<h5 class="debit-text" *ngIf="item?.creditDebitFlag == 'D'">DR</h5>
+																						<h5 class="credit-text" *ngIf="item?.creditDebitFlag == 'C'">CR</h5> </div>
+																				</div>
+																				<div class="grid-info">
+																					<div class="full-info">
+																						<h5>{{item?.TransactionAmount |  customcurrency : 'symbol' : selAccDtl?. currency }}
+                                                                                                            <span class="debit-text show-m" *ngIf="item?.creditDebitFlag == 'D'">DR</span>
+                                                                                                            <span class="credit-text show-m" *ngIf="item?.creditDebitFlag == 'C'">CR</span>
+                                                                                                        </h5> </div>
+																				</div>
+																			</li>
+
+																			<!-- <li *ngIf="recordNotFound != '' " class="ng-star-inserted d-block p-5">
+																				<h5 class="text-center" >{{recordNotFound}} </h5>
+																			</li> -->
+																			<!-- <li *ngIf="miniStatement != undefined && miniStatement.length == 0" class="ng-star-inserted d-block p-5">
+																				<h5 class="text-center" >No Records Found</h5>
+																			</li> -->
+																			<li *ngIf="miniStatement != undefined && miniStatement.length == 0">
+
+																					  <div class="col-sm-12 col-12 col-md-12">
+																						  <div class="unfound-info">
+																							  <img src="assets/images/svg/no-rec-found.svg" alt="complaint-icon" class="error-img-grid">
+																							   <h3> {{"RECORD_NOT_FOUNND" | translate}}</h3>
+																						   </div>
+
+																				  </div>
+																			</li>
+																		</ul>
+																		<ul class="grid-list3 nb-m" *ngIf="dataService.accTypeSelected != 'Operative'">
+																			<li class="grey-th">
+																				<div class="grid-info">
+																					<div class="full-info">
+																						<h5 class="hide-d">{{"MINI_STATEMENT" | translate}}</h5>
+																						<h6> {{"TRANSACTION_DATE" | translate}}</h6> </div>
+																				</div>
+																				<div class="grid-info">
+																					<div class="full-info">
+																						<h6>{{"TRANSACTION_REFERENCE" | translate}}</h6> </div>
+																				</div>
+																				<div class="grid-info">
+																					<div class="full-info">
+																						<h6>CR/DR</h6> </div>
+																				</div>
+																				<div class="grid-info">
+																					<div class="full-info">
+																						<!-- <h6>Amount (₹)</h6>  -->
+																						<button class="ux-linkbutton link-text primary hide-d" (click)="generatePDF()" > <img src="assets/images/svg/download.svg"> Download</button>
+																						<h6 class="hide-m">{{"AMOUNT" | translate}} ({{currency}})</h6> </div>
+																				</div>
+																			</li>
+																			<li *ngFor="let item of fdminiStatement | slice:0:10; let i=index">
+																				<div class="grid-info ">
+																					<div class="full-info">
+																						<h5>{{item?.TransactionDate}}</h5> <em class="d-block d-md-none">{{item?.transactionParticulars}}</em> </div>
+																				</div>
+																				<div class="grid-info">
+																					<div class="full-info">
+																						<h5>{{item?.transactionParticulars}} </h5> </div>
+																				</div>
+																				<div class="grid-info">
+																					<div class="full-info">
+																						<h5 class="debit-text" *ngIf="item.TransactionType == 'D'">DR</h5>
+																						<h5 class="credit-text" *ngIf="item.TransactionType == 'C'">CR</h5> </div>
+																				</div>
+																				<div class="grid-info">
+																					<div class="full-info">
+																						<h5><!--<img src="assets/images/svg/rupee-bl.svg" alt="rupee-icon"> -->{{item?.TransactionAmount | customcurrency : 'symbol' : selAccDtl?. currency }}
+                                                                                                            <span class="debit-text show-m" *ngIf="item.TransactionType == 'D'">DR</span>
+                                                                                                            <span class="credit-text show-m" *ngIf="item.TransactionType == 'C'">CR</span>
+                                                                                                        </h5> </div>
+																				</div>
+																			</li>
+
+																			<!-- <li *ngIf="recordNotFound != '' " class="ng-star-inserted d-block p-5">
+																				<h5 class="text-center" >{{recordNotFound}} </h5>
+																			</li> -->
+																			<li *ngIf="fdminiStatement != undefined && fdminiStatement.length == 0" >
+
+																					  <div class="col-sm-12 col-12 col-md-12">
+																						  <div class="unfound-info">
+																							  <img src="assets/images/svg/no-rec-found.svg" alt="complaint-icon" class="error-img-grid">
+																							   <h3>{{"RECORD_NOT_FOUNND" | translate}}</h3>
+																						   </div>
+
+																				  </div>
+																			</li>
+																		</ul>
+																	</div>
+																</div>
+															</div>
+														</div>
+													</div>
+													<!-- <div class="vspacer10 d-block d-md-none"></div>
+																	<div class="row1  d-block d-md-none">
+																		<div class="col-12 col-md-12">
+																			<ul class="bottom-footer1">
+																				<li>
+																					<div class="btn-div">
+																						<button class=" ux-button secondary sm-mob" >Send Over Email</button>
+																					</div>
+																					<div class="btn-div">
+																						<button class=" ux-button primary sm-mob" (click)="generatePDF()" >Download</button>
+																					</div>
+																				</li>
+																			</ul>
+																		</div>
+																	</div>
+																</div>
+																<div id="more-services" class=" tab-pane ">
+																	<div class="row1">
+																		<div class="col-sm-12 col-12 col-md-12">
+																			<div class="widget-box5 border-n nobr-m mb-0 br-m">
+																				<div class="row">
+																					<ul class="line-list">
+																						<li><a (click)="goToPage('linkAccount')">Link Account</a></li>
+																						<li><a (click)="goToPage('delinkAccount')">DeLink Account</a></li>
+																						<li><a (click)="openPopup('lienEnquiry')" class="lien-btn">Lien Enquiry</a></li>
+																						<li><a (click)="goToPage('detailedStatement')" >Detailed Statement</a></li>
+																						<li><a >Splend Analyser</a> </li>
+																						<li><a (click)="goToPage('freezeAccount')">Freeze Account</a></li>
+																						<li><a  (click)="goToPage('sendMoney')">Send Money</a></li>
+																						<li><a (click)="openPopup('interestCertificate')" class="interest-btn" >Interest Certificate</a></li>
+																						<li><a (click)="openPopup('balanceEnquiry')" class="bal-btn" >Balance Certificate</a></li>
+																					</ul>
+																				</div>
+																			</div>
+																		</div>
+																	</div> --></div>
+												<!-- {{"MINI_STATEMENT" | translate}} Details End here -->
+												<!-- <div id="account-detail" class=" tab-pane ">
+																	<div class="row1">
+																		<div class="col-sm-12 col-12 col-md-12">
+																			<div class="widget-box5 border-n nobr-m mb-0 br-m">
+																				<ul class="account-list">
+																					<li>
+																						<div class="full-container">
+																							<div class="full-info2">
+																								<div class="left-info">
+																									<h6>Customer Name</h6>
+																									<h5>{{accountDtls?.customerName}}</h5> </div>
+																							</div>
+																						</div>
+																					</li>
+																					<li>
+																						<div class="full-container">
+																							<div class="full-info2">
+																								<div class="left-info">
+																									<h6>Account Type</h6>
+																									<h5>{{accountDtls?.accountType}}</h5> </div>
+																							</div>
+																						</div>
+																					</li>
+																					<li>
+																						<div class="full-container">
+																							<div class="full-info2">
+																								<div class="left-info">
+																									<h6>Account Number</h6>
+																									<h5>{{accountDtls?.accountNo}}</h5> </div>
+																							</div>
+																						</div>
+																					</li>
+																					<li>
+																						<div class="full-container">
+																							<div class="full-info2">
+																								<div class="left-info">
+																									<h6>Current Rate of Interest</h6>
+																									<h5>{{accountDtls?.CurrentRateofInterest}}%</h5> </div>
+																							</div>
+																						</div>
+																					</li>
+																					<li>
+																						<div class="full-container">
+																							<div class="full-info2">
+																								<div class="left-info">
+																									<h6>Branch Address</h6>
+																									<h5>{{accountDtls?.BranchAddress}}</h5> </div>
+																							</div>
+																						</div>
+																					</li>
+																					<li>
+																						<div class="full-container">
+																							<div class="full-info2">
+																								<div class="left-info">
+																									<h5>IFSC code</h5>
+																									<h6>{{accountDtls?.ifscCode}}</h6> </div>
+																							</div>
+																						</div>
+																					</li>
+																					<li>
+																						<div class="full-container">
+																							<div class="full-info2">
+																								<div class="left-info">
+																									<h5>Customer ID </h5>
+																									<h6>{{accountDtls?.customerId}}</h6> </div>
+																							</div>
+																						</div>
+																					</li>
+																					<li>
+																						<div class="full-container">
+																							<div class="full-info">
+																								<div class="left-info">
+																									<h5>Nomanie Name</h5>
+																									<h6>{{accountDtls?.NomanieName}}</h6> </div>
+																							</div>
+																							<div class="full-info">
+																								<div class="right-info">
+																									<button class="ux-linkbutton link-text sm-text primary mt-4">Add/Update</button>
+																								</div>
+																							</div>
+																						</div>
+																					</li>
+																					<li>
+																						<div class="full-container">
+																							<div class="full-info2">
+																								<div class="left-info">
+																									<h5>Rewards</h5>
+																									<h6>{{accountDtls?.RewardPoints}}</h6> </div>
+																							</div>
+																						</div>
+																					</li>
+																					<li>
+																						<div class="full-container">
+																							<div class="full-info">
+																								<div class="left-info">
+																									<h5>MMID</h5>
+																									<h6>{{accountDtls?.MMID}}</h6> </div>
+																							</div>
+																							<div class="full-info">
+																								<div class="right-info">
+																									<button class="ux-linkbutton link-text sm-text primary mt-4" > Cancel/Generate</button>
+																								</div>
+																							</div>
+																						</div>
+																					</li>
+																					<li>
+																						<div class="full-container">
+																							<div class="full-info">
+																								<div class="left-info">
+																									<h5>Linked UPI Address</h5>
+																									<h6>{{accountDtls?.LinkedUPIAddress}}</h6> </div>
+																							</div>
+																							<div class="full-info">
+																								<div class="right-info">
+																									<button class="ux-linkbutton link-text sm-text primary mt-4">Create VPA</button>
+																								</div>
+																							</div>
+																						</div>
+																					</li>
+																				</ul>
+																			</div>
+																		</div> --></div>
+										</div>
+									</div>
+									<!-- Greencard2 End here -->
+								</div>
+								<!-- <div class="vspacer10 d-block d-md-none"></div>
+																	<div class="row1  d-block d-md-none">
+																		<div class="col-12 col-md-12">
+																			<ul class="bottom-footer1">
+																				<li>
+																					<div class="btn-div">
+																						<button class=" ux-button secondary sm-mob"(click)="shareAccountDtl()" >Share</button>
+																					</div>
+																					<div class="btn-div">
+																						<button class=" ux-button primary sm-mob" >Update</button>
+																					</div>
+																				</li>
+																			</ul>
+																		</div>
+																	</div> -->
+								<!-- </div>
+															</div>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div> -->
+								<!-- Right  Side Column Start -->
+								<div class="col-12 col-md-12 col-lg-12 col-xl-3">
+									<div class="row1">
+										<!-- Account Details Start here -->
+										<div class="col-xl-12 col-lg-6 col-md-12 col-12">
+											<div class="show-div inner-right-block account-details d-sm-block" id="account-detail" [ngStyle]="{display :  selectionValue == 'accountDetail'  ? 'block' : 'none' }">
+												<div class="header-block clearfix">
+													<!-- <h5 *ngIf="dataService.accTypeSelected == 'Operative'">Account Details</h5> -->
+													<!-- <h5 *ngIf="dataService.accTypeSelected != 'Operative' && depositAccType == 'RD'">RD Account Details</h5>
+													<h5 *ngIf="dataService.accTypeSelected != 'Operative' && depositAccType == 'FD'">FD Account Details</h5> -->
+													<h5 >{{"ACCOUNT_DETAILS" | translate}}</h5>
+													<!-- <h5 *ngIf="dataService.accTypeSelected != 'Operative' && dataService.subAccTypeSelected == 'recurringDeposit'">RD Account Details</h5>
+													<h5 *ngIf="dataService.accTypeSelected != 'Operative' && dataService.subAccTypeSelected == 'fixedDeposit'">FD Account Details</h5> -->
+													<!-- <a class="right-icon" (click)="shareAccountDtl()"><img src="assets/images/svg/share1-w.svg">Share</a> -->
+													<a (click)="shareAccount()" class="share-btn right-icon" >
+														<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+															viewBox="0 0 16 16" style="enable-background:new 0 0 16 16;" xml:space="preserve">
+															<g>
+																<path class="st0" d="M12.8,5c-1.4,0-2.5-1.1-2.5-2.5s1.1-2.5,2.5-2.5c1.4,0,2.5,1.1,2.5,2.5c0,0,0,0,0,0C15.3,3.9,14.2,5,12.8,5z
+																	M12.8,1.1c-0.8,0-1.5,0.7-1.5,1.5C11.3,3.4,12,4,12.8,4c0.8,0,1.5-0.7,1.5-1.5c0,0,0,0,0,0C14.3,1.7,13.6,1.1,12.8,1.1L12.8,1.1z"
+																	/>
+																<path class="st0" d="M12.8,15.9c-1.4,0-2.5-1.1-2.5-2.5s1.1-2.5,2.5-2.5c1.4,0,2.5,1.1,2.5,2.5l0,0C15.3,14.8,14.2,15.9,12.8,15.9z
+																	M12.8,12c-0.8,0-1.5,0.7-1.5,1.5c0,0.8,0.7,1.5,1.5,1.5c0.8,0,1.5-0.7,1.5-1.5c0,0,0,0,0,0C14.3,12.6,13.6,12,12.8,12L12.8,12z"/>
+																<path class="st0" d="M3.2,10.5c-1.4,0-2.5-1.1-2.5-2.5c0-1.4,1.1-2.5,2.5-2.5S5.7,6.6,5.7,8l0,0C5.7,9.4,4.6,10.5,3.2,10.5z
+																	M3.2,6.5C2.4,6.5,1.7,7.2,1.7,8c0,0.8,0.7,1.5,1.5,1.5C4,9.5,4.7,8.8,4.7,8C4.7,7.2,4,6.5,3.2,6.5L3.2,6.5z"/>
+																<path class="st0" d="M4.9,7.5C4.7,7.5,4.4,7.3,4.4,7c0-0.2,0.1-0.3,0.3-0.4l6.1-3.5C11,3,11.4,3.1,11.5,3.3
+																	c0.1,0.2,0.1,0.5-0.2,0.7L5.2,7.5C5.1,7.5,5,7.5,4.9,7.5L4.9,7.5z"/>
+																<path class="st0" d="M11.1,13c-0.1,0-0.2,0-0.2-0.1L4.7,9.4C4.5,9.3,4.4,9,4.5,8.7c0.1-0.2,0.4-0.3,0.7-0.2l6.1,3.5
+																	c0.2,0.1,0.3,0.4,0.2,0.7C11.4,12.9,11.2,13,11.1,13L11.1,13z"/>
+															</g>
+														</svg>
+														  {{"SHARE" | translate}}
+													</a>
+												</div>
+												<ul class="account-list" *ngIf="dataService.accTypeSelected == 'Operative'" >
+													<li>
+														<div class="full-container">
+															<div class="full-info2">
+																<div class="left-info check" [ngClass]="showShare ? 'active' : ''  ">
+																	<div class="ux-selection share-info">
+																		<label class="ux-selection1" >
+																			<input type="checkbox" name="customer-name" [checked]="shareDtl.name" (change)="shareDtl.name = !shareDtl.name" > <span class="checkmark"></span> </label>
+																	</div>
+																	<h6>  {{"CUSTOMER_NAME" | translate}}</h6>
+																	<h5>{{accountDtls?.customerName}}</h5> </div>
+															</div>
+														</div>
+														<div class="full-container">
+															<div class="ux-input mt-0 mb-0">
+																<p class="error-message"></p>
+															</div>
+														</div>
+													</li>
+													<li>
+														<div class="full-container">
+															<div class="full-info2">
+																<div class="left-info check" [ngClass]="showShare ? 'active' : ''  ">
+																	<div class="ux-selection share-info">
+																		<label class="ux-selection1">
+																			<input type="checkbox" name="account-type" [checked]="shareDtl.accType" (change)="shareDtl.accType = !shareDtl.accType" > <span class="checkmark"></span> </label>
+																	</div>
+																	<h6> {{"ACCOUNT_TYPE" | translate}}</h6>
+																	<h5>{{selAccDtl?.accountType}} - {{selAccDtl?.schemeDescription | titlecase}}</h5> </div>
+															</div>
+														</div>
+														<div class="full-container">
+															<div class="ux-input mt-0 mb-0">
+																<p class="error-message"></p>
+															</div>
+														</div>
+													</li>
+													<li>
+														<div class="full-container">
+															<div class="full-info2">
+																<div class="left-info check" [ngClass]="showShare ? 'active' : ''  ">
+																	<div class="ux-selection share-info">
+																		<label class="ux-selection1">
+																			<input type="checkbox" name="account-type" [checked]="shareDtl.accStatus" (change)="shareDtl.accStatus = !shareDtl.accStatus"  > <span class="checkmark"></span> </label>
+																	</div>
+																	<h6> {{"ACCOUNT_STATUS" | translate}}</h6>
+																	<h5>{{selAccDtl?.Status}}</h5> </div>
+															</div>
+														</div>
+														<div class="full-container">
+															<div class="ux-input mt-0 mb-0">
+																<p class="error-message"></p>
+															</div>
+														</div>
+													</li>
+													<li>
+														<div class="full-container">
+															<div class="full-info2">
+																<div class="left-info check" [ngClass]="showShare ? 'active' : ''  ">
+																	<div class="ux-selection share-info">
+																		<label class="ux-selection1">
+																			<input type="checkbox" name="account-number" [checked]="shareDtl.accNo" (change)="shareDtl.accNo = !shareDtl.accNo" > <span class="checkmark"></span> </label>
+																	</div>
+																	<h6> {{"ACCOUNT_NUMBER" | translate}}</h6>
+																	<h5>{{accountDtls?.accountNo}}</h5> </div>
+															</div>
+														</div>
+														<div class="full-container">
+															<div class="ux-input mt-0 mb-0">
+																<p class="error-message"></p>
+															</div>
+														</div>
+													</li>
+													<li>
+														<div class="full-container">
+															<div class="full-info2">
+																<div class="left-info check" [ngClass]="showShare ? 'active' : ''  ">
+																	<div class="ux-selection share-info">
+																		<label class="ux-selection1">
+																			<input type="checkbox" name="interest-rate" [checked]="shareDtl.interest" (change)="shareDtl.interest = !shareDtl.interest" > <span class="checkmark"></span> </label>
+																	</div>
+																	<h6> {{"CURRENT_RATE_INTEREST" | translate}}</h6>
+																	<h5>{{accountDtls?.CurrentRateofInterest == "00" ? "-" : accountDtls?.CurrentRateofInterest }}</h5> </div>
+															</div>
+														</div>
+														<div class="full-container">
+															<div class="ux-input mt-0 mb-0">
+																<p class="error-message"></p>
+															</div>
+														</div>
+													</li>
+													<li *ngIf="drawingSanctionPower == 'ODA' ||  drawingSanctionPower == 'CCA' ">
+														<div class="full-container">
+															<div class="full-info2">
+																<div class="left-info check" [ngClass]="showShare ? 'active' : ''  ">
+																	<div class="ux-selection share-info">
+																		<label class="ux-selection1">
+																			<input type="checkbox" name="interest-rate" [checked]="shareDtl.interest" (change)="shareDtl.interest = !shareDtl.interest" > <span class="checkmark"></span> </label>
+																	</div>
+																	<h6> {{"SANCTION_LIMIT" | translate}}</h6>
+																	<h5> {{ sanctionLimit | customcurrency : 'symbol' : selAccDtl.currency }}</h5> </div>
+															</div>
+														</div>
+														<div class="full-container">
+															<div class="ux-input mt-0 mb-0">
+																<p class="error-message"></p>
+															</div>
+														</div>
+													</li>
+													<li *ngIf="drawingSanctionPower == 'ODA' ||  drawingSanctionPower == 'CCA' ">
+														<div class="full-container">
+															<div class="full-info2">
+																<div class="left-info check" [ngClass]="showShare ? 'active' : ''  ">
+																	<div class="ux-selection share-info">
+																		<label class="ux-selection1">
+																			<input type="checkbox" name="interest-rate" [checked]="shareDtl.interest" (change)="shareDtl.interest = !shareDtl.interest" > <span class="checkmark"></span> </label>
+																	</div>
+																	<h6>  {{"DRAWING_POWER" | translate}}</h6>
+																	<h5>{{ drawingPower | customcurrency : 'symbol' : selAccDtl.currency }} </h5> </div>
+															</div>
+														</div>
+														<div class="full-container">
+															<div class="ux-input mt-0 mb-0">
+																<p class="error-message"></p>
+															</div>
+														</div>
+													</li>
+													<li>
+														<div class="full-container">
+															<div class="full-info2">
+																<div class="left-info check" [ngClass]="showShare ? 'active' : ''  ">
+																	<div class="ux-selection share-info">
+																		<label class="ux-selection1">
+																			<input type="checkbox" name="branch-address" [checked]="shareDtl.branchAdd" (change)="shareDtl.branchAdd = !shareDtl.branchAdd" > <span class="checkmark"></span> </label>
+																	</div>
+																	<h6> {{"BRANCH_ADDRESS" | translate}}</h6>
+																	<h5>{{accountDtls?.BranchAddress}}</h5> </div>
+															</div>
+														</div>
+														<div class="full-container">
+															<div class="ux-input mt-0 mb-0">
+																<p class="error-message"></p>
+															</div>
+														</div>
+													</li>
+													<li>
+														<div class="full-container">
+															<div class="full-info2">
+																<div class="left-info check"  [ngClass]="showShare ? 'active' : ''  ">
+																	<div class="ux-selection share-info">
+																		<label class="ux-selection1">
+																			<input type="checkbox" name="ifsc" [checked]="shareDtl.ifsc" (change)="shareDtl.ifsc = !shareDtl.ifsc" > <span class="checkmark"></span> </label>
+																	</div>
+																	<h6> {{"IFSC_CODE" | translate}}</h6>
+																	<h5>{{accountDtls?.ifscCode}}</h5> </div>
+															</div>
+														</div>
+														<div class="full-container">
+															<div class="ux-input mt-0 mb-0">
+																<p class="error-message"></p>
+															</div>
+														</div>
+													</li>
+													<li>
+														<div class="full-container">
+															<div class="full-info2">
+																<div class="left-info check" [ngClass]="showShare ? 'active' : ''  ">
+																	<div class="ux-selection share-info">
+																		<label class="ux-selection1">
+																			<input type="checkbox" name="customer-id" [checked]="shareDtl.custId" (change)="shareDtl.custId = !shareDtl.custId"  > <span class="checkmark"></span> </label>
+																	</div>
+																	<h6> {{"CUTOMER_ID" | translate}}</h6>
+																	<h5>{{accountDtls?.customerId}}</h5> </div>
+															</div>
+														</div>
+														<div class="full-container">
+															<div class="ux-input mt-0 mb-0">
+																<p class="error-message"></p>
+															</div>
+														</div>
+													</li>
+
+													<li *ngIf="dataService.accTypeSelected != 'Deposits'" >
+														<div class="full-container">
+															<div class="full-info">
+																<div class="left-info check" [ngClass]="showShare ? 'active' : ''  ">
+																	<div class="ux-selection share-info">
+																		<label class="ux-selection1">
+																			<input type="checkbox" name="mmid"> <span class="checkmark"></span> </label>
+																	</div>
+																	<h6>  {{"MMID" | translate}}</h6>
+																	<!-- <h5>{{accountDtls?.MMID}}</h5>  -->
+																	<h5>{{mmid}} </h5>
+																</div>
+															</div>
+															<div class="full-info">
+																<div class="right-info">
+																	<button class="ux-linkbutton link-text sm-text primary mt-4" *ngIf="mmid != '' "  (click)="getMMIDCancel()"> Cancel</button>
+																	<button class="ux-linkbutton link-text sm-text primary mt-4" *ngIf="mmid == '' " (click)="getMMIDGenerate()"> Generate</button>
+
+																</div>
+															</div>
+														</div>
+														<div class="full-container">
+															<div class="ux-input mt-0 mb-0">
+																<p class="error-message"></p>
+															</div>
+														</div>
+													</li>
+													<li *ngIf="dataService.accTypeSelected != 'Deposits'" >
+														<div class="full-container">
+															<div class="full-info">
+																<div class="left-info">
+																	<h6>Linked UPI Address</h6>
+																	<h5>{{accountDtls?.LinkedUPIAddress}}</h5> </div>
+															</div>
+															<div class="full-info">
+																<div class="right-info">
+																	<button class="ux-linkbutton link-text sm-text primary mt-4">Create VPA</button>
+																</div>
+															</div>
+														</div>
+													</li>
+													<li  *ngIf="drawingSanctionPower != 'ODA' &&  drawingSanctionPower != 'CCA'  ">
+														<div class="full-container">
+															<div class="full-info2">
+																<div class="left-info">
+																	<button class="ux-linkbutton link-text sm-text primary" (click)="getNomineeDetails()">
+																		<img src="assets/images/svg/add-nominee.svg" alt="joint-holder-icon">
+																		 {{"VIEW_NOMINEE_DETAILS" | translate}}
+																	</button>
+																</div>
+															</div>
+														</div>
+													</li>
+													<li>
+														<div class="full-container">
+															<div class="full-info2">
+																<div class="left-info">
+																	<button class="ux-linkbutton link-text sm-text primary" (click)="goToPage('jointHolderDetails')">
+																		<img src="assets/images/svg/Deposit_Icon.svg" alt="joint-holder-icon">  {{"JOINT_HOLDER_NAME" | translate}}
+																	</button>
+																</div>
+															</div>
+														</div>
+													</li>
+													<li class="btn-section" [ngStyle]="{display : showShare ? 'flex' : 'none' } ">
+														<div class="full-container">
+															<div class="row1">
+																<div class="col-6 col-md-6">
+																	<button class="cancel-btn ux-button secondary sm-mob" (click)="cancelShare('Operative')" >Cancel</button>
+																</div>
+																<div class="col-6 col-md-6">
+																	<button class="submit-info ux-button primary sm-mob" (click)="submitShare('Operative')" >Submit</button>
+																</div>
+															</div>
+														</div>
+													</li>
+												</ul>
+
+												<ul class="account-list" *ngIf="dataService.accTypeSelected != 'Operative'" >
+													<li>
+														<div class="full-container">
+															<div class="full-info2">
+																<div class="left-info check" [ngClass]="showShare ? 'active' : ''  ">
+																	<div class="ux-selection share-info">
+																		<label class="ux-selection1" >
+																			<input type="checkbox" name="customer-name" [checked]="shareDtlFD.accNo" (change)="shareDtlFD.accNo = !shareDtlFD.accNo"> <span class="checkmark"></span> </label>
+																	</div>
+																	<h6>{{depositAccType}} Account Number</h6>
+																	<h5>{{selAccDtl?.accountNo}}</h5> </div>
+															</div>
+														</div>
+														<div class="full-container">
+															<div class="ux-input mt-0 mb-0">
+																<p class="error-message"></p>
+															</div>
+														</div>
+													</li>
+													<li>
+														<div class="full-container">
+															<div class="full-info2">
+																<div class="left-info check" [ngClass]="showShare ? 'active' : ''  ">
+																	<div class="ux-selection share-info">
+																		<label class="ux-selection1">
+																			<input type="checkbox" name="account-type" [checked]="shareDtlFD.accStatue" (change)="shareDtlFD.accStatue = !shareDtlFD.accStatue" > <span class="checkmark"></span> </label>
+																	</div>
+																	<h6> {{"ACCOUNT_STATUS" | translate}}</h6>
+																	<h5 *ngIf="depositsDtl?.accountStatus == 'O'">Open</h5>
+																	<h5 *ngIf="depositsDtl?.accountStatus == 'F'">Frozen</h5>
+																	<h5 *ngIf="depositsDtl?.accountStatus == 'C'">Closed</h5>
+																	<h5 *ngIf="depositsDtl?.accountStatus == 'D'">Debit Frozen</h5>
+																	<h5 *ngIf="depositsDtl?.accountStatus == 'R'">Credit Frozen</h5>
+																	<h5 *ngIf="depositsDtl?.accountStatus == 'M'">Dormant</h5>
+																	<h5 *ngIf="depositsDtl?.accountStatus == 'A'">Active</h5>
+																	<h5 *ngIf="depositsDtl?.accountStatus == 'I'">Inactive</h5>
+                                </div>
+															</div>
+														</div>
+														<div class="full-container">
+															<div class="ux-input mt-0 mb-0">
+																<p class="error-message"></p>
+															</div>
+														</div>
+													</li>
+													<li>
+														<div class="full-container">
+															<div class="full-info2">
+																<div class="left-info check" [ngClass]="showShare ? 'active' : ''  ">
+																	<div class="ux-selection share-info">
+																		<label class="ux-selection1">
+																			<input type="checkbox" name="account-type" [checked]="shareDtlFD.accType" (change)="shareDtlFD.accType = !shareDtlFD.accType" > <span class="checkmark"></span> </label>
+																	</div>
+																	<h6>{{depositAccType}}  {{"ACCOUNT_TYPE" | translate}}</h6>
+																	<h5>{{depositsDtl?.accountType}}</h5> </div>
+															</div>
+														</div>
+														<div class="full-container">
+															<div class="ux-input mt-0 mb-0">
+																<p class="error-message"></p>
+															</div>
+														</div>
+													</li>
+													<li>
+														<div class="full-container">
+															<div class="full-info2">
+																<div class="left-info check" [ngClass]="showShare ? 'active' : ''  ">
+																	<div class="ux-selection share-info">
+																		<label class="ux-selection1">
+																			<input type="checkbox" name="account-type" [checked]="shareDtlFD.accScheme" (change)="shareDtlFD.accScheme = !shareDtlFD.accScheme" > <span class="checkmark"></span> </label>
+																	</div>
+																	<h6>{{depositAccType}} Account Scheme </h6>
+																	<h5>{{depositsDtl?.accountCategory}} - {{depositsDtl?.schemeDescription}}</h5> </div>
+															</div>
+														</div>
+														<div class="full-container">
+															<div class="ux-input mt-0 mb-0">
+																<p class="error-message"></p>
+															</div>
+														</div>
+													</li>
+													<li>
+														<div class="full-container">
+															<div class="full-info2">
+																<div class="left-info check" [ngClass]="showShare ? 'active' : ''  ">
+																	<div class="ux-selection share-info">
+																		<label class="ux-selection1">
+																			<input type="checkbox" name="account-type" [checked]="shareDtlFD.accHolderName" (change)="shareDtlFD.accHolderName = !shareDtlFD.accHolderName" > <span class="checkmark"></span> </label>
+																	</div>
+																	<h6>  {{"ACCOUNT_HOLDER_NAME" | translate}}</h6>
+																	<h5>{{depositsDtl?.accountName}}</h5> </div>
+															</div>
+														</div>
+														<div class="full-container">
+															<div class="ux-input mt-0 mb-0">
+																<p class="error-message"></p>
+															</div>
+														</div>
+													</li>
+													<li>
+														<div class="full-container">
+															<div class="full-info2">
+																<div class="left-info check" [ngClass]="showShare ? 'active' : ''  ">
+																	<div class="ux-selection share-info">
+																		<label class="ux-selection1">
+																			<input type="checkbox" name="account-number" [checked]="shareDtlFD.openDate" (change)="shareDtlFD.openDate = !shareDtlFD.openDate" > <span class="checkmark"></span> </label>
+																	</div>
+																	<h6> {{"OPEN_DATE" | translate}}</h6>
+																	<h5>{{depositsDtl?.accountOpenDate}}</h5> </div>
+															</div>
+														</div>
+														<div class="full-container">
+															<div class="ux-input mt-0 mb-0">
+																<p class="error-message"></p>
+															</div>
+														</div>
+													</li>
+													<li>
+														<div class="full-container">
+															<div class="full-info2">
+																<div class="left-info check" [ngClass]="showShare ? 'active' : ''  ">
+																	<div class="ux-selection share-info">
+																		<label class="ux-selection1">
+																			<input type="checkbox" name="interest-rate" [checked]="shareDtlFD.maturityDate" (change)="shareDtlFD.maturityDate = !shareDtlFD.maturityDate" > <span class="checkmark"></span> </label>
+																	</div>
+																	<h6> {{"MATURITY_DATE" | translate}}</h6>
+																	<h5>{{depositsDtl?.maturityDate}}</h5> </div>
+															</div>
+														</div>
+														<div class="full-container">
+															<div class="ux-input mt-0 mb-0">
+																<p class="error-message"></p>
+															</div>
+														</div>
+													</li>
+													<li>
+														<div class="full-container">
+															<div class="full-info2">
+																<div class="left-info check" [ngClass]="showShare ? 'active' : ''  ">
+																	<div class="ux-selection share-info">
+																		<label class="ux-selection1">
+																			<input type="checkbox" name="branch-address" [checked]="shareDtlFD.tenure" (change)="shareDtlFD.tenure = !shareDtlFD.tenure" > <span class="checkmark"></span> </label>
+																	</div>
+																	<h6> {{"TENURE" | translate}}</h6>
+																	<h5>{{depositsDtl?.depositPeriodMonthsComponent}} Months {{depositsDtl?.depositPeriodDaysComponent}} Days</h5> </div>
+															</div>
+														</div>
+														<div class="full-container">
+															<div class="ux-input mt-0 mb-0">
+																<p class="error-message"></p>
+															</div>
+														</div>
+													</li>
+													<li>
+														<div class="full-container">
+															<div class="full-info2">
+																<div class="left-info check"  [ngClass]="showShare ? 'active' : ''  ">
+																	<div class="ux-selection share-info">
+																		<label class="ux-selection1">
+																			<input type="checkbox" name="ifsc" [checked]="shareDtlFD.interestRate" (change)="shareDtlFD.interestRate = !shareDtlFD.interestRate" > <span class="checkmark"></span> </label>
+																	</div>
+																	<h6> {{"INTEREST_RATE" | translate}}</h6>
+																	<h5>{{depositsDtl?.interest_Rate}} %</h5> </div>
+															</div>
+														</div>
+														<div class="full-container">
+															<div class="ux-input mt-0 mb-0">
+																<p class="error-message"></p>
+															</div>
+														</div>
+													</li>
+													<li>
+														<div class="full-container">
+															<div class="full-info2">
+																<div class="left-info check" [ngClass]="showShare ? 'active' : ''  ">
+																	<div class="ux-selection share-info">
+																		<label class="ux-selection1">
+																			<input type="checkbox" name="customer-id" [checked]="shareDtlFD.modeOfFDOpening" (change)="shareDtlFD.modeOfFDOpening = !shareDtlFD.modeOfFDOpening" > <span class="checkmark"></span> </label>
+																	</div>
+																	<h6>Mode of {{depositAccType}} Opening </h6>
+																	<h5 *ngIf="depositsDtl.account == 'ONLINE USE' "> Online</h5>
+																	<h5 *ngIf="depositsDtl.account != 'ONLINE USE' "> Offline </h5>
+																</div>
+															</div>
+														</div>
+														<div class="full-container">
+															<div class="ux-input mt-0 mb-0">
+																<p class="error-message"></p>
+															</div>
+														</div>
+													</li>
+													<li>
+														<div class="full-container">
+															<div class="full-info2">
+																<div class="left-info check">
+																	<div class="ux-selection share-info">
+																		<label class="ux-selection1">
+																			<input type="checkbox" name="nomanie-name" [checked]="shareDtlFD.modeOfOpperation" (change)="shareDtlFD.modeOfOpperation = !shareDtlFD.modeOfOpperation" > <span class="checkmark"></span> </label>
+																	</div>
+																	<h6> {{"MODE_OPERATION" | translate}}</h6>
+																	<h5>{{selAccDtl?.accountHoldeType | titlecase}}</h5> </div>
+															</div>
+														</div>
+														<div class="full-container">
+															<div class="ux-input mt-0 mb-0">
+																<p class="error-message"></p>
+															</div>
+														</div>
+													</li>
+													<li>
+														<div class="full-container">
+															<div class="full-info2">
+																<div class="left-info check">
+																	<div class="ux-selection share-info">
+																		<label class="ux-selection1">
+																			<input type="checkbox" name="nomanie-name" [checked]="shareDtlFD.payoutAmt" (change)="shareDtlFD.payoutAmt = !shareDtlFD.payoutAmt" > <span class="checkmark"></span> </label>
+																	</div>
+																	<h6> {{"MATURITY_PAYOUT_ACCOUNT" | translate}}</h6>
+																	<h5>{{depositsDtl?.repaymentAccountNumber}}</h5> </div>
+															</div>
+														</div>
+														<div class="full-container">
+															<div class="ux-input mt-0 mb-0">
+																<p class="error-message"></p>
+															</div>
+														</div>
+													</li>
+													<li>
+														<div class="full-container">
+															<div class="full-info2">
+																<div class="left-info check">
+																	<div class="ux-selection share-info">
+																		<label class="ux-selection1">
+																			<input type="checkbox" name="nomanie-name" [checked]="shareDtlFD.maturityInstruction" (change)="shareDtlFD.maturityInstruction = !shareDtlFD.maturityInstruction" > <span class="checkmark"></span> </label>
+																	</div>
+																	<h6> {{"MATURITY_INSTRUCTION" | translate}}</h6>
+																	<h5>{{maturityInstruction}}</h5> </div>
+															</div>
+														</div>
+														<div class="full-container">
+															<div class="ux-input mt-0 mb-0">
+																<p class="error-message"></p>
+															</div>
+														</div>
+													</li>
+													<li>
+														<div class="full-container">
+															<div class="full-info2">
+																<div class="left-info">
+																	<button class="ux-linkbutton link-text sm-text primary" (click)="getNomineeDetails()">
+																		<img src="assets/images/svg/add-nominee.svg" alt="joint-holder-icon">
+																		  {{"VIEW_NOMINEE_DETAILS" | translate}}
+																	</button>
+																</div>
+															</div>
+														</div>
+													</li>
+													<li>
+														<div class="full-container">
+															<div class="full-info2">
+																<div class="left-info">
+																	<button class="ux-linkbutton link-text sm-text primary" (click)="goToPage('jointHolderDetails')">
+																		<img src="assets/images/svg/Deposit_Icon.svg" alt="joint-holder-icon">  {{"JOINT_HOLDER_DETAILS" | translate}}
+																	</button>
+																</div>
+															</div>
+														</div>
+													</li>
+
+
+													<li class="btn-section" [ngStyle]="{display : showShare ? 'flex' : 'none' } ">
+														<div class="full-container">
+															<div class="row1">
+																<div class="col-6 col-md-6">
+																	<button class="cancel-btn ux-button secondary sm-mob" (click)="cancelShare('Deposit')"  >Cancel</button>
+																</div>
+																<div class="col-6 col-md-6">
+																	<button class="submit-info ux-button primary sm-mob" (click)="submitShare('Deposit')"  >Submit</button>
+																</div>
+															</div>
+														</div>
+													</li>
+												</ul>
+
+
+												<div class="panel-footer clearfix d-none">
+													<button class="secondary ux-button sm float-left" (click)="shareAccountDtl()">Share</button>
+													<button class="primary ux-button sm float-right">Update</button>
+												</div>
+											</div>
+										</div>
+										<!-- Account Details End here -->
+										<div class="col-xl-12 col-lg-6 col-md-12 col-12 d-none d-md-block d-lg-block d-xl-block">
+											<div class="widget-box5  mb-0 br-m">
+												<ul class="account-list pt-3 pb-3">
+													<!-- <li>
+														<div class="full-container">
+															<div class="full-info2">
+																<div class="left-info">
+																	<a class="ux-linkbutton link-text sm-text primary" (click)="openFd()"> <img src="assets/images/svg/Deposit_Icon.svg" alt="deposit-con"> {{"OPEN_FIXED_DEPOSIT" | translate}} </a>
+																</div>
+															</div>
+														</div>
+													</li> -->
+													<li>
+														<div class="full-container">
+															<div class="full-info2">
+																<div class="left-info">
+																	<a class="ux-linkbutton link-text sm-text primary" (click)="applyppf()"> <img src="assets/images/svg/amount.svg" alt="amout-icon"> {{"APPLY_FOR_PPF" | translate}} </a>
+																</div>
+															</div>
+														</div>
+													</li>
+												</ul>
+                        <div class="badge2 commingSoon">Coming Soon</div>
+											</div>
+										</div>
+										<div class="vspacer30 customize d-none d-md-block d-lg-block d-xl-block"></div>
+									</div>
+								</div>
+								<!-- Right Side Column End -->
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!--.right-col-container-->
+	</div>
+	<!--.right-main-column-->
+</div>
+<!-- main -->
+<!-- Lien enquiry Modal Starts-->
+<div class="popup-bottom md-popup confirmation1 lien-enquiry">
+	<div class="row1">
+		<div class="col-12">
+			<h4 class="text-center">Lien Enquiry </h4> </div>
+	</div>
+	<div class="lien-enquiry-list">
+		<div class="row1">
+			<div class="col-4">
+				<label>Lien Type</label>
+				<h6>{{lienEnqData?.lienType ? lienEnqData?.lienType : '-'}}</h6> </div>
+			<div class="col-4">
+				<label>Expiry Date</label>
+				<h6>{{lienEnqData?.expDate ? lienEnqData?.expDate : '-'}}</h6> </div>
+			<div class="col-4">
+				<label>Lien Amount</label>
+				<h6> {{lienEnqData?.totalLienAmount ? lienEnqData?.totalLienAmount : '-'}}</h6> </div>
+			<div class="col-4">
+				<label>Remarks</label>
+				<h6>{{lienEnqData?.remarks ? lienEnqData?.remarks : '-'}}</h6> </div>
+			<div class="col-4">
+				<label>Reason</label>
+				<h6>{{lienEnqData?.reason ? lienEnqData?.reason : '-'}}</h6> </div>
+		</div>
+	</div>
+	<div class="row1">
+		<div class="col-12 text-center">
+			<button class="ux-button primary no md close-btn" (click)="closePopUp()">Ok</button>
+		</div>
+	</div>
+</div>
+<!-- Lien enquiry Modal ends-->
+<!-- Select Accounts Popup Start-->
+<div class="popup-bottom sel-account">
+	<div class="row1">
+		<div class="col-10">
+			<h4>Select From Account</h4> </div>
+		<div class="col-2">
+			<button class="ux-button-icon close-btn"> <img src="assets/images/svg/close-b.svg" alt="cross-icon" class="img-vsmall"> </button>
+		</div>
+	</div>
+	<div class="row1">
+		<div class="col-12">
+			<div class="row1">
+				<div class="col-12 col-md-12" *ngFor="let item of totalAccountList">
+					<div class="ux-selection mar-custom">
+						<label class="ux-selection2">{{item.SchemeCode}}: {{item.sbAccount}}
+							<!-- <input type="radio" [checked]="{{selectedAccountNo == item.accountNo}}" [value]="item.accountNo" name="upi-account" [(ngModel)]="selectedAccountNo" (click)=getSelectedAccount(selectedAccountNo) > -->
+							<input type="radio" [value]="item.accountNo" name="upi-account"> <span class="checkmark"></span> </label>
+					</div>
+				</div>
+				<!-- <div class="col-12 col-md-12">
+					<div class="ux-selection mar-custom">
+						<label class="ux-selection2">Saving Account: XXXX XXX 968
+							<input type="radio" value=" XXXX XXX 968" name="upi-account"> <span class="checkmark"></span> </label>
+					</div>
+				</div>
+				<div class="col-12 col-md-12">
+					<div class="ux-selection mar-custom">
+						<label class="ux-selection2">Saving Account: XXXX XXX 969
+							<input type="radio" value=" XXXX XXX 969" name="upi-account"> <span class="checkmark"></span> </label>
+					</div>
+				</div> -->
+				<!-- <div class="col-12 col-md-12">
+					<div class="ux-input">
+						<p class="error-message"> Error show</p>
+					</div>
+				</div> --></div>
+		</div>
+	</div>
+	<div class="row mt-2">
+		<div class="col-12 text-center">
+			<button class="ux-button primary submit-btn2" (click)="closePopUp()">Submit</button>
+		</div>
+	</div>
+</div>
+<!-- Select Accounts Popup End-->
+<!-- Lien enquiry Modal Starts-->
+<div class="popup-bottom md-popup lien-enquiry-popup">
+	<div class="row1">
+		<div class="col-12">
+			<h4 class="text-center">Lien Enquiry </h4> </div>
+	</div>
+	<div class="row1">
+		<div class="col-12">
+			<div class="result-container2">
+				<div class="info-bottom">
+					<div class="info-details">
+						<div class="row">
+							<h6>Lien Type</h6>
+							<h5>{{lienEnqData?.lienType ? lienEnqData?.lienType : '-'}}</h5> </div>
+					</div>
+					<div class="info-details">
+						<div class="row">
+							<h6>Expiry Date</h6>
+							<h5>{{lienEnqData?.expDate ? lienEnqData?.expDate : '-'}}</h5> </div>
+					</div>
+					<div class="info-details">
+						<div class="row">
+							<h6>Lien Amount</h6>
+							<h5>{{lienEnqData?.totalLienAmount ? lienEnqData?.totalLienAmount : '-'}}</h5> </div>
+					</div>
+					<div class="info-details">
+						<div class="row">
+							<h6>Remarks</h6>
+							<h5>{{lienEnqData?.remarks ? lienEnqData?.remarks : '-'}}</h5> </div>
+					</div>
+					<div class="info-details">
+						<div class="row">
+							<h6>Reason</h6>
+							<h5>{{lienEnqData?.reason ? lienEnqData?.reason : '-'}}</h5> </div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="row1">
+		<div class="col-12 text-center">
+			<button class="ux-button primary no md close-btn" (click)="closePopUp()">Ok</button>
+		</div>
+	</div>
+</div>
+<!-- Lien enquiry Modal ends-->
+<!-- Intrest Certificate Popup Start-->
+<div class="popup-bottom sm-popup interest-popup">
+	<div class="row1">
+		<div class="col-10">
+			<h4 class="text-left">Interest Certificate</h4> </div>
+		<div class="col-2">
+			<button class="ux-button-icon close-btn" (click)="closePopUp()"> <img src="assets/images/svg/close-b.svg" alt="cross-icon" class="img-vsmall"> </button>
+		</div>
+	</div>
+	<form [formGroup]="interestCertificateForm">
+	<div class="row1">
+		<div class="col-12">
+			<div class="ux-input">
+				<label for="accountNumber">Account Number</label>
+				<select formControlName="accNo" >
+					<option *ngFor="let item of totalAccountList" [value]="item.accountNo">{{item.SchemeCode}} {{item.sbAccount}} </option>
+				</select>
+				<p class="error-message"></p>
+			</div>
+		</div>
+		<div class="col-12">
+			<div class="ux-input">
+				<label for="period">Period</label>
+				<select formControlName="period" >
+					<option value="">Select Period</option>
+					<option *ngFor="let item of periodList" [value]="item.year">{{item.displayYear}}</option>
+				</select>
+				<p class="error-message"></p>
+			</div>
+		</div>
+	</div>
+</form>
+	<div class="row1 mt-2 set-btn">
+		<!-- <div class="col-12 col-md-6 text-center hide-m">
+			<button class="ux-button secondary sm-mob">View</button>
+		</div> -->
+		<div class="col-12 col-md-6 text-center">
+			<button class="download-btn  ux-button primary  sm-mob" (click)="dnldInterestCertificate()" [disabled]="interestCertificateForm.invalid"  >Download</button>
+		</div>
+	</div>
+</div>
+<!-- Intrest Certificate Certificate Popup End-->
+
+<!-- Select Accounts Popup Start-->
+<div class="popup-bottom sel-account">
+	<div class="row1">
+		<div class="col-10">
+			<h4>Select From Account</h4> </div>
+		<div class="col-2">
+			<button class="ux-button-icon close-btn"> <img src="assets/images/svg/close-b.svg" alt="cross-icon" class="img-vsmall"> </button>
+		</div>
+	</div>
+	<div class="row1">
+		<div class="col-12">
+			<div class="row1">
+				<div class="col-12 col-md-12" *ngFor="let item of totalAccountList">
+					<div class="ux-selection mar-custom">
+						<label class="ux-selection2">{{item?.SchemeCode}} {{item?.sbAccount}}
+							<!-- <input type="radio" [checked]="selectedAccountNo == item.accountNo ? true : false" [value]="item.accountNo" name="upi-account" [(ngModel)]="selectedAccountNo" (click)=getSelectedAccount(selectedAccountNo) > -->
+							<input type="radio" [value]="item?.accountNo" name="upi-account" [checked]="selectedAccountNo == item?.accountNo ? true : false" [(ngModel)]="selectedAccountNo" [ngModelOptions]="{standalone: true}"> <span class="checkmark"></span> </label>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!--  -->
+	<div class="row mt-2">
+		<div class="col-12 text-center">
+			<button class="ux-button primary submit-btn2" (click)="getSelectedAccount(selectedAccountNo)">Submit</button>
+		</div>
+	</div>
+</div>
+<!-- Select Accounts Popup End-->
+<!-- Lien enquiry Modal Starts-->
+<!-- <div class="popup-bottom md-popup lien-enquiry-popup">
+	<div class="row1">
+		<div class="col-12">
+			<h4 class="text-center">Lien Enquiry </h4> </div>
+	</div>
+	<div class="row1">
+		<div class="col-12">
+			<div class="result-container2">
+				<div class="info-bottom">
+					<div class="info-details">
+						<div class="row">
+							<h6>Lien Type</h6>
+							<h5>{{lienEnqData?.lienType ? lienEnqData?.lienType : '-'}}</h5> </div>
+					</div>
+					<div class="info-details">
+						<div class="row">
+							<h6>Expiry Date</h6>
+							<h5>{{lienEnqData?.expDate ? lienEnqData?.expDate : '-'}}</h5> </div>
+					</div>
+					<div class="info-details">
+						<div class="row">
+							<h6>Lien Amount</h6>
+							<h5>₹ {{lienEnqData?.totalLienAmount ? lienEnqData?.totalLienAmount : '-'}}</h5> </div>
+					</div>
+					<div class="info-details">
+						<div class="row">
+							<h6>Remarks</h6>
+							<h5>{{lienEnqData?.remarks ? lienEnqData?.remarks : '-'}}</h5> </div>
+					</div>
+					<div class="info-details">
+						<div class="row">
+							<h6>Reason</h6>
+							<h5>{{lienEnqData?.reason ? lienEnqData?.reason : '-'}}</h5> </div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="row1">
+		<div class="col-12 text-center">
+			<button class="ux-button primary no md close-btn" (click)="closePopUp()">Ok</button>
+		</div>
+	</div>
+</div> -->
+<!-- Lien enquiry Modal ends-->
+
+<!-- Balance Certificate Popup Start-->
+<!-- <div class="popup-bottom sm-popup balance-popup">
+
+	<div class="row1">
+		<div class="col-10">
+			<h4 class="text-center">Balance Certificate</h4>
+    </div>
+		<div class="col-2">
+			<button class="ux-button-icon close-btn"  (click)="closePopUp()"> <img src="assets/images/svg/close-b.svg" alt="cross-icon" class="img-vsmall" /> </button>
+		</div>
+	</div>
+	<form [formGroup]="balanceCertificateForm">
+	<div class="row1">
+		<div class="col-12">
+			<div class="ux-input">
+				<label for="accountNumber">Account Number</label>
+        		<input type="text" formControlName="accNo" disabled>
+				<p class="error-message"></p>
+			</div>
+		</div>
+		<div class="col-12">
+			<div class="ux-input">
+				<label for="period">Period</label>
+				<select formControlName="period">
+					<option value="">Select Period</option>
+					<option *ngFor="let item of periodList" [value]="item.year">{{item.displayYear}}</option>
+				</select>
+				<p class="error-message"></p>
+			</div>
+		</div>
+	</div>
+</form>
+	<div class="row1 mt-2 set-btn">
+		<div class="col-12 col-md-6 text-center hide-m">
+			<button class="ux-button secondary sm-mob" (click)="closeCertPopUp('balanceCert')">Cancel</button>
+		</div>
+		<div class="col-12 col-md-6 text-center">
+			<button class="ux-button primary sm-mob" [disabled]="balanceCertificateForm.invalid" (click)="dwnldBalanceCertificate()" >Download</button>
+		</div>
+	</div>
+</div> -->
+<!-- Balance Certificate Popup End-->
+
+
+<!-- Intrest Certificate Popup Start-->
+<!-- <div class="popup-bottom sm-popup interest-popup">
+	<div class="row1">
+		<div class="col-12">
+			<h4 class="text-center">Interest Certificate</h4> </div>
+	</div>
+	<form [formGroup]="interestCertificateForm">
+	<div class="row1">
+		<div class="col-12">
+			<div class="ux-input">
+				<label for="accountNumber">Account Number</label>
+        <input type="text" formControlName="accNo" disabled>
+				<p class="error-message"></p>
+			</div>
+		</div>
+		<div class="col-12">
+			<div class="ux-input">
+				<label for="period">Period</label>
+				<select formControlName="period" >
+					<option value="">Select Period</option>
+					<option *ngFor="let item of periodList" [value]="item.year">{{item.displayYear}}</option>
+				</select>
+				<p class="error-message"></p>
+			</div>
+		</div>
+	</div>
+</form>
+	<div class="row1 mt-2 set-btn">
+		<div class="col-6 text-center">
+			<button class="ux-button secondary no md close-btn" (click)="closeCertPopUp('interestCert')">Cancel</button>
+		</div>
+		<div class="col-6 text-center">
+			<button class="ux-button primary sm-mob" (click)="dnldInterestCertificate()" [disabled]="interestCertificateForm.invalid" >Download</button>
+		</div>
+	</div>
+</div> -->
+<!-- Intrest Certificate Certificate Popup End-->
+<!-- Success Popup Start -->
+<div class="popup-bottom md-popup success-popup">
+	<div class="row mt-3">
+		<div class="success"> <img src="assets/images/svg/check.svg" alt="success-icon">
+			<h3>Success</h3>
+			<h5>Account Details shared Successfully</h5> </div>
+	</div>
+	<div class="row1 mt-3">
+		<div class="col-12 text-center">
+			<button class="ux-button primary md ok-btn" (click)="closePopUp()">Ok</button>
+		</div>
+	</div>
+</div>
+<!-- Success Popup End -->
+
+<!-- MMID Success Popup Start -->
+<div class="popup-bottom md-popup success-popup mmid-success">
+	<div class="row mt-3">
+		<div class="success"> <img src="assets/images/svg/check.svg" alt="success-icon">
+			<h3>Success</h3>
+			<h5>{{mmidResult}}</h5> </div>
+	</div>
+	<div class="row1 mt-3">
+		<div class="col-12 text-center">
+			<button class="ux-button primary md ok-btn" (click)="closePopUp()">Ok</button>
+		</div>
+	</div>
+</div>
+<!-- MMIDSuccess Popup End -->
+
+
+<!-- Add nominee pop up start -->
+<div class="popup-bottom  sm-popup add-nominee">
+	<div class="row1">
+		<div class="col-12">
+			<h4 class="text-center">
+				<img src="assets/images/svg/information.svg" alt="information-icon"> {{ 'INFORMATION' | translate }}
+			</h4>
+		</div>
+	</div>
+	<div class="row1">
+		<div class="col-12">
+			<p>
+				No Nominee available. Do you want to add nominee ?
+			</p>
+		</div>
+	</div>
+	<div class="row1 mt-2">
+		<div class="col-6 text-center">
+			<button class="ux-button primary submit-btn" type="button" (click)="close()">{{ 'CANCEL' | translate}} </button>
+
+		</div>
+		<div class="col-6 text-center">
+			<button class="ux-button secondary submit-btn" type="button" (click)="addNomineePopup()">{{ 'ADD' | translate}} </button>
+
+		</div>
+	</div>
+</div>
+<!-- Add nominee pop up End -->
+
+
+<!-- Select Accounts Popup Start-->
+<div class="popup-bottom  md-popup inactive-account">
+	<div class="row1">
+		<div class="col-12">
+			<h4 class="text-center"> <img src="assets/images/svg/information.svg" alt="information-icon"> Information</h4>
+		 </div>
+	</div>
+	<div class="row1">
+		<div class="col-12">
+				<p>Selected Account is not Active</p>
+			</div>
+		</div>
+	<div class="row1  mt-2">
+		<div class="col-12 text-center">
+			<button  class="ux-button primary submit-btn" (click)="_closePopUp('div.popup-bottom.inactive-account')">OK</button>
+		</div>
+	</div>
+</div>
+<!-- Select Accounts Popup End-->
+
+<!-- Offline FD RD Popup Start-->
+<div class="popup-bottom sm-popup offline-fd-rd-account">
+	<div class="row1">
+		<div class="col-12">
+			<h4 class="text-center"> <img src="assets/images/svg/information.svg" alt="information-icon"> Information</h4>
+		 </div>
+	</div>
+	<div class="row1">
+		<div class="col-12">
+				<p>Offline {{depositAccType}} can be closed through branch only</p>
+			</div>
+		</div>
+	<div class="row1  mt-2">
+		<div class="col-12 text-center">
+			<button  class="ux-button primary submit-btn" (click)="_closePopUp('div.popup-bottom.offline-fd-rd-account')">OK</button>
+		</div>
+	</div>
+</div>
+<!-- Offline FD RD Popup End-->
+
+<!-- Closed FD RD Popup Start-->
+<div class="popup-bottom sm-popup closed-fd-rd-account">
+	<div class="row1">
+		<div class="col-12">
+			<h4 class="text-center"> <img src="assets/images/svg/information.svg" alt="information-icon"> Information</h4>
+		 </div>
+	</div>
+	<div class="row1">
+		<div class="col-12">
+				<p>{{depositAccType}} is already closed</p>
+			</div>
+		</div>
+	<div class="row1  mt-2">
+		<div class="col-12 text-center">
+			<button  class="ux-button primary submit-btn" (click)="_closePopUp('div.popup-bottom.closed-fd-rd-account')">OK</button>
+		</div>
+	</div>
+</div>
+<!-- Offline FD RD Popup End-->

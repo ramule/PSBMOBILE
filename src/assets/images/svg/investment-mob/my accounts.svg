@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32">
+  <g id="Group_40201" data-name="Group 40201" transform="translate(-10147 -192)">
+    <g id="Group_40035" data-name="Group 40035" transform="translate(10147 192)" opacity="0">
+      <rect id="Rectangle_18687" data-name="Rectangle 18687" width="32" height="32" fill="#e3e3e3"/>
+      <rect id="Rectangle_18688" data-name="Rectangle 18688" width="28.343" height="28.343" transform="translate(1.829 1.829)" fill="#b5b5b5"/>
+    </g>
+    <path id="Union_44" data-name="Union 44" d="M.694,24a.7.7,0,0,1,0-1.39H25.137a.7.7,0,1,1,0,1.39Zm21.351-2.445H2.528a.7.7,0,1,1,0-1.39H3.666V10.556H2.528a.7.7,0,0,1-.7-.695V7.386A.693.693,0,0,1,2.16,6.8L12.853.106a.7.7,0,0,1,.737,0L24.284,6.8a.693.693,0,0,1,.326.589V9.862a.694.694,0,0,1-.7.695H22.777v9.609h1.138a.7.7,0,1,1,0,1.39h-1.87Zm-.658-1.39V10.556H19.723v9.609Zm-3.056,0V10.556H15.444v9.609Zm-4.278,0V10.556H12.389v9.609Zm-3.055,0V10.556H8.112v9.609Zm-4.277,0V10.556H5.057v9.609Zm16.5-11V8.113h-20V9.166h20ZM21.544,6.722,13.222,1.516,4.9,6.722ZM12.3,5.668a.7.7,0,0,1,0-1.391h1.833a.7.7,0,1,1,0,1.391Z" transform="translate(10150 196)" fill="#007c3d"/>
+  </g>
+</svg>

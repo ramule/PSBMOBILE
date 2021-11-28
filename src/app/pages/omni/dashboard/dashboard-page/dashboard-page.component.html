@@ -1,0 +1,582 @@
+<div class="main">
+	<div class="right-main-column">
+		<div class="right-col-container pad-b full-width">
+			<div class="body-page-container main-dashborad">
+				<div class="container-fluid">
+					<div class="row no-gutters">
+						<div class="col-12">
+							<div class="row1 mt-custom ">
+								<div class="col-xl-9 col-lg-8 col-md-12 col-sm-12 col-12">
+									<div class="row">
+										<div class="dcustom-bg">
+											<div class="row1">
+												<div class="col-12">
+													<h2>{{"WELCOME" | translate  | titlecase}}, {{userName | titlecase}}, <span>{{"LAST_LOGIN" | translate}}, {{dataService.lastLoginDate | date: 'medium'}} </span></h2> </div>
+												<div class="col-12">
+													<div class="flex-container no-bg mb-0">
+														<div class="full-info">
+															<div class="row1" *ngIf="!dataService.isNRENRO" >
+																<div class="col-12 col-md-12 col-lg-12 col-xl-10">
+																	<div class="ac-info">
+																		<h5>{{"MY_TOTAL_NET_WORTH" | translate}}</h5> </div>
+																	<div class="ac-info">
+																		<div class="greenbg-input ux-input">
+																			<p class="info-message2 with-bg"> <i>Available bal.</i> <span>{{totalWorth | customcurrency :"symbol" : 'INR'}}</span></p>
+																		</div>
+																	</div>
+																	<div class="ac-info hide-m">
+																		<button class="refresh-btn" (click)="setLastRefreshedDate()"><img src="assets/images/svg/refresh.svg" alt="refresh-icon"></button> <span class="refresh-text">  {{'LAST_REFRESH' | translate}} {{refreshedTime}}</span> </div>
+																</div>
+															</div>
+														</div>
+													</div>
+												</div>
+											</div>
+											<div class="row1">
+												<div class="col-12">
+													<div class="scroll-box2 mt-0">
+														<owl-carousel-o role="list" [options]="accountCarouselOptions" #cardsCarousel>
+															<ng-container class="item" role="listitem" style="padding: 5px;" *ngIf="totalSavingAcc > 0">
+																<ng-template class="slide" carouselSlide [width]="300">
+																	<div class="item" role="listitem">
+																		<div class="ux-component5 mar-tb">
+																			<div class="ux-dropdown">
+																				<div class="drp-box">
+																					<a class="drp-enterdata" >
+																						<div class="card-section2">
+																							<div class="card-info3" >
+																								<div class="card-actions2" (click)="goToRoutePage('/myAccount')">
+																									<h4>{{"MY_SAVING" | translate}} ({{totalSavingAcc}})</h4>
+																									<h6 class="light-t">{{"SAVING_CURR_OD" | translate}}</h6> </div>
+																								<div class="show-btn" *ngIf="!dataService.isNRENRO || (dataService.isNRENRO && !isOperativeSingleCurrency)" >
+																									<button class="refresh-btn" (click)="refreshBtn('operativeAccounts')" [ngClass]="!mySavingShow ? 'active' : '' "> </button>
+																								</div>
+																							</div>
+																							<div class="card-info2" (click)="goToRoutePage('/myAccount')"  *ngIf="!dataService.isNRENRO || (dataService.isNRENRO && !isOperativeSingleCurrency)">
+																								<div class="show-icon"> <img src="assets/images/svg/saving1.svg" alt="deposit-icon"> </div>
+																								<div class="card-actions3">
+																									<h4>
+																										<img src="assets/images/svg/rupee-bl.svg" alt="rupees-icon" *ngIf="!mySavingShow" >
+																										<span class="bal-info" [ngStyle]="{display : !mySavingShow ? 'inline-block' : 'none' }">{{totalSavingMaskedAmt}}</span>
+																										<span class="bal-info-show" [ngStyle]="{display : mySavingShow ? 'inline-block' : 'none'} ">{{totalSavingAmt | customcurrency}}</span>
+																									</h4>
+																									<h6 class="light-t">{{"TOTAL_ACC_BAL" | translate}}</h6>
+																								</div>
+																								<!-- <div class="card-actions3" *ngIf="dataService.isNRENRO && isOperativeSingleCurrency">
+																									<h6 class="light-t">{{"VIEW_DETAILS" | translate}}</h6>
+																								</div> -->
+																							</div>
+																							<div class="card-info2"  *ngIf="dataService.isNRENRO && isOperativeSingleCurrency">
+																								<div class="show-icon">
+																									<img src="assets/images/svg/saving1.svg" alt="deposit-icon">
+																								</div>
+																								<div class="card-actions3">
+																									<div class="text-right">
+																										<button class="ux-linkbutton primary link-text mt-4">{{"VIEW_DETAILS" | translate}}</button>
+																									</div>
+																								</div>
+																							</div>
+																						</div>
+																					</a>
+																				</div>
+																			</div>
+																		</div>
+																	</div>
+																</ng-template>
+															</ng-container>
+															<ng-container class="item" role="listitem" style="padding: 5px;" *ngIf="totalDepositeAcc > 0">
+																<ng-template class="slide" carouselSlide [width]="300">
+																	<div class="item" role="listitem">
+																		<div class="ux-component5 mar-tb">
+																			<div class="ux-dropdown">
+																				<div class="drp-box">
+																					<a class="drp-enterdata">
+																						<div class="card-section2">
+																							<div class="card-info3" >
+																								<div class="card-actions2" (click)="goToRoutePage('/myDeposits')">
+																									<h4>{{"MY_DEPOSITS" | translate}} ({{totalDepositeAcc}})</h4>
+																									<h6 class="light-t">{{"FD_RD_ACC" | translate}}</h6> </div>
+																								<div class="show-btn" *ngIf="!dataService.isNRENRO || (dataService.isNRENRO && !isDepositeSingleCurrency) " >
+																									<button class="refresh-btn" (click)="refreshBtn('myDeposit')" [ngClass]="!myDepositShow ? 'active' : '' "> </button>
+																								</div>
+																							</div>
+																							<div class="card-info2" (click)="goToRoutePage('/myDeposits')"  *ngIf="!dataService.isNRENRO && !isDepositeSingleCurrency">
+																								<div class="show-icon"> <img src="assets/images/svg/deposits.svg" alt="deposit-icon"> </div>
+																								<div class="card-actions3" > <!--*ngIf="!dataService.isNRENRO || (dataService.isNRENRO && !isDepositeSingleCurrency) "-->
+																									<h4>
+																									<img src="assets/images/svg/rupee-bl.svg" alt="rupees-icon" *ngIf="!myDepositShow" >
+                                                                                                    <span class="bal-info" [ngStyle]="{display : !myDepositShow ? 'inline-block' : 'none'} ">{{totalDepositeMaskedAmt}}</span>
+                                                                                                    <span class="bal-info-show" [ngStyle]="{display : myDepositShow ? 'inline-block' : 'none' }">{{totalDepositeAmt | customcurrency}}</span>
+                                                                                                </h4>
+																									<h6 class="light-t">{{"TOTAL_ACC_BAL" | translate}}</h6> 
+																								</div>
+																								<!-- <div class="card-actions3" *ngIf="dataService.isNRENRO && isDepositeSingleCurrency">
+																									<h6 class="light-t">{{"VIEW_DETAILS" | translate}}</h6>
+																								</div> -->
+																							</div>
+
+																							<div class="card-info2"  *ngIf="dataService.isNRENRO && isDepositeSingleCurrency">
+																								<div class="show-icon">
+																									<img src="assets/images/svg/deposits.svg" alt="deposit-icon">
+																								</div>
+																								<div class="card-actions3">
+																									<div class="text-right">
+																										<button class="ux-linkbutton primary link-text mt-4">{{"VIEW_DETAILS" | translate}}</button>
+																									</div>
+																								</div>
+																							</div>
+																						</div>
+																					</a>
+																				</div>
+																			</div>
+																		</div>
+																	</div>
+																</ng-template>
+															</ng-container>
+															<ng-container class="item" role="listitem" style="padding: 5px;" *ngIf="totalBorrowingAcc > 0">
+																<ng-template class="slide" carouselSlide [width]="300">
+																	<div class="item" role="listitem">
+																		<div class="ux-component5 mar-tb">
+																			<div class="ux-dropdown">
+																				<div class="drp-box">
+																					<a class="drp-enterdata">
+																						<div class="card-section2">
+																							<div class="card-info3" >
+																								<div class="card-actions2" (click)="goToRoutePage('/myBorrowings')">
+																									<h4>{{"MY_TERM_LOANS" | translate}} ({{totalBorrowingAcc}})</h4>
+																									<h6 class="light-t"> {{"LOANS" | translate}}</h6> </div>
+																								<div class="show-btn" *ngIf="!dataService.isNRENRO || (dataService.isNRENRO && !isBorrowingSingleCurrency)" >
+																									<button class="refresh-btn" (click)="refreshBtn('myBorrow')" [ngClass]="!myBrowsingShow ? 'active' : '' "> </button>
+																								</div>
+																							</div>
+																							<div class="card-info2" (click)="goToRoutePage('/myBorrowings')" *ngIf="!dataService.isNRENRO || (dataService.isNRENRO && !isBorrowingSingleCurrency)">
+																								<div class="show-icon"> <img src="assets/images/svg/LOANS.svg" alt="loan-icon"> </div>
+																								<div class="card-actions3" >
+																									<h4>
+																									<img src="assets/images/svg/rupee-bl.svg" alt="rupees-icon" *ngIf="!myBrowsingShow" >
+                                                                                                    <span class="bal-info" [ngStyle]="{display : !myBrowsingShow ? 'inline-block' : 'none' }">{{totalBorrowingMaskedAmt}}</span>
+                                                                                                    <span class="bal-info-show" [ngStyle]="{display : myBrowsingShow ? 'inline-block' : 'none'} ">{{totalBorrowingAmt | customcurrency :"symbol" }}</span>
+                                                                                                </h4>
+																									<h6 class="light-t">{{"TOTAL_ACC_BAL" | translate}}</h6> 
+																								</div>
+																								<!-- <div class="card-actions3" *ngIf="dataService.isNRENRO && isBorrowingSingleCurrency">
+																									<h6 class="light-t">{{"VIEW_DETAILS" | translate}}</h6>
+																								</div> -->
+																							</div>
+																							<div class="card-info2"  *ngIf="dataService.isNRENRO && isBorrowingSingleCurrency">
+																								<div class="show-icon">
+																									<img src="assets/images/svg/LOANS.svg" alt="deposit-icon">
+																								</div>
+																								<div class="card-actions3">
+																									<div class="text-right">
+																										<button class="ux-linkbutton primary link-text mt-4">{{"VIEW_DETAILS" | translate}}</button>
+																									</div>
+																								</div>
+																							</div>
+																						</div>
+																					</a>
+																				</div>
+																			</div>
+																		</div>
+																	</div>
+																</ng-template>
+															</ng-container>
+														</owl-carousel-o>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+									<div class="row" *ngIf="!dataService.isLoanAccount">
+										<div class="col-12  slider-box">
+											<owl-carousel-o [options]="customizeMenuCarouselOptions">
+												<ng-container *ngFor="let menu of mycustomMenu, let i= index">
+													<ng-template carouselSlide [width]="110">
+														<div class="item ux-small-scroll4 text-center" role="listitem">
+															<a (click)="goToRoutePageBankingService(menu.URL, menu.menuName)"> 
+																<div class="icon-card">
+																<span>
+																		<img [src]="'./assets/images/svg/'+ menu.menuName+'.svg'"  onError="this.onerror=null;this.src='./assets/images/svg/svg.svg';" alt="{{menu.menuName}}" class="align-self-center">
+																	</span> 
+																	<div class="badge1" *ngIf="menu.menuName =='registered-bill-pay'
+																	|| menu.menuName =='e-filling' || menu.menuName =='token' || menu.menuName =='pending-bill' || menu.menuName =='bills-recharges' ||  menu.menuName == 'scheduled-transaction'
+																	">
+																	<!-- || menu.menuName =='bills-recharges', menu.menuName =='scheduled-transaction' || menu.menuName =='pending-bill' -->
+																		Coming Soon
+																	</div>
+																	<em>{{menu.menuNameValue | translate}}</em> 
+																</div>
+																</a>
+															
+																	
+														</div>
+													</ng-template>
+												</ng-container>
+											</owl-carousel-o>
+										</div>
+									</div>
+
+									<div class="row" *ngIf="frequentTransactionList.length > 0 && !dataService.isNRENRO">
+										<div class="widget-box1 clearfix">
+											<div class="component-title6">
+												<div class="row1">
+													<div class="col-9 col-md-9">
+														<h3>{{"RECENT_TRANS" | translate}}</h3> </div>
+													<!-- <div class="col-3 col-md-3"> <a class="viewAll">{{"VIEW_ALL" | translate}}</a> </div> -->
+												</div>
+											</div>
+											<div class="component-box">
+												<div class="row">
+													<div class="col-12">
+														<owl-carousel-o [options]="recentTransactionOption">
+															<ng-container *ngFor="let transaction of frequentTransactionList">
+																<ng-template carouselSlide [width]="120">
+																	<div class="item ux-small-scroll1" role="listitem"  (click)="transactiondetails(transaction)">
+																		<a href="javascript:;"> <span class="{{transaction.color}}">
+																			<!-- <img src="assets/images/icons/user3.png" alt="user-img"> -->
+																			<em class="align-self-center">{{transaction.benefName | firstLastChar | uppercase}}</em>
+																			</span> <b>{{transaction.txn_amount | customcurrency }}
+
+																				<small class="credited"  *ngIf="transaction.DestinationType == 'R'"></small>
+																				<small class="debited"  *ngIf="transaction.DestinationType == 'S'"></small>
+																			</b> <em>{{transaction.TransactionDate}} {{transaction.TransactionMonth}}</em> </a>
+																	</div>
+																</ng-template>
+															</ng-container>
+														</owl-carousel-o>
+														</div>
+												</div>
+											</div>
+										</div>
+									</div>
+									<div class="row1" *ngIf="!dataService.isLoanAccount">
+										<div class="col-12 col-md-12 col-xl-6 col-lg-6">
+											<div class="widget-box1 height-custom">
+												<div class="component-title6">
+													<div class="row1">
+														<div class="col-12 col-md-9">
+															<h3>{{"RECOMMENDED_CARDS" | translate}}</h3> </div>
+														<div class="col-12 col-md-3">
+															<!-- <a class="viewAll">View All</a> --></div>
+													</div>
+												</div>
+												<div class="component-box " id="cards-carousel">
+													<div class="row" >
+														<div class="col-12 col-md-12">
+															<div class="card-scroll3 ">
+															<owl-carousel-o [options]="recommendedCardCarouselOptions" class="invest-owl">
+																<ng-container *ngFor="let recommended of recommendedCard ; let i=index">
+																	<ng-template carouselSlide>
+																		<div class="item" role="listitem">
+																			<div class="card-info-details">
+                                                                                <div class="full-info" (click)="onWeblinkClicked()">
+																				
+                                                                                            <img src="assets/images/banner/nli-banner.png" alt="card-icon">
+                                                                                        
+                                                                                    </div>
+                                                                                    <!-- <div class="left-info">
+                                                                                        <p>{{recommended.imageName}}</p>
+                                                                                        <h4>{{"CONGRATS" | translate}}!</h4>
+                                                                                        <em> {{"ELIGIBLE_CARD" | translate}}</em>
+                                                                                        <button class="ux-button sm5 secondary" (click)="onWeblinkClicked()">{{"APPLY_NOW" | translate}}</button>
+                                                                                    </div> -->
+                                                                                </div>
+                                                                            </div>
+																			<!-- <div class="row1">
+																				<div class="col-12 col-xl-5 col-lg-12 col-md-5"> <img src="assets/images/background/debit-card-green.png" alt="card-icon"> </div>
+																				<div class="col-12 col-xl-7 col-lg-12 col-md-7">
+																					<div class="card-info">
+																						<p>{{recommended.imageName}}</p>
+																						<h4>{{"CONGRATS" | translate}}!</h4> <span> {{"ELIGIBLE_CARD" | translate}}</span>
+																						<button class="ux-button sm secondary" (click)="onWeblinkClicked(recommended)">{{"APPLY_NOW" | translate}}</button>
+																					</div>
+																				</div>
+																			</div>
+																		</div> -->
+																		
+																	</ng-template>
+																</ng-container>
+															</owl-carousel-o>
+															</div>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+										<div class="col-12 col-md-12 col-xl-6 col-lg-6" *ngIf="!dataService.isNRENRO" >
+											<div class="widget-box1 height-custom" >
+												<div class="component-title6">
+													<div class="row1">
+														<div class="col-12 col-md-9">
+															<h3>{{"INVEST_WITH_US" | translate}}</h3> </div>
+														<div class="col-12 col-md-3">
+															<!-- <a class="viewAll">View All</a> --></div>
+													</div>
+												</div>
+												<div class="component-box ">
+													<div class="row">
+														<div class="col-12">
+															<div class="card-scroll3">
+															<owl-carousel-o [options]="investCarouselOptions" class="invest-owl">
+																<ng-container *ngFor="let products of investProductsupdated; let i=index">
+																	<ng-template carouselSlide>
+																		<div class=" item card-details" role="listitem" (click)="goToRoutePageInvestUs(products.productName)"> <!--class=" invest-details "-->
+																			<div class="img-block">
+																				<!-- <img [src]="domSanitizer.bypassSecurityTrustUrl(products.logo)" /> -->
+																				<img [src]="'./assets/images/svg/'+ products.logo+'.svg'"  onError="this.onerror=null;this.src='./assets/images/svg/svg.svg';" alt="{{products.logo}}" class="align-self-center">
+																				
+																				
+																				<div class="badge2" *ngIf="products.productName == 'Government Schemes' || products.productName == 'IPO/ASBA'  || products.productName == 'Gold Bond'">
+																					Coming Soon
+																				</div>
+																			
+																			</div>
+																			<span>{{products.productName}}</span> </div>
+																	</ng-template>
+																</ng-container>
+															</owl-carousel-o>
+															</div>
+															</div>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="col-xl-3 col-lg-4 col-md-12 col-sm-12 col-12">
+									<div class="row1">
+										<!-- <div class="col-lg-12 col-md-6 col-sm-12 col-12">
+											<div class="widget-box1 auto-height"> -->
+												<!-- <div class="component-title6 bg1">
+													<h3>{{"BALANCE_OVERVIEW" | translate}}</h3> </div> -->
+													<!-- <div id="chart">
+														<apx-chart [series]="chartOptions.series" [chart]="chartOptions.chart" [labels]="chartOptions.labels" [responsive]="chartOptions.responsive"></apx-chart>
+													</div> -->
+												<!-- <div class="component-box">
+													<div class="row">
+														<div class="col-12">
+															<div>
+																<div id="chart">
+																	<apx-chart [series]="chartOptions.series" [chart]="chartOptions.chart" [labels]="chartOptions.labels" [responsive]="chartOptions.responsive"></apx-chart>
+																</div>
+															</div>
+														</div>
+													</div>
+												</div> -->
+											<!-- </div>
+										</div> -->
+										<div class="col-12 col-md-12 col-lg-12 col-xl-12 d-none d-xl-block">
+											<div class="right-ads mb-4">
+												<a>
+													<img src="assets/images/banner/pmsby-pmjjby.jpg" alt="banner-img" class="bor-r">
+													<!-- <img src="../assets/images/banner/psb-banner.png" alt="banner-img" class="bor-r"> -->
+												</a>
+											</div>
+										</div>
+										<div class="col-lg-12 col-md-6 col-sm-12 col-12"  *ngIf="!dataService.isLoanAccount && !dataService.isNRENRO">
+											<div class="widget-box1 auto-height quickpay">
+												<div class="component-title6 bg1 pb-2">
+													<ul class="nav nav-tabs" role="tablist">
+														<li class="nav-item"> <a class="nav-link active account-details" data-toggle="tab" href="#home1" (click)="onTabChange('instaPay')">{{"INSTA_PAY" | translate}}</a> </li>
+														<!-- <li class="nav-item"> <a class="nav-link recent-trans" data-toggle="tab" href="#menu1" (click)="onTabChange('instaBillPay')">{{"INSTA_BILL_PAY" | translate}}</a> </li> -->
+													</ul>
+												</div>
+												<div class="component-box">
+													<div class="tab-content">
+														<div id="home1" class="tab-pane active pb-2">
+															<div class="row1">
+																<div class="col-12 position-static">
+																	<div class="form-info" [ngStyle]="{display : instaPayAccount ? 'none' : 'block'}">
+																	<form [formGroup]="instaAccountForm">
+																		<div class="inner-card" [ngClass]="instaAccountForm.controls['chooseAccount'].hasError('required') && (instaAccountForm.controls['chooseAccount'].dirty || instaAccountForm.controls['chooseAccount'].touched)? 'insta-pay-error' : ''  ">
+																			<a class="chooseAccount" (click)="instaPay('open')">
+																				<img src="assets/images/svg/fromAccount.svg" class="left-img">
+																				<span *ngIf="accountInsta == '' ">{{"FROM_ACCOUNT" | translate}}</span> <span *ngIf="accountInsta != '' ">{{accountInsta}}</span> </a>
+																			<ul class="quickpay-Account" id="account">
+																				<li *ngFor="let account of  instaAccount ; index as  i " (click)="instaPay('close')">
+																					<input type="radio" [value]="account" name="accNo" (click)="selectAccountInsta(account)" formControlName="chooseAccount">
+																					<label>{{account.sbAccount}}</label>
+																				</li>
+																			</ul>
+																		</div>
+																		<!-- <div class="ux-input">
+																			<p class="error-message" *ngIf="instaAccountForm.controls['chooseAccount'].hasError('required') && (instaAccountForm.controls['chooseAccount'].dirty || instaAccountForm.controls['chooseAccount'].touched)">This field is required</p>
+																		</div> -->
+																		<div class="inner-card" (click)="instaPay('user')" [ngClass]="{'insta-pay-error' : instapayAccSelected }">
+																			<a class="ToAccount"><img src="assets/images/svg/add-user.svg" class="left-img">
+																				<span *ngIf="instaPayToUserData == '' "> {{'TO_ACCOUNT' | translate}}</span>
+																				<span *ngIf="instaPayToUserData != '' ">{{commonMethod.maskAccNo(instaPayToUserData)}}</span>
+																			</a>
+																		</div>
+																		<div class="inner-card" [ngClass]="instaAccountForm.controls['amount'].hasError('required') && (instaAccountForm.controls['amount'].dirty || instaAccountForm.controls['amount'].touched)? 'insta-pay-error' : ''  ">
+																			<img src="assets/images/svg/amount.svg" alt="" class=" left-img" >
+																			<div class="input-wrapp amount">
+                                        										<!-- <img src="assets/images/svg/rupee-slim.svg" alt="" class="rupee"> -->
+                                        										<input type="text" autocomplete="off" inputmode="decimal" placeholder="₹ 0" appTwoDigitDecimaNumberss  formControlName="amount" (blur)="formatCurrency($event.target.value, 'mmidForm')" id="amt"  data-a-sign="Rs.">
+																				<!-- <input type="text" numbersOnly name="amount" placeholder="Enter Amount" formControlName="amount" limit-to="5">  -->
+																			</div>
+																		</div>
+																		<div class="ux-input">
+																			<!-- <p class="error-message" *ngIf="instaAccountForm.controls['amount'].hasError('required') && (instaAccountForm.controls['amount'].dirty || instaAccountForm.controls['amount'].touched)">This field is required</p> -->
+																			<p class="error-message" *ngIf="instaAccountForm.controls['amount'].hasError('min') && (instaAccountForm.controls['amount'].dirty || instaAccountForm.controls['amount'].touched)">{{"AMOUNT_LOWLIMIT_MESSAGE" | translate}}</p>
+																			<p class="error-message" *ngIf="exceedMinAmt && (instaAccountForm.controls['amount'].dirty && instaAccountForm.controls['amount'].touched)"> {{"AMOUNT_HIGHLIMIT_MESSAGE" | translate}}</p>
+																			<!-- <p class="error-message" *ngIf="exceedMinAmt && (instaAccountForm.controls['amount'].dirty && instaAccountForm.controls['amount'].touched)"> {{'Amount_be' | translate}}</p> -->
+																			<!-- <p class="error-message" *ngIf="instaAccountForm.value.amount >= 10000 && (instaAccountForm.controls['amount'].dirty && instaAccountForm.controls['amount'].touched)">{{"AMOUNT_HIGHLIMIT_MESSAGE" | translate}}</p> -->
+																		</div>
+																		<div class="inner-card" [ngClass]="instaAccountForm.controls['remark'].hasError('required') && (instaAccountForm.controls['remark'].dirty || instaAccountForm.controls['remark'].touched)? 'insta-pay-error' : ''  ">
+
+																			<img src="assets/images/svg/remarks.svg" alt="" class="left-img" >
+																			<div class="input-wrapp">
+																				<input type="text" autocomplete="off" name="remark" placeholder='{{"REMARKS" | translate}}' class="remark" limit-to="10" formControlName="remark">
+																				<button type="submit" class="send-money"><img src="assets/images/svg/right-arrow.svg" (click)="onInstaPaySubmit()"></button>
+																			</div>
+																			<!-- <div class="ux-input">
+																				<p class="error-message" *ngIf="instaAccountForm.controls['remark'].hasError('required') && (instaAccountForm.controls['remark'].dirty || instaAccountForm.controls['remark'].touched)">This field is required</p>
+																			</div> -->
+																		</div>
+
+																</form>
+																	</div>
+																<form *ngIf="instaPayAccount" [formGroup]="instaPayForm">
+																	<div class="getAccountDetails" [ngClass]="instaPayAccount ? 'active' : '' ">
+																		<div class="row1 mb-3">
+																			<div class="col-12">
+																				<div class="ux-selection">
+																					<label class="ux-selection2">Within
+																						<input type="radio"  [checked]="transfertype == 'within' " name="bankType" autocomplete="off" value="within" (change)="transferTypeChange('within')">
+																						<span class="checkmark" ></span>
+																					</label>
+																				</div>
+																				<div class="ux-selection">
+																					<label class="ux-selection2">Outside
+																						<input type="radio" name="bankType" [checked]="transfertype == 'outside'" autocomplete="off" value="outside" (change)="transferTypeChange('outside')">
+																						<span class="checkmark"></span>
+																					</label>
+																				</div>
+																			</div>
+																		</div>
+																	<div class="inner-card" *ngIf="transfertype == 'within' " > <b class="input-header">{{"ACCOUNT_NUMBER" | translate}}</b>
+																		<div class="input-wrapp">
+																		<input type="password" autocomplete="off" name="accNumber" limit-to="16" formControlName="accNumber" placeholder="" (input)="onConfirmAccountChange($event.target.value , 'within')">
+																		<p class="error-message" *ngIf="instaPayForm.controls['accNumber'].hasError('required') && (instaPayForm.controls['accNumber'].dirty || instaPayForm.controls['accNumber'].touched)">This field is required</p>
+																		<p class="error-message" *ngIf="instaPayForm.controls['accNumber'].hasError('minlength') && (instaPayForm.controls['accNumber'].dirty || instaPayForm.controls['accNumber'].touched)">Account Number length is short</p>
+																		<p class="error-message" *ngIf="instaPayForm.controls['accNumber'].hasError('min') && (instaPayForm.controls['accNumber'].dirty || instaPayForm.controls['accNumber'].touched)">Account Number cannot be zero</p>
+																		<!-- <p class="error-message" *ngIf="(instaPayForm.controls['accNumber'].dirty || instaPayForm.controls['accNumber'].touched)">Invalid Account Number</p> -->
+																		</div>
+																	</div>
+																	<div class="inner-card" *ngIf="transfertype == 'within' " > <b class="input-header">{{"CONFIRM_ACCOUNT_NUMBER" | translate}}</b>
+																		<div class="input-wrapp">
+																		<input type="text" autocomplete="off" name="confirmAccountNumber" limit-to="16" formControlName="confirmAccountNumber" placeholder="" (input)="onConfirmAccountChange($event.target.value , 'within')">
+																		<p class="error-message" *ngIf="instaPayForm.controls['confirmAccountNumber'].hasError('required') && (instaPayForm.controls['confirmAccountNumber'].dirty || instaPayForm.controls['confirmAccountNumber'].touched)">This field is required</p>
+																		<p class="error-message" *ngIf="instaPayForm.controls['confirmAccountNumber'].hasError('pattern') && (instaPayForm.controls['confirmAccountNumber'].dirty || instaPayForm.controls['confirmAccountNumber'].touched)">Invalid Account Number</p>
+																		<p class="error-message" *ngIf="instaPayForm.controls['confirmAccountNumber'].touched && instaPayForm.errors?.accountNotMatch">Account Number Not matched</p>
+																		<p class="error-message" *ngIf="instapayerror">{{instapayerror}}</p>
+
+																	</div>
+																	</div>
+
+																	<div class="inner-card" *ngIf="transfertype == 'outside' " > <b class="input-header">{{"ACCOUNT_NUMBER" | translate}}</b>
+																		<div class="input-wrapp">
+																		<input type="password" autocomplete="off" name="accNumber" limit-to="30" formControlName="accNumber" placeholder="" (input)="onConfirmAccountChange($event.target.value , 'outside')">
+																		<p class="error-message" *ngIf="instaPayForm.controls['accNumber'].hasError('required') && (instaPayForm.controls['accNumber'].dirty || instaPayForm.controls['accNumber'].touched)">This field is required</p>
+																		<p class="error-message" *ngIf="instaPayForm.controls['accNumber'].hasError('minlength') && (instaPayForm.controls['accNumber'].dirty || instaPayForm.controls['accNumber'].touched)">Account Number length is short</p>
+																		<p class="error-message" *ngIf="instaPayForm.controls['accNumber'].hasError('min') && (instaPayForm.controls['accNumber'].dirty || instaPayForm.controls['accNumber'].touched)">Account Number cannot be zero</p>
+																		<!-- <p class="error-message" *ngIf="(instaPayForm.controls['accNumber'].dirty || instaPayForm.controls['accNumber'].touched)">Invalid Account Number</p> -->
+																		</div>
+																	</div>
+																	<div class="inner-card" *ngIf="transfertype == 'outside' " > <b class="input-header">{{"CONFIRM_ACCOUNT_NUMBER" | translate}}</b>
+																		<div class="input-wrapp">
+																		<input type="text" autocomplete="off" name="confirmAccountNumber" limit-to="30" formControlName="confirmAccountNumber" placeholder="" (input)="onConfirmAccountChange($event.target.value , 'outside')">
+																		<p class="error-message" *ngIf="instaPayForm.controls['confirmAccountNumber'].hasError('required') && (instaPayForm.controls['confirmAccountNumber'].dirty || instaPayForm.controls['confirmAccountNumber'].touched)">This field is required</p>
+																		<p class="error-message" *ngIf="instaPayForm.controls['confirmAccountNumber'].hasError('pattern') && (instaPayForm.controls['confirmAccountNumber'].dirty || instaPayForm.controls['confirmAccountNumber'].touched)">Invalid Account Number</p>
+																		<p class="error-message" *ngIf="instaPayForm.controls['confirmAccountNumber'].touched && instaPayForm.errors?.accountNotMatch">Account Number Not matched</p>
+																		<p class="error-message" *ngIf="instapayerror">{{instapayerror}}</p>
+
+																	</div>
+																	</div>
+																	<div class="inner-card " *ngIf="transfertype == 'outside'"> <b class="input-header">{{"IFSC" | translate}}</b>
+																		<div class="input-wrapp">
+																		<!-- <a> <span class="check" (click)="onCheckIFSCAvailability()">check</span> </a> -->
+																		<input type="text" alphabetNNumber autocomplete="off" name="IFSCCode" formControlName="IFSCCode" limit-to="11"  placeholder="Enter IFSC  code" class="remark" oninput="this.value = this.value.toUpperCase()">
+																		<span class="check"><a (click)="onCheckIFSCAvailability()"> {{"CHECK" | translate}} </a></span>
+																		<p class="info-message"> {{bankAddress}}</p>
+																		<p class="error-message" *ngIf="instaPayForm.controls['IFSCCode'].hasError('required') && (instaPayForm.controls['IFSCCode'].dirty || instaPayForm.controls['IFSCCode'].touched)">This field is required</p>
+																		<p class="error-message" *ngIf="instaPayForm.controls['IFSCCode'].hasError('minlength') && (instaPayForm.controls['IFSCCode'].dirty || instaPayForm.controls['IFSCCode'].touched)">IFSC Code length is short</p>
+																		<!-- <p class="error-message" *ngIf="!isIFSCChecked && (instaPayForm.controls['IFSCCode'].dirty || instaPayForm.controls['IFSCCode'].touched)">Please verify IFSC Code</p> -->
+																		<p class="error-message" *ngIf="ifscerrormsg">Please verify to proceed</p>
+																		<p class="error-message" style="color:red" *ngIf="!isValidIFSC">{{validmsg}}</p>
+                                    <p class="error-message" style="color:green" *ngIf="isValidIFSC">Valid IFSC Code</p>
+
+																		</div>
+																	</div>
+																	<div class="inner-card ux-input ux-disabled"  *ngIf="transfertype == 'within'"> <b class="input-header">{{"CUSTOMER_NAME" | translate}}</b>
+																		<div class="input-wrapp">
+																		<!-- <a> <span class="check" (click)="onCheckIFSCAvailability()">check</span> </a> -->
+																		<input type="text" alphabetNNumber autocomplete="off" name="custname" formControlName="custname"   placeholder="Enter Customer Name" class="remark"  >
+
+																		<p class="error-message" *ngIf="instaPayForm.controls['custname'].hasError('required') && (instaPayForm.controls['custname'].dirty || instaPayForm.controls['IFSCCode'].touched)">This field is required</p>
+																		<!-- <p class="error-message" *ngIf="instaPayForm.controls['custname'].hasError('minlength') && (instaPayForm.controls['custname'].dirty || instaPayForm.controls['IFSCCode'].touched)">custname Code length is short</p> -->
+																		<!-- <p class="error-message" *ngIf="!isIFSCChecked && (instaPayForm.controls['IFSCCode'].dirty || instaPayForm.controls['IFSCCode'].touched)">Please verify IFSC Code</p> -->
+
+																		</div>
+																	</div>
+
+																	<div class="row1">
+																		<div class="col-6 pr-2">
+																			<div class="text-center">
+																				<button class="ux-button sm secondary" (click)="instaPay('closeInstaPay')">{{"CLOSE" | translate}}</button>
+																			</div>
+																		</div>
+																		<div class="col-6 pl-2">
+																			<div class="text-center">
+																				<button class="ux-button sm primary" (click)="instaPay('instaProceed')">{{"PROCEED" | translate}}</button>
+																			</div>
+																		</div>
+																	</div>
+																	</div>
+																</form>
+																</div>
+															</div>
+														</div>
+														<!-- <div id="menu1" class="tab-pane fade">
+															<ul class="transaction-list2">
+																<li>
+																	<div class="full-info">
+																		<div class="left-info">
+																			<h5>20 Apr'18</h5>
+																			<h6>VPS/NMMT/2018042114610/00</h6> </div>
+																		<div class="left-info">
+																			<h5><img src="assets/images/svg/rupee-bl.svg" alt="rupee-icon"> 110.00 <span class="debit">Dr</span> </h5> </div>
+																	</div>
+																</li>
+																<li>
+																	<div class="full-info">
+																		<div class="left-info">
+																			<h5>20 Apr'18</h5>
+																			<h6>VPS/NMMT/2018042114610/00</h6> </div>
+																		<div class="left-info">
+																			<h5><img src="assets/images/svg/rupee-bl.svg" alt="rupee-icon"> 110.00 <span class="credit">Cr</span> </h5> </div>
+																	</div>
+																</li>
+															</ul>
+														</div> -->
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+									<div class="vspacer50"></div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!--.container-fluid-->
+			</div>
+			<!--.body-page-container-->
+		</div>
+		<!--.right-col-container-->
+	</div>
+	<!--.right-main-column-->
+</div>
+<!-- main -->

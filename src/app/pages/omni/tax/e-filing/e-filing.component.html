@@ -1,0 +1,176 @@
+<div class="main bg-m">
+  <div class="right-main-column ">
+    <div class="right-col-container pad-b full-width">
+      <div class="body-page-container main-dashborad manage-payee">
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col-12 p-0">
+              <div class="breadcrumb">
+                <ul class="lst-breadcrumb">
+                  <!-- <li> <a>Tax Centre</a> </li>
+									<li> e-Filing/Verification </li> -->
+                  <li *ngFor="let name of dataService.breadcrumblist">
+                    <a (click)="dataService.breadcrumroute(name.routeName)">{{name.currentRoute | translate}}</a>
+                  </li>
+
+                </ul>
+              </div>
+            </div>
+          </div>
+          <!--.row -->
+          <div class="vspacer15 customize d-none d-md-block d-lg-block d-xl-block"></div>
+          <div class="row no-gutters">
+            <div class="col-12">
+              <div class="row1">
+                <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-9">
+                  <!-- Greencard2 Start here -->
+                  <div class="greencard2">
+                    <div class="row1 hide-m">
+                      <div class="col-12">
+                        <h4>e-Filing/Verification</h4>
+                      </div>
+                    </div>
+                    <div class="row1">
+                      <div class="col-sm-12 col-12 col-md-12">
+                        <div class="widget-box5 mb-3">
+                          <div class="bg-white1 pad-custom tax-wrapper py-2">
+                            <div class="row1">
+                              <div class="col-md-12 col-12">
+                                <div id="accordion2" class="accordion-container parent-accordion">
+                                  <div class="card4 overflow-inherit">
+                                    <a class="card-link" data-toggle="collapse" href="#confirm" aria-expanded="false">
+                                      <div class="card-header3">
+                                        <div class="panel-title3">
+                                          <h4 class="black-h4">Confirm Details</h4>
+                                        </div> <em></em>
+                                      </div>
+                                    </a>
+                                    <div id="confirm" class="collapse show" data-parent="#accordion2">
+                                      <form [formGroup]="directTaxEfilingForm">
+                                        <div class="row1">
+                                          <div class="col-12 col-md-6 col-lg-4 col-xl-4">
+                                            <div class="ux-input">
+                                              <label>Account Number</label>
+                                              <select formControlName="accountNumber" (change)="getSelectedAccount($event.target.value)">
+												<option value="">{{'SELECT' | translate}}</option>
+                                                <option *ngFor="let account of accountList"
+                                                  [value]="account.accountNo">{{account.sbAccount}}</option>
+                                              </select>
+                                              <!-- <input type="text" value="{{accountNo}}" autocomplete="off" readonly> -->
+											  <p class="error-message" *ngIf="directTaxEfilingForm.controls['accountNumber'].hasError('required') && (directTaxEfilingForm.controls['accountNumber'].dirty || directTaxEfilingForm.controls['accountNumber'].touched)"> This field is required </p>
+                                            </div>
+                                          </div>
+                                          <div class="col-12 col-md-6 col-lg-4 col-xl-4">
+                                            <div class="ux-input ux-disabled">
+                                              <label>IFSC</label>
+                                              <input type="text" placeholder="" disabled="" value="{{ifscCode}}"
+                                                autocomplete="off">
+                                              <p class="error-message"></p>
+                                            </div>
+                                          </div>
+                                          <div class="col-12 col-md-6 col-lg-4 col-xl-4">
+                                            <div class="ux-input ux-disabled">
+                                              <label>PAN Number</label>
+                                              <input type="text" placeholder="" disabled="" value="{{panNumber}}"
+                                                autocomplete="off">
+                                              <p class="error-message"></p>
+                                            </div>
+                                          </div>
+                                        </div>
+                                        <div class="row1">
+                                          <div class="col-12 col-md-12">
+                                            <div class="ux-selection">
+                                              <div class="ux-selection1 p-0">
+                                                <label>I accept <a> Terms and Conditions</a>
+                                                  <input type="checkbox" required formControlName="termsCondition">
+                                                  <span class="checkmark"></span> </label>
+                                              </div>
+                                            </div>
+                                          </div>
+                                          <div class="col-12 col-md-12">
+                                            <div class="ux-input mt-0">
+                                              <p class="error-message"
+                                                *ngIf="directTaxEfilingForm.controls['termsCondition'].hasError('required') && (directTaxEfilingForm.controls['termsCondition'].dirty || directTaxEfilingForm.controls['termsCondition'].touched)">
+                                                This field is required </p>
+                                            </div>
+                                          </div>
+                                        </div>
+                                      </form>
+                                      <div class="row1">
+                                        <div class="col-12 col-md-12">
+                                          <p>To pay Direct Taxes through internet, do the following
+                                            <br />
+                                          </p>
+                                          <ol class="order-list">
+                                            <li>After clicking “Proceed” button, you will be leaving PSB Digital banking
+                                              and will be redirected to a third party website, which is not controlled
+                                              by the Bank. Bank will not be responsible/ liable for any action, dispute
+                                              etc which arises at the third party website. </li>
+                                            <li>The PAN along with your registered Email ID will be forwarded to third
+                                              party website.</li>
+                                            <li>In case the customer’s PAN is not available in Bank’s record, then
+                                              customer is requested to visit the nearest branch with a copy of PAN card
+                                              (along with original) for PAN Card Updation.</li>
+                                          </ol>
+                                        </div>
+                                      </div>
+                                      <div class="border-top-container">
+                                        <div class="row1">
+                                          <div class="col-12 col-md-12">
+                                            <ul class="bottom-footer1">
+                                              <li>
+                                                <div class="btn-div w100">
+                                                  <button class="ux-button primary sm-mob"
+                                                    (click)="directTaxSubmit()">Proceed</button>
+                                                </div>
+                                              </li>
+                                            </ul>
+                                          </div>
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <!-- greencard2 -->
+                </div>
+                <!-- col-12 col-sm-12 col-md-12 col-lg-12 col-xl-9 -->
+                <!-- Right Column Ads Start -->
+                <div class="col-12 col-md-12 col-lg-12 col-xl-3 d-none d-xl-block">
+                  <div class="right-ads">
+                    <a> <img src="assets/images/banner/my-card-banner.jpg"> </a>
+                  </div>
+                  <div class="vspacer30"></div>
+                  <!-- Offercard Start-->
+                  <!-- <div class="offers-card">
+                    <div class="header-block clearfix">
+                      <h5>Offers on your card</h5>
+                    </div>
+                    <div class="panel-body">
+                      <div class="recentpayment-control">
+                        <ul>
+                          <li> <img src="assets/images/banner/offer-banner.png"> </li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div> -->
+                  <!-- Offercard Ends-->
+                </div>
+                <!-- Right Column Ads Ends -->
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!--.right-col-container-->
+  </div>
+  <!--.right-main-column-->
+</div>
+<!-- main -->

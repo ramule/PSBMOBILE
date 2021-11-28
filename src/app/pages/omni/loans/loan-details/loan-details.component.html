@@ -1,0 +1,902 @@
+<div class="main bg-m">
+	<div class="nav-overlay"></div>
+	<div class="right-main-column">
+		<div class="right-col-container pad-b full-width">
+			<!-- ======== body page content start from here ======== -->
+			<div class="body-page-container">
+				<div class="container-fluid">
+					<div class="row">
+						<div class="col-12 p-0">
+							<div class="breadcrumb">
+								<ul class="lst-breadcrumb">
+									<li *ngFor="let name of dataService.breadcrumblist">
+                                        <a (click)="dataService.breadcrumroute(name.routeName)">{{name.currentRoute | translate}}</a>
+                                	</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+					<!--.row -->
+					<div class="vspacer15 customize d-none d-md-block d-lg-block d-xl-block"></div>
+					<div class="row no-gutters">
+						<div class="col-12">
+							<div class="row1">
+								<div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-9">
+									<!-- Greencard2 Start here -->
+									<div class="greencard2">
+										<div class="flex-container no-bg">
+											<div class="full-info">
+												<div class="row1">
+													<div class="col-12 col-md-10 col-lg-10 col-xl-10">
+														<div class="ac-info">
+															<div class="greenbg-input ux-input">
+																<label for="fromaccount" class="largeview-enable">{{'ACCOUNT' | translate}}</label>
+															</div>
+														</div>
+														<div class="ac-info">
+															<div class="greenbg-input ux-input">
+																<!-- <select required="" class="hide-m">
+																	<option value="select">Select</option>
+																	<option value="homeloan" selected>5438959834593</option>
+																	<option value="homeloan">5438959834593</option>
+																</select> -->
+																<select required="" class="hide-m" [(ngModel)]="selectedAccountNo" (change)=getSelectedAccount(selectedAccountNo)>
+																	<!-- <option value="select">Select</option> -->
+																	<option *ngFor="let item of totalAccountList" [value]="item.accountNo">{{selAccDtl?.SchemeCode}} {{item?.sbAccount}} </option>
+																	<!-- <option value="saving">Saving Account XXX XXX 9897</option> -->
+																</select>
+																<div class="custom-selectbox"> <span>{{selAccDtl?.schemeDescription}} {{selAccDtl?.sbAccount}} </span> <span class="right-arrow" (click)="openAccountList()" ></span> </div>
+																<!-- <div class="custom-selectbox"> <span>5438959834593</span> <span class="right-arrow"></span> </div> -->
+																<p class="error-message"></p>
+															</div>
+														</div>
+														<div class="ac-info hide-m">
+															<button class="refresh-btn" (click)="onRefresh()"><img src="assets/images/svg/refresh.svg" alt="refresh-icon" /></button> <span class="refresh-text"> Last refreshed on {{refreshDate}}</span> </div>
+													</div>
+													<!-- <div class="col-12 col-md-2 col-lg-2 col-xl-2 text-right pl-1">
+														<ul class="whitelink-list hide-m">
+															<li > <a class="lien-btn" (click)="goToPage('delinkAccount')">Delink Account</a> </li>
+														</ul>
+													</div> -->
+												</div>
+											</div>
+										</div>
+										<div class="row1">
+											<div class="col-12">
+												<div class="inner-whitecard custom-pad">
+													<h4 class="hide-m"> {{'ACC_BAL' | translate}}</h4>
+													<div class="" (click)="listExpander('balanceList')">
+														<ul class="accountinfo-grid">
+															<li [ngClass]="totalAvailableBalance ? 'active' : '' ">
+																<div class="grid-info">
+																	<div class="full-info">
+																		<div class="left-info">
+																			<h5>{{loanUserDtl?.loanAmount | customcurrency : 'symbol' : loanUserDtl.accountCurrencyCode}}</h5> </div>
+																		<div class="left-info">
+																			<h6> {{'TOTAL_LOAN_AMOUNT' | translate}}</h6> </div> <em></em> </div>
+																</div>
+																<div class="grid-info">
+																	<div class="full-info">
+																		<div class="left-info">
+																			<h5>{{loanUserDtl?.disbursedAmount | customcurrency : 'symbol' : loanUserDtl.accountCurrencyCode }}</h5> </div>
+																		<div class="left-info">
+																			<h6> {{'TOTAL_DISBURSED_AMOUNT' | translate}}</h6> </div>
+																	</div>
+																</div>
+																<div class="grid-info">
+																	<div class="full-info">
+																		<div class="left-info">
+																			<h5>{{loanUserDtl?.accountLiability | customcurrency : 'symbol' : loanUserDtl.accountCurrencyCode }}</h5> </div>
+																		<div class="left-info">
+																			<h6>  {{'TOTAL_OUTSTANDING_AMOUNT' | translate}}</h6> </div>
+																	</div>
+																</div>
+																<div class="grid-info">
+																	<div class="full-info">
+																		<div class="left-info">
+																			<h5>{{ overDueAmt | customcurrency : 'symbol' : loanUserDtl.accountCurrencyCode }}</h5> </div>
+																		<div class="left-info">
+																			<h6>{{'TOTAL_OVERDUE_AMOUNT' | translate}}</h6> </div>
+																	</div>
+																</div>
+															</li>
+														</ul>
+													</div>
+												</div>
+											</div>
+										</div>
+										<div class="row1">
+											<div class="col-12 text-right">
+												<div class="bottom-card-links2">
+													<div class="short-links box-shadow mar-b">
+														<div class="shortlink-control cust-p" [ngClass]="{'show-links': showListAccount }">
+															<div class="row">
+																<ul class="loan-service-list">
+																	<!-- <li (click)="openSelectedAccountList('miniStatement')" class="hide-d">
+																		<a>
+																			<div class="icon1"> <img src="assets/images/svg/manage-card.svg" alt="manage-card-icon" /> </div> <em> {{'MINI_STATEMENT' | translate}}</em> </a>
+																	</li> -->
+																	<li (click)="openSelectedAccountList('accountDetail')" class="hide-d">
+																		<a>
+																			<div class="icon1"> <img src="assets/images/svg/Account-Details.svg" alt="Account-Details-icon" /> </div> <em> {{'ACCOUNT_DETAILS' | translate}}</em> </a>
+																	</li>
+																	<!-- <li>
+																		<a>
+																			<div class="icon1"> <img src="assets/images/svg/manage-card.svg" alt="manage-card-icon" /> </div> <em> {{'E_Statement' | translate}}</em> </a>
+																	</li> -->
+																	<li *ngIf="!dataService.isLoanAccount" >
+																		<a (click)="goToPage('payEmi')" >
+																			<div class="icon1"> <img src="assets/images/svg/block-reissue-card.svg" alt="block-reissue-card-icon" /> </div> <em>{{'PAY_EMI' | translate}}</em> </a>
+																	</li>
+																	<li>
+																		<a (click)="goToPage('loanRepaymentSchedule')">
+																			<div class="icon1"> <img src="assets/images/svg/hotlist-card.svg" alt="hotlist-card-icon" /> </div> <em> {{'VIEW_REPAYMENT_SCHEDULE' | translate}}</em> </a>
+																	</li>
+																	<!-- <li>
+																		<a href="loan-closure.html" class="remove-btn">
+																			<div class="icon1"> <img src="assets/images/svg/re-generate-pin.svg" alt="re-generate-pin-icon" /> </div> <em>Loan Closure / pre-Closure</em> </a>
+																	</li> -->
+																	<!-- <li>
+																		<a (click)="goToPage('standingInstruction')">
+																			<div class="icon1"> <img src="assets/images/svg/upgrade-card.svg" alt="upgrade-card-icon" /> </div> <em>Standing Instruction</em> </a>
+																	</li> -->
+																	<li>
+																		<a (click)="goToPage('loanDetailedStatement')">
+																			<div class="icon1"> <img src="assets/images/svg/get-physical-card.svg" alt="get-physical-card-icon" /> </div> <em> {{'DETAILED_STATEMENT' | translate}}</em> </a>
+																	</li>
+																	<li class="hide-d">
+																		<!-- <a class="interest-btn" (click)="openPopup('interestCertificate')" > -->
+																			<a class="interest-btn" (click)="openPopup('interestCertificate')" >
+																			<div class="badge2 commingSoonMob">Coming Soon</div>
+																			<div class="icon1"> <img src="assets/images/svg/manage-card.svg" alt="offers-icon" /> </div> <em> {{'LOAN_INTEREST_CERTIFICATE' | translate}}</em> </a>
+																	</li>
+																	<li class="hide-d">
+																		<!-- <a class="bal-btn" (click)="openPopup('balanceEnquiry')"> -->
+																		<!-- <a class="bal-btn" (click)="provisionalCertificate()"> -->
+																			<a class="bal-btn">
+																				<div class="badge2 commingSoonMob">Coming Soon</div>
+																			<!-- <div class="icon1"> <img src="assets/images/svg/manage-card.svg" alt="offers-icon" /> </div> <em>Balance Certificate</em> </a> -->
+																			<div class="icon1"> <img src="assets/images/svg/manage-card.svg" alt="offers-icon" /> </div> <em>Loan Provisional</em> </a>
+																	</li>
+																	<!-- <li class="hide-d">
+																		<a class="bal-btn" (click)="goToPage('delinkAccount')">
+																			<div class="icon1"> <img src="assets/images/svg/manage-card.svg" alt="offers-icon" /> </div> <em>Delink Account </em> </a>
+																	</li> -->
+																</ul>
+															</div>
+														</div>
+														<div class="shortlinks-expander" [ngClass]="{'active': showListAccount == false }">
+															<a href="javascript:;" (click)="listExpander('list')"><img src="assets/images/icons/arrow-down-r.png" /></a>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+										<div class="dt-accounts transparent-bg mb-0 acc-info1">
+											<div class="widget-box5 mar-b">
+												<div class="show-div" id="mini-statement" [ngStyle]="{display :  selectionValue == 'miniStatement' ? 'block' : 'none' }">
+													<div class="row1">
+														<div class="col-sm-12 col-12 col-md-12">
+															<div class="widget-box5 border-n overflow mb-0 br-m">
+																<div class="component-title6 custom-pad d-none d-md-block d-lg-block d-xl-block">
+																	<div class="row1">
+																		<div class="col-12 col-md-3 col-lg-3 col-xl-3 d-none d-md-block d-lg-block d-xl-block">
+																			<h4 class="default-grey">{{'MINI_STATEMENT' | translate}}</h4> </div>
+																		<div class="col-12 col-md-9 col-lg-9 col-xl-9">
+																			<ul class="link-list2 hide-m">
+																				<li>
+																					<div class="badge2 commingSoon">Coming Soon</div>
+																					<a ><img src="assets/images/svg/share.svg" alt="share-icon" />{{'LOAN_INTEREST_CERTIFICATE' | translate}}</a><!--(click)="openPopup('interestCertificate')"-->
+																				</li>
+																				<li>
+																					<div class="badge2 commingSoon">Coming Soon</div>
+																					<!-- <a (click)="openPopup('balanceEnquiry')"><img src="assets/images/svg/share.svg" alt="share-icon" />Balance Certificate</a> -->
+																					<!-- <a (click)="dwnldBalanceCertificate()"><img src="assets/images/svg/share.svg" alt="share-icon" />Balance Certificate</a> -->
+																					<a (click)="provisionalCertificate()"><img src="assets/images/svg/share.svg" alt="share-icon" /> {{'LOAN_PROVISIONAL_CERTIFICATE' | translate}}</a>
+																				</li>
+																				<li>
+																					<a (click)="generatePDF()"><img src="assets/images/svg/download.svg" alt="download-icon" />{{'DOWNLOAD' | translate}}</a>
+																				</li>
+																				<li>
+																					<a (click)="generatePDF(true)"> <img src="assets/images/svg/print.svg" alt="print-icon" />{{'PRINT' | translate}}</a>
+																				</li>
+																			</ul>
+																		</div>
+																	</div>
+																</div>
+																<div class="bg-white1 bg-n pt-0">
+																	<div class="row">
+																		<ul class="grid-list3 nb-m">
+																			<li class="grey-th">
+																				<div class="grid-info">
+																					<div class="full-info">
+																						<h5 class="hide-d">{{'MINI_STATEMENT' | translate}}</h5>
+																						<h6 class="hide-m"> {{'TRANSACTION_DATE' | translate}}   </h6> </div>
+																				</div>
+																				<div class="grid-info">
+																					<div class="full-info">
+																						<h6> {{'TRANSACTION_REFERENCE' | translate}}</h6> </div>
+																				</div>
+																				<div class="grid-info">
+																					<div class="full-info">
+																						<h6>CR/DR</h6> </div>
+																				</div>
+																				<div class="grid-info">
+																					<div class="full-info">
+																						<button (click)="generatePDF()" class="ux-linkbutton link-text primary hide-d"> <img src="assets/images/svg/download.svg" />  {{'DOWNLOAD' | translate}}</button>
+																						<h6 class="hide-m"> {{'AMOUNT' | translate}}  ({{currency}})</h6> </div>
+																				</div>
+																			</li>
+																			<li *ngFor="let item of loanMiniStatemnt">
+
+																				<div class="grid-info">
+																					<div class="full-info">
+																						<h5>{{item.TransactionDate}}</h5> <em class="d-block d-md-none">{{item.transactionParticulars}}</em> </div>
+																				</div>
+																				<div class="grid-info">
+																					<div class="full-info">
+																						<h5>{{item.transactionParticulars}}</h5> </div>
+																				</div>
+																				<div class="grid-info">
+																					<div class="full-info">
+																						<h5 class="debit-text" *ngIf="item.TransactionType == 'D'">Dr</h5>
+																						<h5 class="credit-text" *ngIf="item.TransactionType == 'C'">Cr</h5>
+																					</div>
+																				</div>
+																				<div class="grid-info">
+																					<div class="full-info">
+																						<h5  *ngIf="recordNotFound == ''">{{item.TransactionAmount | customcurrency : 'symbol' : selAccDtl.currency }}
+																							<span class="debit-text show-m" *ngIf="item.TransactionType == 'D'" >Dr</span>
+																							<span class="credit-text show-m" *ngIf="item.TransactionType == 'C'" >Cr</span>
+																						</h5> </div>
+																				</div>
+
+																			</li>
+																			<li *ngIf="loanMiniStatemnt != undefined && loanMiniStatemnt.length == 0" class="ng-star-inserted d-block p-5">
+																				<h5 class="text-center" >No Records Found</h5>
+																			</li>
+																			<li *ngIf="recordNotFound != '' " class="ng-star-inserted d-block p-5">
+																				<h5 class="text-center" >{{recordNotFound}} </h5>
+																			</li>
+																			<!-- <li>
+																				<div class="grid-info">
+																					<div class="full-info">
+																						<h5>24/09/2020</h5> <em class="d-block d-md-none">0657576446, EMI, IMPS</em> </div>
+																				</div>
+																				<div class="grid-info">
+																					<div class="full-info">
+																						<h5>0657576446, EMI, IMPS</h5> </div>
+																				</div>
+																				<div class="grid-info">
+																					<div class="full-info">
+																						<h5 class="debit-text">DR</h5> </div>
+																				</div>
+																				<div class="grid-info">
+																					<div class="full-info">
+																						<h5><img src="assets/images/svg/rupee-bl.svg" alt="rupee-icon" /> 1,000 <span class="credit-text show-m">DR</span></h5> </div>
+																				</div>
+																			</li>
+																			<li>
+																				<div class="grid-info">
+																					<div class="full-info">
+																						<h5>24/09/2020</h5> <em class="d-block d-md-none">0657576446, EMI, IMPS</em> </div>
+																				</div>
+																				<div class="grid-info">
+																					<div class="full-info">
+																						<h5>0657576446, EMI, IMPS</h5> </div>
+																				</div>
+																				<div class="grid-info">
+																					<div class="full-info">
+																						<h5 class="credit-text">DR</h5> </div>
+																				</div>
+																				<div class="grid-info">
+																					<div class="full-info">
+																						<h5><img src="assets/images/svg/rupee-bl.svg" alt="rupee-icon" /> 1,000 <span class="debit-text show-m">CR</span></h5> </div>
+																				</div>
+																			</li>
+																			<li>
+																				<div class="grid-info">
+																					<div class="full-info">
+																						<h5>24/09/2020</h5> <em class="d-block d-md-none">0657576446, EMI, IMPS</em> </div>
+																				</div>
+																				<div class="grid-info">
+																					<div class="full-info">
+																						<h5>0657576446, EMI, IMPS</h5> </div>
+																				</div>
+																				<div class="grid-info">
+																					<div class="full-info">
+																						<h5 class="debit-text">DR</h5> </div>
+																				</div>
+																				<div class="grid-info">
+																					<div class="full-info">
+																						<h5><img src="assets/images/svg/rupee-bl.svg" alt="rupee-icon" /> 1,000 <span class="credit-text show-m">DR</span></h5> </div>
+																				</div>
+																			</li>
+																			<li>
+																				<div class="grid-info">
+																					<div class="full-info">
+																						<h5>24/09/2020</h5> <em class="d-block d-md-none">0657576446, EMI, IMPS</em> </div>
+																				</div>
+																				<div class="grid-info">
+																					<div class="full-info">
+																						<h5>0657576446, EMI, IMPS</h5> </div>
+																				</div>
+																				<div class="grid-info">
+																					<div class="full-info">
+																						<h5 class="credit-text">DR</h5> </div>
+																				</div>
+																				<div class="grid-info">
+																					<div class="full-info">
+																						<h5>₹ 1,000 <span class="debit-text show-m">CR</span></h5> </div>
+																				</div>
+																			</li>
+																			<li>
+																				<div class="grid-info">
+																					<div class="full-info">
+																						<h5>24/09/2020</h5> <em class="d-block d-md-none">0657576446, EMI, IMPS</em> </div>
+																				</div>
+																				<div class="grid-info">
+																					<div class="full-info">
+																						<h5>0657576446, EMI, IMPS</h5> </div>
+																				</div>
+																				<div class="grid-info">
+																					<div class="full-info">
+																						<h5 class="debit-text">DR</h5> </div>
+																				</div>
+																				<div class="grid-info">
+																					<div class="full-info">
+																						<h5><img src="assets/images/svg/rupee-bl.svg" alt="rupee-icon" /> 1,000 <span class="credit-text show-m">DR</span></h5> </div>
+																				</div>
+																			</li>
+																			<li>
+																				<div class="grid-info">
+																					<div class="full-info">
+																						<h5>24/09/2020</h5> <em class="d-block d-md-none">0657576446, EMI, IMPS</em> </div>
+																				</div>
+																				<div class="grid-info">
+																					<div class="full-info">
+																						<h5>0657576446, EMI, IMPS</h5> </div>
+																				</div>
+																				<div class="grid-info">
+																					<div class="full-info">
+																						<h5 class="credit-text">DR</h5> </div>
+																				</div>
+																				<div class="grid-info">
+																					<div class="full-info">
+																						<h5><img src="assets/images/svg/rupee-bl.svg" alt="rupee-icon" /> 1,000 <span class="debit-text show-m">CR</span></h5> </div>
+																				</div>
+																			</li>
+																			<li>
+																				<div class="col-12">
+																					<div class="row mt-3 mb-2">
+																						<div class="col-12 col-lg-6 col-md-6 col-sm-6 px-0 d-none d-sm-none d-xl-block d-lg-block d-md-block">
+																							<div id="dt-sample_wrapper" class="dataTables_wrapper dt-bootstrap4 no-footer">
+																								<div class="dataTables_info pt-2" id="dt-sample_info" role="status" aria-live="polite">Showing 1 to 2 of <b>2</b> entries</div>
+																							</div>
+																						</div>
+																						<div class="col-12 col-lg-6 col-md-6 px-0 d-none d-sm-none d-xl-block d-lg-block d-md-block text-right">
+																							<div class="custom-paging">
+																								<div class="dataTables_wrapper">
+																									<div class="dataTables_paginate">
+																										<ul class="pagination">
+																											<li class="page-item previous disabled"> <a href="javascript:;" class="page-link">Previous</a> </li>
+																											<li class="page-item active"> <a href="javascript:;" class="page-link">1</a> </li>
+																											<li class="page-item"> <a href="javascript:;" class="page-link">2</a> </li>
+																											<li class="page-item next"> <a href="javascript:;" class="page-link">Next</a> </li>
+																										</ul>
+																									</div>
+																								</div>
+																							</div>
+																						</div>
+																					</div>
+																				</div>
+																			</li> -->
+																		</ul>
+																	</div>
+																</div>
+															</div>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+									<!-- Greencard2 End here -->
+								</div>
+								<div class="col-12 col-md-12 col-lg-12 col-xl-3">
+									<div class="row1">
+										<div class="col-xl-12 col-lg-6 col-md-12 col-12">
+											<div class="show-div inner-right-block account-details d-sm-block" id="account-detail"  [ngStyle]="{display :  selectionValue == 'accountDetail'  ? 'block' : 'none' }">
+												<div class="header-block clearfix">
+													<h5>Account Details</h5>
+													<a (click)="shareAccount()" class="share-btn right-icon">
+														<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 16 16" style="enable-background: new 0 0 16 16;" xml:space="preserve">
+															<g>
+																<path class="st0" d="M12.8,5c-1.4,0-2.5-1.1-2.5-2.5s1.1-2.5,2.5-2.5c1.4,0,2.5,1.1,2.5,2.5c0,0,0,0,0,0C15.3,3.9,14.2,5,12.8,5z
+                                                                        M12.8,1.1c-0.8,0-1.5,0.7-1.5,1.5C11.3,3.4,12,4,12.8,4c0.8,0,1.5-0.7,1.5-1.5c0,0,0,0,0,0C14.3,1.7,13.6,1.1,12.8,1.1L12.8,1.1z" />
+																<path class="st0" d="M12.8,15.9c-1.4,0-2.5-1.1-2.5-2.5s1.1-2.5,2.5-2.5c1.4,0,2.5,1.1,2.5,2.5l0,0C15.3,14.8,14.2,15.9,12.8,15.9z
+                                                                        M12.8,12c-0.8,0-1.5,0.7-1.5,1.5c0,0.8,0.7,1.5,1.5,1.5c0.8,0,1.5-0.7,1.5-1.5c0,0,0,0,0,0C14.3,12.6,13.6,12,12.8,12L12.8,12z" />
+																<path class="st0" d="M3.2,10.5c-1.4,0-2.5-1.1-2.5-2.5c0-1.4,1.1-2.5,2.5-2.5S5.7,6.6,5.7,8l0,0C5.7,9.4,4.6,10.5,3.2,10.5z
+                                                                        M3.2,6.5C2.4,6.5,1.7,7.2,1.7,8c0,0.8,0.7,1.5,1.5,1.5C4,9.5,4.7,8.8,4.7,8C4.7,7.2,4,6.5,3.2,6.5L3.2,6.5z" />
+																<path class="st0" d="M4.9,7.5C4.7,7.5,4.4,7.3,4.4,7c0-0.2,0.1-0.3,0.3-0.4l6.1-3.5C11,3,11.4,3.1,11.5,3.3
+                                                                        c0.1,0.2,0.1,0.5-0.2,0.7L5.2,7.5C5.1,7.5,5,7.5,4.9,7.5L4.9,7.5z" />
+																<path class="st0" d="M11.1,13c-0.1,0-0.2,0-0.2-0.1L4.7,9.4C4.5,9.3,4.4,9,4.5,8.7c0.1-0.2,0.4-0.3,0.7-0.2l6.1,3.5
+                                                                        c0.2,0.1,0.3,0.4,0.2,0.7C11.4,12.9,11.2,13,11.1,13L11.1,13z" /> </g>
+														</svg>   {{"SHARE" | translate}} </a>
+												</div>
+												<ul class="account-list">
+													<li>
+														<div class="full-container">
+															<div class="full-info2">
+																<div class="left-info check">
+																	<div class="ux-selection share-info" [ngClass]="showShare ? 'active' : ''  ">
+																		<label class="ux-selection1">
+																			<input type="checkbox" name="customer-name" [checked]="shareDtl.custName" (change)="shareDtl.custName = !shareDtl.custName" /> <span class="checkmark"></span> </label>
+																	</div>
+																	<h6>{{"CUSTOMER_NAME" | translate}}</h6>
+																	<h5>{{loanUserDtl?.accountName}}</h5> </div>
+															</div>
+														</div>
+														<div class="full-container">
+															<div class="ux-input mt-0 mb-0">
+																<p class="error-message"></p>
+															</div>
+														</div>
+													</li>
+													<li>
+														<div class="full-container">
+															<div class="full-info2">
+																<div class="left-info check">
+																	<div class="ux-selection share-info" [ngClass]="showShare ? 'active' : ''  " >
+																		<label class="ux-selection1">
+																			<input type="checkbox" name="loan-acc-number" [checked]="shareDtl.loanAccNo" (change)="shareDtl.loanAccNo = !shareDtl.loanAccNo" /> <span class="checkmark"></span> </label>
+																	</div>
+																	<h6> {{"LOAN_ACCOUNT_NUMBER" | translate}}</h6>
+																	<h5>{{selAccDtl?.accountNo}}</h5> </div>
+															</div>
+														</div>
+														<div class="full-container">
+															<div class="ux-input mt-0 mb-0">
+																<p class="error-message"></p>
+															</div>
+														</div>
+													</li>
+													<li>
+														<div class="full-container">
+															<div class="full-info2">
+																<div class="left-info check">
+																	<div class="ux-selection share-info" [ngClass]="showShare ? 'active' : ''  ">
+																		<label class="ux-selection1">
+																			<input type="checkbox" name="loan-type" [checked]="shareDtl.loanType" (change)="shareDtl.loanType = !shareDtl.loanType" /> <span class="checkmark"></span> </label>
+																	</div>
+																	<h6> {{"LOAN_TYPE" | translate}}</h6>
+																	<h5>{{selAccDtl?.accountType}} - {{selAccDtl?.schemeDescription}}</h5> </div>
+															</div>
+														</div>
+														<div class="full-container">
+															<div class="ux-input mt-0 mb-0">
+																<p class="error-message"></p>
+															</div>
+														</div>
+													</li>
+													<li>
+														<div class="full-container">
+															<div class="full-info2">
+																<div class="left-info check">
+																	<div class="ux-selection share-info" [ngClass]="showShare ? 'active' : ''  " >
+																		<label class="ux-selection1">
+																			<input type="checkbox" name="account-type" [checked]="shareDtl.accStatus" (change)="shareDtl.accStatus = !shareDtl.accStatus" > <span class="checkmark"></span> </label>
+																	</div>
+																	<h6> {{"ACCOUNT_STATUS" | translate}}</h6>
+																	<h5>{{loanUserDtl?.accountStatus == "O" ? "Open" : "Close"}}</h5> </div>
+															</div>
+														</div>
+														<div class="full-container">
+															<div class="ux-input mt-0 mb-0">
+																<p class="error-message"></p>
+															</div>
+														</div>
+													</li>
+													<li>
+														<div class="full-container">
+															<div class="full-info2">
+																<div class="left-info check">
+																	<div class="ux-selection share-info" [ngClass]="showShare ? 'active' : ''  " >
+																		<label class="ux-selection1">
+																			<input type="checkbox" name="branch-address" [checked]="shareDtl.branchAddress" (change)="shareDtl.branchAddress = !shareDtl.branchAddress" /> <span class="checkmark"></span> </label>
+																	</div>
+																	<h6> {{"BRANCH_ADDRESS" | translate}}</h6>
+																	<h5>{{loanUserDtl?.BRANCHADDRESS}}</h5> </div>
+															</div>
+														</div>
+														<div class="full-container">
+															<div class="ux-input mt-0 mb-0">
+																<p class="error-message"></p>
+															</div>
+														</div>
+													</li>
+													<li>
+														<div class="full-container">
+															<div class="full-info2">
+																<div class="left-info check">
+																	<div class="ux-selection share-info" [ngClass]="showShare ? 'active' : ''  " >
+																		<label class="ux-selection1">
+																			<input type="checkbox" name="ifsc-code" [checked]="shareDtl.ifsc" (change)="shareDtl.ifsc = !shareDtl.ifsc" /> <span class="checkmark"></span> </label>
+																	</div>
+																	<h6> {{"IFSC_CODE" | translate}}</h6>
+																	<h5>{{loanUserDtl?.ifscCode}}</h5> </div>
+															</div>
+														</div>
+														<div class="full-container">
+															<div class="ux-input mt-0 mb-0">
+																<p class="error-message"></p>
+															</div>
+														</div>
+													</li>
+													<li>
+														<div class="full-container">
+															<div class="full-info2">
+																<div class="left-info check">
+																	<div class="ux-selection share-info" [ngClass]="showShare ? 'active' : ''  " >
+																		<label class="ux-selection1">
+																			<input type="checkbox" name="ifsc-code" [checked]="shareDtl.custId" (change)="shareDtl.custId = !shareDtl.custId" /> <span class="checkmark"></span> </label>
+																	</div>
+																	<h6>{{"CUTOMER_ID" | translate}}</h6>
+																	<h5>{{loanUserDtl?.customerID}}</h5> </div>
+															</div>
+														</div>
+														<div class="full-container">
+															<div class="ux-input mt-0 mb-0">
+																<p class="error-message"></p>
+															</div>
+														</div>
+													</li>
+													<li>
+														<div class="full-container">
+															<div class="full-info2">
+																<div class="left-info check">
+																	<div class="ux-selection share-info" [ngClass]="showShare ? 'active' : ''  " >
+																		<label class="ux-selection1">
+																			<input type="checkbox" name="loan-open-date" [checked]="shareDtl.loanOpenDate" (change)="shareDtl.loanOpenDate = !shareDtl.loanOpenDate" /> <span class="checkmark"></span> </label>
+																	</div>
+																	<h6> {{"LOAN_OPEN_DATE" | translate}}</h6>
+																	<h5>{{loanUserDtl?.accountOpenDate}}</h5> </div>
+															</div>
+														</div>
+														<div class="full-container">
+															<div class="ux-input mt-0 mb-0">
+																<p class="error-message"></p>
+															</div>
+														</div>
+													</li>
+													<li>
+														<div class="full-container">
+															<div class="full-info2">
+																<div class="left-info check">
+																	<div class="ux-selection share-info" [ngClass]="showShare ? 'active' : ''  " >
+																		<label class="ux-selection1">
+																			<input type="checkbox" name="mode" [checked]="shareDtl.modeOfOpp" (change)="shareDtl.modeOfOpp = !shareDtl.modeOfOpp" /> <span class="checkmark"></span> </label>
+																	</div>
+																	<h6> {{"MODE_OPERATION" | translate}}</h6>
+																	<h5>{{selAccDtl?.accountHoldeType | titlecase}}</h5> </div>
+															</div>
+														</div>
+														<div class="full-container">
+															<div class="ux-input mt-0 mb-0">
+																<p class="error-message"></p>
+															</div>
+														</div>
+													</li>
+													<!-- <li>
+														<div class="full-container">
+															<div class="full-info2">
+																<div class="left-info check">
+																	<div class="ux-selection share-info">
+																		<label class="ux-selection1">
+																			<input type="checkbox" name="emi" /> <span class="checkmark"></span> </label>
+																	</div>
+																	<h6>Total Number of EMIs</h6>
+																	<h5>{{loanUserDtl?.repaymentPeriodMonthsComponent}}</h5> </div>
+															</div>
+														</div>
+														<div class="full-container">
+															<div class="ux-input mt-0 mb-0">
+																<p class="error-message"></p>
+															</div>
+														</div>
+													</li> -->
+													<li>
+														<div class="full-container">
+															<div class="full-info2">
+																<div class="left-info check">
+																	<div class="ux-selection share-info" [ngClass]="showShare ? 'active' : ''  " >
+																		<label class="ux-selection1">
+																			<input type="checkbox" name="roi" [checked]="shareDtl.interestRate" (change)="shareDtl.interestRate = !shareDtl.interestRate" /> <span class="checkmark"></span> </label>
+																	</div>
+																	<h6>{{"INTEREST_RATE" | translate}}</h6>
+																	<h5>{{loanUserDtl?.interest_Rate}}%</h5> </div>
+															</div>
+														</div>
+														<div class="full-container">
+															<div class="ux-input mt-0 mb-0">
+																<p class="error-message"></p>
+															</div>
+														</div>
+													</li>
+													<li>
+														<div class="full-container">
+															<div class="full-info2">
+																<div class="left-info check">
+																	<div class="ux-selection share-info" [ngClass]="showShare ? 'active' : ''  " >
+																		<label class="ux-selection1">
+																			<input type="checkbox" name="roi"  [checked]="shareDtl.lrp" (change)="shareDtl.lrp = !shareDtl.lrp" /> <span class="checkmark"></span> </label>
+																	</div>
+																	<h6>{{"LOAN_REPAYMENT_PERIOD" | translate}}</h6>
+																	<h5>{{loanUserDtl?.repaymentPeriodMonthsComponent}} Months</h5> </div>
+															</div>
+														</div>
+														<div class="full-container">
+															<div class="ux-input mt-0 mb-0">
+																<p class="error-message"></p>
+															</div>
+														</div>
+													</li>
+													<li>
+														<div class="full-container">
+															<div class="full-info2">
+																<div class="left-info">
+																	<a class="ux-linkbutton link-text sm-text primary"  (click)="goToPage('borrowerGuarantorDetails')"> <img src="assets/images/svg/Deposit_Icon.svg" alt="deposit-con" /> Joint Holders & Guarantor Details  </a>
+																</div>
+															</div>
+														</div>
+													</li>
+													<!-- <li>
+														<div class="full-container">
+															<div class="full-info2">
+																<div class="left-info">
+																	<button class="ux-linkbutton link-text sm-text primary" (click)="goToPage('jointHolderDetails')">
+																		<img src="assets/images/svg/Deposit_Icon.svg" alt="joint-holder-icon">Joint Holder Details
+																	</button>
+																</div>
+															</div>
+														</div>
+													</li> -->
+													<li class="btn-section" style="display: none;">
+														<div class="full-container">
+															<div class="row1">
+																<div class="col-6 col-md-6">
+																	<button class="cancel-btn ux-button secondary sm-mob" (click)="cancelShare()" >Cancel</button>
+																</div>
+																<div class="col-6 col-md-6">
+																	<button class="submit-info ux-button primary sm-mob" (click)="submitShare()" >{{ 'SUBMIT' | translate }}</button>
+																</div>
+															</div>
+														</div>
+													</li>
+												</ul>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!--.right-col-container-->
+	</div>
+	<!--.right-main-column-->
+</div>
+<!-- main -->
+<!-- Lien enquiry Modal Starts-->
+<div class="popup-bottom md-popup confirmation1 lien-enquiry">
+	<div class="row1">
+		<div class="col-12">
+			<h4 class="text-center">Lien Enquiry</h4> </div>
+	</div>
+	<div class="lien-enquiry-list">
+		<div class="row1">
+			<div class="col-4">
+				<label>Lien Type</label>
+				<h6>Lorem Ipsum</h6> </div>
+			<div class="col-4">
+				<label>Expiry Date</label>
+				<h6>24 Oct 2021</h6> </div>
+			<div class="col-4">
+				<label>Lien Amount</label>
+				<h6>5,000</h6> </div>
+			<div class="col-4">
+				<label>Remarks</label>
+				<h6>Lorem Ipsum</h6> </div>
+			<div class="col-4">
+				<label>Reason</label>
+				<h6>Lorem Ipsum</h6> </div>
+		</div>
+	</div>
+	<div class="row1">
+		<div class="col-12 text-center">
+			<button class="ux-button primary no md close-btn"  (click)="closePopUp()" >Ok</button>
+		</div>
+	</div>
+</div>
+<!-- Lien enquiry Modal ends-->
+<!-- Select Accounts Popup Start-->
+<div class="popup-bottom sel-account">
+	<div class="row1">
+		<div class="col-10">
+			<h4> {{"SELECT_FROM_ACCOUNT" | translate}}</h4> </div>
+		<div class="col-2">
+			<button class="ux-button-icon close-btn"> <img src="assets/images/svg/close-b.svg" alt="cross-icon" class="img-vsmall" /> </button>
+		</div>
+	</div>
+	<div class="row1">
+		<div class="col-12">
+			<div class="row1">
+				<div class="col-12 col-md-12" *ngFor="let item of totalAccountList">
+					<div class="ux-selection mar-custom">
+						<label class="ux-selection2"> {{item.schemeDescription}}: {{item.sbAccount}}
+							<input type="radio" [value]="item.accountNo" name="upi-account" [checked]="selectedAccountNo == item?.accountNo ? true : false" [(ngModel)]="selectedAccountNo" [ngModelOptions]="{standalone: true}" > <span class="checkmark"></span> </label>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="row mt-2">
+		<div class="col-12 text-center">
+			<button class="ux-button primary submit-btn2"  (click)="closePopUp('selectAcc')" >Submit</button>
+		</div>
+	</div>
+</div>
+<!-- Select Accounts Popup End-->
+<!-- Lien enquiry Modal Starts-->
+<div class="popup-bottom md-popup lien-enquiry-popup">
+	<div class="row1">
+		<div class="col-12">
+			<h4 class="text-center">Lien Enquiry</h4> </div>
+	</div>
+	<div class="row1">
+		<div class="col-12">
+			<div class="result-container2">
+				<div class="info-bottom">
+					<div class="info-details">
+						<div class="row">
+							<h6>Lien Type</h6>
+							<h5>Lorem Ipsum</h5> </div>
+					</div>
+					<div class="info-details">
+						<div class="row">
+							<h6>Expiry Date</h6>
+							<h5>24 Oct 2021</h5> </div>
+					</div>
+					<div class="info-details">
+						<div class="row">
+							<h6>Lien Amount</h6>
+							<h5>₹ 5,000</h5> </div>
+					</div>
+					<div class="info-details">
+						<div class="row">
+							<h6>Remarks</h6>
+							<h5>Lorem Ipsum</h5> </div>
+					</div>
+					<div class="info-details">
+						<div class="row">
+							<h6>Reason</h6>
+							<h5>Lorem Ipsum</h5> </div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="row1">
+		<div class="col-12 text-center">
+			<button class="ux-button primary no md close-btn"  (click)="closePopUp()">Ok</button>
+		</div>
+	</div>
+</div>
+<!-- Lien enquiry Modal ends-->
+<!-- Balance Certificate Popup Start-->
+<!-- <div class="popup-bottom sm-popup balance-popup">
+
+	<div class="row1">
+		<div class="col-10">
+			<h4 class="text-center">Balance Certificate</h4>
+    </div>
+		<div class="col-2">
+			<button class="ux-button-icon close-btn"  (click)="closePopUp()"> <img src="assets/images/svg/close-b.svg" alt="cross-icon" class="img-vsmall" /> </button>
+		</div>
+	</div>
+	<form [formGroup]="balanceCertificateForm">
+	<div class="row1">
+		<div class="col-12">
+			<div class="ux-input">
+				<label for="accountNumber">Account Number</label>
+        <input type="text" formControlName="accNo" disabled>
+				<p class="error-message"></p>
+			</div>
+		</div>
+		<div class="col-12">
+			<div class="ux-input">
+				<label for="period">Period</label>
+				<select formControlName="period">
+					<option value="">Select Period</option>
+					<option *ngFor="let item of assessmentYearList" [value]="item.configVal">{{item.configVal}}</option>
+				</select>
+				<p class="error-message"></p>
+			</div>
+		</div>
+	</div>
+</form>
+	<div class="row1 mt-2 set-btn">
+		<div class="col-12 col-md-6 text-center hide-m">
+			<button class="ux-button secondary sm-mob" (click)="closePopUp()" >Cancel</button>
+		</div>
+		<div class="col-12 col-md-6 text-center">
+			<button class="ux-button primary sm-mob" [disabled]="balanceCertificateForm.invalid" (click)="dwnldBalanceCertificate()">Download</button>
+		</div>
+	</div>
+</div> -->
+<!-- Balance Certificate Popup End-->
+<!-- Intrest Certificate Popup Start-->
+<div class="popup-bottom sm-popup interest-popup">
+	<div class="row1">
+		<div class="col-10">
+			<h4 class="text-left"> {{"LOAN_INTEREST_CERTIFICATE" | translate}}</h4> </div>
+		<div class="col-2">
+			<button class="ux-button-icon close-btn"  (click)="closePopUp()"> <img src="assets/images/svg/close-b.svg" alt="cross-icon" class="img-vsmall" /> </button>
+		</div>
+	</div>
+	<form [formGroup]="interestCertificateForm">
+	<div class="row1">
+		<div class="col-12">
+			<div class="ux-input">
+				<label for="accountNumber"> {{"ACCOUNT_NUMBER" | translate}}</label>
+				<!-- <select required formControlName="accNo">
+					<option value="">Select Account Number</option>
+					<option *ngFor="let item of totalAccountList" [value]="item.accountNo">{{item.schemeDescription}} {{item.sbAccount}} </option>
+				</select> -->
+        <input type="text" formControlName="accNo" disabled>
+				<p class="error-message"></p>
+			</div>
+		</div>
+		<div class="col-12">
+			<div class="ux-input">
+				<label for="period">  {{"PERIOD" | translate}}</label>
+				<select required formControlName="period" (change)="selectedrop($event)">
+					<option value=""> {{"SELECT_PERIOD" | translate}}</option>
+					<option *ngFor="let item of assessmentYearList" [value]="item.configVal" >{{item.configVal}}</option>
+				</select>
+				<p class="error-message"></p>
+			</div>
+		</div>
+	</div>
+</form>
+	<div class="row1 mt-2 set-btn">
+		<div class="col-12 col-md-6 text-center hide-m">
+			<button class="ux-button secondary sm-mob" >View</button>
+		</div>
+		<div class="col-12 col-md-6 text-center">
+			<button class="ux-button primary sm-mob" [disabled]="interestCertificateForm.invalid" (click)="dnldInterestCertificateSecond()"  >Download</button>
+		</div>
+	</div>
+</div>
+<!-- Intrest Certificate Certificate Popup End-->
+
+<!-- Success Popup Start -->
+<div class="popup-bottom success-popup">
+	<div class="row mt-3">
+		<div class="success"> <img src="assets/images/svg/check.svg" alt="success-icon" />
+			<h3>Success</h3>
+			<h5>Account Details shared Successfully</h5> </div>
+	</div>
+	<div class="row1 mt-3">
+		<div class="col-12 text-center">
+			<button class="ux-button primary md ok-btn"  (click)="closePopUp()" >Ok</button>
+		</div>
+	</div>
+</div>
+<!-- Success Popup End -->
+
+<!--.toast-messages-->
+<div class="toast-messages3"></div>
+<!--.toast-messages-->

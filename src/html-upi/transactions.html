@@ -1,0 +1,677 @@
+<!DOCTYPE html>
+
+	<html>
+	
+	<head>
+		<meta charset="UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+	    <title>Transactions</title>
+		<link href="../css/lib/bootstrap.min.css" rel="stylesheet">
+	    <link href="../css/lib/jquery-ui.min.css" rel="stylesheet">
+	 	<link href="../css/lib/jquery.mCustomScrollbar.min.css" rel="stylesheet">
+		<link href="../css/main.css" rel="stylesheet">
+		
+	</head>	
+
+<body>
+    
+ <div class="main">
+
+		  <!--  Header Section Start -->
+                
+		  <header class="global-header brand-bg2 minus-nav">
+			<div class="in-header">
+				<div class="header-icons-lft">   
+					<div class="header-actions">
+						<button class="ux-button-header">
+							<img src="../assets/images/svg/left-arrow.svg"  alt="left-arrow-icon" class="img-small"/>
+						</button>
+				   </div> 
+				</div>  
+				 <div class="brand-logo">
+					<h3>Transactions</h3>
+				 </div> 
+			   <div class="header-icons-rit">
+					<div class="header-actions">
+						<button class="ux-button-header mr-1 filter-btn">
+							<img src="../assets/images/svg/filter.svg"  alt="filter-icon"/>
+						</button>
+					 </div> 
+				</div> 
+			</div> 
+		</header> 
+
+<!-- Header Section End -->
+ 
+ <div class="right-main-column minus-rt-col mar-custom">
+   	<div class="right-col-container pad-b">
+     
+    <div class="body-page-container">
+	   <div class="container-fluid">
+		  <div class="row">
+			 <div class="bg-section">
+				<div class="col-12">
+					<div class="row1">
+						<div class="col-sm-12 col-12 col-md-12">
+						    <div class="row1">	
+							    <div class="col-sm-12 col-12 col-md-12 mb-2">
+									<div class="ux-nav-tabs" style="margin:0">
+									 <div class="responsive3"> 
+									   <ul class="nav nav-tabs nav-justified bor-n" role="tablist">
+											  <li class="nav-item">
+												  <a class="nav-link active" data-toggle="tab" href="#payments">Payments</a>
+											  </li>
+											  <li class="nav-item">
+												  <a class="nav-link" data-toggle="tab" href="#billpayments">Bill Payments</a>
+											  </li>
+										  </ul>
+	  
+										  <!-- Tab panes -->
+										  <div class="tab-content p-0 custom-tab-content6">
+											  <div id="payments" class=" tab-pane active">
+											   <div class="row1"> 
+												<div class="col-sm-12 col-12 col-md-12">
+												  <ul class="payment-list2">
+													 <li>
+													  <div class="full-container">
+														<div class="rupee-info"> 
+															<span class="green">
+																<img src="../assets/images/svg/up-arrow-r.svg" alt="send-money-icon">
+															  </span>
+															  <em class="success">SUCCESS</em>
+														   </div>
+														<div class="row1">
+															<div class="col-7 col-md-6 pr-1">
+															 	<div class="left-info">
+																   <h6>Mandate:Sent To</h6>
+															   </div>
+															 </div>
+															<div class="col-5 col-md-6 pl-1">
+																<div class="right-info">
+																	<h5 class="send"> <img src="../assets/images/svg/rupee-r.svg" alt="rupees-icon">12000.00</h5>
+															   </div>
+															 </div>
+														</div>
+														<div class="row1">
+															<div class="col-12 col-md-12">
+															 	<div class="left-info">
+																    <h5>Pravin Bhagwan Bhai <br/> 
+																    Ganesh Bhai Prajapati</h5> 
+																	<h6><span>UPI ID</span> pravinbhagwan@psb</h6>
+																   <em>05 Mar 2020 12:18</em>
+															   </div>
+															 </div>
+														 </div>
+													  </div>
+												   </li>
+												   <li>
+													<div class="full-container">
+													  <div class="rupee-info"> 
+														  <span class="green">
+															  <img src="../assets/images/svg/down-arrow-g.svg" alt="received-money-icon">
+															</span>
+															<em class="success">SUCCESS</em>
+														 </div>
+													  <div class="row1">
+														  <div class="col-7 col-md-6 pr-1">
+															   <div class="left-info">
+																 <h6>Mandate:Received From</h6>
+															 </div>
+														   </div>
+														  <div class="col-5 col-md-6 pl-1">
+															  <div class="right-info">
+																  <h5 class="recived"> <img src="../assets/images/svg/rupee-g.svg" alt="rupees-icon">180000.00</h5>
+															 </div>
+														   </div>
+													  </div>
+													  <div class="row1">
+														  <div class="col-12 col-md-12">
+															   <div class="left-info">
+																  <h5>Ruchi Arya </h5> 
+																  <h6><span>UPI ID</span> ruchiarya@psb</h6>
+																 <em>05 Mar 2020 12:18</em>
+															 </div>
+														   </div>
+													   </div>
+													</div>
+												 </li>
+												 <li>
+													<div class="full-container">
+													  <div class="rupee-info"> 
+														  <span class="red">
+															  <img src="../assets/images/svg/failed.svg" alt="failed-icon">
+															</span>
+															<em class="error">FAILED</em>
+														 </div>
+													  <div class="row1">
+														  <div class="col-7 col-md-6 pr-1">
+															   <div class="left-info">
+																 <h6>Mandate: Sent To</h6>
+															 </div>
+														   </div>
+														  <div class="col-5 col-md-6 pl-1">
+															  <div class="right-info">
+																  <h5 class="default"> <img src="../assets/images/svg/rupee-grey.svg" alt="rupees-icon">5000.00</h5>
+															 </div>
+														   </div>
+													  </div>
+													  <div class="row1">
+														  <div class="col-12 col-md-12">
+															   <div class="left-info">
+																  <h5>Gurpeet Singh</h5>
+																  <h6><span>UPI ID</span> gurpeetsingh@psb</h6> 
+																 <em>05 Mar 2020 12:18</em>
+															 </div>
+														   </div>
+													   </div>
+													</div>
+												 </li>
+												 <li>
+													<div class="full-container">
+													  <div class="rupee-info"> 
+														  <span class="yellow">
+															  <img src="../assets/images/svg/pending-icon1.svg" alt="pending-icon">
+															</span>
+															<em class="pending">PENDING</em>
+														 </div>
+													  <div class="row1">
+														  <div class="col-7 col-md-6 pr-1">
+															   <div class="left-info">
+																 <h6>Mandate: Sent To</h6>
+															 </div>
+														   </div>
+														  <div class="col-5 col-md-6 pl-1">
+															  <div class="right-info">
+																  <h5 class="pending"> <img src="../assets/images/svg/rupee-y.svg" alt="rupees-icon">5000.00</h5>
+															 </div>
+														   </div>
+													  </div>
+													  <div class="row1">
+														  <div class="col-12 col-md-12">
+															   <div class="left-info">
+																  <h5>Ajitesh Agrawal</h5>
+																  <h6><span>UPI ID</span> ajiteshagrawal@psb</h6> 
+																 <em>05 Mar 2020 12:18</em>
+															 </div>
+														   </div>
+													   </div>
+													</div>
+												 </li>
+												 <li>
+													<div class="full-container">
+													  <div class="rupee-info"> 
+														  <span class="red">
+															  <img src="../assets/images/svg/decined.svg" alt="decline-icon">
+															</span>
+															<em class="error">DECLINE</em>
+														 </div>
+													  <div class="row1">
+														  <div class="col-7 col-md-6 pr-1">
+															   <div class="left-info">
+																 <h6>Mandate: Sent To</h6>
+															 </div>
+														   </div>
+														  <div class="col-5 col-md-6 pl-1">
+															  <div class="right-info">
+																  <h5 class="default"> <img src="../assets/images/svg/rupee-grey.svg" alt="rupees-icon">5000.00</h5>
+															 </div>
+														   </div>
+													  </div>
+													  <div class="row1">
+														  <div class="col-12 col-md-12">
+															   <div class="left-info">
+																  <h5>Omkar Kant</h5> 
+																  <h6><span>UPI ID</span> omkarkant@psb</h6>
+																 <em>05 Mar 2020 12:18</em>
+															 </div>
+														   </div>
+													   </div>
+													</div>
+												 </li>
+												 <li>
+													<div class="full-container">
+													  <div class="rupee-info"> 
+														  <span class="grey">
+															  <img src="../assets/images/svg/polygon.svg" alt="polygon-icon">
+															</span>
+															<em class="expired">EXPIRED</em>
+														 </div>
+													  <div class="row1">
+														  <div class="col-7 col-md-6 pr-1">
+															   <div class="left-info">
+																 <h6>Mandate: Sent To</h6>
+															 </div>
+														   </div>
+														  <div class="col-5 col-md-6 pl-1">
+															  <div class="right-info">
+																  <h5 class="default"> <img src="../assets/images/svg/rupee-grey.svg" alt="rupees-icon">5000.00</h5>
+															 </div>
+														   </div>
+													  </div>
+													  <div class="row1">
+														  <div class="col-12 col-md-12">
+															   <div class="left-info">
+																  <h5>Omkar Kant</h5>
+																  <h6><span>UPI ID</span> omkarkant@psb</h6>
+																 <em>05 Mar 2020 12:18</em>
+															 </div>
+														   </div>
+													   </div>
+													</div>
+												 </li>
+											  </ul>
+										  </div> 
+										 </div>
+										 </div>
+										  <div id="billpayments" class="tab-pane fade">
+												<div class="row1"> 
+												  <div class="col-sm-12 col-12 col-md-12">
+													<ul class="payment-list2">
+														<li>
+															<div class="full-container">
+															  <div class="rupee-info"> 
+																  <span class="green">
+																	  <img src="../assets/images/svg/up-arrow-r.svg" alt="send-money-icon">
+																	</span>
+																	<em class="success">SUCCESS</em>
+																 </div>
+															  <div class="row1">
+																  <div class="col-7 col-md-6 pr-1">
+																	   <div class="left-info">
+																		 <h6>Mandate:Sent To</h6>
+																	 </div>
+																   </div>
+																  <div class="col-5 col-md-6 pl-1">
+																	  <div class="right-info">
+																		  <h5 class="send"> <img src="../assets/images/svg/rupee-r.svg" alt="rupees-icon">12000.00</h5>
+																	 </div>
+																   </div>
+															  </div>
+															  <div class="row1">
+																  <div class="col-12 col-md-12">
+																	   <div class="left-info">
+																		  <h5>Pravin Bhagwan Bhai <br/> 
+																		  Ganesh Bhai Prajapati</h5> 
+																		  <h6><span>UPI ID</span> pravinbhagwan@psb</h6>
+																		 <em>05 Mar 2020 12:18</em>
+																	 </div>
+																   </div>
+															   </div>
+															</div>
+														 </li>
+														 <li>
+														  <div class="full-container">
+															<div class="rupee-info"> 
+																<span class="green">
+																	<img src="../assets/images/svg/down-arrow-g.svg" alt="received-money-icon">
+																  </span>
+																  <em class="success">SUCCESS</em>
+															   </div>
+															<div class="row1">
+																<div class="col-7 col-md-6 pr-1">
+																	 <div class="left-info">
+																	   <h6>Mandate:Received From</h6>
+																   </div>
+																 </div>
+																<div class="col-5 col-md-6 pl-1">
+																	<div class="right-info">
+																		<h5 class="recived"> <img src="../assets/images/svg/rupee-g.svg" alt="rupees-icon">180000.00</h5>
+																   </div>
+																 </div>
+															</div>
+															<div class="row1">
+																<div class="col-12 col-md-12">
+																	 <div class="left-info">
+																		<h5>Ruchi Arya </h5> 
+																		<h6><span>UPI ID</span> ruchiarya@psb</h6>
+																	   <em>05 Mar 2020 12:18</em>
+																   </div>
+																 </div>
+															 </div>
+														  </div>
+													   </li>
+													   <li>
+														  <div class="full-container">
+															<div class="rupee-info"> 
+																<span class="red">
+																	<img src="../assets/images/svg/failed.svg" alt="failed-icon">
+																  </span>
+																  <em class="error">FAILED</em>
+															   </div>
+															<div class="row1">
+																<div class="col-7 col-md-6 pr-1">
+																	 <div class="left-info">
+																	   <h6>Mandate: Sent To</h6>
+																   </div>
+																 </div>
+																<div class="col-5 col-md-6 pl-1">
+																	<div class="right-info">
+																		<h5 class="default"> <img src="../assets/images/svg/rupee-grey.svg" alt="rupees-icon">5000.00</h5>
+																   </div>
+																 </div>
+															</div>
+															<div class="row1">
+																<div class="col-12 col-md-12">
+																	 <div class="left-info">
+																		<h5>Gurpeet Singh</h5>
+																		<h6><span>UPI ID</span> gurpeetsingh@psb</h6> 
+																	   <em>05 Mar 2020 12:18</em>
+																   </div>
+																 </div>
+															 </div>
+														  </div>
+													   </li>
+													   <li>
+														  <div class="full-container">
+															<div class="rupee-info"> 
+																<span class="yellow">
+																	<img src="../assets/images/svg/pending-icon1.svg" alt="pending-icon">
+																  </span>
+																  <em class="pending">PENDING</em>
+															   </div>
+															<div class="row1">
+																<div class="col-7 col-md-6 pr-1">
+																	 <div class="left-info">
+																	   <h6>Mandate: Sent To</h6>
+																   </div>
+																 </div>
+																<div class="col-5 col-md-6 pl-1">
+																	<div class="right-info">
+																		<h5 class="pending"> <img src="../assets/images/svg/rupee-y.svg" alt="rupees-icon">5000.00</h5>
+																   </div>
+																 </div>
+															</div>
+															<div class="row1">
+																<div class="col-12 col-md-12">
+																	 <div class="left-info">
+																		<h5>Ajitesh Agrawal</h5>
+																		<h6><span>UPI ID</span> ajiteshagrawal@psb</h6> 
+																	   <em>05 Mar 2020 12:18</em>
+																   </div>
+																 </div>
+															 </div>
+														  </div>
+													   </li>
+													   <li>
+														  <div class="full-container">
+															<div class="rupee-info"> 
+																<span class="red">
+																	<img src="../assets/images/svg/decined.svg" alt="decline-icon">
+																  </span>
+																  <em class="error">DECLINE</em>
+															   </div>
+															<div class="row1">
+																<div class="col-7 col-md-6 pr-1">
+																	 <div class="left-info">
+																	   <h6>Mandate: Sent To</h6>
+																   </div>
+																 </div>
+																<div class="col-5 col-md-6 pl-1">
+																	<div class="right-info">
+																		<h5 class="default"> <img src="../assets/images/svg/rupee-grey.svg" alt="rupees-icon">5000.00</h5>
+																   </div>
+																 </div>
+															</div>
+															<div class="row1">
+																<div class="col-12 col-md-12">
+																	 <div class="left-info">
+																		<h5>Omkar Kant</h5> 
+																		<h6><span>UPI ID</span> omkarkant@psb</h6>
+																	   <em>05 Mar 2020 12:18</em>
+																   </div>
+																 </div>
+															 </div>
+														  </div>
+													   </li>
+													   <li>
+														  <div class="full-container">
+															<div class="rupee-info"> 
+																<span class="grey">
+																	<img src="../assets/images/svg/polygon.svg" alt="polygon-icon">
+																  </span>
+																  <em class="expired">EXPIRED</em>
+															   </div>
+															<div class="row1">
+																<div class="col-7 col-md-6 pr-1">
+																	 <div class="left-info">
+																	   <h6>Mandate: Sent To</h6>
+																   </div>
+																 </div>
+																<div class="col-5 col-md-6 pl-1">
+																	<div class="right-info">
+																		<h5 class="default"> <img src="../assets/images/svg/rupee-grey.svg" alt="rupees-icon">5000.00</h5>
+																   </div>
+																 </div>
+															</div>
+															<div class="row1">
+																<div class="col-12 col-md-12">
+																	 <div class="left-info">
+																		<h5>Omkar Kant</h5>
+																		<h6><span>UPI ID</span> omkarkant@psb</h6>
+																	   <em>05 Mar 2020 12:18</em>
+																   </div>
+																 </div>
+															 </div>
+														  </div>
+													   </li>
+											       </ul>
+											 </div> 
+										 </div>
+									  </div>
+									  </div> 
+								   </div>  
+								 </div>  
+							   </div> 
+							 </div>
+								    
+								  
+						  </div>
+                        </div> 
+					 </div> 
+				  </div>
+			   </div> 
+
+				   
+          </div> 
+	    </div> 
+
+				<!-- footer section start -->
+		
+				<div class="footer-container sticky-actions">
+					<div class="footer-inactions minus-rt-col">
+						<div class="container-fluid">
+						  <div class="row">
+								 <div class="col-12 col-md-12 col-lg-12 text-center">
+									<div class="powered-logo2">
+										<img src="../assets/images/svg/powered-by-upi-big.svg" alt="powered-upi-logo">
+									</div>
+								 </div>
+							</div> 
+						</div> 
+					</div> 
+				</div> 
+  
+	     <!-- footer section end -->
+
+	   </div>  
+      </div> 
+        
+    </div> 
+    
+  <!-- main -->
+	
+     
+
+<!-- =========== modal popup start ===============  -->
+
+
+  <!-- Filter Popup Start -->
+
+  <div class="popup-bottom filter1">
+	<div class="row1">
+		<div class="col-10">
+		  <h4>Filter</h4>
+		</div>
+		<div class="col-2">
+		  <button class="ux-button-icon close-btn">
+			  <img src="../assets/images/svg/close-b.svg" alt="cross-icon" class="img-vsmall">
+		  </button> 
+		</div>
+	  </div>
+	<form action="#" id="filter-form">
+		<div class="row1 mt-2">
+			<div class="col-12 col-sm-12 col-md-12 col-lg-12 mb-2">
+				<div class="ux-input mb-0">
+					<label for="searchBy">Search By</label>
+				 </div>
+			  </div>
+		 </div> 
+		 <div class="row1">
+			<div class="col-6 col-md-6">
+				<div class="ux-selection mar-custom">
+					<label class="ux-selection2">All UPI ID
+						<input type="radio" checked value="all-upi-id" name="searchby">
+						<span class="checkmark"></span>
+					</label>
+					<div>
+					</div>
+				</div> 
+			 </div>
+			 <div class="col-6 col-md-6">
+				 <div class="ux-selection mar-custom">
+					<label class="ux-selection2">New UPI ID
+						<input type="radio" value="new-upi-id" name="searchby">
+						<span class="checkmark"></span>
+					</label>
+					<div>
+					</div>
+				</div>
+			 </div>
+		 </div>
+		 <div id="new-upi" style="display: none;">
+			<div class="row1 mt-2">
+				 <div class="col-sm-12 col-12 col-md-12">
+					<div class="ux-input">
+						<label for="upiId">UPI ID</label>
+						<input type="text" placeholder="Enter UPI ID" required>
+						<p class="error-message"></p>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="row1 mt-3">
+			<div class="col-6">
+				<div class="ux-input">
+					<label>Start Date</label>
+					<input type="text" class="datepicker1" placeholder="DD/MM/YYYY">
+					<em class="calendar-ic cal-top"></em>
+				 </div> 	 
+			</div>
+			<div class="col-6">
+				<div class="ux-input">
+					<label>End Date</label>
+					<input type="text" class="datepicker1" placeholder="DD/MM/YYYY">
+					<em class="calendar-ic cal-top"></em> 
+				 </div> 
+			 </div>
+		</div>
+		<div class="row1">
+			<div class="col-12 col-sm-12 col-md-12 col-lg-12">
+				<div class="ux-input">
+					<label for="">Transaction Type</label>
+						 <select required="" >
+							 <option value="">Select</option>
+							 <option value="Collect">Collect</option>
+						 </select>
+						 <p class="mb-0"></p>
+				  </div>
+			  </div>
+		</div> 
+		<div class="row1">
+			<div class="col-6">
+				<div class="ux-input">
+					<label>Min Amount</label>
+					<input type="text" placeholder="Enter Amount">
+				 </div> 	 
+			</div>
+			<div class="col-6">
+				<div class="ux-input">
+					<label>Max Amount</label>
+					<input type="text" placeholder="Enter Amount">
+				 </div>
+			 </div>
+		</div>
+	  <div class="row1 mt-2">
+		<div class="col-6 text-center">
+			<button class="ux-button secondary  md" onclick="window.location.href = '#'">Clear</button>
+		 </div> 
+	      <div class="col-6 text-center">
+			 <button class="ux-button primary md" onclick="window.location.href = '#'">Apply</button>
+		 </div> 
+	   </div>
+	</form>
+</div> 
+
+<!-- Filter Popup End -->	
+<div class="ios-nav-overlay"></div> 
+ 
+
+<!-- =========== modal popup end ===============  -->
+
+<script src="../js/lib/jquery.min.js"></script>
+<script src="../js/lib/bootstrap.min.js"></script>
+<script src="../js/lib/jquery-ui.min.js"></script>
+<script src="../js/lib/popper.min.js"></script>
+<script src="../js/lib/jquery.mousewheel.min.js"></script>
+<script src="../js/lib/jquery.mCustomScrollbar.js"></script>
+<script src="../js/lib/datatables.min.js"></script>
+<script src="../js/common.js"></script>
+
+<script type="text/javascript">
+	//  createGlobalNavMore();
+
+
+	$('input[name=searchby]').change(function() {
+        // console.log('Its working');
+		$('#new-upi').hide();
+        if ($(this).val() == "all-upi-id") {
+            $('#new-upi').hide();
+        } else if ($(this).val() == "new-upi-id") {
+			$('#new-upi').show();
+        } else {
+            $('#new-upi').hide();
+        }
+    });
+	 
+	$("ul.info-list li").click(function(){
+		console.log('its working');
+		  $("ul.info-list li").removeClass("active");
+		if (!$(this).hasClass('active') ) {
+		   $(this).addClass('active');
+	    } else {
+		   $(this).removeClass('active');
+	    }
+	 });  
+
+	 $("button.filter-btn").click(function(){
+		console.log('working');
+		if ( !$('div.popup-bottom.filter1').hasClass('popup-active') ) {
+				$('div.popup-bottom.filter1').addClass('popup-active');
+				$( 'div.ios-nav-overlay' ).fadeIn( 400 );
+			} else {
+				$('div.popup-bottom.filter1').removeClass('popup-active');
+				$( 'div.ios-nav-overlay' ).fadeOut(  );
+		 	}
+       });
+	   $("button.close-btn").click(function(){
+		    console.log('working');
+		   $('div.popup-bottom.filter1').removeClass('popup-active');
+		   $( 'div.ios-nav-overlay' ).fadeOut(  );
+	   });
+
+
+</script>
+
+</body>
+</html>

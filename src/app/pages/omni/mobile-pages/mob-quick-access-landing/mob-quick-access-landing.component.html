@@ -1,0 +1,69 @@
+<div class="main bg-m">
+	<div class="right-main-column ">
+		<div class="right-col-container pad-b full-width">
+			<!-- ======== body page content start from here ======== -->
+			<div class="body-page-container main-dashborad">
+				<div class="container-fluid">
+					<div class="row">
+						<div class="col-12 p-0">
+							<div class="breadcrumb">
+								<ul class="lst-breadcrumb">
+                                    <li *ngFor="let name of dataService.breadcrumblist">
+										<a (click)="dataService.breadcrumroute(name.routeName)">{{name.currentRoute | translate}}</a>
+								</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+					<!--.row -->
+					<div class="vspacer30 customize d-none d-md-block d-lg-block d-xl-block"></div>
+					<div class="row no-gutters">
+						<div class="col-12">
+							<div class="row1">
+								<div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-9">
+									<!-- Greencard2 Start here -->
+									<div class="greencard2">
+										<div class="row1 hide-m">
+											<div class="col-md-8 col-12"> </div>
+											<div class="col-md-4 col-12"> </div>
+										</div>
+										<div class="row1">
+											<div class="col-sm-12 col-12 col-md-12">
+												<div class="widget-box5 mb-3">
+													<div class="bg-white1 pad-custom p-0">
+														<ul class="list-group list-group-flush cheque-service-list">
+															<li class="list-group-item" (click)="goToPage('positivePay')"><a>Positive Pay</a></li>
+															<li class="list-group-item" (click)="goToPage('stopCheques')"><a>Stop Cheque</a></li>
+															<li class="list-group-item" (click)="goToPage('tdsCertificate')"><a>TDS Certificate</a></li>
+															<!-- <li class="list-group-item" (click)="goToPage('eFiling')"><a>E-Filling</a></li> -->
+															<!-- <li class="list-group-item" (click)="goToPage('')" ><a>Registered Pay</a></li> -->
+															<!-- <li class="list-group-item" (click)="goToPage('hotlistCard')" ><a>Card Hotlist</a></li> -->
+															<!-- <li class="list-group-item" (click)="goToPage('')"><a>Token/eToken</a></li> -->
+															<!-- <li class="list-group-item" (click)="goToPage('')" ><a >26AS Download</a></li> -->
+														</ul>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+									<!-- Greencard2 End here -->
+								</div>
+								<!-- Right Column Ads Start -->
+								<div class="col-12 col-md-12 col-lg-12 col-xl-3 d-none d-xl-block">
+									<div class="right-ads">
+										<a> <img src="assets/images/banner/my-card-banner.jpg"> </a>
+									</div>
+									<div class="vspacer30"></div>
+								</div>
+								<!-- Right Column Ads Ends -->
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!--.right-col-container-->
+	</div>
+	<!--.right-main-column-->
+</div>
+<!-- main -->

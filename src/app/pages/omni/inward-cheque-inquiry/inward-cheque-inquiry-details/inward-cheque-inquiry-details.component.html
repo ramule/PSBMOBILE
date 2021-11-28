@@ -1,0 +1,138 @@
+<div class="main bg-m">
+	<div class="nav-overlay"></div>
+	<div class="right-main-column ">
+		<div class="right-col-container pad-b full-width">
+			<!-- ======== body page content start from here ======== -->
+			<div class="body-page-container main-dashborad manage-payee">
+				<div class="container-fluid">
+					<div class="row">
+						<div class="col-12 p-0">
+							<div class="breadcrumb">
+								<ul class="lst-breadcrumb">
+									<!-- <li> <a>Cheque Book</a> </li>
+									<li> Inward Cheque Inquiry </li> -->
+                                    <li *ngFor="let name of DataService.breadcrumblist">
+                                        <a (click)="DataService.breadcrumroute(name.routeName)">{{name.currentRoute | translate}}</a>
+                                </li>
+								</ul>
+							</div>
+						</div>
+					</div>
+					<!--.row -->
+					<div class="vspacer15 customize d-none d-md-block d-lg-block d-xl-block"></div>
+					<div class="row no-gutters">
+						<div class="col-12">
+							<div class="row1">
+								<div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-9">
+									<!-- Greencard2 Start here -->
+									<div class="greencard2">
+										<div class="row1 hide-m">
+											<div class="col-md-8 col-12">
+												<h4>View Details</h4> </div>
+											<div class="col-md-4 col-12"> </div>
+										</div>
+										<div class="row1">
+											<div class="col-sm-12 col-12 col-md-12">
+												<div class="white-box2 p-0 mar-t">
+													<!-- <div class="white-box2 mar-t pad-custom custom-bor"> -->
+													<div class="info-bottom pad-custom pad-custom-setting">
+														<div class="info-details">
+															<div class="row">
+																<h6>Cheque Number</h6>
+																<!-- <h5>{{newinwardDetail.cheque_Number}}</h5> -->
+																<em *ngIf="newinwardDetail.cheque_Number.length==1"> {{'00000' + newinwardDetail.cheque_Number}}</em>
+																 <em *ngIf="newinwardDetail.cheque_Number.length==2"> {{'0000' + newinwardDetail.cheque_Number}}</em>
+																<em *ngIf="newinwardDetail.cheque_Number.length==3"> {{'000' + newinwardDetail.cheque_Number}}</em>
+																<em *ngIf="newinwardDetail.cheque_Number.length==4"> {{'00' + newinwardDetail.cheque_Number}}</em> 
+																<em *ngIf="newinwardDetail.cheque_Number.length==5"> {{'0' + newinwardDetail.cheque_Number}}</em> 
+																<em *ngIf="newinwardDetail.cheque_Number.length==6"> {{newinwardDetail.cheque_Number}}</em> 
+																</div>
+														</div>
+														<div class="info-details">
+															<div class="row">
+																<h6>Cheque Name</h6>
+																<h5>{{newinwardDetail.name}}</h5> </div>
+														</div>
+														<div class="info-details">
+															<div class="row">
+																<h6>Amount</h6>
+																<h5>{{newinwardDetail.amount | customcurrency: "symbol"}}</h5> </div>
+														</div>
+														<div class="info-details">
+															<div class="row">
+																<h6>Issue Date</h6>
+																<h5>{{newinwardDetail.dateOfIssue}}</h5> 
+																<h5 *ngIf="newinwardDetail.dateOfIssue!=''">{{newinwardDetail.dateOfIssue}}</h5>
+															    <h5 *ngIf="newinwardDetail.dateOfIssue==''">xx-xx-xxxx</h5>
+															</div>
+														</div>
+														<div class="info-details">
+															<div class="row">
+																<h6>Passing Date/Rejection Date</h6>
+																<!-- <h5>{{newinwardDetail.dateOfRejection}}</h5> -->
+																<h5 *ngIf="newinwardDetail.inquiryStatus=='PASSED'">{{newinwardDetail.dateOfPassing}}</h5>
+																<h5 *ngIf="newinwardDetail.inquiryStatus=='REJECTED'">{{newinwardDetail.dateOfRejection}}</h5> </div>
+														</div>
+														<div class="info-details">
+															<div class="row">
+																<h6>Cheque Book Status</h6>
+																<h5>{{newinwardDetail.inquiryStatus}}</h5> </div>
+														</div>
+														<div class="info-details">
+															<div class="row">
+																<h6>Reason</h6>
+																<h5 *ngIf="newinwardDetail.inquiryStatus!='PASSED'">{{newinwardDetail.reason}}</h5>
+																<h5 *ngIf="newinwardDetail.inquiryStatus=='PASSED'">Not Applicable</h5> </div>
+														</div>
+														<div class="info-details">
+															<div class="row">
+																<h6>Opening Balance</h6>
+																<h5>{{newinwardDetail.balance | customcurrency: "symbol"}}</h5> </div>
+														</div>
+													</div>
+												</div>
+											</div>
+											<div class="col-12 col-md-12 d-none d-sm-block">
+												<ul class="bottom-footer1">
+													<li>
+														<div class="btn-div">
+															<button class="ux-button secondary sm-mob" (click)="cancel()">Back</button>
+														</div>
+													</li>
+												</ul>
+											</div>
+										</div>
+									</div>
+									<!-- Greencard2 End here -->
+								</div>
+								<!-- Right Column Ads Start -->
+								<div class="col-12 col-md-12 col-lg-12 col-xl-3 d-none d-xl-block">
+									<div class="right-ads">
+										<a> <img src="assets/images/banner/my-card-banner.jpg"> </a>
+									</div>
+									<div class="vspacer30"></div>
+									<!-- Offercard Start-->
+									<!-- <div class="offers-card">
+										<div class="header-block clearfix">
+											<h5>Offers on your card</h5> </div>
+										<div class="panel-body">
+											<div class="recentpayment-control">
+												<ul>
+													<li> <img src="assets/images/banner/offer-banner.png"> </li>
+												</ul>
+											</div>
+										</div>
+									</div> -->
+									<!-- Offercard Ends-->
+								</div>
+								<!-- Right Column Ads Ends -->
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!--.right-col-container-->
+	</div>
+	<!--.right-main-column-->
+</div>

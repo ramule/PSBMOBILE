@@ -1,0 +1,124 @@
+<div class="main">
+
+  <!--  Header Section Start -->
+
+  <!-- <header class="global-header white-bg  minus-nav">
+		<div class="in-header">
+			<div class="header-icons-lft show1">   
+				<div class="header-actions">
+					<button class="ux-button-header ml-2">
+						<img src="assets/images/svg/close-b.svg"  alt="close-b-icon" class="img-vsmall"/>
+					</button>
+			   </div> 
+			</div>  
+			 <div class="brand-logo">
+				<h4 class="col-b">Select Account</h4>
+			 </div> 
+		   <div class="header-icons-rit">
+				<div class="header-actions">
+				 </div> 
+			</div> 
+		</div> 
+	</header>  -->
+
+  <!-- Header Section End -->
+
+  <div class="right-main-column minus-rt-col">
+    <div class="right-col-container">
+
+      <div class="body-page-container">
+        <div class="container-fluid" *ngFor="let vpaAddress of vpaAddressList;index as i">
+          <div class="row">
+            <div class="col-12 col-sm-12 col-md-12">
+              <div class="grey-bg mar-customise bor1 mt-0 mb-0">
+                <div class="ux-selection mar-4">
+                  <label class="ux-selection2">
+                    <h4 class="mt-0">{{'UPI_ID' | translate }} : {{vpaAddress.paymentAddress}}</h4>
+                    <input type="radio" [checked]="vpaAddress.isSelected" name="radioboxdemo1">
+                    <span class="checkmark"></span>
+                  </label>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <ul class="list2">
+              <li *ngFor="let account of vpaAddress.accounts;index as j">
+                <div class="ux-selection mar-4 w-100 ">
+                  <label class="pad-custom mar-custom ux-selection4">
+                    <span class="fs-1">{{account.custName}} </span>
+                    <br />
+                    <span>{{account.accType}} {{account.maskedAccountNumber}}</span>
+                    <br />
+                    <span class="fs-2">{{account.bankName}}</span>
+                    <input type="radio" [checked]="vpaAddress.isSelected && account.isSelected" name="radioboxdemo" (change)="getSelectedAccount(i,j)">
+                    <span class="checkmark"></span>
+                  </label>
+                </div>
+              </li>
+            </ul>
+          </div>
+
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- main -->
+
+<!-- footer section start -->
+
+<!-- <div class="footer-container sticky-actions">
+		<div class="footer-inactions minus-rt-col">
+			<div class="container-fluid">
+				<div class="row">
+					<div class="col-12 col-md-3 col-lg-4">
+                    </div>
+			      <div class="col-12 col-md-6 col-lg-4">
+						<div class="row">	
+							<button class="ux-button primary md" onclick="window.location.href = '#'">Proceed</button>
+						 </div>
+				       </div>
+				   <div class="col-12 col-md-3 col-lg-4">
+				  </div>
+				</div> 
+			</div> 
+		</div> 
+	</div> 
+    <div class="sticky-actions-spacer"></div> -->
+
+<!-- footer section end -->
+
+<!-- =========== modal popup start ===============  -->
+
+
+<!-- Terms and Condition Modal Starts-->
+
+<div id="termsModal" class="modal fade " role="dialog">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <div class="mh-bottom">
+          <div class="row1">
+            <div class="col-10">
+              <h6>Information</h6>
+            </div>
+            <div class="col-2"><a href="javascript:;" data-dismiss="modal"><span class="mh-cross"></span></a></div>
+          </div>
+        </div>
+      </div>
+      <div class="modal-body">
+        <p>Please accept the terms and conditions to proceed with registration</p>
+      </div>
+      <div class="modal-footer ">
+        <button type="button" class="ux-button sm primary" onclick=" location.href='#'" data-dismiss="modal">Ok</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- Terms and Condition Modal Ends-->

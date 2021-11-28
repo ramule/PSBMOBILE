@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+
+	<html>
+	
+	<head>
+		<meta charset="UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+	    <title>Raise Complaint - Complaint | Recharge and Bill Pay</title>
+		<link href="../css/lib/bootstrap.min.css" rel="stylesheet">
+	    <link href="../css/lib/jquery-ui.min.css" rel="stylesheet">
+	 	<link href="../css/lib/jquery.mCustomScrollbar.min.css" rel="stylesheet">
+		<link href="../css/main.css" rel="stylesheet">
+		
+	</head>	
+
+<body>
+    
+ <div class="main">
+
+		  <!--  Header Section Start -->
+                
+		  <header class="global-header brand-bg2 minus-nav">
+			<div class="in-header">
+				<div class="header-icons-lft">   
+					<div class="header-actions">
+						<button class="ux-button-header">
+							<img src="../assets/images/svg/left-arrow.svg"  alt="left-arrow-icon" class="img-small"/>
+						</button>
+				   </div> 
+				</div>  
+				 <div class="brand-logo">
+					<h3>Raise Complaint</h3>
+				 </div> 
+			   <div class="header-icons-rit">
+					<div class="header-actions">
+						<img src="../assets/images/icons/billpay.png"  alt="billpay-img" class="small-img"/>
+					 </div> 
+				</div> 
+			</div> 
+		</header> 
+
+<!-- Header Section End -->
+ 
+ <div class="right-main-column minus-rt-col mar-custom">
+   	<div class="right-col-container">
+     
+    <div class="body-page-container">
+	   <div class="container-fluid">
+		  <div class="row">
+			 <div class="bg-section">
+				<div class="col-12">
+					<div class="row1">
+						<div class="col-sm-12 col-12 col-md-12">
+							  <div class="white-bg1">
+								  <div class="row1">
+										  <div class="col-12 col-sm-12 col-md-12">
+												 <div class="ux-input">
+														<label for="complaintType">Complaint Type</label>
+															 <select required="" class="complaints" >
+																 <option value="">Select</option>
+																 <option value="Service">Service</option>
+																 <option value="Transaction" selected>Transaction</option>
+															 </select>
+															<p></p>
+														 </div>
+													  </div>   
+											     </div>
+										   </div>
+									 </div> 
+								  <div class="col-sm-12 col-12 col-md-12">
+									  <div class="Service complaint-info" style="display:none;">
+										  <div class="grey-bg5 mar-custom mb-0">
+											  <div class="row1">
+												<div class="col-12 col-sm-12 col-md-6">
+													<div class="ux-input">
+														   <label for="participationType">Participation Type</label>
+																<select required="" class="billertype">
+																	<option value="">Select</option>
+																	<option value="Biller">Biller</option>
+																</select>
+															   <p></p>
+															</div>
+														 </div> 
+														 <div class="col-12 col-sm-12 col-md-6">
+															<div class="ux-input">
+																   <label for="category">Biller Category</label>
+																		<select required="" class="">
+																			<option value="">Select</option>
+																			<option value="Water">Water</option>
+																		</select>
+																	   <p></p>
+                                                               </div>
+														  </div>
+														  <div class="col-12 col-sm-12 col-md-6">
+															<div class="ux-input">
+																   <label for="Location">Biller Location</label>
+																		<select required="" class="">
+																			<option value="">Select</option>
+																			<option value="Tamil Nadu">Tamil Nadu</option>
+																		</select>
+																	   <p></p>
+                                                               </div>
+														  </div>
+														  <div class="col-12 col-sm-12 col-md-6">
+															<div class="ux-input">
+																   <label for="biller">Biller</label>
+																		<select required="" class="">
+																			<option value="">Select</option>
+																			<option value="TN Metro Water Supply Board">TN Metro Water Supply Board</option>
+																		</select>
+																	   <p></p>
+                                                               </div>
+														  </div>
+														  <div class="col-12 col-sm-12 col-md-6">
+															<div class="ux-input">
+																   <label for="reason">Complaint Reason</label>
+																		<select required="" class="">
+																			<option value="">Select</option>
+																			<option value="Incorrect bill details displayed">Incorrect bill details displayed</option>
+																		</select>
+																	   <p></p>
+                                                               </div>
+														  </div>
+													    <div class="col-12 col-sm-12 col-md-6">	   
+															<div class="ux-input">
+																   <label for="description">Complaint Description</label>
+																   <textarea rows="3" placeholder="Enter Complaint Description" required></textarea>
+																  <p></p>
+														 	</div>
+													  </div> 
+											  </div>
+										 </div>
+								   </div>
+							 </div> 
+							 <div class="col-sm-12 col-12 col-md-12">
+								<div class="Transaction complaint-info" style="display:none;">
+									<div class="grey-bg5 mar-custom mb-0">
+										<div class="row1">
+											<div class="col-12 col-sm-12 col-md-6">	   
+												<div class="ux-input">
+													   <label for="transactionId">Transaction ID</label>
+														<input type="text" placeholder="" value="465452124415" required >
+													  <p></p>
+												 </div>
+											 </div> 
+											 <div class="col-12 col-sm-12 col-md-6">	   
+												<div class="ux-input">
+													   <label for="reason">Complaint Reason</label>
+													   <select required="" class="">
+														   <option value="">Select</option>
+														   <option value="Amount Deducted multiple times" selected="selected">Amount Deducted multiple times</option>
+													  </select>
+													  <p></p>
+												 </div>
+											 </div>
+											 <div class="col-12 col-sm-12 col-md-6">	   
+												<div class="ux-input">
+													   <label for="description">Complaint Description</label>
+														<input type="text" placeholder="" value="Please resolve the issue" required >
+													  <p></p>
+												 </div>
+											 </div>
+										 </div>
+ 
+								      </div>
+							      </div>
+					         </div> 
+						 </div>
+					 </div> 
+				  </div>
+			   </div> 
+
+				   
+          </div> 
+	    </div>
+		
+		  <!-- footer section start -->
+	
+			<div class="footer-container sticky-actions">
+				<div class="footer-inactions minus-rt-col">
+					<div class="container-fluid">
+						<div class="row">
+						<div class="col-12 col-md-12 col-lg-12 text-center">
+								<button class="submit1 ux-button primary md" onclick="window.location.href = 'bill-raise-complaint-transaction-confirmation.html'">Submit</button>
+							</div>
+						</div> 
+					</div> 
+				</div> 
+			</div> 
+		 
+			<!-- footer section end -->
+
+	   </div>  
+    </div> 
+        
+    </div> 
+    
+  <!-- main -->
+	
+
+
+<!-- =========== modal popup start ===============  -->
+
+
+  <!-- Filter Popup Start -->
+
+  <div class="popup-bottom filter1">
+	<div class="row1">
+		<div class="col-10">
+		  <h4>Filter</h4>
+		</div>
+		<div class="col-2">
+		  <button class="ux-button-icon close-btn">
+			  <img src="../assets/images/svg/close-b.svg" alt="cross-icon" class="img-vsmall">
+		  </button> 
+		</div>
+	  </div>
+	<form action="#" id="filter-form">
+		<div class="row1 mt-2">
+			<div class="col-12 col-sm-12 col-md-12 col-lg-12">
+				<div class="ux-input">
+					<label for="upiId">UPI ID</label>
+						 <select required="" >
+							 <option value="">Select</option>
+							 <option value="9768245145@psb">9768245145@psb</option>
+						 </select>
+						<p class="mb-0"></p>
+				  </div>
+			  </div>
+		</div> 
+		<div class="row1">
+			<div class="col-6">
+				<div class="ux-input">
+					<label>Start Date</label>
+					<input type="text" class="datepicker1" placeholder="DD/MM/YYYY">
+					<em class="calendar-ic cal-top"></em>
+				 </div> 	 
+			</div>
+			<div class="col-6">
+				<div class="ux-input">
+					<label>End Date</label>
+					<input type="text" class="datepicker1" placeholder="DD/MM/YYYY">
+					<em class="calendar-ic cal-top"></em> 
+				 </div> 
+			 </div>
+		</div>
+		<div class="row1">
+			<div class="col-12 col-sm-12 col-md-12 col-lg-12">
+				<div class="ux-input">
+					<label for="">Transaction Type</label>
+						 <select required="" >
+							 <option value="">Select</option>
+							 <option value="Collect">Collect</option>
+						 </select>
+						 <p class="mb-0"></p>
+				  </div>
+			  </div>
+		</div> 
+	  <div class="row1 mt-2">
+		<div class="col-6 text-center">
+			<button class="ux-button secondary  md" onclick="window.location.href = '#'">Clear</button>
+		 </div> 
+	      <div class="col-6 text-center">
+			 <button class="ux-button primary md" onclick="window.location.href = '#'">Apply</button>
+		 </div> 
+	   </div>
+	</form>
+</div> 
+
+<!-- Filter Popup End -->	
+<div class="ios-nav-overlay"></div> 
+ 
+
+<!-- =========== modal popup end ===============  -->
+
+<script src="../js/lib/jquery.min.js"></script>
+<script src="../js/lib/bootstrap.min.js"></script>
+<script src="../js/lib/jquery-ui.min.js"></script>
+<script src="../js/lib/popper.min.js"></script>
+<script src="../js/lib/jquery.mousewheel.min.js"></script>
+<script src="../js/lib/jquery.mCustomScrollbar.js"></script>
+<script src="../js/lib/datatables.min.js"></script>
+<script src="../js/common.js"></script>
+
+<script type="text/javascript">
+	//  createGlobalNavMore();
+
+	$('button.submit1').attr('disabled', true);
+	$('button.submit1').addClass('disable');
+	 
+	// $("select.billertype").on('change',function() {
+	// 	$(this).find("option:selected").each(function(){
+	// 		var optionValue = $(this).attr("value");
+	//    if(optionValue){	
+		   
+	//    }else{
+			
+	//       }
+	//    });
+	// });
+	
+  
+	// $("select.complaints").on('change',function() {
+	// 	$(this).find("option:selected").each(function(){
+	// 		var optionValue = $(this).attr("value");
+	//    if(optionValue){	
+	// 	  $('div.biller-info').show(); 
+	//    }else{
+	// 	$('div.biller-info').hide();
+	//       }
+	//    });
+	// });
+	
+
+	$("select.complaints").change(function(){
+        console.log('working');
+        $(this).find("option:selected").each(function(){
+            var optionValue = $(this).attr("value");
+            if(optionValue){
+                $(".complaint-info").not("." + optionValue).hide();
+				$("." + optionValue).show();
+				$('button.submit1').removeClass('disable');
+				$('button.submit1').attr('disabled' , false);
+		   } 
+            else{
+				$(".complaint-info").hide();
+				$('button.submit1').attr('disabled' , true);
+				$('button.submit1').addClass('disable');
+			  }
+        });
+	}).change();
+	
+    
+	 
+</script>
+
+</body>
+</html>

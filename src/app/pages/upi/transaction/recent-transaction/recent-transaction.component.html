@@ -1,0 +1,226 @@
+<div class="main">
+    <header class="global-header brand-bg2 minus-nav">
+        <div class="in-header">
+            <div class="header-icons-lft">
+                <div class="header-actions">
+                    <button class="ux-button-header" (click)="goBack()">
+                    <img src="assets/images/svg/left-arrow.svg" alt="left-arrow-icon" class="img-small" />
+                </button>
+                </div>
+            </div>
+            <div class="brand-logo">
+                <h3 class="custom-h3">
+                    <div class="img-info">
+                        <span class="green1">
+                        <!-- <img src="assets/images/icons/user3.png" alt="user-img"> -->
+                        <!-- <h5>AS</h5> -->
+                        <img *ngIf="DataService.recentTransactionUPI.beneImageUrl" [src]="DataService.recentTransactionUPI.beneImageUrl"
+                        alt="user-img">
+                      <h5 *ngIf="!DataService.recentTransactionUPI.beneImageUrl">{{DataService.recentTransactionUPI.nickName | firstLastChar}}
+                      </h5>
+                    </span>
+                    </div>
+                    {{ recentPayeeName }}</h3>
+            </div>
+            <div class="header-icons-rit">
+                <div class="header-actions">
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="right-main-column minus-rt-col mar-custom">
+        <div class="right-col-container pad-b30">
+            <!--pad-b-->
+            <div class="body-page-container">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="bg-section">
+                            <div class="col-12">
+                                <div class="row1">
+                                    <div class="col-sm-12 col-12 col-md-12">
+                                        <div class="green-bg2">
+                                            <div class="full-container">
+                                                <div class="row1">
+                                                    <div class="col-12 col-md-12">
+                                                        <div class="left-info">
+                                                            <h5 *ngIf="DataService.recentTransactionUPI.txnMode != 'ACCOUNT'">
+                                                                <span>{{'UPI_ID' | translate}} : </span> {{DataService.recentTransactionUPI.beneVpa}}
+                                                            </h5>
+                                                            <h5 *ngIf="DataService.recentTransactionUPI.txnMode == 'ACCOUNT'">
+                                                                <span>{{'ACCOUNT_NUMBER' | translate}} : </span> {{DataService.recentTransactionUPI.beneAccount | maskAccountNo}} <br>
+                                                                <span>{{'IFSC_CODE' | translate}} : </span> {{DataService.recentTransactionUPI.beneIfsc}} <br>
+                                                            </h5>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="white-bg-custom4">
+                                            <div class="innerbg-section" #content>
+                                                <div class="row" *ngIf="recentTransactionList.length > 0">
+                                                    <ul class="transaction-list">
+                                                        <li *ngFor="let recentTransaction of recentTransactionList; index as i">
+                                                            <div class="receive-info1" *ngIf="recentTransaction.TYPE=='CR' && recentTransaction.TRNSTATUS=='COMPLETED'">
+                                                                <!-- Money Received List-->
+                                                                <div class="row1">
+                                                                    <div class="col-12">
+                                                                        <div class="transaction-info">
+                                                                            <h5 class="received"> <img src="assets/images/svg/rupee-g.svg" alt="rupees-icon">{{recentTransaction.AMOUNT}}</h5>
+                                                                            <h6>{{'MONEY_RECEIVED' | translate}}</h6>
+                                                                            <div class="rupee-info"> <span class="green">
+                                          <img src="assets/images/svg/down-arrow-g.svg" alt="received-money-icon">
+                                        </span> <em class="success">{{'SUCCESS' | translate}}</em> </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="row1 mar-t">
+                                                                    <div class="col-8 col-md-8">
+                                                                        <!-- <em>Wedding Contribution</em> --><em>{{recentTransaction.REMARKS}} </em>
+                                                                        <!-- Note : This is not a link for View Details. It is a Remark section so add the functionality accordingly -->
+                                                                    </div>
+                                                                    <div class="col-4 col-md-4 text-right">
+                                                                        <button class="btn-icon" (click)="goToTransactionDetail(recentTransaction)"> <img
+                                        src="assets/images/svg/arrow-right-g2.svg" alt="right-arrow-icon" /></button>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="time-info"> <em>{{recentTransaction.DATETIME}}</em>
+                                                                </div>
+                                                            </div>
+                                                            <!-- Money Received List End-->
+                                                            <!-- Money Sent List Start -->
+                                                            <div class="sent-info1" *ngIf="recentTransaction.TYPE=='DR' && recentTransaction.TRNSTATUS=='COMPLETED'">
+                                                                <div class="row1">
+                                                                    <div class="col-12">
+                                                                        <div class="transaction-info">
+                                                                            <h5 class="send"> <img src="assets/images/svg/rupee-r.svg" alt="rupees-icon">{{recentTransaction.AMOUNT}}</h5>
+                                                                            <h6>{{'MONEY_SENT' | translate}} </h6>
+                                                                            <div class="rupee-info"> <span class="green">
+                                          <img src="assets/images/svg/up-arrow-r.svg" alt="send-money-icon">
+                                        </span> <em class="success">{{'SUCCESS' | translate}}</em> </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="row1 mar-t">
+                                                                    <div class="col-8 col-md-8"> <em>{{recentTransaction.REMARKS}}</em> </div>
+                                                                    <div class="col-4 col-md-4 text-right">
+                                                                        <button class="btn-icon" (click)="goToTransactionDetail(recentTransaction)"> <img
+                                        src="assets/images/svg/arrow-right-g2.svg" alt="right-arrow-icon" /></button>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="time-info"> <em>{{recentTransaction.DATETIME}}</em>
+                                                                </div>
+                                                            </div>
+                                                            <!-- Money Sent List End-->
+                                                            <!-- Money Sent Failed List  Start-->
+                                                            <div class="failed-info" *ngIf="recentTransaction.TRNSTATUS=='FAILED'">
+                                                                <div class="row1">
+                                                                    <div class="col-12">
+                                                                        <div class="transaction-info">
+                                                                            <h5 class="default"> <img src="assets/images/svg/rupee-grey.svg" alt="rupees-icon">{{recentTransaction.AMOUNT}}</h5>
+                                                                            <h6>{{recentTransaction.requestType == 'COLLECT' ? ('COLLECT_REQUEST' | translate) : recentTransaction.requestType | translate}}</h6>
+                                                                            <div class="rupee-info"> <span class="red">
+                                          <img src="assets/images/svg/failed.svg" alt="failed-icon">
+                                        </span> <em class="error">{{'FAILED' | translate}}</em> </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="row1 mar-t">
+                                                                    <div class="col-8 col-md-8"> <em>{{recentTransaction.REMARKS}}</em> </div>
+                                                                    <div class="col-4 col-md-4 text-right">
+                                                                        <button class="btn-icon" (click)="goToTransactionDetail(recentTransaction)"> <img
+                                        src="assets/images/svg/arrow-right-g2.svg" alt="right-arrow-icon" /></button>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="time-info"> <em>{{recentTransaction.DATETIME}}</em>
+                                                                </div>
+                                                            </div>
+                                                            <!-- Money Sent Failed List End -->
+                                                            <!-- Money Sent Expired List Start-->
+                                                            <div class="failed-info" *ngIf="recentTransaction.TRNSTATUS=='EXPIRED'">
+                                                                <div class="row1">
+                                                                    <div class="col-12">
+                                                                        <div class="transaction-info">
+                                                                            <h5 class="default"> <img src="assets/images/svg/rupee-grey.svg" alt="rupees-icon">{{recentTransaction.AMOUNT}}</h5>
+                                                                            <h6> {{recentTransaction.requestType == 'COLLECT' ? ('COLLECT_REQUEST' | translate) : recentTransaction.requestType | translate}} </h6>
+                                                                            <div class="rupee-info"> <span class="grey">
+                                          <img src="assets/images/svg/expired1.svg" alt="polygon-icon">
+                                        </span> <em class="expired">{{'EXPIRED' | translate}}</em> </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="row1 mar-t">
+                                                                    <div class="col-8 col-md-8"> <em>{{recentTransaction.REMARKS}}</em> </div>
+                                                                    <div class="col-4 col-md-4 text-right">
+                                                                        <button class="btn-icon" (click)="goToTransactionDetail(recentTransaction)"> <img
+                                        src="assets/images/svg/arrow-right-g2.svg" alt="right-arrow-icon" /></button>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="time-info"> <em>{{recentTransaction.DATETIME}}</em>
+                                                                </div>
+                                                            </div>
+                                                            <!-- Money Sent Expired List End-->
+                                                            <!-- Money Sent Expired List Start-->
+                                                            <div class="failed-info" *ngIf="recentTransaction.TRNSTATUS=='PENDING'">
+                                                                <div class="row1">
+                                                                    <div class="col-12">
+                                                                        <div class="transaction-info">
+                                                                            <h5 class="default"> <img src="assets/images/svg/rupee-grey.svg" alt="rupees-icon">{{recentTransaction.AMOUNT}}</h5>
+                                                                            <h6>{{recentTransaction.requestType == 'COLLECT' ? ('COLLECT_REQUEST' | translate) : recentTransaction.requestType | translate}} </h6>
+                                                                            <div class="rupee-info"> <span class="yellow">
+                                          <img src="assets/images/svg/pending-icon1.svg" alt="polygon-icon">
+                                        </span> <em class="expired">{{'PENDING' | translate}}</em> </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="row1 mar-t">
+                                                                    <div class="col-8 col-md-8"> <em>{{recentTransaction.REMARKS}}</em> </div>
+                                                                    <div class="col-4 col-md-4 text-right">
+                                                                        <button class="btn-icon" (click)="goToTransactionDetail(recentTransaction)"> <img
+                                        src="assets/images/svg/arrow-right-g2.svg" alt="right-arrow-icon" /></button>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="time-info">
+                                                                    <em>{{recentTransaction.DATETIME}}</em>
+                                                                    <!-- <em>{{ recentTransaction.DATETIME | date:'dd MMM yyyy'}}</em> -->
+                                                                </div>
+                                                            </div>
+                                                            <!-- Money Sent Expired List End-->
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- footer section start -->
+            <div class="footer-container sticky-actions ">
+                <div class="footer-inactions minus-rt-col">
+                    <div class="container-fluid">
+                        <div class="row" *ngIf="payeeCode == '0000'">
+                            <div [ngClass]="DataService.recentTransactionUPI.txnMode != 'ACCOUNT' ? 'col-6 col-md-6 text-center' : 'col-12 col-md-12 text-center' ">
+                                <button class="ux-button primary md" (click)="proceed('payUpi')">{{'PAY' | translate }}</button>
+                            </div>
+                            <div class="col-6 col-md-6 text-center" *ngIf="DataService.recentTransactionUPI.txnMode != 'ACCOUNT'">
+                                <button class="ux-button primary md" (click)="proceed('collectRecentRequest')">{{'COLLECT' | translate}}</button>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-12 col-md-12 col-lg-12 text-center">
+                                <div class="powered-logo3"> <img src="assets/images/svg/powered-by-upi-big.svg" alt="powered-upi-logo">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- footer section end -->
+        </div>
+    </div>
+</div>
+<!-- main -->

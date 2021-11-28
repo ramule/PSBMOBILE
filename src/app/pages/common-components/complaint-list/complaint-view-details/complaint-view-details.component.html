@@ -1,0 +1,303 @@
+<div class="main">
+
+    <div class="right-main-column minus-rt-col mar-custom">
+        <div class="right-col-container">
+
+            <div class="body-page-container">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="bg-section">
+                            <div class="col-12">
+                                <div class="row1">
+                                    <div class="col-sm-12 col-12 col-md-12">
+
+                                        <div class="white-bg1 pad-custom">
+                                            <ul class="complaint-list">
+                                                <li>
+                                                    <div class="full-container">
+                                                        <div class="row1">
+                                                            <div class="col-12 col-md-12">
+                                                                <div class="left-info">
+                                                                    <h6>{{'TRANSACTION_ID' | translate}}</h6>
+                                                                    <h5>{{complaint.transactionID}}</h5>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                                <li *ngIf="complaint?.transactionDate">
+                                                    <div class="full-container">
+                                                        <div class="row1">
+                                                            <div class="col-12 col-md-12">
+                                                                <div class="left-info">
+                                                                    <h6>{{'TRANSACTION_DATE' | translate}}</h6>
+                                                                    <h5>{{complaint.transactionDate}}</h5>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                                <li *ngIf="complaint?.feedbackTime">
+                                                    <div class="full-container">
+                                                        <div class="row1">
+                                                            <div class="col-12 col-md-12">
+                                                                <div class="left-info">
+                                                                    <h6>{{'COMPLAINT_DATE' | translate}}</h6>
+                                                                    <h5>{{complaint.feedbackTime}}</h5>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                                <li>
+                                                    <div class="full-container">
+                                                        <div class="row1">
+                                                            <div class="col-12 col-md-12">
+                                                                <div class="left-info">
+                                                                    <h6>{{'EMAIL_ID' | translate}}</h6>
+                                                                    <h5>{{complaint.customerEmail}}</h5>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                                <li>
+                                                    <div class="full-container">
+                                                        <div class="row1">
+                                                            <div class="col-12 col-md-12">
+                                                                <div class="left-info">
+                                                                    <h6>{{'RRN_NUMBER' | translate}}</h6>
+                                                                    <h5>{{complaint.rrn}}</h5>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                                <li>
+                                                    <div class="full-container">
+                                                        <div class="row1">
+                                                            <div class="col-12 col-md-12">
+                                                                <div class="left-info">
+                                                                    <h6>{{'COMPLAINT_TYPE' | translate}}</h6>
+                                                                    <h5>{{complaint.complaintType}}</h5>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                                <li>
+                                                    <div class="full-container">
+                                                        <div class="row1">
+                                                            <div class="col-12 col-md-12">
+                                                                <div class="left-info">
+                                                                    <h6>{{'SUBJECT' | translate}}</h6>
+                                                                    <h5>{{complaint.subject}}</h5>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                                <li>
+                                                    <div class="full-container">
+                                                        <div class="row1">
+                                                            <div class="col-12 col-md-12">
+                                                                <div class="left-info">
+                                                                    <h6>{{'DESCRIPTION' | translate}}</h6>
+                                                                    <h5>{{complaint.description}}</h5>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                                <li *ngIf="complaint.complaintType.toLowerCase() == 'mandate'">
+                                                    <div class="full-container">
+                                                        <div class="row1">
+                                                            <div class="col-12 col-md-12">
+                                                                <div class="left-info">
+                                                                    <h6>{{'UMN' | translate}}</h6>
+                                                                    <h5>{{complaint.umn }}</h5>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                                <li>
+                                                    <div class="full-container">
+                                                        <div class="row1">
+                                                            <div class="col-12 col-md-12">
+                                                                <div class="left-info">
+                                                                    <h6>{{'STATUS' | translate}}</h6>
+                                                                    <h5>{{complaint.status | titlecase}}</h5>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </li>
+
+                                                <li>
+                                                    <div class="full-container">
+                                                        <div class="row1">
+                                                            <div class="col-12 col-md-12">
+                                                                <div class="left-info">
+                                                                    <h6>{{'COMPLAINT_ID' | translate}}</h6>
+                                                                    <h5>{{complaint.complaintNo }}</h5>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </li>
+
+                                                <li *ngIf="complaint.txnAmount">
+                                                    <div class="full-container">
+                                                        <div class="row1">
+                                                            <div class="col-12 col-md-12">
+                                                                <div class="left-info">
+                                                                    <h6>{{'AMOUNT' | translate}}</h6>
+                                                                    <h5>{{complaint.txnAmount | customcurrency:'symbol'}}</h5>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </li>
+
+                                                <li *ngIf="complaint.txnAmount">
+                                                    <div class="full-container">
+                                                        <div class="row1">
+                                                            <div class="col-12 col-md-12">
+                                                                <div class="left-info">
+                                                                    <h6>{{'PAYER' | translate}}</h6>
+                                                                    <!-- <h5>{{'UPI_ID' | translate }} : {{complaint.payerAddr}}</h5> -->
+                                                                    <h5 *ngIf="payerPaymentType[0] == 'vpa' ">
+                                                                        <span>{{'UPI_ID' | translate }} : {{complaint?.payerAddr}}</span>
+                                                                    </h5>
+                                                                    <h5 *ngIf="payerPaymentType[0] == 'ifsc' || payerPaymentType[0] == 'mmid'">
+                                                                        <span>{{'ACCOUNT_AND_IFSC' | translate }} : {{payerPaymentType[1] | maskAccountNo }}/{{payerPaymentType[2]}}</span>
+                                                                    </h5>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </li>
+
+                                                <li *ngIf="complaint?.payeeAddr">
+                                                    <div class="full-container">
+                                                        <div class="row1">
+                                                            <div class="col-12 col-md-12">
+                                                                <div class="left-info">
+                                                                    <h6>{{'PAYEE' | translate}}</h6>
+                                                                    <!-- <h5>{{'UPI_ID' | translate }} : {{complaint?.payeeAddr }}</h5> -->
+                                                                    
+                                                                    <h5 *ngIf="payeePaymentType[0] == 'vpa' ">
+                                                                        <span>{{'UPI_ID' | translate }} : {{complaint?.payeeAddr}}</span>
+                                                                    </h5>
+                                                                    <h5 *ngIf="payeePaymentType[0] == 'ifsc' || payeePaymentType[0] == 'mmid'">
+                                                                        <span>{{'ACCOUNT_AND_IFSC' | translate }} : {{payeePaymentType[1] | maskAccountNo }}/{{payeePaymentType[2]}}</span>
+                                                                    </h5>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                            </ul>
+                                            <!-- <div class="ux-footer" *ngIf="escalateRequest">
+                                                <div class="row1">
+                                                    <div class="col-12 col-lg-12 col-md-12 col-sm-12 text-center">
+                                                        <button class="complaint-btn ux-button primary" (click)="escalateReq()"
+                                                            >{{'ESCALATE_COMPLAINT' | translate}}</button>
+                                                    </div>
+                                                </div>
+                                            </div> -->
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <!-- </div>
+    </div>
+
+</div> -->
+
+            <!-- footer section start -->
+
+            <div class="footer-container sticky-actions" *ngIf="complaint.escalate == 'N'">
+				<div class="footer-inactions minus-rt-col">
+					<div class="container-fluid">
+						<div class="row">
+						   <div class="col-12 col-md-12 col-lg-12 text-center">
+							 	 <button class="complaint-btn ux-button primary md"  
+                                  (click)="escalateReq()">{{'ESCALATE_COMPLAINT' | translate}}</button>
+							 </div>
+						 </div> 
+					</div> 
+				</div> 
+			</div> 
+
+            <!-- footer section end -->
+
+        </div>
+    </div>
+
+</div>
+
+<!-- main -->
+<!-- Complaint Success Popup Start -->
+
+<div class="popup-bottom escalate-success">
+    <form id="success-form">
+        <div class="row mt-3">
+            <div class="success">
+                <img src="assets/images/svg/check.svg" alt="success-icon">
+                <h3>{{'SUCCESS' | translate}}</h3>
+                <h5>{{escalateResp?.msg}} <a>{{escalateResp?.responseParameter.emailId}}</a></h5>
+            </div>
+        </div>
+        <div class="row1 mt-3">
+            <div class="col-12 text-center" (click)="closePopup('div.popup-bottom.escalate-success')">
+                <button class="ux-button primary md" type="button">{{'OK' | translate}}</button>
+            </div>
+        </div>
+    </form>
+</div>
+
+<!-- <div class="popup-bottom escalate-fail">
+    <form id="success-form">
+        <div class="row mt-3">
+            <div class="success">
+                <h3>{{'INFORMATION' | translate}}</h3>
+                <h5>{{escalateResp?.msg}} </h5>
+            </div>
+        </div>
+        <div class="row1 mt-3">
+            <div class="col-12 text-center" (click)="closePopup('div.popup-bottom.escalate-fail')">
+                <button class="ux-button primary md" type="button">{{'OK' | translate}}</button>
+            </div>
+        </div>
+    </form>
+</div> -->
+
+<div class="popup-bottom escalate-fail">
+    <div class="row1">
+        <div class="col-12">
+            <h4 class="text-center"> <img src="./assets/images/svg/information.svg" alt="information-icon"> {{'INFORMATION' | translate}}
+            </h4>
+        </div>
+    </div>
+    <div class="row1">
+        <div class="col-12">
+            <p>{{ escalateResp?.msg}}</p>
+        </div>
+    </div>
+    <div class="row1  mt-2">
+        <div class="col-12 text-center" (click)="closePopup('div.popup-bottom.escalate-fail')">
+            <button class="ux-button primary submit-btn" type="button">{{'OK' | translate}}</button>
+        </div>
+    </div>
+</div>
+
+<!-- Complaint Success Popup End -->
+
+<!-- <div class="ios-nav-overlay"></div> -->

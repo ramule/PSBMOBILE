@@ -1,0 +1,47 @@
+<div class="main">
+	<div class="right-main-column minus-rt-col mar-custom">
+		<div class="right-col-container pad-b">
+			<div class="body-page-container">
+				<div class="container-fluid">
+					<div class="row">
+						<div class="bg-section">
+							<div class="col-12">
+								<div class="row1">
+									<div class="col-sm-12 col-12 col-md-12">
+										<div class="white-bg-custom2">
+											<div class="info-section1">
+												<div class="ux-input mb-0">
+													<input type="text" name="searchContact" [(ngModel)]="searchContacts" [pattern]="constant.ALPHA_NUMERIC_SPACE_UPI_REGEX" #searchContact="ngModel" placeholder="{{'SEARCH_FOR_NAME_MOBILE_NUMBER' | translate}}" required>
+													<p class="text-center error-message" *ngIf="searchContact.errors.pattern">{{ 'ENTER_ALPHABET_NUMBER_ERROR' | translate}}</p>
+                                                    <p class="error-message"></p>
+												</div>
+											</div>
+											<div class="innerbg-section">
+												<div class="row">
+													<ul class="contact-list" *ngIf="payeeList.length > 0">
+														<li *ngFor="let contact of payeeList  | searchFilter : 'nickName,number' : searchContacts">
+															<a (click)="selectContact(contact)">
+																<div class="list-lft"> <span class="green1">
+                                                                        <!-- <img src="assets/images/icons/user3.png"
+                                                                            alt="user-img"> -->
+                                                                            <h6 *ngIf="contact.nickName">{{contact.nickName | firstLastChar}}</h6>
+                                                                    </span> </div>
+																<div class="list-rit">
+																	<h5>{{contact.nickName}}</h5>
+																	<h6>{{contact?.number}}</h6> </div>
+															</a>
+														</li>
+													</ul>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

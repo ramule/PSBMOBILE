@@ -1,0 +1,379 @@
+<form [formGroup]="sendSmsForm" (ngSubmit)="submitForm()">
+    <div class="main">
+        <div class="right-main-column minus-rt-col bg1 mar-custom">
+            <div class="right-col-container">
+                <div class="body-page-container">
+                    <div class="container-fluid">
+                        <div class="bg-section">
+                            <div class="col-sm-12 col-12 col-md-12">
+                                <div class="row">
+                                    <div class="sub-header2">
+                                        <div class="in-header">
+                                            <div class="header-icons-lft">
+                                                <div class="header-actions">
+                                                </div>
+                                            </div>
+                                            <div class="brand-logo m-auto text-center">
+                                                <h4>
+                                                    {{ 'MOBILE_VERIFICATION' | translate }}
+                                                </h4>
+                                            </div>
+                                            <div class="header-icons-rit">
+                                                <div class="header-actions">
+                                                    <button class="ux-button-header" (click)="close()">
+                                                        <img src="assets/images/svg/close-w.svg" alt="cross-icon"
+                                                            class="img-vsmall">
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row1">
+                                    <div class="col-sm-12 col-12 col-md-12">
+                                        <div class="grey-bg2 mt-0">
+                                            <div class="row1">
+                                                <div class="col-12">
+                                                    <div class="logo1" *ngIf="dataService.upiRegistrationFlow" >
+                                                        <img src="assets/images/logo/bhim-upi-logo.svg" alt="bhim-upi-logo">
+                                                    </div>
+                                                </div>
+                                                <div class="col-12">
+                                                    <div class="info-img" >
+                                                        <img src="assets/images/svg/verification-img.svg" alt="verification-img">
+                                                    </div>
+                                                </div>
+                                                <div class="col-12">
+                                                    <ul class="list-common">
+                                                        <li *ngIf="dataService.upiRegistrationFlow" >
+                                                            {{ 'MOBILE_NUMBER_VERIFICATION_DESC_1' | translate }}
+                                                        </li>
+                                                        <li *ngIf="dataService.omniRegistrationFlow" >
+                                                            For Registraion, we need to verfy your Mobile Number registered with this bank
+                                                        </li>
+                                                        <li>
+                                                            {{ 'MOBILE_NUMBER_VERIFICATION_DESC_2' | translate }}
+                                                        </li>
+                                                        <li>
+                                                            {{ 'MOBILE_NUMBER_VERIFICATION_DESC_3' | translate }}
+                                                        </li>
+                                                        <li>
+                                                            {{ 'MOBILE_NUMBER_VERIFICATION_DESC_4' | translate }}
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                                <div class="col-12">
+                                                    <div class="text-center mt-3">
+                                                        <div class="ux-selection1 mar-rcustom text-center">
+                                                            <label>{{ 'I_ACCEPT' | translate }}
+                                                                <a (click)="openLink()" data-toggle="modal"
+                                                                    data-target="#termsModal">
+                                                                    {{ 'TERMS_AND_CONDITIONS' | translate }}
+                                                                </a>
+                                                                <input type="checkbox" name="" formControlName="accept">
+                                                                <span class="checkmark"></span>
+                                                            </label>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+    <!-- main -->
+
+    <!-- footer section start -->
+
+    <div class="footer-container  sticky-actions box-shadow">
+        <div class="footer-inactions minus-rt-col">
+            <div class="container-fluid">
+                <div class="row">
+                    <button class="ux-button primary md sendsms" type="submit" [disabled]="sendSmsForm.invalid || disableProceedBtn">
+                {{ 'SEND_SMS' | translate }}
+              </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+<div class="sticky-actions-spacer"></div>
+
+<!-- footer section end -->
+
+<!-- =========== modal popup start ===============  -->
+
+
+<!-- Register Popup Start -->
+<div class="popup-bottom register1">
+    <div class="row">
+        <div class="col-12">
+            <h4 class="text-center">
+                {{ 'INFORMATION' | translate }}
+            </h4>
+        </div>
+    </div>
+    <form action="#" id="terms-form">
+        <div class="row">
+            <div class="col-12">
+                <p>
+                    {{ 'DISABLE_WIFI' | translate }}
+                    <br /> {{ 'ENABLE_MOBILE_DATA' | translate }}
+                </p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12 text-center">
+                <button class="ux-button primary info-submit" (click)="hideWifiModal()">
+                {{ 'OK' | translate }}
+              </button>
+            </div>
+        </div>
+    </form>
+</div>
+<!-- Register Popup End -->
+
+
+<!-- Register Popup Start -->
+<div class="popup-bottom register2">
+    <div class="row">
+        <div class="col-12">
+            <h4 class="text-center">
+                {{ 'INFORMATION' | translate }}
+            </h4>
+        </div>
+    </div>
+    <form action="#" id="terms-form">
+        <div class="row">
+            <div class="col-12">
+                <p>
+                    {{ 'ACCEPT_TERMS_AND_CONDITIONS' | translate }}
+                    <br /> {{ 'REG_PROCEED' | translate }}
+                </p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12 text-center">
+                <button class="ux-button primary submit3" (click)="hideModal()">
+                {{ 'OK' | translate }}
+              </button>
+            </div>
+        </div>
+    </form>
+</div>
+<!-- Register Popup End -->
+
+
+<div class="popup-bottom noSimModal">
+    <div class="row">
+        <div class="col-12">
+            <h4 class="text-center">
+                {{ 'INFORMATION' | translate }}
+            </h4>
+        </div>
+    </div>
+    <form action="#" id="terms-form">
+        <div class="row">
+            <div class="col-12">
+                <p>
+                    {{ 'SIM_CARD_NOT_FOUND' | translate }}
+                    <!-- SIM card not found. Please insert SIM card and try again -->
+                </p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12 text-center">
+                <button class="ux-button primary submit3" (click)="hideNoSimModal()">
+                {{ 'OK' | translate }}
+              </button>
+            </div>
+        </div>
+    </form>
+</div>
+
+<!-- Sending SMS popup -->
+<div id="sendsmsModal" class="modal fade" role="dialog">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content pad-custom">
+            <div class="modal-header bor-n cust-pad pb-0">
+                <div class="mh-bottom">
+                    <div class="row">
+                        <div class="col-6 col-sm-4 col-md-4 col-lg-4 m-auto">
+                            <div class="loader-main">
+                                <div class="text-center loader-section">
+                                    <div class="spinner-border text-primary" role="status">
+                                    </div>
+                                    <span class="number-text">{{ simBindingTime }}</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-body cust-pad pt-0">
+                <p class="text-center">
+                    {{ 'PLEASE_WAIT' | translate }} <br /> {{ 'SEND_SMS_MSG' | translate }}
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Welcome back Popup Start -->
+<div class="popup-bottom user-verification">
+    <div class="row1">
+        <div class="col-12">
+            <h4 class="text-center"> {{'VERIFICATION' | translate}}
+            </h4>
+        </div>
+    </div>
+    <div class="row1">
+        <div class="col-12">
+            <p>{{'WELCOME_BACK' | translate}}</p>
+        </div>
+    </div>
+    <div class="row1  mt-2">
+        <div class="col-12 text-center" (click)="closeWelcomeBackPopup()">
+            <button class="ux-button primary submit-btn" type="button">{{'OK' | translate}}</button>
+        </div>
+    </div>
+</div>
+<!-- Welcome back Popup End-->
+
+<div class="popup-bottom sim-binding-failed">
+    <div class="row1">
+        <div class="col-12">
+            <h4 class="text-center"> {{'INFORMATION' | translate}}
+            </h4>
+        </div>
+    </div>
+    <div class="row1">
+        <div class="col-12">
+            <p>{{'SIM_BINDING_FAILED_PLEASE_TRY_AGAIN' | translate}}</p>
+        </div>
+    </div>
+    <div class="row1  mt-2">
+        <div class="col-12 text-center" (click)="closePopup('sim-binding-failed')">
+            <button class="ux-button primary submit-btn" type="button">{{'OK' | translate}}</button>
+        </div>
+    </div>
+</div>
+
+<!-- Send SMS Immediately Popup Start (iOS) -->
+<div class="popup-bottom send-sms-ios-popup">
+    <div class="row">
+        <div class="col-12">
+            <h4 class="text-center">
+                {{ 'INFORMATION' | translate }}
+            </h4>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12">
+            <p>
+                {{ 'SEND_SMS_5_SEC_MSG' | translate }}
+                <!-- Please send the SMS within 5 seconds -->
+            </p>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12 text-center">
+            <button class="ux-button primary info-submit" (click)="proceedSmsFlowIos()">
+                {{ 'PROCEED' | translate }}
+            </button>
+            <!-- <button class="ux-button secondary info-submit" (click)="cancelSmsFlowIos()">
+                {{ 'CANCEL' | translate }}
+            </button> -->
+        </div>
+    </div>
+
+</div>
+<!-- Send SMS Immediately Popup End (iOS) -->
+
+<!-- eSim Popup Start (iOS) -->
+<div class="popup-bottom esim-ios-popup">
+    <div class="row">
+        <div class="col-12">
+            <h4 class="text-center">
+                {{ 'INFORMATION' | translate }}
+            </h4>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12">
+            <p>
+                <!-- {{ 'ESIM_DETECTED_IOS' | translate }}  -->
+                E-sim detected on iPhone. To successfully complete registration with SMS, please ensure that mobile number registered with bank is selected as the default line under mobile data in your phone settings.
+            </p>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12 text-center">
+            <button class="ux-button primary info-submit" (click)="proceedEsimFlowIos()">
+                {{ 'PROCEED' | translate }}
+            </button>
+            <button class="ux-button secondary info-submit" (click)="cancelEsimFlowIos()">
+                {{ 'LATER' | translate }}
+            </button>
+        </div>
+    </div>
+
+</div>
+<!-- esim Popup End (iOS)-->
+
+
+<div class="popup-bottom blocked-user sm-popup">
+    <div class="row1">
+        <div class="col-12">
+            <h4 class="text-center">
+                <img src="./assets/images/svg/information.svg" alt="error-icon"> {{ 'INFORMATION' | translate }}
+            </h4>
+        </div>
+    </div>
+    <div class="row1">
+        <div class="col-12 mb-4">
+            <p> Mobile Number Is Blocked.Please Contact Bank </p>
+        </div>
+    </div>
+    <div class="row1  mt-2">
+        <div class="col-12 text-center">
+            <button class="ux-button submit-btn" (click)="closePopup('blocked-user')">{{ 'CLOSE' | translate }}</button>
+        </div>
+    </div>
+</div>
+
+
+
+    <!-- non-psb user Popup Start -->
+    <div class="popup-bottom non-psb">
+        <div class="row1">
+            <div class="col-12">
+                <h4 class="text-center">
+                    <img src="./assets/images/svg/information.svg" alt="error-icon"> {{'INFORMATION' | translate}}
+                </h4>
+            </div>
+        </div>
+        <div class="row1">
+            <div class="col-12 mb-4">
+                <p>You are not an esteemed customer of our Bank. Please open an account with us</p>
+            </div>
+        </div>
+        <div class="row1  mt-2">
+            <div class="col-12 text-center">
+                <button class="ux-button primary submit-btn" (click)="closePopup('non-psb')">
+                    {{ 'OK' | translate }}</button>
+            </div>
+        </div>
+    </div>
+    <!-- non-psb user Popup End -->

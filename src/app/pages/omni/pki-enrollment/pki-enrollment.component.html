@@ -1,0 +1,101 @@
+<div class="main bg-m">
+	<div class="right-main-column ">
+		<div class="right-col-container pad-b full-width">
+			<div class="body-page-container main-dashborad manage-payee">
+				<div class="container-fluid">
+					<div class="row">
+						<div class="col-12 p-0">
+							<div class="breadcrumb">
+								<ul class="lst-breadcrumb">
+									<!-- <li [routerLink]="['/dashboard']"> <a>Dashboard</a> </li>
+									<li> PKI Enrollment </li> -->
+									<li *ngFor="let name of DataService.breadcrumblist">
+										<a (click)="DataService.breadcrumroute(name.routeName)">{{name.currentRoute | translate}}</a>
+								</li>
+								
+								</ul>
+							</div>
+						</div>
+					</div>
+					<!--.row -->
+					<div class="vspacer15 customize d-none d-md-block d-lg-block d-xl-block"></div>
+					<div class="row no-gutters">
+						<div class="col-12">
+							<div class="row1">
+								<div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-9">
+									<!-- Greencard2 Start here -->
+									<div class="greencard2">
+										<div class="row1 hide-m">
+											<div class="col-12">
+												<h4>PKI Enrollment</h4> </div>
+										</div>
+										<div class="row1">
+											<div class="col-sm-12 col-12 col-md-12">
+												<div class="widget-box5 mb-3">
+													<div class="bg-white1 pad-custom tax-wrapper">
+														<div class="row1">
+															<div class="col-12 col-md-12">
+																<h4 class="black-h4">Enrollment </h4> </div>
+														</div>
+														<div class="row1">
+															<div class="col-12 col-md-12">
+																<p> Lorem ipsum dolor sit amet, consectetur adipiscing elit
+																	<br/>
+																	<br/> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Imperdiet dui accumsan sit amet nulla facilisi morbi. Amet tellus cras adipiscing enim eu turpis egestas. Est placerat in egestas erat imperdiet sed euismod nisi.</p>
+																<ol class="order-list">
+																	<li>Lorem ipsum dolor sit amet, consectetur adipiscing elit </li>
+																	<li>Lorem ipsum dolor sit amet, sed do eiusmod tempor incididunt ut labore</li>
+																	<li>Lorem ipsum dolor sit amet, Imperdiet dui accumsan sit amet nulla</li>
+																</ol>
+															</div>
+														</div>
+													</div>
+												</div>
+											</div>
+											<div class="col-12 col-md-12">
+												<ul class="bottom-footer1">
+													<li>
+														<div class="btn-div w100">
+															<button class="ux-button primary sm-mob" (click)="pkiEnrollmentSubmit()">Generate Token</button>
+														</div>
+													</li>
+												</ul>
+											</div>
+										</div>
+									
+									</div>
+									<!-- greencard2 -->
+								</div>
+								<!-- col-12 col-sm-12 col-md-12 col-lg-12 col-xl-9 -->
+								<!-- Right Column Ads Start -->
+								<div class="col-12 col-md-12 col-lg-12 col-xl-3 d-none d-xl-block">
+									<div class="right-ads">
+										<a> <img src="assets/images/banner/my-card-banner.jpg"> </a>
+									</div>
+									<div class="vspacer30"></div>
+									<!-- Offercard Start-->
+									<!-- <div class="offers-card">
+										<div class="header-block clearfix">
+											<h5>Offers on your card</h5> </div>
+										<div class="panel-body">
+											<div class="recentpayment-control">
+												<ul>
+													<li> <img src="assets/images/banner/offer-banner.png"> </li>
+												</ul>
+											</div>
+										</div>
+									</div> -->
+									<!-- Offercard Ends-->
+								</div>
+								<!-- Right Column Ads Ends -->
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!--.right-col-container-->
+	</div>
+	<!--.right-main-column-->
+</div>
+<!-- main -->

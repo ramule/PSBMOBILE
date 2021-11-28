@@ -1,0 +1,154 @@
+<div class="main bg-m">
+	<div class="right-main-column ">
+		<div class="right-col-container pad-b full-width">
+			<!-- ======== body page content start from here ======== -->
+			<div class="body-page-container main-dashborad mycards bill-wrapper">
+				<div class="container-fluid">
+					<div class="row">
+						<div class="row">
+							<div class="col-12 p-0">
+								<div class="breadcrumb">
+									<ul class="lst-breadcrumb">
+										<li *ngFor="let name of DataService.breadcrumblist">
+											<a (click)="DataService.breadcrumroute(name.routeName)">{{name.currentRoute | translate}}</a>
+										</li>
+									</ul>
+								</div>
+							</div>
+						</div>
+					<!--.row -->
+					<div class="vspacer15 customize d-none d-xl-block d-lg-block d-md-none d-sm-none "></div>
+					<div class="row no-gutters">
+						<div class="col-12">
+							<div class="row1">
+								<div class="col-12 col-sm-12 col-md-12 col-lg-12  col-xl-9">
+									<div class="greencard2 tracklist">
+										<div class="row1 hide-m">
+											<div class="col-md-10 col-12">
+												<h4>Pending Bill</h4> </div>
+											<div class="col-md-2 col-12">
+												<div class="header-actions"> <img src="assets/images/icons/billpay.png" alt="billpay-img" class="small-img"> </div>
+											</div>
+										</div>
+										<div class="row1">
+											<div class="col-12 col-sm-12 col-md-12 col-lg-12 hide-m">
+												<div class="widget-box5 mb-3">
+													<div class="bg-white1 pad-custom p-0">
+														<ul class="bill-reminder-list grid-col-4 bill-gird-list1">
+															<li>
+																<div class="grid-info">
+																	<div class="full-info">
+																		<div class="list-full">
+																			<div class="icon1" style="background-image: url({{renderableData.logo}});"> </div>
+																			<h5>{{renderableData.shortName | titlecase}}</h5>
+																			<h6 class="display-mt">Paid on <span>{{renderableData.paidDate}}</span> </h6> </div>
+																	</div>
+																</div>
+																<div class="grid-info d-none d-sm-block">
+																	<div class="full-info"> <b>Paid on : </b>
+																		<h5>{{renderableData.paidDate}}</h5> </div>
+																</div>
+																<div class="grid-info">
+																	<div class="full-info text-status"> <b>Status : </b>
+																		<em [ngClass]="{'text-pass': renderableData.billStatus == 'PAID','text-del': renderableData.billStatus == 'PENDING' ,'text-reject': renderableData.billStatus == 'FAILED'   }">
+																			<span >{{renderableData.billStatus}}</span>						
+
+																		</em> 
+																</div>
+																</div>
+																<div class="grid-info">
+																	<div class="full-info text-right"> <b>Paid Amount : </b>
+																		<h5><img src="assets/images/svg/rupee-bl.svg" alt="rupee-icon">{{renderableData.amt}}</h5> </div>
+																</div>
+															</li>
+														</ul>
+													</div>
+												</div>
+											</div>
+											<div class="col-sm-12 col-12 col-md-12">
+												<div class="white-box2 mb-3 mt-0 p-0">
+													<div class="info-bottom pad-custom biller-info">
+                                                        
+														<div class="info-details pr-35" *ngFor="let item of renderableData.loopingData">
+															<div class="row">
+																<h6>{{item.label}}</h6>
+																<h5>{{item.field}}</h5> </div>
+														</div>
+														<div class="info-details">
+															<div class="row">
+																<div class="left-info">
+																	<span class="biller-icon" style="background-image: url({{renderableData.logo}});">
+
+                                                                    </span>
+																	<div class="right-info">
+																		<h6>Biller Name</h6>
+																		<h5>{{renderableData.billerName}}</h5> </div>
+																</div>
+															</div>
+														</div>
+														
+														
+														<div class="info-details d-block d-sm-none">
+															<div class="row">
+																<h6>Amount</h6>
+																<h5><img src="assets/images/svg/rupee-bl.svg" alt="rupee-icon">{{renderableData.amt}}</h5> </div>
+														</div>
+														<!-- <div class="info-details d-block d-sm-none">
+															<div class="row1">
+																<div class="col-6">
+																	<div class="left-info1">
+																		<h5> <a (click)="goToPage('editBillReminder')" class="reminder-btn set"> <img src="assets/images/svg/reminder-g.svg" alt="reminder-icon" class="big-img"> Edit Reminder</a> </h5> </div>
+																</div>
+																<div class="col-6">
+																	<div class="right-info1">
+																		<h5> <a (click)="goToPage('deleteBillReminderConfirmation')" class="block-btn block">  <img src="assets/images/svg/delete.svg" alt="block-icon" class="big-img"> Delete Reminder</a> </h5> </div>
+																</div>
+															</div>
+														</div> -->
+													</div>
+												</div>
+											</div>
+										</div>
+										<div class="row1 hide-m">
+											<div class="col-md-4 col-lg-4 col-12 hide-m">
+												<ul class="bottom-footer1">
+													<li class="justify-content-start">
+														<div class="btn-div ml-0">
+															<button class=" ux-button secondary sm-mob" (click)="goToPage('retailRechargeBillPay')" >Back</button>
+														</div>
+													</li>
+												</ul>
+											</div>
+											<!-- <div class="col-md-8 col-lg-8 col-12 ">
+												<ul class="bottom-footer1">
+													<li>
+														<div class="btn-div">
+															<button class=" ux-button secondary sm-mob delete-btn" (click)="goToPage('editBillReminder')" >Edit Reminder</button>
+														</div>
+														<div class="btn-div">
+															<button class=" ux-button primary sm-mob" (click)="goToPage('deleteBillReminderConfirmation')" >Delete Reminder</button>
+														</div>
+													</li>
+												</ul>
+											</div> -->
+										</div>
+									</div>
+								</div>
+								<div class="col-12 col-md-12 col-lg-12 col-xl-3 d-none d-xl-block">
+									<div class="right-ads">
+										<a> <img src="assets/images/banner/my-card-banner.jpg"> </a>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!--.container-fluid-->
+			</div>
+			<!--.body-page-container-->
+		</div>
+		<!--.right-col-container-->
+	</div>
+	<!--.right-main-column-->
+</div>
+<!-- main -->

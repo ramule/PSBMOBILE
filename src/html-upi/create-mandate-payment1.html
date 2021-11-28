@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <title>Payment | Create Mandate</title>
+    <link href="../css/lib/bootstrap.min.css" rel="stylesheet">
+    <link href="../css/lib/jquery-ui.min.css" rel="stylesheet">
+    <link href="../css/lib/jquery.mCustomScrollbar.min.css" rel="stylesheet">
+    <link href="../css/main.css" rel="stylesheet">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+
+</head>
+
+<body>
+
+    <div class="main main-bg2">
+
+        <!--  Header Section Start -->
+        <header class="global-header brand-bg2 minus-nav">
+            <div class="in-header">
+                <div class="header-icons-lft">
+                    <div class="header-actions">
+                        <button class="ux-button-header">
+                            <img src="../assets/images/svg/left-arrow.svg" alt="left-arrow-icon" class="img-small" />
+                        </button>
+                    </div>
+                </div>
+                <div class="brand-logo">
+                    <h3>Create Mandate</h3>
+                </div>
+                <div class="header-icons-rit">
+                    <div class="header-actions">
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- Header Section End -->
+
+        <div class="right-main-column mar-custom">
+            <div class="right-col-container pad-b pb-0">
+
+                <div class="body-page-container">
+                    <div class="vspacer5 d-sm-block d-none"></div>
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="bg-section2">
+                                <div class="col-12">
+                                    <div class="row1">
+                                        <div class="col-sm-5 col-8 col-md-3 m-auto">
+                                            <div class="ux-input white-input mar-tb">
+                                                <input type="text" placeholder="0" required id="amt" data-a-sign="Rs.">
+                                                <p class="text-center error-message"></p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row1">
+                                        <div class="col-sm-5 col-5 col-md-3 m-auto">
+                                            <div class="ux-input dark-input mar-tb">
+                                                <input type="text" placeholder="Remarks" required>
+                                                <p class="text-center col-w  error-message"> </p>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Info Bottom Container2 Start -->
+                                    <div class="info-bottom-container2">
+                                        <div class="row1">
+                                            <div class="col-sm-12 col-12 col-md-12 m-auto">
+                                                <!-- Deposit Start -->
+                                                <div class="bottom-info">
+                                                    <div class="row1">
+                                                        <div class="col-12">
+                                                            <div class="payee-info">
+                                                                <div class="info-lft">
+                                                                    <span class="green1">
+                                                                        <img src="../assets/images/icons/user14.png" alt="user-img">
+                                                                    </span>
+                                                                </div>
+                                                                <div class="info-rit">
+                                                                    <h5>Ronak Khanna</h5>
+                                                                    <h6>ronakk@psb</h6>
+                                                                    <!-- <em>9875142547</em> -->
+                                                                    <span class="small-icons">
+                                                                        <a href="#" class="info-btn"><img src="../assets/images/svg/question.svg" alt="question-icon" /></a>
+                                                                    </span>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="bottom-info-inner">
+                                                        <form action="#" id="payment-form">
+                                                            <div class="row1">
+                                                                <div class="col-6">
+                                                                    <div class="ux-input">
+                                                                        <label>Start Date</label>
+                                                                        <input type="text" class="datepicker1" placeholder="DD/MM/YYYY">
+                                                                        <em class="calendar-ic cal-top"></em>
+                                                                        <p class="mb0"></p>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-6">
+                                                                    <div class="ux-input">
+                                                                        <label>End Date</label>
+                                                                        <input type="text" class="datepicker1" placeholder="DD/MM/YYYY">
+                                                                        <em class="calendar-ic cal-top"></em>
+                                                                        <p class="mb0"></p>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="row1">
+                                                                <div class="col-12">
+                                                                    <div class="ux-input">
+                                                                        <label for="frequency">Frequency</label>
+                                                                        <select required="">
+                                                                            <option value="">Select</option>
+                                                                            <option value="Monthly">Monthly</option>
+                                                                        </select>
+                                                                        <p class="mb0"></p>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-12">
+                                                                    <div class="ux-input">
+                                                                        <label>Debit Day</label>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-12 col-xl-12 col-lg-12 col-md-12 col-sm-12">
+                                                                    <div class="row1">
+                                                                        <div class="col-4 col-md-4">
+                                                                            <div class="ux-selection mar-custom">
+                                                                                <label class="ux-selection2">Before
+                                                                                    <input type="radio" checked="checked" value="before" name="debitday">
+                                                                                    <span class="checkmark"></span>
+                                                                                </label>
+                                                                                <div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="col-4 col-md-4">
+                                                                            <div class="ux-selection mar-custom">
+                                                                                <label class="ux-selection2">On
+                                                                                    <input type="radio" value="on" name="debitday">
+                                                                                    <span class="checkmark"></span>
+                                                                                </label>
+                                                                                <div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="col-4 col-md-4">
+                                                                            <div class="ux-selection mar-custom">
+                                                                                <label class="ux-selection2">After
+                                                                                    <input type="radio" value="after" name="debitday">
+                                                                                    <span class="checkmark"></span>
+                                                                                </label>
+                                                                                <div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div>
+                                                                <div class="divider-line"></div>
+                                                            </div>
+                                                            <div class="row1">
+                                                                <div class="col-12">
+                                                                    <h4>From UPI ID</h4>
+                                                                </div>
+                                                            </div>
+                                                            <div class="row1 mt-s">
+                                                                <div class="col-12 col-md-12">
+                                                                    <h5>9768245145@psb</h5>
+                                                                    <h6>Savings XXXXXXXXXXXX9557</h6>
+                                                                    <em>Punjab & Sindh Bank</em>
+                                                                </div>
+                                                                <div class="col-12 col-md-12 mt-1 ">
+                                                                    <div>
+                                                                        <a href="#" class="reg-txt">Change A/C</a>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+
+                                                    </div>
+
+                                                    <div class="row1 mt-2">
+                                                        <div class="col-12 text-center">
+                                                            <button class="ux-button primary submit md">Proceed</button>
+                                                        </div>
+                                                    </div>
+                                                    </form>
+ 
+                                                </div>
+                                                <!-- Deposit End -->
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- Info Bottom Container2 End -->
+
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- main -->
+
+ 
+    <!-- Information Popup Start -->
+
+    <div class="popup-bottom information1">
+        <div class="row">
+            <div class="col-12">
+                <h4 class="text-center">Information</h4>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <p class="mb-0">
+                    You are creating a recurring mandate for amount more than Rs.2000 and it is necessary to provide authentication for every mandate execution in future, failing which mandate will not be executed.
+                </p>
+            </div>
+        </div>
+        <div class="row1 mt-2">
+            <div class="col-12 text-center">
+                <button class="ux-button primary md" onclick="window.location.href = 'create-mandate-confirmation.html'">Ok</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Information Popup End -->
+
+    <div class="ios-nav-overlay"></div>
+
+
+    <script src="../js/lib/jquery.min.js"></script>
+    <script src="../js/lib/bootstrap.min.js"></script>
+    <script src="../js/lib/jquery-ui.min.js"></script>
+    <script src="../js/lib/popper.min.js"></script>
+    <script src="../js/lib/jquery.mousewheel.min.js"></script>
+    <script src="../js/lib/jquery.mCustomScrollbar.js"></script>
+    <script src="../js/lib/datatables.min.js"></script>
+    <script src="../js/lib/autoNumeric.js"></script>
+    <script src="../js/common.js"></script>
+
+    <script type="text/javascript">
+        //  createGlobalNavMore();
+        $('#amt').autoNumeric('init', {
+            aSign: " ₹ "
+        });
+
+        $(document).on('change', '.toggle-col.yes  input[type="checkbox"]', function() {
+            console.log('Its working')
+            // if($(this).prop("checked")){
+            // 	$(this).parents('li').find('.qr-container').addClass('disable')
+            // }else{
+            // 	$(this).parents('li').find('.qr-container').removeClass('disable')
+            // 	}
+        })
+
+        $("a.info-btn").click(function() {
+            // console.log('working');
+            if (!$('div.popup-bottom.information1').hasClass('popup-active')) {
+                $('div.popup-bottom.information1').addClass('popup-active');
+                $('div.ios-nav-overlay').fadeIn(400);
+            } else {
+                $('div.popup-bottom.information1').removeClass('popup-active');
+                $('div.ios-nav-overlay').fadeOut(400);
+            }
+        });
+
+        $("div.ios-nav-overlay").click(function(e) {
+            e.stopPropagation();
+            // console.log('working');
+            $('div.popup-bottom.information1').removeClass('popup-active');
+            $('div.ios-nav-overlay').fadeOut(400);
+        });
+    </script>
+
+</body>
+
+</html>

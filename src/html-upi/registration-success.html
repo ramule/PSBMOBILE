@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+
+	<html>
+	
+	<head>
+		<meta charset="UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+	    <title>Registration Success | Registration</title>
+		<link href="../css/lib/bootstrap.min.css" rel="stylesheet">
+	    <link href="../css/lib/jquery-ui.min.css" rel="stylesheet">
+	 	<link href="../css/lib/jquery.mCustomScrollbar.min.css" rel="stylesheet">
+		<link href="../css/main.css" rel="stylesheet">
+		
+	</head>	
+
+<body>
+
+	<div class="main">
+
+	 	             
+      <!--  Header Section Start -->
+                
+	  <header class="global-header brand-bg2 minus-nav">
+		<div class="in-header">
+			<div class="header-icons-lft show1">   
+				<div class="header-actions">
+			   </div> 
+			</div>  
+			 <div class="brand-logo m-auto text-center">
+				<img src="../assets/images/logo/logo1.png" alt="psb-logo">
+			  </div> 
+		   <div class="header-icons-rit">
+				<div class="header-actions">
+				 </div> 
+			</div> 
+		</div> 
+	</header> 
+
+<!-- Header Section End -->
+
+<div class="right-main-column minus-rt-col bg1 mar-custom">
+<div class="right-col-container">
+			
+<div class="body-page-container">
+	<div class="container-fluid">
+     <div class="bg-section">
+      <div class="col-sm-12 col-12 col-md-12">
+		<div class="row">
+			<div class="sub-header2">
+				<div class="in-header">
+					<div class="header-icons-lft">   
+						<div class="header-actions">
+					    </div> 
+					</div>  
+					 <div class="brand-logo m-auto text-center">
+						 <h4>Receipt</h4>
+					  </div> 
+				   <div class="header-icons-rit">
+						<div class="header-actions">
+						  </div> 
+					</div> 
+				</div>
+			 </div>
+		  </div>
+
+		  <div class="row1">
+			<div class="col-sm-12 col-12 col-md-12">
+				 <div class="grey-bg2 mt-0">
+					  <div class="row1">
+						 <div class="col-12">
+							 <div class="logo2">
+								<img src="../assets/images/logo/bhim-logo.png" alt="bhim-logo"> 
+							 </div>
+						 </div>
+						   <div class="col-12 col-md-12 mt-2 text-center m-auto">
+								  <div class="success-card">
+										   <img src="../assets/images/svg/success.svg" alt="success-icon">
+										   <h2 class="success">Congratulations</h2>
+										   <p>You are successfully registered on BHIM PSB for UPI services.</p>
+									  </div>
+								  </div>
+							  </div> 
+						 </div>
+						 <div class="grey-bg2">
+							<div class="row1">
+							   <div class="col-12">
+								   <div>
+									  <h4 class="info-heading"><img src="../assets/images/svg/safty-icon.svg" alt="safty-icon"> Important Safety Check Points</h4>  
+								   </div>
+							   </div>
+								 <div class="col-12 col-md-12 mt-2 text-center m-auto">
+										 <ul class="unorderlist2">
+											 <li>Enter UPI PIN only on UPI IN page</li>
+											 <li>Only sending money requires UPI PIN</li>
+											 <li>Avoid sharing financial information on social media. Contact the services provider through correct channels.</li>
+											 <li>Don’t share OTP with anyone</li>
+										 </ul>
+										</div>
+										<div class="col-12 text-center">
+										   <button class="ux-button primary" onclick="window.location.href = 'login.html'" >Let's Start</button>
+									   </div> 
+								  </div> 
+						   </div>
+					 </div> 
+					 <!-- <div class="col-12 text-center">
+						<div class="powered-logo2">
+							<img src="../assets/images/svg/powered-by-upi-big.svg" alt="powered-upi-logo">
+						</div>
+					 </div> -->
+				 
+				  </div>
+			    </div>
+			 </div>
+           </div>
+
+			 
+		  </div> 
+
+		  <!-- footer section start -->
+		
+		  <div class="footer-container sticky-actions box-shadow">
+			<div class="footer-inactions minus-rt-col">
+				<div class="container-fluid">
+				  <div class="row">
+						 <div class="col-12 col-md-12 col-lg-12 text-center">
+							<div class="powered-logo2">
+								<img src="../assets/images/svg/powered-by-upi-big.svg" alt="powered-upi-logo">
+							</div>
+						 </div>
+					</div> 
+				</div> 
+			</div> 
+		</div> 
+
+ <!-- footer section end -->
+
+ 	  </div>  
+	</div> 
+	
+</div> 
+
+<!-- main -->		
+  
+	
+<!-- =========== modal popup start ===============  -->
+
+<!-- =========== modal popup end ===============  -->
+
+<script src="../js/lib/jquery.min.js"></script>
+<script src="../js/lib/bootstrap.min.js"></script>
+<script src="../js/lib/jquery-ui.min.js"></script>
+<script src="../js/lib/popper.min.js"></script>
+<script src="../js/lib/jquery.mousewheel.min.js"></script>
+<script src="../js/lib/jquery.mCustomScrollbar.js"></script>
+<script src="../js/lib/datatables.min.js"></script>
+<script src="../js/common.js"></script>
+
+<script type="text/javascript">
+	//  createGlobalNavMore();
+  
+ $("div.modal-body ul.sim-list li a").click(function(){
+    console.log('its working');
+	$("div.modal-body ul.sim-list li a").removeClass("active");
+	if (!$(this).hasClass('active') ) {
+			$(this).addClass('active');
+			// $( 'div.ios-nav-overlay' ).fadeIn( 400 );
+			// $( 'body' ).css( 'overflow', 'hidden' );
+		} else {
+			$(this).removeClass('active');
+			// $( 'div.ios-nav-overlay' ).fadeOut(  );
+			// $( 'body' ).css( 'overflow', 'auto' );
+	 }
+}); 
+
+</script>
+
+</body>
+</html>

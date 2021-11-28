@@ -1,0 +1,204 @@
+<div class="prelogin-page bg2 bg-custom upi-login">
+    <!-- Loginform Container Start -->
+    <div class="col-12 col-sm-12 h100">
+        <div class="row h100">
+            <div class="login-bg">
+                <div class="row1">
+                    <div class="col-12">
+                        <div class="login-header">
+                            <div class="brand-logo"> <img src="assets/images/logo/psb-logo.png" alt="psb-logo"> </div>
+                            <div class="brand-logo2"> <img src="assets/images/logo/bhim-upi-logo.svg" alt="bhim-upi-logo"> </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-12 col-12 col-md-12 ">
+                        <div class="whitebg-box mar-custom">
+                            <div class="row1">
+                                <div Class="col-12">
+                                    <h4>{{'NEW_TO_OUR_BANK' | translate}}</h4>
+                                </div>
+                                <div class="col-12 col-md-12">
+                                    <div class="text-center">
+                                        <!-- <button  class="new-account-btn  ux-button primary" (click)="showUpiPopUp('upiLiveAlert')">{{'OPEN_NEW_ACCOUNT' | translate}}</button>     -->
+                                        <button class="new-account-btn  ux-button primary" *ngIf="dataService.upiStandAlone">{{'OPEN_NEW_ACCOUNT' | translate}}</button>
+                                        <span class="badge-upcoming" *ngIf="!dataService.upiStandAlone">
+                                            Coming Soon
+                                        </span>
+                                        <!-- (click)="gotoAccountOpen()" -->
+                                        <button class="ux-button  primary" *ngIf="!dataService.upiStandAlone" >{{'OPEN_NEW_ACCOUNT' | translate}}</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-12 col-12 col-md-12 ">
+                        <form action="#" method="#">
+                            <div class="whitebg-box">
+                                <div class="row1">
+                                    <div Class="col-12">
+                                        <h4>Existing Retail Account?</h4>
+                                    </div>
+                                    <div class="col-12 col-md-12">
+                                        <div class="row">
+                                            <ul class="ac-list">
+                                                <li>
+                                                    <a (click)="gotoRegister('retail')">
+                                                        <div class="icon1"> <img src="assets/images/svg/retail-account.svg" alt="retail-icon" /> </div> <em>Retail Account</em> </a>
+                                                </li>
+                                                <li>
+
+                                                    <a (click)="gotoRegister('loan')">
+                                                        <!-- <span class="badge-upcoming1"    >
+                                                            Coming Soon
+                                                        </span> -->
+                                                        <div class="icon1"> <img src="assets/images/svg/LOANS.svg" alt="loan-icon" /> </div> <em>Loan Account</em> </a>
+                                                </li>
+                                                <li>
+
+                                                    <a (click)="gotoRegister('nri')">
+                                                        <span class="badge-upcoming1"    >
+                                                            Coming Soon
+                                                        </span>
+                                                        <div class="icon1"> <img src="assets/images/svg/nre-icon.svg" alt="nre-icon" /> </div> <em>NRE/NRO Account</em> </a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <!-- <div class="text-center">
+                                              <button  class="new-account-btn ux-button primary"*ngIf="dataService.upiStandAlone" >{{'LETS_START' | translate}}</button>
+                                              <button  class="ux-button  primary" *ngIf="!dataService.upiStandAlone" (click)="gotoRegister('retail')" >{{'LETS_START' | translate}}</button>
+                                            </div> -->
+                                </div>
+                            </div>
+                            <!-- </div> -->
+                        </form>
+                    </div>
+                </div>
+                <!-- <div class="col-sm-12 col-12 col-md-12" >
+                                <form  action="#" method="#">
+                                  <div class="whitebg-box mar-custom custom-whitebg" style="margin-top: 40px ;">
+                                      <div class="row1">
+                                          <div Class="col-12">
+                                                <h4>Existing Loan Account?</h4>
+                                           </div>
+                                           <div class="col-12 col-md-12">
+                                            <div class="text-center">
+                                              <button  class="new-account-btn ux-button primary" *ngIf="dataService.upiStandAlone" >{{'LETS_START' | translate}}</button>
+                                              <button  class="ux-button  primary" *ngIf="!dataService.upiStandAlone" (click)="gotoRegister('loan')" >{{'LETS_START' | translate}}</button>
+                                            </div>
+                                       </div>
+                                     </div>
+                                  </div>
+                               </form>
+                               </div> -->
+                <!-- <div class="col-sm-12 col-12 col-md-12 ">
+                                <form  action="#" method="#">
+                                    <div class="whitebg-box mar-custom custom-whitebg custom-margine">
+                                        <div class="row1">
+                                            <div Class="col-12">
+                                                  <h4>Existing NRE and NRO Customers?</h4>
+                                             </div>
+                                             <div class="col-12 col-md-12">
+                                              <div class="text-center">
+                                                <button  class="new-account-btn ux-button primary" *ngIf="dataService.upiStandAlone" >{{'LETS_START' | translate}}</button>
+                                                <button  class="ux-button  primary" *ngIf="!dataService.upiStandAlone" (click)="gotoRegister('nri')" >{{'LETS_START' | translate}}</button>
+                                              </div>
+                                         </div>
+                                       </div>
+                                    </div>
+                                 </form>
+                            </div>  -->
+                <!-- Sarfaraj will check  -->
+                <!-- <div class="col-sm-12 col-12 col-md-12">
+									<div class="whitebg-box">
+                                        <div class="row1">
+											<div Class="col-12">
+												  <h4>{{'EXISTING' | translate}} <br/> {{'PUNJAB_SIND_BANK_CUSTOMER' | translate}}</h4>
+											 </div>
+											 <div class="col-12 col-md-12">
+											  <div class="text-center">
+												<button  class="register-btn ux-button  primary" *ngIf="dataService.upiStandAlone" >{{'LETS_START' | translate}}</button>
+                                                <button  class="ux-button  primary" *ngIf="!dataService.upiStandAlone" (click)="gotoRegister()" >{{'LETS_START' | translate}}</button>
+                                            </div>
+										 </div>
+									   </div>
+							    	</div>
+						        </div>  -->
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="popup-bottom blocked-user sm-popup">
+    <div class="row1">
+        <div class="col-12">
+            <h4 class="text-center">
+                <img src="./assets/images/svg/information.svg" alt="error-icon"> {{ 'INFORMATION' | translate }}
+            </h4>
+        </div>
+    </div>
+    <div class="row1">
+        <div class="col-12 mb-4">
+            <p> Mobile Number Is Blocked.Please Contact Bank </p>
+        </div>
+    </div>
+    <div class="row1  mt-2">
+        <div class="col-12 text-center">
+            <button class="ux-button submit-btn" (click)="closePopup('blocked-user')">{{ 'CLOSE' | translate }}</button>
+        </div>
+    </div>
+</div>
+
+
+<!-- UPI live warning Popup Start -->
+<div class="popup-bottom UPI-global upiLiveAlert">
+    <div class="row">
+        <div class="col-12">
+            <h4 class="text-center">
+                <img src="./assets/images/svg/information.svg" alt="information-icon"> {{ 'INFORMATION' | translate }}
+            </h4>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12">
+            <p>
+                {{'CLICK_ON_UPI_BUTTON' | translate }}
+            </p>
+        </div>
+    </div>
+    <div class="row1 mt-2">
+        <div class="col-12 text-center">
+            <button class="ux-button primary md" (click)="closePopup('upiLiveAlert')">{{'OK' | translate}}</button>
+        </div>
+    </div>
+</div>
+<!-- UPI live warning Popup End -->
+
+
+    <!-- non-psb user Popup Start -->
+    <div class="popup-bottom non-psb">
+        <div class="row1">
+            <div class="col-12">
+                <h4 class="text-center">
+                    <img src="./assets/images/svg/information.svg" alt="error-icon"> {{'INFORMATION' | translate}}
+                </h4>
+            </div>
+        </div>
+        <div class="row1">
+            <div class="col-12 mb-4">
+                <p>You are not an esteemed customer of our Bank. Please open an account with us</p>
+            </div>
+        </div>
+        <div class="row1  mt-2">
+            <div class="col-12 text-center">
+                <button class="ux-button primary submit-btn" (click)="closePopup('non-psb')">
+                    {{ 'OK' | translate }}</button>
+            </div>
+        </div>
+    </div>
+    <!-- non-psb user Popup End -->
+
+<!-- =========== modal popup start ===============  -->
+
+<!--.toast-messages-->
+<div class="toast-messages2"></div>
+<!--.toast-messages-->

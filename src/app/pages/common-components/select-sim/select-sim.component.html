@@ -1,0 +1,446 @@
+<form [formGroup]="selectSimForm" (ngSubmit)="submitForm(true)">
+    <div class="main">
+        <div class="right-main-column minus-rt-col bg1">
+            <div class="right-col-container">
+                <div class="body-page-container">
+                    <div class="container-fluid">
+                        <div class="bg-section">
+                            <div class="col-sm-12 col-12 col-md-12">
+                                <div class="row">
+                                    <div class="sub-header2">
+                                        <div class="in-header">
+                                            <div class="header-icons-lft">
+                                                <div class="header-actions">
+                                                    <!-- <button class="ux-button-header" (click)="routeBack()">
+                      <img src="assets/images/svg/left-arrow.svg" alt="left-arrow-icon">
+                    </button> -->
+                                                </div>
+                                            </div>
+                                            <div class="brand-logo m-auto text-center">
+                                                <h4>
+                                                    {{ 'MOBILE_VERIFICATION' | translate }}
+                                                </h4>
+                                            </div>
+                                            <div class="header-icons-rit">
+                                                <div class="header-actions">
+                                                    <button class="ux-button-header" (click)="close()">
+                            <img src="assets/images/svg/close-w.svg" alt="cross-icon" class="img-vsmall">
+                          </button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row1">
+                                    <div class="col-sm-12 col-12 col-md-12">
+                                        <div class="grey-bg2 mt-0">
+                                            <div class="row1">
+                                                <div class="col-12">
+                                                    <div class="logo1" *ngIf="dataService.upiRegistrationFlow" >
+                                                        <img src="assets/images/logo/bhim-upi-logo.svg" alt="bhim-upi-logo">
+                                                    </div>
+                                                </div>
+                                                <div class="col-12">
+                                                    <h4 class="text-center mar-custom">
+                                                        {{ 'SELECT_SIM' | translate }}
+                                                    </h4>
+                                                </div>
+                                                <div class="col-12">
+                                                    <ul class="sim-list mb-0">
+                                                        <li *ngFor="let item of availableSimList;let i = index" [ngStyle]="{'width': singleSimShow ? '100%' : '50%'}">
+                                                            <a>
+                                                                <div class="text-center">
+                                                                    <input id="triggerIfSingleSim" type="radio" value="{{i}}" formControlName="simName" (change)="handleChange($event,i)">
+                                                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 75.701 106.872">
+                                    <g class="a">
+                                      <g transform="translate(0)">
+                                        <path
+                                          d="M139.234,0H99.158a2.243,2.243,0,0,0-1.576.65L75.316,22.915a2.242,2.242,0,0,0-.65,1.576V95.739A11.148,11.148,0,0,0,85.8,106.872h53.436a11.148,11.148,0,0,0,11.132-11.132V11.132A11.148,11.148,0,0,0,139.234,0Zm6.679,95.739a6.688,6.688,0,0,1-6.679,6.679H85.8a6.688,6.688,0,0,1-6.679-6.679V25.413l20.96-20.96h39.155a6.688,6.688,0,0,1,6.679,6.679Z"
+                                          transform="translate(-74.666)" />
+                                      </g>
+                                      <g transform="translate(13.359 35.624)">
+                                        <path
+                                          d="M180.97,170.667H145.346a6.688,6.688,0,0,0-6.68,6.679v44.53a6.688,6.688,0,0,0,6.68,6.679H180.97a6.688,6.688,0,0,0,6.679-6.679v-44.53A6.688,6.688,0,0,0,180.97,170.667Zm2.227,51.209a2.227,2.227,0,0,1-2.227,2.227H145.346a2.227,2.227,0,0,1-2.227-2.227v-44.53a2.227,2.227,0,0,1,2.227-2.227H180.97a2.227,2.227,0,0,1,2.227,2.227v44.53Z"
+                                          transform="translate(-138.667 -170.667)" />
+                                      </g>
+                                      <g transform="translate(13.359 62.342)">
+                                        <path
+                                          d="M185.423,298.667h-44.53a2.226,2.226,0,1,0,0,4.453h44.53a2.226,2.226,0,0,0,0-4.453Z"
+                                          transform="translate(-138.666 -298.667)" />
+                                      </g>
+                                      <g transform="translate(26.718 35.624)">
+                                        <path
+                                          d="M204.893,170.667a2.227,2.227,0,0,0-2.227,2.227v13.359a2.227,2.227,0,1,0,4.453,0V172.893A2.227,2.227,0,0,0,204.893,170.667Z"
+                                          transform="translate(-202.666 -170.667)" />
+                                      </g>
+                                      <g transform="translate(35.624 48.983)">
+                                        <path
+                                          d="M247.56,234.667a2.227,2.227,0,0,0-2.227,2.227v13.359a2.227,2.227,0,0,0,4.453,0V236.894A2.227,2.227,0,0,0,247.56,234.667Z"
+                                          transform="translate(-245.333 -234.667)" />
+                                      </g>
+                                      <g transform="translate(44.53 35.624)">
+                                        <path
+                                          d="M290.227,170.667A2.227,2.227,0,0,0,288,172.894v13.359a2.227,2.227,0,0,0,4.453,0V172.894A2.227,2.227,0,0,0,290.227,170.667Z"
+                                          transform="translate(-288 -170.667)" />
+                                      </g>
+                                      <g transform="translate(35.624 75.701)">
+                                        <path
+                                          d="M247.56,362.667a2.227,2.227,0,0,0-2.227,2.226v13.359a2.227,2.227,0,1,0,4.453,0V364.893A2.227,2.227,0,0,0,247.56,362.667Z"
+                                          transform="translate(-245.333 -362.667)" />
+                                      </g>
+                                      <g transform="translate(26.718 62.342)">
+                                        <path
+                                          d="M204.893,298.667a2.227,2.227,0,0,0-2.227,2.227v13.359a2.227,2.227,0,1,0,4.453,0V300.893A2.227,2.227,0,0,0,204.893,298.667Z"
+                                          transform="translate(-202.666 -298.667)" />
+                                      </g>
+                                      <g transform="translate(44.53 62.342)">
+                                        <path
+                                          d="M290.227,298.667A2.227,2.227,0,0,0,288,300.894v13.359a2.227,2.227,0,1,0,4.453,0V300.894A2.227,2.227,0,0,0,290.227,298.667Z"
+                                          transform="translate(-288 -298.667)" />
+                                      </g>
+                                    </g>
+                                  </svg>
+                                                                </div>
+                                                                <div class="text-center">
+                                                                    <!-- <em>SIM 1 {{ i+1 }}</em>  -->
+                                                                    <em>
+                                    {{ 'SIM_NO' | translate }} {{ item.simSlotIndex + 1 }}
+                                    <!-- SIM 1 -->
+                                  </em>
+                                                                    <!-- <em>Vodafone</em> -->
+                                                                    <em>{{ item.displayName }}</em>
+                                                                    <em>{{ item.phoneNumber }}</em>
+                                                                </div>
+                                                            </a>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--
+  To show error if sim is not selected:
+{{ 'SELECT_SIM_ERROR' | translate }}
+
+-->
+
+
+    <!-- footer section start -->
+    <div class="footer-container sticky-actions box-shadow">
+        <div class="footer-inactions minus-rt-col">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="errormsg text-center" *ngIf="errorMsgShow">
+                            <!-- Please Select Sim -->
+                            {{ 'SELECT_SIM_ERROR' | translate }}
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12">
+                        <button class="ux-button primary md" type="submit" [disabled]="selectSimForm.invalid || disableProceedBtn">
+              {{ 'PROCEED' | translate }}
+              <!-- Proceed -->
+            </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+<div class="sticky-actions-spacer"></div>
+
+<!-- footer section end -->
+
+<div id="notgrantedsmspermodel" class="modal fade" role="dialog" style="padding: 10px;">
+    <div class="modal-dialog modal-lg modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="mh-bottom">
+                    <div class="row1">
+                        <div class="col-10">
+                            <h4>
+                                <!-- <img src="assets/images/svg/information.svg" alt="information-icon"> -->
+                                <!-- Information -->
+                                {{ 'INFORMATION' | translate }}
+                            </h4>
+                        </div>
+                        <div class="col-2"><a href="javascript:;" data-dismiss="modal"><span class="mh-cross"></span></a></div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-body">
+                <div id="modal-share" class="sendInfo-block">
+                    <div>
+                        <!-- All permissions are utilized for specific feature(s) within PSB UPI Application. Kindly allow/grant permissions as and when prompted so as to continue accessing that specific feature. -->
+                        {{ 'ALLOW_PERMISSION_MSG' | translate }}
+                    </div>
+                    <div class="text-center mt-5">
+                        <button class="ux-button sm mx-1 primary text-center" (click)="gotoSetting()">
+              <!-- Grant -->
+              {{ 'GRANT' | translate }}
+            </button>
+                        <button class="ux-button sm mx-1 primary text-center" (click)="hideNotGrantedModal()">
+              <!-- Cancel -->
+              {{ 'CANCEL' | translate }}
+            </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- <div id="disablewifimodel" class="modal fade" role="dialog" style="padding: 10px;"> -->
+<!-- <div class="modal-dialog modal-lg modal-dialog-centered"> -->
+<!-- <div class="modal-content"> -->
+<!-- <div class="modal-header"> -->
+<!-- <div class="mh-bottom"> -->
+<!-- <div class="row1"> -->
+<!-- <div class="col-10"> -->
+<!-- <h6> -->
+<!-- Information -->
+<!-- {{ 'INFORMATION' | translate }} -->
+<!-- </h6> -->
+<!-- </div> -->
+<!-- <div class="col-2"><a href="javascript:;" data-dismiss="modal"><span class="mh-cross"></span></a></div> -->
+<!-- </div> -->
+<!-- <div class="modal-body"> -->
+<!-- <div id="modal-share" class="sendInfo-block"> -->
+<!-- <div> -->
+<!-- Please disable Wi-Fi and keep Mobile data ON. -->
+<!-- {{ 'DISABLE_WIFI' | translate }} -->
+<!-- </div> -->
+<!-- <div class="text-center mt-5"> -->
+<!-- <button class="ux-button sm mx-1 primary text-center" (click)="hideDisableWifiModal()"> -->
+<!-- OK -->
+<!-- {{ 'OK_BTN' | translate }} -->
+<!-- </button> -->
+<!-- </div> -->
+<!-- </div> -->
+<!-- </div> -->
+<!-- </div> -->
+<!-- </div> -->
+<!-- </div> -->
+<!-- </div> -->
+<!-- </div> -->
+
+<div class="popup-bottom register1">
+    <div class="row">
+        <div class="col-12">
+            <h4 class="text-center">
+                <img src="assets/images/svg/information.svg" alt="information-icon"> {{ 'INFORMATION' | translate }}
+                <!-- Information -->
+            </h4>
+        </div>
+    </div>
+    <form id="terms-form">
+        <div class="row">
+            <div class="col-12">
+                <p>
+                    {{ 'DISABLE_WIFI' | translate }}
+                    <br /> {{ 'ENABLE_MOBILE_DATA' | translate }}
+                </p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12 text-center">
+                <button class="ux-button primary info-submit" (click)="hideDisableWifiModal()">
+          {{ 'OK' | translate }}
+        </button>
+            </div>
+        </div>
+    </form>
+</div>
+
+<div class="popup-bottom permmodal">
+    <div class="row">
+        <div class="col-12">
+            <h4 class="text-center">
+                <img src="assets/images/svg/information.svg" alt="information-icon"> {{ 'INFORMATION' | translate }}
+            </h4>
+        </div>
+    </div>
+    <form id="terms-form">
+        <div class="row">
+            <div class="col-12">
+                <p>
+                    {{ 'ALLOW_PERMISSION_MSG' | translate }}
+                </p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12 text-center">
+                <button class="ux-button sm mx-1 primary text-center" (click)="gotoSetting()">
+          {{ 'GRANT' | translate }}
+        </button>
+                <button class="ux-button sm mx-1 primary text-center" (click)="hideNotGrantedModal()">
+          {{ 'CANCEL' | translate }}
+        </button>
+            </div>
+        </div>
+    </form>
+</div>
+
+
+<div class="popup-bottom user-verification">
+    <div class="row1">
+        <div class="col-12">
+            <h4 class="text-center"> {{'VERIFICATION' | translate}}
+            </h4>
+        </div>
+    </div>
+    <div class="row1">
+        <div class="col-12">
+            <p>{{'WELCOME_BACK' | translate}}</p>
+        </div>
+    </div>
+    <div class="row1  mt-2">
+        <div class="col-12 text-center" (click)="closePopup('div.popup-bottom.user-verification')">
+            <button class="ux-button primary submit-btn" type="button">{{'OK' | translate}}</button>
+        </div>
+    </div>
+</div>
+
+<!-- Sending SMS popup -->
+<div id="sendsmsModal" class="modal fade " role="dialog">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content pad-custom">
+            <div class="modal-header  bor-n cust-pad pb-0">
+                <div class="mh-bottom">
+                    <div class="row">
+                        <div class="col-6 col-sm-4 col-md-4 col-lg-4 m-auto">
+                            <div class="loader-main">
+                                <!-- <canvas class="loader"></canvas> -->
+                                <div class="text-center loader-section">
+                                    <div class="spinner-border text-primary" role="status">
+                                    </div>
+                                    <span class="number-text">{{simBindingTime}}</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-body cust-pad pt-0">
+                <p class="text-center">{{'PLEASE_WAIT' | translate }}<br /> {{'SEND_SMS_MSG' | translate}}
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="popup-bottom sim-binding-failed">
+    <div class="row1">
+        <div class="col-12">
+            <h4 class="text-center"><img src="assets/images/svg/information.svg" alt="information-icon"> {{'INFORMATION' | translate}}
+            </h4>
+        </div>
+    </div>
+    <div class="row1">
+        <div class="col-12">
+            <p>{{'SIM_BINDING_FAILED_PLEASE_TRY_AGAIN' | translate}}</p>
+        </div>
+    </div>
+    <div class="row1  mt-2">
+        <div class="col-12 text-center" (click)="closePopup('div.popup-bottom.sim-binding-failed')">
+            <button class="ux-button primary submit-btn" type="button">{{'OK' | translate}}</button>
+        </div>
+    </div>
+</div>
+
+
+<div class="popup-bottom error-msg-show">
+    <div class="row1">
+        <div class="col-12">
+            <h4 class="text-center"><img src="assets/images/svg/information.svg" alt="information-icon"> {{'INFORMATION' | translate}}
+            </h4>
+        </div>
+    </div>
+    <div class="row1">
+        <div class="col-12">
+            <p>{{errorMessage}}</p>
+        </div>
+    </div>
+    <div class="row1  mt-2">
+        <div class="col-12 text-center" (click)="closePopup('div.popup-bottom.error-msg-show')">
+            <button class="ux-button primary submit-btn" type="button">{{'OK' | translate}}</button>
+        </div>
+    </div>
+</div>
+
+<div class="popup-bottom blocked-user sm-popup">
+    <div class="row1">
+        <div class="col-12">
+            <h4 class="text-center">
+                <img src="./assets/images/svg/information.svg" alt="error-icon"> {{ 'INFORMATION' | translate }}
+            </h4>
+        </div>
+    </div>
+    <div class="row1">
+        <div class="col-12 mb-4">
+            <p> Mobile Number Is Blocked.Please Contact Bank </p>
+        </div>
+    </div>
+    <div class="row1  mt-2">
+        <div class="col-12 text-center">
+            <button class="ux-button submit-btn" (click)="closePopup('blocked-user')">{{ 'CLOSE' | translate }}</button>
+        </div>
+    </div>
+</div>
+
+
+    <!-- non-psb user Popup Start -->
+    <div class="popup-bottom non-psb">
+        <div class="row1">
+            <div class="col-12">
+                <h4 class="text-center">
+                    <img src="./assets/images/svg/information.svg" alt="error-icon"> {{'INFORMATION' | translate}}
+                </h4>
+            </div>
+        </div>
+        <div class="row1">
+            <div class="col-12 mb-4">
+                <p>You are not an esteemed customer of our Bank. Please open an account with us</p>
+            </div>
+        </div>
+        <div class="row1  mt-2">
+            <div class="col-12 text-center">
+                <button class="ux-button primary submit-btn" (click)="closePopup('div.popup-bottom.non-psb')">
+                    {{ 'OK' | translate }}</button>
+            </div>
+        </div>
+    </div>
+    <!-- non-psb user Popup End -->
+
+    <!-- non-psb user Popup Start -->
+    <div class="popup-bottom sending-sms-failed">
+        <div class="row1">
+            <div class="col-12">
+                <h4 class="text-center">
+                    <img src="./assets/images/svg/information.svg" alt="error-icon"> {{'INFORMATION' | translate}}
+                </h4>
+            </div>
+        </div>
+        <div class="row1">
+            <div class="col-12 mb-4">
+                <p>{{errorMessage}}</p>
+            </div>
+        </div>
+        <div class="row1  mt-2">
+            <div class="col-12 text-center">
+                <button class="ux-button primary submit-btn" (click)="closePopup('div.popup-bottom.sending-sms-failed')">
+                    {{ 'OK' | translate }}</button>
+            </div>
+        </div>
+    </div>
+    <!-- non-psb user Popup End -->

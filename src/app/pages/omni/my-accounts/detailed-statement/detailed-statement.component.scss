@@ -1,0 +1,34 @@
+.disableDate{
+    pointer-events: none;
+
+}
+.ux-input .calendar-enable{
+  top: 9px !important;
+}
+.ux-input .calendar-disable{
+  top: 9px !important;
+}
+
+
+.getMore{
+  pointer-events: none;
+  opacity: 0.5 ;
+}
+
+#transaction{
+  display: flex !important;
+  @media (max-width: 767px) {
+    display: block !important;
+    li{
+      margin-bottom: 10px!important;
+      text-align: center!important;
+      h4{
+        text-align: center!important;
+      }
+      .btn-div{
+        margin-bottom: 10px!important;
+      }
+    }
+  }
+ 
+}

@@ -1,0 +1,406 @@
+
+<!-- Username Section -->
+<div class="row1" *ngIf="profileModuleType== 'username' ">
+	<div class="col-sm-12 col-12 col-md-12">
+		<div class="widget-box5 mb-3">
+			<div class="bg-white1 pad-custom">
+				<div class="row1 hide-m">
+					<div class="col-md-12 col-12">
+						<div class="row1">
+							<div class="col-md-6 col-lg-6 col-xl-4 col-12">
+								<h6 class="detail-heading">Change Username</h6> </div>
+						</div>
+					</div>
+				</div>
+				<form [formGroup]="usernameForm">
+					<div class="row1">
+						<div class="col-md-12 col-12">
+							<div class="row1  my-2">
+								<div class="col-12"> <small class="profile-msg">Your existing username is <span>{{dataService.userName}}</span></small> </div>
+								<div class="col-12"> <small class="profile-msg">You are allowed to update the username for a maximum number of 2 times</small> </div>
+							</div>
+							<div class="row1">
+								<div class="col-md-6 col-lg-6 col-xl-4 col-12">
+									<div class="ux-input">
+										<label>New Username <img src="assets/images/svg/completed.svg" class="tick-img" *ngIf="isuserNameVerfied"></label>
+                    <!-- <a href="javascript:;" data-toggle="modal" data-target="#usernamePolicy"><img src="assets/images/svg/information.svg" class="right-img"> </a> -->
+										<input type="text" username autocomplete="off" name="username" placeholder="Enter New Username" limit-to="25" formControlName="username">
+
+										<p class="error-message" *ngIf="usernameForm.controls['username'].hasError('required') && (usernameForm.controls['username'].dirty || usernameForm.controls['username'].touched)">Please enter the required field</p>
+										<p class="error-message" *ngIf="usernameForm.controls['username'].hasError('minlength') && (usernameForm.controls['username'].dirty || usernameForm.controls['username'].touched)">Username length is short</p>
+                    <p class="error-message" *ngIf="!isuserNameVerfied && (usernameForm.controls['username'].dirty || usernameForm.controls['username'].touched)">Please Check Availability of Username</p>
+                    <div *ngIf="!usernameForm.controls['username'].hasError('minlength')" class="text-right"> <a href="javascript:;" class="reg-txt" (click)="checkAvailability()">{{"CHECK_AVAILABILITY" | translate}}</a> </div>
+                    <!-- <div class="col-12 col-md-12 col-xl-10 col-lg-12" *ngIf="!usernameForm.controls['username'].hasError('minlength')">
+                      <div class="text-right"> <a href="javascript:;" class="reg-txt" (click)="checkAvailability()">{{"CHECK_AVAILABILITY" | translate}}</a> </div>
+                    </div> -->
+									</div>
+								</div>
+								<!-- <div class="col-md-6 col-lg-6 col-xl-4 col-12">
+									<div class="ux-input">
+										<label>Confirm New Username</label>
+										<input type="text" autocomplete="off" name="newUserName" placeholder="Enter New Username" limit-to="25"  formControlName="newUserName">
+										<p class="error-message" *ngIf="usernameForm.controls['newUserName'].hasError('required') && (usernameForm.controls['newUserName'].dirty || usernameForm.controls['newUserName'].touched)">Please enter the required field</p>
+									</div>
+								</div> -->
+							</div>
+						</div>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+	<div class="col-12 col-md-12">
+		<ul class="bottom-footer1">
+			<li>
+				<div class="btn-div">
+					<button class=" ux-button secondary sm-mob" (click)="prevEventSection()">Cancel</button>
+				</div>
+				<div class="btn-div">
+					<button id="selectAcct-submit" class=" ux-button primary sm-mob" (click)="onEditFormSubmit(usernameForm, profileModuleType )">Submit</button>
+				</div>
+			</li>
+		</ul>
+	</div>
+</div>
+<!-- Username Section -->
+<!-- Email Section -->
+<div class="row1" *ngIf="profileModuleType== 'email' ">
+	<div class="col-sm-12 col-12 col-md-12">
+		<div class="widget-box5 mb-3">
+			<div class="bg-white1 pad-custom">
+				<div class="row1 hide-m">
+					<div class="col-md-12 col-12">
+						<div class="row1">
+							<div class="col-md-6 col-lg-6 col-xl-4 col-12">
+								<h6 class="detail-heading">Change Email ID</h6> </div>
+						</div>
+					</div>
+				</div>
+				<form [formGroup]="emailForm">
+					<div class="row1">
+						<div class="col-md-12 col-12">
+							<div class="row1  my-2">
+								<div class="col-12"> <small class="profile-msg">Your existing email ID is <span>{{emailId}}</span></small> </div>
+							</div>
+							<div class="row1">
+								<div class="col-md-6 col-lg-6 col-xl-4 col-12">
+									<div class="ux-input">
+										<label>New Email ID</label>
+										<input type="text" autocomplete="off" name="emailId" placeholder="Enter New Email ID" limit-to="100" formControlName="emailId">
+										<p class="error-message" *ngIf="emailForm.controls['emailId'].hasError('required') && (emailForm.controls['emailId'].dirty || emailForm.controls['emailId'].touched)">Please enter the required field</p>
+										<p class="error-message" *ngIf="emailForm.controls['emailId'].touched && emailForm.controls['emailId'].hasError('pattern')">{{"PLEASE_ENTER_VALID_EMAIL" | translate }}</p>
+									</div>
+								</div>
+							</div>
+							<div class="vspacer30 customize d-block d-md-none d-lg-none d-xl-none"></div>
+							<div class="vspacer30 customize d-block d-md-none d-lg-none d-xl-none"></div>
+							<div class="vspacer30 customize d-block d-md-none d-lg-none d-xl-none"></div>
+							<div class="vspacer30 customize d-block d-md-none d-lg-none d-xl-none"></div>
+							<div class="vspacer30 customize d-block d-md-none d-lg-none d-xl-none"></div>
+						</div>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+	<div class="col-12 col-md-12">
+		<ul class="bottom-footer1">
+			<li>
+				<div class="btn-div">
+					<button class=" ux-button secondary sm-mob" (click)="prevEventSection()">Cancel</button>
+				</div>
+				<div class="btn-div">
+					<button id="selectAcct-submit" class=" ux-button primary sm-mob" (click)="onEditFormSubmit(emailForm,profileModuleType )">Submit</button>
+				</div>
+			</li>
+		</ul>
+	</div>
+</div>
+<!-- End of Email section -->
+<!-- Aadhar Section -->
+<div class="row1" *ngIf="profileModuleType== 'aadhar' ">
+	<div class="col-sm-12 col-12 col-md-12">
+		<div class="widget-box5 mb-3">
+			<div class="bg-white1 pad-custom">
+				<div class="row1 hide-m">
+					<div class="col-md-12 col-12">
+						<div class="row1">
+							<div class="col-md-6 col-lg-6 col-xl-4 col-12">
+								<h6 class="detail-heading">Change Aadhaar Number</h6> </div>
+						</div>
+					</div>
+				</div>
+				<form [formGroup]="aadharForm">
+					<div class="row1">
+						<div class="col-md-12 col-12">
+							<div class="row1  my-2">
+								<div class="col-12"> <small class="profile-msg">Your existing Aadhaar Number is <span>{{addharCard}}</span></small> </div>
+							</div>
+							<div class="row1">
+								<div class="col-md-6 col-lg-6 col-xl-4 col-12">
+									<div class="ux-input">
+										<label>New Aadhaar Number</label>
+										<input type="text" name="aadhar" numbersOnly placeholder="Enter New Aadhaar Number" limit-to="12" formControlName="aadhar">
+										<p class="error-message" *ngIf="aadharForm.controls['aadhar'].hasError('required') && (aadharForm.controls['aadhar'].dirty || aadharForm.controls['aadhar'].touched)">Please enter the required field</p>
+									</div>
+								</div>
+							</div>
+							<div class="vspacer30 customize d-block d-md-none d-lg-none d-xl-none"></div>
+							<div class="vspacer30 customize d-block d-md-none d-lg-none d-xl-none"></div>
+							<div class="vspacer30 customize d-block d-md-none d-lg-none d-xl-none"></div>
+							<div class="vspacer30 customize d-block d-md-none d-lg-none d-xl-none"></div>
+							<div class="vspacer30 customize d-block d-md-none d-lg-none d-xl-none"></div>
+						</div>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+	<div class="col-12 col-md-12">
+		<ul class="bottom-footer1">
+			<li>
+				<div class="btn-div">
+					<button class=" ux-button secondary sm-mob" (click)="prevEventSection()">Cancel</button>
+				</div>
+				<div class="btn-div">
+					<button id="selectAcct-submit" class=" ux-button primary sm-mob" (click)="onEditFormSubmit(aadharForm,profileModuleType )">Submit</button>
+				</div>
+			</li>
+		</ul>
+	</div>
+</div>
+<!-- End of Aadhar section -->
+<!-- PAN Section -->
+<div class="row1" *ngIf="profileModuleType== 'pan' ">
+	<div class="col-sm-12 col-12 col-md-12">
+		<div class="widget-box5 mb-3">
+			<div class="bg-white1 pad-custom">
+				<div class="row1 hide-m">
+					<div class="col-md-12 col-12">
+						<div class="row1">
+							<div class="col-md-6 col-lg-6 col-xl-4 col-12">
+								<h6 class="detail-heading">Change PAN Number</h6> </div>
+						</div>
+					</div>
+				</div>
+				<form [formGroup]="panForm">
+					<div class="row1">
+						<div class="col-md-12 col-12">
+							<div class="row1  my-2">
+								<div class="col-12"> <small class="profile-msg">Your existing PAN Number is <span>{{panCard}}</span></small> </div>
+							</div>
+							<div class="row1">
+								<div class="col-md-6 col-lg-6 col-xl-4 col-12">
+									<div class="ux-input">
+										<label>New PAN Number</label>
+										<input type="text" autocomplete="off" name="pan" limit-to="10" placeholder="Enter New PAN Number"  formControlName="pan">
+										<p class="error-message" *ngIf="panForm.controls['pan'].hasError('required') && (panForm.controls['pan'].dirty || panForm.controls['pan'].touched)">Please enter the required field</p>
+									</div>
+								</div>
+							</div>
+							<div class="vspacer30 customize d-block d-md-none d-lg-none d-xl-none"></div>
+							<div class="vspacer30 customize d-block d-md-none d-lg-none d-xl-none"></div>
+							<div class="vspacer30 customize d-block d-md-none d-lg-none d-xl-none"></div>
+							<div class="vspacer30 customize d-block d-md-none d-lg-none d-xl-none"></div>
+							<div class="vspacer30 customize d-block d-md-none d-lg-none d-xl-none"></div>
+						</div>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+	<div class="col-12 col-md-12">
+		<ul class="bottom-footer1">
+			<li>
+				<div class="btn-div">
+					<button class=" ux-button secondary sm-mob" (click)="prevEventSection()">Cancel</button>
+				</div>
+				<div class="btn-div">
+					<button id="selectAcct-submit" class=" ux-button primary sm-mob" (click)="onEditFormSubmit(panForm,profileModuleType)">Submit</button>
+				</div>
+			</li>
+		</ul>
+	</div>
+</div>
+<!-- End of Aadhar section -->
+<!-- Address Section -->
+<div class="row1" *ngIf="profileModuleType == 'address' ">
+	<div class="col-sm-12 col-12 col-md-12">
+		<div class="widget-box5 mb-3">
+			<div class="bg-white1 pad-custom">
+				<div class="row1 hide-m">
+					<div class="col-md-12 col-12">
+						<div class="row1">
+							<div class="col-md-6 col-lg-6 col-xl-4 col-12">
+								<h6 class="detail-heading">Update Communication Address</h6> </div>
+						</div>
+					</div>
+				</div>
+				<form [formGroup]="addressForm">
+					<div class="row1">
+						<div class="col-md-12 col-12">
+							<div class="row1">
+								<div class="col-md-6 col-lg-6 col-xl-4 col-12">
+									<div class="ux-input">
+										<label>Address Line 1</label>
+										<input type="text" autocomplete="off" name="address1" placeholder="Enter Address Line 1" formControlName="address1">
+										<p class="error-message" *ngIf="addressForm.controls['address1'].hasError('required') && (addressForm.controls['address1'].dirty || addressForm.controls['address1'].touched)">Please enter the required field</p>
+									</div>
+								</div>
+								<div class="col-md-6 col-lg-6 col-xl-4 col-12">
+									<div class="ux-input">
+										<label>Address Line 2</label>
+										<input type="text" autocomplete="off" name="address2" placeholder="Enter Address Line 2" formControlName="address2">
+										<p class="error-message" *ngIf="addressForm.controls['address2'].hasError('required') && (addressForm.controls['address2'].dirty || addressForm.controls['address2'].touched)">Please enter the required field</p>
+									</div>
+								</div>
+							</div>
+							<div class="row1">
+								<div class="col-md-6 col-lg-6 col-xl-4 col-12">
+									<div class="ux-input">
+										<label>Address Line 3</label>
+										<input type="text" autocomplete="off" name="address3" placeholder="Enter Address Line 3" formControlName="address3">
+										<p class="error-message" *ngIf="addressForm.controls['address3'].hasError('required') && (addressForm.controls['address3'].dirty || addressForm.controls['address3'].touched)">Please enter the required field</p>
+									</div>
+								</div>
+								<div class="col-md-6 col-lg-6 col-xl-4 col-12">
+									<div class="ux-input">
+										<label>City</label>
+										<input type="text" autocomplete="off" name="city" placeholder="Enter City" formControlName="city">
+										<p class="error-message" *ngIf="addressForm.controls['city'].hasError('required') && (addressForm.controls['city'].dirty || addressForm.controls['city'].touched)">Please enter the required field</p>
+									</div>
+								</div>
+							</div>
+							<div class="row1">
+								<div class="col-md-6 col-lg-6 col-xl-4 col-12">
+									<div class="ux-input">
+										<label>State</label>
+										<input type="text" autocomplete="off" name="state" placeholder="Enter State" formControlName="state">
+										<p class="error-message" *ngIf="addressForm.controls['state'].hasError('required') && (addressForm.controls['state'].dirty || addressForm.controls['state'].touched)">Please enter the required field</p>
+									</div>
+								</div>
+								<div class="col-md-6 col-lg-6 col-xl-4 col-12">
+									<div class="ux-input">
+										<label>Pincode</label>
+										<input type="text" autocomplete="off" name="pinCode" placeholder="Enter Pincode" formControlName="pinCode">
+										<p class="error-message" *ngIf="addressForm.controls['pinCode'].hasError('required') && (addressForm.controls['pinCode'].dirty || addressForm.controls['pinCode'].touched)">Please enter the required field</p>
+									</div>
+								</div>
+							</div>
+							<div class="row1">
+								<div class="col-md-6 col-lg-6 col-xl-4 col-12">
+									<div class="ux-input">
+										<label>Document Type</label>
+										<select formControlName="documentTye">
+											<option value="">Select</option>
+											<option value="Abc">Abc</option>
+											<option value="Def">Def</option>
+											<option value="Ghi">Ghi</option>
+										</select>
+										<p class="error-message" *ngIf="addressForm.controls['documentTye'].hasError('required') && (addressForm.controls['documentTye'].dirty || addressForm.controls['documentTye'].touched)">Please enter the required field</p>
+									</div>
+								</div>
+								<div class="col-md-6 col-lg-6 col-xl-4 col-12">
+									<div class="ux-input">
+										<label>Document Number</label>
+										<input type="text" autocomplete="off" numbersOnly name="documentNumber" placeholder="Enter document number" limit-to="6" formControlName="documentNumber">
+										<p class="error-message" *ngIf="addressForm.controls['documentNumber'].hasError('required') && (addressForm.controls['documentNumber'].dirty || addressForm.controls['documentNumber'].touched)">Please enter the required field</p>
+									</div>
+								</div>
+							</div>
+							<!-- <div class="row1">
+								<div class="col-md-6 col-lg-6 col-xl-4 col-12">
+									<div class="ux-input input-info">
+										<label>Address Proof Document</label>
+										<div class="custom-file mt-2 mb-2">
+											<input type="file" class="custom-file-input" id="customFile" formControlName="addressProof">
+											<label class="custom-file-label" for="customFile">Upload document</label>
+										</div>
+									</div>
+								</div>
+							</div> -->
+							<div class="row1">
+								<div class="col-md-6 col-lg-6 col-xl-4 col-12">
+									<div class="ux-selection ux-input">
+										<div class="ux-selection1 mar-rcustom p-0">
+											<label>Terms and Conditions
+												<input type="checkbox" name="" formControlName="termCondition"> <span class="checkmark"></span> </label>
+											<p class="error-message" *ngIf="addressForm.controls['termCondition'].hasError('required') && (addressForm.controls['termCondition'].dirty || addressForm.controls['termCondition'].touched)">Please enter the required field</p>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+	<div class="col-12 col-md-12">
+		<ul class="bottom-footer1">
+			<li>
+				<div class="btn-div">
+					<button class=" ux-button secondary sm-mob" (click)="prevEventSection()">Cancel</button>
+				</div>
+				<div class="btn-div">
+					<button class=" ux-button primary sm-mob" (click)="onEditFormSubmit(addressForm,profileModuleType )">Submit</button>
+				</div>
+			</li>
+		</ul>
+	</div>
+</div>
+<!-- End of Address Section -->
+<!-- Start of Pan Edit section -->
+<div class="row1" *ngIf="profileModuleType == 'pan1' ">
+	<div class="col-sm-12 col-12 col-md-12">
+		<div class="widget-box5 mb-3">
+			<div class="bg-white1 pad-custom">
+				<div class="row1 hide-m">
+					<div class="col-md-12 col-12">
+						<div class="row1">
+							<div class="col-md-6 col-lg-6 col-xl-4 col-12">
+								<h6 class="detail-heading">Add PAN Card Details</h6> </div>
+						</div>
+					</div>
+				</div>
+				<div class="row1">
+					<div class="col-md-12 col-12">
+						<div class="row1">
+							<div class="col-md-6 col-lg-6 col-xl-4 col-12">
+								<div class="ux-input">
+									<label>Document Number</label>
+									<input type="text" name="username" placeholder="Enter Pincode">
+									<p class="error-message"></p>
+								</div>
+							</div>
+							<div class="col-md-6 col-lg-6 col-xl-4 col-12">
+								<div class="ux-input input-info">
+									<label>Address Proof Document</label>
+									<div class="custom-file mt-2 mb-2">
+										<input type="file" class="custom-file-input" id="customFile">
+										<label class="custom-file-label" for="customFile">Upload document</label>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="col-12 col-md-12">
+		<ul class="bottom-footer1">
+			<li>
+				<div class="btn-div">
+					<button class=" ux-button secondary sm-mob" (click)="prevEventSection()">Cancel</button>
+				</div>
+				<div class="btn-div">
+					<button class=" ux-button primary sm-mob">Submit</button>
+				</div>
+			</li>
+		</ul>
+	</div>
+</div>
+<!-- End of Pan Edit Section -->
+
+<!-- </div> -->

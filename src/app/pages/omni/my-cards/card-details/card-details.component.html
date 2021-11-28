@@ -1,0 +1,325 @@
+<div class="main bg-m frwk-changes">
+
+    <div class="nav-overlay"></div>
+
+
+    <div class="right-main-column ">
+        <div class="right-col-container pad-b full-width">
+
+
+            <!-- ======== body page content start from here ======== -->
+
+            <div class="body-page-container main-dashborad mycards">
+                <div class="container-fluid">
+
+                    <div class="row">
+                        <div class="col-12 p-0">
+                            <div class="breadcrumb">
+                                <ul class="lst-breadcrumb">
+
+                                    <li *ngFor="let name of DataService.breadcrumblist">
+                                        <a (click)="DataService.breadcrumroute(name.routeName)">{{name.currentRoute | translate}}</a>
+                                </li>
+
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <!--.row -->
+
+                    <div class="vspacer15 customize d-none d-xl-block d-lg-block d-md-none d-sm-none "></div>
+
+                    <div class="row no-gutters">
+                        <div class="col-12">
+                            <div class="row1">
+                                <div class="col-12 col-sm-12 col-md-12 col-lg-12  col-xl-9">
+                                    <div class="greencard2 applycard">
+                                        <div class="row1 hide-m">
+                                            <div class="col-md-8 col-12">
+                                                <h4> {{ DataService.cardDetailsFrom | translate }} ( {{cardDetails.cardName}} ) </h4>
+                                            </div>
+                                            <div class="col-md-4 col-12">
+
+                                            </div>
+                                        </div>
+                                        <form [formGroup]="cardDetailsForm">
+                                        <div class="row1">
+                                            <div class="col-12 col-sm-12 col-md-12 col-lg-12">
+                                                <div class="row1">
+                                                    <div class="col-md-6">
+                                                      <div class="card">
+                                                            <div class="img-box">
+                                                                <img [src]="cardDetails.image" alt="" class="img-fluid">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="row1">
+                                                    <div class="col-12 col-xl-6 col-md-6 col-lg-6 ">
+                                                        <div id="accordion" class="accordion-container">
+                                                            <div class="white-bg1 pad-custom">
+                                                                <div class="card2 card mb-0 p-0">
+                                                                    <a class="card-link collapsed" data-toggle="collapse" href="#collapse1" aria-expanded="false">
+                                                                        <div class="card-header3">
+                                                                            <div class="panel-title2">
+                                                                                <h4 class="m-0">
+                                                                                     {{ 'BASIC_FEATURES_AND_CHARGES' | translate }}
+                                                                                </h4>
+                                                                            </div>
+                                                                            <em></em>
+                                                                        </div>
+                                                                        <!--card-header-->
+                                                                    </a>
+
+                                                                    <div id="collapse1" class="collapse show">
+                                                                        <div class="card-body px-3 py-0">
+                                                                            <ul class="card-text unorderlist3">
+                                                                                <li *ngFor="let offer of cardDetails.features" >{{offer | translate}}</li>
+                                                                                <!-- (click)="openchargespopup()" -->
+																	            <p (click)="goToLink(cardDetails.offerUrl)" ><a  class="reg-txt"> {{ 'VIEW_OFFERS' | translate }}</a></p>
+                                                                            </ul>
+                                                                            <div class="vspacer20 customize "></div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-12 col-xl-6 col-md-6 col-lg-6">
+                                                        <div class="widget-box5 mb-3 mt-3">
+                                                            <div class="bg-white1 pad-custom">
+                                                                <div class="row1">
+                                                                    <div class="col-12 col-md-6 col-lg-6 col-xl-6">
+                                                                        <div class="ux-input">
+                                                                            <label>   {{ 'ACCOUNT_TO_BE_LINKED' | translate }}</label>
+                                                                            <input type="text" name="name" formControlName="selAcc" disabled >
+                                                                            <!-- <select required="" formControlName="selAcc" (change)="getToAccValue($event)">
+                                                                                <option value="">Select</option>
+                                                                                <option *ngFor="let account of accountList" [value]="account.accountNo">{{account.sbAccount}}</option>
+                                                                            </select> -->
+                                                                            <!-- <p class="error-message"></p> -->
+                                                                            <span class="errormsg"
+                                                                            *ngIf="cardDetailsForm.controls['selAcc'].hasError('required')  && cardDetailsForm.controls['selAcc'].touched">
+                                                                             {{ 'SELECT_ACCOUNT' | translate }}
+                                                                          </span>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-md-6 col-lg-6 col-xl-6 col-12">
+                                                                        <div class="ux-input">
+                                                                            <label class="name">   {{ 'NAME_TO_BE_DISPLAYED_ON_CARD' | translate }}</label>
+                                                                            <input type="text" name="name" formControlName="name" placeholder='{{"ENTER_NAME" | translate}}' value="John Smith">
+                                                                            <!-- <p class="error-message">
+                                                                            </p> -->
+                                                                            <span class="errormsg"
+                                                                            *ngIf="cardDetailsForm.controls['name'].hasError('required')  && cardDetailsForm.controls['name'].touched">
+                                                                            {{ 'REQUIRED_MSG' | translate }}
+                                                                          </span>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="row1">
+                                                                    <div class="col-md-12 col-lg-12 col-xl-12 col-12 mycardCollapse">
+                                                                        <div class="grey-box">
+                                                                            <label>   {{ 'REQUIRE_PHYSICAL_CARD' | translate }}</label>
+                                                                            <div class="toggle-col card-toggle float-right">
+                                                                                <input type="checkbox" name="ecom" checked="" formControlName="ecom" (change)="physicalEnabled()">
+                                                                                <div class="flat-toggle "></div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="vspacer10 customize "></div>
+                                                                <div class="row1">
+                                                                    <div class="col-12">
+                                                                        <p class="user-message" *ngIf="isPhysicalEnable" >{{ 'VISIT_HOME_BRANCH' | translate }}
+                                                                        </p>
+                                                                        <p class="user-message" *ngIf="!isPhysicalEnable" > {{ 'GET_YOUR_CARD_INSTANTLY' | translate }}
+                                                                        </p>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="row1" >
+                                                                    <div class="col-12">
+                                                                        <div class="ux-selection float-none display-block">
+                                                                            <label class="ux-selection1">  {{ 'I_ACCEPT' | translate }}<a   href="javascript:void(0)" class="reg-txt" (click)="openchargespopup()">  {{ 'TERMS_CONDITION_CHARGES' | translate }}</a>
+                                                                                <input type="checkbox" name="radioboxdemo"  formControlName="termCondition" autocomplete="off" required>
+                                                                                <span class="checkmark"></span>
+                                                                                <span class="errormsg" style="color: #c51523 !important;"
+                                                                                *ngIf="cardDetailsForm.controls['termCondition'].hasError('required') && cardDetailsForm.controls['termCondition'].touched">
+                                                                                {{ 'REQUIRED_MSG' | translate }}
+                                                                              </span>
+                                                                              </label>
+                                                                         </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-12 col-md-12">
+                                            <ul class="bottom-footer1">
+                                                <li>
+                                                    <div class="btn-div">
+                                                        <button class="ux-button secondary sm-mob" (click)="cancel();">  {{ 'CANCEL' | translate }}</button>
+                                                    </div>
+                                                    <div class="btn-div">
+                                                        <button class="ux-button primary sm-mob" (click)="submit(cardDetailsForm.value);">  {{ 'APPLY_NOW' | translate }}</button>
+                                                    </div>
+                                                </li>
+                                            </ul>
+                                       </div>
+                                        </form>
+                                    </div>
+                                </div>
+                                <div class="col-12 col-md-12 col-lg-12 col-xl-3 d-none d-xl-block">
+                                    <div class="right-ads">
+                                        <a href="#">
+                                            <img src="./assets/images/banner/my-card-banner.jpg">
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                </div>
+                <!--.container-fluid-->
+            </div>
+            <!--.body-page-container-->
+
+
+        </div>
+        <!--.right-col-container-->
+    </div>
+    <!--.right-main-column-->
+
+
+</div> <!-- main -->
+
+
+<aside class="notification-panel sticky-panel ">
+    <div class="notp-header">
+        <a href="javascript:;" class="btn-closenoty"></a>
+        <h5>Theme Customizer</h5>
+    </div>
+    <div class="notp-content">
+        <div class="notp-innercontent">
+            <div class="notp-nodatafound">
+                <div class="col-12">
+                    <h5>Navigation</h5>
+                    <div>
+                        <label class="ux-selection2">Vertical
+                            <input type="radio" checked="checked" name="radioboxdemo">
+                            <span class="checkmark"></span>
+                        </label>
+                        <label class="ux-selection2">Horizontal
+                            <input type="radio" name="radioboxdemo">
+                            <span class="checkmark"></span>
+                        </label>
+                    </div>
+                    <div class="vspacer20"></div>
+                    <h5>Theam Color</h5>
+                    <div class="row1 mb-1">
+                        <div class="col-12">
+                            <ul class="theme-list">
+                                <li class="blue"></li>
+                                <li class="green"></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="vspacer20"></div>
+            <div class="vspacer20"></div>
+            <div class="row1">
+                <div class="col-12 col-xl-12 col-lg-12 col-md-12 ">
+                    <div class="ux-footer">
+                        <button class="ux-button sm primary float-right">{{ 'SUBMIT' | translate }}</button>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <!-- <div class="notp-footer">
+        <p>Test</p>
+    </div>  -->
+    <!-- <div class="page-tools">
+        <div class="lst-page-tools">
+              <a href="#" class="rightpannel">
+                  <img src="../assets/images/svg/adjust.svg" alt="adjust-icon">
+                </a>
+         </div>
+     </div> -->
+</aside>
+<div class="notpanel-overlay"></div>
+
+
+<!-- Show Common Info Popup Start -->
+<div class="popup-bottom show-common-info sm-popup">
+	<div class="row1">
+		<div class="col-12">
+			<h4 class="text-center"> <img src="./assets/images/svg/information.svg" alt="information-icon">{{ 'INFORMATION' | translate }}
+			</h4>
+		</div>
+	</div>
+	<div class="row1">
+		<div class="col-12">
+			<p>Pan/Aadhar/EmaiId Details are Not Updated. Please update details in Myprofile</p>
+		</div>
+	</div>
+	<div class="row1  mt-2">
+		<div class="col-12 text-center" (click)="closePopup('div.popup-bottom.show-common-info')">
+			<button class="ux-button primary submit-btn" type="button">OK</button>
+		</div>
+	</div>
+</div>
+<!-- Show Common Info Popup End -->
+<!-- Show Common Info Popup Start -->
+<div class="popup-bottom min-balance-info sm-popup">
+	<div class="row1">
+		<div class="col-12">
+			<h4 class="text-center"> <img src="./assets/images/svg/information.svg" alt="information-icon">{{ 'INFORMATION' | translate }}
+			</h4>
+		</div>
+	</div>
+	<div class="row1">
+		<div class="col-12">
+			<p>You don't have enough balance to upgrade card</p>
+		</div>
+	</div>
+	<div class="row1  mt-2">
+		<div class="col-12 text-center" (click)="closePopup('div.popup-bottom.min-balance-info')">
+			<button class="ux-button primary submit-btn" type="button">OK</button>
+		</div>
+	</div>
+</div>
+<!-- Show Common Info Popup End -->
+
+<div class="popup-bottom md-popup chargesPopup" >
+	<div class="row">
+		<div class="col-12">
+
+			<h4 class="text-center">Applicable Charges</h4>
+
+				<div class="popup-body">
+                    <ul>
+                        <li>ATM/Debit card annual charges from 2nd year onwards: Rs. 100/- + Applicable taxes, per annum</li>
+                        <li> Re-issue of ATM/Debit card: Rs. 150/- + Applicable GST, per instance </li>
+                        <li>Charges for Issue of Duplicate ATM/Debit Card/Replacement of ATM/Debit Card : Rs 150/- + GST</li>
+                        <li>Issuance charge for Rupay Platinum card is Rs. 100/- + GST</li>
+                        <li>Customer are advised to enable contactless flag after receiving physical card</li>
+                    </ul>
+				</div>
+			</div>
+	</div>
+
+	<div class="row1 mt-2">
+		<div class="col-12 text-center">
+			<button class="ux-button secondary no md close-btn" (click)="closePopup('div.popup-bottom.chargesPopup')">Cancel</button>
+		</div>
+
+	</div>
+</div>

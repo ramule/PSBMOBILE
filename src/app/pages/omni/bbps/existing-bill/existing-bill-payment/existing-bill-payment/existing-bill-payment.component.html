@@ -1,0 +1,441 @@
+<div class="main bg-m">
+	<div class="right-main-column " (click)="clickedOut($event)">
+		<div class="right-col-container pad-b full-width">
+			<!-- ======== body page content start from here ======== -->
+			<div class="body-page-container main-dashborad bill-wrapper myprofile ">
+				<div class="container-fluid">
+					<div class="row">
+						<div class="col-12 p-0">
+							<div class="breadcrumb">
+								<ul class="lst-breadcrumb">
+                                    <li *ngFor="let name of DataService.breadcrumblist">
+                                        <a (click)="DataService.breadcrumroute(name.routeName)">{{name.currentRoute | translate}}</a>
+                                </li>
+								</ul>
+							</div>
+						</div>
+					</div>
+					<!--.row -->
+					<div class="vspacer30 customize d-none d-md-block d-lg-block d-xl-block"></div>
+					<div class="row no-gutters">
+						<div class="col-12">
+							<div class="row1">
+								<div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-9">
+									<!-- Greencard2 Start here -->
+									<div class="greencard2">
+										<div class="row1 hide-m">
+											<div class="col-md-10 col-12">
+												<h4>Payment</h4> </div>
+											<div class="col-md-2 col-12">
+												<div class="header-actions"> <img src="assets/images/icons/billpay.png" alt="billpay-img" class="small-img"> </div>
+											</div>
+										</div>
+										<div class="row1">
+											<div class="col-sm-12 col-12 col-md-12">
+												<!-- dark green menu headers start -->
+												<div class="ux-nav-tabs" style="margin:0">
+													<div class="flex-container py-1">
+														<div class="full-info">
+															<div class="responsive6 custom-card bg-custom mar-custom3">
+																<div class="custom-width">
+																	<ul class="nav nav-tabs nav-justified bor-n mb-0" role="tablist">
+																		<li class="nav-item2"> <a class="nav-link  active show" data-toggle="tab" href="#account" (click)="paymentSelection('account')" >Pay via Account</a> </li>
+																		<li class="nav-item2"> <a class="nav-link" data-toggle="tab" href="#upi" (click)="paymentSelection('upi')">Pay via UPI</a> </li>
+																	</ul>
+																</div>
+															</div>
+														</div>
+													</div>
+												</div>
+												<div class="vspacer10 d-block d-sm-none"></div>
+												<!-- dark green menu headers end -->
+											</div>
+											<div class="col-12 col-md-12">
+												<div class="tab-content bg-transparent  mt-2">
+													<div id="account" class="tab-pane fade active show ">
+														<form [formGroup]="remarkForm" (ngSubmit)='proceedPaymentClick()'>
+														<div class="row1">
+															<div class="col-sm-12 col-12 col-md-12">
+																<div class="widget-box5 overflow mb-3">
+																	<div class="bg-white1 bor-rad pad-custom pb-0">
+																		<div class="row1">
+																			<div class="col-md-12 col-12">
+																				<div class="row1">
+																					<div class="col-md-6 col-lg-4 col-xl-4 col-12">
+																						<div class="ux-input" >
+																							<label for="toaccount">Select Account</label>
+																							<div class="send-input pt-3 d-block d-sm-none" (click)="onAccountSelectType()"> 
+																								
+																								<span class="placeholder" >{{selectedAccount}}</span>
+																							 </div>
+
+																							<div class="send-input hide-m" > 
+
+																								 <span class="placeholder" (click)="onSelectOption($event, 'account')"><b>{{selectedAccount}} </b></span>
+																								<ul id="account-name" >
+																									<li  *ngFor="let item of accountList" (click)="accountItem(item)">
+																										<input type="radio" name="sendTo" autocomplete="off" >
+																										<div class="acc-info"><small>{{item.SchemeCode}} {{item.sbAccount}}</small></div>
+																									</li>
+																								</ul>
+																							</div>
+																							<p class="error-message" *ngIf="insufficientbal ">Insufficient balance on selected account</p>
+																						</div>
+																					</div>
+																					<div class="col-md-6 col-lg-8 col-xl-8 col-12 text-left">
+																						<div class="show-link4 mrg28"> <em>Available Balance</em>
+																							<button class="ux-linkbutton1 secondary  md py-2 ml-2 amount-refresh"> {{ accBalance | customcurrency}} <img src="assets/images/svg/refresh-g.svg" alt="add-user-icon"> </button>
+																						</div>
+																					</div>
+																					<div class="col-md-6 col-lg-4 col-xl-4 col-12">
+															
+																						<div class="ux-input">
+																							<label>Remark</label>
+																							<input type="text" placeholder="Enter Remarks" value="Electricity Bill Payment"  formControlName="remark">
+																							<p class="error-message"></p>
+																						</div>
+																					</div>
+																				</div>
+																				<div class="vspacer20"></div>
+																				<div class="row1">
+																					<div class="col-12 p-0">
+																						<div class="bill-info-card green-light m-0 new-bill-card">
+																							<ul class="comp-info2">
+																								<li>
+																									<div class="grid-info">
+																										<div class="full-info">
+																											<h6 *ngIf="viewData.paymentType != 'adhoc' ">Bill Amount</h6>
+																											<h6 *ngIf="viewData.paymentType == 'adhoc' ">Recharge Amount</h6>
+																											<h5 class="greentext my-2"><img src="assets/images/svg/rupee-g2.svg" alt="rupees-icon"> {{viewData.billamt}}</h5> </div>
+																									</div>
+																									<div class="grid-info  d-block">
+																										<div class="full-info">
+																											<h5>{{viewData.billerName}}</h5>
+																											<h6 class="my-2" *ngIf="viewData.paymentType != 'adhoc' " >Due Date {{viewData.dueDate}}</h6> </div>
+																									</div>
+																								</li>
+																							</ul>
+																						</div>
+																					</div>
+																				</div>
+																			</div>
+																		</div>
+																	</div>
+																</div>
+															</div>
+															<div class="col-sm-12 col-12 col-md-12">
+																<div class="widget-box5 mb-3">
+																	<div class="bg-white1 pad-custom py-2">
+																		<div class="row1">
+																			<div class="col-md-12 col-12">
+																				<div id="accordion1" class="accordion-container parent-accordion">
+																					<div class="card4">
+																						<a class="card-link collapsed" data-toggle="collapse" href="#consumer" aria-expanded="false">
+																							<div class="card-header3">
+																								<div class="panel-title3">
+																									<h6 class="detail-heading">Consumer Details</h6> </div> <em></em> </div>
+																							<!--card-header-->
+																						</a>
+																						<div id="consumer" class="collapse" data-parent="#accordion1">
+																							<div class="white-box2 m-0 p-0 shadow-none">
+																								<div class="info-bottom pad-custom swap-div-mob p-0">
+																									<div class="info-details" *ngFor="let item of viewData.displayData">
+																										<div class="row">
+																											<h6>{{item.label}}</h6>
+																											<h5>{{item.field  | titlecase}} </h5> </div>
+																									</div>
+																								</div>
+																							</div>
+																						</div>
+																					</div>
+																				</div>
+																			</div>
+																		</div>
+																	</div>
+																</div>
+															</div>
+															<div class="col-12 col-md-12">
+																<ul class="bottom-footer1">
+																	<li>
+																		<div class="btn-div hide-m">
+																			<button class="ux-button secondary sm-mob" type="button" (click)="goToPage('retailRechargeBillPay')" >Cancel</button>
+																		</div>
+																		<div class="btn-div w100">
+																			<button class="ux-button primary  sm-mob" type="submit" >Pay ₹ {{viewData.billamt}}</button>
+																		</div>
+																	</li>
+																</ul>
+															</div>
+														</div>
+													</form>
+													</div>
+													<div id="upi" class="tab-pane fade">
+														<div class="row1">
+															<div class="col-sm-12 col-12 col-md-12">
+																<div class="widget-box5 overflow mb-3">
+																	<div class="bg-white1 bor-rad pad-custom pb-0">
+																		<div class="row1">
+																			<div class="col-12 col-md-12">
+																				<div class="ux-input">
+																					<label>Select UPI ID</label>
+																				</div>
+																			</div>
+																		</div>
+																		<div class="row1">
+																			<div class="col-12 col-md-12">
+																				<ul class="register-payee2 bbps-payee">
+																					<li>
+																						<div class="full-container mt-0">
+																							<div class="left-info">
+																								<div class="user-info"> <span class="green">
+                                                                                                            <img src="assets/images/icons/user11.png" alt="payee-img">
+                                                                                                        </span> </div>
+																								<div class="ux-input m-0">
+																									<div id="upiInput" class="send-input border-0 ">
+																										 <span class="placeholder" [ngStyle]="{'display': upiNameValue != '' ? 'none' : 'block' }" (click)="onSelectOption($event, 'upi')" >Select Payee</span>
+																										  <span class="sendDisplay" [ngStyle]="{'display': upiNameValue != '' ? 'block' : 'none' }"  (click)="onSelectOption($event, 'upi')" ><b>{{upiNameValue}}</b></span>
+
+
+																										<ul id="upi-name">
+																											<li *ngFor="let item of upiValue" (click)="accountTypeSelection(item, 'upi')">
+																												<input type="radio" name="register-payee" autocomplete="off">
+																												<div class="acc-info"><b><span>{{item}}</span></b></div>
+																											</li>
+																											<!-- <li>
+																												<input type="radio" name="register-payee" autocomplete="off">
+																												<div class="acc-info"><b><span>454534341@psb</span></b></div>
+																											</li> -->
+																										</ul>
+																									</div>
+																									<p class="error-message" *ngIf="upiNameValue == '' && showUpiMessage"> Please Select UPI ID</p>
+																								</div>
+																								<!-- hide in mobile -->
+																								<!-- <h6> </h6> --></div>
+																						</div>
+																						<div class="full-container mar-b">
+																							<ul class="custom-radio-list2">
+																								<li class="">
+																									<div class="ux-selection w-100">
+																										<label class="ux-selection2 pad-custom2 mb-0">
+																											<input type="radio" name="account-type" value="saving" autocomplete="off"> <span class="checkmark"></span> <span class="fs-1">Savings <b>XXXX XXXX 8930</b></span>
+																											<p class="m-0"><small>Punjab &amp; Sind Bank</small></p>
+																											<p class="mb-0">Rajesh Omprakash Shah</p>
+																										</label>
+																									</div>
+																								</li>
+																								<li class="active">
+																									<div class="ux-selection w-100">
+																										<label class="ux-selection2 pad-custom2 mb-0">
+																											<input type="radio" name="account-type" value="current" autocomplete="off" checked="checked"> <span class="checkmark"></span> <span class="fs-1">Current <b>XXXX XXXX 8930</b></span>
+																											<p class="m-0"><small>Kotak Mahindra Bank</small></p>
+																											<p class="mb-0">Rajesh Omprakash Shah</p>
+																										</label>
+																									</div>
+																								</li>
+																							</ul>
+																						</div>
+																					</li>
+																				</ul>
+																			</div>
+																		</div>
+																		<div class="vspacer10"></div>
+																		<div class="row1">
+																			<div class="col-12 p-0">
+																				<div class="bill-info-card green-light m-0 new-bill-card">
+																					<ul class="comp-info2">
+																						<li>
+																							<div class="grid-info">
+																								<div class="full-info">
+																									<h6>Bill Amount</h6>
+																									<h5 class="greentext my-2"><img src="assets/images/svg/rupee-g2.svg" alt="rupees-icon"> 1200.00</h5> </div>
+																							</div>
+																							<div class="grid-info  d-block">
+																								<div class="full-info">
+																									<h5>Adani Electricity</h5>
+																									<h6 class="my-2">Due Date 16 Mar 2021</h6> </div>
+																							</div>
+																						</li>
+																					</ul>
+																				</div>
+																			</div>
+																		</div>
+																	</div>
+																</div>
+															</div>
+															<div class="col-sm-12 col-12 col-md-12">
+																<div class="widget-box5 mb-3">
+																	<div class="bg-white1 pad-custom py-2">
+																		<div class="row1">
+																			<div class="col-md-12 col-12">
+																				<div id="accordion1" class="accordion-container parent-accordion">
+																					<div class="card4">
+																						<a class="card-link collapsed" data-toggle="collapse" href="#consumer" aria-expanded="false">
+																							<div class="card-header3">
+																								<div class="panel-title3">
+																									<h6 class="detail-heading">Consumer Details</h6> </div> <em></em> </div>
+																							<!--card-header-->
+																						</a>
+																						<div id="consumer" class="collapse" data-parent="#accordion1">
+																							<div class="white-box2 m-0 p-0 shadow-none">
+																								<div class="info-bottom pad-custom swap-div-mob p-0">
+																									<div class="info-details pr-35">
+																										<div class="row">
+																											<h6>Biller ID</h6>
+																											<h5>REL273927</h5> </div>
+																									</div>
+																									<div class="info-details">
+																										<div class="row">
+																											<div class="left-info"> <span class="biller-icon">
+                                                                                                                        <img src="assets/images/icons/adani.png" alt="adani-logo">
+                                                                                                                    </span>
+																												<div class="right-info">
+																													<h6>Biller Name</h6>
+																													<h5>Adani Electricity</h5> </div>
+																											</div>
+																										</div>
+																									</div>
+																									<div class="info-details">
+																										<div class="row">
+																											<h6>Biller Account ID</h6>
+																											<h5>3646236472837</h5> </div>
+																									</div>
+																									<div class="info-details">
+																										<div class="row">
+																											<h6>Consumer Number</h6>
+																											<h5>REL273927</h5> </div>
+																									</div>
+																									<div class="info-details">
+																										<div class="row">
+																											<h6>Customer Name </h6>
+																											<h5>Rajesh Shah</h5> </div>
+																									</div>
+																									<div class="info-details">
+																										<div class="row">
+																											<h6>Customer Mobile Number</h6>
+																											<h5>986587867</h5> </div>
+																									</div>
+																									<div class="info-details">
+																										<div class="row">
+																											<h6>Short Name </h6>
+																											<h5>Home Electricity</h5> </div>
+																									</div>
+																								</div>
+																							</div>
+																						</div>
+																					</div>
+																				</div>
+																			</div>
+																		</div>
+																	</div>
+																</div>
+															</div>
+															<div class="col-12 col-md-12">
+																<ul class="bottom-footer1">
+																	<li>
+																		<div class="btn-div hide-m">
+																			<button class="ux-button secondary sm-mob" type="button" (click)="goToPage('retailRechargeBillPay')" >Cancel</button>
+																		</div>
+																		<div class="btn-div w100">
+																			<button class="ux-button primary  sm-mob" type="submit" (click)="upiPaymentProceed()" >Pay ₹ {{viewData.billamt}}</button>
+																		</div>
+																	</li>
+																</ul>
+															</div>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+									<!-- Greencard2 End here -->
+								</div>
+								<!-- Right Column Ads Start -->
+								<div class="col-12 col-md-12 col-lg-12 col-xl-3 d-none d-xl-block">
+									<div class="right-ads">
+										<a > <img src="assets/images/banner/Banner-ad.png"> </a>
+									</div>
+									<div class="vspacer30"></div>
+									<!-- <div class="offers-card">
+											<div class="header-block clearfix">
+												<h5>Offers on your card</h5>
+											</div>
+
+											<div class="panel-body">
+												<div class="recentpayment-control">
+													<ul>
+													    <li>
+															<img src="assets/images/banner/offer-banner.png">
+														</li>
+													</ul>
+												</div> 
+											 </div>
+										</div>  --></div>
+								<!-- Right Column Ads Ends -->
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!--.right-col-container-->
+	</div>
+	<!--.right-main-column-->
+</div>
+<!-- main -->
+<!-- delete-biller Modal Starts-->
+<div class="popup-bottom sm-popup delete-biller-popup popup1">
+	<div class="row1">
+		<div class="col-10 col-md-10 col-lg-10 col-xl-10">
+			<h4 class="text-left">Confirmation</h4> </div>
+		<div class="col-2 col-md-2 col-lg-2 col-xl-2">
+			<button class="ux-button-icon close-btn"> <img src="assets/images/svg/close-b.svg" alt="cross-icon" class="img-vsmall"> </button>
+		</div>
+	</div>
+	<div class="row1">
+		<div class="col-12">
+			<div class="row1">
+				<div class="col-12 co-md-12 col-xl-12 col-lg-12">
+					<p>Are you sure you want to delete this biller?</p>
+				</div>
+			</div>
+			<div class="row1 mt-2">
+				<div class="col-6 col-md-6 text-center">
+					<button class="ux-button secondary sm-mob close-btn" >No</button>
+				</div>
+				<div class="col-6 col-md-6 text-center">
+					<button class="download-btn  ux-button primary sm-mob" onclick="window.location.href='existing-biller-delete-success.html'">Yes</button>
+				</div>
+			</div>
+		</div>
+		<!-- col-12 -->
+	</div>
+</div>
+<!-- delete-biller Modal Starts-->
+<!-- Select Accounts Popup Start-->
+<div class="popup-bottom sel-account">
+	<div class="row1">
+		<div class="col-10">
+			<h4>Select Account</h4> </div>
+		<div class="col-2">
+			<button class="ux-button-icon close-btn" (click)="closePopup()"> <img src="assets/images/svg/close-b.svg" alt="cross-icon" class="img-vsmall"> </button>
+		</div>
+	</div>
+	<div class="row1">
+		<div class="col-12">
+			<div class="row1">
+				<div class="col-12 col-md-12" *ngFor="let item of accountList; let i = index" (click)="getToAccValue(item)">
+                        <div class="ux-selection mar-custom">
+                            <label class="ux-selection2"> {{item.SchemeCode}} {{item.sbAccount}}
+                                <input type="radio"  [value]="item.sbAccount" name="upi-account"> <span class="checkmark"></span> </label>
+                        </div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="row mt-2">
+		<div class="col-12 text-center">
+			<button class="ux-button primary submit-btn2" (click)="closePopup()">Submit</button>
+		</div>
+	</div>
+</div>
+<!-- Select Accounts Popup End-->

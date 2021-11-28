@@ -1,0 +1,140 @@
+<div class="row1">
+	<div class="col-12 col-lg-6 col-md-12 col-sm-12 position-static">
+		<div class="row1">
+			<div class="col-12">
+				<ul class="step-list">
+					<li class="step-matched"> <em> <span class="primary" *ngIf="DataService.regType != 'loan'" >{{'STEP' | translate}} 6 </span><span class="primary" *ngIf="DataService.regType == 'loan'" >{{'STEP' | translate}} 5 </span>
+						<span *ngIf="DataService.regType != 'loan'" class="secondary">{{"OF_STEP_6" | translate}}</span><span *ngIf="DataService.regType == 'loan'" class="secondary">{{"OF_STEP_5" | translate}}</span> </em> </li>
+				</ul>
+				<div class="tab-header">
+					<div class="row1">
+						<div class="col-12 col-md-12">
+							<h4>{{'SET_TPIN' | translate}}</h4> </div>
+					</div>
+					<div class="row1">
+						<div class="col-12 col-md-12"> <small class="link-text mb-3">{{'TPIN_MSG' | translate}}</small> </div>
+					</div>
+				</div>
+			</div>
+			<form [formGroup]="regiFormVerifyTpin" (ngSubmit)="submitStep5()">
+				<div class="col-sm-12 col-12 col-md-12 col-lg-10">
+					<div class="row1">
+						<div class="col-12">
+							<div class="ux-input mt-0 mb-0">
+								<label for="enterTPIN">{{'TPIN' | translate}}</label>
+								<a (click)="tpinPolicy()" class="mpin-info-btn">
+									<img src="assets/images/svg/information.svg" class="right-img2">
+								</a>
+							</div>
+						</div>
+					</div>
+					<div class="row4">
+						<div class="col-sm-2 col-2 col-md-2">
+							<div class="ux-input password1 mb-0">
+								<input id="spassword1" #sTpin type="tel" numbersOnly maxlength="1" placeholder="●" (keyup)="onKeyUp(0, $event,'spassword')" (focus)="onFocus(0,'spassword')" formControlName="tpin1"> </div>
+						</div>
+						<div class="col-sm-2 col-2 col-md-2">
+							<div class="ux-input password1 mb-0">
+								<input id="spassword2" #sTpin type="tel" numbersOnly maxlength="1" placeholder="●" (keyup)="onKeyUp(1, $event,'spassword')" (focus)="onFocus(1,'spassword')" formControlName="tpin2"> </div>
+						</div>
+						<div class="col-sm-2 col-2 col-md-2">
+							<div class="ux-input password1 mb-0">
+								<input id="spassword3" #sTpin type="tel" numbersOnly maxlength="1" placeholder="●" (keyup)="onKeyUp(2, $event,'spassword')" (focus)="onFocus(2,'spassword')" formControlName="tpin3"> </div>
+						</div>
+						<div class="col-sm-2 col-2 col-md-2">
+							<div class="ux-input password1 mb-0">
+								<input id="spassword4" #sTpin type="tel" numbersOnly maxlength="1" placeholder="●" (keyup)="onKeyUp(3, $event,'spassword')" (focus)="onFocus(3,'spassword')" formControlName="tpin4"> </div>
+						</div>
+						<div class="col-sm-2 col-2 col-md-2">
+							<div class="ux-input password1 mb-0">
+								<input id="spassword5" #sTpin type="tel" numbersOnly maxlength="1" placeholder="●" (keyup)="onKeyUp(4, $event,'spassword')" (focus)="onFocus(4,'spassword')" formControlName="tpin5"> </div>
+						</div>
+						<div class="col-sm-2 col-2 col-md-2">
+							<div class="ux-input password1 mb-0">
+								<input id="spassword6" #sTpin type="tel" numbersOnly maxlength="1" placeholder="●" (keyup)="onKeyUp(5, $event,'spassword')" (focus)="onFocus(5,'spassword')" formControlName="tpin6"> </div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-12">
+							<div class="ux-input mt-0 mb-0">
+								<p class="error-message"> </p>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="col-sm-12 col-12 col-md-12 col-lg-10 mt-4">
+					<div class="row1">
+						<div class="col-12">
+							<div class="ux-input mt-0 mb-0">
+								<label for="">{{"RE_ENTER_TPIN" | translate}}</label>
+							</div>
+						</div>
+					</div>
+					<div class="row4">
+						<div class="col-sm-2 col-2 col-md-2">
+							<div class="ux-input password1 mb-0">
+								<input id="cpassword1" #cTpin type="tel" numbersOnly maxlength="1" placeholder="●" (keyup)="onKeyUp(0, $event,'cpassword')" (focus)="onFocus(0,'cpassword')" formControlName="confTpin1"> </div>
+						</div>
+						<div class="col-sm-2 col-2 col-md-2">
+							<div class="ux-input password1 mb-0">
+								<input id="cpassword2" #cTpin type="tel" numbersOnly maxlength="1" placeholder="●" (keyup)="onKeyUp(1, $event,'cpassword')" (focus)="onFocus(1,'cpassword')" formControlName="confTpin2"> </div>
+						</div>
+						<div class="col-sm-2 col-2 col-md-2">
+							<div class="ux-input password1 mb-0">
+								<input id="cpassword3" #cTpin type="tel" numbersOnly maxlength="1" placeholder="●" (keyup)="onKeyUp(2, $event,'cpassword')" (focus)="onFocus(2,'cpassword')" formControlName="confTpin3"> </div>
+						</div>
+						<div class="col-sm-2 col-2 col-md-2">
+							<div class="ux-input password1 mb-0">
+								<input id="cpassword4" #cTpin type="tel" numbersOnly maxlength="1" placeholder="●" (keyup)="onKeyUp(3, $event,'cpassword')" (focus)="onFocus(3,'cpassword')" formControlName="confTpin4"> </div>
+						</div>
+						<div class="col-sm-2 col-2 col-md-2">
+							<div class="ux-input password1 mb-0">
+								<input id="cpassword5" #cTpin type="tel" numbersOnly maxlength="1" placeholder="●" (keyup)="onKeyUp(4, $event,'cpassword')" (focus)="onFocus(4,'cpassword')" formControlName="confTpin5"> </div>
+						</div>
+						<div class="col-sm-2 col-2 col-md-2">
+							<div class="ux-input password1 mb-0">
+								<input id="cpassword6" #cTpin type="tel" numbersOnly maxlength="1" placeholder="●" (keyup)="onKeyUp(5, $event,'cpassword')" (focus)="onFocus(5,'cpassword')" formControlName="confTpin6"> </div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-12">
+							<div class="ux-input mt-0 mb-0">
+								<p class="error-message" *ngIf="enterConfrmTPin"> {{"PLEASE_ENTER_TPIN" | translate }} </p>
+								<p class="error-message" *ngIf="tpinNotMatched"> {{"TPIN_NOT_MATCH" | translate }} </p>
+								<p class="error-message" *ngIf="tpinRepeatError || tpinConsecutiveError">{{"MPIN_SIMPLE_ERROR" | translate }} </p>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="col-12 col-lg-10 col-md-12 col-sm-12 position-static">
+					<div class="ux-footer border-n">
+						<!-- <div class="row1">
+              <div class="col-12 col-lg-6 col-md-6 col-sm-6">
+
+                </div>
+              <div class="col-12 col-lg-6 col-md-6 col-sm-6 text-right">
+                <button class="ux-button secondary sm cancel-btn" type="button" (click)="cancelbtn()" *ngIf="DataService.isFromOmniReg.isStepV" >{{'PREVIOUS' | translate}}</button>
+                <button class="ux-button primary sm ml-2" type="submit">Submit</button>
+                </div>
+                </div> -->
+						<div class="row1">
+							<div class="col-12 col-md-12">
+								<ul class="bottom-footer1">
+									<li>
+										<div class="btn-div custom-mar hide-m">
+											<!-- <button class="ux-button secondary sm-mob cancel-btn" type="button" (click)="cancelbtn()" *ngIf="DataService.isFromOmniReg.isStepV">Previous</button> -->
+										</div>
+										<div class="btn-div custom-mar w100">
+											<button class="ux-button primary sm-mob">{{"SUBMIT" | translate}}</button>
+										</div>
+									</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+			</form>
+		</div>
+	</div>
+	<div class="col-12 col-lg-6 col-md-2 col-sm-12 d-none d-lg-block d-xl-block"> <img src="assets/images/svg/SetTPIN.svg" class="right-regImg"> </div>
+</div>

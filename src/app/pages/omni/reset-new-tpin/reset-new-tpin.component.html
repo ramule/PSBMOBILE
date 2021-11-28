@@ -1,0 +1,175 @@
+<div class="main bg-m">
+	<div class="right-main-column ">
+		<div class="right-col-container pad-b full-width">
+			<!-- ======== body page content start from here ======== -->
+			<div class="body-page-container main-dashborad manage-payee">
+				<div class="container-fluid">
+					<div class="row">
+						<div class="col-12 p-0">
+							<div class="breadcrumb">
+								<ul class="lst-breadcrumb">
+									<li *ngFor="let name of DataService.breadcrumblist">
+										<a (click)="DataService.breadcrumroute(name.routeName)">{{name.currentRoute | translate}}</a>
+								</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+					<!--.row -->
+					<div class="vspacer15 customize d-none d-md-block d-lg-block d-xl-block"></div>
+					<div class="row no-gutters">
+						<div class="col-12">
+							<div class="row1">
+								<div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-9">
+									<!-- Greencard2 Start here -->
+									<div class="greencard2">
+										<div class="row1 hide-m">
+											<div class="col-md-8 col-12">
+												<h4>Authentication</h4> </div>
+											<div class="col-md-4 col-12"> </div>
+										</div>
+										<div class="row1">
+											<div class="col-sm-12 col-12 col-md-12">
+												<div class="white-box2 mar-t pad-custom custom-bor">
+													<div class="row1">
+														<div class="col-12 col-md-8 col-lg-9 col-xl-9">
+															<div class="row1">
+																<div class="col-12 col-md-12">
+																	<div class="ux-input"> <em class="info-message2">Reset TPIN</em> </div>
+																</div>
+																<div class="col-12 col-md-8 col-lg-8 col-xl-7">
+																	<div class="row">
+																		<div class="col-12 pl-2 pr-2">
+																			<div class="row1">
+																				<div class="col-12">
+																					<div class="ux-input mb-0">
+																						<label>Enter TPIN</label>
+																					</div>
+																				</div>
+																				<div class="col-12 col-md-10 col-lg-10 col-xl-10">
+																					<form [formGroup]="mpinForm">
+																					<div class="row3">
+																						<div class="col-sm-2 col-2 col-md-2"
+																							*ngFor="let mpin of mpinInput | slice:0:6; index as i">
+																							<div class="ux-input password1 mb-1">
+																								<input id="mpassword{{i}}" #mpinRow type="tel" maxlength="1"
+																									placeholder="●"
+																									(keyup)="onKeyUpEvent(i, $event, 'mpassword')"
+																									formControlName="{{mpin}}" pattern="\d*" />
+																							</div>
+																						</div>
+																					</div>
+																				</form>
+																				</div>
+																				<div Class="col-12 col-md-12 col-lg-10 col-xl-10">
+																					<div class="ux-input" >
+																						<p class="error-message" *ngIf="mpinError"> {{ 'ENTER_6_DIGIT_TPIN_ERROR' | translate }} </p>
+																						<p class="error-message" *ngIf="validMpin"> {{ 'TPIN_SIMPLE_ERROR' | translate }} </p>
+																					
+																					</div>
+																				</div>
+																			</div>
+
+																			<div class="row1">
+																				<div class="col-12">
+																					<div class="ux-input mb-0">
+																						<label>Re-enter TPIN</label>
+																					</div>
+																				</div>
+																				<div class="col-12 col-md-10 col-lg-10 col-xl-10">
+																					<form [formGroup]="reMpinForm">
+																					<div class="row3">
+																						<div class="col-sm-2 col-2 col-md-2"
+																						*ngFor="let mpin of reMpinInput | slice:0:6; index as i">
+																						<div class="ux-input password1 mb-1">
+																							<input id="rmpassword{{i}}" type="tel" #reMpinRow
+																								maxlength="1" placeholder="●"
+																								(keyup)="onKeyUpEvent(i, $event, 'rmpassword')"
+																								formControlName="{{mpin}}" pattern="\d*" />
+																						</div>
+																					</div>
+																					</div>
+																				</form>
+																				</div>
+																				<div Class="col-12 col-md-12 col-lg-10 col-xl-10">
+																					<div class="ux-input">
+																						<p class="error-message" *ngIf="confMpinError"> {{ 'ENTER_6_DIGIT_CONFIRM_TPIN_ERROR' | translate }}</p>
+																						<p class="error-message" *ngIf="!mpinMatch"> {{ 'TPIN_CONFIRM_MISMATCH_ERROR' | translate }}</p>
+																						<p class="error-message" *ngIf="validConfirmMpin"> {{ 'TPIN_SIMPLE_ERROR' | translate }}</p>
+																					
+																					</div>
+																				</div>
+																			</div>
+																	
+																		</div>
+																	</div>
+																</div>
+															</div>
+														</div>
+														<div class="col-12 col-md-4 col-lg-3 col-xl-3 text-right hide-m">
+															<div class="mobile-img"> <img src="assets/images/icons/mobile.svg" alt="mobile-icon"> </div>
+														</div>
+													</div>
+												</div>
+											</div>
+											<div class="col-12 col-md-12">
+												<ul class="bottom-footer1">
+													<li>
+														<div class="btn-div">
+															<button class=" ux-button secondary sm-mob" (click)="goBack()">Back</button>
+														</div>
+														<div class="btn-div">
+															<button class=" ux-button primary sm-mob" (click)="submitTpin()">Submit</button>
+														</div>
+													</li>
+												</ul>
+											</div>
+										</div>
+									</div>
+									<!-- Greencard2 End here -->
+								</div>
+								<!-- Right Column Ads Start -->
+								<div class="col-12 col-md-12 col-lg-12 col-xl-3 d-none d-xl-block">
+									<div class="right-ads">
+										<a> <img src="assets/images/banner/my-card-banner.jpg"> </a>
+									</div>
+									<div class="vspacer30"></div>
+									<!-- <div class="offers-card">
+										<div class="header-block clearfix">
+											<h5>Offers on your card</h5> </div>
+										<div class="panel-body">
+											<div class="recentpayment-control">
+												<ul>
+													<li> <img src="assets/images/banner/offer-banner.png"> </li>
+												</ul>
+											</div>
+										</div>
+									</div> -->
+								</div>
+								<!-- Right Column Ads Ends -->
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!--.right-col-container-->
+	</div>
+	<!--.right-main-column-->
+</div>
+<!-- main -->
+
+<!-- Success Popup -->
+<div class="popup-bottom md-popup success-popup ">
+	<div class="row mt-3">
+		<div class="success"> <img src="assets/images/svg/check.svg" alt="success-icon">
+			<h3>Success</h3>
+			<h5>TPIN changed successfully</h5> </div>
+	</div>
+	<div class="row1 mt-3">
+		<div class="col-12 text-center">
+			<button class="ux-button primary md ok-btn" (click)="goToPage('profileDetails')">Ok</button>
+		</div>
+	</div>
+</div>
+<!-- End of success popup -->

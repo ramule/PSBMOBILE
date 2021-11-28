@@ -1,0 +1,60 @@
+{
+  "_from": "cordova-plugin-contacts-phonenumbers",
+  "_id": "cordova-plugin-contacts-phonenumbers@0.0.12",
+  "_inBundle": false,
+  "_integrity": "sha512-nE9hrJnhpVXXTWAlAi/6MWSxY1Amm1InRfkiOLXazAKFm9HjkVqT80zefjB0Y/KgFolpLsRZn5wS745tTotXPA==",
+  "_location": "/cordova-plugin-contacts-phonenumbers",
+  "_phantomChildren": {},
+  "_requested": {
+    "type": "tag",
+    "registry": true,
+    "raw": "cordova-plugin-contacts-phonenumbers",
+    "name": "cordova-plugin-contacts-phonenumbers",
+    "escapedName": "cordova-plugin-contacts-phonenumbers",
+    "rawSpec": "",
+    "saveSpec": null,
+    "fetchSpec": "latest"
+  },
+  "_requiredBy": [
+    "#USER",
+    "/"
+  ],
+  "_resolved": "https://registry.npmjs.org/cordova-plugin-contacts-phonenumbers/-/cordova-plugin-contacts-phonenumbers-0.0.12.tgz",
+  "_shasum": "c37220257d11abe0b9a86bc18785bbaa21e27d69",
+  "_spec": "cordova-plugin-contacts-phonenumbers",
+  "_where": "D:\\Sachin\\Office Projects\\PSB-Theme",
+  "author": {
+    "name": "Didier Baquier"
+  },
+  "bugs": {
+    "url": "https://github.com/dbaq/cordova-plugin-contacts-phone-numbers/issues"
+  },
+  "bundleDependencies": false,
+  "cordova": {
+    "id": "cordova-plugin-contacts-phonenumbers",
+    "platforms": [
+      "android",
+      "ios"
+    ]
+  },
+  "deprecated": false,
+  "description": "Cordova Plugin to List Contacts Phone Numbers ",
+  "homepage": "https://github.com/dbaq/cordova-plugin-contacts-phone-numbers#readme",
+  "keywords": [
+    "cordova",
+    "contacts",
+    "list",
+    "phone",
+    "numbers",
+    "ecosystem:cordova",
+    "cordova-android",
+    "cordova-ios"
+  ],
+  "license": "Apache 2.0",
+  "name": "cordova-plugin-contacts-phonenumbers",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dbaq/cordova-plugin-contacts-phone-numbers.git"
+  },
+  "version": "0.0.12"
+}

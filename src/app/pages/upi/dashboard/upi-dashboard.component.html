@@ -1,0 +1,566 @@
+<div class="main main-bg">
+  
+<header class="global-header primary-bg" *ngIf="!DataService.fromOmniLogin">
+  <div class="in-header">
+      <div class="header-icons-lft">
+          <div class="header-actions">
+              <button class="ux-button-header  menu-btn d-lg-none d-md-block" (click)="closePopups()">
+        <img src="assets/images/svg/yellow-menu.svg"  alt="open-menu-icon"/>
+      </button>
+          </div>
+      </div>
+      <div class="brand-logo m-auto">
+          <img src="assets/images/logo/psb-logo.svg" alt="psb-logo" class="m-auto ">
+      </div>
+      <div class="header-icons-rit">
+          <div class="header-actions">
+              <button class="ux-button-header btn-notification-bell2" (click)="routeTo('notification')">
+        <img src="assets/images/svg/bell-w.svg" class="img-small" alt="bell-icon" /> 
+                  <span class="red-dot" *ngIf="allPendingNotificationCount>0"></span>
+        <!-- <span class="point">1</span> -->
+      </button>
+              <button class="ux-button-header btn-logout" data-target="#logoutModal" (click)="openLogoutModal()">
+        <img src="assets/images/svg/shutdown-w.svg" class="img-small" alt="logout-icon" />
+      </button>
+              <button class="ux-button-header btn-user profile-btn" (click)="openProfilePopUp()">
+        <span class="round-circle" ><img *ngIf="DataService.profileImage && DataService.profileImage != ''"  [src]="DataService.profileImage" onerror="this.src='./assets/images/svg/user-profile-w.svg'" alt="user-img">
+                      <h5 *ngIf="DataService.profileImage == ''">{{DataService.userName | firstLastChar}}</h5>
+                  </span>
+       </button>
+          </div>
+      </div>
+  </div>
+</header>
+  <app-side-nav *ngIf="!DataService.fromOmniLogin"></app-side-nav>
+  <div class="nav-overlay"></div>
+  <div class="right-main-column ">
+    <div class="right-col-container pad-b1">
+      <div class="body-page-container">
+        <div class="vspacer5 d-sm-block d-none"></div>
+        <div class="container-fluid">
+          <div class="row" *ngIf="vpaAccountList.length > 0">
+            <div class="col-12 col-md-12">
+              <div class="scroll-box2 dashboard-slider">
+                <owl-carousel-o [options]="upidashboardCarousel" role="list" (changed)="getData($event)">
+                  <ng-container class="item" role="listitem" *ngFor="let vpaAccount of vpaAccountList; index as i">
+                    <ng-template class="slide" carouselSlide>
+                      <div class="ux-component2 white1">
+                        <div class="row">
+                          <div class="col-12">
+                            <div class="profile-bg1 pad-custom">
+                              <div class="myprofile">
+                                <a (click)="goToPage('manageAccounts')" class="setting-btn"> <img
+                                    src="assets/images/svg/settings.svg" alt="setting-icon"></a>
+                                <h5><em>{{ 'UPI_ID' | translate}} : </em> {{selectedVPA}}
+                                  <a class="add-upi-id">
+                                    <img src="assets/images/svg/arrow-back-bl.svg" class="details-info"
+                                      style="display: inline-block;" (click)="showPopup('upi-account')">
+                                  </a>
+                                </h5>
+                                <a href="javascript:;" class="add-btn"
+                                  (click)="setVpaDetailsForLinkAccount('createUpi');"> <img
+                                    src="./assets/images/svg/add-g.svg" class="showAmt" alt="ad-icon"></a>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="row">
+                          <div class="col-6 col-sm-6 col-md-6 col-lg-6 pl-1 pr-1">
+                            <div class="profile-bg1">
+                              <div class="myprofile">
+                                <h6>A/C {{vpaAccount.maskedAccountNumber}}</h6>
+                                <small>{{ vpaAccount.accType }}</small>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="col-6 col-sm-6 col-md-6 col-lg-6 pl-1 pr-1">
+                            <div class="ux-dropdown">
+                              <div class="drp-box">
+                                <a class="balance-info drp-enterdata">
+                                  <span class="account-balance disable-status">
+                                    <em class="entered-data" amt="50,000.00">
+                                      <div class="refresh-amt1">
+                                        <span class="chk-bal card-actions">
+                                          <!-- <img src="./assets/images/svg/visible-bl.svg" *ngIf="!accountDetails.showBalance" (click)="viewBalanceFlow(vpaItem, i, j)" alt="visible-icon">
+                                                                                    <img src="./assets/images/svg/invisible-bl.svg" *ngIf="accountDetails.showBalance" (click)="updateShowBalance(i,j,false)" alt="hide-icon"> -->
+                                          <img src="./assets/images/svg/visible-bl.svg" *ngIf="!vpaAccount.showBalance"
+                                            (click)="toggleBalanceDetails(vpaAccount, selectedVPAIndex, i)"
+                                            alt="visible-icon">
+                                          <img src="./assets/images/svg/invisible-bl.svg" *ngIf="vpaAccount.showBalance"
+                                            (click)="toggleBalanceDetails(vpaAccount, selectedVPAIndex, i)"
+                                            alt="hide-icon">
+                                        </span>
+                                      </div>
+                                      <i>
+                                        <!-- <img src="./assets/images/svg/rupee-bl.svg" alt="rupees-icon"> -->
+                                      </i>
+                                      <b *ngIf="!vpaAccount.showBalance"> {{vpaAccount.maskedBalance}}</b>
+                                      <b
+                                        *ngIf="vpaAccount.showBalance">{{vpaAccount.balanceAmount | customcurrency}}</b>
+                                      <div class="refresh-amt card-actions"
+                                        (click)="viewBalanceFlow(vpaAccount, selectedVPAIndex, i)">
+                                        <img src="./assets/images/svg/refresh-bl.svg" alt="refresh-icon">
+                                      </div>
+                                    </em>
+                                  </span>
+                                  <div class="col-sm-12 col-12">
+                                    <div class="total-target">
+                                      <small>{{'AVAILABLE_BALANCE' | translate}}</small>
+                                    </div>
+                                  </div>
+                                </a>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </ng-template>
+                  </ng-container>
+                </owl-carousel-o>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="container-fluid">
+          <div class="row">
+            <div class="button-section2">
+              <div class="button-left">
+                <button class="ux-custom-button primary" (click)="goToPage('payUpi')">
+                  {{ 'PAY' | translate }}
+                  <!-- Pay  -->
+                  <img src="./assets/images/svg/rupee-left-g.svg" alt="rupee-icon" />
+                </button>
+              </div>
+              <div class="button-right">
+                <button class="ux-custom-button primary" (click)="goToPage('collectRecentRequest')">
+                  <img src="./assets/images/svg/rupee-right-g.svg" alt="rupee-icon" />
+                  {{ 'COLLECT' | translate }}
+                  <!-- Collect -->
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-12 col-md-12">
+            <div class="widget-box5 ">
+              <div class="component-title6">
+                <div class="row1">
+                  <div class="col-8 col-md-9">
+                    <h3>
+                      {{ 'MY_INFORMATION' | translate }}
+                      <!-- My Information -->
+                    </h3>
+                  </div>
+                  <!-- <div class="col-4 col-md-3">
+                                    <a class="ux-linkbutton sm float-right">
+                                        {{ 'VIEW_ALL' | translate }}
+                                    </a>
+                                </div> -->
+                </div>
+
+              </div>
+              <div class="component-box">
+                <div class="row">
+                  <ul class="information-list">
+                    <li>
+                      <a (click)="goToPage('pendingRequestUpi')">
+                        <!-- <div class="icon1" *ngIf="transactionNotificationCount==0">
+                                                <img src="./assets/images/svg/pending-request.svg" alt="pending-request-icon" />
+                                            </div> -->
+                        <div class="icon1">
+                          <img src="./assets/images/svg/pending-request.svg" alt="pending-request-icon" />
+                          <span class="red-dot" *ngIf="transactionNotificationCount>0"></span>
+                        </div>
+                        <em>
+                          {{ 'PENDING_REQUEST' | translate }}
+                          <!-- Pending Request -->
+                        </em>
+                      </a>
+                    </li>
+                    <li>
+                      <!-- <a (click)="goToPage('manageAccounts')"> -->
+                      <a (click)="goToPage('manageAccounts')">
+                        <div class="icon1">
+                          <img src="./assets/images/svg/balance-enquiry.svg" alt="balance-enquiry-icon" />
+                        </div>
+                        <em>
+                          {{ 'BALANCE_ENQUIRY' | translate }}
+                          <!-- Balance Enquiry -->
+                        </em>
+                      </a>
+                    </li>
+                    <li>
+                      <a (click)="goToPage('manageAccounts')">
+                        <div class="icon1">
+                          <img src="./assets/images/svg/settings.svg" alt="setting-icon" />
+                        </div>
+                        <em>
+                          {{ 'MANAGE_ACCOUNTS' | translate }}
+                          <!-- Manage Accounts -->
+                        </em>
+                      </a>
+                    </li>
+                    <li>
+                      <a (click)="goToPage('transactionList')">
+                        <div class="icon1">
+                          <img src="./assets/images/svg/transaction.svg" alt="transaction-icon" />
+                        </div>
+                        <em>
+                          {{ 'TRANSACTION' | translate }}
+                          <!-- Transaction -->
+                        </em>
+                      </a>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-12 col-md-12" *ngIf="!DataService.omniUPIFlow">
+            <div class="widget-box5 ">
+              <div class="component-title6">
+                <div class="row1">
+                  <div class="col-8 col-md-9">
+                    <h3>
+                      {{ 'BILL_PAYMENT' | translate }}
+                      <!-- Bill Payment -->
+                    </h3>
+                  </div>
+                  <!-- <div class="col-4 col-md-3">
+                                    <a class="ux-linkbutton sm float-right">
+                                        {{ 'VIEW_ALL' | translate }}
+                                    </a>
+                                </div> -->
+                </div>
+
+              </div>
+              <div class="component-box">
+                <div class="row">
+                  <ul class="information-list">
+                    <li>
+                      <!-- (click)="showPopup('comingSoonPopup')" [routerLink]="['/transactionPin']" -->
+                      <a (click)="showPopup('comingSoonPopup')">
+                        <div class="icon1">
+                          <img src="./assets/images/svg/mobile-recharge.svg" alt="mobile-recharge-icon" />
+                        </div>
+                        <em>
+                          {{ 'MOBILE_RECHARGE' | translate }}
+                          <!-- Mobile Recharge -->
+                        </em>
+                      </a>
+                    </li>
+                    <li>
+                      <a (click)="showPopup('comingSoonPopup')">
+                        <div class="icon1">
+                          <img src="./assets/images/svg/dth.svg" alt="dth-icon" />
+                        </div>
+                        <em>
+                          {{ 'DTH' | translate }}
+                          <!-- DTH -->
+                        </em>
+                      </a>
+                    </li>
+                    <li>
+                      <a (click)="showPopup('comingSoonPopup')">
+                        <div class="icon1">
+                          <img src="./assets/images/svg/electricity.svg" alt="electricity-icon" />
+                        </div>
+                        <em>
+                          {{ 'ELECTRICITY' | translate }}
+                          <!-- Electricity -->
+                        </em>
+                      </a>
+                    </li>
+                    <li>
+                      <a (click)="showPopup('comingSoonPopup')">
+                        <div class="icon1">
+                          <img src="./assets/images/svg/fast-tag.svg" alt="fast-tag-icon" />
+                        </div>
+                        <em>
+                          {{ 'FAST_TAG' | translate }}
+                          <!-- Fast Tag -->
+                        </em>
+                      </a>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-12 col-md-12">
+            <div class="widget-box5">
+              <div class="component-title6">
+                <div class="row1">
+                  <div class="col-8 col-md-9">
+                    <h3>
+                      {{ 'RECENT' | translate }}
+                      <!-- Recent -->
+                    </h3>
+                  </div>
+                  <div class="col-4 col-md-3" *ngIf="this.DataService.recentBeneficiaryList.length > 0">
+                    <a class="ux-linkbutton sm float-right" (click)="goToPage('searchFavoritePayee')">
+                      {{ 'VIEW_ALL' | translate }}
+                    </a>
+                  </div>
+                </div>
+              </div>
+              <div class="component-box">
+                <div class="row1">
+                  <!-- <div class="col-sm-12 col-12 col-md-12"> -->
+                  <div class="col-12 col-md-12">
+
+                    <div class="unfound-info2" *ngIf="this.DataService.recentBeneficiaryList.length == 0">
+                      <h6> {{'NO_RECENT_PAYMENTS_AVAILABLE' | translate}}</h6>
+                    </div>
+          
+
+                    <ul class="recent-list" *ngIf="this.DataService.recentBeneficiaryList.length > 0">
+                      <li *ngFor="let recentTranscation of this.DataService.recentBeneficiaryList | slice:0:5; index as i">
+                        <a (click)="navigateToPage(recentTranscation)">
+                          <span class="green1">
+                            <img *ngIf="recentTranscation.beneImageUrl" [src]="recentTranscation.beneImageUrl"
+                              alt="user-img">
+                            <h6 *ngIf="!recentTranscation.beneImageUrl">{{recentTranscation.nickName | firstLastChar}}
+                            </h6>
+                          </span>
+                          <em *ngIf="!recentTranscation.beneImageUrl">{{recentTranscation.nickName | truncate}}</em>
+                        </a>
+                      </li>
+                    </ul>
+
+
+
+
+                    <!-- <a href="javascript:;">
+                            <span class="green1">
+                            <img src="./assets/images/icons/user3.png" alt="user-img">
+                            </span>
+                            <em>Sohan</em>
+                        </a>
+                        <a href="javascript:;">
+                            <span class="green1">
+                            <img src="./assets/images/icons/user4.png" alt="user-img">
+                            </span>
+                            <em>Jyoti</em>
+                        </a>
+                        <a href="javascript:;">
+                            <span class="green1">
+                            <h6>RS</h6>
+                            </span>
+                            <em>Rohan Singh</em>
+                        </a>
+                        <a href="javascript:;">
+                            <span class="yellow">
+                            <h6>N</h6>
+                            </span>
+                            <em>Nivedita </em>
+                        </a> -->
+                    <!-- </div> -->
+                    <!--.ux-small-scroll-->
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-12 col-md-12">
+            <div class="row">
+              <!-- Banner Scroll Section Start -->
+              <div class="banner-section">
+                <div class="scroll-section">
+                  <div class="owl-carousel img-owl" role="list">
+                    <div class="item ux-img-scroll" role="listitem">
+                      <a>
+                        <span>
+                          <img src="assets/images/slides/banner-01.png" alt="banner1">
+                        </span>
+                      </a>
+                    </div>
+                    <div class="item ux-img-scroll" role="listitem">
+                      <a>
+                        <span>
+                          <img src="assets/images/slides/banner-02.png" alt="banner2">
+                        </span>
+                      </a>
+                    </div>
+                    <div class="item ux-img-scroll" role="listitem">
+                      <a>
+                        <span>
+                          <img src="assets/images/slides/banner-01.png" alt="banner3">
+                        </span>
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!-- Banner Scroll Section End -->
+            </div>
+          </div>
+
+
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- No VPA Popup Start (Android)-->
+<div class="popup-bottom noVpaExitRetry">
+  <div class="row1">
+    <div class="col-12">
+      <h4 class="text-center"> <img src="./assets/images/svg/error.svg" alt="error-icon"> {{'ERROR' | translate}}</h4>
+    </div>
+  </div>
+  <!-- <form id="terms-form"> -->
+  <div class="row">
+    <div class="col-12">
+      <p>
+        {{'NO_VPA_FOUND' | translate}}
+      </p>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-6 text-center">
+      <button class="ux-button secondary" (click)="exitApp()" *ngIf='!DataService.omniUPIFlow'>
+        {{ 'EXIT' | translate }}
+        <!-- Later -->
+      </button>
+      <button class="ux-button secondary" (click)="cancel()" *ngIf='DataService.omniUPIFlow'>
+        {{ 'CANCEL' | translate }}
+        <!-- Later -->
+      </button>
+    </div>
+    <div class="col-6 text-center">
+      <button class="ux-button primary" (click)="goToPage('createUpi')">
+        {{ 'CREATE_UPI_ID' | translate }}
+        <!-- Yes -->
+      </button>
+    </div>
+  </div>
+  <!-- </form> -->
+</div>
+<!-- No VPA Popup End (Android)-->
+
+<!-- No VPA Popup Start (iOS)-->
+<div class="popup-bottom noVpaExitRetryIos">
+  <div class="row1">
+    <div class="col-12">
+      <h4 class="text-center">
+        <img src="./assets/images/svg/error.svg" alt="error-icon"> {{'ERROR' | translate}}
+      </h4>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-12">
+      <p>
+        {{'NO_VPA_FOUND' | translate}}
+      </p>
+    </div>
+  </div>
+  <div class="row1 mt-2">
+    <!--  (click)="goToPage('createUpi')" (click)="closePopup('noVpaExitRetryIos')" -->
+    <div class="col-12 text-center">
+      <button class="ux-button primary" (click)="goToPage('createUpi')">
+        {{ 'CREATE_UPI_ID' | translate }}
+      </button>
+    </div>
+  </div>
+</div>
+<!-- No VPA Popup End (iOS)-->
+
+<!-- Confirmation Popup End -->
+
+<!-- Coming Soon Popup Start -->
+<div class="popup-bottom comingSoonPopup">
+  <div class="row">
+    <div class="col-12">
+      <h4 class="text-center">
+        {{ 'INFORMATION' | translate }}
+      </h4>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-12">
+      <p>
+        {{ 'COMING_SOON' | translate }}
+      </p>
+    </div>
+  </div>
+  <div class="row1 mt-2">
+    <div class="col-12 text-center">
+      <button class="ux-button primary md" (click)="closePopup('comingSoonPopup')">
+        {{ 'OK' | translate }}
+      </button>
+    </div>
+  </div>
+</div>
+<!-- Coming Soon Popup End-->
+
+
+<!-- Select UPI Account Popup End -->
+
+<div class="popup-bottom upi-account">
+  <div class="row1">
+    <div class="col-10">
+      <h4>{{'SELECT_UPI_ACCOUNT' | translate}}</h4>
+    </div>
+    <div class="col-2">
+      <button class="ux-button-icon close-btn" (click)="closePopup('upi-account')">
+        <img src="assets/images/svg/close-b.svg" alt="cross-icon" class="img-vsmall">
+      </button>
+    </div>
+  </div>
+  <div class="row1">
+    <div class="col-12">
+      <div class="row1" *ngFor="let vpaItem of vpaList">
+        <div class="col-12 col-md-12">
+          <div class="ux-selection mar-custom">
+            <label class="ux-selection2">{{'UPI_ID'  | translate}} : {{vpaItem.paymentAddress}}
+              <input id="upIId" type="radio" [checked]="vpaItem.vpaSelected" (change)="setDetails(vpaItem)"
+                [value]="vpaItem.paymentAddress" name="upi-account">
+              <span class="checkmark"></span>
+            </label>
+            <div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row mt-2">
+    <div class="col-12 text-center">
+      <button class="ux-button primary submit-btn"
+        (click)="setDetailsAccountList(selectedAccountVpa,true)">{{'SUBMIT' | translate}}</button>
+    </div>
+  </div>
+</div>
+
+<!-- Select UPI Account Popup End -->
+
+
+<!-- <div class="ios-nav-overlay" style="pointer-events: none!important;"></div> -->
+<!-- Permission Not Granted Popup Start -->
+<div class="popup-bottom contact-dashboard-permission-not-granted">
+  <div class="row1">
+    <div class="col-12">
+      <h4 class="text-center">
+        <img src="./assets/images/svg/information.svg" alt="information-icon"> {{ 'INFORMATION' | translate }}
+      </h4>
+    </div>
+  </div>
+  <div class="row1">
+    <div class="col-12">
+      <p>
+        {{ 'ALLOW_PERMISSION_MSG' | translate }}
+        <!-- All permissions are utilized for specific feature(s) within PSB UPI Application. Kindly allow/grant permissions as and when prompted so as to continue accessing that specific feature. -->
+      </p>
+    </div>
+  </div>
+  <div class="row1 mt-2">
+    <div class="col-12 text-center" (click)="getContactSettings('contact-dashboard-permission-not-granted')">
+      <button class="ux-button primary submit-btn" type="button">{{ 'GRANT' | translate}}</button>
+    </div>
+  </div>
+</div>

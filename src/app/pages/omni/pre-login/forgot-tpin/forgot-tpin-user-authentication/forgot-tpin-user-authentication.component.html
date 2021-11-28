@@ -1,0 +1,483 @@
+<div class="prelogin-page">
+  <div class="registration-steps">
+    <div class="row">
+      <div class="col-12 position-static">
+        <div class="inner-header">
+          <div class="registration-container">
+            <h4>Forgot TPIN?</h4>
+            <!-- <a class="close-registration" ><img (click)="mobPrevclick('cross')" src="assets/images/svg/close-w.svg"></a> -->
+
+            <a class="prev-tab"
+              ><img src="assets/images/svg/close-w.svg"
+            /></a>
+          </div>
+        </div>
+
+        <div
+          class="
+            registrationsteps-block
+            registration-container
+            acc-opening-page
+          "
+        >
+          <div class="row">
+            <div
+              class="background-block"
+              style="
+                background-image: url(assets/images/background/basic-background.png);
+              "
+            ></div>
+            <div class="middle-block">
+              <div class="pageHeader">
+                <h3>User Authentication</h3>
+                <!-- <span>Please enter details registerd in your Bank Account</span> -->
+              </div>
+              <div class="col-12 position-static p-0">
+                <ul class="channel-tab">
+                  <li  (click)="selectedUserAuth('debitCard')">
+                    <a
+                      href="#debit-card"
+                      class="active"
+
+                      ><img src="assets/images/svg/debit-card-e.svg" />Debit Card</a
+                    >
+                  </li>
+                  <li (click)="selectedUserAuth('banktoken')">
+                    <a href="#banktoken"
+                      ><img src="assets/images/icons/card.png" />Bank Token</a
+                    >
+                  </li>
+                </ul>
+                <div class="creditials-tab-panel custom-panel custom-pad">
+                  <div id="debit-card" class="main-pannel active">
+                    <form [formGroup]="registrationFormstep2">
+                      <div class="row1">
+                        <div class="col-12">
+                          <div class="ux-input m-0">
+                            <label>Enter debit card</label>
+                          </div>
+                        </div>
+                        <div class="col-sm-12">
+                          <div class="ux-input debit-number grp-digit">
+                            <input
+                              id="spassword1"
+                              #debitcardRow
+                              type="number"
+                              formControlName="cardNumber1"
+                              limit-to="4"
+                              numbersOnly
+                              placeholder="● ● ● ●"
+                              (keyup)="onKeyUpEvent(0, $event, 'debitcard')"
+                              (focus)="onFocusEvent(0, 'debitcard')"
+                            />
+                          </div>
+                          <div class="ux-input debit-number grp-digit">
+                            <input
+                              id="spassword2"
+                              #debitcardRow
+                              type="number"
+                              formControlName="cardNumber2"
+                              limit-to="4"
+                              numbersOnly
+                              placeholder="● ● ● ●"
+                              (keyup)="onKeyUpEvent(1, $event, 'debitcard')"
+                              (focus)="onFocusEvent(1, 'debitcard')"
+                            />
+                          </div>
+
+                          <div class="ux-input debit-number grp-digit">
+                            <input
+                              id="spassword3"
+                              #debitcardRow
+                              type="number"
+                              formControlName="cardNumber3"
+                              limit-to="4"
+                              numbersOnly
+                              placeholder="● ● ● ●"
+                              (keyup)="onKeyUpEvent(2, $event, 'debitcard')"
+                              (focus)="onFocusEvent(2, 'debitcard')"
+                            />
+                          </div>
+
+                          <div class="ux-input debit-number grp-digit">
+                            <input
+                              id="spassword4"
+                              #debitcardRow
+                              type="number"
+                              formControlName="cardNumber4"
+                              limit-to="4"
+                              numbersOnly
+                              placeholder="● ● ● ●"
+                              (keyup)="onKeyUpEvent(3, $event, 'debitcard')"
+                              (focus)="onFocusEvent(3, 'debitcard')"
+                            />
+                          </div>
+                        </div>
+                      </div>
+                      <div class="row1">
+                        <div class="col-12 col-md-12">
+                          <div class="ux-input mb-0">
+                            <label>Debit Card Expire Date</label>
+                          </div>
+                        </div>
+                        <div class="col-12 col-md-12">
+                          <div class="ux-input expiry-input input-data">
+                            <input
+                              #expdateRow
+                              id="expiry1"
+                              type="number"
+                              formControlName="expDate1"
+                              limit-to="1"
+                              numbersOnly
+                              placeholder="M"
+                              (keyup)="onKeyUpEvent(0, $event, 'expdate')"
+                              (focus)="onFocusEvent(0, 'expdate')"
+                            />
+                          </div>
+                          <!-- </div>
+                                                 <div class="col-sm-2 col-2 col-md-2 pl-0"> -->
+                          <div class="ux-input expiry-input input-data">
+                            <input
+                              #expdateRow
+                              id="expiry2"
+                              type="number"
+                              formControlName="expDate2"
+                              limit-to="1"
+                              numbersOnly
+                              placeholder="M"
+                              (keyup)="onKeyUpEvent(1, $event, 'expdate')"
+                              (focus)="onFocusEvent(1, 'expdate')"
+                            />
+                          </div>
+                          <!-- </div>
+                                                 <div class="col-sm-1 col-1 col-md-1 pl-0 pr-0"> -->
+                          <p class="custom-text">/</p>
+                          <!-- </div>
+                                                 <div class="col-sm-2 col-2 col-md-2 pr-1"> -->
+                          <div class="ux-input expiry-input input-data">
+                            <input
+                              #expdateRow
+                              id="expiry3"
+                              type="number"
+                              formControlName="expDate3"
+                              limit-to="1"
+                              numbersOnly
+                              placeholder="Y"
+                              (keyup)="onKeyUpEvent(2, $event, 'expdate')"
+                              (focus)="onFocusEvent(2, 'expdate')"
+                            />
+                          </div>
+                          <!--  </div>
+                                                 <div class="col-sm-2 col-2 col-md-2 pl-0"> -->
+                          <div class="ux-input expiry-input input-data">
+                            <input
+                              #expdateRow
+                              id="expiry4"
+                              type="number"
+                              formControlName="expDate4"
+                              limit-to="1"
+                              numbersOnly
+                              placeholder="Y"
+                              (keyup)="onKeyUpEvent(3, $event, 'expdate')"
+                              (focus)="onFocusEvent(3, 'expdate')"
+                            />
+                          </div>
+                        </div>
+
+                        <div class="col-12 col-md-12">
+                          <div class="ux-input mb-0">
+                            <label>Debit card PIN</label>
+                          </div>
+                        </div>
+                        <div class="col-12 col-md-12">
+                          <div class="ux-input expiry-input card-pin">
+                            <input
+                              #cardPinRow
+                              id="expiry1"
+                              type="password"
+                              formControlName="cardPin1"
+                              limit-to="1"
+                              placeholder="●"
+                              (keyup)="onKeyUpEvent(0, $event, 'cardpin')"
+                              (focus)="onFocusEvent(0, 'cardpin')"
+                            />
+                          </div>
+                          <!-- </div>
+                                                 <div class="col-sm-2 col-2 col-md-2 pl-0 pr-1"> -->
+                          <div class="ux-input expiry-input card-pin">
+                            <input
+                              #cardPinRow
+                              id="expiry2"
+                              type="password"
+                              formControlName="cardPin2"
+                              limit-to="1"
+                              placeholder="●"
+                              (keyup)="onKeyUpEvent(1, $event, 'cardpin')"
+                              (focus)="onFocusEvent(1, 'cardpin')"
+                            />
+                          </div>
+                          <!--  </div>
+
+                                                 <div class="col-sm-2 col-2 col-md-2 pl-0 pr-1"> -->
+                          <div class="ux-input expiry-input card-pin">
+                            <input
+                              #cardPinRow
+                              id="expiry3"
+                              type="password"
+                              formControlName="cardPin3"
+                              limit-to="1"
+                              placeholder="●"
+                              (keyup)="onKeyUpEvent(2, $event, 'cardpin')"
+                              (focus)="onFocusEvent(2, 'cardpin')"
+                            />
+                          </div>
+                          <!--  </div>
+                                                 <div class="col-sm-2 col-2 col-md-2 pl-0 pr-0"> -->
+                          <div class="ux-input expiry-input card-pin">
+                            <input
+                              #cardPinRow
+                              id="expiry4"
+                              type="password"
+                              formControlName="cardPin4"
+                              limit-to="1"
+                              placeholder="●"
+                              (keyup)="onKeyUpEvent(3, $event, 'cardpin')"
+                              (focus)="onFocusEvent(3, 'cardpin')"
+                            />
+                          </div>
+                        </div>
+                      </div>
+                    </form>
+                  </div>
+                  <div id="banktoken" class="main-pannel">
+                    <form [formGroup]="bankTokenForm">
+                      <div class="row1">
+                        <div class="col-12 col-xl-12 col-lg-12 col-md-12">
+                          <div class="ux-input pb-0">
+                            <label for="upiId">Token Number</label>
+                            <input
+                              type="text"
+                              name="upiId"
+                              placeholder="Enter Token Number"
+                              placeholder="Enter Token Number"
+                              formControlName="bankToken"
+                              limit-to="4"
+                              numbersOnly
+                            />
+                          </div>
+                        </div>
+
+                        <div class="col-12 col-md-12">
+                          <div class="text-right">
+                            <!-- <a href="javascript:;"  data-toggle="modal" data-target="#usernamePolicy" class="reg-txt">{{'USERNAME_POLICY' |translate}}</a> -->
+                            <span class="token-expired"
+                              >Your token is expired</span
+                            >
+                            <a href="javascript:;" class="check-availability"
+                              >Regenerate token</a
+                            >
+                          </div>
+                        </div>
+                      </div>
+                    </form>
+                  </div>
+                </div>
+                <div class="col-12 col-lg-10 col-md-12 col-sm-12">
+                  <div class="text-center button-block">
+                    <button
+                      class="ux-button sm primary ml-2"
+                      (click)="submit()"
+                      *ngIf="selectedButton == 'debitCard'"
+                      [disabled]="registrationFormstep2.invalid"
+                    >
+                      Next
+                    </button>
+                    <button
+                      class="ux-button sm primary ml-2"
+                      (click)="submit()"
+                      *ngIf="selectedButton == 'banktoken'"
+                      [disabled]="bankTokenForm.invalid"
+                    >
+                      Next
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- .prelogin-page -->
+<div class="popup-bottom otp numberConfirmation text-center">
+  <div class="row1">
+    <div class="col-12 col-md-2 col-lg-2 col-xl-2"></div>
+    <div class="col-10 col-md-8 col-lg-8 col-xl-8">
+      <h4>OTP Verification</h4>
+    </div>
+    <div class="col-2 col-md-2 col-lg-2 col-xl-2">
+      <button class="ux-button-icon close-btn" (click)="closePopup('otp')">
+        <img
+          src="assets/images/svg/close-b.svg"
+          alt="cross-icon"
+          class="img-vsmall"
+        />
+      </button>
+    </div>
+  </div>
+  <div class="row1">
+    <div class="col-12">
+      <form [formGroup]="otpForm">
+        <div class="imgblock">
+          <img src="assets/images/icons/mobile.svg" />
+        </div>
+        <h5>Mobile OTP</h5>
+        <div class="box-password d-inline-block">
+          <input
+            id="mobile1"
+            type="password"
+            maxlength="1"
+            placeholder="●"
+            numbersOnly
+            onkeyup="onKeyUpEventforAll(1, event ,'mobile' )"
+            onfocus="onFocusEventAll(1,'mobile')"
+            formControlName="mobile1"
+          />
+          <input
+            id="mobile2"
+            type="password"
+            maxlength="1"
+            placeholder="●"
+            numbersOnly
+            onkeyup="onKeyUpEventforAll(2, event,'mobile')"
+            onfocus="onFocusEventAll(2,'mobile')"
+            formControlName="mobile2"
+          />
+          <input
+            id="mobile3"
+            type="password"
+            maxlength="1"
+            placeholder="●"
+            numbersOnly
+            onkeyup="onKeyUpEventforAll(3, event,'mobile')"
+            onfocus="onFocusEventAll(3,'mobile')"
+            formControlName="mobile3"
+          />
+          <input
+            id="mobile4"
+            type="password"
+            maxlength="1"
+            placeholder="●"
+            numbersOnly
+            onkeyup="onKeyUpEventforAll(4, event,'mobile')"
+            onfocus="onFocusEventAll(4 ,'mobile')"
+            formControlName="mobile4"
+          />
+          <input
+            id="mobile5"
+            type="password"
+            maxlength="1"
+            placeholder="●"
+            numbersOnly
+            onkeyup="onKeyUpEventforAll(5, event,'mobile')"
+            onfocus="onFocusEventAll(5 ,'mobile')"
+            formControlName="mobile5"
+          />
+          <input
+            id="mobile6"
+            type="password"
+            maxlength="1"
+            placeholder="●"
+            numbersOnly
+            onkeyup="onKeyUpEventforAll(6, event,'mobile')"
+            onfocus="onFocusEventAll(6,'mobile')"
+            formControlName="mobile6"
+          />
+          <!-- <div class="clearfix mt-1">
+                        <b class="float-left">2:00</b><a class="float-right" >Resend</a>
+                    </div> -->
+        </div>
+        <h5>Email OTP</h5>
+        <div class="box-password d-inline-block">
+          <input
+            id="email1"
+            type="password"
+            maxlength="1"
+            placeholder="●"
+            numbersOnly
+            onkeyup="onKeyUpEventforAll(1, event ,'email' )"
+            onfocus="onFocusEventAll(1,'email')"
+            formControlName="email1"
+          />
+          <input
+            id="email2"
+            type="password"
+            maxlength="1"
+            placeholder="●"
+            numbersOnly
+            onkeyup="onKeyUpEventforAll(2, event,'email')"
+            onfocus="onFocusEventAll(2,'email')"
+            formControlName="email2"
+          />
+          <input
+            id="email3"
+            type="password"
+            maxlength="1"
+            placeholder="●"
+            numbersOnly
+            onkeyup="onKeyUpEventforAll(3, event,'email')"
+            onfocus="onFocusEventAll(3,'email')"
+            formControlName="email3"
+          />
+          <input
+            id="email4"
+            type="password"
+            maxlength="1"
+            placeholder="●"
+            numbersOnly
+            onkeyup="onKeyUpEventforAll(4, event,'email')"
+            onfocus="onFocusEventAll(4 ,'email')"
+            formControlName="email4"
+          />
+          <input
+            id="email5"
+            type="password"
+            maxlength="1"
+            placeholder="●"
+            numbersOnly
+            onkeyup="onKeyUpEventforAll(5, event,'email')"
+            onfocus="onFocusEventAll(5 ,'email')"
+            formControlName="email5"
+          />
+          <input
+            id="email6"
+            type="password"
+            maxlength="1"
+            placeholder="●"
+            numbersOnly
+            onkeyup="onKeyUpEventforAll(6, event,'email')"
+            onfocus="onFocusEventAll(6,'email')"
+            formControlName="email6"
+          />
+          <div class="clearfix mt-1">
+            <!-- <b class="float-left"> {{counter | formatTimer }} </b><a class="float-right" (click)="resendLeadOtp()" >Resend</a> -->
+          </div>
+        </div>
+
+        <div class="button-footer">
+          <button
+            type="button"
+            class="ux-button sm primary"
+            (click)="validateOtp()"
+            [disabled]="otpForm.invalid"
+          >
+            {{ "SUBMIT" | translate }}
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

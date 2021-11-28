@@ -1,0 +1,549 @@
+<div class="main">
+    <div class="right-main-column minus-rt-col">
+        <div class="right-col-container cust-pb">
+            <div class="body-page-container">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="bg-section">
+                            <div class="col-12">
+                                <div class="row1">
+                                    <div class="col-sm-12 col-12 col-md-12">
+                                        <div class="white-bg1">
+                                            <div class="upiId" *ngIf="!linkAccountFlow">
+                                                <div class="row1">
+                                                    <!-- <div class="col-12 col-sm-12 col-md-12" *ngIf="!linkAccountFlow"> -->
+                                                    <div class="col-12 col-sm-12 col-md-12">
+                                                        <form [formGroup]="createUpiIdForm">
+                                                            <div class="ux-input">
+                                                                <label for="upiId">
+                                                                    {{ 'UPI_ID' | translate }}
+                                                                </label>
+                                                                <input type="text" name="upiId" placeholder="Enter UPI ID/Mobile Number" required formControlName="upiId" upidOnly (change)="onUpiIdChange()" limit-to="40">
+                                                                <span class="show-info2">@psb</span>
+                                                                <p class="info-message">
+                                                                    {{ 'UPI_ID_DESC' | translate }}
+                                                                </p>
+                                                                <div class="vspacer5"></div>
+                                                                <p class="error-message" *ngIf="upiIdAlreadyUsed">
+                                                                    {{'UPI_ID_ALREADY_USED' | translate}}
+                                                                </p>
+                                                                <p class="error-message" *ngIf="emptyUpiId">
+                                                                    {{'PLEASE_ENTER_UPI_ID' | translate}}
+                                                                </p>
+                                                                <p class="error-message" *ngIf="createUpiIdForm.controls['upiId'].hasError('minlength') && createUpiIdForm.controls['upiId'].touched">
+                                                                    {{'UPI_ID_LENGTH_TOO_SHORT' | translate}}
+                                                                </p>
+                                                            </div>
+                                                        </form>
+                                                    </div>
+                                                    <!-- <div class="col-12 col-sm-12 col-md-12" *ngIf="linkAccountFlow">
+                                                        <div class="white-bg1">
+                                                            <h4>{{ 'UPI_ID' | translate }}</h4>
+                                                            <div class="row1">
+                                                                <div class="col-12 col-sm-12 col-md-12 mb-4">
+                                                                    <div class="ux-input ux-disabled">
+                                                                        <label for="upiId" class="mb-3">{{ 'UPI_ID' |
+                                                                            translate }}</label>
+                                                                        <input type="text" name="upiId" value="{{linkAccUpiId}}" disabled="disabled">
+                                                                        <p class="error-message"> </p>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div> -->
+
+                                                </div>
+                                            </div>
+
+
+                                            <!-- Link Account new design -->
+                                            <div class="row1" *ngIf="linkAccountFlow">
+                                                <div class="col-12 col-sm-12 col-md-12">
+                                                    <h6> {{ 'UPI_ID' | translate }} </h6>
+                                                    <h5>{{linkAccUpiId}} </h5>
+                                                </div>
+                                                <!-- Link Account new design end-->
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- <div class="row" *ngIf="upiIdAlreadyUsed">
+                        <div class="col-12">
+                            <div class="white-bg">
+                                <div class="row1">
+                                    <div class="col-sm-12 col-12 col-md-12">
+                                        <ul class="list4">
+                                            <li>
+                                                {{ 'AVAILABLE_UPI_ID' | translate }} -->
+                    <!-- Available UPI ID -->
+                    <!-- </li>
+                                            <li><a href="#">rajeshomprakashs</a></li>
+                                            <li><a href="#">rajeshomprakashs.7109</a></li>
+                                            <li><a href="#">rajesh.7210</a></li>
+                                            <li *ngFor="let item of upiIdSuggestionsList"> {{ item }} </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div> -->
+                    <!-- old  -->
+                    <!-- <div class="row">
+                        <div class="col-12"> -->
+                    <!-- New -->
+                    <div class="col-12 col-md-12">
+                        <div class="grey-bg mar-top">
+                            <div class="row1">
+                                <!-- <div class="col-12">
+                                    <div class="grey-bg mar-top3"> -->
+                                <div class="col-sm-12 col-12 col-md-12">
+                                    <div class="row">
+                                        <h5>
+                                            {{ 'LINK_BANK_ACCOUNT' | translate }}
+                                        </h5>
+                                    </div>
+                                </div>
+                                <!-- <div class="vspacer10"></div> -->
+                                <!-- <div class="col-sm-12 col-12 col-md-12 p-0"> -->
+                                <div class="col-sm-12 col-12 col-md-12">
+                                    <!-- <div> -->
+                                    <ul class="tabs info-list" role="tablist">
+                                        <li role="presentation">
+                                            <a class="nav-link p-0 active account-details" (click)="psbBankFlow()">
+                                                <div class="round-circle">
+                                                    <img src="assets/images/svg/psb-icon.svg" alt="psb-icon">
+                                                </div>
+                                                <div class="text-center">
+                                                    <em>
+                                                        {{ 'PUNJAB_SIND_BANK' | translate }}
+                                                    </em>
+                                                </div>
+                                            </a>
+                                        </li>
+                                        <li role="presentation">
+                                            <a class="nav-link p-0 recent-trans" (click)="otherBankFlow()">
+                                                <div class="round-circle">
+                                                    <img src="assets/images/svg/bank-icon.svg" alt="bank-icon">
+                                                </div>
+                                                <div class="text-center">
+                                                    <em>
+                                                        {{ 'OTHER_BANK' | translate }}
+                                                    </em>
+                                                </div>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <!-- </div>
+                        </div> -->
+                    <!-- <div class="col-12 p-0"> -->
+                    <div class="col-12 col-md-12 p-0">
+                        <div class="panel entry-content tab-pane" id="bank" *ngIf="!isBankAccountAvailable">
+                            <div class="col-sm-12 col-12 col-md-12">
+                                <div class="unfound-info">
+                                    <img src="assets/images/svg/bank-info.svg" alt="bank-icon">
+                                    <h6>
+                                        {{ 'NO_ACCOUNT_FOUND' | translate }}
+                                    </h6>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="panel entry-content tab-pane" id="otherbank" *ngIf="showOtherBankList">
+                            <div class="col-sm-12 col-12 col-md-12">
+                                <div class="ux-input">
+                                    <input type="text" [(ngModel)]="searchBanks" placeholder="{{ 'SEARCH_BANKS' | translate }}" required>
+                                    <p></p>
+                                </div>
+                            </div>
+                            <ul class="list2">
+                                <li *ngFor="let bank of otherBankList  | searchFilter : 'bankName' : searchBanks">
+                                    <div class="ux-selection mar-4">
+                                        <label class="ux-selection2"> {{ bank.bankName }}
+                                            <input type="radio" name="radioboxdemo1" (click)="setBankName(bank)">
+                                            <span class="checkmark"></span>
+                                        </label>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer-container sticky-actions">
+                <div class="footer-inactions minus-rt-col">
+                    <div class="container-fluid">
+                        <div class="row">
+                            <!-- <div class="col-12 col-md-12 col-lg-12 text-center">
+                                         <button  id="select-account" class="ux-button primary md" onclick="window.location.href = '#'">Proceed</button>
+                                     </div> -->
+                            <div class="col-12 col-md-12 col-lg-12 text-center">
+                                <div class="powered-logo">
+                                    <img src="assets/images/logo/powered-upi-logo.svg" alt="powered-upi-logo">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- footer section start -->
+    <!-- <div class="footer-container sticky-actions">
+                <div class="footer-inactions minus-rt-col">
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-12 col-md-3 col-lg-4"></div>
+                            <div class="col-12 col-md-6 col-lg-4">
+                                <div class="row">
+                                    <button class="ux-button primary md" (click)="verifyUpiId()" [disabled]="disableFooterSubmitButton">
+                                        {{ 'PROCEED' | translate }}
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="col-12 col-md-3 col-lg-4">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="sticky-actions-spacer"></div> -->
+
+
+    <!-- <div class="sticky-actions-spacer"></div> -->
+    <!-- footer section end -->
+    <!-- </div>
+</div> -->
+</div>
+
+<!-- main -->
+
+<!-- =========== modal popup start ===============  -->
+<!-- Select Account Popup Start -->
+<div class="popup-bottom selectAccountPopup">
+    <div class="row1 ">
+        <div class="col-10 ">
+            <h4>
+                {{ 'SELECT_ACCOUNT' | translate }}
+            </h4>
+        </div>
+        <div class="col-2 ">
+            <button class="ux-button-icon" (click)="closePopup('selectAccountPopup')">
+                <img src="assets/images/svg/close-b.svg" alt="cross-icon" class="img-vsmall">
+            </button>
+        </div>
+    </div>
+    <form [formGroup]="selectAccountForm">
+        <!--id="selectaccount-form"-->
+        <div class="row2">
+            <div class="col-12 p-0">
+                <ul class="list2 mb-4">
+                    <li *ngFor="let account of accountList">
+                        <div class="ux-selection mar-4">
+                            <label class="ux-selection5">
+                                {{ account.MASKED_ACCNUMBER }}
+                                <br />
+                                {{ selectedBankName }}
+                                <br />
+                                <span>
+                                    {{ (account.accType == 'SOD' || account.accType == 'UOD') ? 'Overdraft' :account.accType }}
+                                </span>
+                                <input type="radio" name="account"
+                                    (click)="setSelectedAccount(account);closePopup('selectAccountPopup')"
+                                    formControlName="account" [value]="account.ACCNUMBER" [checked]="checked" />
+                                <span class="checkmark"></span>
+                            </label>
+                            <p class="error-message" *ngIf="account.accType=='UOD'">
+                                {{ 'UOD_ACCOUNT_MSG' | translate }}
+                                <!-- UOD (Overdraft) account can be used only for Merchant transactions -->
+                            </p>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12 text-center">
+                <button class="ux-button primary" (click)="closePopup('selectAccountPopup')" [disabled]="disableSelectAccountSubmitButton">
+                    <!--checkUpiPinStatus()-->
+                    <!--selectAccountForm.invalid-->
+                    {{ 'PROCEED' | translate }}
+                </button>
+            </div>
+        </div>
+    </form>
+</div>
+<!-- Select Account Popup End -->
+
+<!-- Select Debit Card Popup Start -->
+<div class="popup-bottom debitcard-info">
+    <div class="row1">
+        <div class="col-10">
+            <h4>
+                {{ 'DEBIT_CARD_DETAILS' | translate }}
+            </h4>
+        </div>
+        <div class="col-2">
+            <button class="ux-button-icon close-btn" (click)="showDebitCardFailedPopup()">
+                <img src="assets/images/svg/close-b.svg" alt="cross-icon" class="img-vsmall">
+            </button>
+        </div>
+    </div>
+    <form id="debitcard-form" [formGroup]="debitCardForm">
+        <div class="row1">
+            <div class="col-12">
+                <div class="ux-input ">
+                    <label for="">
+                        {{ 'ENTER_LAST_6_DIGITS_DEBIT_CARD' | translate }}
+                    </label>
+                    <div class="row">
+                        <div class="col-4 col-md-3 pl-0 pr-1">
+                            <div class="ux-input">
+                                <label class="custom-text" for="">XXXX XXXX XX</label>
+                            </div>
+                        </div>
+                        <div class="col-8 col-md-9 pl-1 pr-2">
+                            <div class="row3">
+                                <div class="col-sm-2 col-2 col-md-2" *ngFor="let mpinInput of formInput | slice:0:6; index as i">
+                                    <div class="ux-input debit-number p1 mb-1">
+                                        <input #mPINformRow numbersOnly id="spassword{{i}}" type="tel" maxlength="1" placeholder="&#9679;" (keyup)="onKeyUpEvent(i, $event)" (focus)="onFocusEvent(i)" formControlName="{{mpinInput}}" pattern="\d*" />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 ">
+                <div class="ux-input">
+                    <label>
+                        {{ 'EXPIRY_DATE_DEBIT_CARD' | translate }}
+                    </label>
+                </div>
+            </div>
+            <div class="col-10 col-md-10">
+                <div class="row3">
+                    <div class="col-sm-2 col-2 col-md-2 ml-1">
+                        <div class="ux-input expiry-input mb-1">
+                            <input #expiryDateRow numbersOnly id="expiry1" type="tel" maxlength="1" placeholder="M" (keyup)="keyUpEvent(0, $event)" (focus)="focusEvent(0)" formControlName="expdate1" />
+                        </div>
+                    </div>
+                    <div class="col-sm-2 col-2 col-md-2">
+                        <div class="ux-input expiry-input mb-1">
+                            <input #expiryDateRow numbersOnly id="expiry2" type="tel" maxlength="1" placeholder="M" (keyup)="keyUpEvent(1, $event)" (focus)="focusEvent(1)" formControlName="expdate2" />
+                        </div>
+                    </div>
+                    <div class="col-sm-1 col-1 col-md-1 pl-0 pr-0">
+                        <p class="custom-text">/</p>
+                    </div>
+                    <div class="col-sm-2 col-2 col-md-2">
+                        <div class="ux-input expiry-input mb-1">
+                            <input #expiryDateRow numbersOnly id="expiry3" type="tel" maxlength="1" placeholder="Y" (keyup)="keyUpEvent(2, $event)" (focus)="focusEvent(2)" formControlName="expdate3" />
+                        </div>
+                    </div>
+                    <div class="col-sm-2 col-2 col-md-2">
+                        <div class="ux-input expiry-input mb-1">
+                            <input #expiryDateRow numbersOnly id="expiry4" type="tel" maxlength="1" placeholder="Y" (keyup)="keyUpEvent(3, $event)" (focus)="focusEvent(3)" formControlName="expdate4" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 mt-2">
+                <span class="small-icons">
+                    <img src="assets/images/svg/question.svg" alt="question-icon" />
+                </span>
+                <ol class="orderlist2 mar-b">
+                    <li>
+                        {{ 'UPI_PIN_DESC_1' | translate }}
+                    </li>
+                    <li>
+                        {{ 'UPI_PIN_DESC_2' | translate }}
+                    </li>
+                </ol>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12 text-center">
+                <button class="ux-button primary debit-details" (click)="callAPIAndNpci()" [disabled]="debitCardForm.invalid">
+                    {{ 'PROCEED' | translate }}
+                </button>
+            </div>
+            <div class="col-12 col-md-12 col-lg-12 text-center">
+                <div class="powered-logo">
+                    <img src="assets/images/logo/powered-upi-logo.svg" alt="powered-upi-logo">
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+<!-- Select Debit Card Popup End -->
+
+<!-- Debit Card Details Failed Popup Start -->
+<div class="popup-bottom debitCardFail">
+    <div class="row1 ">
+        <div class="col-12">
+            <h4 class="text-center"> <img src="./assets/images/svg/information.svg" alt="information-icon"> {{ 'INFORMATION' | translate }}
+            </h4>
+        </div>
+    </div>
+    <div class="row1 ">
+        <div class="col-12 text-center">
+            {{ 'DO_YOU_WANT_TO_PROCEED_WITHOUT_UPI_PIN' | translate }}
+        </div>
+    </div>
+    <div class="row1 mt-2">
+        <div class="col-6 text-center">
+            <button class="ux-button secondary no md close-btn" (click)="closePopup('debitCardFail')">{{'NO' |
+                translate}}</button>
+        </div>
+        <div class="col-6 text-center">
+            <button class="ux-button primary md" (click)="proceedWithVpaCreation()">{{'YES' |
+                translate}}</button>
+        </div>
+    </div>
+</div>
+<!-- Debit Card Details Failed Popup End -->
+
+<!-- Error Popup Start-->
+<div class="popup-bottom errorPopup">
+    <div class="row1 ">
+        <div class="col-10 ">
+            <h4>
+                {{ 'ERROR' | translate }}
+            </h4>
+        </div>
+        <div class="col-2 ">
+            <button class="ux-button-icon" (click)="closePopup('errorPopup')">
+                <img src="assets/images/svg/close-b.svg" alt="cross-icon" class="img-vsmall">
+            </button>
+        </div>
+    </div>
+    <div class="row1 ">
+        <div class="col-12">
+            {{ errorText }}
+        </div>
+    </div>
+    <div class="row1 mt-3">
+        <div class="col-12 text-center" (click)="closePopup('errorPopup')">
+            <button class="ux-button primary md">{{'OK' | translate}}</button>
+        </div>
+    </div>
+</div>
+<!-- Error Popup End-->
+
+<!-- Information Popup Start -->
+<div class="popup-bottom informationPopup">
+    <div class="row">
+        <div class="col-12">
+            <h4 class="text-center">
+                {{ 'INFORMATION' | translate }}
+            </h4>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12">
+            <p>
+                {{ 'UPI_INFO_DESC_1' | translate }}
+                <!-- UPI ID is required and is mandatory to create one to perform any UPI transaction. -->
+            </p>
+            <p>
+                {{ 'UPI_INFO_DESC_2' | translate }}
+                <!-- Select account number from the list shown which you want to link as default account to the UPI ID. -->
+            </p>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12 text-center">
+            <button class="ux-button sm mx-1 primary text-center" (click)="closePopup('informationPopup')">
+                {{ 'OK' | translate }}
+            </button>
+        </div>
+    </div>
+</div>
+<!-- Information Popup End -->
+
+<!-- Set Upi Pin Popup Start -->
+<div class="popup-bottom allowSetUpiPinPopup">
+    <div class="row1">
+        <div class="col-10">
+            <h4>
+                {{ 'Set_UPI_PIN' | translate }}
+            </h4>
+        </div>
+        <div class="col-2 ">
+            <button class="ux-button-icon" (click)="closePopup('allowSetUpiPinPopup')">
+                <img src="assets/images/svg/close-b.svg" alt="cross-icon" class="img-vsmall">
+            </button>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12">
+            <p>
+                {{ 'SET_UPI_PIN_MSG' | translate }}
+                <!-- Do you want to set UPI Pin for this VPA? -->
+            </p>
+        </div>
+    </div>
+    <div class="row">
+
+        <div class="col-6 text-center">
+            <button class="ux-button secondary text-center" (click)="proceedWithoutPIN()">
+                {{ 'NO' | translate }} </button>
+        </div>
+
+        <div class="col-6 text-center">
+            <button class="ux-button primary text-center" (click)="proceedWithPIN()">
+                {{ 'YES' | translate }} </button>
+        </div>
+
+    </div>
+</div>
+<!-- Set Upi Pin Popup End -->
+
+<!-- Set Default VPA Popup Start -->
+<div class="popup-bottom setDefaultVpaPopup">
+    <div class="row1 ">
+        <div class="col-10 ">
+            <h4>
+                {{ 'SET_DEFAULT_VPA' | translate }}
+            </h4>
+        </div>
+        <div class="col-2 ">
+            <button class="ux-button-icon" (click)="closePopup('setDefaultVpaPopup')">
+                <img src="assets/images/svg/close-b.svg" alt="cross-icon" class="img-vsmall">
+            </button>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12">
+            <p>{{ 'SET_DEFAULT_VPA_MSG_1' | translate }} {{ paymentAddress }} {{ 'SET_DEFAULT_VPA_MSG_2' | translate }}
+                <!-- Do you want to set the vpa {{ paymentAddress }} as default? -->
+            </p>
+        </div>
+    </div>
+
+    <div class="row">
+
+        <div class="col-6 text-center">
+            <button class="ux-button secondary text-center" (click)="setDefaultVpa(false)">
+                {{ 'NO' | translate }} </button>
+        </div>
+
+        <div class="col-6 text-center">
+            <button class="ux-button primary text-center" (click)="setDefaultVpa(true)">
+                {{ 'YES' | translate }} </button>
+        </div>
+    </div>
+</div>
+<!-- Set Default VPA Popup End -->
+
+<!-- <div class="ios-nav-overlay"></div> -->

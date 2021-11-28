@@ -1,0 +1,555 @@
+<header class="global-header brand-bg2 minus-nav">
+    <div class="in-header">
+        <div class="header-icons-lft show1">
+            <div class="header-actions">
+                <button class="ux-button-header ml-2" (click)="backbtnClick()">
+          <img src="assets/images/svg/left-arrow.svg" alt="left-arrow-icon" />
+        </button>
+            </div>
+        </div>
+        <div class="brand-logo">
+            <h3>{{'TRANSACTION'| translate}}</h3>
+        </div>
+        <div class="header-icons-rit" (click)="filterHeader()">
+            <div class="header-actions">
+                <button class="ux-button-header filter-btn mr-1">
+          <img src="assets/images/svg/filter.svg" alt="filter-icon" />
+        </button>
+            </div>
+        </div>
+    </div>
+    <!-- <div class="brand-logo">
+      <h3>{{'TRANSACTION'| translate}}</h3>
+    </div>
+    <div class="header-icons-rit" (click)="filterHeader()">
+      <div class="header-actions">
+        <button class="ux-button-header filter-btn">
+          <img src="assets/images/svg/filter.svg" alt="filter-icon" />
+        </button>
+      </div>
+    </div>
+  </div> -->
+</header>
+<div class="main">
+    <div class="right-main-column minus-rt-col mar-custom">
+        <div class="right-col-container">
+            <!--pad-b-->
+            <div class="body-page-container">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="bg-section">
+                            <div class="col-12">
+                                <div class="row1">
+                                    <div class="col-sm-12 col-12 col-md-12">
+                                        <div class="row1">
+                                            <div class="col-sm-12 col-12 col-md-12 mb-2">
+                                                <div class="ux-nav-tabs" style="margin:0">
+                                                    <div class="responsive3">
+                                                        <ul class="nav nav-tabs nav-justified bor-n" role="tablist">
+                                                            <li class="nav-item"> <a class="nav-link active" data-toggle="tab" href="#payments">{{'PAYMENTS' | translate}}</a> </li>
+                                                            <li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#billpayments">{{'BILL_PAYMENT' |
+                                                                    translate}}</a> </li>
+                                                        </ul>
+                                                        <!-- Tab panes -->
+                                                        <div class="tab-content p-0 custom-tab-content6">
+                                                            <div id="payments" class=" tab-pane active">
+                                                                <div class="row1">
+                                                                    <div class="col-sm-12 col-12 col-md-12">
+                                                                        <div class="unfound-info" *ngIf="transactions.length==0">
+                                                                            <h6>{{'NO_RECORD_FOUND' | translate}}</h6>
+                                                                        </div>
+                                                                        <ul class="payment-list2" *ngIf="transactions.length>0">
+                                                                            <!-- ------------------------------------- -->
+                                                                            <!-- New Design -->
+                                                                            <li *ngFor="let tran of transactions; index as i" (click)="goToTranDetail(tran)">
+                                                                                <div class="full-container">
+                                                                                    <!-- icons section -->
+                                                                                    <!-- Debit icon -->
+                                                                                    <div class="rupee-info" *ngIf="tran.TYPE=='DR' && tran.TRNSTATUS=='COMPLETED'"> <span class="green">
+                                              <img src="assets/images/svg/up-arrow-r.svg" alt="send-money-icon">
+                                            </span> <em class="success">{{'SUCCESSFUL'
+                                                                                        | translate}}</em> </div>
+                                                                                    <!-- Credit Icon -->
+                                                                                    <div class="rupee-info" *ngIf="(tran.TYPE=='CR' || tran.TYPE=='RVSL') && tran.TRNSTATUS=='COMPLETED'">
+                                                                                        <span class="green">
+                                              <img src="assets/images/svg/down-arrow-g.svg" alt="received-money-icon">
+                                            </span> <em class="success">{{'SUCCESSFUL'
+                                                                                        | translate}}</em> </div>
+                                                                                    <!-- Failed Icon -->
+                                                                                    <div class="rupee-info" *ngIf="tran.TRNSTATUS=='FAILED'"> <span class="red">
+                                              <img src="assets/images/svg/failed.svg" alt="failed-icon">
+                                            </span> <em class="error">{{'FAILED' | translate}}</em> </div>
+                                                                                    <!-- Pending Icon -->
+                                                                                    <div class="rupee-info" *ngIf="tran.TRNSTATUS=='PENDING'"> <span class="yellow">
+                                              <img src="assets/images/svg/pending-icon1.svg" alt="pending-icon">
+                                            </span> <em class="pending">{{'PENDING' | translate}}</em> </div>
+                                                                                    <!-- Declined Icon -->
+                                                                                    <div class="rupee-info" *ngIf="tran.TRNSTATUS=='REJECTED'"> <span class="red">
+                                              <img src="assets/images/svg/decined.svg" alt="decline-icon">
+                                            </span> <em class="error">{{'DECLINED' | translate}}</em> </div>
+                                                                                    <!-- Expired Icon -->
+                                                                                    <div class="rupee-info" *ngIf="tran.TRNSTATUS=='EXPIRED'"> <span class="grey">
+                                              <img src="assets/images/svg/polygon.svg" alt="polygon-icon">
+                                            </span> <em class="expired">{{'EXPIRED' | translate}}</em> </div>
+                                                                                    <!-- icons section end-->
+                                                                                    <div class="row1">
+                                                                                        <div class="col-7 col-md-6 pr-1">
+                                                                                            <div class="left-info">
+
+                                                                                                <h6 *ngIf="tran.TYPE == 'DR'">
+                                                                                                    {{ tran.INITIATION_MODE == '11' ? ('MANDATE_SENT_TO' | translate) : ('SENT_TO' | translate)}}
+                                                                                                </h6>
+                                                                                                <h6 *ngIf="tran.TYPE == 'CR'">
+                                                                                                    {{ tran.INITIATION_MODE == '11' ? ('MANDATE_RECEIVED_FROM' | translate) : ('RECEIVED_FROM' | translate) }}
+                                                                                                </h6>
+                                                                                                <h6 *ngIf="tran.TYPE == 'RVSL'">
+                                                                                                    {{ 'REVERSAL_TO' | translate}}
+                                                                                                </h6>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                        <div class="col-5 col-md-6 pl-1">
+                                                                                            <div class="right-info">
+                                                                                                <h5 [ngClass]="tran.TRNSTATUS == 'REJECTED' ? 'default' : tran.TRNSTATUS == 'FAILED' ? 'default' : tran.TRNSTATUS == 'EXPIRED' ? 'default' : tran.TRNSTATUS == 'PENDING' ? 'pending' : tran.TYPE == 'DR' ? 'send' : tran.TYPE == 'CR' ? 'recived' : 'default'">
+                                                                                                    <!-- <img src="assets/images/svg/rupee-r.svg" alt="rupees-icon"> -->
+                                                                                                    {{tran.AMOUNT | customcurrency:'symbol'}}
+                                                                                                </h5>
+
+                                                                                                <!-- <h5 [ngClass]="tran.TYPE  == 'CR' ? 'recived' : 'gray'" *ngIf="tran.TYPE == 'CR'"> -->
+                                                                                                <!-- <img src="assets/images/svg/rupee-g.svg" alt="rupees-icon"> -->
+                                                                                                <!-- {{tran.AMOUNT | customcurrency:'symbol'}} -->
+                                                                                                <!-- </h5> -->
+
+                                                                                                <!-- <h5 class="default" *ngIf="tran.TYPE !='DR' || tran.TYPE !='CR'"> 
+                                                                                                    <img src="assets/images/svg/rupee-g.svg" alt="rupees-icon">{{tran.AMOUNT}}
+                                                                                                </h5> -->
+
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                    <div class="row1">
+                                                                                        <div class="col-12 col-md-12">
+                                                                                            <div class="left-info">
+                                                                                                <h5 *ngIf="tran.TYPE=='DR'">{{tran.BENNAME}} <br />
+                                                                                                </h5>
+                                                                                                <h5 *ngIf="tran.TYPE=='CR'">{{tran.REMITTERNAME}} <br />
+                                                                                                </h5>
+                                                                                                <h5 *ngIf="tran.TYPE=='RVSL'">{{tran.REMITTERNAME}} <br />
+                                                                                                </h5>
+
+                                                                                                <!-- <h6
+                                                  *ngIf="(tran.TYPE=='CR' || tran.TYPE=='DR' || tran.TYPE=='RVSL') && tran.PAY_MODE != 'ACCOUNT'">
+                                                  {{'UPI_ID' | translate}} <br />
+                                                </h6> -->
+                                                                                                <h6 *ngIf="(tran.TYPE=='CR' || tran.TYPE=='DR' || tran.TYPE=='RVSL') && (tran.PAY_MODE == 'ACCOUNT' || getPaymentTypeNValue(tran.PAYEEADDR)[0] == 'ifsc')">
+                                                                                                    <span style="font-size: 0.85rem;">{{'ACCOUNT_AND_IFSC' | translate}}</span>
+                                                                                                </h6>
+
+                                                                                                <!-- <h6 *ngIf="tran.TYPE=='DR' && tran.PAY_MODE == 'PAYMENTADDRESS'"> <span style="font-size: 0.85rem;">{{'UPI_ID' | translate}} :</span> {{tran.PAYEEADDR}}
+                                              </h6>
+                                              <h6 *ngIf="tran.TYPE=='CR' && tran.PAY_MODE == 'PAYMENTADDRESS'"> <span style="font-size: 0.85rem;">{{'UPI_ID' | translate}} :</span> {{tran.PAYERADDR}}
+                                              </h6>
+                                              <h6 *ngIf="tran.TYPE=='RVSL' && tran.PAY_MODE == 'PAYMENTADDRESS'"> <span style="font-size: 0.85rem;">{{'UPI_ID' | translate}} :</span> {{tran.PAYERADDR}}
+                                              </h6> -->
+
+                                                                                                <h6 *ngIf="(tran.TYPE=='DR' || tran.TYPE=='RVSL') && tran.PAY_MODE == 'ACCOUNT'">
+                                                                                                    {{getPaymentTypeNValue(tran.PAYEEADDR)[1] | maskAccountNo }} / {{getPaymentTypeNValue(tran.PAYEEADDR)[2]}}
+                                                                                                </h6>
+                                                                                                <h6 *ngIf="(tran.TYPE=='DR' || tran.TYPE=='RVSL') && !tran.PAY_MODE && getPaymentTypeNValue(tran.PAYEEADDR)[0] == 'ifsc'">
+                                                                                                    {{getPaymentTypeNValue(tran.PAYEEADDR)[1] | maskAccountNo }} / {{getPaymentTypeNValue(tran.PAYEEADDR)[2]}}
+                                                                                                </h6>
+
+                                                                                                <h6 *ngIf="(tran.TYPE=='DR' || tran.TYPE=='RVSL') && getPaymentTypeNValue(tran.PAYEEADDR)[0] == 'vpa'">
+                                                                                                    {{'UPI_ID' | translate}} : {{getPaymentTypeNValue(tran.PAYEEADDR)[1]}}
+                                                                                                    <!-- {{getPaymentTypeNValue(tran.PAYEEADDR)[1] | maskAccountNo }} / {{getPaymentTypeNValue(tran.PAYEEADDR)[2]}} -->
+                                                                                                </h6>
+                                                                                                <h6 *ngIf="(tran.TYPE=='CR' || tran.TYPE=='RVSL') && tran?.PAY_MODE != 'ACCOUNT'">
+                                                                                                    {{'UPI_ID' | translate}} : {{getPaymentTypeNValue(tran.PAYERADDR)[1]}}
+                                                                                                </h6>
+                                                                                                <em>{{tran.FORMATTEDDATETIME}}</em>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </li>
+
+                                                                        </ul>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div id="billpayments" class="tab-pane fade">
+                                                                <div class="row1">
+                                                                    <div class="col-sm-12 col-12 col-md-12">
+                                                                        <!-- NO TRANSACTIONS -->
+                                                                        <div class="unfound-info">
+                                                                            <h6>{{'NO_RECORD_FOUND' | translate}}</h6>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+
+
+                                                            <!--   <div id="billpayments" class="tab-pane fade">
+                                                                <div class="row1"> 
+                                                                  <div class="col-sm-12 col-12 col-md-12">
+                                                                    <ul class="payment-list2">
+                                                                        <li>
+                                                                            <div class="full-container">
+                                                                              <div class="rupee-info"> 
+                                                                                  <span class="green">
+                                                                                      <img src="assets/images/svg/up-arrow-r.svg" alt="send-money-icon">
+                                                                                    </span>
+                                                                                    <em class="success">SUCCESS</em>
+                                                                                 </div>
+                                                                              <div class="row1">
+                                                                                  <div class="col-7 col-md-6 pr-1">
+                                                                                       <div class="left-info">
+                                                                                         <h6>Mandate:Sent To</h6>
+                                                                                     </div>
+                                                                                   </div>
+                                                                                  <div class="col-5 col-md-6 pl-1">
+                                                                                      <div class="right-info">
+                                                                                          <h5 class="send"> <img src="assets/images/svg/rupee-r.svg" alt="rupees-icon">12000.00</h5>
+                                                                                     </div>
+                                                                                   </div>
+                                                                              </div>
+                                                                              <div class="row1">
+                                                                                  <div class="col-12 col-md-12">
+                                                                                       <div class="left-info">
+                                                                                          <h5>Pravin Bhagwan Bhai <br/> 
+                                                                                          Ganesh Bhai Prajapati</h5> 
+                                                                                         <em>05 Mar 2020 12:18</em>
+                                                                                     </div>
+                                                                                   </div>
+                                                                               </div>
+                                                                            </div>
+                                                                         </li>
+                                                                         <li>
+                                                                          <div class="full-container">
+                                                                            <div class="rupee-info"> 
+                                                                                <span class="green">
+                                                                                    <img src="assets/images/svg/down-arrow-g.svg" alt="received-money-icon">
+                                                                                  </span>
+                                                                                  <em class="success">SUCCESS</em>
+                                                                               </div>
+                                                                            <div class="row1">
+                                                                                <div class="col-7 col-md-6 pr-1">
+                                                                                     <div class="left-info">
+                                                                                       <h6>Mandate:Received From</h6>
+                                                                                   </div>
+                                                                                 </div>
+                                                                                <div class="col-5 col-md-6 pl-1">
+                                                                                    <div class="right-info">
+                                                                                        <h5 class="recived"> <img src="assets/images/svg/rupee-g.svg" alt="rupees-icon">180000.00</h5>
+                                                                                   </div>
+                                                                                 </div>
+                                                                            </div>
+                                                                            <div class="row1">
+                                                                                <div class="col-12 col-md-12">
+                                                                                     <div class="left-info">
+                                                                                        <h5>Ruchi Arya </h5> 
+                                                                                       <em>05 Mar 2020 12:18</em>
+                                                                                   </div>
+                                                                                 </div>
+                                                                             </div>
+                                                                          </div>
+                                                                       </li>
+                                                                       <li>
+                                                                          <div class="full-container">
+                                                                            <div class="rupee-info"> 
+                                                                                <span class="red">
+                                                                                    <img src="assets/images/svg/failed.svg" alt="failed-icon">
+                                                                                  </span>
+                                                                                  <em class="error">FAILED</em>
+                                                                               </div>
+                                                                            <div class="row1">
+                                                                                <div class="col-7 col-md-6 pr-1">
+                                                                                     <div class="left-info">
+                                                                                       <h6>Mandate: Sent To</h6>
+                                                                                   </div>
+                                                                                 </div>
+                                                                                <div class="col-5 col-md-6 pl-1">
+                                                                                    <div class="right-info">
+                                                                                        <h5 class="default"> <img src="assets/images/svg/rupee-grey.svg" alt="rupees-icon">5000.00</h5>
+                                                                                   </div>
+                                                                                 </div>
+                                                                            </div>
+                                                                            <div class="row1">
+                                                                                <div class="col-12 col-md-12">
+                                                                                     <div class="left-info">
+                                                                                        <h5>Gurpeet Singh</h5> 
+                                                                                       <em>05 Mar 2020 12:18</em>
+                                                                                   </div>
+                                                                                 </div>
+                                                                             </div>
+                                                                          </div>
+                                                                       </li>
+                                                                       <li>
+                                                                          <div class="full-container">
+                                                                            <div class="rupee-info"> 
+                                                                                <span class="yellow">
+                                                                                    <img src="assets/images/svg/pending-icon1.svg" alt="pending-icon">
+                                                                                  </span>
+                                                                                  <em class="pending">PENDING</em>
+                                                                               </div>
+                                                                            <div class="row1">
+                                                                                <div class="col-7 col-md-6 pr-1">
+                                                                                     <div class="left-info">
+                                                                                       <h6>Mandate: Sent To</h6>
+                                                                                   </div>
+                                                                                 </div>
+                                                                                <div class="col-5 col-md-6 pl-1">
+                                                                                    <div class="right-info">
+                                                                                        <h5 class="pending"> <img src="assets/images/svg/rupee-y.svg" alt="rupees-icon">5000.00</h5>
+                                                                                   </div>
+                                                                                 </div>
+                                                                            </div>
+                                                                            <div class="row1">
+                                                                                <div class="col-12 col-md-12">
+                                                                                     <div class="left-info">
+                                                                                        <h5>Ajitesh Agrawal</h5> 
+                                                                                       <em>05 Mar 2020 12:18</em>
+                                                                                   </div>
+                                                                                 </div>
+                                                                             </div>
+                                                                          </div>
+                                                                       </li>
+                                                                       <li>
+                                                                          <div class="full-container">
+                                                                            <div class="rupee-info"> 
+                                                                                <span class="red">
+                                                                                    <img src="assets/images/svg/decined.svg" alt="decline-icon">
+                                                                                  </span>
+                                                                                  <em class="error">DECLINE</em>
+                                                                               </div>
+                                                                            <div class="row1">
+                                                                                <div class="col-7 col-md-6 pr-1">
+                                                                                     <div class="left-info">
+                                                                                       <h6>Mandate: Sent To</h6>
+                                                                                   </div>
+                                                                                 </div>
+                                                                                <div class="col-5 col-md-6 pl-1">
+                                                                                    <div class="right-info">
+                                                                                        <h5 class="default"> <img src="assets/images/svg/rupee-grey.svg" alt="rupees-icon">5000.00</h5>
+                                                                                   </div>
+                                                                                 </div>
+                                                                            </div>
+                                                                            <div class="row1">
+                                                                                <div class="col-12 col-md-12">
+                                                                                     <div class="left-info">
+                                                                                        <h5>Omkar Kant</h5> 
+                                                                                       <em>05 Mar 2020 12:18</em>
+                                                                                   </div>
+                                                                                 </div>
+                                                                             </div>
+                                                                          </div>
+                                                                       </li>
+                                                                       <li>
+                                                                          <div class="full-container">
+                                                                            <div class="rupee-info"> 
+                                                                                <span class="grey">
+                                                                                    <img src="assets/images/svg/polygon.svg" alt="polygon-icon">
+                                                                                  </span>
+                                                                                  <em class="expired">EXPIRED</em>
+                                                                               </div>
+                                                                            <div class="row1">
+                                                                                <div class="col-7 col-md-6 pr-1">
+                                                                                     <div class="left-info">
+                                                                                       <h6>Mandate: Sent To</h6>
+                                                                                   </div>
+                                                                                 </div>
+                                                                                <div class="col-5 col-md-6 pl-1">
+                                                                                    <div class="right-info">
+                                                                                        <h5 class="default"> <img src="assets/images/svg/rupee-grey.svg" alt="rupees-icon">5000.00</h5>
+                                                                                   </div>
+                                                                                 </div>
+                                                                            </div>
+                                                                            <div class="row1">
+                                                                                <div class="col-12 col-md-12">
+                                                                                     <div class="left-info">
+                                                                                        <h5>Omkar Kant</h5> 
+                                                                                       <em>05 Mar 2020 12:18</em>
+                                                                                   </div>
+                                                                                 </div>
+                                                                             </div>
+                                                                          </div>
+                                                                       </li>
+                                                                    </ul>
+                                                             </div> 
+                                                         </div>
+                                                      </div> -->
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- footer section start -->
+            <div class="footer-container sticky-actions">
+                <div class="footer-inactions minus-rt-col">
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-12 col-md-12 col-lg-12 text-center">
+                                <div class="powered-logo2"> <img src="assets/images/svg/powered-by-upi-big.svg" alt="powered-upi-logo">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- footer section end -->
+        </div>
+    </div>
+</div>
+<!-- main -->
+
+<!-- =========== modal popup start ===============  -->
+
+
+<!-- Filter Popup Start -->
+
+<div class="popup-bottom filter1">
+    <div class="row1">
+        <div class="col-10">
+            <h4>{{'FILTER' | translate}}</h4>
+        </div>
+        <div class="col-2">
+            <button class="ux-button-icon close-btn" (click)="closeFilterModal()">
+        <img src="assets/images/svg/close-b.svg" alt="cross-icon" class="img-vsmall">
+      </button>
+        </div>
+    </div>
+    <form action="#" id="filter-form" [formGroup]="FilterForm" (ngSubmit)="applyFilter()">
+
+        <div class="row1 mt-2">
+            <div class="col-12 col-sm-12 col-md-12 col-lg-12">
+                <div class="ux-input mb-0">
+                    <label for="searchBy">{{'SEARCH_BY' | translate}}</label>
+                </div>
+            </div>
+        </div>
+        <div class="row1">
+            <div class="col-6 col-md-6">
+                <div class="ux-selection mar-custom">
+                    <label class="ux-selection2">{{'ALL_UPI_ID' | translate}}
+            <input type="radio" formControlName="searchby" value="all-upi-id">
+            <span class="checkmark"></span>
+          </label>
+                    <div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-6 col-md-6">
+                <div class="ux-selection mar-custom">
+                    <label class="ux-selection2">{{'ENTER_UPI_ID' | translate}}
+            <input type="radio" formControlName="searchby" value="new-upi-id">
+            <span class="checkmark"></span>
+          </label>
+                    <div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="new-upi" *ngIf="FilterForm.get('searchby').value == 'new-upi-id'">
+            <div class="row1 mt-2">
+                <div class="col-sm-12 col-12 col-md-12">
+                    <div class="ux-input">
+                        <label for="upiId">{{'ENTER_UPI_ID' | translate}}</label>
+                        <input type="text" formControlName="upiId" placeholder="{{'ENTER_UPI_ID' | translate}}">
+                        <p class="error-message"></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row1  mt-3">
+            <div class="col-6">
+                <div class="ux-input">
+                    <label>{{'START_DATE' | translate}}</label>
+                    <!-- <input formControlName="startDate" type="date" class="datepicker1" placeholder="DD/MM/YYYY" max="{{currentDate}}" (input)="onStartDateSelected(0)"> -->
+                    <input type="text" class="datepicker1" formControlName="startDate" placeholder="DD/MM/YYYY" readonly (click)="openStartDatePicker()">
+                    <span class="errormsg" *ngIf="formErrors.startDate">{{ formErrors.startDate }}</span>
+                    <em class="calendar-ic cal-top" (click)="openStartDatePicker()"></em>
+
+                </div>
+            </div>
+            <div class="col-6">
+                <div class="ux-input">
+                    <label>{{'END_DATE' | translate}}</label>
+                    <!-- <input formControlName="stopDate" type="date" class="datepicker1" placeholder="DD/MM/YYYY" max="{{currentDate}}" (input)="onStopDateSelected(0)"> -->
+                    <input type="text" class="datepicker1" formControlName="stopDate" placeholder="DD/MM/YYYY" readonly (click)="openStopDatePicker()">
+                    <span class="errormsg" *ngIf="formErrors.stopDate">{{ formErrors.stopDate }}</span>
+                    <span class="errormsg" *ngIf="!FilterForm.controls['stopDate'].hasError('required') && FilterForm.hasError('invalidDate')  && FilterForm.controls['stopDate'].touched">{{'VALID_DATE_ERROR'
+                        | translate}}</span>
+
+                    <em class="calendar-ic cal-top" (click)="openStopDatePicker()"></em>
+                </div>
+            </div>
+        </div>
+        <div class="row1">
+            <div class="col-12 col-sm-12 col-md-12 col-lg-12">
+                <div class="ux-input">
+                    <label for="">{{'TRANSACTION_TYPE' | translate}}</label>
+                    <select formControlName="tranType">
+            <option value="ALL">{{'ALL' | translate}}</option>
+            <option value="CR">{{'COLLECT' | translate}}</option>
+            <option value="DR">{{'PAY' | translate}}</option>
+            <option value="11">{{'MANDATE' | translate}}</option>
+          </select>
+                    <p class="mb-0"></p>
+                </div>
+            </div>
+        </div>
+
+        <div class="row1">
+            <div class="col-12 col-sm-12 col-md-12 col-lg-12">
+                <div class="ux-input">
+                    <label for="">{{'TRANSACTION_STATUS' | translate}}</label>
+                    <select formControlName="tranStatus">
+            <option value="ALL">{{'ALL' | translate}}</option>
+            <option value="EXPIRED">{{'EXPIRED' | translate}}</option>
+            <option value="FAILED">{{'FAILED' | translate}}</option>
+            <option value="REJECTED">{{'DECLINED' | translate}}</option>
+            <option value="PENDING">{{'PENDING' | translate}}</option>
+            <option value="COMPLETED">{{'SUCCESS' | translate}}</option>
+          </select>
+                    <p class="mb-0"></p>
+                </div>
+            </div>
+        </div>
+
+        <div class="row1">
+            <div class="col-6">
+                <div class="ux-input">
+                    <label>{{'MIN_AMOUNT' | translate}}</label>
+                    <input type="text" inputmode="decimal" limit-to="12" (blur)="formatCurrency($event.target.value,'minAmt')" formControlName="minAmt" placeholder="{{'MIN_AMOUNT_PLAC' | translate}}" (input)="onMinAmtEntered()">
+                </div>
+            </div>
+            <div class="col-6">
+                <div class="ux-input">
+                    <label>{{'MAX_AMOUNT' | translate}}</label>
+                    <input type="text" inputmode="decimal" limit-to="12" (blur)="formatCurrency($event.target.value,'maxAmt')" formControlName="maxAmt" placeholder="{{'MAX_AMOUNT_PLAC' | translate}}" (input)="onMaxAmtEntered()">
+                </div>
+            </div>
+            <span class="col-12 errormsg" *ngIf="FilterForm.hasError('invalidAmt')">{{'VALID_AMOUNT_ERROR' | translate}}</span>
+        </div>
+        <!-- iOS Min Max Amount section End-->
+        <div class="row1 mt-2">
+            <div class="col-6 text-center">
+                <button class="ux-button secondary md" type="button" (click)="clearValidationValue()">{{'CLEAR' |
+                    translate}}</button>
+            </div>
+            <div class="col-6 text-center">
+                <button class="ux-button primary md" type="submit" [disabled]="FilterForm.invalid">{{'APPLY' |
+                    translate}}</button>
+            </div>
+        </div>
+    </form>
+</div>
+
+<!-- Filter Popup End -->
+<!-- <div class="ios-nav-overlay"></div>  -->

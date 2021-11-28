@@ -1,0 +1,210 @@
+<div class="main bg-m">
+	<div class="right-main-column ">
+		<div class="right-col-container pad-b full-width">
+			<!-- ======== body page content start from here ======== -->
+			<div class="body-page-container">
+				<div class="container-fluid">
+					<div class="row">
+						<div class="col-12 p-0">
+							<div class="breadcrumb">
+								<ul class="lst-breadcrumb">
+									<!-- <li> <a href="">Send Money</a> </li>
+									<li> Send Money </li> -->
+									<li *ngFor="let name of DataService.breadcrumblist">
+										<a (click)="DataService.breadcrumroute(name.routeName)">{{name.currentRoute | translate}}</a>
+								</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+					<!--.row -->
+					<div class="vspacer15 customize d-none d-md-block d-lg-block d-xl-block"></div>
+					<div class="row no-gutters">
+						<div class="col-12">
+							<div class="row1">
+								<div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-9">
+									<!-- Greencard2 Start here -->
+									<div class="greencard2">
+										<div class="row1 hide-m">
+											<div class="col-md-8 col-12">
+												<h4>{{DataService.payEMIHeader}}</h4> </div>
+											<div class="col-md-4 col-12"> </div>
+										</div>
+										<form [formGroup]="sendMoneyLoanForm">
+											<div class="row1">
+												<div class="col-sm-12 col-12 col-md-12">
+													<div class="ux-nav-tabs" style="margin:0">
+														<div class="flex-container">
+															<div class="full-info">
+																<div class="ac-info">
+																	<div class="greenbg-input ux-input">
+																		<label for="fromaccount">From Account</label>
+																	</div>
+																</div>
+																<div class="ac-info" (click)="onAccountSelectType()">
+																	<div class="greenbg-input ux-input">
+																		<!-- <select class="hide-m" formControlName="fromAccount" (change)="onAccSelect($event.target.value)">
+																			<option *ngFor="let account of accountList" [value]="account.accoutType" >{{account.accoutType}} {{account.accountNo}} </option>
+																		</select> -->
+
+																		<select  class="hide-m" (change)="onAccSelect($event.target.value)">
+																			<ng-container *ngFor="let account of accountList">
+																				<option [value]="account.accountNo" >{{account.SchemeCode}} {{account.sbAccount}}</option>
+																			</ng-container>
+																		</select>
+
+																		<div class="custom-selectbox"> <span *ngIf="accountValue == '' ">Select Account </span> <span *ngIf="accountValue != '' ">{{accountValue}}</span> <span class="right-arrow"></span> </div>
+																		<p class="error-message" *ngIf="sendMoneyLoanForm.controls['fromAccount'].hasError('required') && (sendMoneyLoanForm.controls['fromAccount'].dirty || sendMoneyLoanForm.controls['fromAccount'].touched)">This field is required </p>
+																	</div>
+																</div>
+																<div class="ac-info">
+																	<div class="greenbg-input ux-input">
+																		<p class="info-message2"> <i>Total Available Balance </i> <span>{{accBalance | customcurrency}}</span></p>
+																	</div>
+																</div>
+																<div class="ac-info hide-m">
+																	<button class="refresh-btn"><img src="assets/images/svg/refresh.svg" alt="refresh-icon"></button> <span class="refresh-text"> Last refreshed on 12th Oct 2020, 21:22</span> </div>
+															</div>
+														</div>
+													</div>
+												</div>
+												<div class="col-12 col-md-12">
+													<div class="row1">
+														<div class="col-sm-12 col-12 col-md-12">
+															<div class="widget-box5 overflow mb-3 mt-2">
+																<div class="bg-white1 bor-rad pad-custom">
+																	<div class="row1">
+																		<div class="col-md-12 col-12">
+																			<div class="row1">
+																				<div class="col-md-6 col-lg-4 col-xl-4 col-12">
+																					<div class="ux-input d-block d-sm-block d-md-none d-lg- none d-xl-none">
+																						<!-- hide in desktop -->
+																						<label for="toaccount">To Account</label>
+																						<div class="send-input no-after"> <span class="sendDisplay" style="display: block;"><b>{{DataService.loanUserDtl.accountCategory}} <br> {{DataService.loanDetails.accountNo}}</b></span> </div>
+																						<p class="info-message text-right">PSB Bank, {{DataService.loanDetails.ifscCode}}</p>
+																						<p class="error-message"></p>
+																					</div>
+																					<!-- hide in desktop -->
+																					<div class="ux-input hide-m">
+																						<!-- hide in mobile -->
+																						<label for="toaccount">To Account</label>
+																						<div class="send-input no-after"> <span class="sendDisplay" style="display: block;"><b>{{DataService.loanUserDtl.accountCategory}} <br> {{DataService.loanDetails.accountNo}}</b></span> </div>
+																						<p class="info-message text-right">PSB Bank, {{DataService.loanDetails.ifscCode}}</p>
+																						<p class="error-message"></p>
+																					</div>
+																					<!-- hide in mobile -->
+																				</div>
+																			</div>
+																		</div>
+																	</div>
+																</div>
+															</div>
+														</div>
+														<div class="col-sm-12 col-12 col-md-12">
+															<div class="widget-box5 mb-3">
+																<div class="bg-white1 pad-custom">
+																	<div class="row1">
+																		<div class="col-md-12 col-12">
+																			<div class="row1">
+																				<div class="col-md-6 col-lg-4 col-xl-4 col-12">
+																					<div class="ux-input ux-disabled">
+																						<label>How much amount?</label>
+																						<input type="text" placeholder="Enter Amount" numbersOnly class="amount-input" formControlName="amount">
+																						<p class="error-message" *ngIf="sendMoneyLoanForm.controls['amount'].hasError('required') && (sendMoneyLoanForm.controls['amount'].dirty || sendMoneyLoanForm.controls['amount'].touched)">This field is required</p>
+																						<p class="error-message" *ngIf="inSufficientBalance">Insufficient balance</p>
+																					</div>
+																				</div>
+																				<div class="col-md-6 col-lg-4 col-xl-4 col-12">
+																					<div class="ux-input">
+																						<label>What's this for?</label>
+																						<input type="text" placeholder="Enter Remarks" value="Closure" formControlName="remark" limit-to="12" >
+																						<p class="info-message text-right">Optional</p>
+																						<p class="error-message"></p>
+																					</div>
+																				</div>
+																			</div>
+																		</div>
+																	</div>
+																</div>
+															</div>
+														</div>
+														<div class="col-12 col-md-12">
+															<ul class="bottom-footer1">
+																<li>
+																	<div class="btn-div">
+																		<button class=" ux-button secondary sm-mob" (click)="cancle()">Cancel</button>
+																	</div>
+																	<div class="btn-div">
+																		<button class=" ux-button primary sm-mob" type="submit" (click)="sendMoneyLoanSubmit()">{{ 'SUBMIT' | translate }}</button>
+																	</div>
+																</li>
+															</ul>
+														</div>
+													</div>
+												</div>
+
+										</div>
+                                    </form>
+									</div>
+									<!-- Greencard2 End here -->
+								</div>
+								<!-- Right Column Ads Start -->
+								<div class="col-12 col-md-12 col-lg-12 col-xl-3 d-none d-xl-block">
+									<div class="right-ads">
+										<a> <img src="assets/images/banner/my-card-banner.jpg"> </a>
+									</div>
+								</div>
+								<!-- Right Column Ads Ends -->
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!--.right-col-container-->
+	</div>
+	<!--.right-main-column-->
+</div>
+<!-- main -->
+<!-- Select Accounts Popup Start-->
+<div class="popup-bottom sel-account">
+	<div class="row1">
+		<div class="col-10">
+			<h4>Select From Account</h4> </div>
+		<div class="col-2">
+			<button class="ux-button-icon close-btn"> <img src="assets/images/svg/close-b.svg" alt="cross-icon" class="img-vsmall"> </button>
+		</div>
+	</div>
+	<div class="row1">
+		<div class="col-12">
+			<div class="row1">
+				<div class="col-12 col-md-12" *ngFor="let account of accountList; let i = index" (click)="getToAccValue(account.SchemeCode,account.accountNo )">
+					<div class="ux-selection mar-custom">
+						<label class="ux-selection2">{{account.SchemeCode}} {{account.accountNo}}
+							<input type="radio" [value]="account.accountNo" name="upi-account"  [checked]="selAccNo == account?.accountNo ? true : false" [(ngModel)]="selAccNo" [ngModelOptions]="{standalone: true}" >
+              <span class="checkmark"></span>
+            </label>
+					</div>
+				</div>
+				<!-- <div class="col-12 col-md-12">
+					<div class="ux-selection mar-custom">
+						<label class="ux-selection2">Saving Account: XXXX XXX 968
+							<input type="radio" value=" XXXX XXX 968" name="upi-account"> <span class="checkmark"></span> </label>
+					</div>
+				</div>
+				<div class="col-12 col-md-12">
+					<div class="ux-selection mar-custom">
+						<label class="ux-selection2">Saving Account: XXXX XXX 969
+							<input type="radio" value=" XXXX XXX 969" name="upi-account"> <span class="checkmark"></span> </label>
+					</div>
+				</div> --></div>
+		</div>
+	</div>
+	<div class="row mt-2">
+		<div class="col-12 text-center">
+			<button class="ux-button primary submit-btn2" (click)="closePopup()">{{ 'SUBMIT' | translate }}</button>
+		</div>
+	</div>
+</div>
+<!-- Select Accounts Popup End-->
+<div class="ios-nav-overlay"></div>

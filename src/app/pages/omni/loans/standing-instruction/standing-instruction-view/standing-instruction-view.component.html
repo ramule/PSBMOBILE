@@ -1,0 +1,149 @@
+<div class="main bg-m">
+	<div class="right-main-column">
+		<div class="right-col-container pad-b full-width">
+			<!-- ======== body page content start from here ======== -->
+			<div class="body-page-container main-dashborad manage-payee">
+				<div class="container-fluid">
+					<div class="row">
+						<div class="col-12 p-0">
+							<div class="breadcrumb">
+								<ul class="lst-breadcrumb">
+									<li *ngFor="let name of DataService.breadcrumblist">
+										<a (click)="DataService.breadcrumroute(name.routeName)">{{name.currentRoute | translate}}</a>
+								</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+					<!--.row -->
+					<div class="vspacer15 customize d-none d-md-block d-lg-block d-xl-block"></div>
+					<div class="row no-gutters">
+						<div class="col-12">
+							<div class="row1">
+								<div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-9">
+									<!-- Greencard2 Start here -->
+									<div class="greencard2">
+										<div class="row1 hide-m">
+											<div class="col-md-8 col-12">
+												<h4>Standing Instruction Overview</h4> </div>
+											<div class="col-md-4 col-12"></div>
+										</div>
+										<div class="row1" >
+											<div class="col-sm-12 col-12 col-md-12" *ngFor= "let item of standingInstructionList ; index as i ">
+												<div class="white-box2 mt-0 p-0">
+													<div class="info-bottom pad-custom" >
+														<div class="info-details">
+															<div class="row">
+																<h6>Standing Instruction Serial No</h6>
+																<h5>{{item.standingInstructionSerialNo}}</h5> </div>
+														</div>
+														<div class="info-details">
+															<div class="row">
+																<h6>Credit Account Number</h6>
+																<h5>{{item.accountNo }}</h5>
+															</div>
+														</div>
+														<div class="info-details">
+															<div class="row">
+																<h6>Reference Number</h6>
+																<h5 >{{item.referenceNumber}}</h5>
+															</div>
+														</div>
+														<div class="info-details">
+															<div class="row">
+																<!-- <h6>Executed SI  </h6> -->
+																<h6>Total Number of Payments </h6>
+																<!-- <h5> {{item.NO_SI_period}}</h5> -->
+																<h5> {{numberOfInstallment}}</h5>
+
+															</div>
+
+														</div>
+                                                        <div class="info-details">
+															<div class="row">
+																<h6>Next EMI Date</h6>
+																<h5> {{item.date}}</h5>
+															</div>
+														</div>
+														<div class="info-details" >
+															<div class="row">
+																<h6>Frequency Type </h6>
+																<h5 >{{item.frequency == 'W' ? 'Weekly' : item.frequency == 'M' ? 'Monthly' :  item.frequency == 'H' ? 'Half yearly' : item.frequency == 'Q' ? 'Quartely' : item.frequency == 'Y' ? 'Yearly' : item.frequency == 'D' ? 'Daily' : '-'}}
+																</h5>
+															</div>
+														</div>
+												
+														<div class="info-details">
+															<div class="row">
+																<h6>Number of SI Payment Executed   </h6>
+																<h5 >{{ item.noSIExecuted }}</h5>
+															</div>
+														</div>
+														<div class="info-details">
+															<div class="row">
+																<h6>SI Installment</h6>
+																<h5><img src="assets/images/svg/rupee-bl.svg" alt="rupees-icon">{{item.amount }}</h5>
+															</div>
+														</div>
+														<div class="info-details">
+															<div class="row">
+																<h6>Remark</h6>
+																<h5> {{item.remark ? item.remark : '-'}}</h5>
+															</div>
+														</div>
+													</div>
+												</div>
+											</div>
+
+											<!-- <div class="no-accounts text-center statement-table widget-box5	 mb-0 py-5" *ngIf="standingInstructionList.length == 0 "> <img src="assets/images/svg/no-rec-found.svg" class="mb-3">
+												<h5 class="mb-5"> {{"NO_RECORD_FOUND" | translate}} </h5>
+											</div> -->
+											<div class="col-12 col-md-12">
+												<ul class="bottom-footer1" >
+													<li>
+														<div class="btn-div w-100">
+															<button class="ux-button primary sm-mob" (click)="goToPage('standingInstructionList')">Back</button>
+														</div>
+													</li>
+												</ul>
+
+											</div>
+										</div>
+
+
+									</div>
+									<!-- Greencard2 End here -->
+								</div>
+								<!-- Right Column Ads Start -->
+								<div class="col-12 col-md-12 col-lg-12 col-xl-3 d-none d-xl-block">
+									<div class="right-ads">
+										<a> <img src="assets/images/banner/my-card-banner.jpg" /> </a>
+									</div>
+									<div class="vspacer30"></div>
+									<!-- <div class="offers-card">
+											<div class="header-block clearfix">
+												<h5>Offers on your card</h5>
+											</div>
+
+											<div class="panel-body">
+												<div class="recentpayment-control">
+													<ul>
+													    <li>
+															<img src="assets/images/banner/offer-banner.png">
+														</li>
+													</ul>
+												</div>
+											 </div>
+										</div>  --></div>
+								<!-- Right Column Ads Ends -->
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!--.right-col-container-->
+	</div>
+	<!--.right-main-column-->
+</div>
+<!-- main -->

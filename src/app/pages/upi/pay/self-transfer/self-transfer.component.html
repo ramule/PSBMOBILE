@@ -1,0 +1,135 @@
+<div class="main">
+    <div class="right-main-column minus-rt-col mar-custom">
+        <div class="right-col-container">
+            <div class="body-page-container">
+                <div class="container-fluid" *ngIf="depositActList.length > 0 && transferActList.length > 0">
+                    <div class="row">
+                        <div class="bg-section">
+                            <div class="col-12">
+                                <div class="row1">
+                                    <div class="col-sm-12 col-12 col-md-12">
+                                        <div class="white-bg1">
+                                            <div class="row">
+                                                <h4>{{'TRANSFER_FROM' | translate}}</h4>
+                                            </div>
+                                            <div class="col-sm-12 col-12 col-md-12 p-0">
+                                                <ul class="radio-list mt-0" *ngFor="let transferAct of transferActList; index as t">
+                                                    <li>
+                                                        <div class="ux-selection w-100 ">
+                                                            <label class="ux-selection6  pad-custom1 mb-0">
+                                  <input type="radio" [checked]="transferAct.isSelected" name="radioboxdemo" (change)="getAccountSelected('TRNS',t)">
+                                  <span class="checkmark"></span>
+                                  <span> <img src="assets/images/icons/psb-icon.png" alt="psb-icon"></span>
+                                  <span class="fs-1">{{transferAct.bankName}} </span>
+                                  <br />
+                                  <span class="fs-2">{{transferAct.accType}} {{transferAct.maskedAccountNumber}}</span>
+                                  <br />
+                                </label>
+                                                        </div>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                            <div class="col-12 col-md-12">
+                                                <div class=" text-center">
+                                                    <a class="link-txt" (click)="goToPage('manageAccounts')">{{ 'ADD_MORE_ACCOUNTS' | translate}}</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-sm-12 col-12 col-md-12">
+                                        <div class="grey-bg3 mar-custom pb-0 mb-4">
+                                            <div class="row">
+                                                <h4>{{'DEPOSIT_TO_ACCOUNT' | translate}}</h4>
+                                            </div>
+                                            <div class="col-sm-12 col-12 col-md-12 p-0">
+                                                <ul class="radio-list mt-0 mb-0" *ngFor="let depositAct of depositActList; index as d;">
+                                                    <li>
+                                                        <div class="ux-selection w-100 ">
+                                                            <label class="ux-selection6  pad-custom1 mb-0">
+                                  <input type="radio" [checked]="depositAct.isDeposit" name="radioboxdemo1" (change)="getAccountSelected('DPST',d)">
+                                  <span class="checkmark"></span>
+                                  <span> <img src="assets/images/icons/psb-icon.png" alt="psb-icon"></span>
+                                  <span class="fs-1">{{depositAct.bankName}} </span>
+                                  <br />
+                                  <span class="fs-2">{{depositAct.accType}} {{depositAct.maskedAccountNumber}}</span>
+                                  <br />
+                                </label>
+                                                        </div>
+                                                    </li>
+                                                    <!-- <li>
+                              <div class="ux-selection w-100">
+                                <label class="ux-selection6 pad-custom1 mb-0">
+                                  <input type="radio" name="radioboxdemo1">
+                                  <span class="checkmark"></span>
+                                  <span> <img src="assets/images/icons/icici-icon.png" alt="ICICI-Bank-icon"></span>
+                                  <span class="fs-1">ICICI Bank</span>
+                                  <br />
+                                  <span class="fs-2">Savings XXXX XXXX XXXX 5487</span>
+                                  <br />
+                                </label>
+                              </div>
+                            </li> -->
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                            <div class="col-12 text-center">
+                                <div class="powered-logo">
+                                    <img src="assets/images/logo/powered-upi-logo.svg" alt="powered-upi-logo">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- main -->
+
+<!-- footer section start -->
+
+<div class="footer-container sticky-actions bg-transparent" *ngIf="depositActList.length > 0 && transferActList.length > 0">
+    <div class="footer-inactions minus-rt-col">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-12">
+                    <button class="ux-button primary md" (click)="goToPage('selfTransferPayment')" [disabled]="proceedEnable">{{'PROCEED' | translate}}</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="sticky-actions-spacer"></div>
+
+<!-- footer section end -->
+
+<!-- =========== modal popup start ===============  -->
+<div class="popup-bottom selfTransferAlert">
+    <div class="row">
+        <div class="col-12">
+            <h4 class="text-center">{{ 'ALERT' | translate }}</h4>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12">
+            <p>
+                {{ 'ONLY_ONE_ACCOUNT_LINKED_TO_YOUR_ACCOUNT_KINDLY_ADD_MORE_ACCOUNT_TO_PROCEED_WITH_SELF_TRANSFER' | translate }}
+            </p>
+        </div>
+    </div>
+    <div class="row1 mt-2">
+        <div class="col-6 text-center">
+            <button class="ux-button secondary no md close-btn" (click)="goToPage('payUpi')">{{'NO' | translate}}</button>
+        </div>
+        <div class="col-6 text-center">
+            <button class="ux-button primary md" (click)="goToPage('manageAccounts')">{{'ADD_NEW_ACCOUNT' | translate}}</button>
+        </div>
+    </div>
+</div>
+<!-- =========== modal popup end ===============  -->

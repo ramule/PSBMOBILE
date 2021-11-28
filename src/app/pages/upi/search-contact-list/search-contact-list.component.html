@@ -1,0 +1,259 @@
+<div class="main">
+
+    <div class="right-main-column minus-rt-col mar-custom">
+        <div class="right-col-container">
+            <!-- pad-b -->
+
+            <div class="body-page-container">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="bg-section">
+                            <div class="col-12">
+                                <!-- <button type="button" (click)="synContactListApiCall()">SYNC</button> -->
+
+                                <!-- <input type="checkbox" class="custom-control-input" id="customSwitch1" [(ngModel)]="DataService.isContactsSyncEnabled" (change)="synContactListApiCall()"> -->
+                                <div class="row1" *ngIf="DataService.upiContactsList.length > 0">
+                                    <div class="col-sm-12 col-12 col-md-12">
+                                        <div class="white-bg-custom2">
+                                            <div class="info-section1">
+
+                                                <div class="row1">
+                                                    <div class="col-12 co-md-12 mt-2 ">
+                                                        <div class="toggle-col3 syncContact f-right">
+                                                            <input type="checkbox" name="syncContact" [(ngModel)]="DataService.isContactsSyncEnabled" (change)="openPopup('contactsSync-popup')">
+                                                            <div class="flat-toggle ">
+                                                                <span>{{'SYNC_CONTACT' | translate}}</span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+
+
+                                                <div class="ux-input mt-0 mb-0">
+                                                    <input type="text" [(ngModel)]="searchContacts" #searchContact="ngModel" [pattern]="constant.ALPHA_NUMERIC_SPACE_UPI_REGEX" placeholder="{{'SEARCH_FOR_UPI_ID_MOB_NO' | translate}}" required>
+                                                    <p class="text-center error-message" *ngIf="searchContact.errors?.pattern">{{ 'ENTER_ALPHABET_NUMBER_ERROR' | translate}}</p>
+                                                    <p class="error-message"></p>
+                                                </div>
+                                            </div>
+
+                                            <div class="innerbg-section2 mt-4">
+                                                <div class="row">
+                                                    <ul class="contact-list2">
+                                                        <div *ngFor="let group of DataService.upiContactsList">
+                                                            <li [hidden]="searchContacts.length > 0">
+                                                                <a href="javascript:;">
+                                                                    <div class="list-ful">
+                                                                        <h5>{{group.key}}</h5>
+                                                                    </div>
+                                                                </a>
+                                                            </li>
+                                                            <li *ngFor="let contact of group.contacts | searchFilter : 'custName,mobileNo' : searchContacts">
+                                                                <a (click)="selectContact(contact)">
+                                                                    <div class="list-lft">
+                                                                        <span class="green1">
+                                      <h6 *ngIf="contact.custName">{{contact.custName | firstLastChar}}</h6>
+
+                                      <!-- PSB icon for the register customer -->
+                                      <div class="rounded-circle" *ngIf="contact?.isPSBRegister == 'Y'">
+                                        <img src="assets/images/icons/psb-icon.png" alt="psb-icon-img">
+                                      </div>
+
+                                      <!-- <img src="assets/images/icons/user3.png" alt="user-img"> -->
+                                    </span>
+                                                                    </div>
+                                                                    <div class="list-rit">
+                                                                        <h5>{{contact.custName}}</h5>
+                                                                        <h6>{{contact.mobileNo}}</h6>
+                                                                        <!-- <button class="link-btn ux-linkbutton link-text primary info" (click)="inviteContact()" [ngClass]="contactInviteStatus ? '' : 'active'">{{contactInviteStatus ? "Invite" : "Invited"}}</button>  -->
+                                                                        <button class="link-btn ux-linkbutton link-text primary info" (click)="$event.stopPropagation();showPopup('show-confirmation',contact)" *ngIf="!contact?.isPSBRegister || contact?.isPSBRegister == 'N'">{{'INVITE' | translate}}</button>
+                                                                    </div>
+                                                                </a>
+                                                            </li>
+
+                                                        </div>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- footer section start -->
+
+            <div class="footer-container sticky-actions">
+                <div class="footer-inactions minus-rt-col">
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-12 col-md-12 col-lg-12 text-center">
+                                <div class="powered-logo mt-0">
+                                    <img src="assets/images/logo/powered-upi-logo.svg" alt="powered-upi-logo">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- footer section end -->
+        </div>
+    </div>
+
+</div>
+
+<!-- main -->
+
+<!-- Sync Contact Popup Start -->
+
+<div class="popup-bottom contactsSync-popup">
+    <div class="row1">
+        <div class="col-12">
+            <h4 class="text-center">{{'SYNC_CONTACT_TITLE' | translate}}</h4>
+        </div>
+    </div>
+    <div class="row1">
+        <div class="col-12">
+            <p>
+                {{'ALLOW_BHIM_PSB_CONTACT_SYNC' | translate}}
+            </p>
+        </div>
+    </div>
+    <div class="row1 mt-2">
+        <div class="col-6 text-center">
+            <button class="cancel-btn ux-button secondary md" (click)="closePopup('contactsSync-popup')">{{'NO' | translate}}</button>
+        </div>
+        <div class="col-6 text-center">
+            <button class="Submit-btn ux-button primary md" (click)="batchUpdateContacts(DataService.mobileContacts)">{{'YES' | translate}}</button>
+        </div>
+    </div>
+</div>
+
+
+<div class="popup-bottom contact-permission">
+    <div class="row1">
+        <div class="col-12">
+            <h4 class="text-center">
+                <img src="./assets/images/svg/information.svg" alt="information-icon"> {{'INFORMATION' | translate}}
+            </h4>
+        </div>
+    </div>
+    <div class="row1">
+        <div class="col-12">
+            <p>
+                {{'CONTACT_PERMISSION_MSG' | translate}}
+            </p>
+        </div>
+    </div>
+    <div class="row1 mt-2">
+        <div class="col-6 text-center">
+            <button class="ux-button secondary no md close-btn" (click)="closePopup('contact-permission')">{{'CANCEL' | translate}}</button>
+        </div>
+        <div class="col-6 text-center">
+            <button class="logout-btn ux-button primary md" (click)="getContactsList()">{{'ALLOW' | translate}}</button>
+        </div>
+    </div>
+</div>
+
+
+
+<div class="popup-bottom show-confirmation">
+    <div class="row1">
+        <div class="col-12">
+            <h4 class="text-center">
+                <img src="./assets/images/svg/information.svg" alt="information-icon"> {{'INFORMATION' | translate}}
+            </h4>
+        </div>
+    </div>
+    <div class="row1">
+        <div class="col-12">
+            <p>
+                {{'DO_YOU_WANT_TO_INVITE_THE_CONTACT' | translate}} {{contactUserName}}, {{'TO_PSB_BHIM_UPI' | translate}} ?
+            </p>
+        </div>
+    </div>
+    <div class="row1 mt-2">
+        <div class="col-6 text-center">
+            <button class="ux-button secondary no md close-btn" (click)="closePopup('show-confirmation')">{{'NO' | translate}}</button>
+        </div>
+        <div class="col-6 text-center">
+            <button class="logout-btn ux-button primary md" (click)="closePopup('show-confirmation');shareLink()">{{'YES' | translate}}</button>
+        </div>
+    </div>
+</div>
+
+
+<div id="notgrantedsmspermodel" class="modal fade" role="dialog" style="padding: 10px;">
+    <div class="modal-dialog modal-lg modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="mh-bottom">
+                    <div class="row1">
+                        <div class="col-10">
+                            <h4>
+                                <!-- <img src="assets/images/svg/information.svg" alt="information-icon"> -->
+                                <!-- Information -->
+                                {{ 'INFORMATION' | translate }}
+                            </h4>
+                        </div>
+                        <div class="col-2"><a href="javascript:;" data-dismiss="modal"><span class="mh-cross"></span></a></div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-body">
+                <div id="modal-share" class="sendInfo-block">
+                    <div>
+                        {{ 'ALLOW_PERMISSION_MSG' | translate }}
+                    </div>
+                    <div class="text-center mt-5">
+                        <button class="ux-button sm mx-1 primary text-center" (click)="gotoSetting()">
+              {{ 'GRANT' | translate }}
+            </button>
+                        <button class="ux-button sm mx-1 primary text-center" (click)="hideNotGrantedModal()">
+              {{ 'CANCEL' | translate }}
+            </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="popup-bottom contact-permission-deniedAlways">
+    <div class="row1">
+        <div class="col-12">
+            <h4 class="text-center">
+                <img src="./assets/images/svg/information.svg" alt="information-icon"> {{'INFORMATION' | translate}}
+            </h4>
+        </div>
+    </div>
+    <div class="row1">
+        <div class="col-12">
+            <p>
+                {{'CONTACT_PERMISSION_MSG' | translate}}
+            </p>
+        </div>
+    </div>
+    <div class="row1 mt-2">
+        <div class="col-6 text-center">
+            <button class="ux-button secondary no md close-btn" (click)="closePopup('contact-permission-deniedAlways')">{{'CANCEL' | translate}}</button>
+        </div>
+        <div class="col-6 text-center">
+            <button class="logout-btn ux-button primary md" (click)="goToSettings()">{{'SETTINGS' | translate}}</button>
+        </div>
+    </div>
+</div>
+
+<!-- Sync Contact Popup End -->
+
+<!-- <div class="ios-nav-overlay"></div>  -->
+
+<div class="toast-messages2"></div>
+
+
+<!-- =========== modal popup end ===============  -->

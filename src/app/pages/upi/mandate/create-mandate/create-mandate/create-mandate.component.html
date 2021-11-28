@@ -1,0 +1,272 @@
+<div class="main">
+  <div class="right-main-column minus-rt-col mar-custom">
+    <div class="right-col-container">
+      <div class="body-page-container">
+        <div class="container-fluid">
+          <form [formGroup]="createMandateForm">
+            <div class="row">
+              <div class="bg-section">
+                <div class="col-12">
+                  <div class="row1">
+                    <div class="col-sm-12 col-12 col-md-12">
+                      <div class="white-bg1">
+                        <div class="upiId" *ngIf="!showUserInfo">
+                          <div class="row1">
+                            <div class="col-12 col-sm-12 col-md-12">
+                              <div class="custom-input2 ux-input">
+                                <label for="upiId">{{'UPI ID/Mobile Number' | translate}}</label>
+                                <input type="text" name="upiId"
+                                  placeholder="{{'ENTER_UPI_ID_MOBILE_NUMBER' | translate}}"
+                                  formControlName="upiIdOrMobno" required>
+                                <a (click)="goToPage('searchContactList')"><em class="show-phonebook2" style="right: 6px;"></em></a>
+                                <!-- <a (click)="scanQRCode()"> <em class="show-qr2"></em> </a> -->
+                                <p class="error-message"
+                                  *ngIf="createMandateForm.controls['upiIdOrMobno'].hasError('required')  && createMandateForm.controls['upiIdOrMobno'].touched">
+                                  {{ 'ENTER_UPI_ID_MOBILE_NUMBER_ERROR' | translate }}
+                                </p>
+                                <p class="error-message"
+                                  *ngIf="!createMandateForm.controls['upiIdOrMobno'].hasError('required')  && createMandateForm.controls['upiIdOrMobno'].touched && createMandateForm.controls['upiIdOrMobno'].hasError('pattern')">
+                                  {{ 'ENTER_VALID_UPI_ID_MOBILE_NO' | translate }}
+                                </p>
+                                <p class="info-message">e.g. name@psb/9820000000</p>
+
+                                <!-- <em class="info-message">e.g. name@psb/9820000000</em>
+                                <p></p> -->
+                              </div>
+                            </div>
+                            <!-- <div class="col-1 col-sm-1 col-md-1">
+                              <div class="ux-input">
+                                <a (click)="goToPage('scanQR')"> <em class="show-qr"></em> </a> -->
+                            <!-- </div>
+                            </div> -->
+                          </div>
+                          <div class="mt-2">
+                            <div class="row1">
+                              <div class="col-6 col-sm-6 col-md-6">
+                              </div>
+                              <div class="col-6 col-sm-6 col-md-6">
+                                <button (click)="verify()" class="verify ux-button sm2 primary float-right"
+                                  [disabled]="createMandateForm.invalid">{{'VERIFY' | translate}}</button>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="userinfo" *ngIf="showUserInfo">
+                          <div class="payee-info mt-4 mb-4">
+                            <div class="info-lft">
+                              <span class="green1">
+                                <h6>{{DataService.validateAddressResp.MASKNAME | firstLastChar}}</h6>
+                                <!-- <img src="assets/images/icons/user14.png" alt="user-img"> -->
+                              </span>
+                            </div>
+                            <div class="info-rit">
+                              <h5>{{DataService.validateAddressResp.MASKNAME}}</h5>
+                              <h6>{{'UPI_ID' | translate }} : {{DataService.validateAddressResp.validatedVpa}}</h6>
+                              <em
+                                *ngIf="DataService.validateAddressResp?.mobileNumber">{{DataService.validateAddressResp?.mobileNumber}}</em>
+                            </div>
+                          </div>
+                          <div class="mt-2">
+                            <div class="row1">
+                              <div class="col-6 col-sm-6 col-md-6">
+                                <button class="cancel ux-button sm2 secondary" (click)="cancel()">{{'CANCEL' |
+                                  translate}}</button>
+                              </div>
+                              <div class="col-6 col-sm-6 col-md-6">
+                                <button class="proceed ux-button sm2 primary" (click)="proceed()">{{'PROCEED' |
+                                  translate}}</button>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="col-sm-12 col-12 col-md-12">
+                      <div class="ux-nav-tabs" style="margin:0">
+                        <div class="responsive3">
+                          <ul class="nav nav-tabs nav-justified bor-n" role="tablist">
+                            <li class="nav-item">
+                              <a class="nav-link active" data-toggle="tab" href="#recent">{{'RECENT_PAYEE' |
+                                translate}}</a>
+                            </li>
+                            <li class="nav-item">
+                              <a class="nav-link" data-toggle="tab" href="#favorite">{{'FAVORITE_PAYEE' |
+                                translate}}</a>
+                            </li>
+                          </ul>
+
+                          <!-- Tab panes -->
+                          <div class="tab-content custom-tab-content">
+                            <div id="recent" class=" tab-pane active">
+                              <div class="row">
+                                <div class="col-sm-12 col-12 col-md-12">
+                                  <div class="unfound-info" *ngIf="recentPayeeReqList.length == 0">
+                                    <h6> {{'NO_RECENT_PAYEE_FOUND' | translate}}</h6>
+                                  </div>
+                                  <ul class="payee-list1" *ngIf="recentPayeeReqList.length > 0">
+                                    <li
+                                      *ngFor="let recentPayee of recentPayeeReqList; index as i">
+                                      <a (click)="validatePayee('recent',recentPayee)">
+                                        <span class="green1">
+                                          <img *ngIf="recentPayee.beneImageUrl" [src]="recentPayee.beneImageUrl"
+                                            alt="user-img">
+                                          <h6 *ngIf="!recentPayee.beneImageUrl">{{recentPayee.nickName | firstLastChar}}
+                                          </h6>
+                                        </span>
+                                        <em>{{recentPayee.nickName | truncate}}</em>
+                                      </a>
+                                    </li>
+                                    <li *ngIf="recentPayeeReqList.length > 0">
+                                      <a (click)="searchContact('recent')">
+                                        <span class="white1">
+                                          <img src="assets/images/svg/more.svg" alt="more-icon">
+                                        </span>
+                                        <em>{{'VIEW_MORE' | translate}}</em>
+                                      </a>
+                                    </li>
+                                  </ul>
+                                </div>
+                              </div>
+                            </div>
+                            <div id="favorite" class="tab-pane fade">
+                              <div class="row">
+                                <div class="col-sm-12 col-12 col-md-12">
+                                  <div class="unfound-info" *ngIf="favPayeeList.length == 0">
+                                    <h6> {{'NO_FAVORITE_PAYEE_FOUND' | translate}}</h6>
+                                  </div>
+                                  <ul class="payee-list1">
+                                    <li *ngFor="let favPayee of favPayeeList; index as i;">
+                                      <a (click)="validatePayee('fav',favPayee)">
+                                        <span class="green1">
+                                          <!-- <img [src]="assets/images/icons/user3.png" alt="user-img"> -->
+                                          <h6>{{favPayee.nickName | firstLastChar}}</h6>
+                                        </span>
+                                        <em>{{favPayee.nickName | truncate}}</em>
+                                      </a>
+                                    </li>
+                                    <li *ngIf="favPayeeList.length > 0">
+                                      <a (click)="searchContact('favorite')">
+                                        <span class="white1">
+                                          <img src="assets/images/svg/more.svg" alt="more-icon">
+                                        </span>
+                                        <em>{{'VIEW_MORE' | translate}}</em>
+                                      </a>
+                                    </li>
+                                  </ul>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                  </div>
+                </div>
+                <!-- 
+                <div class="col-12 text-center">
+                  <div class="powered-logo">
+                    <img src="assets/images/logo/powered-upi-logo.svg" alt="powered-upi-logo">
+                  </div>
+                </div> -->
+
+
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+      <!-- footer section start -->
+      <div class="footer-container sticky-actions">
+        <div class="footer-inactions minus-rt-col">
+          <div class="container-fluid">
+            <div class="row">
+              <div class="col-12 col-md-12 col-lg-12 text-center">
+                <div class="powered-logo mt-0">
+                  <img src="assets/images/logo/powered-upi-logo.svg" alt="powered-upi-logo">
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- footer section end -->
+    </div>
+  </div>
+</div>
+<!-- Invalid QR Popup Start -->
+<div class="popup-bottom UPI-global inValidQrCode">
+  <div class="row">
+    <div class="col-12">
+      <h4 class="text-center">{{'INVALID_QR_CODE' | translate }}</h4>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-12">
+      <p>
+        {{ 'SCAN_VALID_QR_CODE' | translate }} <br> {{ popupData.error }}
+      </p>
+    </div>
+  </div>
+  <div class="row1 mt-2">
+    <div class="col-12 text-center">
+      <button class="ux-button primary md" (click)="closePopup('inValidQrCode')">{{'OK' | translate}}</button>
+    </div>
+  </div>
+</div>
+<!-- Invalid QR Popup End -->
+
+<!-- Sign not  QR Popup End -->
+
+<div class="popup-bottom insecure-qrcode">
+  <div class="row">
+    <div class="col-12">
+      <h4 class="text-center">{{'INSECURE_QR_CODE' | translate}}</h4>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-12">
+      <p>
+        {{ 'INSECURE_QR_CODE_DO_YOU_WANT_TO_PROCEED' | translate}}
+      </p>
+    </div>
+  </div>
+  <div class="row1 mt-2">
+    <div class="col-6 text-center">
+      <button class="ux-button primary close-btn md" (click)="validateVpa(); closePopup('insecure-qrcode')">{{'YES' |
+        translate}}</button>
+    </div>
+    <div class="col-6 text-center">
+      <button class="ux-button secondary close-btn md" (click)="closePopup('insecure-qrcode')">{{ 'NO' |
+        translate}}</button>
+    </div>
+  </div>
+</div>
+
+<div class="popup-bottom inValidSignature">
+  <div class="row">
+    <div class="col-12">
+      <h4 class="text-center">{{ 'ALERT' | translate }}</h4>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-12">
+      <p>
+        {{ 'INVALID_QR_SIGNATURE' | translate }}
+      </p>
+      <p>
+        {{ 'DO_YOU_WANT_TO_PROCEED' | translate }}
+      </p>
+    </div>
+  </div>
+  <div class="row1 mt-2">
+    <div class="col-6 text-center">
+      <button class="ux-button secondary no md close-btn" (click)="closePopup('inValidSignature')">{{'NO' |
+        translate}}</button>
+    </div>
+    <div class="col-6 text-center">
+      <button class="ux-button primary md" (click)="onClickYes()">{{'YES' | translate}}</button>
+    </div>
+  </div>
+</div>

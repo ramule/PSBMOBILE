@@ -1,0 +1,99 @@
+<div class="main bg-m">
+	<div class="nav-overlay"></div>
+	<div class="right-main-column ">
+		<div class="right-col-container pad-b full-width">
+			<!-- ======== body page content start from here ======== -->
+			<div class="body-page-container main-dashborad manage-payee myprofile mob-aligment">
+				<div class="container-fluid">
+					<div class="row">
+						<div class="col-12 p-0">
+							<div class="breadcrumb">
+								<ul class="lst-breadcrumb">
+									<!-- <li> <a [routerLink]="['/dashboard']">Dashboard</a> </li>
+									<li> Notification </li> -->
+									<li *ngFor="let name of DataService.breadcrumblist">
+										<a (click)="DataService.breadcrumroute(name.routeName)">{{name.currentRoute | translate}}</a>
+								</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+					<!--.row -->
+					<div class="vspacer15 customize d-none d-md-block d-lg-block d-xl-block"></div>
+					<div class="row no-gutters">
+						<div class="col-12">
+							<div class="row1">
+								<div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-9">
+									<!-- Greencard2 Start here --->
+									<div class="greencard2">
+										<div class="row1 hide-m">
+											<div class="col-md-8 col-12">
+												<h4>Notifications</h4> </div>
+											<div class="col-md-4 col-12">
+												<ul class="notification-filter">
+													<li>
+														<a> <img src="assets/images/svg/filter.svg" alt="filter"> </a>
+													</li>
+													<li>
+														<a> <img src="assets/images/svg/download1-w.svg" alt="filter"> </a>
+													</li>
+													<li>
+														<a> <img src="assets/images/svg/share-notify-w.svg" alt="filter"> </a>
+													</li>
+												</ul>
+											</div>
+										</div>
+										<div class="row1">
+											<div class="col-sm-12 col-12 col-md-12">
+												<div class="widget-box5 mb-3">
+													<div class="bg-white1 p-0">
+														<ul class="notification-list-web">
+															<li  *ngFor="let notification of notificationList">
+																<div class="full-container">
+																	<div class="notify-icon"> <img src="assets/images/svg/login.svg" alt=""> </div>
+																	<div class="row1">
+																		<div class="col-12 col-md-12">
+																			<div class="left-info">
+																			<h6>{{notification.header}}</h6>
+																		  <em>{{notification.remarks}}</em>
+                                      <small>{{notification.TransactionDate}}</small> </div>
+																		</div>
+																	</div>
+																	<div class="row1">
+																		<div class="col-12 col-md-5">
+																			<div class="left-info1"> <em>{{notification.TransactionDate | date :'dd MMM yyyy, HH:mm'}}</em> </div>
+																		</div>
+																		<div class="col-12 col-md-7">
+																			<div class="right-info">
+                                        <a class="share-btn" (click)="share(notification)"><img src="assets/images/svg/share.svg" alt="share-icon" /></a>
+                                      </div>
+                                   </div>
+																	</div>
+																</div>
+															</li>
+														</ul>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+									<!-- Greencard2 End here -->
+								</div>
+								<!-- Right Column Ads Start -->
+								<div class="col-12 col-md-12 col-lg-12 col-xl-3 d-none d-xl-block">
+									<div class="right-ads">
+										<a> <img src="assets/images/banner/my-card-banner.jpg"> </a>
+									</div>
+								</div>
+								<!-- Right Column Ads Ends -->
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!--.right-col-container-->
+	</div>
+	<!--.right-main-column-->
+</div>
+<!-- main -->

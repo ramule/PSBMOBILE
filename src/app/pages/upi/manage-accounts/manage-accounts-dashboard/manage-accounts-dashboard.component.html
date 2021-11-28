@@ -1,0 +1,753 @@
+<div class="main manage-acc">
+    <div class="right-main-column minus-rt-col mar-custom manageAccount">
+        <div class="right-col-container cust-pb">
+            <div class="body-page-container">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="bg-section">
+                            <div class="col-12">
+                                <!-- Carousel Row Start -->
+                                <div class="row2">
+                                    <div class="col-12 p-0">
+                                        <div class="scroll-box3 manage-accounts-slider">
+                                            <div *ngIf="vpaList.length>0">
+                                                <owl-carousel-o [options]="manageAccountDashboardCarousel" role="list" (changed)="getSlideData($event)" #owlCarManage>
+                                                    <!-- Dynamic VPA List Data Start -->
+                                                    <ng-container class="item" role="listitem" *ngFor="let vpa of vpaList; index as i">
+                                                        <ng-template class="slide" carouselSlide [id]="i">
+                                                            <div class="ux-component6 white">
+                                                                <div class="ux-dropdown">
+                                                                    <div class="drp-box">
+                                                                        <div class="drp-enterdata">
+                                                                            <div class="row">
+                                                                                <div class="card-actions">
+                                                                                    <div class="row1">
+                                                                                        <div class="col-12">
+                                                                                            <div class="text-left">
+                                                                                                <em>{{ 'UPI_ID' |
+                                                                                                    translate }}</em>
+                                                                                                <a class="ux-linkbutton1 primary sm ml-1" *ngIf="vpa.default=='Y'">
+                                                                                                    {{ 'DEFAULT' |
+                                                                                                    translate }}
+                                                                                                </a>
+                                                                                                <a class="ux-linkbutton1 secondary sm ml-1" *ngIf="vpa.default=='N'" (click)="UpiApiCall(constant.upiserviceName_SETDEFAULTVPA, vpa.paymentAddress)">
+                                                                                                    {{ 'MAKE_DEFAULT' |
+                                                                                                    translate }}
+                                                                                                </a>
+                                                                                            </div>
+                                                                                            <div class="text-left">
+                                                                                                <h5>{{ vpa.paymentAddress }}
+                                                                                                </h5>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </ng-template>
+                                                    </ng-container>
+
+                                                </owl-carousel-o>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- Carousel Row End -->
+
+                                <!-- Dynamic Bank Cards Row Start -->
+                                <div class="row1">
+                                    <div class="col-12 ">
+                                        <!-- Accordion Start here-->
+                                        <div id="accordion" class="accordion-container">
+                                            <div class="card" *ngFor="let account of vpaAccountList; index as i">
+                                                <a class="card-link collapsed" data-toggle="collapse" href="#collapse{{i}}" aria-expanded="false">
+                                                    <div class="card-header2">
+                                                        <!-- <ul> -->
+                                                        <!-- <li *ngFor="let account of vpaAccountList; index as i">
+                                                    <div class="acc-slide1">
+                                                        <a href="javascript:;" class="arrow-toggle custom"> -->
+                                                        <div class="panel-title">
+                                                            <h5 *ngIf="account.bankName == 'Punjab & Sind Bank'">
+                                                                <img src="assets/images/icons/psb-icon-yellow.png" alt="psb-icon"> {{ account.bankName }}
+                                                            </h5>
+                                                            <h5 *ngIf="account.bankName != 'Punjab & Sind Bank'">
+                                                                <img src="assets/images/svg/bank-icon.svg" alt="bank-icon"> {{ account.bankName }}
+                                                            </h5>
+                                                            <h6>
+                                                                {{ account.accType }} {{ account.maskedAccountNumber }}
+                                                            </h6>
+                                                            <small *ngIf="account.mbeba=='Y'">
+                                                                {{ account.credDLength }} {{ 'DIGIT_UPI_PIN_SET' |
+                                                                translate }}
+                                                                <img src="assets/images/svg/select-upi.svg"
+                                                                    alt="select-icon">
+                                                            </small>
+                                                            <small *ngIf="account.mbeba=='N'">
+                                                                {{ account.credDLength }} {{ 'DIGIT_UPI_PIN_NOT_SET' |
+                                                                translate }}
+                                                                <img src="assets/images/svg/cross-reject.svg"
+                                                                    alt="select-icon">
+                                                            </small>
+                                                        </div>
+                                                        <!-- <i></i> -->
+                                                        <em></em>
+                                                    </div>
+                                                    <!--card-header-->
+                                                </a>
+                                                <!--card-link end here-->
+                                                <div class="row overlap-btn" *ngIf="account.defaultAccount">
+                                                    <button class="ux-linkbutton1 primary sm float-right">
+                                                        {{ 'DEFAULT' | translate }}
+                                                    </button>
+                                                </div>
+                                                <div class="row overlap-btn" *ngIf="!account.defaultAccount">
+                                                    <button class="ux-linkbutton1 secondary sm float-left" (click)="showPopup('setDefaultAccPopup',account)">
+                                                        {{ 'MAKE_DEFAULT' | translate }}
+                                                    </button>
+                                                </div>
+                                                <div class="row mt-2 mb-2 card-subheder">
+                                                    <!-- Current Limit Start -->
+                                                    <div class="col-5 col-md-6 pr-1">
+                                                        <div class="limit-info">
+                                                            <h6>
+                                                                <span>{{ 'CURRENT_LIMIT' | translate }}</span>
+                                                            </h6>
+                                                            <h6>
+                                                                <!-- <i> <img src="assets/images/svg/rupee-bl.svg" alt="rupees-icon" /> </i>  -->
+                                                                        {{ account.currentLimit ? (account.currentLimit | customcurrency) : '-' }}
+
+                                                                <i>
+                                                                    <a class="setlimit-btn"
+                                                                        (click)="showPopup('setLimitPopup', account,i)">
+                                                                        <img src="assets/images/svg/edit.svg"
+                                                                            alt="edit-icon" />
+                                                                    </a>
+                                                                </i>
+                                                            </h6>
+                                                        </div>
+                                                    </div>
+                                                    <!-- Current Limit End -->
+                                                    <!-- Check Balance Start -->
+                                                    <div class="col-7 col-md-6 pl-1" *ngIf="!account.showBalance">
+                                                        <div class="float-right">
+                                                            <a class="balance-info2 float-right" (click)="viewBalanceFlow(account, i)" style="text-decoration:none">
+                                                                <span class="info"> <h6> <span> {{ 'CHECK_BALANCE' | translate }}</span> </h6>
+                                                                </span>
+                                                                <img src="assets/images/svg/refresh-g.svg" class="refresh-btn refresh-icon" alt="refresh-icon">
+                                                            </a>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-7 col-md-6 pl-1" *ngIf="account.showBalance">
+                                                        <div class="float-right">
+                                                            <a class="balance-info2 float-right" (click)="viewBalanceFlow(account, i)" style="text-decoration:none">
+                                                                <span *ngIf="account.accTypeActual=='SOD' || account.accTypeActual=='UOD'">
+                                                                        <h6>
+                                                                            <!-- Avail Bal -->
+                                                                            {{ 'AVAIL_LIMIT' | translate }}
+                                                                            <span class="ml-1"> 
+                                                                                <!-- <i><img src="assets/images/svg/rupee-g2.svg" alt="rupees-icon"></i>  -->
+                                                                                 {{ account.balanceAmount | customcurrency }}  
+                                                                            </span>
+                                                                </h6>
+                                                                <h6>
+                                                                    <!-- Total Bal -->
+                                                                    {{ 'TOTAL_LIMIT' | translate }}
+                                                                    <span class="ml-1">
+                                                                            <!-- <i><img src="assets/images/svg/rupee-g2.svg" alt="rupees-icon"></i> -->
+                                                                            {{ account.ledgerBal | customcurrency }}
+                                                                            </span>
+                                                                </h6>
+                                                                </span>
+                                                                <span *ngIf="account.accTypeActual!='SOD' && account.accTypeActual!='UOD'">
+                                                                    <h6 class="pt-1">
+                                                                        <span class="ml-1"> 
+                                                                            <!-- <i><img src="assets/images/svg/rupee-g2.svg" alt="rupees-icon"></i>  -->
+                                                                             {{ account.balanceAmount | customcurrency }}  
+                                                                        </span>
+                                                                </h6>
+                                                                </span>
+                                                                <img src="assets/images/svg/refresh-g.svg" class="refresh-btn refresh-icon" alt="refresh-icon">
+                                                            </a>
+                                                        </div>
+                                                    </div>
+                                                    <!-- End of Check Balance with Available and Total section -->
+                                                </div>
+
+                                                <div class="row mb-1">
+                                                    <div class="col-12 col-md-12">
+                                                        <div class="limit-info">
+                                                            <h6>
+                                                                <span>
+                                                                        <!-- Account linked on 09 April 2021 -->
+                                                                        {{ 'ACCOUNT_LINKED_ON' | translate }} {{ account.accountLinkedTime }}
+                                                                    </span>
+                                                            </h6>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <!-- <div class="acc-slide-content"> 
+                                                            <div class="slide-body  component-box bg-lg">-->
+                                                <div id="collapse{{i}}" class="collapse" data-parent="#accordion">
+                                                    <div class="card-body bg-lg">
+                                                        <div class="row">
+                                                            <ul class="information-list2">
+                                                                <li *ngIf="account.mbeba=='Y'">
+                                                                    <a (click)="showPopup('debitcard-info', account)">
+                                                                        <div class="icon1">
+                                                                            <img src="assets/images/svg/forgot-upi-pin.svg" alt="forgot-pin" />
+                                                                        </div>
+                                                                        <em>
+                                                                            {{ 'FORGOT_UPI_PIN' | translate }}
+                                                                        </em>
+                                                                    </a>
+                                                                </li>
+                                                                <li *ngIf="account.mbeba=='N'">
+                                                                    <a (click)="showPopup('debitcard-info', account)">
+                                                                        <div class="icon1">
+                                                                            <img src="assets/images/svg/forgot-upi-pin.svg" alt="forgot-pin" />
+                                                                        </div>
+                                                                        <em>
+                                                                            {{ 'SET_UPI_PIN' | translate }}
+                                                                        </em>
+                                                                    </a>
+                                                                </li>
+                                                                <li *ngIf="account.mbeba=='Y'">
+                                                                    <a (click)="callNpciLibrary(account, constant.val_npci_flow_changeUpiPin)">
+                                                                        <div class="icon1">
+                                                                            <img src="assets/images/svg/password.svg" alt="password-icon" />
+                                                                        </div>
+                                                                        <em>
+                                                                            {{ 'CHANGE_UPI_PIN' | translate }}
+                                                                        </em>
+                                                                    </a>
+                                                                </li>
+                                                                <li>
+                                                                    <a class="remove-btn1" (click)="showPopup('removeAccConfirmationPopup',account)">
+                                                                        <div class="icon1">
+                                                                            <img src="assets/images/svg/delete.svg" alt="delete-icon" />
+                                                                        </div>
+                                                                        <em>
+                                                                            {{ 'REMOVE_ACCOUNT' | translate }}
+                                                                        </em>
+                                                                    </a>
+                                                                </li>
+                                                                <!-- <li>
+                                                                    <a class="remove-btn1"> -->
+                                                                <!--(click)="initiateGlobalQRFlow(account)"-->
+                                                                <!--<div *ngIf="account.isUpiGlobalActive=='N'" class="icon1">
+                                                                            <img src="assets/images/svg/upi-global.svg" alt="globe-icon-grey" />
+                                                                        </div>
+                                                                        <div *ngIf="account.isUpiGlobalActive=='Y'" class="icon1">
+                                                                            <img src="assets/images/svg/upi-global-g.svg" alt="globe-icon-green" />
+                                                                        </div>
+                                                                        <em>
+                                                                            {{ 'UPI_GLOBAL' | translate }}
+                                                                        </em>
+                                                                    </a>
+                                                                    <div class="row text-center" *ngIf="account.isUpiGlobalActive=='N'">
+                                                                        <label class="ux-linkbutton1 danger sm">
+                                                                            {{ 'INACTIVE' | translate }}
+                                                                        </label>
+                                                                    </div>
+                                                                </li>
+                                                                <li *ngIf="account.ifsc.includes('PSIB')">
+                                                                    <a class="debit1" (click)="debitBlockFlow(account)">
+                                                                        <div class="icon1" *ngIf="account.debitFreezeStatus=='N'">
+                                                                            <img src="assets/images/svg/debit-freeze.svg" alt="debit-freeze-grey" />
+                                                                        </div>
+                                                                        <div class="icon1" *ngIf="account.debitFreezeStatus=='Y'">
+                                                                            <img src="assets/images/svg/debit-freeze-g.svg" alt="debit-freeze-green" />
+                                                                        </div>
+                                                                        <em>
+                                                                            {{ 'DEBIT_BLOCK' | translate }}
+                                                                        </em>
+                                                                    </a>
+                                                                    <div class="row text-center" *ngIf="account.debitFreezeStatus=='N'">
+                                                                        <label class="block-debit ux-linkbutton1 danger sm">
+                                                                            {{ 'INACTIVE' | translate }}
+                                                                        </label>
+                                                                    </div>
+                                                                    <div class="row text-center" *ngIf="account.debitFreezeStatus=='Y'">
+                                                                        <label class="block-debit ux-linkbutton1 danger sm">
+                                                                            {{ 'ACTIVE' | translate }}
+                                                                        </label>
+                                                                    </div>
+                                                                </li> -->
+                                                                <li>
+                                                                    <a (click)="goToPage('payUpi')">
+                                                                        <div class="icon1">
+                                                                            <img src="assets/images/svg/self-transfer.svg" alt="self-transfer-icon" />
+                                                                        </div>
+                                                                        <em>
+                                                                            {{ 'SELF_TRANSFER' | translate }}
+                                                                        </em>
+                                                                    </a>
+                                                                </li>
+                                                            </ul>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!-- Card end -->
+                                            <!-- </li> -->
+                                            <!-- </ul> -->
+                                        </div>
+                                        <!-- Accordion End here-->
+                                    </div>
+                                    <div class="col-12 col-md-12 col-lg-12 text-center">
+                                        <button class="ux-linkbutton link-text primary" (click)="goToPage('createUpi', 'add')"> <img
+                                                src="assets/images/svg/add-g.svg" alt="ad-icon"> {{'ADD_ACCOUNT' | translate }}</button>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- footer section start -->
+
+            <div class="footer-container sticky-actions">
+                <div class="footer-inactions minus-rt-col">
+                    <div class="container-fluid">
+                        <!-- <div class="row">
+                            <div class="col-12 col-md-12 col-lg-12 text-center">
+                                <button class="ux-button primary md" (click)="goToPage('createUpi', 'create')" [disabled]="vpaList.length == 3">{{'CREATE_NEW_UPI_ID' |translate}}</button>
+                            </div>
+                        </div> -->
+                        <div class="row">
+                            <div class="col-12 col-md-12 col-lg-12 text-center">
+                                <div class="powered-logo  mt-0">
+                                    <img src="assets/images/logo/powered-upi-logo.svg" alt="powered-upi-logo">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- footer section end -->
+        </div>
+    </div>
+</div>
+<!-- main -->
+
+<!-- =========== modal popup start ===============  -->
+
+<!-- Default Account Popup Start -->
+<div class="popup-bottom default1 setDefaultAccPopup">
+    <!--default1-->
+    <div class="row">
+        <div class="col-12">
+            <h4 class="text-center">
+                {{ 'SET_DEFAULT_ACCOUNT' | translate }}
+                <!-- Set Default Account -->
+            </h4>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12">
+            <p>
+                {{ 'DEFAULT_ACC_CONFIRMATION' | translate }} {{ popupData.maskedAccountNumber }} {{ 'AS_DEFAULT' | translate }} ?
+                <!-- Do you want to set this account no XXXX XXXX 9557 as default ?  -->
+            </p>
+        </div>
+    </div>
+    <div class="row1 mt-2">
+        <div class="col-6 text-center">
+            <button class="ux-button secondary no md close-btn" (click)="closePopup('setDefaultAccPopup')">
+                {{ 'NO' | translate }}
+            </button>
+        </div>
+        <div class="col-6 text-center">
+            <button class="ux-button primary md" (click)="closePopup('setDefaultAccPopup');UpiApiCall(constant.upiserviceName_CHANGEDEFAULTACCMAPPING, popupData)">
+                {{ 'YES' | translate }}
+            </button>
+        </div>
+    </div>
+</div>
+<!-- Default Account Popup End -->
+
+<!-- Remove Account Popup Start -->
+<div class="popup-bottom remove1 removeAccConfirmationPopup">
+    <!--remove1-->
+    <div class="row">
+        <div class="col-12">
+            <h4 class="text-center">
+                {{ 'REMOVE_ACCOUNT' | translate }}
+                <!-- Remove Account -->
+            </h4>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12">
+            <p>
+                {{ 'REMOVE_ACCOUNT_CONFIRMATION' | translate }} {{ popupData.accType}} - {{ popupData.maskedAccountNumber }} ?
+                <!-- Do you want to remove this account Savings - XXXXXXXXX98918? -->
+            </p>
+        </div>
+    </div>
+    <div class="row1 mt-2">
+        <div class="col-6 text-center">
+            <button class="ux-button secondary no md close-btn" (click)="closePopup('removeAccConfirmationPopup')">
+                {{ 'NO' | translate }}
+            </button>
+        </div>
+        <div class="col-6 text-center">
+            <button class="ux-button primary md" (click)="checkAccountToBeRemoved(popupData);">
+                {{ 'YES' | translate }}
+            </button>
+        </div>
+    </div>
+</div>
+<!-- Remove Account Popup End -->
+
+<!-- Remove Default Popup Start -->
+<div class="popup-bottom removeDefaultAccPopup">
+    <!--remove2-->
+    <div class="row">
+        <div class="col-12">
+            <h4 class="text-center">
+                <!-- Remove Account -->
+                {{ 'REMOVE_ACCOUNT' | translate }}
+            </h4>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12">
+            <p>
+                {{ 'CANNOT_REMOVE_DEFAULT_ACCOUNT' | translate }}
+                <!-- Cannot remove this account as It is marked as Default. Please change the default account mapping and then try again -->
+            </p>
+        </div>
+    </div>
+    <div class="row1 mt-2">
+        <div class="col-12 text-center">
+            <button class="ux-button primary md" (click)="closePopup('removeDefaultAccPopup')">
+                {{ 'OK' | translate }}
+                <!-- Ok -->
+            </button>
+        </div>
+    </div>
+</div>
+<!-- Remove Default Account Popup End -->
+
+<!-- Debit Card Details Popup Start -->
+<div class="popup-bottom debitcard-info">
+    <div class="row1">
+        <div class="col-10">
+            <h4>
+                {{ 'DEBIT_CARD_DETAILS' | translate }}
+            </h4>
+        </div>
+        <div class="col-2">
+            <button class="ux-button-icon close-btn" (click)="closePopup('debitcard-info')">
+                <img src="assets/images/svg/close-b.svg" alt="cross-icon" class="img-vsmall">
+            </button>
+        </div>
+    </div>
+    <form id="debitcard-form" [formGroup]="debitCardForm">
+        <div class="row1">
+            <div class="col-12">
+                <div class="ux-input ">
+                    <label for="">
+                        {{ 'ENTER_LAST_6_DIGITS_DEBIT_CARD' | translate }}
+                    </label>
+                    <div class="row">
+                        <div class="col-4 col-md-3 pl-0 pr-1">
+                            <div class="ux-input">
+                                <label class="custom-text" for="">XXXX XXXX XX</label>
+                            </div>
+                        </div>
+                        <div class="col-8 col-md-9 pl-1 pr-2">
+                            <div class="row3">
+                                <div class="col-sm-2 col-2 col-md-2" *ngFor="let mpinInput of formInput | slice:0:6; index as i">
+                                    <div class="ux-input debit-number p1 mb-1">
+                                        <input #mPINformRow numbersOnly id="spassword{{i}}" type="tel" maxlength="1" placeholder="&#9679;" (keyup)="onKeyUpEvent(i, $event)" (focus)="onFocusEvent(i)" formControlName="{{mpinInput}}" pattern="\d*" />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 ">
+                <div class="ux-input">
+                    <label>
+                        {{ 'EXPIRY_DATE_DEBIT_CARD' | translate }}
+                    </label>
+                </div>
+            </div>
+            <div class="col-10 col-md-10">
+                <div class="row3">
+                    <div class="col-sm-2 col-2 col-md-2 ml-1">
+                        <div class="ux-input expiry-input mb-1">
+                            <input #expiryDateRow numbersOnly id="expiry1" type="tel" maxlength="1" placeholder="M" (keyup)="keyUpEvent(0, $event)" (focus)="focusEvent(0)" formControlName="expdate1" />
+                        </div>
+                    </div>
+                    <div class="col-sm-2 col-2 col-md-2">
+                        <div class="ux-input expiry-input mb-1">
+                            <input #expiryDateRow numbersOnly id="expiry2" type="tel" maxlength="1" placeholder="M" (keyup)="keyUpEvent(1, $event)" (focus)="focusEvent(1)" formControlName="expdate2" />
+                        </div>
+                    </div>
+                    <div class="col-sm-1 col-1 col-md-1 pl-0 pr-0">
+                        <p class="custom-text">/</p>
+                    </div>
+                    <div class="col-sm-2 col-2 col-md-2">
+                        <div class="ux-input expiry-input mb-1">
+                            <input #expiryDateRow numbersOnly id="expiry3" type="tel" maxlength="1" placeholder="Y" (keyup)="keyUpEvent(2, $event)" (focus)="focusEvent(2)" formControlName="expdate3" />
+                        </div>
+                    </div>
+                    <div class="col-sm-2 col-2 col-md-2">
+                        <div class="ux-input expiry-input mb-1">
+                            <input #expiryDateRow numbersOnly id="expiry4" type="tel" maxlength="1" placeholder="Y" (keyup)="keyUpEvent(3, $event)" (focus)="focusEvent(3)" formControlName="expdate4" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 mt-2">
+                <span class="small-icons">
+                    <img src="assets/images/svg/question.svg" alt="question-icon" />
+                </span>
+                <ol class="orderlist2 mar-b">
+                    <li>
+                        {{ 'UPI_PIN_DESC_1' | translate }}
+                    </li>
+                    <li>
+                        {{ 'UPI_PIN_DESC_2' | translate }}
+                    </li>
+                </ol>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12 text-center">
+                <button class="ux-button primary debit-details" (click)="callRequestOtp()" [disabled]="debitCardForm.invalid">
+                    {{ 'PROCEED' | translate }}
+                </button>
+            </div>
+            <div class="col-12 col-md-12 col-lg-12 text-center">
+                <div class="powered-logo">
+                    <img src="assets/images/logo/powered-upi-logo.svg" alt="powered-upi-logo">
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+<!-- Debit Card Details Popup End -->
+
+<!--  Set UPI Pin Success Popup Start -->
+<div class="popup-bottom success3 setUpiPinSuccessPopup">
+    <!--success2-->
+    <div class="row mt-3">
+        <div class="success">
+            <img src="assets/images/svg/check.svg" alt="success-icon">
+            <h3> {{ 'SUCCESS' | translate }}</h3>
+            <h5>
+                {{ 'UPI_PIN_SET_SUCCESSFULLY' | translate }}
+                <!-- UPI PIN Set Successfully -->
+            </h5>
+        </div>
+    </div>
+    <div class="row1 mt-3">
+        <div class="col-12 text-center">
+            <button class="ux-button primary md submit-btn" (click)="closePopup('setUpiPinSuccessPopup')">
+                {{ 'OK' | translate }}
+            </button>
+        </div>
+    </div>
+</div>
+<!-- Set UPI Pin Success Popup End -->
+
+<!-- Change UPI Pin Success Popup Start -->
+<div class="popup-bottom success3 changeUpiPinSuccessPopup">
+    <!--success3-->
+    <div class="row mt-3">
+        <div class="success">
+            <img src="assets/images/svg/check.svg" alt="success-icon">
+            <h3>
+                {{ 'SUCCESS' | translate }}
+            </h3>
+            <h5>
+                {{ 'UPI_PIN_CHANGED_SUCCESSFULLY' | translate }}
+                <!-- UPI PIN Changed Successfully -->
+            </h5>
+        </div>
+    </div>
+    <div class="row1 mt-3">
+        <div class="col-12 text-center">
+            <button class="ux-button primary md submit-btn" (click)="closePopup('changeUpiPinSuccessPopup')">
+                {{ 'OK' | translate }}
+            </button>
+        </div>
+    </div>
+</div>
+<!-- Change UPI Pin Success Popup End -->
+
+<!-- Debit Block Confirmation Popup Start -->
+<div class="popup-bottom debitBlockConfirmationPopup">
+    <div class="row">
+        <div class="col-12">
+            <h4 class="text-center">
+                <!-- Debit Block -->
+                {{ 'DEBIT_BLOCK' | translate }}
+            </h4>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12">
+            <p>
+                {{ 'DEBIT_BLOCK_CONFIRM_DESC' | translate }} {{ popupData.accType }} - {{ popupData.maskedAccountNumber }}
+                <!-- Do you want to block the debit transaction from account Savings -XXXX XXXX XX 5847 -->
+            </p>
+        </div>
+    </div>
+    <div class="row1 mt-2">
+        <div class="col-6 text-center">
+            <button class="ux-button secondary no md close-btn" (click)="closePopup('debitBlockConfirmationPopup')">
+                {{ 'NO' | translate }}
+            </button>
+        </div>
+        <div class="col-6 text-center">
+            <button class="block-btn ux-button primary md" (click)="closePopup('debitBlockConfirmationPopup'); debitBlockFlow(popupData)">
+                {{ 'YES' | translate }}
+            </button>
+        </div>
+    </div>
+</div>
+<!-- Debit Block Confirmation Popup End -->
+
+<!-- Debit Block Success Popup Start -->
+<div class="popup-bottom debitBlockSuccessPopup">
+    <div class="row1 mt-3">
+        <div class="success">
+            <img src="assets/images/svg/check.svg" alt="success-icon">
+            <h3>
+                {{ 'SUCCESS' | translate }}
+            </h3>
+            <h5>
+                <!-- Debit Block enabled for account Savings XXXX XXXX XX 5847 -->
+                {{ 'DEBIT_BLOCK_SUCCESS' |translate }} {{ popupData.accType}} {{ popupData.maskedAccountNumber }}
+            </h5>
+        </div>
+    </div>
+    <div class="row1 mt-3">
+        <div class="col-12 text-center">
+            <button class="ux-button primary md enable-btn" (click)="closePopup('debitBlockSuccessPopup')">
+                {{ 'OK' | translate }}
+            </button>
+        </div>
+    </div>
+</div>
+<!-- Debit Block Success Popup End -->
+
+<!-- Set Limit Popup Start -->
+<div class="popup-bottom setLimitPopup">
+    <!--setlimit1-->
+    <div class="row1">
+        <div class="col-10">
+            <h4>
+                {{ 'SET_LIMIT' | translate }}
+                <!-- Set Limit -->
+            </h4>
+        </div>
+        <div class="col-2">
+            <button class="ux-button-icon close-btn" (click)="closePopup('setLimitPopup')">
+                <img src="assets/images/svg/close-b.svg" alt="cross-icon" class="img-vsmall">
+            </button>
+        </div>
+    </div>
+    <form [formGroup]="setLimitForm">
+        <div class="row2">
+            <div class="col-12 p-0">
+                <div class="col-sm-12 col-12 col-md-12">
+                    <div class="ux-input">
+                        <label for="limit">{{ 'LIMIT' | translate }}</label>
+                        <!-- <input type="tel" name="limit" autocomplete="off" size="10" numbersOnly (input)="checkLimit($event.target.value)" placeholder="" required class="pl-3" formControlName="limitAmt"> -->
+                        <!--appCurrencyInputMask-->
+                        <!-- Android Keyboard End -->
+                        <!-- iOS Keyboard Start -->
+                        <input type="text" inputmode="decimal" autocomplete="off" size="10" numbersOnly (input)="checkLimit($event.target.value)" placeholder="" required class="pl-3" formControlName="limitAmt">
+                        <!-- iOS Keyboard End -->
+                        <!-- <em class="show-currency"></em> -->
+                        <!-- <p class="mb-0"></p> -->
+                        <p class="text-center error-message" style="color: #c51523;" *ngIf="setLimitForm.controls['limitAmt'].hasError('required')  && setLimitForm.controls['limitAmt'].touched">
+                            {{ 'ENTER_AMOUNT_ERROR' | translate }}
+                        </p>
+                        <p class="text-center error-message" style="color: #c51523;" *ngIf="!setLimitForm.controls['limitAmt'].hasError('required')  && setLimitForm.controls['limitAmt'].touched && isAmountLimitExceeded">
+                            {{ 'ENTER_AMOUNT_LESS_THAN_ONE_LAKH' | translate }}
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row  mt-3">
+            <div class="col-12 text-center">
+                <button class="ux-button primary submit-btn" (click)="UpiApiCall(constant.upiserviceName_EDITACCOUNTCURRENTLIMIT, popupData);" [disabled]="setLimitForm.invalid || isAmountLimitExceeded">
+                    {{ 'PROCEED' | translate }}
+                </button>
+            </div>
+        </div>
+    </form>
+</div>
+<!-- Set Limit Popup End -->
+
+<!-- UPI Profile SPAM Alert Popup Start -->
+<div class="popup-bottom alert1">
+    <div class="row">
+        <div class="col-12">
+            <h4 class="text-center">Alert</h4>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12">
+            <p>
+                You are not allowed to edit UPI ID as your UPI profile is marked as spam. please contact banks for more details
+            </p>
+        </div>
+    </div>
+    <div class="row1 mt-2">
+        <div class="col-12 text-center">
+            <button class="ux-button primary md">Ok</button>
+        </div>
+    </div>
+</div>
+<!-- UPI Profile SPAM Alert Popup End -->
+
+
+<!-- UPI Global Update Popup Start -->
+<div class="popup-bottom updateGlobalUpiPopup">
+    <div class="row">
+        <div class="col-12">
+            <h4 class="text-center">
+                {{ 'INFORMATION' | translate }}
+            </h4>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12">
+            <p>
+                <!-- UPI Global Services are already activated for account 
+                Saving XXXX XXXX XX 5847 for valid period <br/> Start Date: 25 Sept 2020 End Date: 23 Dec 2020 -->
+                {{ 'UPI_GLOBAL_POPUP_DESC_1' | translate }} Saving XXXX XXXX XX 5847 {{ 'UPI_GLOBAL_POPUP_DESC_2' | translate }} <br /> {{ 'START_DATE' | translate }}: 25 Sept 2020 {{ 'END_DATE' | translate }}: 23 Dec 2020
+            </p>
+        </div>
+    </div>
+    <div class="row1 mt-2">
+        <div class="col-12 text-center">
+            <button class="ux-button primary md">
+                {{ 'UPDATE_UPI_GLOBAL_SETTING' | translate }}
+            </button>
+        </div>
+    </div>
+</div>
+<!-- UPI Global Update Popup Start -->
+
+
+<!-- <div class="ios-nav-overlay"></div> -->

@@ -1,0 +1,220 @@
+<div class="main bg-m">
+	<div class="nav-overlay"></div>
+	<div class="right-main-column ">
+		<div class="right-col-container pad-b full-width">
+			<!-- ======== body page content start from here ======== -->
+			<div class="body-page-container main-dashborad manage-payee">
+				<div class="container-fluid">
+					<div class="row">
+						<div class="col-12 p-0">
+							<div class="breadcrumb">
+								<ul class="lst-breadcrumb">
+									<li *ngFor="let name of dataService.breadcrumblist">
+										<a (click)="DataService.breadcrumroute(name.routeName)">{{name.currentRoute | translate}}</a>
+								  </li>
+								</ul>
+							</div>
+						</div>
+					</div>
+					<!--.row -->
+					<div class="vspacer15 customize d-none d-md-block d-lg-block d-xl-block"></div>
+					<div class="row no-gutters">
+						<div class="col-12">
+							<div class="row1">
+								<div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-9">
+									<!-- Greencard2 Start here -->
+									<div class="greencard2">
+										<div class="row1 hide-m">
+											<div class="col-md-8 col-12">
+												<h4>Enter OTP</h4> </div>
+											<div class="col-md-4 col-12"> </div>
+										</div>
+										<div class="row1">
+											<div class="col-sm-12 col-12 col-md-12">
+												<div class="white-box2 mar-t pad-custom custom-bor">
+													<div class="row1">
+														<div class="col-12 col-md-8 col-lg-9 col-xl-9">
+															<div class="row1">
+																<div class="col-12 col-md-12">
+																	<div class="ux-input"> <em class="info-message2">OTP sent on your registered Mobile number ending with {{mobNumber}}</em> </div>
+																</div>
+																<div class="col-12 col-md-8 col-lg-8 col-xl-7">
+																	<div class="row">
+																		<div class="col-12 pl-2 pr-2">
+                                      <form [formGroup]="closeRdForm">
+                                        <div class="row3">
+                                          <div class="col-sm-2 col-2 col-md-2">
+                                              <div class="ux-input password1 mb-1">
+                                              <input id="otppassword1" type="password" #closeRdOTPRow maxlength="1" placeholder="●" (keyup)="onKeyUpEvent(0, $event, 'otp')" (focus)="onFocusEvent(1, 'otp')"  formControlName="otp1"> </div>
+                                          </div>
+                                          <div class="col-sm-2 col-2 col-md-2">
+                                              <div class="ux-input password1 mb-1">
+                                              <input id="otppassword2" type="password" #closeRdOTPRow maxlength="1" placeholder="●" (keyup)="onKeyUpEvent(1, $event, 'otp')" (focus)="onFocusEvent(2, 'otp')"  formControlName="otp2"> </div>
+                                          </div>
+                                          <div class="col-sm-2 col-2 col-md-2">
+                                              <div class="ux-input password1 mb-1">
+                                              <input id="otppassword3" type="password" #closeRdOTPRow maxlength="1" placeholder="●" (keyup)="onKeyUpEvent(2, $event, 'otp')" (focus)="onFocusEvent(3, 'otp')"  formControlName="otp3"> </div>
+                                          </div>
+                                          <div class="col-sm-2 col-2 col-md-2">
+                                              <div class="ux-input password1 mb-1">
+                                              <input id="otppassword4" type="password" #closeRdOTPRow maxlength="1" placeholder="●" (keyup)="onKeyUpEvent(3, $event, 'otp')" (focus)="onFocusEvent(4, 'otp')" formControlName="otp4"> </div>
+                                          </div>
+                                          <div class="col-sm-2 col-2 col-md-2">
+                                              <div class="ux-input password1  mb-1">
+                                              <input id="otppassword5" type="password" #closeRdOTPRow maxlength="1" placeholder="●" (keyup)="onKeyUpEvent(4, $event, 'otp')" (focus)="onFocusEvent(5, 'otp')" formControlName="otp5"> </div>
+                                          </div>
+                                          <div class="col-sm-2 col-2 col-md-2">
+                                              <div class="ux-input password1 mb-1">
+                                              <input id="otppassword6" type="password" #closeRdOTPRow maxlength="1" placeholder="●" (keyup)="onKeyUpEvent(5, $event, 'otp')" (focus)="onFocusEvent(6, 'otp')" formControlName="otp6"> </div>
+                                          </div>
+                                        </div>
+                                      </form>
+																			<div class="row1">
+                                        <div class="col-12">
+                                          <div class="ux-input password1 mt-0 mb-0">
+                                            <p class="error-message" *ngIf="invalidOtp"> Please enter valid OTP </p>
+                                          </div>
+                                        </div>
+                                      </div>
+																			<div class="row3">
+																				<div class="col-6 col-md-6">
+																					<div class="text-left">
+																						<p class="text-left"> <span class="success-text">{{counter | formatTimer }}</span> </p>
+																					</div>
+																				</div>
+																				<div class="col-6 col-md-6">
+																					<div class="text-right">
+																						<button class="ux-linkbutton default-underline mt3" (click)="resendOTP(2)" [ngClass]="counter > 0 ? 'mydisabled' : 'resendActive'">RESEND</button>
+																					</div>
+																				</div>
+																			</div>
+																		</div>
+																	</div>
+																</div>
+															</div>
+														</div>
+														<div class="col-12 col-md-4 col-lg-3 col-xl-3 text-right hide-m">
+															<div class="mobile-img"> <img src="assets/images/icons/mobile.svg" alt="mobile-icon"> </div>
+														</div>
+													</div>
+												</div>
+											</div>
+											<div class="col-sm-12 col-12 col-md-12">
+												<div class="result-container1 mar-top">
+													<div class="info-bottom pad-custom">
+														<div class="info-details mt-3">
+															<div class="row">
+																<h6>Deposit Type</h6>
+																<h5>{{closeRDDetails.depositType}}</h5>
+                              </div>
+														</div>
+														<div class="info-details">
+															<div class="row">
+																<h6>Depositer Type</h6>
+																<h5>{{closeRDDetails?.depositorType?.schemeDescription ? closeRDDetails?.depositorType?.schemeDescription : '-'}}</h5>
+                              </div>
+														</div>
+														<div class="info-details">
+															<div class="row">
+																<h6>RD Account Number</h6>
+																<h5>{{closeRDDetails.RDAccNumber}}</h5>
+                              </div>
+														</div>
+														<div class="info-details">
+															<div class="row">
+																<h6>Applicable Rate of interest</h6>
+																<h5>{{closeRDDetails.rateOfInterest}} %</h5>
+                              </div>
+														</div>
+														<div class="info-details">
+															<div class="row">
+																<h6>Effective Rate of interest</h6>
+																<h5>{{closeRDDetails.rateOfInterest}} %</h5>
+                              </div>
+														</div>
+														<div class="info-details">
+															<div class="row">
+																<h6>Installment Amount</h6>
+																<h5>
+                                  <!-- <img src="assets/images/svg/rupee-bl.svg" alt="rupees-icon"> -->
+                                  {{closeRDDetails.depositAmount | customcurrency}}
+                                </h5>
+                              </div>
+														</div>
+														<div class="info-details">
+															<div class="row">
+																<h6>Current Maturity Amount</h6>
+																<h5>
+                                  <!-- <img src="assets/images/svg/rupee-bl.svg" alt="rupees-icon"> -->
+                                  {{closeRDDetails.currentMaturityAmount | customcurrency}}
+                                </h5>
+                              </div>
+														</div>
+														<div class="info-details">
+															<div class="row">
+																<h6>Credit to close</h6>
+																<h5>
+                                  <!-- <img src="assets/images/svg/rupee-bl.svg" alt="rupees-icon"> -->
+                                  {{closeRDDetails.creditToClose | customcurrency}}
+                                </h5>
+                              </div>
+														</div>
+														<div class="info-details">
+															<div class="row">
+																<h6>Maturity Payout Account</h6>
+																<h5>{{closeRDDetails.maturityPayoutAccount}}</h5> </div>
+														</div>
+														<div class="info-details">
+															<div class="row">
+																<h6>Maturity Date</h6>
+																<h5>{{closeRDDetails.maturityDate}}</h5> </div>
+														</div>
+													</div>
+												</div>
+											</div>
+											<div class="col-12 col-md-12">
+												<ul class="bottom-footer1">
+													<li>
+														<div class="btn-div">
+															<button class=" ux-button secondary sm-mob" (click)="goToPage('closeRD')">Cancel</button>
+														</div>
+														<div class="btn-div">
+															<button class=" ux-button primary sm-mob" (click)="closeFdSubmit()">Continue</button>
+														</div>
+													</li>
+												</ul>
+											</div>
+										</div>
+									</div>
+									<!-- Greencard2 End here -->
+								</div>
+								<!-- Right Column Ads Start -->
+								<div class="col-12 col-md-12 col-lg-12 col-xl-3 d-none d-xl-block">
+									<div class="right-ads">
+										<a> <img src="assets/images/banner/my-card-banner.jpg"> </a>
+									</div>
+									<div class="vspacer30"></div>
+									<!-- <div class="offers-card">
+										<div class="header-block clearfix">
+											<h5>Offers on your card</h5> </div>
+										<div class="panel-body">
+											<div class="recentpayment-control">
+												<ul>
+													<li> <img src="assets/images/banner/offer-banner.png"> </li>
+												</ul>
+											</div>
+										</div>
+									</div> -->
+								</div>
+								<!-- Right Column Ads Ends -->
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!--.right-col-container-->
+	</div>
+	<!--.right-main-column-->
+</div>
+<!-- main -->

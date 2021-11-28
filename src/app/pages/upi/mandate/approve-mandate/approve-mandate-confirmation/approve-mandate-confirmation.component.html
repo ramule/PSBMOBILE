@@ -1,0 +1,201 @@
+<div class="main">
+
+
+
+    <div class="right-main-column minus-rt-col mar-custom">
+        <div class="right-col-container cust-pb">
+
+            <div class="body-page-container">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="bg-section">
+                            <div class="col-12">
+                                <div class="row1">
+                                    <div class="col-sm-12 col-12 col-md-12">
+
+                                        <div class="white-bg1 pad-custom">
+                                            <ul class="complaint-list">
+                                                <li class="bor-n">
+                                                    <div class="full-container">
+                                                        <div class="row1">
+                                                            <div class="col-12 col-md-12">
+                                                                <div class="left-info">
+                                                                    <h6>{{'REQUEST_FROM_UPI_ID' | translate}}</h6>
+                                                                    <h5>{{'UPI_ID' | translate }} : {{approveMandateDetail.payeeAddress}}</h5>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                                <li class="bor-n">
+                                                    <div class="full-container">
+                                                        <div class="row1">
+                                                            <div class="col-12 col-md-12">
+                                                                <div class="left-info">
+                                                                    <h6>{{'PAYEE_NAME' | translate}}</h6>
+                                                                    <h5>{{approveMandateDetail.payeeName}}</h5>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                                <li class="bor-n">
+                                                    <div class="full-container">
+                                                        <div class="row1">
+                                                            <div class="col-12 col-md-12">
+                                                                <div class="left-info">
+                                                                    <h6>{{"DEBIT_FROM_UPI_ID" | translate}}</h6>
+                                                                    <h5>{{'UPI_ID' | translate }} : {{approveMandateDetail.payerAddress}}</h5>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </li>
+
+                                                <li class="bor-n">
+                                                    <div class="full-container">
+                                                        <div class="row1">
+                                                            <div class="col-12 col-md-12">
+                                                                <div class="left-info">
+                                                                    <h6>{{'LINKED_ACCOUNT' | translate}}</h6>
+                                                                    <h5>  {{VPAAccountDetails.accType}}
+                                                                        {{VPAAccountDetails.maskedAccountNumber}}</h5>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                                <li class="bor-n">
+                                                    <div class="full-container">
+                                                        <div class="row1">
+                                                            <div class="col-12 col-md-12">
+                                                                <div class="left-info">
+                                                                    <h6>{{'AMOUNT' | translate}}</h6>
+                                                                    <h5>
+                                                                        <!-- <img src="assets/images/svg/rupee-bl.svg" alt="rupees-icon"> -->
+                                                                        {{approveMandateDetail.amount | customcurrency:'symbol'}}
+                                                                    </h5>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                                <li class="bor-n">
+                                                    <div class="full-container">
+                                                        <div class="row1">
+                                                            <div class="col-12 col-md-12">
+                                                                <div class="left-info">
+                                                                    <h6>{{"FREQUENCY" | translate}}</h6>
+                                                                    <h5>{{approveMandateDetail.frequency}}</h5>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                                <li class="bor-n">
+                                                    <div class="full-container">
+                                                        <div class="row1">
+                                                            <div class="col-12 col-md-12">
+                                                                <div class="left-info">
+                                                                    <h6>{{'VALIDITY' | translate}}</h6>
+                                                                    <!-- <h5>{{approveMandateDetail.validityStart | date:'dd/MM/yyyy'}} -
+                                    {{approveMandateDetail.validityEnd | date:'dd/MM/yyyy'}}</h5> -->
+                                                                    <h5>{{approveMandateDetail.validityStart}} - {{approveMandateDetail.validityEnd}}
+                                                                    </h5>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                                <li class="bor-n">
+                                                    <div class="full-container">
+                                                        <div class="row1">
+                                                            <div class="col-12 col-md-12">
+                                                                <div class="left-info">
+                                                                    <h6>{{'EXPIRY_DATE_AND_TIME' | translate}}</h6>
+                                                                    <h5>{{approveMandateDetail.expiredDate}}
+                                                                    </h5>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                                <li class="bor-n" *ngIf='approveMandateDetail.frequency != "ONETIME" && approveMandateDetail.frequency != "DAILY" && approveMandateDetail.frequency != "ASPRESENTED"'>
+                                                    <div class="full-container">
+                                                        <div class="row1">
+                                                            <div class="col-12 col-md-12">
+                                                                <div class="left-info">
+                                                                    <h6>{{'DEBIT_DAY' | translate}}</h6>
+                                                                    <h5>{{approveMandateDetail?.debitDay}}</h5>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                                <li class="bor-n">
+                                                    <div class="full-container">
+                                                        <div class="row1">
+                                                            <div class="col-12 col-md-12">
+                                                                <div class="left-info">
+                                                                    <h6>{{'REMARKS' | translate}}</h6>
+                                                                    <h5>{{approveMandateDetail.remarks}}</h5>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                            </ul>
+                                            <!-- <div class="ux-footer border-n">
+                        <div class="row1">
+                          <div class="col-12 col-lg-12 col-md-12 col-sm-12 text-center">
+                            <button class="ux-button primary"
+                              (click)="approveMandate()">{{'CONFIRM' | translate}}</button>
+                          </div>
+                        </div>
+                      </div> -->
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <!-- </div>
+  </div>
+
+</div> -->
+
+            <!-- footer section start -->
+
+            <div class="footer-container sticky-actions">
+                <div class="footer-inactions minus-rt-col">
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-12 col-md-12 col-lg-12 text-center">
+                                <button class="ux-button primary md" (click)="approveMandate()">{{'CONFIRM' | translate}}</button>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-12 col-md-12 col-lg-12 text-center">
+                                <div class="autoplay-logo">
+                                    <img src="assets/images/svg/upi-autopay-small.svg" alt="upi-autoplay-logo">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- footer section end -->
+
+        </div>
+    </div>
+
+</div>
+
+<!-- main -->
+
+
+<!-- <div class="ios-nav-overlay"></div>  -->

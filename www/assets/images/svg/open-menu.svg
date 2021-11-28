@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="20" height="15" viewBox="0 0 20 12.731">
+<defs><style>.a{fill:#127ede;}</style></defs>
+<g transform="translate(0 -76)" height="5">
+ <g transform="translate(0 81.584)" >
+	<g transform="translate(0 0)">
+	  <path class="a" d="M19.219,236H.781a.781.781,0,1,0,0,1.562H19.219a.781.781,0,1,0,0-1.562Z" transform="translate(0 -236)"/>
+	</g>
+</g>
+ <g transform="translate(0 76)"><path class="a" d="M19.219,76H.781a.781.781,0,0,0,0,1.563H19.219a.781.781,0,0,0,0-1.563Z" transform="translate(0 -76)"/>
+ </g>
+  <g transform="translate(0 87.169)">
+  <g transform="translate(0 0)"><path class="a" d="M19.219,396H.781a.781.781,0,0,0,0,1.563H19.219a.781.781,0,0,0,0-1.563Z" transform="translate(0 -396)"/>
+    </g>
+  </g>
+</g>
+</svg>

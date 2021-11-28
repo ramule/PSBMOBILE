@@ -1,0 +1,910 @@
+<div class="prelogin-page">
+	<!-- Content Section Start -->
+	<div class="container-main">
+		<div class="container-div">
+			<div class="row1">
+				<div class="col-sm-12 col-12 col-md-12">
+					<div class="widget-box5 mb-3">
+						<div class="bg-white1 pad-custom3">
+							<div class="row1">
+								<div class="col-12">
+									<div class="scroll-box mt-0">
+										<div class="owl-carousel slide-owl" role="list">
+											<div class="item ux-slide-scroll" role="listitem">
+												<a href="javascript:;"> <span>
+															<img src="assets/images/banner/pre-login-banner.jpg" alt="banner-img1" />
+                                                        </span> </a>
+											</div>
+											<div class="item ux-slide-scroll" role="listitem">
+												<a href="javascript:;"> <span>
+                                                            <img src="assets/images/banner/nli-banner.png" alt="banner-img" />
+                                                        </span> </a>
+											</div>
+											<div class="item ux-slide-scroll" role="listitem">
+												<a href="javascript:;">
+													<span>
+														<img src="assets/images/banner/Homeloan-Banner.jpg" alt="banner-img" />
+													</span>
+												</a>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="row1">
+				<div class="col-12">
+					<div class="bank-info-section">
+						<div class="custom-width">
+							<ul class="tabs info-list4" role="tablist">
+								<li role="presentation" (click)="selectionTab('retail')" [ngClass]="tabActive == 'retail'? 'active' : ''  ">
+									<a class="nav-link cust-pad2" >
+										<div class="text-center"> <em>Retail Banking</em> </div>
+									</a>
+								</li>
+                <!-- (click)="selectionTab('nri')" [ngClass]="tabActive == 'nri'? 'active' : ''  " -->
+								<li role="presentation" > <!--(click)="selectionTab('nri')"-->
+									<a class="nav-link cust-pad2">
+										<div class="text-center"> <em>NRI Banking</em> </div>
+									</a>
+									<div class="overlap-badge"> <small>Coming Soon</small> </div>
+								</li>
+								<li role="presentation"   [ngClass]="tabActive == 'corporate'? 'active' : ''  ">  <!--(click)="selectionTab('corporate')"-->
+									<a class="nav-link cust-pad2" >
+										<div class="text-center"> <em>Corporate Banking</em> </div>
+									</a>
+									<div class="overlap-badge"> <small>Coming Soon</small> </div>
+								</li>
+								<li role="presentation"  [ngClass]="tabActive == 'merchant'? 'active' : ''  "> <!--(click)="selectionTab('merchant')"-->
+									<a class="un-read nav-link cust-pad2" >
+										<div class="text-center"> <em>Merchant Banking</em> </div>
+									</a>
+									<div class="overlap-badge"> <small>Coming Soon</small> </div>
+								</li>
+							</ul>
+						</div>
+						<div class="col-12 col-md-12 p-0">
+							<div class="panel entry-content custom-pad tab-pane" id="retail" *ngIf="tabActive == 'retail'">
+								<div class="row1">
+									<div class="col-12 col-md-12 col-lg-6">
+										<div class="bank-info-list">
+											<div class="full-info">
+												<div class="left-info">
+													<h4>Retail Account</h4>
+													<p>PSB offers banking at finger tips to domestic individuals and certain joint account holders.
+														If you are an already registered customer please login to access our seamless digital banking.
+														<br /> In case you are new to digital banking click on Register. 	<br /> <span> Need Help in Registration? <a>Click here</a> </span></p>
+													<div class="btn-section">
+														<div class="text-left">
+															<button class="ux-button primary sm-mob"  (click)="goToPage('registration','retail')">Register</button>
+															<button class="ux-button secondary sm-mob"  (click)="goToPage('login')">Login</button>
+														</div>
+													</div>
+												</div>
+												<div class="left-info">
+													<div class="info-img"> <img src="assets/images/svg/bank-vector.svg" alt="bank-vector"> </div>
+												</div>
+											</div>
+										</div>
+									</div>
+									<div class="col-12 col-md-12 col-lg-6">
+										<div class="bank-info-list">
+											<div class="full-info">
+												<div class="left-info">
+													<h4>Open PSB Digital Account
+														<div class="overlap-badge1">
+															<small>Coming Soon</small>
+														</div>
+													</h4>
+													<p>Open your digital account within a few minutes without the need to visit the branch. PSB offers zero balance and premium account (Coming Soon) to cater to your needs.</p>
+													<div class="btn-section "> <!--ux-disabled-->
+														<div class="text-left">
+                              (click)="goToPage('accountOpening')"
+															<button class="ux-button secondary sm-mob">Open Now</button> <!--disabled-->
+														</div>
+													</div>
+												</div>
+												<div class="left-info">
+													<div class="info-img"> <img src="assets/images/svg/bank-vector.svg" alt="bank-vector"> </div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="row1">
+									<div class="col-12 col-md-12 col-lg-6">
+										<div class="bank-info-list">
+											<div class="full-info">
+												<div class="left-info">
+													<h4>Loan Account
+														<div class="overlap-badge1">
+															<small>Coming Soon</small>
+														</div>
+													</h4>
+													<p>PSB offers banking at finger tips to customers with only Loan accounts. If you are an already registered customer please login to access our seamless digital banking.
+														<br />  In case you are new to digital banking.
+														<!-- <span> Need Help in Registration? <a>Click here</a> </span>  -->
+ 													</p>
+													<div class="btn-section">
+													<!-- <div class="btn-section  ux-disabled"> -->
+														<div class="text-left">
+															<button class="ux-button secondary sm-mob" disabled>Register</button><!-- (click)="goToPage('registration','loan')" --> <!--Change class to primary-->
+															<button class="ux-button secondary sm-mob" disabled>Login</button><!-- (click)="goToPage('login')"-->
+														</div>
+													</div>
+												</div>
+												<div class="left-info">
+													<div class="info-img"> <img src="assets/images/svg/bank-vector2.svg" alt="bank-vector"> </div>
+												</div>
+											</div>
+										</div>
+									</div>
+									<div class="col-12 col-md-12 col-lg-6">
+										<div class="bank-info-list">
+											<div class="full-info">
+												<div class="left-info2">
+													<h4>Retail Banking app
+														<div class="overlap-badge1">
+															<small>Coming Soon</small>
+														</div>
+
+													</h4>
+													<p>
+														PSB Omnichannel digital banking can be accessed through our app on Android and iOS. QR Code will be available soon.</p>
+												</div>
+												<div class="left-info2">
+													<ul class="qr-info-list disabled">
+														<li>
+															<div class="qr-info disabled"> <img src="assets/images/svg/qr-code-b1.svg" alt="QR-code-icon"> </div>
+															<div class="link-info disabled">
+																<a> <img src="assets/images/svg/google-play.svg" alt="google-play"> </a>
+															</div>
+														</li>
+														<li>
+															<div class="qr-info disabled"> <img src="assets/images/svg/qr-code-b1.svg" alt="QR-code-icon"> </div>
+															<div class="link-info disabled">
+																<a> <img src="assets/images/svg/apple-store.svg" alt="apple-store"> </a>
+															</div>
+														</li>
+													</ul>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="row1" style="display: none;">
+									<div class="col-12 col-md-12">
+										<div class="widget-box5 mb-20">
+											<div class="bg-white1 pad-custom">
+												<div class="row1">
+													<div class="col-12 col-md-12">
+														<h4>Services
+														 </h4>
+												</div>
+												<div class="row1">
+													<div class="col-12 col-md-12">
+														<ul class="services-list">
+															<li>
+																<div class="icon-info"> <span>
+                                                                            <img src="assets/images/svg/debit-card-e.svg" alt="card-icon">
+                                                                        </span> </div>
+																<h5>
+                                                                        <a>Apply for Saving/Current/OD Accounts</a>
+                                                                    </h5> </li>
+															<li>
+																<div class="icon-info"> <span>
+                                                                            <img src="assets/images/svg/debit-card-e.svg" alt="card-icon">
+                                                                        </span> </div>
+																<h5>
+                                                                        <a>Online Tax Payment</a>
+                                                                    </h5> </li>
+															<li>
+																<div class="icon-info"> <span>
+                                                                            <img src="assets/images/svg/debit-card-e.svg" alt="card-icon">
+                                                                        </span> </div>
+																<h5>
+                                                                        <a>FD/RD Calculator</a>
+                                                                    </h5> </li>
+															<li>
+																<div class="icon-info"> <span>
+                                                                            <img src="assets/images/svg/debit-card-e.svg" alt="card-icon">
+                                                                        </span> </div>
+																<h5>
+                                                                        <a>Open FD/RD</a>
+                                                                    </h5> </li>
+															<li>
+																<div class="icon-info"> <span>
+                                                                            <img src="assets/images/svg/debit-card-e.svg" alt="card-icon">
+                                                                        </span> </div>
+																<h5>
+                                                                        <a (click)="comingsoon()">Register as a Merchant</a>
+                                                                    </h5> </li>
+															<li>
+																<div class="icon-info"> <span>
+                                                                            <img src="assets/images/svg/debit-card-e.svg" alt="card-icon">
+                                                                        </span> </div>
+																<h5>
+                                                                        <a>Freeze Account</a>
+                                                                    </h5> </li>
+															<li>
+																<div class="icon-info"> <span>
+                                                                            <img src="assets/images/svg/debit-card-e.svg" alt="card-icon">
+                                                                        </span> </div>
+																<h5>
+                                                                        <a (click)="comingsoon()">PSB Collect</a>
+                                                                    </h5> </li>
+															<li>
+																<div class="icon-info"> <span>
+                                                                            <img src="assets/images/svg/debit-card-e.svg" alt="card-icon">
+                                                                        </span> </div>
+																<h5>
+                                                                        <a>Positive Pay</a>
+                                                                    </h5> </li>
+															<li>
+																<div class="icon-info"> <span>
+                                                                            <img src="assets/images/svg/debit-card-e.svg" alt="card-icon">
+                                                                        </span> </div>
+																<h5>
+                                                                        <a>Apply for Loans</a>
+                                                                    </h5> </li>
+															<li>
+																<div class="icon-info"> <span>
+                                                                            <img src="assets/images/svg/debit-card-e.svg" alt="card-icon">
+                                                                        </span> </div>
+																<h5>
+                                                                        <a>UPI</a>
+                                                                    </h5> </li>
+															<li>
+																<div class="icon-info"> <span>
+                                                                            <img src="assets/images/svg/debit-card-e.svg" alt="card-icon">
+                                                                        </span> </div>
+																<h5>
+                                                                        <a  href="https://www.psbloansin59minutes.com/home" target="_blank">Loans in Just 59 minutes</a>
+                                                                    </h5> </li>
+														</ul>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="row1">
+									<div class="col-12 col-md-12">
+										<div class="widget-box5 mb-20">
+											<div class="bg-white1 pad-custom">
+												<div class="row1">
+													<div class="col-12 col-md-12">
+														<ul class="other-services-list">
+															<li>
+																<div class="icon-info"> <span>
+                                                                            <img src="assets/images/svg/recharge-bill-pay.svg" alt="bbps-icon">
+                                                                        </span> </div>
+																<h5>BBRS</h5>
+																<p>You are never too far away from quickefficient banking services. Locate your nearest branch or an ATM.</p>
+																<button class="ux-linkbutton link-text primary" > Know More <img src="assets/images/svg/arrow-right-g2.svg" alt="right-arrow-icon"> </button>
+															</li>
+															<li>
+																<div class="icon-info"> <span>
+                                                                            <img src="assets/images/svg/mortage-icon.svg" alt="mortage-icon">
+                                                                        </span> </div>
+																<h5>Door Step Banking</h5>
+																<p>You are never too far away from quickefficient banking services. Locate your nearest branch or an ATM.</p>
+																<button class="ux-linkbutton link-text primary" > Know More <img src="assets/images/svg/arrow-right-g2.svg" alt="right-arrow-icon"> </button>
+															</li>
+															<li>
+																<div class="icon-info"> <span>
+                                                                            <img src="assets/images/svg/insurance-2.svg" alt="insurance-icon">
+                                                                        </span> </div>
+																<h5>Apply for Insurance</h5>
+																<p>You are never too far away from quickefficient banking services. Locate your nearest branch or an ATM.</p>
+																<button class="ux-linkbutton link-text dark" >Coming Soon</button>
+															</li>
+															<li>
+																<div class="icon-info"> <span>
+                                                                            <img src="assets/images/svg/netc-fastag-icon.svg" alt="fastag-icon">
+                                                                        </span> </div>
+																<h5>FASTag</h5>
+																<p>You are never too far away from quickefficient banking services. Locate your nearest branch or an ATM.</p>
+																<button class="ux-linkbutton link-text dark" > Coming Soon  </button>
+															</li>
+														</ul>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+							</div>
+							<div class="panel entry-content custom-pad tab-pane" id="nri" *ngIf="tabActive == 'nri'">
+								<!-- <div class="row1">
+									<div class="col-12">
+										<div class="widget-box5 mb-20">
+											<div class="bg-white1 pad-custom">
+												<div class="row1">
+													<div class="col-12 col-md-12">
+														<h4>Coming Soon!</h4> </div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div> -->
+								<div class="row1">
+									<div class="col-12 col-md-12 col-xl-6 col-lg-6">
+										<div class="row1">
+											<div class="col-12 col-md-12 col-lg-12">
+												<div class="bank-info-list">
+													<div class="full-info">
+														<div class="left-info">
+															<h4>NRI Account</h4>
+															<p>Lorem Ipsum is simply dummy text of the printing and
+																<br /> typesetting industry. <span> Need Help in Registration? <a>Click here</a> </span></p>
+															<div class="btn-section">
+																<div class="text-left">
+																	<button class="ux-button primary sm-mob"  (click)="goToPage('registration','nri')">Register</button>
+															<button class="ux-button secondary sm-mob"  (click)="goToPage('login')">Login</button>
+																</div>
+															</div>
+														</div>
+														<div class="left-info">
+															<div class="info-img"> <img src="assets/images/svg/bank-vector.svg" alt="bank-vector"> </div>
+														</div>
+													</div>
+												</div>
+											</div>
+											<div class="col-12 col-md-12 col-lg-12">
+												<div class="bank-info-list">
+													<div class="full-info">
+														<div class="left-info">
+															<h4>Apply for NRE/NRO Accounts
+																<div class="overlap-badge1">
+															<small>Coming Soon</small>
+														</div>
+													</h4>
+															<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum</p>
+															<div class="btn-section">
+																<div class="text-left">
+																	<button class="ux-button secondary sm-mob" disabled >Apply Now</button>
+																</div>
+															</div>
+														</div>
+														<div class="left-info">
+															<div class="info-img"> <img src="assets/images/svg/bank-vector2.svg" alt="bank-vector"> </div>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+									<div class="col-12 col-md-12 col-xl-6 col-lg-6">
+										<div class="row1">
+											<div class="col-12 col-md-12 col-lg-12">
+												<div class="bank-info-list">
+													<div class="full-info">
+														<div class="left-info3">
+															<h4>NRI Banking app</h4>
+															<p>Lorem Ipsum is simply dummy text of the printing been the industry’s standard dummy text ever</p>
+														</div>
+														<div class="left-info3">
+															<ul class="qr-info-list">
+																<li>
+																	<div class="qr-info"> <img src="assets/images/svg/qr-code-b1.svg" alt="QR-code-icon" class="img-lg"> </div>
+																	<div class="link-info">
+																		<a> <img src="assets/images/svg/google-play.svg" alt="google-play" class="img-lg"> </a>
+																	</div>
+																</li>
+																<li>
+																	<div class="qr-info"> <img src="assets/images/svg/qr-code-b1.svg" alt="QR-code-icon" class="img-lg"> </div>
+																	<div class="link-info">
+																		<a> <img src="assets/images/svg/apple-store.svg" alt="apple-store" class="img-lg"> </a>
+																	</div>
+																</li>
+															</ul>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="row1" style="display: none;" >
+									<div class="col-12 col-md-12">
+										<div class="widget-box5 mb-20">
+											<div class="bg-white1 pad-custom">
+												<div class="row1">
+													<div class="col-12 col-md-12">
+														<h4>Services</h4> </div>
+												</div>
+												<div class="row1">
+													<div class="col-12 col-md-12">
+														<ul class="services-list">
+															<li>
+																<div class="icon-info"> <span>
+                                                                            <img src="assets/images/svg/debit-card-e.svg" alt="card-icon">
+                                                                        </span> </div>
+																<h5>
+                                                                        <a>Open FD/RD</a>
+                                                                    </h5> </li>
+															<li>
+																<div class="icon-info"> <span>
+                                                                            <img src="assets/images/svg/debit-card-e.svg" alt="card-icon">
+                                                                        </span> </div>
+																<h5>
+                                                                        <a>Online Tax Payment</a>
+                                                                    </h5> </li>
+															<li>
+																<div class="icon-info"> <span>
+                                                                            <img src="assets/images/svg/debit-card-e.svg" alt="card-icon">
+                                                                        </span> </div>
+																<h5>
+                                                                        <a>FD/RD Calculator</a>
+                                                                    </h5> </li>
+															<li>
+																<div class="icon-info"> <span>
+                                                                            <img src="assets/images/svg/debit-card-e.svg" alt="card-icon">
+                                                                        </span> </div>
+																<h5>
+                                                                        <a>Freeze Account</a>
+                                                                    </h5> </li>
+															<li>
+																<div class="icon-info"> <span>
+                                                                            <img src="assets/images/svg/debit-card-e.svg" alt="card-icon">
+                                                                        </span> </div>
+																<h5>
+                                                                        <a (click)="comingsoon()">PSB Collect</a>
+                                                                    </h5> </li>
+															<li>
+																<div class="icon-info"> <span>
+                                                                            <img src="assets/images/svg/debit-card-e.svg" alt="card-icon">
+                                                                        </span> </div>
+																<h5>
+                                                                        <a>Positive Pay</a>
+                                                                    </h5> </li>
+															<li>
+																<div class="icon-info"> <span>
+                                                                            <img src="assets/images/svg/debit-card-e.svg" alt="card-icon">
+                                                                        </span> </div>
+																<h5>
+                                                                        <a>Apply for Loans</a>
+                                                                    </h5> </li>
+															<li>
+																<div class="icon-info"> <span>
+                                                                            <img src="assets/images/svg/debit-card-e.svg" alt="card-icon">
+                                                                        </span> </div>
+																<h5>
+                                                                        <a>UPI</a>
+                                                                    </h5> </li>
+														</ul>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="row1">
+									<div class="col-12 col-md-12">
+										<div class="widget-box5 mb-20">
+											<div class="bg-white1 pad-custom">
+												<div class="row1">
+													<div class="col-12 col-md-12">
+														<ul class="other-services-list">
+															<li>
+																<div class="icon-info"> <span>
+                                                                            <img src="assets/images/svg/recharge-bill-pay.svg" alt="bbps-icon">
+                                                                        </span> </div>
+																<h5>BBRS</h5>
+																<p>You are never too far away from quickefficient banking services. Locate your nearest branch or an ATM.</p>
+																<button class="ux-linkbutton link-text primary" > Know More <img src="assets/images/svg/arrow-right-g2.svg" alt="right-arrow-icon"> </button>
+															</li>
+															<li>
+																<div class="icon-info"> <span>
+                                                                            <img src="assets/images/svg/mortage-icon.svg" alt="mortage-icon">
+                                                                        </span> </div>
+																<h5>Door Step Banking</h5>
+																<p>You are never too far away from quickefficient banking services. Locate your nearest branch or an ATM.</p>
+																<button class="ux-linkbutton link-text primary" > Know More <img src="assets/images/svg/arrow-right-g2.svg" alt="right-arrow-icon"> </button>
+															</li>
+															<li>
+																<div class="icon-info"> <span>
+                                                                            <img src="assets/images/svg/insurance-2.svg" alt="insurance-icon">
+                                                                        </span> </div>
+																<h5>Apply for Insurance</h5>
+																<p>You are never too far away from quickefficient banking services. Locate your nearest branch or an ATM.</p>
+																<button class="ux-linkbutton link-text primary" > Know More <img src="assets/images/svg/arrow-right-g2.svg" alt="right-arrow-icon"> </button>
+															</li>
+															<li>
+																<div class="icon-info"> <span>
+                                                                            <img src="assets/images/svg/netc-fastag-icon.svg" alt="fastag-icon">
+                                                                        </span> </div>
+																<h5>FASTag</h5>
+																<p>You are never too far away from quickefficient banking services. Locate your nearest branch or an ATM.</p>
+																<button class="ux-linkbutton link-text primary" > Know More <img src="assets/images/svg/arrow-right-g2.svg" alt="right-arrow-icon"> </button>
+															</li>
+														</ul>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="panel entry-content custom-pad tab-pane" id="corporate"  *ngIf="tabActive == 'corporate'"  style="display: none;">
+<!--
+								<div class="row1">
+									<div class="col-12">
+										<div class="widget-box5 mb-20">
+											<div class="bg-white1 pad-custom">
+												<div class="row1">
+													<div class="col-12 col-md-12">
+														<h4>Coming Soon!</h4> </div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div> -->
+								<div class="row1"> <!--Comming soon : remove display: none -->
+									<div class="col-12 col-md-12 col-lg-6">
+										<div class="bank-info-list">
+											<div class="full-info">
+												<div class="left-info">
+													<h4>Proprietor Account</h4>
+													<p>Lorem Ipsum is simply dummy text of the printing and
+														<br /> typesetting industry. <span> Need Help in Registration? <a>Click here</a> </span></p>
+													<div class="btn-section">
+														<div class="text-left">
+															<button class="ux-button primary sm-mob" (click)="registerSoleProprietor()">Register</button>
+															<button class="ux-button secondary sm-mob" (click)="loginSoleProprietor()">Login</button>
+														</div>
+													</div>
+												</div>
+												<div class="left-info">
+													<div class="info-img"> <img src="assets/images/svg/bank-vector2.svg" alt="bank-vector"> </div>
+												</div>
+											</div>
+										</div>
+									</div>
+									<div class="col-12 col-md-12 col-lg-6" >
+										<div class="bank-info-list">
+											<div class="full-info">
+												<div class="left-info">
+													<h4>Open Corporate Account</h4>
+													<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum</p>
+													<div class="btn-section">
+														<div class="text-left">
+															<button class="ux-button primary sm-mob">Open Now</button>
+														</div>
+													</div>
+												</div>
+												<div class="left-info">
+													<div class="info-img"> <img src="assets/images/svg/bank-vector.svg" alt="bank-vector"> </div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="row1">
+									<div class="col-12 col-md-12 col-lg-6">
+										<div class="bank-info-list">
+											<div class="full-info">
+												<div class="left-info">
+													<h4>Corporate Account</h4>
+													<p>Lorem Ipsum is simply dummy text of the printing and
+														<br /> typesetting industry. <span> Need Help in Registration? <a>Click here</a> </span></p>
+													<div class="btn-section">
+														<div class="text-left">
+															<button class="ux-button primary sm-mob3">Apply for Corporate Banking</button>
+														</div>
+													</div>
+													<div class="btn-section">
+														<div class="text-left">
+															<button class="ux-button secondary sm-mob4">Register with Bank Token</button>
+															<button class="ux-button secondary sm-mob">Login</button>
+														</div>
+													</div>
+												</div>
+												<div class="left-info">
+													<div class="info-img"> <img src="assets/images/svg/bank-vector.svg" alt="bank-vector"> </div>
+												</div>
+											</div>
+										</div>
+									</div>
+									<div class="col-12 col-md-12 col-lg-6">
+										<div class="bank-info-list">
+											<div class="full-info">
+												<div class="left-info2">
+													<h4>Corporate Banking app</h4>
+													<p>Lorem Ipsum is simply dummy text of the printing been the industry’s standard dummy text ever</p>
+												</div>
+												<div class="left-info2">
+													<ul class="qr-info-list">
+														<li>
+															<div class="qr-info"> <img src="assets/images/svg/qr-code-b1.svg" alt="QR-code-icon"> </div>
+															<div class="link-info">
+																<a> <img src="assets/images/svg/google-play.svg" alt="google-play"> </a>
+															</div>
+														</li>
+														<li>
+															<div class="qr-info"> <img src="assets/images/svg/qr-code-b1.svg" alt="QR-code-icon"> </div>
+															<div class="link-info">
+																<a> <img src="assets/images/svg/apple-store.svg" alt="apple-store"> </a>
+															</div>
+														</li>
+													</ul>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="row1" style="display: none;">
+									<div class="col-12 col-md-12">
+										<div class="widget-box5 mb-20">
+											<div class="bg-white1 pad-custom">
+												<div class="row1">
+													<div class="col-12 col-md-12">
+														<h4>Services</h4> </div>
+												</div>
+												<div class="row1">
+													<div class="col-12 col-md-12">
+														<ul class="services-list">
+															<li>
+																<div class="icon-info"> <span>
+                                                                            <img src="assets/images/svg/debit-card-e.svg" alt="card-icon">
+                                                                        </span> </div>
+																<h5 >
+                                                                        <a  (click)="comingsoon()" >Register as a Merchant</a>
+                                                                    </h5> </li>
+															<li>
+																<div class="icon-info"> <span>
+                                                                            <img src="assets/images/svg/debit-card-e.svg" alt="card-icon">
+                                                                        </span> </div>
+																<h5>
+                                                                        <a>Online Tax Payment</a>
+                                                                    </h5> </li>
+															<li>
+																<div class="icon-info"> <span>
+                                                                            <img src="assets/images/svg/debit-card-e.svg" alt="card-icon">
+                                                                        </span> </div>
+																<h5>
+                                                                        <a>FD/RD Calculator</a>
+                                                                    </h5> </li>
+															<li>
+																<div class="icon-info"> <span>
+                                                                            <img src="assets/images/svg/debit-card-e.svg" alt="card-icon">
+                                                                        </span> </div>
+																<h5>
+                                                                        <a>Open FD/RD</a>
+                                                                    </h5> </li>
+															<li>
+																<div class="icon-info"> <span>
+                                                                            <img src="assets/images/svg/debit-card-e.svg" alt="card-icon">
+                                                                        </span> </div>
+																<h5>
+                                                                        <a>Apply for Loans</a>
+                                                                    </h5> </li>
+															<li>
+																<div class="icon-info"> <span>
+                                                                            <img src="assets/images/svg/debit-card-e.svg" alt="card-icon">
+                                                                        </span> </div>
+																<h5>
+                                                                        <a>Freeze Account</a>
+                                                                    </h5> </li>
+															<li>
+																<div class="icon-info"> <span>
+                                                                            <img src="assets/images/svg/debit-card-e.svg" alt="card-icon">
+                                                                        </span> </div>
+																<h5 >
+                                                                        <a  (click)="comingsoon()">PSB Collect</a>
+                                                                    </h5> </li>
+															<li>
+																<div class="icon-info"> <span>
+                                                                            <img src="assets/images/svg/debit-card-e.svg" alt="card-icon">
+                                                                        </span> </div>
+																<h5>
+                                                                        <a>Positive Pay</a>
+                                                                    </h5> </li>
+															<li>
+																<div class="icon-info"> <span>
+                                                                            <img src="assets/images/svg/debit-card-e.svg" alt="card-icon">
+                                                                        </span> </div>
+																<h5>
+                                                                        <a>UPI</a>
+                                                                    </h5> </li>
+															<li>
+																<div class="icon-info"> <span>
+                                                                            <img src="assets/images/svg/debit-card-e.svg" alt="card-icon">
+                                                                        </span> </div>
+																<h5>
+                                                                        <a>Loans in Just 59 minutes</a>
+                                                                    </h5> </li>
+														</ul>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="row1" >
+									<div class="col-12 col-md-12">
+										<div class="widget-box5 mb-20">
+											<div class="bg-white1 pad-custom">
+												<div class="row1">
+													<div class="col-12 col-md-12">
+														<ul class="other-services-list">
+															<li>
+																<div class="icon-info"> <span>
+                                                                            <img src="assets/images/svg/recharge-bill-pay.svg" alt="bbps-icon">
+                                                                        </span> </div>
+																<h5>BBRS</h5>
+																<p>You are never too far away from quickefficient banking services. Locate your nearest branch or an ATM.</p>
+																<button class="ux-linkbutton link-text primary" > Know More <img src="assets/images/svg/arrow-right-g2.svg" alt="right-arrow-icon"> </button>
+															</li>
+															<li>
+																<div class="icon-info"> <span>
+                                                                            <img src="assets/images/svg/mortage-icon.svg" alt="mortage-icon">
+                                                                        </span> </div>
+																<h5>Door Step Banking</h5>
+																<p>You are never too far away from quickefficient banking services. Locate your nearest branch or an ATM.</p>
+																<button class="ux-linkbutton link-text primary" > Know More <img src="assets/images/svg/arrow-right-g2.svg" alt="right-arrow-icon"> </button>
+															</li>
+															<li>
+																<div class="icon-info"> <span>
+                                                                            <img src="assets/images/svg/insurance-2.svg" alt="insurance-icon">
+                                                                        </span> </div>
+																<h5>Apply for Insurance</h5>
+																<p>You are never too far away from quickefficient banking services. Locate your nearest branch or an ATM.</p>
+																<button class="ux-linkbutton link-text primary" > Know More <img src="assets/images/svg/arrow-right-g2.svg" alt="right-arrow-icon"> </button>
+															</li>
+															<li>
+																<div class="icon-info"> <span>
+                                                                            <img src="assets/images/svg/netc-fastag-icon.svg" alt="fastag-icon">
+                                                                        </span> </div>
+																<h5>FASTag</h5>
+																<p>You are never too far away from quickefficient banking services. Locate your nearest branch or an ATM.</p>
+																<button class="ux-linkbutton link-text primary" > Know More <img src="assets/images/svg/arrow-right-g2.svg" alt="right-arrow-icon"> </button>
+															</li>
+														</ul>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="panel entry-content custom-pad tab-pane" id="merchant" *ngIf="tabActive == 'merchant'" style="display: none;">
+								<div class="row1">
+									<div class="col-12">
+										<div class="widget-box5 mb-20">
+											<div class="bg-white1 pad-custom">
+												<div class="row1">
+													<div class="col-12 col-md-12">
+														<h4>Coming Soon!</h4> </div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+        <footer>
+            <div class="main-footer" style="display: none;">
+                <div class="container-div">
+                    <div class="row1">
+                        <div class="col-12 col-xl-3 col-lg-3 col-md-6 col-sm-12" style="display: none;">
+                            <ul class="footer-link-list">
+                                <!-- <li><a (click)="comingsoon()" >Chat Bot</a></li> -->
+                                <li><a routerLink="/contactUs">Contact Us</a></li>
+                                <li><a href="mailto:omni@psb.co.in" target="_blank">Write to Us</a></li>
+                                <li (click)="openCallBAckPoupup()"><a >Request a call back</a></li>
+                            </ul>
+                        </div>
+                        <!-- <div class="col-12 col-xl-3 col-lg-3 col-md-6 col-sm-12" style="display: none;">
+                            <ul class="footer-link-list">
+                                <li><a >Media Centre</a></li>
+                                <li><a >Secured Banking guide</a></li>
+                                <li><a (click)="comingsoon()" >Raise a Dispute</a></li>
+                            </ul>
+                        </div> -->
+                        <div class="col-12 col-xl-3 col-lg-3 col-md-6 col-sm-12">
+                            <ul class="footer-link-list">
+                                <li><a routerLink="/locateUs">Locate ATM/Branch</a></li>
+                                <!-- <li ><a >FAQ</a></li>  (for time being removing about us from here and adding div with abous us )-->
+                                <!-- <li><a  href="https://punjabandsindbank.co.in/content/ccharter" target="_blank" >About Us</a></li> -->
+                            </ul>
+                        </div>
+						<div class="col-12 col-xl-3 col-lg-3 col-md-6 col-sm-12">
+                            <ul class="footer-link-list">
+								<li><a  href="https://punjabandsindbank.co.in/content/ccharter" target="_blank" >About Us</a></li>
+                            </ul>
+                        </div>
+                        <div class="col-12 col-xl-3 col-lg-3 col-md-6 col-sm-12">
+                            <ul class="contact-link-list">
+                                <!-- <li>
+                                    <div class="icon-info">
+                                        <span>
+                                            <img src="assets/images/svg/contact-icon.svg" alt="phone-icon">
+                                        </span>
+                                    </div>
+                                    <h6>For Phone Banking Services </h6>
+                                    <h5>1800-221-908</h5>
+                                </li> -->
+                                <li>
+                                    <div class="icon-info">
+                                        <span>
+                                            <img src="assets/images/svg/contact-icon.svg" alt="phone-icon">
+                                        </span>
+                                    </div>
+                                    <h6>Toll Free Number </h6>
+                                    <h5>1800-419-8300</h5>
+                                </li>
+
+                            </ul>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <div class="bottom-footer">
+                <div class="container-div">
+                    <div class="row1">
+                        <div class="col-12 col-md-12 col-sm-12">
+                            <ul class="social-icon-list">
+                                <li><a href="https://www.linkedin.com/company/psbindofficial" target="_blank"><img src="assets/images/svg/linked-in-lg.svg" title="linkedin" alt="linked-in-icon"></a></li>
+                                <li><a href="https://www.facebook.com/PSBIndOfficial" target="_blank" title="facebook"><img src="assets/images/svg/facebook-lg.svg" title="facebook" alt="facebook-icon"></a></li>
+                                <li><a href="https://twitter.com/PSBIndOfficial" target="_blank" title="twitter" ><img src="assets/images/svg/tweeter-lg.svg" title="twitter" alt="tweeter-icon"></a></li>
+                                <li><a href="https://www.instagram.com/psbindofficial/" target="_blank" title="instagram"><img src="assets/images/svg/insta-lg.svg" title="instagram" alt="insta-icon"></a></li>
+                                <li><a href="https://www.youtube.com/channel/UCrJXQpL1mojvsJUkLs3PCIw" target="_blank" title="youtube"><img src="assets/images/svg/you-tube-lg.svg" title="youtube" alt="youtube-icon"></a></li>
+                            </ul>
+                        </div>
+                        <div class="col-12 col-md-12 col-sm-12">
+                            <em>Copyright © 2021, Punjab & Sind Bank. All rights reserved.</em>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+	</div>
+	<!-- Content Section End -->
+</div>
+<!-- .prelogin-page -->
+
+<!-- callabck Popup Start-->
+<div class="popup-bottom md-popup collectPhoneNo" >
+	<div class="row1">
+		<div class="col-10">
+			<h4 class="text-left">Callback Request</h4> </div>
+		<div class="col-2">
+			<button class="ux-button-icon close-btn" (click)="closePopup()"> <img src="assets/images/svg/close-b.svg" alt="cross-icon" class="img-vsmall"> </button>
+		</div>
+	</div>
+	<div *ngIf="!callbackRequestFlag">
+	<form [formGroup]="callbackForm" (ngSubmit)="requestCallbackService()">
+		<div class="row1 mt-2">
+			<div class="col-8">
+				<div class="ux-input" >
+					<label>{{"MOBILE_NUMBER" | translate}}</label>
+					<input type="text" placeholder='{{"ENTER_MOBILE_NO" | translate}}' formControlName="mobNumber" numbersOnly limit-to="10">
+					<p class="error-message" *ngIf="callbackForm.controls['mobNumber'].touched && callbackForm.controls['mobNumber'].hasError('required')">{{"PLEASE_ENTER_MOBILE_NO" | translate }}</p>
+					<p class="error-message" *ngIf="!callbackForm.controls['mobNumber'].hasError('required') && callbackForm.controls['mobNumber'].hasError('pattern')">{{"PLEASE_ENTER_VALID_MOBILE_NO" | translate }}</p>
+				</div>
+
+			</div>
+			<div class="col-4">
+				<button class="ux-button sm primary mt-4" type="submit">Call Back</button>
+			</div>
+		</div>
+	</form>
+	</div>
+	<div *ngIf="callbackRequestFlag" class="text-center">
+		<p class="my-4">A Callback request has been successfuly sent to <b>{{callbackForm.value.mobNumber}} </b><br>
+			Please provide this reference number during the call <b>{{referenceNo}} </b></p>
+			<button class="ux-button sm primary " (click)="closePopup()">OK</button>
+	</div>
+</div>

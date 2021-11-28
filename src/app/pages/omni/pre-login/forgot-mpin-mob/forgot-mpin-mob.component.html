@@ -1,0 +1,490 @@
+<div class="prelogin-page corporate-prelogin-page">
+	<div class="registration-steps">
+		<div class="row1">
+			<div class="col-12 position-static">
+				<div class="inner-header">
+					<div class="registration-container">
+						<!-- <a class="prev-tab" (click)="mobPrevclick()">
+                                <img src="assets/images/svg/left-arrow.svg">Back to Login</a> -->
+						<h4>Forgot MPIN</h4>
+						<a class="close-registration" (click)="close()"> <img src="assets/images/svg/close-w.svg"> </a>
+					</div>
+				</div>
+				<div class="registrationsteps-block registration-container clearfix">
+					<div class="steps-block"> <span class="close"><img src="assets/images/svg/close-b.svg"></span>
+						<ul>
+							<li class="active" *ngFor="let pinDetails of forgotMpinDetails ; index as i"
+								[ngClass]="{'active':pinDetails.stepActive,'completed':pinDetails.stepStatus === 'completed' , 'inprogress':pinDetails.stepStatus === 'inprogress'}">
+								<input type="radio" [value]="pinDetails.tabName" [(ngModel)]="pinDetails.tabName"
+									name="steps" [checked]="pinDetails.stepActive"
+									(change)="onstepChange(pinDetails.tabName , pinDetails.stepIndex )"> <span
+									class="step-number"
+									*ngIf="pinDetails.stepStatus != 'completed'">{{pinDetails.stepIndex}}</span> <span
+									class="step-number" *ngIf="pinDetails.stepStatus == 'completed'">
+									<div class="icon"></div>
+								</span> <b class="step-name"> {{pinDetails.stepName}}</b>
+							</li>
+						</ul>
+					</div>
+					<div class="tab-block">
+						<div id="1" [ngClass]="activeTab =='step1' ? 'reg-step active' : 'reg-step' ">
+							<div class="row1">
+								<div class="col-12 col-lg-6 col-md-12 col-sm-12 position-static">
+									<div class="row1">
+										<div class="col-12">
+											<ul class="step-list">
+												<li class="step-matched"> <em>
+														<span class="primary">STEP 1 </span>
+														<span class="secondary">of STEP 2</span>
+													</em> </li>
+											</ul>
+											<div class="tab-header">
+												<div class="row1">
+													<div class="col-12 col-md-12">
+														<h4>User Authentication</h4>
+													</div>
+												</div>
+											</div>
+										</div>
+										<div class="col-12 col-md-12 col-xl-12 col-lg-12 position-static">
+											<div>
+												<ul class="tabs info-list3" role="tablist">
+													<li role="presentation" class="grid-col-2"
+														(click)="authTypeSelection('internet')"
+														[ngClass]="typeSelection == 'internet' ? 'active' : ''  ">
+														<a class="nav-link cust-pad2">
+															<div class="round-circle">
+																<svg xmlns="http://www.w3.org/2000/svg"
+																	viewBox="0 0 35.922 28.49">
+																	<g data-name="19705859691600702437"
+																		transform="translate(-3 -9)">
+																		<path id="Path_43911" data-name="Path 43911"
+																			d="M35.7,9H6.283A3.3,3.3,0,0,0,3,12.283V31.792a3.292,3.292,0,0,0,3.283,3.221H7.459A1.874,1.874,0,0,0,9.193,37.49h4.335a1.848,1.848,0,0,0,1.734-2.477h11.4a1.874,1.874,0,0,0,1.734,2.477h4.335a1.848,1.848,0,0,0,1.734-2.477H35.64a3.3,3.3,0,0,0,3.283-3.283V12.283A3.292,3.292,0,0,0,35.7,9ZM13.529,36.251H9.193a.619.619,0,1,1,0-1.239h4.335a.619.619,0,0,1,0,1.239Zm19.2,0H28.393a.619.619,0,0,1,0-1.239h4.335a.619.619,0,1,1,0,1.239Zm4.955-4.459a2.062,2.062,0,0,1-2.044,2.044H6.221a2.14,2.14,0,0,1-1.982-2.044V12.283a2.062,2.062,0,0,1,2.044-2.044H35.7a2.062,2.062,0,0,1,2.044,2.044V31.792Z"
+																			transform="translate(0 0)" />
+																		<path id="Path_43912" data-name="Path 43912"
+																			d="M26.429,12.6H10.635a3.3,3.3,0,0,0-3.283,3.283v.681H6.919a.585.585,0,0,0-.619.619v3.9a.585.585,0,0,0,.619.619h.434v3.344H6.919a.585.585,0,0,0-.619.619v3.9a.585.585,0,0,0,.619.619h.434a3.325,3.325,0,0,0,3.283,3.964H26.429a3.3,3.3,0,0,0,3.283-3.283V15.821A3.333,3.333,0,0,0,26.429,12.6ZM8.406,28.951H7.539V26.288h.867Zm0-8.485H7.539V17.8h.867Zm20,10.467a2.062,2.062,0,0,1-2.044,2.044H10.635a2.062,2.062,0,0,1-2.044-2.044v-.743h.434a.585.585,0,0,0,.619-.619v-3.9a.585.585,0,0,0-.619-.619H8.592V21.7h.434a.585.585,0,0,0,.619-.619v-3.9a.585.585,0,0,0-.619-.619H8.592v-.743a2.062,2.062,0,0,1,2.044-2.044H26.429a2.062,2.062,0,0,1,2.044,2.044V30.933Z"
+																			transform="translate(-1.256 -1.37)" />
+																		<path id="Path_43913" data-name="Path 43913"
+																			d="M19,27.345a4.335,4.335,0,1,0,8.671,0A4.309,4.309,0,0,0,19,27.345Zm4.335,3.1a3.1,3.1,0,0,1,0-6.193A3.1,3.1,0,0,1,23.335,30.442Z"
+																			transform="translate(-6.09 -5.339)" />
+																		<path id="Path_43914" data-name="Path 43914"
+																			d="M52.813,27.1H51.574a.47.47,0,0,0-.124-.248l.867-.867a.613.613,0,0,0-.867-.867l-.867.867c-.062-.062-.186-.062-.248-.124V24.619a.619.619,0,0,0-1.239,0v1.239a.47.47,0,0,0-.248.124l-.867-.867a.613.613,0,0,0-.867.867l.867.867c-.062.062-.062.186-.124.248H46.619a.619.619,0,0,0,0,1.239h1.239a.47.47,0,0,0,.124.248l-.867.867a.6.6,0,0,0,0,.867.6.6,0,0,0,.867,0l.867-.867c.062.062.186.062.248.124v1.239a.619.619,0,0,0,1.239,0V29.574a.47.47,0,0,0,.248-.124l.867.867a.6.6,0,0,0,.867,0,.6.6,0,0,0,0-.867l-.867-.867c.062-.062.062-.186.124-.248h1.239a.619.619,0,1,0,0-1.239Zm-3.1,1.3a.681.681,0,1,1,.681-.681A.687.687,0,0,1,49.716,28.4Z"
+																			transform="translate(-16.368 -5.71)" />
+																		<path id="Path_43927" data-name="Path 43927"
+																			d="M2.562-12.665a.945.945,0,0,1-.334.526,1.553,1.553,0,0,1-.551.281l1.33,1.753h-.7l-.985-1.307a3.035,3.035,0,0,0-.259-.314.329.329,0,0,0-.242-.1v-.406h.328a1.093,1.093,0,0,0,.5-.1.556.556,0,0,0,.281-.331H.72l.167-.473H1.938a.476.476,0,0,0-.181-.278.668.668,0,0,0-.37-.111H.72L.887-14H3.329l-.167.473H2.45a.985.985,0,0,1,.128.389h.751l-.167.473Z"
+																			transform="translate(15.204 34.34)" />
+																	</g>
+																</svg>
+															</div>
+															<div class="text-center"> <em>Internet Banking</em> </div>
+														</a>
+													</li>
+													<li role="presentation" class="grid-col-2"
+														(click)="authTypeSelection('otp')"
+														[ngClass]="typeSelection == 'otp' ? 'active' : ''  ">
+														<a class="nav-link cust-pad2">
+															<div class="round-circle">
+																<!-- <img src="assets/images/svg/debit-card-e.svg" alt="debit-card-icon">   -->
+																<svg xmlns="http://www.w3.org/2000/svg"
+																	viewBox="0 0 32.542 24">
+																	<path id="debit-card-e"
+																		d="M32.542,65.712V84.288A2.715,2.715,0,0,1,29.831,87H2.712A2.715,2.715,0,0,1,0,84.288V76.153a.542.542,0,1,1,1.085,0v8.136a1.629,1.629,0,0,0,1.627,1.627H29.831a1.629,1.629,0,0,0,1.627-1.627V65.712a1.629,1.629,0,0,0-1.627-1.627H2.712a1.629,1.629,0,0,0-1.627,1.627v2.169h27.8a.542.542,0,0,1,0,1.085H1.085v3.525h27.8a.542.542,0,0,1,0,1.085H.542A.542.542,0,0,1,0,73.034V65.712A2.715,2.715,0,0,1,2.712,63H29.831A2.715,2.715,0,0,1,32.542,65.712ZM28.2,79.814a1.764,1.764,0,0,0-2.72-1.479,2.847,2.847,0,1,1-.737-.807,2.847,2.847,0,1,1,1.695,5.134.542.542,0,1,1,0-1.085A1.765,1.765,0,0,0,28.2,79.814Zm-3.39,0a1.763,1.763,0,1,0-1.763,1.763A1.765,1.765,0,0,0,24.814,79.814ZM4.949,78.661H9.492a.542.542,0,0,0,0-1.085H4.949a.542.542,0,0,0,0,1.085Zm0,3.39H9.492a.542.542,0,0,0,0-1.085H4.949a.542.542,0,0,0,0,1.085Z"
+																		transform="translate(0 -63)" />
+																</svg>
+															</div>
+															<div class="text-center"> <em>OTP Validation</em> </div>
+														</a>
+													</li>
+												</ul>
+											</div>
+											<div class="col-12 col-md-12 p-0">
+												<div class="panel entry-content tab-pane" id="internet"
+													*ngIf="typeSelection == 'internet'">
+													<form [formGroup]="internetForm">
+														<div class="row1">
+															<div class="col-12 col-xl-10 col-lg-10 col-md-12">
+																<div class="ux-input">
+																	<label for="userName">User Name</label>
+																	<input type="text" limit-to="20" name="userName"
+																		placeholder="Enter User Name"
+																		formControlName="userName">
+																	<p class="error-message"
+																		*ngIf="internetForm.controls['userName'].hasError('required') && (internetForm.controls['userName'].dirty || internetForm.controls['userName'].touched)">
+																		This field is required</p>
+																</div>
+															</div>
+															<div class="col-12 col-xl-10 col-lg-10 col-md-12">
+																<div class="ux-input">
+																	<label for="password">Password</label>
+																	<input type="password" name="password"
+																		placeholder="Enter Password"
+																		formControlName="password">
+																	<p class="error-message"
+																		*ngIf="internetForm.controls['password'].hasError('required') && (internetForm.controls['password'].dirty || internetForm.controls['password'].touched)">
+																		This field is required</p>
+																</div>
+															</div>
+														</div>
+													</form>
+												</div>
+												<div class="panel entry-content tab-pane" id="otp"
+													*ngIf="typeSelection == 'otp'">
+													<form [formGroup]="otpForm">
+														<div class="row1">
+															<div class="col-12 col-xl-10 col-lg-10 col-md-12">
+																<div class="ux-input">
+																	<label for="mobile">Mobile Number {{maskedMobile}}</label>
+																	<input type="text" name="mobile"
+																		placeholder="Enter Mobile Number"
+																		formControlName="mobileNumber" numbersOnly
+																		limit-to="10">
+																	<p class="error-message"
+																		*ngIf="otpForm.controls['mobileNumber'].hasError('required') && (otpForm.controls['mobileNumber'].dirty || otpForm.controls['mobileNumber'].touched)">
+																		This field is required</p>
+																	<p class="error-message"
+																		*ngIf="otpForm.controls['mobileNumber'].hasError('min') && (otpForm.controls['mobileNumber'].dirty || otpForm.controls['mobileNumber'].touched)">
+																		Please enter valid number</p>
+
+																</div>
+															</div>
+															<div class="col-12 col-xl-10 col-lg-10 col-md-12">
+																<div class="ux-input">
+																	<label for="email">Email Address {{maskedEmail}}</label>
+																	<input type="text" name="email"
+																		placeholder="Enter Email Address"
+																		formControlName="email">
+																	<p class="error-message"
+																		*ngIf="otpForm.controls['email'].hasError('required') && (otpForm.controls['email'].dirty || otpForm.controls['email'].touched)">
+																		This field is required</p>
+																	<p class="error-message"
+																		*ngIf="otpForm.controls['email'].hasError('pattern') && (otpForm.controls['email'].dirty || otpForm.controls['email'].touched)">
+																		Please enter valid email id</p>
+
+																</div>
+															</div>
+														</div>
+													</form>
+												</div>
+											</div>
+										</div>
+										<div class="col-12 col-lg-10 col-md-12 col-sm-12 m-auto position-static">
+											<div class="ux-footer border-n">
+												<div class="row1">
+													<div class="col-12 col-md-12">
+														<ul class="bottom-footer1">
+															<li>
+																<div class="btn-div custom-mar hide-m">
+																	<button
+																		class="ux-button secondary sm-mob cancel-btn" (click)="cancel()">Cancel</button>
+																</div>
+																<div class="btn-div custom-mar w100">
+																	<button class="otp-btn ux-button primary sm-mob"
+																		(click)="mpinStepSubmit()">Next</button>
+																</div>
+															</li>
+														</ul>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="col-12 col-xl-6 col-lg-6 col-md-2 col-sm-12  d-none d-lg-block d-xl-block">
+									<img src="assets/images/svg/regImg1.svg" class="right-regImg">
+								</div>
+							</div>
+						</div>
+						<!-- id1 end -->
+						<div id="2" [ngClass]="activeTab =='step2' ? 'reg-step active' : 'reg-step' ">
+							<div class="row1">
+								<div class="col-12 col-lg-8 col-xl-6 col-md-12 col-sm-12 position-static">
+									<div class="row1">
+										<div class="col-12 position-static">
+											<ul class="step-list">
+												<li class="step-matched"> <em>
+														<span class="primary">STEP 2 </span>
+														<span class="secondary">of STEP 2</span>
+													</em> </li>
+											</ul>
+											<div class="tab-header clearfix">
+												<div class="row1">
+													<div class="col-12 col-md-12">
+														<h4>Set MPIN</h4>
+													</div>
+													<div class="col-6 col-md-6">
+														<!-- <div class="text-right">
+                                                                <a href="#" class="link-txt">Skip this step >> </a>
+                                                            </div> -->
+													</div>
+												</div>
+												<div class="row1">
+													<div class="col-12 col-md-12"> <small class="link-text mb-4">
+															MPIN is 6 digit numerical quick access PIN, which can be
+															used for login into your mobile application
+														</small> </div>
+												</div>
+											</div>
+										</div>
+										<div class="col-sm-12 col-12 col-md-12 col-lg-10">
+											<div class="row1">
+												<div class="col-12">
+													<div class="ux-input mt-0 mb-0">
+														<label for="enterTPIN" class="text-center">Enter MPIN</label>
+													</div>
+												</div>
+											</div>
+											<form [formGroup]="mpinForm">
+												<div class="row4">
+													<div class="col-sm-2 col-2 col-md-2"
+														*ngFor="let mpin of mpinInput | slice:0:6; index as i">
+														<div class="ux-input password1 mb-0">
+															<input id="mpassword{{i}}" #mpinRow type="tel" maxlength="1"
+																placeholder="●"
+																(keyup)="onKeyUpEvent(i, $event, 'mpassword')"
+																formControlName="{{mpin}}" pattern="\d*" />
+														</div>
+													</div>
+													<!-- <div class="col-sm-2 col-2 col-md-2">
+													<div class="ux-input password1 mb-0">
+														<input id="mpassword2" type="password" maxlength="1" placeholder="●" onkeyup="onKeyupEvent1(2, event)" onfocus="onfocusEvent1(2)" /> </div>
+												</div>
+												<div class="col-sm-2 col-2 col-md-2">
+													<div class="ux-input password1  mb-0">
+														<input id="mpassword3" type="password" maxlength="1" placeholder="●" onkeyup="onKeyupEvent1(3, event)" onfocus="onfocusEvent1(3)" /> </div>
+												</div>
+												<div class="col-sm-2 col-2 col-md-2">
+													<div class="ux-input password1 mb-0">
+														<input id="mpassword4" type="password" maxlength="1" placeholder="●" onkeyup="onKeyupEvent1(4, event)" onfocus="onfocusEvent1(4)" /> </div>
+												</div>
+												<div class="col-sm-2 col-2 col-md-2">
+													<div class="ux-input password1 mb-0">
+														<input id="mpassword5" type="password" maxlength="1" placeholder="●" onkeyup="onKeyupEvent1(5, event)" onfocus="onfocusEvent1(5)" /> </div>
+												</div>
+												<div class="col-sm-2 col-2 col-md-2">
+													<div class="ux-input password1 mb-0">
+														<input id="mpassword6" type="password" maxlength="1" placeholder="●" onkeyup="onKeyupEvent1(6, event)" onfocus="onfocusEvent1(6)" /> </div>
+												</div> -->
+												</div>
+											</form>
+											<div class="row">
+												<div class="col-12">
+												  <div class="ux-input input-error password1 p1 mb-0">
+													<!-- <p *ngIf="mpinError">
+																						  {{ mpinError }}
+																					  </p> -->
+				  
+													<p *ngIf="mpinError">
+													  {{ 'ENTER_6_DIGIT_MPIN_ERROR' | translate }}
+													</p>
+													<p *ngIf="validMpin">
+													  {{ 'MPIN_SIMPLE_ERROR' | translate }}
+													</p>
+													<!-- <p *ngIf="">
+																						  {{ 'MPIN_MATCHES_PREVIOUS_MPIN_ERROR' | translate }}
+																					  </p> -->
+												  </div>
+												</div>
+											  </div>
+										</div>
+										<div class="col-sm-12 col-12 col-md-12 col-lg-10 mt-4">
+											<div class="row1">
+												<div class="col-12">
+													<div class="ux-input mt-0 mb-0">
+														<label for="" class="text-center">Re-enter MPIN</label>
+													</div>
+												</div>
+											</div>
+											<form [formGroup]="reMpinForm">
+												<div class="row4">
+													<div class="col-sm-2 col-2 col-md-2"
+														*ngFor="let mpin of reMpinInput | slice:0:6; index as i">
+														<div class="ux-input password1 mb-0">
+															<input id="rmpassword{{i}}" type="tel" #reMpinRow
+																maxlength="1" placeholder="●"
+																(keyup)="onKeyUpEvent(i, $event, 'rmpassword')"
+																formControlName="{{mpin}}" pattern="\d*" />
+														</div>
+													</div>
+													<!-- <div class="col-sm-2 col-2 col-md-2">
+													<div class="ux-input password1 mb-0">
+														<input id="rmpassword2" type="password" maxlength="1" placeholder="●" onkeyup="onKeyupEvent2(2, event)" onfocus="onfocusEvent2(2)" /> </div>
+												</div>
+												<div class="col-sm-2 col-2 col-md-2">
+													<div class="ux-input password1 mb-0">
+														<input id="rmpassword3" type="password" maxlength="1" placeholder="●" onkeyup="onKeyupEvent2(3, event)" onfocus="onfocusEvent2(3)" /> </div>
+												</div>
+												<div class="col-sm-2 col-2 col-md-2">
+													<div class="ux-input password1 mb-0">
+														<input id="rmpassword4" type="password" maxlength="1" placeholder="●" onkeyup="onKeyupEvent2(4, event)" onfocus="onfocusEvent2(4)" /> </div>
+												</div>
+												<div class="col-sm-2 col-2 col-md-2">
+													<div class="ux-input password1 mb-0">
+														<input id="rmpassword5" type="password" maxlength="1" placeholder="●" onkeyup="onKeyupEvent2(5, event)" onfocus="onfocusEvent2(5)" /> </div>
+												</div>
+												<div class="col-sm-2 col-2 col-md-2">
+													<div class="ux-input password1 mb-0">
+														<input id="rmpassword6" type="password" maxlength="1" placeholder="●" onkeyup="onKeyupEvent2(6, event)" onfocus="onfocusEvent2(6)" /> </div>
+												</div> -->
+												</div>
+												<div class="row">
+													<div class="col-12">
+													  <div class="ux-input input-error password1 p1 mb-0">
+														<!-- <p *ngIf="confMpinError">
+																							  {{ confMpinError }}
+																						  </p> -->
+														<p *ngIf="confMpinError">
+														  {{ 'ENTER_6_DIGIT_CONFIRM_MPIN_ERROR' | translate }}
+														</p>
+														<p *ngIf="!mpinMatch">
+														  {{ 'MPIN_CONFIRM_MISMATCH_ERROR' | translate }}
+														</p>
+														<p *ngIf="validConfirmMpin">
+														  {{ 'MPIN_SIMPLE_ERROR' | translate }}
+														</p>
+													  </div>
+													</div>
+												  </div>
+											</form>
+											<div class="row">
+												<div class="col-12">
+													<div class="ux-input mt-0 mb-0">
+														<p class="error-message"> </p>
+													</div>
+												</div>
+											</div>
+										</div>
+										<div class="col-12 col-lg-10 col-md-12 col-sm-12 position-static">
+											<div class="ux-footer border-n">
+												<div class="row1">
+													<div class="col-12 col-md-12">
+														<ul class="bottom-footer1">
+															<li>
+																<div class="btn-div custom-mar hide-m">
+																	<button
+																		class="ux-button secondary sm-mob cancel-btn"
+																		(click)="prevstep(2)">Previous</button>
+																</div>
+																<div class="btn-div custom-mar w100">
+																	<button class="ux-button primary sm-mob"
+																		(click)="mpinStepSubmit()">Submit</button>
+																</div>
+															</li>
+														</ul>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="col-12 col-lg-4 col-xl-6 col-md-12 col-sm-12 d-none d-lg-block d-xl-block">
+									<img src="assets/images/svg/ChannelCredentials.svg" class="right-regImg">
+								</div>
+							</div>
+						</div>
+						<!-- id2 end -->
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- .full-container -->
+</div>
+<!-- .prelogin-page -->
+<!-- OTP Popup Start -->
+<div class="popup-bottom md-popup otp-popup">
+	<div class="row1">
+		<div class="col-12">
+			<h4 class="text-center">OTP Verification</h4>
+		</div>
+		<!-- <div class="col-2">
+			<button class="ux-button-icon close-btn" (click)="closePopup()"> <img src="assets/images/svg/close-b.svg" alt="cross-icon" class="img-vsmall"> </button>
+		</div> -->
+	</div>
+	<div class="row1">
+		<div class="col-12 col-md-8 col-lg-8 col-xl-8  m-auto">
+			<div class="row1">
+				<div class="col-12 col-md-8 col-lg-8 col-xl-8 m-auto">
+					<h6 class="text-center">Please enter 6 digit OTP sent on <br /> Mobile Number & Email ID </h6>
+				</div>
+			</div>
+			<div class="row1">
+				<div class="col-12 col-md-12 mt-3">
+					<div class="ux-input">
+						<!-- <h6 class="dark-text text-center">Mobile OTP</h6> -->
+						<label for="" class="text-center">Mobile OTP</label>
+					</div>
+				</div>
+				<div class="col-12 col-md-12">
+					<form [formGroup]="mobOtpForm">
+						<div class="row4">
+							<div class="col-sm-2 col-2 col-md-2" *ngFor="let otp of otpInput | slice:0:6; index as i">
+								<div class="ux-input password1 mb-1">
+									<input id="otppassword{{i}}" #otpRow type="tel" maxlength="1" placeholder="●"
+										(keyup)="onKeyUpEvent(i, $event, 'otp')" formControlName="{{otp}}"
+										pattern="\d*">
+								</div>
+							</div>
+						</div>
+					</form>
+					<div class="row1">
+						<div class="col-12">
+							<div class="ux-input password1 mt-0 mb-0">
+								<p class="error-message"></p>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="col-12 col-md-12 mt-3">
+					<div class="ux-input">
+						<!-- <h6 class="dark-text text-center">Email OTP</h6> -->
+						<label for="" class="text-center">Email OTP</label>
+					</div>
+				</div>
+				<div class="col-12 col-md-12">
+					<form [formGroup]="emailForm">
+						<div class="row4">
+							<div class="col-sm-2 col-2 col-md-2"
+								*ngFor="let email of emailInput | slice:0:6; index as i">
+								<div class="ux-input password1 mb-1">
+									<input id="eotppassword{{i}}" #emailRow type="tel" maxlength="1"
+										placeholder="●" (keyup)="onKeyUpEvent(i, $event, 'email')"
+										formControlName="{{email}}" pattern="\d*">
+								</div>
+							</div>
+						</div>
+					</form>
+					<div class="row1">
+						<div class="col-12">
+							<div class="ux-input password1 mt-0 mb-0">
+								<p class="error-message"></p>
+							</div>
+						</div>
+					</div>
+					<div class="row4">
+						<div class="col-6 col-md-6">
+							<div class="text-left">
+								<p class="text-left"> <span class="success-text" *ngIf="mobileCounter > 0">{{mobileCounter| formatTimer }}</span> </p>
+							</div>
+						</div>
+						<div class="col-6 col-md-6">
+							<div class="text-right">
+								<button class="ux-linkbutton default-underline mt-3" [ngClass]="mobileCounter > 0 ? 'mydisabled' : 'resendActive'"
+									(click)="resendOTPLink('mobile')">Resend</button>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="row1 mt-2">
+		<div class="col-12 col-md-8 col-lg-8 col-xl-8  m-auto">
+			<div class="row1">
+				<div class="col-12 text-center">
+					<button class="ux-button primary sm-mob otp-submit" (click)="verifyOtpSubmit()">Submit</button>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- OTP Popup End-->

@@ -1,0 +1,804 @@
+<div class="main bg-m">
+	<!-- <div class="nav-overlay"></div> -->
+	<!-- End Global Nav -->
+	<div class="right-main-column ">
+		<div class="right-col-container full-width">
+			<div class="body-page-container main-dashborad manage-payee">
+				<div class="container-fluid">
+					<div class="row">
+						<div class="col-12 p-0">
+							<div class="breadcrumb">
+								<ul class="lst-breadcrumb">
+									<!-- <li> <a href="">Social securities</a> </li>
+									<li> APY </li> -->
+									<li *ngFor="let name of DataService.breadcrumblist">
+										<a (click)="DataService.breadcrumroute(name.routeName)">{{name.currentRoute | translate}}</a>
+								</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+					<div class="vspacer15 customize d-none d-md-block d-lg-block d-xl-block"></div>
+					<div class="row no-gutters">
+						<div class="col-12">
+							<div class="row1">
+								<div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-9">
+									<!-- Greencard2 Start here -->
+									<div class="greencard2">
+										<div class="row1">
+											<div class="col-sm-12 col-12 col-md-12">
+												<div class="widget-box5 mb-3">
+													<div class="bg-white1 pad-custom5 clearfix">
+														<div class="pension-yojna-block clearfix">
+															<div class="steps-block" [ngStyle]="{display : navStepClose ? 'block' : 'none' }"> <span class="close" (click)="close()"><img src="assets/images/svg/close-b.svg"></span>
+																<ul>
+																	<li class="active" *ngFor="let apyStepsDetails of apyDetails ; index as i" [ngClass]="{'active':apyStepsDetails.stepActive,'completed':apyStepsDetails.stepStatus === 'completed' , 'inprogress':apyStepsDetails.stepStatus === 'inprogress'}">
+																		<input type="radio" [value]="apyStepsDetails.tabName" [(ngModel)]="apyStepsDetails.tabName" name="steps" [checked]="apyStepsDetails.stepActive" (change)="onstepChange(apyStepsDetails.tabName , apyStepsDetails.stepIndex )"> <span class="step-number" *ngIf="apyStepsDetails.stepStatus != 'completed'">{{apyStepsDetails.stepIndex}}</span> <span class="step-number" *ngIf="apyStepsDetails.stepStatus == 'completed'"><div class="icon"></div></span> <b class="step-name"> {{apyStepsDetails.stepName}}</b> </li>
+																	<!-- <li class="active">
+																		<input type="radio" onchange="goToSSS(1)" name="steps"> <span class="step-number">1</span><b class="step-name"> Personal Details</b> </li> -->
+																	<!-- <li class="">
+																		<input type="radio" onchange="goToSSS(2)" name="steps"> <span class="step-number">2</span><b class="step-name"> Additional
+                                                                                Detatils</b> </li>
+																	<li class="">
+																		<input type="radio" onchange="goToSSS(3)" name="steps"> <span class="step-number">3</span><b class="step-name"> Pension Detatils</b> </li> -->
+																</ul>
+															</div>
+															<!-- steps-block -->
+															<div class="tab-block">
+																<div id="1" *ngIf="activeTab =='step1'" [ngClass]="activeTab =='step1' ? 'tempstep active' : 'tempstep' ">
+																	<div class="row1">
+																		<div class="col-12 col-lg-12 col-md-12 col-sm-12 position-static">
+																			<div class="row1">
+																				<div class="col-12 position-static">
+																					<ul class="step-list">
+																						<li class="step-matched"> <em> <span class="primary">STEP 1 </span> <span class="secondary">of STEP 3</span>
+                                                                                                </em> </li>
+																					</ul>
+																					<div class="tab-header">
+																						<h4>Atal Pension Yojna (APY) Scheme</h4> </div>
+																				</div>
+																				<!-- col-12 position-static -->
+																				<div class="col-12">
+																					<div class="details-section">
+																						<div class="row1">
+																							<div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+																								<h5> Personal Details  </h5> </div>
+																						</div>
+
+																						<div class="row1">
+																							<div class="col-12 ">
+																								<div class="ux-selection mt-3 ux-input">
+																									<label class="ux-selection1">I confirm that I have not enrolled for APY account in any other institution/elsewhere
+																										<input type="checkbox" name="radioboxdemo" checked="checked" (click)="checkedVal($event);"> <span class="checkmark"></span> </label>
+																								</div>
+																							</div>
+																						</div>
+                                            <!-- <form [formGroup]="personaldetailForm"> -->
+																						<div class="row1">
+
+																							<div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+																								<div class="ux-input ux-disabled">
+																									<label>Full Name</label>
+																									<input type="text" placeholder="Enter your Full Name"  disabled [value]="userDetail[0].custName" class="pr-2">
+																									<p class="error-message"> </p>
+																								</div>
+																							</div>
+																							<div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 gen-column">
+																								<div class="ux-input ux-disabled">
+																									<label>Gender</label>
+																									<input type="text" placeholder="Enter Gender" [value]="userDetail[0].gender" disabled   class="pr-2">
+																									<p class="error-message"> </p>
+																								</div>
+																							</div>
+																							<div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
+																								<div class="ux-input ux-disabled">
+																									<label>Date of Birth</label>
+																									<input type="text" placeholder="Enter your Birth Date" disabled [value]="userDetail[0].custBirthDate">
+																									<!-- <input type="text" [owlDateTime]="dt1" [owlDateTimeTrigger]="dt1" placeholder="DD/MM/YYYY" [value]="userDetail[0].custBirthDate"  >
+																									<owl-date-time [pickerType]="'calendar'" #dt1></owl-date-time>
+																									<p class="error-message"> </p> -->
+																								</div>
+																							</div>
+
+																						</div>
+                                            <!-- </form> -->
+																						<div class="row1">
+																							<div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+																								<div class="permanent-address"> Permanent Address</div>
+																								<p class="error-message"> </p>
+																							</div>
+																						</div>
+																						<div class="row1">
+																							<div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
+																								<div class="ux-input ux-disabled">
+																									<label>Address Line 1</label>
+																									<input type="text" placeholder="Enter Address" disabled [value]="userDetail[0].add1">
+																									<p class="error-message"> </p>
+																								</div>
+																							</div>
+																							<div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
+																								<div class="ux-input ux-disabled">
+																									<label>Address Line 2</label>
+																									<input type="text" placeholder="Enter Address" disabled [value]="userDetail[0].add2">
+																									<p class="error-message"> </p>
+																								</div>
+																							</div>
+																						</div>
+																						<div class="row1">
+																							<div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
+																								<div class="ux-input ux-disabled">
+																									<label>State</label>
+																									<input type="text" placeholder="Enter State" [value]="DataService.custProfileStateCityObj.state" disabled   class="pr-2">
+																									<!-- <select required disabled>
+																										<option value="" selected> Select State </option>
+																										<option value="Def"> Def </option>
+																										<option value="Ghi"> Ghi </option>
+																									</select> -->
+																									<p class="error-message"> </p>
+																								</div>
+																							</div>
+																							<div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
+																								<div class="ux-input ux-disabled">
+																									<label>City</label>
+																									<input type="text" placeholder="Enter City" [value]="DataService.custProfileStateCityObj.city" disabled   class="pr-2">
+																									<!-- <select required disabled>
+																										<option value="" selected> Select City </option>
+																										<option value="Def"> Def </option>
+																										<option value="Ghi"> Ghi </option>
+																									</select> -->
+																									<p class="error-message"> </p>
+																								</div>
+																							</div>
+																						</div>
+																						<div class="row1">
+																							<div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
+																								<div class="ux-input ux-disabled">
+																									<label>Pin</label>
+																									<input type="text" placeholder="Enter Pin" disabled [value]="userDetail[0].pin">
+																									<p class="error-message"> </p>
+																								</div>
+																							</div>
+																						</div>
+																					</div>
+																				</div>
+																				<div class="col-12 col-lg-12 col-md-12 col-sm-12 position-static">
+																					<div class="ux-footer border-n">
+																						<div class="row1">
+																							<div class="col-12 col-md-12">
+																								<ul class="bottom-footer1">
+																									<li>
+																										<div class="btn-div custom-mar text-left">
+																											<button class="ux-button secondary sm-mob cancel-btn" (click)="goToPage('socialSecurities')">Cancel</button>
+																										</div>
+																										<div class="btn-div custom-mar">
+																											<button class="ux-button primary sm-mob" (click)="nextstep(1)">Next</button>
+																										</div>
+																									</li>
+																								</ul>
+																							</div>
+																						</div>
+																					</div>
+																				</div>
+																			</div>
+																		</div>
+																	</div>
+																</div>
+																<!-- tempstep 1 -->
+																<div id="2" *ngIf="activeTab =='step2'" [ngClass]="activeTab =='step2' ? 'tempstep active' : 'tempstep' ">
+																	<form [formGroup]="additionalDetailsForm">
+																		<div class="row1">
+																			<div class="col-12 col-lg-12 col-md-12 col-sm-12 position-static">
+																				<div class="row1">
+																					<div class="col-12 position-static">
+																						<ul class="step-list">
+																							<li class="step-matched"> <em> <span class="primary">STEP 2 </span> <span class="secondary">of STEP 3</span>
+                                                                                                </em> </li>
+																						</ul>
+																						<div class="tab-header">
+																							<h4>Atal Pension Yojana(APY) Schema</h4> </div>
+																					</div>
+																					<!-- col-12 position-static -->
+																					<div class="col-12">
+																						<div class="details-section">
+																							<div class="row1">
+																								<div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+																									<h5>
+                                                                                                        Additional Details
+                                                                                                    </h5> </div>
+																							</div>
+																							<div class="row1">
+																								<div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
+																									<!-- <div class="ux-input ux-disabled">
+																										<label>Marital Status</label>
+																										<input type="text" placeholder="Enter Status" disabled="" value="Married" class="pr-2">
+																									</div> -->
+																									<div class="ux-input">
+																										<label>Marital Status</label>
+																										<select formControlName="maritalStatus" (change)="showAlive($event);">
+																											<option value=""> Select Status </option>
+																											<option value="Y"> Married </option>
+																											<option value="N"> Single </option>
+																										</select>
+																										<p class="error-message" *ngIf="additionalDetailsForm.controls['maritalStatus'].hasError('required') && (additionalDetailsForm.controls['maritalStatus'].dirty || additionalDetailsForm.controls['maritalStatus'].touched)">This field is required</p>
+																										<p class="error-message" *ngIf="spousIsAliveCheck">Please choose single in marital status</p>
+																									</div>
+																								</div>
+																							</div>
+																							<div id="spouseAliveSection" style="display:none;">
+																								<div class="row1 mt-3">
+																									<div class="col-12 col-md-6 col-lg-6 col-xl-6">
+																										<div class="row1  pl-3">
+																											<div class="ux-selection">
+																												<h6>Is Spouse Alive?</h6>
+																											</div>
+																										</div>
+																										<div class="row1  pl-3">
+																											<div class="ux-selection">
+																												<label class="ux-selection2">Yes
+																													<input type="radio" formControlName="spouseName" checked="checked" name="spouseName" value="Yes" (change)="spousIsAlive();">
+																													<!-- <input type="radio" formControlName="spouseName" checked="checked" name="spouseName" value="Yes" (change)="spouseAlive($event);"> -->
+																													<span class="checkmark"></span>
+																												</label>
+																											</div>
+																											<div class="ux-selection">
+																												<label class="ux-selection2">No
+																													<input type="radio" formControlName="spouseName" name="spouseName" value="No" (change)="spousIsAlive();">
+																													<!-- <input type="radio" formControlName="spouseName" name="spouseName" value="No" (change)="spouseAlive($event);"> -->
+																													<span class="checkmark"></span>
+																												</label>
+																											</div>
+																										</div>
+																									</div>
+																									<div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
+																										<div class="ux-input">
+																											<label>Title</label>
+																											<select name='spTitle' formControlName="spTitle">
+																												<option value="">Select Title</option>
+																												<option value="SHRI">Shri</option>
+																												<option value="SMT">Smt</option>
+																												<option value="KUMARI">Kumari</option>
+																												<!-- <option value="Mister">Mister</option>
+																												<option value="Miss">Miss</option>
+																												<option value="Shriman">Shriman</option>
+																												<option value="Kumari">Kumari</option> -->
+																											</select>
+																											<p class="error-message" *ngIf="additionalDetailsForm.controls['spTitle'].hasError('required') && (additionalDetailsForm.controls['spTitle'].dirty || additionalDetailsForm.controls['spTitle'].touched)">This field is required</p>
+																										</div>
+																									</div>
+																									<div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
+                                                                                                        <div class="ux-input">
+																											<label>Spouse Name</label>
+																											<input type="text" value="" placeholder="Enter Spouse Name" formControlName="spName" maxlength="30">
+																											<p class="info-message spouse-msg">
+                                                                            									Spouse will be default Nominee
+                                                                                                            </p>
+																											<!-- <p class="info-message greentext"> Nominee can only be your spouse</p> -->
+																											<p class="error-message" *ngIf="additionalDetailsForm.controls['spName'].hasError('required') && (additionalDetailsForm.controls['spName'].dirty || additionalDetailsForm.controls['spName'].touched)">This field is required</p>
+																											<p class="error-message" *ngIf="additionalDetailsForm.controls['spName'].hasError('pattern') && (additionalDetailsForm.controls['spName'].dirty || additionalDetailsForm.controls['spName'].touched)"> Only Alphabet and number is allowed</p>
+																										</div>
+                                                                                                    </div>
+																								</div>
+																								<!-- <div class="row1 mb-3">
+																									<div class="col-12 col-md-12 col-lg-12 col-xl-12">
+																										<div class="ux-selection mt3">
+																											<label class="ux-selection2">Yes
+																												<input type="radio" formControlName="spouseName" checked="checked" name="spouseName" value="Yes" (change)="spouseAlive($event);"> <span class="checkmark"></span> </label>
+																										</div>
+																										<div class="ux-selection">
+																											<label class="ux-selection2">No
+																												<input type="radio" formControlName="spouseName" name="spouseName" value="No" (change)="spouseAlive($event);"> <span class="checkmark"></span> </label>
+																										</div>
+																									</div>
+																									<div class="col-12 col-md-12">
+																										<div class="ux-input">
+																											<p class="error-message" *ngIf="additionalDetailsForm.controls['spouseName'].hasError('required') && (additionalDetailsForm.controls['spouseName'].dirty || additionalDetailsForm.controls['spouseName'].touched)">This field is required</p>
+																										</div>
+																									</div>
+																								</div> -->
+																							</div>
+
+																							<!-- <div id="spouseSection" style="display:none;">
+																								<div class="row1">
+																									<div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
+																										<div class="ux-input">
+																											<label>Spouse Name</label>
+																											<input type="text" value="" placeholder="Enter Spouse Name" formControlName="spName" maxlength="30">
+																											<p class="error-message" *ngIf="additionalDetailsForm.controls['spName'].hasError('required') && (additionalDetailsForm.controls['spName'].dirty || additionalDetailsForm.controls['spName'].touched)">This field is required</p>
+																											<p class="error-message" *ngIf="additionalDetailsForm.controls['spName'].hasError('pattern') && (additionalDetailsForm.controls['spName'].dirty || additionalDetailsForm.controls['spName'].touched)"> Only Alphabet and number is allowed</p>
+																										</div>
+																									</div>
+																									<div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
+																										<div class="ux-input">
+																											<label>Title</label>
+																											<select name='spTitle' formControlName="spTitle">
+																												<option value="">Select Title</option>
+																												<option value="Mr">Mr</option>
+																												<option value="Mrs">Mrs</option>
+																											</select>
+																											<p class="error-message" *ngIf="additionalDetailsForm.controls['spTitle'].hasError('required') && (additionalDetailsForm.controls['spTitle'].dirty || additionalDetailsForm.controls['spTitle'].touched)">This field is required</p>
+																										</div>
+																									</div>
+																								</div>
+																							</div> -->
+
+																							<div class="row1">
+																								<div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
+																									<div class="ux-input">
+																										<label>Nominee Name</label>
+																										<input type="text" value="" placeholder="Enter Nominee Name" formControlName="nomineeName" maxlength="50">
+																										<p class="info-message greentext" *ngIf="spouseAliveSec"> Nominee can only be your spouse</p>
+																										<p class="error-message" *ngIf="additionalDetailsForm.controls['nomineeName'].hasError('required') && (additionalDetailsForm.controls['nomineeName'].dirty || additionalDetailsForm.controls['nomineeName'].touched)">This field is required</p>
+																										<p class="error-message" *ngIf="additionalDetailsForm.controls['nomineeName'].hasError('pattern') && (additionalDetailsForm.controls['nomineeName'].dirty || additionalDetailsForm.controls['nomineeName'].touched)"> Only Alphabet allowed</p>
+																									</div>
+																								</div>
+																								<div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
+																									<div class="ux-input">
+																										<label>Relationship with Nominee</label>
+																										<select name= 'nomineeRelation' formControlName="nomineeRelation">
+																											<option value="">Select Relation</option>
+																											<option *ngFor="let relationShip of relationShipList" [value]="relationShip.ref_code">{{relationShip.DESCRIPTION}}</option>
+																										</select>
+																										<p class="error-message" *ngIf="additionalDetailsForm.controls['nomineeRelation'].hasError('required') && (additionalDetailsForm.controls['nomineeRelation'].dirty || additionalDetailsForm.controls['nomineeRelation'].touched)">This field is required</p>
+																										<!-- <input type="text" placeholder="Enter Relationship with nominee" formControlName="relationship"> -->
+																										<!-- <p class="error-message" *ngIf="additionalDetailsForm.controls['relationship'].hasError('required') && (additionalDetailsForm.controls['relationship'].dirty || additionalDetailsForm.controls['relationship'].touched)">This field is required</p>
+																										<p class="error-message" *ngIf="additionalDetailsForm.controls['relationship'].hasError('pattern') && (additionalDetailsForm.controls['relationship'].dirty || additionalDetailsForm.controls['relationship'].touched)"> Only Alphabet and number is allowed</p> -->
+																									</div>
+																								</div>
+																							</div>
+																							<div class="row1">
+																								<!-- <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
+																									<div class="ux-input">
+																										<label>Mobile Number</label>
+																										<input type="text" numbersOnly placeholder="Enter Mobile Number" formControlName="mobileNumber" maxlength="10">
+																										<p class="error-message" *ngIf="additionalDetailsForm.controls['mobileNumber'].hasError('required') && (additionalDetailsForm.controls['mobileNumber'].dirty || additionalDetailsForm.controls['mobileNumber'].touched)">This field is required</p>
+																										<p class="error-message" *ngIf="additionalDetailsForm.controls['mobileNumber'].hasError('minlength') && (additionalDetailsForm.controls['mobileNumber'].dirty || additionalDetailsForm.controls['mobileNumber'].touched)"> Please enter 10 digit </p>
+																									</div>
+																								</div> -->
+																								<div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
+																									<div class="ux-input">
+																										<label>Nominee Aadhaar Card</label>
+																										<input type="text" placeholder="Enter Aadhaar Number" formControlName="aadharNumber" maxlength="12" numbersOnly>
+																										<p class="error-message" *ngIf="additionalDetailsForm.controls['aadharNumber'].hasError('required') && (additionalDetailsForm.controls['aadharNumber'].dirty || additionalDetailsForm.controls['aadharNumber'].touched)">This field is required</p>
+																										<p class="error-message" *ngIf="additionalDetailsForm.controls['aadharNumber'].hasError('minlength') && (additionalDetailsForm.controls['aadharNumber'].dirty || additionalDetailsForm.controls['aadharNumber'].touched)"> Please enter 12 digit aadhar card number </p>
+																									</div>
+																								</div>
+																								<div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
+																									<div class="ux-input">
+																										<label>Nominee Date of Birth</label>
+																										<input type="text" [owlDateTime]="dt1" [owlDateTimeTrigger]="dt1" placeholder="DD/MM/YYYY" readonly  formControlName="datepicker1" [max]="max" (ngModelChange)="onDateChange($event)">
+																										<owl-date-time [pickerType]="'calendar'" #dt1></owl-date-time><em class=" calendar-ic cal-top"></em>
+																										<p class="error-message" *ngIf="additionalDetailsForm.controls['datepicker1'].hasError('required') && (additionalDetailsForm.controls['datepicker1'].dirty || additionalDetailsForm.controls['datepicker1'].touched)">This field is required</p>
+																									</div>
+																								</div>
+																							</div>
+																							<!-- <div class="row1">
+																								<div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
+																									<div class="ux-input">
+																										<label> Date of Birth</label>
+																										<input type="text" [owlDateTime]="dt1" [owlDateTimeTrigger]="dt1" placeholder="DD/MM/YYYY" readonly  formControlName="datepicker1" [max]="max" (ngModelChange)="onDateChange($event)">
+																										<owl-date-time [pickerType]="'calendar'" #dt1></owl-date-time><em class=" calendar-ic cal-top"></em>
+																										<p class="error-message" *ngIf="additionalDetailsForm.controls['datepicker1'].hasError('required') && (additionalDetailsForm.controls['datepicker1'].dirty || additionalDetailsForm.controls['datepicker1'].touched)">This field is required</p>
+																									</div>
+																								</div>
+																							</div> -->
+																							<!-- <div class="row1 my-3">
+																								<div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 ">
+
+																									<div class="ux-input">
+																										<h6>Communication
+																												address</h6>
+																										<div class="ux-selection1 mar-rcustom pt-2 ">
+																											<label>Same as applicant Permanent address
+																												<input type="checkbox" name="radioCommunication" (change)="comCheck($event);" > <span class="checkmark setcheckbox"></span> </label>
+																										</div>
+																									</div>
+																								</div>
+																							</div>
+																							<div class="row1">
+																								<div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
+																									<div class="ux-input">
+																										<label>Address line 1</label>
+																										<input type="text" placeholder="Enter Address line 1" formControlName="address1">
+																										<p class="error-message" *ngIf="additionalDetailsForm.controls['address1'].hasError('required') && (additionalDetailsForm.controls['address1'].dirty || additionalDetailsForm.controls['address1'].touched)">This field is required</p>
+																									</div>
+																								</div>
+																								<div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
+																									<div class="ux-input">
+																										<label>Address line 2</label>
+																										<input type="text" placeholder="Enter Address line 2" formControlName="address2" [value]="add2val">
+																										<p class="error-message"> </p>
+																									</div>
+																								</div>
+																							</div>
+																							<div class="row1">
+																								<div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
+																									<div class="ux-input">
+																										<label>State</label>
+																										<select formControlName="state" (change)="getCity($event.target.value)">
+																											<option value=""> Select State </option>
+																											<option *ngFor="let stateDtl of stateList" [value]="stateDtl.ID" >{{stateDtl.state}}</option>
+																										</select>
+																										<p class="error-message" *ngIf="additionalDetailsForm.controls['state'].hasError('required') && (additionalDetailsForm.controls['state'].dirty || additionalDetailsForm.controls['state'].touched)">This field is required</p>
+																									</div>
+																								</div>
+																								<div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
+																									<div class="ux-input">
+																										<label>City</label>
+																										<select formControlName="city">
+																											<option value=""> Select city </option>
+																											<option *ngFor="let cityDtl of cityList" [value]="cityDtl.ID" >{{cityDtl.city}}</option>
+																										</select>
+																										<p class="error-message" *ngIf="additionalDetailsForm.controls['city'].hasError('required') && (additionalDetailsForm.controls['city'].dirty || additionalDetailsForm.controls['city'].touched)">This field is required</p>
+																									</div>
+																								</div>
+																							</div>
+																							<div class="row1">
+																								<div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
+																									<div class="ux-input">
+																										<label>PIN</label>
+																										<input type="text" numbersOnly placeholder="Enter PIN" formControlName="pin" maxlength="6">
+																										<p class="error-message" *ngIf="additionalDetailsForm.controls['pin'].hasError('required') && (additionalDetailsForm.controls['pin'].dirty || additionalDetailsForm.controls['pin'].touched)">This field is required</p>
+																										<p class="error-message" *ngIf="additionalDetailsForm.controls['pin'].hasError('minlength') && (additionalDetailsForm.controls['pin'].dirty || additionalDetailsForm.controls['pin'].touched)"> Please enter 6 digit pin code</p>
+
+																									</div>
+																								</div>
+																							</div> -->
+																							<!-- <div class="row1">
+																								<div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+																									<div class="hidden-row"> </div>
+																								</div>
+																							</div> -->
+																							<div id="guardian" style="display:none;">
+
+																								<div class="row1">
+																									<div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 my-3">
+																										<h6>Please Provide Guardian Details </h6>
+																									</div>
+																								</div>
+																								<div class="row1">
+																									<div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
+																										<div class="ux-input">
+																											<label>Guardian Name</label>
+																											<input type="text" placeholder="Enter Guardian Name" formControlName="guardianName">
+																											<p class="error-message" *ngIf="additionalDetailsForm.controls['guardianName'].hasError('required') && (additionalDetailsForm.controls['guardianName'].dirty || additionalDetailsForm.controls['guardianName'].touched)">This field is required</p>
+																											<p class="error-message" *ngIf="additionalDetailsForm.controls['guardianName'].hasError('pattern') && (additionalDetailsForm.controls['guardianName'].dirty || additionalDetailsForm.controls['guardianName'].touched)"> Only Alphabet and number is allowed</p>
+
+																										</div>
+																									</div>
+																									<!-- <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
+																										<div class="ux-input">
+																											<label>Guardian Type</label>
+																											<select formControlName="guardianType">
+																												<option value=""> Select Guardian Type </option>
+																												<option *ngFor="let gardian of gardianTypeList" [value]="gardian.ref_code">{{gardian.DESCRIPTION}}</option>
+																											</select>
+																											<p class="error-message" *ngIf="additionalDetailsForm.controls['guardianType'].hasError('required') && (additionalDetailsForm.controls['guardianType'].dirty || additionalDetailsForm.controls['guardianType'].touched)">This field is required</p>
+
+																										</div>
+																									</div> -->
+																								</div>
+																								<!-- <div class="row1">
+																									<div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
+																										<div class="ux-input">
+																											<label>Address line 1</label>
+																											<input type="text" placeholder="Enter Address line 1" formControlName="addressguard1">
+																											<p class="error-message" *ngIf="additionalDetailsForm.controls['addressguard1'].hasError('required') && (additionalDetailsForm.controls['addressguard1'].dirty || additionalDetailsForm.controls['addressguard1'].touched)">This field is required</p>
+																										</div>
+																									</div>
+																									<div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
+																										<div class="ux-input">
+																											<label>Address line 2</label>
+																											<input type="text" placeholder="Information Text" formControlName="addressguard2">
+																											<p class="error-message"> </p>
+																										</div>
+																									</div>
+																								</div>
+																								<div class="row1">
+																									<div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
+																										<div class="ux-input">
+																											<label>State</label>
+																											<select formControlName="stateguard" (change)="getCity($event.target.value)">
+																												<option value=""> Select State </option>
+																												<option *ngFor="let stateDtl of stateList" [value]="stateDtl.ID" >{{stateDtl.state}}</option>
+																											</select>
+																											<p class="error-message" *ngIf="additionalDetailsForm.controls['stateguard'].hasError('required') && (additionalDetailsForm.controls['stateguard'].dirty || additionalDetailsForm.controls['stateguard'].touched)">This field is required</p>
+																										</div>
+																									</div>
+																									<div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
+																										<div class="ux-input">
+																											<label>City</label>
+																											<select formControlName="cityguard">
+																												<option value=""> Select city </option>
+																												<option *ngFor="let cityDtl of cityList" [value]="cityDtl.ID" >{{cityDtl.city}}</option>
+																											</select>
+																											<p class="error-message" *ngIf="additionalDetailsForm.controls['cityguard'].hasError('required') && (additionalDetailsForm.controls['cityguard'].dirty || additionalDetailsForm.controls['cityguard'].touched)">This field is required</p>
+																										</div>
+																									</div>
+																								</div>
+																								<div class="row1">
+																									<div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
+																										<div class="ux-input">
+																											<label>PIN</label>
+																											<input type="text" placeholder="Enter PIN" formControlName="pinguard">
+																											<p class="error-message" *ngIf="additionalDetailsForm.controls['pinguard'].hasError('required') && (additionalDetailsForm.controls['pinguard'].dirty || additionalDetailsForm.controls['pinguard'].touched)">This field is required</p>
+																										</div>
+																									</div>
+																								</div> -->
+
+																							</div>
+
+
+																						</div>
+																						<!-- details-section -->
+																					</div>
+																					<!-- col-12 -->
+																					<div class="col-12 col-lg-12 col-md-12 col-sm-12 position-static">
+																						<div class="ux-footer border-n">
+																							<div class="row1">
+																								<div class="col-12 col-md-12">
+																									<ul class="bottom-footer1">
+																										<li>
+																											<div class="btn-div custom-mar text-left">
+																												<button class="ux-button secondary sm-mob cancel-btn" (click)="prevstep(2)">Previous</button>
+																											</div>
+																											<div class="btn-div custom-mar">
+																												<button class="ux-button primary sm-mob" type="submit" (click)="apySubmit('additionalDetails', 2, additionalDetailsForm.value)">Next</button>
+																												<!-- (click)="nextstep(2)" -->
+																											</div>
+																										</li>
+																									</ul>
+																								</div>
+																							</div>
+																						</div>
+																					</div>
+																				</div>
+																			</div>
+																		</div>
+																	</form>
+																</div>
+																<!-- tempstep 2 -->
+																<div id="3" *ngIf="activeTab =='step3'" [ngClass]="activeTab =='step3' ? 'tempstep active' : 'tempstep' ">
+																	<form [formGroup]="pensionDetailsForm">
+																		<div class="row1">
+																			<div class="col-12 col-lg-12 col-md-12 col-sm-12 position-static">
+																				<div class="row1">
+																					<div class="col-12 position-static">
+																						<ul class="step-list">
+																							<li class="step-matched"> <em> <span class="primary">STEP 3 </span> <span class="secondary">of STEP 3</span> </em> </li>
+																						</ul>
+																						<div class="tab-header">
+																							<h4>Atal Pension Yojna (APY)  Scheme</h4> </div>
+																					</div>
+																					<!-- col-12 position-static -->
+																					<div class="col-12">
+																						<div class="details-section">
+																							<div class="row1">
+																								<div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+																									<h5 class="sub-tab-header">
+                                                                                                        Pension Details
+                                                                                                    </h5> </div>
+																							</div>
+																							<div class="row1">
+																								<div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
+																									<div class="ux-input ">
+																										<label>Select Debit Account</label>
+																										<select formControlName="debitAccount" (change)="getAccountBalance(pensionDetailsForm.value);">
+																											<option value="">Select</option>
+																											<option *ngFor="let account of accountList;" value="{{account.accountNo}}">{{account.SchemeCode}} {{account.sbAccount}} </option>
+																											<!-- <option value=""> 197247123143 </option>
+																											<option value="197247123155"> 197247123155 </option>
+																											<option value="197247123177"> 197247123177 </option> -->
+																										</select>
+																										<p class="error-message" *ngIf="pensionDetailsForm.controls['debitAccount'].hasError('required') && (pensionDetailsForm.controls['debitAccount'].dirty || pensionDetailsForm.controls['debitAccount'].touched)">This field is required</p>
+																										<p class="error-message" *ngIf="balGreaterThenPremium">Account balance is low</p>
+
+																										<p class="info-message text-right"> Available Balance <span class="greentext m-0">₹ {{availBal}}</span> </p>
+																									</div>
+																								</div>
+																							</div>
+																							<div class="row1">
+																								<div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
+																									<div class="ux-input " [ngClass]='{"ux-disabled" : !pensionDetailsForm.value.debitAccount}'>
+																										<label>How much pension you want?</label>
+																										<select formControlName="invest" (change)="investment(pensionDetailsForm.value);">
+																											<option value="">Select</option>
+																											<option value="1000"> ₹ 1000 </option>
+																											<option value="2000"> ₹ 2000 </option>
+																											<option value="3000"> ₹ 3000 </option>
+																											<option value="4000"> ₹ 4000 </option>
+																											<option value="5000"> ₹ 5000 </option>
+																										</select>
+																										<p class="error-message" *ngIf="pensionDetailsForm.controls['invest'].hasError('required') && (pensionDetailsForm.controls['invest'].dirty || pensionDetailsForm.controls['invest'].touched)">This field is required</p>
+																									</div>
+																								</div>
+
+																							</div>
+																							<!-- <div class="row1 my-3">
+																								<div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
+																									<div class="el-switch-main"> <em>Auto Payment</em>
+																										<div class="toggle-col card-toggle float-right">
+																											<input type="checkbox" name="disable-fields" checked="">
+																											<div class="flat-toggle "> </div>
+																										</div>
+																									</div>
+																								</div>
+																							</div> -->
+																							<div class="row1">
+																								<div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
+																									<div class="ux-input btm-space">
+																										<label>Frequency</label>
+																										<select formControlName="frequency">
+																											<option value="">Select</option>
+																											<option value="MON" [selected]="true"> Monthly </option>
+																											<!-- <option value="Quarterly">Quarterly</option>
+																											<option value="Yearly">Yearly</option> -->
+																										</select>
+																										<p class="error-message" *ngIf="pensionDetailsForm.controls['frequency'].hasError('required') && (pensionDetailsForm.controls['frequency'].dirty || pensionDetailsForm.controls['frequency'].touched)">This field is required</p>
+																									</div>
+																								</div>
+																								<div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
+																									<div class="ux-input ux-disabled ">
+																										<label>Premium Amount</label>
+																										<input type="text" formControlName="premium" placeholder="Enter Contribution Amount" disabled value="Premium Amount"> </div>
+																								</div>
+																							</div>
+																							<div class="row1 my-3">
+																								<div class="col-12 col-md-6 col-lg-6 col-xl-6">
+																									<div class="row1  pl-3">
+																										 <div class="ux-selection">
+																											 <h6>Are you income tax payer </h6>
+																										 </div>
+																									</div>
+
+																									<div class="row1  pl-3">
+																										<div class="ux-selection">
+																											<label class="ux-selection2">Yes
+																												<input type="radio" formControlName="radioboxdemo" checked="checked" name="radioboxdemo" value="Yes">
+																												<span class="checkmark"></span>
+																											</label>
+																										</div>
+																										<div class="ux-selection">
+																											<label class="ux-selection2">No
+																												<input type="radio" formControlName="radioboxdemo" name="radioboxdemo" value="No">
+																												<span class="checkmark"></span>
+																											</label>
+																										</div>
+																									</div>
+																								 </div>
+																							</div>
+																							<div class="row1">
+																								<div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 ">
+																									<h6 class="mt-3">Provide Consent</h6> </div>
+																							</div>
+																							<!-- <div class="row1">
+																								<div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+																									<div class="ux-selection ux-input">
+																										<label class="ux-selection1">I confirm, I file Income Tax Return
+																											<input type="checkbox" name="radioboxdemo" formControlName="radioboxdemo"> <span class="checkmark"></span> </label>
+																										<p class="error-message" *ngIf="pensionDetailsForm.controls['radioboxdemo'].hasError('required') && (pensionDetailsForm.controls['radioboxdemo'].dirty || pensionDetailsForm.controls['radioboxdemo'].touched)">This field is required</p>
+																									</div>
+																								</div>
+																							</div> -->
+																							<div class="row1">
+																								<div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+																									<div class="ux-selection ux-input">
+																										<label class="ux-selection1">I confirm, I have read and accepted the <a class="reg-txt" (click)="openPopUp()">Terms & Conditions</a>
+																											<input type="checkbox" name="radioboxdemo2" formControlName="radioboxdemo2" required> <span class="checkmark"></span> </label>
+																										<p class="error-message" *ngIf="pensionDetailsForm.controls['radioboxdemo2'].hasError('required') && (pensionDetailsForm.controls['radioboxdemo2'].dirty || pensionDetailsForm.controls['radioboxdemo2'].touched)">This field is required</p>
+																									</div>
+																								</div>
+																							</div>
+																							<div class="row1">
+																								<div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+																									<div class="hidden-row"> </div>
+																								</div>
+																							</div>
+																						</div>
+																						<!-- details-section -->
+																					</div>
+																					<!-- col-12 -->
+																					<div class="col-12 col-lg-12 col-md-12 col-sm-12 position-static">
+																						<div class="ux-footer border-n">
+																							<div class="row1">
+																								<div class="col-12 col-md-12">
+																									<ul class="bottom-footer1">
+																										<li>
+																											<div class="btn-div custom-mar text-left">
+																												<button class="ux-button secondary sm-mob cancel-btn" (click)="prevstep(3)">Previous</button>
+																											</div>
+																											<div class="btn-div custom-mar">
+																												<button class="ux-button primary sm-mob" (click)="apySubmit('pensionDetails', 'apyOverview', pensionDetailsForm.value)">Submit</button>
+																											</div>
+																										</li>
+																									</ul>
+																								</div>
+																							</div>
+																						</div>
+																					</div>
+																				</div>
+																			</div>
+																		</div>
+																	</form>
+																</div>
+															</div>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+									<!-- Greencard2 End here -->
+								</div>
+								<!-- Right Column Ads Start -->
+								<div class="col-12 col-md-12 col-lg-12 col-xl-3 d-none d-xl-block">
+									<div class="right-ads">
+										<a> <img src="assets/images/banner/my-card-banner.jpg"> </a>
+									</div>
+									<div class="vspacer30"></div>
+								</div>
+								<!-- Right Column Ads Ends -->
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!--.right-col-container-->
+	</div>
+	<!--.right-main-column-->
+</div>
+<!-- main -->
+
+<!-- Show Common Info Popup Start -->
+<div *ngIf="spousIsAliveCheck" class="popup-bottom show-common-info sm-popup">
+	<div class="row1">
+		<div class="col-12">
+			<h4 class="text-center"> <img src="./assets/images/svg/information.svg" alt="information-icon">{{ DataService.informationLabel}}
+			</h4>
+		</div>
+	</div>
+	<div class="row1">
+		<div class="col-12">
+			<p>
+				User is already enrolled with other bank
+			</p>
+		</div>
+	</div>
+	<div class="row1  mt-2">
+		<div class="col-12 text-center" (click)="closePopup('div.popup-bottom.show-common-info')">
+			<button class="ux-button primary submit-btn" type="button">OK</button>
+		</div>
+	</div>
+</div>
+<!-- Show Common Info Popup End -->
+<div class="popup-bottom md-popup tpin-popup">
+	<div class="row1">
+		<div class="col-10">
+			<h4 class="text-left">Terms & Condition</h4>
+		</div>
+		<div class="col-2">
+			<button class="ux-button-icon close-btn" (click)="closepopup()" >
+				<img src="assets/images/svg/close-b.svg" alt="cross-icon" class="img-vsmall">
+			</button>
+		</div>
+	</div>
+	<div class="row1">
+		<div class="col-12">
+			<ol class="order-list">
+				<li>1. I hereby authorize Bank to open APY account in my name under National Pension System (NPS) as per the information provided by me. I hereby declare that I meet the prescribed eligibility criteria for assistance under APY and I have read and understood the terms and conditions of the Scheme. </li>
+				<li>2. I hereby declare that my age is between 18 to 40 years.</li>
+				<li>3. I hereby authorize the bank to debit my mentioned bank account till the age of 60 for making payment under APY as applicable based on my age and the Pension Amount selected by me. If the transaction is delayed or not effected at all for insufficient balance, I would not hold the bank responsible. I also undertake to deposit the additional amount together with penalty thereon.</li>
+				<li>4. I meet the prescribed eligibility criteria for assistance under APY and Further, I declare that I do not hold any pre-existing account under NPS. I understand that I shall be fully liable for submission of any false or incorrect information or documents.</li>
+				<li>5. I hereby nominate my nominee as provided in the online application under this scheme.</li>
+				<li>6. If the nominee is a minor, I have appointed his / her guardian details in the online application. (Applicable in case where Nominee is minor)</li>
+				<li>7. I have read and understood the Scheme rules given on Punjab & Sind Bank Website (https://punjabandsindbank.co.in//content/atal-pension-yojana) and I hereby give my consent to become a member of the Scheme. Also I undertake to immediately inform the bank of any change in the information furnished by me. I hereby agree to the same and declare that the information furnished by me is true and correct, to the best of my knowledge and belief.</li>
+				<li>8. I understand that I shall be fully liable for submission of any false or incorrect information or documents. I have read and have understood the APY guidelines. I further agree to be bound by the terms and conditions of provision of services under the scheme as approved by PFRDA/Govt. of India.</li>
+			</ol>
+		</div>
+	</div>
+	<div class="row1 mt-2">
+		<div class="col-12 col-md-12 text-center">
+			<button class="ux-button secondary sm-mob" (click)="closepopup()" >OK</button>
+		</div>
+	 </div>
+</div>

@@ -1,0 +1,318 @@
+<div class="main">
+    <div class="right-main-column minus-rt-col mar-custom">
+        <div class="right-col-container cust-pb">
+            <div class="body-page-container">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="bg-section">
+                            <div class="col-12">
+                                <div class="row1">
+                                    <div class="col-sm-12 col-12 col-md-12">
+                                        <div class="white-bg1 pad-custom">
+                                            <ul class="complaint-list">
+                                                <li>
+                                                    <div class="full-container">
+                                                        <div class="row1">
+                                                            <div class="col-12 col-md-12">
+                                                                <div class="left-info">
+                                                                    <h6 *ngIf="approveMandateDetail.status == 'PENDING'">{{'REQUESTED_BY' | translate}} {{approveMandateDetail.payeeName}}</h6>
+                                                                    <h6 *ngIf="approveMandateDetail.status == 'CREATED'">{{'MODIFIED_BY' | translate}} {{approveMandateDetail.payeeName}}</h6>
+                                                                    <h5>{{'UPI_ID' | translate }} : {{approveMandateDetail.payeeAddress}}</h5>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                                <li>
+                                                    <div class="full-container">
+                                                        <div class="row1">
+                                                            <div class="col-12 col-md-12">
+                                                                <div class="left-info">
+                                                                    <h6>{{'PAYEE_NAME' | translate}}</h6>
+                                                                    <h5>{{approveMandateDetail.payeeName}} </h5>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                                <li>
+                                                    <div class="full-container">
+                                                        <div class="row1">
+                                                            <div class="col-12 col-md-12">
+                                                                <div class="left-info">
+                                                                    <h6>{{'AMOUNT' | translate}}</h6>
+                                                                    <h5>
+                                                                        <!-- <img src="assets/images/svg/rupee-bl.svg"
+                                                                            alt="rupees-icon"> -->
+                                                                        {{approveMandateDetail.amount | customcurrency:'symbol'}}
+                                                                    </h5>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                                <li>
+                                                    <div class="full-container">
+                                                        <div class="row1">
+                                                            <div class="col-12 col-md-12">
+                                                                <div class="left-info">
+                                                                    <h6>{{'START_DATE' | translate}} - {{'END_DATE' | translate}}</h6>
+                                                                    <h5>
+                                                                        <!-- {{approveMandateDetail.validityStart | date:'dd/MM/yyyy'}} - {{approveMandateDetail.validityEnd | date:'dd/MM/yyyy'}} -->
+                                                                        {{approveMandateDetail.validityStart}} - {{approveMandateDetail.validityEnd}}
+                                                                    </h5>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                                <li>
+                                                    <div class="full-container">
+                                                        <div class="row1">
+                                                            <div class="col-12 col-md-12">
+                                                                <div class="left-info">
+                                                                    <h6>{{'EXPIRY_DATE_AND_TIME' | translate}}</h6>
+                                                                    <h5>
+                                                                        {{approveMandateDetail.expiredDate}}
+                                                                    </h5>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                                <li>
+                                                    <div class="full-container">
+                                                        <div class="row1">
+                                                            <div class="col-12 col-md-12">
+                                                                <div class="left-info">
+                                                                    <h6>{{'FREQUENCY' | translate}}</h6>
+                                                                    <h5>{{approveMandateDetail.frequency}}</h5>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                                <li *ngIf="approveMandateDetail?.payeeCode != 'null' &&approveMandateDetail?.payeeCode != '0000'">
+                                                    <!-- Old Code -->
+                                                    <!-- <div class="full-container">
+                            <div class="row1">
+                              <div class="col-12 col-md-12">
+                                <div class="left-info">
+                                  <h5 class="success">
+                                    <a (click)="viewInvoice(approveMandateDetail.refUrl+approveMandateDetail.refID)">{{"VIEW_INVOICE"
+                                      | translate}}</a> -->
+                                                    <!--TODO : Confirm with BA what view invoice will do-->
+                                                    <!-- </h5>
+                                </div>
+                              </div>
+                            </div>
+                          </div> -->
+                                                    <!-- New design with Block UPI Id -->
+                                                    <div class="full-container">
+                                                        <div class="row1">
+                                                            <div class="col-6">
+                                                                <div class="left-info1">
+                                                                    <h5>
+                                                                        <a (click)="viewInvoice(approveMandateDetail.refUrl)" class="reminder-btn set">
+                                                                            <img src="assets/images/svg/view-invoice.svg" alt="view-invoice-icon" class="big-img"> {{"VIEW_INVOICE" | translate}} </a>
+                                                                    </h5>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-6">
+                                                                <div class="right-info">
+                                                                    <h5>
+                                                                        <a (click)="openPopup('blockUPI')" class="block-btn block">
+                                                                            <img src="assets/images/svg/block-r.svg" alt="block-icon" class="big-img">{{'BLOCK_UPI_ID' | translate}} </a>
+                                                                    </h5>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                            </ul>
+                                            <!-- <div class="ux-footer border-n"> -->
+                                            <!-- TODO : Report as Spam functionality missing in design not updated from UI Team but mentioned in SRS-->
+                                            <!-- <div class="row1">
+                          <div class="col-6 col-lg-6 col-md-6 col-sm-6 text-center">
+                            <button class="decline-btn ux-button secondary" type="button"
+                              (click)="openRejectPopup('declineMandate')">{{'DECLINE' | translate}}</button> -->
+                                            <!--TODO : Pending from UI Team to provide popup design when clicked on decline-->
+                                            <!-- </div>
+                          <div class="col-6 col-lg-6 col-md-6 col-sm-6 text-center">
+                            <button class="ux-button primary" type="button"
+                              (click)="goToPage('approveMandateConfirmation')">{{'APPROVE' | translate}}</button>
+                          </div>
+                        </div> -->
+                                            <!-- </div> -->
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- footer section start -->
+            <div class="footer-container sticky-actions">
+                <div class="footer-inactions minus-rt-col">
+                    <div class="container-fluid">
+                        <!-- <div class="row">
+          <div class="col-4 col-lg-4 col-md-4 text-center">
+             <button class="decline-btn ux-button secondary"  (click)="openPopup('blockUPI')">{{'BLOCK' | translate}}</button> --
+            
+            <div class="right-info" (click)="openPopup('blockUPI')">
+              <h5> <a class="block-btn"> <img src="assets/images/svg/block-r.svg"
+                    alt="block-icon" class="big-img"> {{'BLOCK_UPI_ID' | translate}} </a>
+              </h5>
+            </div>
+         </div>
+           <div class="col-4 col-lg-4 col-md-4 text-center">
+               <button class="decline-btn ux-button secondary"  (click)="openRejectPopup('declineMandate')">{{'DECLINE' | translate}}</button>
+            </div>
+             <div class="col-4 col-lg-4 col-md-4 text-center">
+               <button class="ux-button primary"  (click)="goToPage('approveMandateConfirmation')">{{'APPROVE' | translate}}</button>
+             </div>
+         </div> -->
+                        <div class="row">
+                            <div class="col-6 col-lg-6 col-md-6 text-center">
+                                <button class="decline-btn ux-button secondary" (click)="openRejectPopup('declineMandate')">{{'DECLINE' | translate}}</button>
+                            </div>
+                            <div class="col-6 col-lg-6 col-md-6 text-center">
+                                <button class="ux-button primary" (click)="goToPage('approveMandateConfirmation')">{{'APPROVE' | translate}}</button>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-12 col-md-12 col-lg-12 text-center">
+                                <div class="autoplay-logo"> <img src="assets/images/svg/upi-autopay-small.svg" alt="upi-autoplay-logo"> </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- footer section end -->
+        </div>
+    </div>
+</div>
+<!-- main -->
+
+<!-- =========== modal popup start ===============  -->
+
+
+<!-- Decline Popup Start -->
+
+<div class="popup-bottom declineMandate">
+    <div class="row">
+        <div class="col-12">
+            <h4 class="text-center">{{'DECLINE_MANDATE' | translate}}</h4>
+        </div>
+    </div>
+    <form [formGroup]="declineMandateForm" (ngSubmit)="declineMandate()" id="decline-mandate-form">
+
+        <div class="row">
+            <div class="col-12">
+                <p>
+                    {{'DO_YOU_WANT_TO_DECLINE_MANDATE_REQUEST_FROM' | translate}} {{approveMandateDetail.payeeName}} ?
+                </p>
+            </div>
+            <div class="col-12">
+                <div class="text-left">
+                    <div>
+                        <div class="ux-selection1 mar-rcustom">
+                            <label>{{'REPORT_AS_SPAM' | translate}}
+                <input type="checkbox" formControlName="spam">
+                <span class="checkmark"></span>
+              </label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row1 mt-2">
+            <div class="col-6 text-center">
+                <button class="ux-button secondary md close-btn" type="button" (click)="closePopup('declineMandate')">{{'NO' |
+          translate}}</button>
+            </div>
+            <div class="col-6 text-center">
+                <button class="ux-button primary md" type="submit">{{'YES' | translate}}</button>
+            </div>
+        </div>
+    </form>
+</div>
+
+<!-- Decline Popup End -->
+
+
+<!-- Block ID Popup Start -->
+
+
+<div class="popup-bottom blockUPI">
+    <div class="row1">
+        <div class="col-10">
+            <h4 class="mb-0">{{'CONFIRMATION' | translate}}</h4>
+            <h6>{{'HOW_LONG_DO_YOU_WANT_TO_BLOCK' | translate}} <br /> {{approveMandateDetail.payeeAddress}} ?</h6>
+        </div>
+        <div class="col-2">
+            <button class="ux-button-icon close-btn" (click)="closePopup('blockUPI')">
+        <img src="assets/images/svg/close-b.svg" alt="cross-icon" class="img-vsmall">
+      </button>
+        </div>
+    </div>
+    <form [formGroup]="blockUPIIdForm" id="reminder-form" (ngSubmit)="blockUPI()">
+        <div class="row1 mt-3">
+            <div class="col-4 col-xl-3 col-lg-4 col-md-6">
+                <div class="ux-selection dis-b">
+                    <label class="ux-selection2">{{'FOREVER' | translate}}
+            <input type="radio" value="forever" formControlName="blockPeriod">
+            <span class="checkmark"></span>
+          </label>
+                </div>
+            </div>
+            <div class="col-4 col-xl-3 col-lg-4 col-md-6">
+                <div class="ux-selection dis-b">
+                    <label class="ux-selection2">{{'1_DAY' | translate}}
+            <input type="radio" value="day" formControlName="blockPeriod">
+            <span class="checkmark"></span>
+          </label>
+                </div>
+            </div>
+            <div class="col-4 col-xl-3 col-lg-4 col-md-6">
+                <div class="ux-selection dis-b">
+                    <label class="ux-selection2">{{'1_WEEK' | translate}}
+            <input type="radio" value="week" formControlName="blockPeriod">
+            <span class="checkmark"></span>
+          </label>
+                </div>
+            </div>
+            <div class="col-4 col-xl-3 col-lg-4 col-md-6">
+                <div class="ux-selection dis-b">
+                    <label class="ux-selection2">{{'1_MONTH' | translate}}
+            <input type="radio" value="month" formControlName="blockPeriod">
+            <span class="checkmark"></span>
+          </label>
+                </div>
+            </div>
+            <div class="col-4 col-xl-3 col-lg-4 col-md-6">
+                <div class="ux-selection dis-b">
+                    <label class="ux-selection2">{{'1_YEAR' | translate}}
+            <input type="radio" value="year" formControlName="blockPeriod">
+            <span class="checkmark"></span>
+          </label>
+                </div>
+            </div>
+        </div>
+        <div class="row1 mt-3">
+            <div class="col-6 text-center">
+                <button class="ux-button secondary md" type="button" (click)="closePopup('blockUPI')">{{'NO' |
+          translate}}</button>
+            </div>
+            <div class="col-6 text-center">
+                <button class="ux-button primary md" type="submit" [disabled]="blockUPIIdForm.invalid">{{'YES' |
+          translate}}</button>
+            </div>
+        </div>
+    </form>
+</div>
+
+<!-- Block ID Popup End -->
+
+<!-- <div class="ios-nav-overlay"></div> -->

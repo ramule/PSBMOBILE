@@ -1,0 +1,60 @@
+  -keep public class * extends android.app.Activity
+  -keep public class * extends android.app.Application
+  -keep public class * extends android.app.Service
+  -keep public class * extends android.content.BroadcastReceiver
+  -keep public class * extends android.content.ContentProvider
+  -keep public class * extends android.support.v7.ActionBarActivity
+  -keepclassmembers enum * {*; }
+
+  -keepattributes *Annotation*
+
+  -keepclassmembers enum * {
+      public static **[] values();
+      public static ** valueOf(java.lang.String);
+  }
+
+  -keepattributes InnerClasses
+  -keep class **.R
+  -keep class **.R$* {
+      <fields>;
+  }
+
+  -keepclasseswithmembers public class * {
+      public <methods>;
+      public <fields>;
+  }
+  -keep class org.apache.cordova.** { *; }
+  -keep public class * extends org.apache.cordova.CordovaPlugin
+  -keep public class org.apache.commons.logging.** {*;}
+  -keep class org.apache.cordova.CordovaBridge { org.apache.cordova.PluginManager pluginManager; }
+  -keep class org.apache.cordova.CordovaInterfaceImpl { org.apache.cordova.PluginManager pluginManager; }
+  -keep class org.apache.cordova.CordovaResourceApi { org.apache.cordova.PluginManager pluginManager; }
+  -keep class org.apache.cordova.CordovaWebViewImpl { org.apache.cordova.PluginManager pluginManager; }
+  -keep class org.apache.cordova.ResumeCallback { org.apache.cordova.PluginManager pluginManager; }
+  -keep class org.apache.cordova.engine.SystemWebViewEngine { org.apache.cordova.PluginManager pluginManager; }
+  -keep public class * implements org.apache.commons.logging.Log
+  -keep public class * implements java.io.Serializable
+
+  -keep class org.npci.** { *; }
+  -dontwarn org.npci.**
+
+  -keep class in.org.npci.** { *; }
+  -dontwarn in.org.npci.**
+
+  -keep class org.apache.** { *; }
+  -dontwarn org.apache.**
+
+  -keep class javax.** { *; }
+  -dontwarn javax.**
+
+  -keep class android.** { *; }
+  -dontwarn android.**
+
+  -keep class androidx.** { *; }
+  -dontwarn androidx.**
+
+  -keep class com.android.** {*;}
+  -dontwarn com.android.**
+
+  -keep class com.sample.qrcp.** {*;}
+  -dontwarn com.sample.qrcp.**

@@ -1,0 +1,185 @@
+{
+  "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
+  "version": 1,
+  "newProjectRoot": "projects",
+  "projects": {
+    "PSB": {
+      "projectType": "application",
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "scss"
+        }
+      },
+      "root": "",
+      "sourceRoot": "src",
+      "prefix": "app",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "allowedCommonJsDependencies": [
+              "rxjs-compat",
+              "crypto-js",
+              "chart.js",
+              "html2pdf.js",
+              "xlsx",
+              "jspdf",
+              "lodash"
+            ],
+            "outputPath": "www",
+            "index": "src/index.html",
+            "main": "src/main.ts",
+            "polyfills": "src/polyfills.ts",
+            "tsConfig": "tsconfig.app.json",
+            "aot": true,
+            "assets": [
+              "src/favicon.ico",
+              "src/assets"
+            ],
+            "styles": [
+              "./node_modules/bootstrap/dist/css/bootstrap.css",
+              "node_modules/ngx-owl-carousel-o/lib/styles/prebuilt-themes/owl.carousel.min.css",
+              "node_modules/ngx-owl-carousel-o/lib/styles/prebuilt-themes/owl.theme.default.min.css",
+              "src/css/main.css",
+              "src/css/keyboard.css",
+              "src/styles.scss",
+              "src/css/lib/jquery-ui.min.css",
+              "src/css/lib/datepicker.css",
+              "node_modules/datatables.net-dt/css/jquery.dataTables.css"
+            ],
+            "scripts": [
+              "./node_modules/jquery/dist/jquery.js",
+              "./node_modules/popper.js/dist/umd/popper.min.js",
+              "./node_modules/bootstrap/dist/js/bootstrap.js",
+              "src/js/lib/datatables.min.js",
+              "src/js/lib/owl.carousel.min.js",
+              "src/js/common.js",
+              "src/js/lib/jquery.keyboard.extension-scramble.js",
+              "src/js/lib/jquery.keyboard.extension-autocomplete.js",
+              "src/js/lib/jquery.keyboard.extension-typing.js",
+              "src/js/lib/jquery.mousewheel.js",
+              "src/js/lib/jquery.keyboard.js",
+              "src/js/lib/currencyFormatter.min.js",
+              "src/js/lib/html2canvas.js",
+              "src/js/lib/jquery-ui.min.js",
+              "src/js/lib/grid.js",
+              "src/js/lib/version.js",
+              "src/js/lib/detector.js",
+              "src/js/lib/formatinf.js",
+              "src/js/lib/errorlevel.js",
+              "src/js/lib/bitmat.js",
+              "src/js/lib/datablock.js",
+              "src/js/lib/bmparser.js",
+              "src/js/lib/datamask.js",
+              "src/js/lib/rsdecoder.js",
+              "src/js/lib/gf256poly.js",
+              "src/js/lib/gf256.js",
+              "src/js/lib/decoder.js",
+              "src/js/lib/qrcode.js",
+              "src/js/lib/findpat.js",
+              "src/js/lib/alignpat.js",
+              "src/js/lib/databr.js",
+              "node_modules/datatables.net/js/jquery.dataTables.js",
+              "src/js/lib/autoNumeric.js"
+            ],
+            "showCircularDependencies": false
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "4mb",
+                  "maximumError": "20mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb",
+                  "maximumError": "10kb"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "PSB:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "PSB:build:production"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "PSB:build"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "src/test.ts",
+            "polyfills": "src/polyfills.ts",
+            "tsConfig": "tsconfig.spec.json",
+            "karmaConfig": "karma.conf.js",
+            "assets": [
+              "src/favicon.ico",
+              "src/assets"
+            ],
+            "styles": [
+              "src/styles.scss"
+            ],
+            "scripts": []
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "tsconfig.app.json",
+              "tsconfig.spec.json",
+              "e2e/tsconfig.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        },
+        "e2e": {
+          "builder": "@angular-devkit/build-angular:protractor",
+          "options": {
+            "protractorConfig": "e2e/protractor.conf.js",
+            "devServerTarget": "PSB:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "PSB:serve:production"
+            }
+          }
+        }
+      }
+    }
+  },
+  "defaultProject": "PSB",
+  "cli": {
+    "analytics": false,
+    "defaultCollection": "@ngrx/schematics"
+  }
+}

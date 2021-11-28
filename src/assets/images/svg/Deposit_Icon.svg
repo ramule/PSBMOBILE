@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" viewBox="0 0 60 60">
+  <g id="Deposit_Icon" transform="translate(-498 -1935)">
+    <path id="Path_28363" data-name="Path 28363" d="M0,0H60V60H0Z" transform="translate(498 1935)" fill="#fa2222" opacity="0"/>
+    <g id="Group_36323" data-name="Group 36323" transform="translate(504 1944)">
+      <rect id="Rectangle_16897" data-name="Rectangle 16897" width="9.186" height="3.937" transform="translate(15.747 13.123)" fill="none" stroke="#007c3d" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+      <line id="Line_515" data-name="Line 515" x2="2.625" transform="translate(15.747 23.621)" fill="none" stroke="#007c3d" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+      <line id="Line_516" data-name="Line 516" x2="2.625" transform="translate(15.747 28.87)" fill="none" stroke="#007c3d" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+      <line id="Line_517" data-name="Line 517" x2="2.625" transform="translate(22.309 23.621)" fill="none" stroke="#007c3d" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+      <line id="Line_518" data-name="Line 518" x2="2.625" transform="translate(22.309 28.87)" fill="none" stroke="#007c3d" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+      <line id="Line_519" data-name="Line 519" y2="2.625" transform="translate(44.617 19.684)" fill="none" stroke="#007c3d" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+      <path id="Path_19938" data-name="Path 19938" d="M284.617,138.807v5.888a3.3,3.3,0,0,1-3.3,3.3H243.3a3.3,3.3,0,0,1-3.3-3.3V109.3a3.3,3.3,0,0,1,3.3-3.3h38.022a3.3,3.3,0,0,1,3.3,3.3v5.888" transform="translate(-240 -106)" fill="none" stroke="#007c3d" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+      <path id="Path_19939" data-name="Path 19939" d="M274.182,134.933v3.943a2.618,2.618,0,0,1-2.618,2.618H246.618A2.618,2.618,0,0,1,244,138.876V112.618A2.618,2.618,0,0,1,246.618,110h24.946a2.618,2.618,0,0,1,2.618,2.618v22.315" transform="translate(-238.751 -104.751)" fill="none" stroke="#007c3d" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+      <rect id="Rectangle_16898" data-name="Rectangle 16898" width="5.249" height="5.249" transform="translate(41.993 11.81)" fill="none" stroke="#007c3d" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+      <rect id="Rectangle_16899" data-name="Rectangle 16899" width="5.249" height="5.249" transform="translate(41.993 24.933)" fill="none" stroke="#007c3d" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+    </g>
+  </g>
+</svg>

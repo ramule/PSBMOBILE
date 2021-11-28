@@ -1,0 +1,250 @@
+<div class="main">
+
+
+    <div class="right-main-column minus-rt-col mar-custom">
+        <div class="right-col-container">
+
+            <div class="body-page-container">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="bg-section">
+                            <div class="col-12">
+                                <div class="row1">
+                                    <div class="col-sm-12 col-12 col-md-12">
+
+                                        <div class="white-bg1 pad-custom">
+                                            <ul class="complaint-list">
+                                                <!-- <li>
+                                                    <div class="full-container">
+                                                        <div class="row1">
+                                                            <div class="col-12 col-md-12">
+                                                                <div class="left-info">
+                                                                    <h6>{{'COMPLAINT_ID' | translate}}</h6>
+                                                                    <h5>{{raiseComplaint.complaintNo }}</h5>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </li> -->
+                                                <li class="bor-n">
+                                                    <div class="full-container">
+                                                        <div class="row1">
+                                                            <div class="col-12 col-md-12">
+                                                                <div class="left-info">
+                                                                    <h6>{{'TRANSACTION_ID' | translate}}</h6>
+                                                                    <h5>{{raiseComplaint.transactionID}}</h5>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                                <li class="bor-n">
+                                                    <div class="full-container">
+                                                        <div class="row1">
+                                                            <div class="col-12 col-md-12">
+                                                                <div class="left-info">
+                                                                    <h6>{{'EMAIL_ID' | translate}}</h6>
+                                                                    <h5>{{raiseComplaint.customerEmail}}</h5>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                                <li class="bor-n">
+                                                    <div class="full-container">
+                                                        <div class="row1">
+                                                            <div class="col-12 col-md-12">
+                                                                <div class="left-info">
+                                                                    <h6>{{'RRN_NO_REFERENCE_ID' | translate}}</h6>
+                                                                    <h5>{{raiseComplaint.rrn}}</h5>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </li>
+
+                                                <li class="bor-n">
+                                                    <div class="full-container">
+                                                      <div class="row1">
+                                                          <div class="col-12 col-md-12">
+                                                               <div class="left-info">
+                                                                  <!-- <h6>Transaction Amount</h6>
+                                                                  <h5><img src="assets/images/svg/rupee-bl.svg" alt="rupees-icon">600</h5> -->
+                                                                  <h6>{{'TRANSACTION_AMOUNT' | translate}}</h6>
+                                                                  <h5>{{amount | customcurrency:''}}</h5>
+                                                             </div>
+                                                           </div>
+                                                        </div>
+                                                    </div>
+                                                   </li>
+
+                                                <li class="bor-n">
+                                                    <div class="full-container">
+                                                        <div class="row1">
+                                                            <div class="col-12 col-md-12">
+                                                                <div class="left-info">
+                                                                    <h6>{{'SUBJECT' | translate}}</h6>
+                                                                    <h5>{{raiseComplaint.subject}}</h5>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                                <li class="bor-n">
+                                                    <div class="full-container">
+                                                        <div class="row1">
+                                                            <div class="col-12 col-md-12">
+                                                                <div class="left-info">
+                                                                    <h6>{{'DESCRIPTION' | translate}}</h6>
+                                                                    <h5>{{raiseComplaint.description}}</h5>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                                <li class="bor-n" *ngIf="raiseComplaint.complaintType.toLowerCase() == 'mandate'">
+                                                    <div class="full-container">
+                                                        <div class="row1">
+                                                            <div class="col-12 col-md-12">
+                                                                <div class="left-info">
+                                                                    <h6>{{'UMN' | translate}}</h6>
+                                                                    <h5>{{raiseComplaint.umn }}</h5>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                                <!-- <li class="bor-n">
+                                                    <div class="full-container">
+                                                        <div class="row1">
+                                                            <div class="col-12 col-md-12">
+                                                                <div class="left-info">
+                                                                    <h6>{{'AMOUNT' | translate}}</h6>
+                                                                    <h5>{{amount | customcurrency:'symbol'}}</h5>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </li> -->
+                                                <li class="bor-n">
+                                                    <div class="full-container">
+                                                        <div class="row1">
+                                                            <div class="col-12 col-md-12">
+                                                                <div class="left-info">
+                                                                    <h6>{{'PAYER' | translate}}</h6>
+                                                                    <!-- <h5>{{'UPI_ID' | translate }} : {{raiseComplaint.payerAddress}}</h5> -->
+                                                                    <h5 *ngIf="payerPaymentType[0] == 'vpa' ">
+                                                                        <span>{{'UPI_ID' | translate }} : {{raiseComplaint?.payerAddress}}</span>
+                                                                    </h5>
+                                                                    <h5 *ngIf="payerPaymentType[0] == 'ifsc' || payerPaymentType[0] == 'mmid'">
+                                                                        <span>{{'ACCOUNT_AND_IFSC' | translate }} : {{payerPaymentType[1] | maskAccountNo }}/{{payerPaymentType[2]}}</span>
+                                                                    </h5>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                                <li *ngIf="raiseComplaint?.payeeAddress" class="bor-n">
+                                                    <div class="full-container">
+                                                        <div class="row1">
+                                                            <div class="col-12 col-md-12">
+                                                                <div class="left-info">
+                                                                    <h6>{{'PAYEE' | translate}}</h6>
+                                                                    <!-- <h5>{{'UPI_ID' | translate }} : {{raiseComplaint?.payeeAddress }}</h5> -->
+                                                                    
+                                                                    <h5 *ngIf="payeePaymentType[0] == 'vpa' ">
+                                                                        <span>{{'UPI_ID' | translate }} : {{raiseComplaint?.payeeAddress}}</span>
+                                                                    </h5>
+                                                                    <h5 *ngIf="payeePaymentType[0] == 'ifsc' || payeePaymentType[0] == 'mmid'">
+                                                                        <span>{{'ACCOUNT_AND_IFSC' | translate }} : {{payeePaymentType[1] | maskAccountNo }}/{{payeePaymentType[2]}}</span>
+                                                                    </h5>
+
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                                <li *ngIf="raiseComplaint?.transactionDate" class="bor-n">
+                                                    <div class="full-container">
+                                                        <div class="row1">
+                                                            <div class="col-12 col-md-12">
+                                                                <div class="left-info">
+                                                                    <h6>{{'TRANSACTION_DATE' | translate}}</h6>
+                                                                    <h5>{{raiseComplaint?.transactionDate}}</h5>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                            </ul>
+                                            <!-- <div class="ux-footer border-n">
+                                               <div class="row1">
+                                                     <div class="col-12 col-lg-12 col-md-12 col-sm-12 text-center">
+                                                        <button class="ux-button primary"
+                                                        (click)="submitRaiseComplaintReq()">{{'CONFIRM' | translate}}</button>
+                                                    </div>
+                                                </div>
+                                            </div> -->
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <!-- </div>
+    </div>
+
+</div> -->
+            <!-- footer section start -->
+
+            <div class="footer-container sticky-actions">
+                <div class="footer-inactions minus-rt-col">
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-12 col-md-12 col-lg-12 text-center">
+                                <button class="ux-button primary md" (click)="submitRaiseComplaintReq()">{{'CONFIRM' |
+                                    translate}}</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="sticky-actions-spacer"></div>
+
+            <!-- footer section end -->
+
+        </div>
+    </div>
+
+</div>
+
+<!-- main -->
+
+
+
+<!-- Complaint Success Popup Start -->
+
+<div class="popup-bottom success">
+    <form action="#" id="success-form">
+        <div class="row mt-3">
+            <div class="success">
+                <img src="assets/images/svg/check.svg" alt="success-icon">
+                <h3>Success</h3>
+                <h5>Your complaint has been successfully escalated and reported to <a
+                        href="#">digitalsupport@psb.com</a></h5>
+            </div>
+        </div>
+        <div class="row1 mt-3">
+            <div class="col-12 text-center">
+                <button class="ux-button primary md " onclick="window.location.href = '#'">Ok</button>
+            </div>
+        </div>
+    </form>
+</div>
+
+<!-- Complaint Success Popup End -->
+
+<!-- <div class="ios-nav-overlay"></div> -->

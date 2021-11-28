@@ -1,0 +1,483 @@
+
+	<div class="main bg-m frwk-changes">
+
+		<div class="right-main-column ">
+			<div class="right-col-container pad-b full-width">
+
+
+				<!-- ======== body page content start from here ======== -->
+
+				<div class="body-page-container main-dashborad mycards">
+					<div class="container-fluid">
+
+						<div class="row">
+							<div class="col-12 p-0">
+								<div class="breadcrumb">
+									<ul class="lst-breadcrumb">
+										<li>
+											<a href="mycards.html">My Cards</a>
+										</li>
+										<li>
+											Debit Cards
+										</li>
+									</ul>
+								</div>
+							</div>
+						</div>
+						<!--.row -->
+
+						<div class="vspacer30 customize d-none d-xl-block d-lg-block d-md-none d-sm-none "></div>
+
+						<div class="row no-gutters">
+							<div class="col-12">
+								<div class="row1">
+									<div class="col-12 col-sm-12 col-md-12 col-lg-12  col-xl-9">
+										<div class="greencard2">
+                                            <div class="flex-container no-bg">
+                                                <div class="full-info">
+                                                    <div class="row1">
+                                                        <div class="col-10">
+                                                            <div class="ac-info"  (click)="onAccountSelectType()">
+                                                                <div class="greenbg-input ux-input">
+                                                                    <div class="custom-selectbox">
+                                                                        <span *ngIf="selCardNo != '' ">
+                                                                            <img *ngIf="currentCard.card_network == 'VS' " src="assets/images/icons/visa-icon.svg" alt="visa-logo" style="width: 19% !important;" >
+                                                                            <img *ngIf="currentCard.card_network == '' " src="assets/images/svg/Rupay-01.svg" alt="rupay-logo" style="width: 19% !important;" >
+                                                                            <img *ngIf="currentCard.card_network == 'RS' " src="assets/images/svg/Rupay-02.svg" alt="rupay-logo" style="width: 19% !important;" >
+                                                                            <img *ngIf="currentCard.card_network == 'MS' " src="assets/images/icons/visa-icon.svg" alt="master-logo" style="width: 19% !important;" >
+                                                                            {{selCardNo}} </span> 
+                                                                    </div>
+                                                                    <p class="error-message"></p>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-2">
+                                                           <div class="ac-info ">
+                                                                <button class="refresh-btn d-block ml-auto"><img src="assets/images/svg/eye-g.svg" alt="view-icon"></button>
+                                                            </div>
+                                                        </div>
+                                                        
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                            <div class="row1">
+                                                <div class="col-12 col-sm-12 col-md-12 col-lg-12">
+                                                    <div class="ux-nav-tabs" style="margin:0">
+                                                        <div class="responsive3"> 
+                                                          <ul class="nav nav-tabs nav-justified bor-n mt-2" role="tablist">
+                                                                 <li class="nav-item" (click)="cardType('domestic')"   >
+                                                                     <a class="nav-link show" data-toggle="tab" href="#domastic" [ngClass]="myCardType == 'domestic' ? 'active' : ''  ">Domestic</a>
+                                                                 </li>
+                                                                 <li class="nav-item"  (click)="cardType('international')" >
+                                                                     <a class="nav-link show" data-toggle="tab" href="#international" [ngClass]="myCardType == 'international' ? 'active' : ''  ">International</a>
+                                                                 </li>
+                                                             </ul>
+                         
+                                                             <!-- Tab panes -->
+                                                             <div class="tab-content custom-tab-content mt-0 rounded-0">
+                                                                <div id="domastic" class="tab-pane show fade active " *ngIf="myCardType == 'domestic' " [ngClass]="myCardType == 'domestic' ? 'active' : ''  ">
+                                                                    <div class="row"> 
+                                                                        <div class="col-sm-12 col-12 col-md-12">
+                                                                            <div class="card-tab-title">
+																				<h4>
+																					<img src="assets/images/svg/lock.svg" alt="lock" class="img-fluid">
+																					 Domestic Transaction Limit
+																				</h4>
+																			</div>
+                                                                            <form [formGroup]="DomesticForm">
+                                                                                <div class="mycardCollapse p-0 mob-manage-card">
+                                                                                    <div class="col-12">
+                                                                                        <div class="pos">
+                                                                                            <div class="row1">
+                                                                                                <div class="grey-box">
+                                                                                                    <label>POS</label>
+                                                                                                    <div class="toggle-col card-toggle float-right" [class.disablePointer]="!colData" >
+                                                                                                        <input type="checkbox" name="pos" formControlName="pos" [disabled]="!colData" (change)="posDomCheck(DomesticForm.value);" >
+                                                                                                        <div class="flat-toggle "></div>
+                                                                                                    </div>																				
+                                                                                                </div>
+                                                                                                <div class="slider-info">
+                                                                                                    <div class="col-12 p-0">
+                                                                                                        <div class="row1">
+                                                                                                            <div class="col-6">
+                                                                                                                <h6>Current Limit</h6>
+                                                                                                            </div>
+                                                                                                            <div class="col-6">
+                                                                                                                <input class="sliderInput ux-input" id="posdom" #posdom class="sliderInput ux-input" value="{{currentCard.POS_dom_limit}}" formControlName="pos_dom_val" name="pos" [ngClass]="posDom ? '' : 'ux-disabled' " />
+                                                                                                            </div>
+                                                                                                        </div>
+                                                                                                    </div>
+                                                                                                    <div class="row1">
+                                                                                                        <div class="col-12">
+                                                                                                            <div class="limit-slider my-2 mx-1" [ngClass]="posDom ? '' : 'ui-slider-disabled ui-state-disabled' " ></div>
+                                                                                                            <div class="sliderticks">
+                                                                                                                <p>0</p>
+                                                                                                                <p>{{currentCard.POS_dom_maxlimit}}</p>
+                                                                                                            </div>
+                                                                                                        </div>
+                                                                                                    </div>
+                                                                                                </div>	
+                                                                                            </div>
+                                                                                        </div>
+                                                                                        <div class="ecom">
+                                                                                            <div class="row1">
+                                                                                                <div class="grey-box">
+                                                                                                    <label>ECOM</label>
+                                                                                                    <div class="toggle-col card-toggle float-right" [class.disablePointer]="!colData"  >
+                                                                                                        <input type="checkbox" name="ecom" checked="" formControlName="ecom" [disabled]="!colData" (change)="ecomDomCheck(DomesticForm.value);">
+                                                                                                        <div class="flat-toggle "></div>
+                                                                                                    </div>																			
+                                                                                                </div>
+                                                                                                <div class="slider-info">
+                                                                                                    <div class="col-12 p-0">
+                                                                                                        <div class="row1">
+                                                                                                            <div class="col-6">
+                                                                                                                <h6>Current Limit</h6>
+                                                                                                            </div>
+                                                                                                            <div class="col-6">
+                                                                                                                <input id="ecomdom" #ecomdom class="sliderInput ux-input" value="{{currentCard.ECOM_dom_limit}}" formControlName="ecom_dom_val" name="ecom" [disabled]="ecomDomInput" [ngClass]="ecomDom ? '' : 'ux-disabled' "  />
+                                                                                                            </div>
+                                                                                                        </div>
+                                                                                                    </div>
+                                                                                                    <div class="row1">
+                                                                                                        <div class="col-12">
+                                                                                                            <div class="limit-slider1 my-2 mx-1"></div>
+                                                                                                            <div class="sliderticks">
+                                                                                                                <p>0</p>
+                                                                                                                <p>{{currentCard.ECOM_dom_maxlimit}}</p>
+                                                                                                            </div>
+                                                                                                        </div>
+                                                                                                    </div>
+                                                                                                </div>	
+                                                                                            </div>
+                                                                                        </div>
+                                                                                        <div class="atm">
+                                                                                            <div class="row1">
+                                                                                                <div class="grey-box">
+                                                                                                    <label>ATM</label>
+                                                                                                    <div class="toggle-col card-toggle float-right">
+                                                                                                        <input type="checkbox" name="atm" checked="">
+                                                                                                        <div class="flat-toggle "></div>
+                                                                                                    </div>																					
+                                                                                                </div>
+                                                                                                <div class="slider-info">
+                                                                                                    <div class="col-12 p-0">
+                                                                                                        <div class="row1">
+                                                                                                            <div class="col-6">
+                                                                                                                <h6>Current Limit</h6>
+                                                                                                            </div>
+                                                                                                            <div class="col-6">
+                                                                                                                <input class="sliderInput ux-input" value="₹7906"  name="atm"/>
+                                                                                                            </div>
+                                                                                                        </div>
+                                                                                                    </div>
+                                                                                                    <div class="row1">
+                                                                                                        <div class="col-12">
+                                                                                                            <div class="limit-slider2 my-2 mx-1"></div>
+                                                                                                            <div class="sliderticks">
+                                                                                                                <p>0</p>
+                                                                                                                <p>1,00,000.00</p>
+                                                                                                            </div>
+                                                                                                        </div>
+                                                                                                    </div>
+                                                                                                </div>	
+                                                                                            </div>
+                                                                                        </div>
+                                                                                        <div class="contactLess">
+                                                                                            <div class="row1">
+                                                                                                <div class="grey-box">
+                                                                                                    <label>Contact Less</label>
+                                                                                                    <div class="toggle-col card-toggle float-right">
+                                                                                                        <input type="checkbox" name="contactLess" checked="">
+                                                                                                        <div class="flat-toggle "></div>
+                                                                                                    </div>																				
+                                                                                                </div>
+                                                                                                <div class="slider-info">
+                                                                                                    <div class="col-12 p-0">
+                                                                                                        <div class="row1">
+                                                                                                            <div class="col-6">
+                                                                                                                <h6>Current Limit</h6>
+                                                                                                            </div>
+                                                                                                            <div class="col-6">
+                                                                                                                <input class="sliderInput ux-input" value="₹78906"  name="cntless"/>
+                                                                                                            </div>
+                                                                                                        </div>
+                                                                                                    </div>
+                                                                                                    <div class="row1">
+                                                                                                        <div class="col-12">
+                                                                                                            <div class="limit-slider3 my-2 mx-1"></div>
+                                                                                                            <div class="sliderticks">
+                                                                                                                <p>0</p>
+                                                                                                                <p>1,00,000.00</p>
+                                                                                                            </div>
+                                                                                                        </div>
+                                                                                                    </div>
+                                                                                                </div>	
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </form>
+                                                                        </div> 
+                                                                    </div>
+                                                                </div>
+                                                                <div id="international" class="tab-pane show"  *ngIf="myCardType == 'international' " [ngClass]="myCardType == 'international' ? 'active' : ''  ">
+                                                                    <div class="row"> 
+                                                                        <div class="col-sm-12 col-12 col-md-12">
+                                                                            <div class="card-tab-title">
+																				<h4>
+																					<img src="assets/images/svg/lock.svg" alt="lock" class="img-fluid">
+                                                                                    International Transaction Limit
+																				</h4>
+																			</div>
+                                                                            <form [formGroup]="InternationalForm">
+                                                                                <div class="mycardCollapse p-0 mob-manage-card">
+                                                                                    <div class="col-12">
+                                                                                        <div class="pos">
+                                                                                            <div class="row1">
+                                                                                                <div class="grey-box">
+                                                                                                    <label>POS</label>
+                                                                                                    <div class="toggle-col card-toggle float-right">
+                                                                                                        <input type="checkbox" name="pos" checked="">
+                                                                                                        <div class="flat-toggle "></div>
+                                                                                                    </div>																				
+                                                                                                </div>
+                                                                                                <div class="slider-info">
+                                                                                                    <div class="col-12 p-0">
+                                                                                                        <div class="row1">
+                                                                                                            <div class="col-6">
+                                                                                                                <h6>Current Limit</h6>
+                                                                                                            </div>
+                                                                                                            <div class="col-6">
+                                                                                                                <input class="sliderInput ux-input" value="₹78906" name="pos"/>
+                                                                                                            </div>
+                                                                                                        </div>
+                                                                                                    </div>
+                                                                                                    <div class="row1">
+                                                                                                        <div class="col-12">
+                                                                                                            <div class="limit-slider-int my-2 mx-1"></div>
+                                                                                                            <div class="sliderticks">
+                                                                                                                <p>0</p>
+                                                                                                                <p>1,00,000.00</p>
+                                                                                                            </div>
+                                                                                                        </div>
+                                                                                                    </div>
+                                                                                                </div>	
+                                                                                            </div>
+                                                                                        </div>
+                                                                                        <div class="ecom">
+                                                                                            <div class="row1">
+                                                                                                <div class="grey-box">
+                                                                                                    <label>ECOM</label>
+                                                                                                    <div class="toggle-col card-toggle float-right">
+                                                                                                        <input type="checkbox" name="ecom" checked="">
+                                                                                                        <div class="flat-toggle "></div>
+                                                                                                    </div>																			
+                                                                                                </div>
+                                                                                                <div class="slider-info">
+                                                                                                    <div class="col-12 p-0">
+                                                                                                        <div class="row1">
+                                                                                                            <div class="col-6">
+                                                                                                                <h6>Current Limit</h6>
+                                                                                                            </div>
+                                                                                                            <div class="col-6">
+                                                                                                                <input class="sliderInput ux-input" value="₹38906"  name="ecom"/>
+                                                                                                            </div>
+                                                                                                        </div>
+                                                                                                    </div>
+                                                                                                    <div class="row1">
+                                                                                                        <div class="col-12">
+                                                                                                            <div class="limit-slider-int1 my-2 mx-1"></div>
+                                                                                                            <div class="sliderticks">
+                                                                                                                <p>0</p>
+                                                                                                                <p>1,00,000.00</p>
+                                                                                                            </div>
+                                                                                                        </div>
+                                                                                                    </div>
+                                                                                                </div>	
+                                                                                            </div>
+                                                                                        </div>
+                                                                                        <div class="atm">
+                                                                                            <div class="row1">
+                                                                                                <div class="grey-box">
+                                                                                                    <label>ATM</label>
+                                                                                                    <div class="toggle-col card-toggle float-right">
+                                                                                                        <input type="checkbox" name="atm" checked="">
+                                                                                                        <div class="flat-toggle "></div>
+                                                                                                    </div>																					
+                                                                                                </div>
+                                                                                                <div class="slider-info">
+                                                                                                    <div class="col-12 p-0">
+                                                                                                        <div class="row1">
+                                                                                                            <div class="col-6">
+                                                                                                                <h6>Current Limit</h6>
+                                                                                                            </div>
+                                                                                                            <div class="col-6">
+                                                                                                                <input class="sliderInput ux-input" value="₹7906"  name="atm"/>
+                                                                                                            </div>
+                                                                                                        </div>
+                                                                                                    </div>
+                                                                                                    <div class="row1">
+                                                                                                        <div class="col-12">
+                                                                                                            <div class="limit-slider-int2 my-2 mx-1"></div>
+                                                                                                            <div class="sliderticks">
+                                                                                                                <p>0</p>
+                                                                                                                <p>1,00,000.00</p>
+                                                                                                            </div>
+                                                                                                        </div>
+                                                                                                    </div>
+                                                                                                </div>	
+                                                                                            </div>
+                                                                                        </div>
+                                                                                        <div class="contactLess">
+                                                                                            <div class="row1">
+                                                                                                <div class="grey-box">
+                                                                                                    <label>Contact Less</label>
+                                                                                                    <div class="toggle-col card-toggle float-right">
+                                                                                                        <input type="checkbox" name="contactLess" checked="">
+                                                                                                        <div class="flat-toggle "></div>
+                                                                                                    </div>																				
+                                                                                                </div>
+                                                                                                <div class="slider-info">
+                                                                                                    <div class="col-12 p-0">
+                                                                                                        <div class="row1">
+                                                                                                            <div class="col-6">
+                                                                                                                <h6>Current Limit</h6>
+                                                                                                            </div>
+                                                                                                            <div class="col-6">
+                                                                                                                <input class="sliderInput ux-input" value="₹78906"  name="cntless"/>
+                                                                                                            </div>
+                                                                                                        </div>
+                                                                                                    </div>
+                                                                                                    <div class="row1">
+                                                                                                        <div class="col-12">
+                                                                                                            <div class="limit-slider-int3 my-2 mx-1"></div>
+                                                                                                            <div class="sliderticks">
+                                                                                                                <p>0</p>
+                                                                                                                <p>1,00,000.00</p>
+                                                                                                            </div>
+                                                                                                        </div>
+                                                                                                    </div>
+                                                                                                </div>	
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </form>
+                                                                        </div> 
+                                                                    </div>
+                                                                </div>
+                                                            </div> 
+                                                        </div>  
+                                                    </div>   
+                                                </div>
+                                            </div>	
+                                            <div class="row1">
+                                                <div class="col-12 text-center">
+                                                    <button class="ux-button sm-mob primary" >Submit</button>
+                                                </div>
+                                            </div>						
+										</div>
+									</div>
+									<div class="col-12 col-md-12 col-lg-12 col-xl-3 d-none d-xl-block">
+										<div class="right-ads">
+											<a>
+												<img src="assets/images/banner/my-card-banner.jpg">
+											</a>
+										</div>
+									</div>
+								</div>
+
+							</div>
+						</div>
+
+					</div>
+					<!--.container-fluid-->
+				</div>
+				<!--.body-page-container-->
+
+
+			</div>
+			<!--.right-col-container-->
+		</div>
+		<!--.right-main-column-->
+
+	</div> <!-- main -->
+
+
+    <!-- Select Accounts Popup Start-->
+
+    <div class="popup-bottom sel-account">
+        <div class="row1">
+            <div class="col-10">
+                <h4>Select From Account</h4>
+            </div>
+            <div class="col-2">
+                <button class="ux-button-icon close-btn" (click)="closePopup()">
+                    <img src="assets/images/svg/close-b.svg" alt="cross-icon" class="img-vsmall">
+                </button>
+            </div>
+        </div>
+        <div class="row1">
+            <div class="col-12">
+                <div class="row1">
+                    <div class="col-12 col-md-12" *ngFor="let account of accountList; let i = index" (click)="getToAccValue(account.accoutType,account.accountNo )">
+                        <div class="ux-selection mar-custom">
+                            <label class="ux-selection2">
+                                <img src="assets/images/icons/{{imageName}}" class="bank-icon"> {{account.accountNo}}
+                                <input type="radio"  [value]="account.accountNo" name="upi-account"> <span class="checkmark"></span> 
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- <div class="col-12 col-md-12">
+                        <div class="ux-selection mar-custom">
+                            <label class="ux-selection2">
+                                <img src="assets/images/icons/icici-icon.png" class="bank-icon">
+                                XXXX XXXX XXXX 9897 
+                                <input type="radio" checked="checked" value="XXXX XXX 967" name="upi-account">
+                                <span class="checkmark"></span>
+                            </label>
+                         </div>
+                    </div>
+                    <div class="col-12 col-md-12">
+                        <div class="ux-selection mar-custom">
+                            <label class="ux-selection2">
+                                <img src="assets/images/icons/hdfc-icon.png" class="bank-icon">
+                                XXXX XXXX XXXX 9897 
+                                <input type="radio" value=" XXXX XXX 968" name="upi-account">
+                                <span class="checkmark"></span>
+                            </label>
+                         </div>
+                    </div>
+                    <div class="col-12 col-md-12">
+                        <div class="ux-selection mar-custom">
+                            <label class="ux-selection2">
+                                <img src="assets/images/icons/icici-icon.png" class="bank-icon">
+                                XXXX XXXX XXXX 9897 
+                                <input type="radio" value=" XXXX XXX 969" name="upi-account">
+                                <span class="checkmark"></span>
+                            </label>
+                        </div>
+                    </div> -->
+                    <div class="col-12 col-md-12">
+                        <div class="ux-input">
+                            <p class="error-message"> Error show</p>
+                       </div>
+                    </div>
+                </div>
+             </div>
+        </div>
+
+        <div class="row mt-2">
+            <div class="col-12 text-center">
+                <button class="ux-button primary submit-btn2" (click)="closePopup()">Submit</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Select Accounts Popup End-->
+    
+    <div class="ios-nav-overlay"></div>
+

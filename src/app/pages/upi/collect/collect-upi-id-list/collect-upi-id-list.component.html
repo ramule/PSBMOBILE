@@ -1,0 +1,74 @@
+<div class="main">
+
+  <div class="right-main-column minus-rt-col mar-custom">
+    <div class="right-col-container">
+
+      <div class="body-page-container">
+        <div class="container-fluid">
+          <div class="row">
+            <div class="bg-section">
+              <div class="col-12">
+                <div class="row1">
+                  <div class="col-sm-12 col-12 col-md-12" *ngFor="let vpaAddress of vpaAddressList;index as i" [hidden]="DataService.backURLCollectVPAList == '/pendingConfirmation' && vpaAddress.paymentAddress.toLowerCase() != DataService.pendingWithMe.payerAddress.toLowerCase()">
+                    <div class="white-bg1 pad-custom">
+                      <div class="grey-bg4">
+                        <div class="ux-selection mar-0 mb-0">
+                          <label class="ux-selection2 dis-custom mb-0">
+                            <h4 class="mt-0"><span>{{ 'UPI_ID' | translate}} : </span> {{vpaAddress.paymentAddress}}
+                            </h4>
+                            <input type="radio" [checked]="vpaAddress.isSelected" name="radioboxdemo1" disabled>
+                            <span class="checkmark"></span>
+                          </label>
+                        </div>
+                      </div>
+                      <div class="row">
+                        <ul class="list2 mt-0">
+                          <li *ngFor="let account of vpaAddress.accounts;index as j">
+                            <div class="ux-selection mr-0 w-100">
+                              <label class="pad-left pad-r ux-selection4 mb-0">
+                                <span class="fs-1">{{account.custName}}</span>
+                                <br />
+                                <span>{{account.accType}} {{account.maskedAccountNumber}}</span>
+                                <br />
+                                <span class="fs-2">{{account.bankName}}</span>
+                                <br />
+                                <!-- <span class="fs-2" style="color: red;" *ngIf="account.mbeba == 'N'">{{ 'UPI_PIN_IS_NOT_SET_FOR_THIS_ACCOUNT' | translate}}</span>
+								                <br /> -->
+                                <input class="right" type="radio"
+                                  [checked]="vpaAddress.isSelected && account.isSelected" name="radioboxdemo{{j}}"
+                                  (change)="getSelectedAccount(i,j)">
+                                <span class="checkmark"></span>
+                              </label>
+                            </div>
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- footer section start -->
+
+        <div class="footer-container sticky-actions">
+          <div class="footer-inactions minus-rt-col">
+            <div class="container-fluid">
+              <div class="row">
+                <div class="col-12 col-md-12 col-lg-12 text-center">
+                  <div class="powered-logo mt-0">
+                    <img src="assets/images/logo/powered-upi-logo.svg" alt="powered-upi-logo">
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- footer section end -->
+
+      </div>
+    </div>
+
+  </div>

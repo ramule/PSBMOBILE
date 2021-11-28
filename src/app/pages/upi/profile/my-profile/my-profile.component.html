@@ -1,0 +1,487 @@
+<div class="main">
+    <div class="right-main-column minus-rt-col mar-custom myProfile">
+        <div class="right-col-container cust-pb2">
+            <div class="body-page-container">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="bg-section">
+                            <div class="col-12">
+                                <div class="row1">
+                                    <div class="col-sm-12 col-12 col-md-12">
+                                        <div class="row1">
+                                            <!-- <div class="col-sm-12 col-12 col-md-12">
+                        <div class="ux-nav-tabs" style="margin:0">
+                          <div class="responsive3">
+                            <ul class="nav nav-tabs nav-justified bor-n" role="tablist">
+                              <li class="nav-item"> <a class="nav-link active" data-toggle="tab"
+                                  href="#upidetails">{{'UPI_ACCOUNT_DETAILS' | translate}}</a> </li>
+															<li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#personal">{{'PERSONAL_DETAILS' | translate}}</a> </li>
+                            </ul> -->
+                                            <!-- Tab panes -->
+                                            <!-- <div class="tab-content p-0 custom-tab-content5">
+                              <div id="upidetails" class=" tab-pane active"> -->
+                                            <!-- <div class="row1"> -->
+                                            <div class="col-12 p-0">
+                                                <div class="scroll-box4 upi-profile-slider">
+                                                    <div *ngIf="profileVpaAddressList.length > 0">
+                                                        <owl-carousel-o [options]="profiledashboardCarousel" role="list" (changed)="getData($event);" #owlCar>
+                                                            <ng-container class="item" role="listitem" *ngFor="let vpaDetails of profileVpaAddressList; index as i;">
+                                                                <ng-template class="slide" carouselSlide [id]="i">
+                                                                    <div class="row">
+                                                                        <div class="col-sm-12 col-12 col-md-12">
+                                                                            <div class="white-bg1">
+                                                                                <div class="col-12 col-md-12 m-auto pl-0 pr-0">
+                                                                                    <div class="scan-container">
+                                                                                        <div class="inner1" *ngIf="vpaDetails.showQrOnDynamic && vpaDetails.base64QRCodeImage">
+
+                                                                                            <!-- [ngClass]="!vpaDetails.isQRDisabled ? 'qr-container' : 'qr-container disable'" -->
+                                                                                            <!-- <div class="qr-img" *ngIf="vpaDetails.vpaQrFlag == 'Y'"  [ngClass]="!vpaDetails.isQRDisabled ? 'qr-img' : 'qr-img disable'">  -->
+                                                                                            <div class="qr-container" id="QRContainer{{i}}" *ngIf="vpaDetails.vpaQrFlag == 'Y'">
+                                                                                                <div class="qr-img">
+                                                                                                    <img [src]="vpaDetails?.isDynSelected ? vpaDetails.base64DynamicQRCodeImage :  vpaDetails.base64QRCodeImage" alt="QR-code-icon" class="qr">
+                                                                                                    <!-- <img src="assets/sample-psb-qr.png" alt="QR-code-icon" class="qr"> -->
+                                                                                                    <div class="overlap-logo">
+                                                                                                        <!--*ngIf="constant.getPlatform() == constant.val_android"-->
+                                                                                                        <!-- <img src="assets/images/svg/psb-icon-y.svg" alt="psb-icon" class="icon1"> -->
+                                                                                                        <!-- Psb Icon SVG Start -->
+                                                                                                        <svg xmlns="http://www.w3.org/2000/svg" class="icon1" width="22.369" height="32.001" viewBox="0 0 22.369 32.001">
+                                                                                                            <g transform="translate(-23.887 -223.461)">
+                                                                                                            <rect width="22.369" height="32.001" transform="translate(23.887 223.461)" fill="#ffd800"/>
+                                                                                                            <g transform="translate(28.433 224.462)">
+                                                                                                            <path d="M359.318,468.848l-.274.283-.278-.287.273-.283.279.287Zm2.018-1.95.71,0a.8.8,0,0,0-.2-.471.4.4,0,0,0-.336-.173c-.273.037-.348.425-.178.646Zm-1.132.921a.39.39,0,0,0-.117.125.361.361,0,0,0-.077.21.327.327,0,0,0,.1.268.43.43,0,0,0,.249.078.294.294,0,0,0,.12-.012l.129-.067-.4-.6Zm.558.505-.394-.6a.28.28,0,0,1,.117-.032h.128a.316.316,0,0,1,.219.084.366.366,0,0,1,.112.287.333.333,0,0,1-.181.263Zm.411-1.417a.811.811,0,0,1-.166-.343.486.486,0,0,1,.144-.438.6.6,0,0,1,.35-.122.529.529,0,0,1,.424.23,1.309,1.309,0,0,1,.248.661h.338l.133.263h-.4v2.055l-.366-.155v-1.9h-.46v2.055l-.331-.155v-.579a.652.652,0,0,1-.2.148.95.95,0,0,1-.44.1.775.775,0,0,1-.283-.043.844.844,0,0,1-.268-.166.766.766,0,0,1-.223-.506.614.614,0,0,1,.166-.383.821.821,0,0,1,.6-.214.907.907,0,0,1,.408.112.672.672,0,0,1,.243.219v-.594h-1.51l-.125-.263,1.719.011Zm-4,.252a.865.865,0,0,1,.046.775l.134.074a.474.474,0,0,0,.235.053.6.6,0,0,0,.084-.006c.03,0,.017-.021.069-.042a.677.677,0,0,0,.205-.114v-.739Zm-.212,0h-.939v1.132a.178.178,0,0,1-.194.181h-.1a.282.282,0,0,0-.055-.009l-.158-.031-.225-.221.243.013c.081,0,.122-.028.122-.084v-.981h-.611v1.127a.379.379,0,0,0,.015.1.1.1,0,0,0,.041.065l1.126.734a.787.787,0,0,1,.177.142.249.249,0,0,1,.05.128.7.7,0,0,1-.141.283l-.219-.2a.346.346,0,0,0,.054-.073.159.159,0,0,0,.023-.073c0-.035-.033-.083-.112-.127l-1.257-.721a.309.309,0,0,1-.133-.292v-1.1h-.28l-.128-.263h4.2l.124.263h-.273v2.055l-.363-.155v-.839a.434.434,0,0,0-.073.027.847.847,0,0,1-.13.042c-.051.014-.04.02-.072.02a.64.64,0,0,1-.274-.06.743.743,0,0,1-.235-.179l-.089.1a.747.747,0,0,1-.1.089.714.714,0,0,0-.1.058.088.088,0,0,0-.022.027.052.052,0,0,0-.006.017l.129.15.214.23.334.354-.094.2c-.371-.424-.691-.746-.8-.89a1.4,1.4,0,0,1-.221-.348c-.026-.083.089-.268.245-.286a.163.163,0,0,1,.2.085c0-.017.078-.006.1-.058.162-.135.289-.254.009-.631Zm-4.754-.26.6,0a.848.848,0,0,0-.215-.483.405.405,0,0,0-.336-.154c-.153.007-.279.1-.242.371a.513.513,0,0,0,.194.269Zm-.305.265h-.7v.707q0,.336.227.336a.667.667,0,0,0,.228-.053,1.241,1.241,0,0,0,.124-.055.955.955,0,0,0,.12-.073v-.862Zm2.139,1.684-.274.283-.279-.287.274-.283.279.287Zm-2.023-1.952a.636.636,0,0,1-.289-.486.492.492,0,0,1,.17-.32.484.484,0,0,1,.343-.1.528.528,0,0,1,.424.23,1.351,1.351,0,0,1,.281.673h.338l.12.263h-.4v2.055l-.353-.155v-1.9l-.4,0v2.051l-.348-.155v-.734c-.032.018-.058.032-.08.043a.685.685,0,0,1-.072.029.837.837,0,0,1-.19.031.827.827,0,0,1-.451-.177.538.538,0,0,1-.242-.389v-.7h-.319l-.128-.268Z" transform="translate(-350.423 -439.743)" fill="#a3001d" fill-rule="evenodd" />
+                                                                                                            <path d="M351.02,441.494l.03-.323.03-.219.037-.216.045-.214.053-.211.061-.207.068-.2.076-.2.083-.2.09-.193.1-.19.1-.186.11-.181.116-.176.123-.173.128-.167.135-.163.14-.158.145-.152.151-.147.157-.141.161-.136.166-.129.171-.124.176-.117.181-.111.185-.1.188-.1.193-.091.2-.084.2-.077.28-.1v-1.238h.072l.181-.012.176-.021.174-.029.17-.037.167-.045.163-.052.16-.061.155-.067.153-.073.148-.08.145-.086.141-.091.137-.1.134-.1.13-.106.127-.112.122-.115.12-.119.115-.123.112-.127.108-.13.1-.132.2-.271.182-.278.167-.284.152-.285.066-.134.251-.346.248-.32.122-.147.122-.14.121-.132.122-.125.122-.117.122-.11.124-.1.125-.1.127-.09.129-.083.132-.078.135-.073.138-.066.142-.061.147-.056.151-.051.156-.046.161-.042.168-.037.175-.032.181-.029.188-.024.2-.021.414-.03c.192-.009.384-.016.576-.019V432.4l-.122-.02-.125-.014-.124-.007h-.122l-.119.005-.117.011-.115.017-.112.022-.11.028-.107.032-.1.038-.1.043-.1.047-.1.051-.094.056-.091.061-.089.063-.168.137-.157.15-.145.161-.133.171-.122.179-.109.184-.1.187c-.172.319-.338.641-.525.951-.065.107-.133.21-.2.313-.055.075-.11.149-.168.222s-.122.141-.186.209l-.136.134c-.073.065-.148.128-.225.19l-.167.119-.181.114-.1.055-.3.158.388.181.184.094.179.1.176.106.171.112.168.119.162.124.158.13.153.134.149.14.143.145.138.15.133.155.127.16.122.164.116.168.111.173.1.177.1.181.092.185.085.188.079.191.071.2.065.2.058.2.05.2.043.207.035.209.028.212.02.214.012.216,0,.219,0,.223-.012.221-.022.218-.029.217-.037.214-.045.211-.053.208-.06.205-.068.2-.075.2-.081.195-.089.191-.1.187-.1.184-.108.179-.114.175-.121.171-.127.166-.132.161-.138.156-.143.151-.149.146-.154.14-.159.135-.163.13-.169.124-.173.117-.178.111-.181.105-.186.1-.189.092-.621.272.659.034.189.019.186.028.184.037.18.046.176.054.173.063.168.071.165.078.16.086.156.093.151.1.146.107.14.114.135.12.13.127.123.132.117.138.11.143.1.148.1.154.089.158.082.163.074.167.067.171.058.175.05.178.042.182.032.185.024.188.014.191.005.193-.005.2-.015.194-.024.191-.034.188-.043.184-.051.181-.061.177-.068.173-.077.17-.084.164-.092.16-.1.156-.107.15-.114.145-.12.139-.127.132-.132.127-.139.12-.145.114-.15.107-.155.1-.16.092-.165.084-.169.077-.173.068-.178.06-.181.051-.185.043-.187.034-.191.024-.194.015-.2.005-.191-.005-.189-.014-.186-.024-.184-.032-.181-.041-.177-.05-.174-.058-.17-.066-.166-.073-.161-.081-.158-.089-.153-.1-.148-.1-.143-.109-.137-.116-.132-.121-.126-.128-.12-.133-.114-.138-.107-.144-.1-.15-.094-.154-.086-.158-.079-.163-.071-.167-.064-.171-.055-.175-.048-.178-.039-.181-.03-.184-.022-.187-.015-.243v-9.764h2.6v3.192l.254-.1.2-.1.194-.111.186-.125.175-.138.165-.15.153-.161.14-.173.128-.183.115-.192.1-.2.086-.21.037-.107.062-.22.024-.113.02-.114.016-.116.012-.117.007-.118,0-.12,0-.154-.012-.152-.019-.15-.027-.148-.034-.145-.04-.143-.048-.139-.054-.137-.061-.133-.066-.129-.073-.126-.079-.122-.083-.118-.089-.114-.095-.109-.1-.1-.1-.1-.109-.094-.114-.089-.117-.084-.122-.078-.126-.073-.13-.067-.133-.061L357.8,439l-.14-.047-.143-.041-.145-.033-.147-.027-.15-.019-.152-.011-.154,0-.141,0-.139.009-.138.016-.135.022-.133.029-.131.034-.129.04-.127.045-.123.051-.121.056-.118.061-.115.065-.111.071-.109.076-.1.08-.1.084-.1.089-.094.093-.089.1-.085.1-.08.1-.076.107-.071.112-.066.115-.062.117-.056.121-.051.123-.046.126-.04.129-.035.13-.029.134-.024.141v13.621h-2.781V441.494Zm7.895,8.451-.125.006-.121.019-.117.03a1.666,1.666,0,0,0-.166.065c-.053.027-.1.056-.153.088s-.093.07-.138.109-.082.083-.121.127-.07.094-.1.143a1.665,1.665,0,0,0-.081.158c-.023.057-.041.112-.058.17l-.024.12-.013.122v.125l.013.122.024.12c.017.058.035.113.058.17a1.739,1.739,0,0,0,.081.158c.032.05.065.1.1.143a1.629,1.629,0,0,0,.121.128c.045.039.09.074.138.109s.1.061.153.089.109.046.166.066l.117.03.121.019.125.006.125-.006.121-.019a1.675,1.675,0,0,0,.173-.05c.056-.022.109-.046.162-.074a1.675,1.675,0,0,0,.148-.095c.047-.037.09-.074.133-.115s.079-.086.115-.133a1.682,1.682,0,0,0,.095-.148c.027-.053.051-.106.073-.162s.035-.114.05-.173l.018-.121.006-.125-.006-.125-.018-.121c-.014-.06-.03-.115-.05-.173s-.046-.109-.073-.162-.06-.1-.095-.148-.075-.09-.115-.133-.086-.078-.133-.115a1.712,1.712,0,0,0-.148-.1c-.053-.027-.107-.051-.162-.073s-.114-.035-.173-.049l-.121-.019Z" transform="translate(-350.588 -429.524)" fill="#a3001d" fill-rule="evenodd" />
+                                                                                                            </g>
+                                                                                                            </g>
+                                                                                                            </svg>
+                                                                                                        <!-- Psb Icon SVG End -->
+                                                                                                        <!-- Upi Icon SVG Start -->
+                                                                                                        <!-- <svg version="1.1" class="icon1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 22.4 32" style="enable-background:new 0 0 22.4 32;" xml:space="preserve">
+                                                                                                        <g transform="translate(0)">
+                                                                                                            <path d="M13.7,3.7L19.8,16l-13,12.3L13.7,3.7z" fill="#247B33"/>
+                                                                                                            <path d="M9.4,3.7L15.5,16l-13,12.3L9.4,3.7z" fill="#F47920"/>
+                                                                                                        </g>
+                                                                                                    </svg> -->
+                                                                                                        <svg version="1.1" class="icon1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 22.4 32" style="enable-background:new 0 0 22.4 32;" xml:space="preserve" width="22" height="31">
+                                                                                                        <g transform="translate(0)">
+                                                                                                            <path d="M13.7,3.7L19.8,16l-13,12.3L13.7,3.7z" fill="#247B33"/>
+                                                                                                            <path d="M9.4,3.7L15.5,16l-13,12.3L9.4,3.7z" fill="#F47920"/>
+                                                                                                        </g>
+                                                                                                    </svg>
+                                                                                                        <!-- Upi Icon SVG End -->
+                                                                                                    </div>
+                                                                                                </div>
+                                                                                                <div class="lock-img disable">
+                                                                                                    <div class="overlap-logo"> <img src="assets/images/svg/lock.svg" alt="lock-icon"> </div>
+                                                                                                </div>
+                                                                                            </div>
+                                                                                            <div class="qr-container" *ngIf="vpaDetails.vpaQrFlag == 'N'">
+                                                                                                <!-- [ngClass]="!vpaDetails.isQRDisabled ? 'qr-container' : 'qr-container disable'" -->
+                                                                                                <div class="qr-img disable">
+                                                                                                    <img [src]="vpaDetails.base64QRCodeImage" alt="QR-code-icon" class="qr">
+                                                                                                    <!-- <img src="assets/sample-psb-qr.png" alt="QR-code-icon" class="qr"> -->
+                                                                                                    <div class="overlap-logo" *ngIf="constant.getPlatform() == constant.val_android">
+                                                                                                        <img src="assets/images/svg/psb-icon-y.svg" alt="psb-icon" class="icon1">
+                                                                                                        <img src="assets/images/svg/upi-icon2.svg" alt="upi-icon" class="icon1"> </div>
+                                                                                                </div>
+                                                                                                <div class="lock-img">
+                                                                                                    <div class="overlap-logo"> <img src="assets/images/svg/lock.svg" alt="lock-icon"> </div>
+                                                                                                </div>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                        <div class="inner2 dynamicCnt_{{i}}" style="display: none;">
+                                                                                            <form [formGroup]="myProfileForm">
+                                                                                                <div class="row1">
+                                                                                                    <div class="col-12 col-sm-12 col-md-12">
+                                                                                                        <div class="ux-input">
+                                                                                                            <label for="amt">{{'AMOUNT' | translate}}</label>
+                                                                                                            <!-- <input type="text" placeholder="{{'ENTER_AMOUNT' | translate}}"> -->
+                                                                                                            <!-- Android Keyboard start -->
+                                                                                                            <!-- <input type="tel" placeholder="{{'ENTER_AMOUNT' | translate}}" autocomplete="off" formControlName="amount" limit-to="12" (blur)="formatCurrency($event.target.value,vpaDetails)" id="amt" data-a-sign="Rs."> -->
+                                                                                                            <!-- Android Keyboard End -->
+                                                                                                            <!-- iOS Keyboard start -->
+                                                                                                            <input type="text" inputmode="decimal" placeholder="{{'ENTER_AMOUNT' | translate}}" autocomplete="off" formControlName="amount" limit-to="12" (blur)="formatCurrency($event.target.value,vpaDetails)" id="amt" data-a-sign="Rs.">
+                                                                                                            <!-- iOS Keyboard end -->
+                                                                                                            <p class="text-center error-message" style="color: #c51523;" *ngIf="myProfileForm.controls['amount'].hasError('required') && myProfileForm.controls['amount'].touched">
+                                                                                                                {{ 'ENTER_AMOUNT_ERROR' | translate }} </p>
+                                                                                                            <p class="text-center error-message" style="color: #c51523;" *ngIf="!myProfileForm.controls['amount'].hasError('required')  && myProfileForm.controls['amount'].touched && isAmountLimitExceeded">
+                                                                                                                {{ 'ENTER_AMOUNT_LESS_THAN_ONE_LAKH' | translate }} </p>
+                                                                                                            <p class="text-center error-message" *ngIf="myProfileForm.controls['amount'].hasError('pattern')">{{ 'ENTER_NUMBER_ERROR' | translate}}</p>
+                                                                                                        </div>
+                                                                                                    </div>
+                                                                                                    <div class="col-12 col-sm-12 col-md-12">
+                                                                                                        <div class="ux-input">
+                                                                                                            <label for="remarks">{{'REMARKS' | translate}}</label>
+                                                                                                            <input type="text" formControlName="remarks" autocomplete="off" limit-to="50" (input)="updateRemarkVal($event.target.value,vpaDetails)" placeholder="{{'ENTER_REMARKS' | translate}}">
+                                                                                                            <p></p>
+                                                                                                        </div>
+                                                                                                    </div>
+                                                                                                </div>
+                                                                                                <div class="row1">
+                                                                                                    <div class="col-12 col-sm-12 col-md-12">
+                                                                                                        <div class="btn-section">
+                                                                                                            <div class="text-right">
+                                                                                                                <button class="ux-button secondary sm4" (click)="resetQR(vpaDetails, i)">{{'RESET_QR' | translate}}</button>
+                                                                                                                <button class="ux-button primary sm4" [disabled]="myProfileForm.invalid" (click)="generateDynamicQR(vpaDetails,'QRContainer'+i, false, false)">{{'GENERATE_QR'
+                                                        | translate}}</button>
+                                                                                                            </div>
+                                                                                                            <!-- <span style="color: red;" *ngIf="!vpaDetails.showQrOnDynamic">{{'CLICK_GENERATEQR_TO_VIEWQR' | translate}} </span> -->
+                                                                                                        </div>
+                                                                                                    </div>
+                                                                                                </div>
+                                                                                            </form>
+                                                                                        </div>
+                                                                                        <div class="inner1" *ngIf="vpaDetails.showQrOnDynamic">
+                                                                                            <div class="row1 mt-3 mb-3">
+                                                                                                <button class="ux-linkbutton primary sm1 float-left" *ngIf="vpaDetails.vpaQrFlag == 'Y'" [disabled]="vpaDetails.isQRDisabled" (click)="validateQRForDownload(vpaDetails,'QRContainer'+i);"><img
+                                                    src="assets/images/svg/download.svg" alt="download-icon">{{
+                                                  'DOWNLOAD' | translate}}</button>
+                                                                                                <button class="ux-linkbutton primary sm1 float-right" *ngIf="vpaDetails.vpaQrFlag == 'Y'" [disabled]="vpaDetails.isQRDisabled" (click)="validateQRForShare(vpaDetails,'QRContainer'+i);"><img
+                                                    src="assets/images/svg/share.svg" alt="share-icon">{{ 'SHARE' |
+                                                  translate}}</button>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                        <div class="inner3">
+                                                                                            <div class="row1 text-center"> <em *ngFor="let accounts of vpaDetails.accounts" [hidden]="accounts.isDefaultAccount == 'N'">{{accounts.custName}}</em>
+                                                                                                <h5><span>{{'UPI_ID' | translate}}: </span> {{vpaDetails.paymentAddress}}
+                                                                                                    <a href="javascript:;" (click)="copyToClipboard(vpaDetails.paymentAddress)">
+                                                                                                        <img src="assets/images/svg/copy.svg" alt="copy-icon">
+                                                                                                    </a>
+                                                                                                    <a class="delete-btn" *ngIf="vpaDetails.default == 'N'" (click)="showPopup('deleteVpaConfirmationPopup',vpaDetails)">
+                                                                                                        <img src="assets/images/svg/delete.svg" alt="delete-icon"> </a>
+                                                                                                </h5>
+                                                                                            </div>
+                                                                                            <div class="row1 text-center mt-2" *ngIf="vpaDetails.default == 'Y'"> <a class="ux-linkbutton1 primary sm">{{ 'DEFAULT' |
+                                                  translate }}</a> </div>
+                                                                                            <div class="row1 text-center mt-2" *ngIf="vpaDetails.default == 'N'" (click)=makeVpaDefault(vpaDetails);> <a class="ux-linkbutton1 primary sm">{{ 'MAKE_DEFAULT' |
+                                                  translate }}</a> </div>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                    <div class="row1 mt-3">
+                                                                                        <div class="col-6 col-md-6">
+                                                                                            <div class="toggle-col dynamic">
+                                                                                                <input type="checkbox" [(ngModel)]="vpaDetails.isDynSelected" [disabled]="vpaDetails.isQRDisabled" name="dynamicQr1" (change)="OnToggle(vpaDetails,i)">
+                                                                                                <div class="flat-toggle"> <span>{{ 'DYNAMIC' | translate}}</span> </div>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                        <div class="col-6 col-md-6">
+                                                                                            <div class="toggle-col disable f-right pl-3">
+                                                                                                <input type="checkbox" [(ngModel)]="vpaDetails.isQRDisabled" name="disableQr1" (change)="onDisable(vpaDetails,i)">
+                                                                                                <div class="flat-toggle"> <span>{{ 'DISABLE' | translate}}</span> </div>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="col-sm-12 col-12 col-md-12">
+                                                                            <div class="grey-bg3 mar-custom mb-0 ">
+                                                                                <div class="row1">
+                                                                                    <div class="col-sm-12 col-12 col-md-12 mt-1" *ngFor="let account of vpaDetails.accounts; index as j;" [hidden]="account.isDefaultAccount=='N'">
+                                                                                        <div class="white-bg2">
+                                                                                            <div class="row1" (click)="goToPage('manageAccounts',vpaDetails)">
+                                                                                                <div class="col-10 col-md-10">
+                                                                                                    <div class="title-info">
+                                                                                                        <!-- <h5><img src="assets/images/icons/psb-icon-yellow.png" alt="psb-icon-yellow">{{account.custName}}</h5> -->
+                                                                                                        <h5 *ngIf="account.bankName == 'Punjab & Sind Bank'">
+                                                                                                            <img src="assets/images/icons/psb-icon-yellow.png" alt="psb-icon"> {{ account.custName }}
+                                                                                                        </h5>
+                                                                                                        <h5 *ngIf="account.bankName != 'Punjab & Sind Bank'">
+                                                                                                            <img src="assets/images/svg/bank-icon.svg" alt="bank-icon"> {{ account.custName }}
+                                                                                                        </h5>
+                                                                                                        <h5> {{account.bankName}}</h5>
+                                                                                                        <h6>{{ account.accType }} {{account.maskedAccountNumber}}
+                                                                                                        </h6>
+                                                                                                    </div>
+                                                                                                </div>
+                                                                                                <div class="col-2 col-md-2" *ngIf="account.isDefaultAccount=='Y'">
+                                                                                                    <!-- <img src="assets/images/svg/select-upi1.svg" alt="select-icon"
+                                                class="text-center"> -->
+                                                                                                    <button class="ux-linkbutton1 primary sm float-right" onclick="console.log('test')">{{ 'DEFAULT' | translate }}</button>
+                                                                                                </div>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                    <div class="col-sm-12 col-12 col-md-12 mt-3 text-right">
+                                                                                        <button class="ux-linkbutton primary" (click)="goToPage('manageAccounts',vpaDetails)">{{'CHANGE_DEFAULT_ACCOUNT' | translate  }}</button>
+
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </ng-template>
+                                                            </ng-container>
+                                                        </owl-carousel-o>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-12 col-md-12  mt-4  text-center" *ngIf="profileVpaAddressList.length > 0">
+                                                <!-- createid-btn : removed this class from btn -->
+                                                <button class="ux-linkbutton link-text primary" (click)="goToPage('createUpi')" [disabled]="dataService.vpaAddressList.length >= constant.val_maxVpaCount"> <img src="assets/images/svg/add-g.svg" alt="ad-icon"> {{'CREATE_NEW_UPI_ID' |translate}}
+                        </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- <div id="personal" class="tab-pane fade">
+                                <div class="row1">
+                                  <div class="col-sm-12 col-12 col-md-12">
+                                    <div class="white-bg1 mt-0 mb-0">
+                                      <div class="profile-container">
+                                        <div class="profile-bg">
+                                          <div class="row">
+                                            <div class="col-md-12 col-12">
+                                              <a href="javascript:;" class="profile1"> <img [src]="dataService.profileImage"
+												onerror="this.src='assets/images/svg/user-profile-w.svg'" class="img-responsive"> <em
+                                                  class="cam-click">
+                                                  <img src="assets/images/svg/camera.svg">
+                                                </em> </a>
+                                            </div>
+                                            <div class="row1">
+                                              <div class="col-12 col-md-12">
+                                                <h6>{{'NAME' | translate}}</h6>
+                                                <h5>{{dataService.userName}}</h5>
+                                              </div>
+                                              <div class="col-12 col-md-12 mt-3">
+                                                <h6>{{'EMAIL' | translate}}</h6>
+                                                <h5>{{dataService.upiUserEmailAdress}}</h5>
+                                              </div>
+                                              <div class="col-12 col-md-12 mt-3">
+                                                <h6>{{'MOBILE_NUMBER' | translate}}</h6>
+                                                <h5>{{mobileNumber}}</h5>
+                                              </div>
+                                            </div>
+                                          </div>
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div> -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- <div class="col-12 col-md-12 text-center">
+                        <button class="createid-btn ux-button primary md"(click)="goToPage('createUpi')"
+                        [disabled]="dataService.vpaAddressList.length == 3"> {{'CREATE_NEW_UPI_ID' |translate}} </button>
+                      </div> 
+                       -->
+    <!-- <div class="col-12 col-md-12 col-lg-12 text-center">
+                         <div class="powered-logo">
+                           <img src="assets/images/logo/powered-upi-logo.svg" alt="powered-upi-logo">
+                         </div>
+                      </div> -->
+    <!-- 
+
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+ -->
+    <!-- footer section start -->
+    <!-- <div class="footer-container sticky-actions">
+        <div class="footer-inactions minus-rt-col">
+          <div class="container-fluid">
+        
+          </div>
+        </div>
+      </div> -->
+    <!-- footer section end
+    </div>
+  </div> -->
+</div>
+<!-- main -->
+
+<!-- =========== modal popup start ===============  -->
+
+
+<!-- Alert Popup Start -->
+
+<div class="popup-bottom alert1">
+    <div class="row">
+        <div class="col-12">
+            <h4 class="text-center">Alert</h4>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12">
+            <p>
+                You are not allowed to edit UPI ID as your UPI profile is marked as spam. please contact banks for more details
+            </p>
+        </div>
+    </div>
+    <div class="row1 mt-2">
+        <div class="col-12 text-center">
+            <button class="ux-button primary md" onclick="window.location.href = '#'">Ok</button>
+        </div>
+    </div>
+</div>
+
+<!-- Alert Popup End -->
+
+<!-- Delete UPI ID Popup Start -->
+
+<div class="popup-bottom delete1 deleteVpaConfirmationPopup">
+    <div class="row">
+        <div class="col-12">
+            <h4 class="text-center"> <img src="assets/images/svg/information.svg" alt="information-icon"> {{'INFORMATION' | translate}}
+            </h4>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12">
+            <p>
+                {{ 'DO_YOU_WANT_TO_DELETE_THIS_UPI_ID' | translate }} {{popupData.paymentAddress}}?
+            </p>
+        </div>
+    </div>
+    <div class="row1 mt-2">
+        <div class="col-6 text-center">
+            <button class="ux-button secondary no md close-btn" (click)="closePopup('deleteVpaConfirmationPopup')">{{'NO' |
+        translate}}</button>
+        </div>
+        <div class="col-6 text-center">
+            <button class="ux-button primary md" (click)="deleteVpaAdd(popupData.paymentAddress)">{{'YES' |
+        translate}}</button>
+        </div>
+    </div>
+</div>
+
+<!-- Delete UPI ID Popup End -->
+
+<!-- Remove Default Popup Start -->
+<div class="popup-bottom removeDefaultAccPopup">
+    <!--remove2-->
+    <div class="row">
+        <div class="col-12">
+            <h4 class="text-center">
+                <!-- Remove Account -->
+                {{ 'REMOVE_ACCOUNT' | translate }}
+            </h4>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12">
+            <p>
+                {{ 'CANNOT_REMOVE_DEFAULT_ACCOUNT' | translate }}
+                <!-- Cannot remove this account as It is marked as Default. Please change the default account mapping and then try again -->
+            </p>
+        </div>
+    </div>
+    <div class="row1 mt-2">
+        <div class="col-12 text-center">
+            <button class="ux-button primary md" (click)="closePopup('removeDefaultAccPopup')">
+        {{ 'OK' | translate }}
+        <!-- Ok -->
+      </button>
+        </div>
+    </div>
+</div>
+
+<div class="popup-bottom show-profile-info">
+    <div class="row1">
+        <div class="col-12">
+            <h4 class="text-center"> <img src="assets/images/svg/information.svg" alt="information-icon"> {{'INFORMATION' | translate}}
+            </h4>
+        </div>
+    </div>
+    <div class="row1">
+        <div class="col-12">
+            <p>{{ information}}</p>
+        </div>
+    </div>
+    <div class="row1  mt-2">
+        <div class="col-12 text-center" (click)="closePopup('show-profile-info')">
+            <button class="ux-button primary submit-btn" type="button">{{'OK' | translate}}</button>
+        </div>
+    </div>
+</div>
+
+<!-- Remove Default Account Popup End -->
+
+<!-- <div class="ios-nav-overlay"></div> -->
+
+
+	 <!-- OTP Popup Start -->
+
+	 <div class="popup-bottom md-popup otp-popup">
+		<div class="row1">
+			<div class="col-10">
+			</div>
+			<div class="col-2">
+				<!-- <button class="ux-button-icon close-btn">
+					<img src="assets/images/svg/close-b.svg" alt="cross-icon" class="img-vsmall">
+				</button>  -->
+			</div>
+		</div>
+        <div class="row1">
+            <div class="col-12 col-md-8 col-lg-8 col-xl-8 m-auto">
+                <div class="mob-icon">
+                    <img src="assets/images/icons/mobile.svg" alt="mobile-icon">
+                </div>
+                <h4 class="greentext text-center mar-b ">OTP Verification</h4>
+                <h6 class="text-center">Please enter 6 digit OTP sent on existing Mobile Number ending with ****5467</h6>
+            </div>
+        </div>
+
+        <div class="row1">
+            <div class="col-12 col-md-8 col-lg-8 col-xl-8  m-auto">
+                <div class="row1">
+                    <div class="col-12 col-md-12">
+                        <form [formGroup]="otpSessionForm" >
+                        <div class="row4">
+                                <div class="col-sm-2 col-2 col-md-2" *ngFor="let otpInput of otpFormInput | slice:0:6; index as i">
+                                    <div class="ux-input password1 mb-1">
+                                        <input id="otppassword{{i}}" #OTPFormRow type="tel" maxlength="1" placeholder="●"  (keyup)="onKeyUpEvent(i, $event, 'otp')" formControlName="{{otpInput}}" pattern="\d*"> </div>
+                                </div>
+						  </div>
+                        </form>
+                        <div class="row1">
+                            <div class="col-12">
+                                <div class="ux-input password1 mt-0 mb-0">
+                                    <p class="error-message"></p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row4">
+                            <div class="col-6 col-md-6">
+                                <div class="text-left">
+                                    <p class="text-left">
+                                        <span class="success-text">00.20</span>
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="col-6 col-md-6">
+                                <div class="text-right">
+                                    <button class="ux-linkbutton default-underline mt-3">{{ 'RESEND' | translate }}</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row1 mt-2">
+            <div class="col-12 col-md-8 col-lg-8 col-xl-8  m-auto">
+                <div class="row1">
+                    <div class="col-6 text-center">
+                        <button class="ux-button secondary sm-mob close-btn">Cancel</button>
+                    </div>
+                    <div class="col-6 text-center">
+                        <button class="ux-button primary sm-mob otp-submit">Submit</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+     <!-- OTP Popup End-->
+ 

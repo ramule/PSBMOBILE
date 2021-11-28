@@ -1,0 +1,273 @@
+<div class="main main-bg2">
+    <div class="right-main-column mar-custom">
+        <div class="right-col-container pad-b">
+            <div class="body-page-container">
+                <div class="vspacer5 d-sm-block d-none"></div>
+                <div class="container-fluid">
+                    <form [formGroup]="scanQrAmountForm" (ngSubmit)="routePage('/scanQrConfirm')">
+                        <div class="row">
+                            <div class="bg-section2">
+                                <div class="col-12">
+                                    <div class="row1">
+                                        <div class="payee-info1">
+                                            <div class="row">
+                                                <div class="info-inner">
+                                                    <div class="info-lft">
+                                                        <span class="yellow">
+                                                            <h6>{{DataService.selectedVpaDetailsPay.accountDetails.custName
+                                                                | firstLastChar}}</h6>
+                                                            <!-- <img src="assets/images/icons/user1.png" alt="user-img"> -->
+                                                        </span>
+                                                    </div>
+                                                    <div class="info-center">
+                                                        <a> <img src="assets/images/svg/double-right-arrows.svg" alt="double-right-arrows-icon"> </a>
+                                                    </div>
+                                                    <div class="info-rit">
+                                                        <span class="yellow">
+                                                            <h6>{{payeeObj.payeeName |
+                                                                firstLastChar}}</h6>
+                                                            <!-- <img src="assets/images/icons/user5.png" alt="user-img"> -->
+                                                        </span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-12 col-md-12" *ngIf="DataService.validateAddressResp.MASKNAME || DataService.ScanQrCodeData.pn || DataService.ScanQrCodeData.qrMerchantName">
+                                                    <h5>{{ 'PAYMENT_TO' | translate}} {{ DataService.validateAddressResp.MASKNAME ? DataService.validateAddressResp.MASKNAME : (DataService.ScanQrCodeData.pn || DataService.ScanQrCodeData.qrMerchantName) }}
+                                                    </h5>
+                                                    <h5 *ngIf="DataService.ScanQrCodeData.payType == 'UPI_ID'">
+                                                        <span>{{'UPI_ID' | translate }} : {{ DataService.ScanQrCodeData.pa ?
+                                                            DataService.ScanQrCodeData.pa :
+                                                            DataService.ScanQrCodeData.qrPaymentAddress}}</span>
+                                                    </h5>
+                                                    <h5 *ngIf="DataService.ScanQrCodeData.payType == 'BNK_ACT'">
+                                                        <span>{{ DataService.ScanQrCodeData.qrIfsc}} / {{ DataService.ScanQrCodeData.qrAccountNo}}</span>
+                                                    </h5>
+                                                    <!-- <h6>{{DataService.ScanQrCodeData.qrPaymentAddress}}{{     DataService.ScanQrCodeData.qrMerchantName}}</h6> -->
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row1">
+                                        <div class="col-sm-12 col-12 col-md-12">
+                                            <div class="ux-input white-input mar-tb">
+                                                <label *ngIf="QRScanData.qrType == 'upiGlobal'">{{'SINGAPORE_DOLLAR_(SGD)'
+                                                    | translate }}</label>
+                                                <!-- Android Keyboard Start -->
+                                                <!-- <input type="tel" placeholder="₹ 0" autocomplete="off"
+                                                    formControlName="amount" limit-to="12"
+                                                    (blur)="onInput($event.target.value, 'AMT')" id="amt"
+                                                    data-a-sign="Rs." [readonly]="!amtEditable"> -->
+                                                <!-- Android Keyboard End -->
+                                                <!-- iOS Keyboard Start -->
+                                                <input type="text" inputmode="decimal" placeholder="₹ 0" autocomplete="off" formControlName="amount" limit-to="12" amountOnly  (focus)="amtEditable ? onFocus($event.target.value) : ''" (blur)="amtEditable? onAmtMamCheck($event.target.value, 'AMT') : ''" id="amt" data-a-sign="Rs." [readonly]="!amtEditable">
+                                                <!-- iOS Keyboard End -->
+                                                <!-- <div class="text-center error-message" > <span class="errormsg"  *ngIf="scanQrAmountForm.controls['amount'].hasError('required')  && scanQrAmountForm.controls['amount'].touched">
+                                                        {{ 'ENTER_AMOUNT_ERROR' | translate }}
+                                                    </span></div> -->
+                                                <p class="text-center error-message" *ngIf="scanQrAmountForm.controls['amount'].hasError('required')  && scanQrAmountForm.controls['amount'].touched"> {{ 'ENTER_AMOUNT_ERROR' | translate }} </p>
+                                                <p class="text-center error-message" *ngIf="scanQrAmountForm.controls['amount'].hasError('pattern')">{{ 'ENTER_NUMBER_ERROR' | translate}}</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row1" *ngIf="QRScanData.enTips == 'Y'">
+                                        <div class="col-sm-12 col-12 col-md-12">
+                                            <div class="ux-input white-input mar-tb">
+                                                <label>{{'ENTER_TIP_AMOUNT' | translate }}</label>
+                                                <input type="tel" placeholder="₹ 0" autocomplete="off" formControlName="enTipAmount" limit-to="12" (blur)="onEnTipAmtInput($event.target.value, 'enTipAmount')" id="enTipamt" data-a-sign="Rs.">
+                                                <!-- <div class="text-center"> <span class="errormsg" style="top:48px;" *ngIf="scanQrAmountForm.controls['enTipAmount'].hasError('required')  && scanQrAmountForm.controls['enTipAmount'].touched">
+                                                        {{ 'ENTER_AMOUNT_ERROR' | translate }}
+                                                    </span></div> -->
+                                                    <p class="text-center error-message" *ngIf="scanQrAmountForm.controls['enTipAmount'].hasError('required')  && scanQrAmountForm.controls['enTipAmount'].touched">{{ 'ENTER_AMOUNT_ERROR' | translate }}</p>
+                                                    <p class="text-center error-message" *ngIf="scanQrAmountForm.controls['enTipAmount'].hasError('pattern')">{{ 'ENTER_ALPHABET_NUMBER_ERROR' | translate}}</p>
+                                                </div>
+                                        </div>
+                                    </div>
+                                    <div *ngIf="QRScanData.qrType == 'upiGlobal'">
+                                        <!-- <div class="row1">
+											<div class="col-sm-5 col-8 col-md-3 m-auto">
+												<div class="white-input ux-input mar-tb">
+													<label for=" ">Singapore Dollar (SGD)</label>
+													<input type="number" name="amount" placeholder="0" required=""
+														id="amt">
+													<p class="text-center error-message"></p>
+												</div>
+											</div>
+										</div> -->
+                                        <div class="payee-info1 mar-b mb-1 mt-1">
+                                            <div class="row1">
+                                                <div class="calculate-amt text-center col-12">
+                                                    <div class="info-inner3">
+                                                        <div class="info-lft">
+                                                            <em>{{'CONVERSION_RATE' | translate}}</em>
+                                                            <em> <span>1SGD = 0.0193</span>
+                                                            </em>
+                                                        </div>
+                                                        <div class="info-center">
+                                                            <em>INR Value</em>
+                                                            <em><img src="assets/images/svg/rupee.svg"
+                                                                    alt="rupees-icon">
+                                                                <span>5181.35</span></em>
+                                                        </div>
+                                                        <div class="info-rit">
+                                                            <em>{{'MARKUP_RATE' | translate}}</em>
+                                                            <em><span>3.50%</span></em>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row1">
+                                        <div class="col-sm-5 col-5 col-md-3 m-auto">
+                                            <div class="ux-input dark-input mar-tb">
+                                                <input type="text" formControlName="remarks" autocomplete="off" limit-to="100" placeholder="{{'REMARKS' | translate}}" [readonly]="!QRScanData.qrRemarkEditable">
+                                                <p class="text-center error-message" *ngIf="scanQrAmountForm.controls['remarks'].hasError('pattern')">{{ 'ENTER_SPECIAL_CHARACTOR_ERROR' | translate}}</p>
+                                                <p class="text-center error-message"></p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="payee-info1" *ngIf="QRScanData.mc != '0000'">
+                                        <div class="row1">
+                                            <div class="calculate-amt text-center col-12">
+                                                <div class="info-inner3 row">
+                                                    <div class="info-center col-4" *ngIf="QRScanData.invoiceNo">
+                                                        <em>{{'INVOICE_NUMBER' | translate}}</em>
+                                                        <em> <span>{{QRScanData.invoiceNo}}</span>
+                                                        </em>
+                                                    </div>
+                                                    <div class="info-center col-4" *ngIf="QRScanData.invoiceName">
+                                                        <em>{{'INVOICE_NAME' | translate}}</em>
+                                                        <em><span>{{QRScanData.invoiceName}}</span></em>
+                                                    </div>
+                                                    <div class="info-center col-4" *ngIf="QRScanData.invoiceDate">
+                                                        <em>{{'INVOICE_DATE' | translate}}</em>
+                                                        <em><span>{{QRScanData.invoiceDate | date }}</span></em>
+                                                    </div>
+                                                </div>                                        
+                                            </div>
+                                        </div>
+                                        <div class="row1" style="text-align: center;">
+                                            <div class="calculate-amt text-center col-12">
+                                                <div class="info-inner3 position-relative" style="justify-content: center;">
+                                                    <div class="info-center" *ngIf="QRScanData.url">
+                                                        <em>{{'INVOICE_URL' | translate}}</em>
+                                                        <em (click)="viewInvoice(QRScanData.url)"> <span>{{QRScanData.url}}</span>
+                                                        </em>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- Info Bottom Container Start -->
+                                    <div class="info-bottom-container">
+                                        <div class="row1" *ngIf="QRScanData.qrType == 'GST'">
+                                            <div class="col-sm-12 col-12 col-md-12 m-auto">
+                                                <div class="row">
+                                                    <div class="text-left">
+                                                        <div>
+                                                            <div class="ux-selection-custom mar-rcustom">
+                                                                <label>{{ 'I_AGREE_TO_SHARE_MY_PAN_AADHAR_DETAILS_MSG' | translate}}
+                                                                    <input type="checkbox" formControlName="consentFlag"
+                                                                        id="consent" name="consent">
+                                                                    <span class="checkmark"></span>
+                                                                </label>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row1 mt-3">
+                                            <div class="col-sm-12 col-12 col-md-12 m-auto">
+                                                <!-- Deposit Start -->
+                                                <div class="bottom-info">
+                                                    <div *ngIf="DataService.upiPayVpaList.length > 0">
+                                                        <!-- <div class="popup-bottom2 register1 popup-active" *ngFor="let vpaDetails of DataService.upiPayVpaList" [hidden]="!vpaDetails?.isSelected"> -->
+                                                        <div *ngFor="let vpaDetails of DataService.upiPayVpaList" [hidden]="!vpaDetails?.isSelected">
+
+                                                            <div class="row1">
+                                                                <div class="col-12">
+                                                                    <h4>{{ 'FROM_UPI_ID' | translate}}</h4>
+                                                                </div>
+                                                            </div>
+                                                            <!-- <form action="#" id="payment-form"> -->
+                                                            <div *ngIf="vpaDetails.isSelected">
+                                                                <div class="row1 mt-2" *ngFor="let accDetails of vpaDetails.accounts" [hidden]="!accDetails?.isSelected">
+                                                                    <div class="col-12">
+                                                                        <h5>{{'UPI_ID' | translate }} : {{vpaDetails.paymentAddress}}</h5>
+                                                                        <h6>{{accDetails.accType}} {{accDetails.maskedAccountNumber}}
+                                                                        </h6>
+                                                                        <em>{{accDetails.bankName}}</em>
+                                                                    </div>
+                                                                    <div class="col-12 mt-1 ">
+                                                                        <div>
+                                                                            <a (click)="routePage('scanQRIdList')" class="reg-txt">{{'CHANGE_AC' |
+                                                                                translate}}</a>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-12 col-md-12 mt-4">
+                                                                        <em class="custom-t"><span>*</span> {{ 'NPCI_CIRCULAR_PAYMENT_MSG' | translate }} </em>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="row1 mt-3">
+                                                                <div class="col-12 text-center">
+                                                                    <button class="ux-button primary submit md" [disabled]="scanQrAmountForm.invalid && DataService.upiPayVpaList.length > 0">{{
+                                                                        'CONFIRM' | translate}}</button>
+                                                                </div>
+                                                            </div>
+                                                            <!-- </form> -->
+                                                            <div class="row1">
+                                                                <div class="col-12 text-center mt-4">
+                                                                    <div class="powered-logo">
+                                                                        <img src="assets/images/logo/powered-upi-logo.svg" alt="powered-upi-logo">
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <!-- Deposit End -->
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!-- Info Bottom Container End -->
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+    <!-- Register Popup End -->
+</div>
+<!-- Max Min Amount Popup Start -->
+
+<div class="popup-bottom amountalert">
+    <div class="row">
+        <div class="col-12">
+            <h4 class="text-center">{{ 'ALERT' | translate }}</h4>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12">
+            <p>
+                {{ 'AMOUNT_SHOULD_BE_GREATER_THAN' | translate }} {{minAmount}} {{ 'OR_SMALLER_THAN' | translate }} {{maxAmount}}
+            </p>
+        </div>
+    </div>
+    <div class="row1 mt-2">
+        <div class="col-12 text-center">
+            <button class="ux-button primary md" (click)="closePopup('amountalert')">{{'NO' | translate}}</button>
+        </div>
+    </div>
+</div>
+
+<!-- Max Min Amount Popup End -->

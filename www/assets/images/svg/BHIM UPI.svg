@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="35" height="105" viewBox="0 0 35 105">
+  <defs>
+    <clipPath id="clip-BHIM_UPI">
+      <rect width="35" height="105"/>
+    </clipPath>
+  </defs>
+  <g id="BHIM_UPI" data-name="BHIM UPI" clip-path="url(#clip-BHIM_UPI)">
+    <g id="Group_39978" data-name="Group 39978" opacity="0">
+      <rect id="Rectangle_18669" data-name="Rectangle 18669" width="35" height="35" fill="#e3e3e3"/>
+      <rect id="Rectangle_18672" data-name="Rectangle 18672" width="35" height="35" transform="translate(0 35)" fill="#d5d5d5"/>
+      <rect id="Rectangle_18673" data-name="Rectangle 18673" width="35" height="35" transform="translate(0 70)" fill="#c6c6c6"/>
+      <rect id="Rectangle_18670" data-name="Rectangle 18670" width="31" height="31" transform="translate(2 2)" fill="#b5b5b5"/>
+      <rect id="Rectangle_18682" data-name="Rectangle 18682" width="31" height="31" transform="translate(2 37)" fill="#b5b5b5"/>
+      <rect id="Rectangle_18683" data-name="Rectangle 18683" width="31" height="31" transform="translate(2 72)" fill="#b5b5b5"/>
+    </g>
+    <g id="Group_39958" data-name="Group 39958" transform="translate(-0.372 -1.475)">
+      <path id="Path_43129" data-name="Path 43129" d="M485.711,370.375l5.606,11.147-11.783,11.147Z" transform="translate(-465.224 -362.9)" fill="#0f8141"/>
+      <path id="Path_43130" data-name="Path 43130" d="M483.563,370.375l5.6,11.147-11.788,11.147Z" transform="translate(-467.002 -362.9)" fill="#e97726"/>
+    </g>
+    <g id="Group_39959" data-name="Group 39959" transform="translate(-0.372 33.525)">
+      <path id="Path_43129-2" data-name="Path 43129" d="M485.711,370.375l5.606,11.147-11.783,11.147Z" transform="translate(-465.224 -362.9)" fill="#0f8141"/>
+      <path id="Path_43130-2" data-name="Path 43130" d="M483.563,370.375l5.6,11.147-11.788,11.147Z" transform="translate(-467.002 -362.9)" fill="#e97726"/>
+    </g>
+    <g id="Group_39960" data-name="Group 39960" transform="translate(-0.372 68.525)">
+      <path id="Path_43129-3" data-name="Path 43129" d="M485.711,370.375l5.606,11.147-11.783,11.147Z" transform="translate(-465.224 -362.9)" fill="#0f8141"/>
+      <path id="Path_43130-3" data-name="Path 43130" d="M483.563,370.375l5.6,11.147-11.788,11.147Z" transform="translate(-467.002 -362.9)" fill="#e97726"/>
+    </g>
+  </g>
+</svg>

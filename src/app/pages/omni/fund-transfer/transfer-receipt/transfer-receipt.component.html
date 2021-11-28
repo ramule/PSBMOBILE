@@ -1,0 +1,293 @@
+<main>
+    <div class="nav-overlay"></div>
+    <div class="right-main-column">
+        <div class="right-col-container full-width">
+            <div class="body-page-container main-dashborad">
+                <div class="container-fluid">
+
+                    <div class="row">
+                        <div class="col-12 p-0">
+                            <div class="breadcrumb">
+                                <ul class="lst-breadcrumb">
+                                    <!-- <li>
+                                        <a routerLink="/sendMoney">{{"SEND_MONEY" | translate }}</a>
+                                    </li>
+                                    <li>
+                                        <a routerLink="/sendMoney">{{"INITIATE_SEND_MONEY" | translate }}</a>
+                                    </li>
+                                    <li>
+                                        {{"AUTHORIZATION" | translate }}
+                                    </li> -->
+                                    <li *ngFor="let name of dataService.breadcrumblist">
+                                        <a (click)="dataService.breadcrumroute(name.routeName)">{{name.currentRoute | translate}}</a>
+                                </li>
+                                
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <!--.row -->
+                    <!-- <div class="vspacer30"></div>
+                    <div class="row no-gutters">
+                        <div class="col-12">
+                            <div class="row1">
+                                <div class="col-12">
+                                    <div class="white-box1">
+                                        <div class="row1">
+                                            <div class="col-12 col-xl-3 col-lg-3 col-md-2 col-sm-12">
+                                            </div>
+                                            <div class="col-12 col-xl-6 col-lg-6 col-md-8 col-sm-12">
+                                                <div class="row1">
+                                                    <div class="success-box">
+                                                        <img *ngIf="receiptType =='success'"
+                                                            src="./assets/images/svg/success.svg" alt="success-icon">
+                                                        <img *ngIf="receiptType =='failure'"
+                                                            src="./assets/images/svg/failure.svg" alt="success-icon">
+
+                                                        <h2 *ngIf="receiptType =='success'" class="success">
+                                                            {{"TRANSC_SUCCESS" | translate }}</h2>
+                                                        <h2 *ngIf="receiptType =='failure'" class="success">
+                                                            {{"TRANSC_UNSUCCESS" | translate }}</h2>
+
+                                                        <h3>{{receiptResp.msg}}</h3>
+                                                        <div class="vspacer5"></div>
+                                                        <h3 *ngIf="receiptResp.trans_Id != ''">
+                                                            {{"TRANSACT_ID" | translate }} {{receiptResp.trans_Id}}</h3>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-12 col-xl-3 col-lg-3 col-md-2 col-sm-12">
+                                            </div>
+                                        </div>
+                                        <div class="row1">
+                                            <div class="col-12 col-xl-12 col-lg-12 col-md-12 col-sm-12">
+                                                <div class="greybox">
+                                                    <div class="row1">
+                                                        <div class="col-12 col-xl-2 col-lg-1 col-md-12 col-sm-12"></div>
+                                                        <div class="col-12 col-xl-8 col-lg-10 col-md-12 col-sm-12">
+                                                            <div class="row1">
+                                                                <div
+                                                                    class="col-12 col-xl-4 col-lg-4 col-md-4 col-sm-12">
+                                                                    <h5>{{"FROM_ACCOUNT" | translate }}</h5>
+                                                                    <h4>{{receiptResp.from_acc}}</h4>
+                                                                </div>
+                                                                <div
+                                                                    class="col-12 col-xl-4 col-lg-4 col-md-4 col-sm-12">
+                                                                    <h5>{{"TO_ACCOUNT" | translate }}</h5>
+                                                                    <h4>{{receiptResp.to_acc}}</h4>
+                                                                </div>
+                                                                <div
+                                                                    class="col-12 col-xl-4 col-lg-4 col-md-4 col-sm-12">
+                                                                    <h5>{{"PAYEE_NAME" | translate }}</h5>
+                                                                    <h4>{{receiptResp.payee_name}}</h4>
+                                                                </div>
+                                                            </div>
+                                                            <div class="row1 mt-3">
+                                                                <div
+                                                                    class="col-12 col-xl-4 col-lg-4 col-md-4 col-sm-12">
+                                                                    <h5>{{"AMOUNT" | translate }}</h5>
+                                                                    <h4>{{receiptResp.amount }}</h4>
+                                                                </div>
+                                                                <div
+                                                                    class="col-12 col-xl-4 col-lg-4 col-md-4 col-sm-12">
+                                                                    <h5>{{"REMARKS" | translate }}</h5>
+                                                                    <h4>{{receiptResp.remarks == '' ? '-' : receiptResp.remarks}}
+                                                                    </h4>
+                                                                </div>
+                                                                <div
+                                                                    class="col-12 col-xl-4 col-lg-4 col-md-4 col-sm-12">
+                                                                    <h5>{{"DATE" | translate }}</h5>
+                                                                    <h4>{{receiptResp.date | date:'d MMM yyyy,  hh:mm' }}
+                                                                    </h4>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-12 col-xl-2 col-lg-1 col-md-12 col-sm-12"></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="ux-footer border-n p-0">
+                                        <div class="row1">
+                                            <div class="col-6 col-lg-6 col-md-6 col-sm-6">
+                                                <button
+                                                    class="ux-button secondary w-100 d-block d-sm-block d-xl-none d-lg-none d-md-none"
+                                                    onclick="window.location.href = 'fund-transfer.html'">More
+                                                    Transfer</button>
+                                            </div>
+                                            <div class="col-6 col-lg-6 col-md-6 col-sm-6">
+                                                <button
+                                                    class="ux-button primary  w-100 d-block d-sm-block d-xl-none d-lg-none d-md-none"
+                                                    onclick="window.location.href = 'dashboard.html'">{{"HOME" | translate }}</button>
+                                            </div>
+                                        </div>
+                                        <div class="row  d-none d-sm-none d-xl-block d-lg-block d-md-block">
+                                            <div class="col-12 col-lg-12 col-md-12 col-sm-12 p-0">
+                                                <button class="ux-button primary float-right ml-4"
+                                                    routerLink="/dashboard">{{"HOME" | translate }}</button>
+                                                <button class="ux-button secondary float-right"
+                                                    routerLink="/otherBanks">{{"MORE_TRANSFER" | translate }}</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div> -->
+
+                    <div class="vspacer30 customize"></div>
+                    <div class="row no-gutters">
+                        <div class="col-12">
+                            <div class="row1">
+                                <div class="col-12 col-sm-12 col-md-12 col-lg-12  col-xl-9">
+                                    <div class="ux-acc-container" style="margin: 0">
+                                        <div class="greenCard sendMoney">
+                                            <h4>{{"RECEIPT" | translate }}</h4>
+                                        </div>
+                                        <div class="fund-transfer-wrapp overlap ftsuccess">
+                                            <div class="tab-container">
+                                                <div class="row1">
+                                                    <div class="col-md-12">
+                                                        <div class="ftsuccess-container">
+
+                                                            <div class="ftsuccess-control">
+                                                                <span class="success-img"></span>
+                                                                <div class="ftsuccess-detail">
+                                                                    <h6>Transaction Successful</h6>
+                                                                    <span>Amount sent succesfully</span>
+                                                                    <b>{{receiptResp.amount | customcurrency:"symbol" }}</b>
+                                                                    <em>Transaction ID {{receiptResp.trans_Id}}</em>
+
+                                                                </div>
+                                                            </div>
+
+
+                                                            <div class="receipt-img">
+                                                                <img src="assets/images/icons/Success_receipt.svg">
+                                                            </div>
+                                                        </div> <!-- otp-container -->
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="ftaccount-detail">
+                                                <div class="row1">
+                                                    <div class="col-12 col-xl-3 col-lg-6 col-md-6 col-sm-12">
+                                                        <div class="ux-input ux-readonly">
+                                                            <label>{{"FROM_ACCOUNT" | translate }}</label>
+
+                                                            <h4>{{receiptResp.from_acc}}</h4>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-12 col-xl-3 col-lg-6 col-md-6 col-sm-12">
+                                                        <div class="ux-input ux-readonly">
+                                                            <label>{{"TO_ACCOUNT" | translate }}</label>
+
+                                                            <h4>{{receiptResp.to_acc}}</h4>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-12 col-xl-3 col-lg-6 col-md-6 col-sm-12">
+                                                        <div class="ux-input ux-readonly">
+                                                            <label>{{"PAYEE_NAME" | translate }}</label>
+
+                                                            <h4>{{receiptResp.payee_name}}</h4>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-12 col-xl-3 col-lg-6 col-md-6 col-sm-12">
+                                                        <div class="ux-input ux-readonly">
+                                                            <label><img src="assets/images/svg/rupee2.svg"   alt="rupees-icon" >{{"AMOUNT" | translate }}</label>
+
+                                                            <h4>{{receiptResp.amount | customcurrency:"symbol" }}</h4>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-12 col-xl-3 col-lg-6 col-md-6 col-sm-12">
+                                                        <div class="ux-input ux-readonly">
+                                                            <label>{{"REMARKS" | translate }}</label>
+
+                                                            <h4>{{receiptResp.remarks == '' ? '-' : receiptResp.remarks}}</h4>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-12 col-xl-3 col-lg-6 col-md-6 col-sm-12">
+                                                        <div class="ux-input ux-readonly">
+                                                            <label>{{"SCHEDULE_DATE" | translate }}</label>
+
+                                                            <h4>{{receiptResp.date | date:'dd MMM yyyy' }}</h4>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div><!-- ftaccount-detail -->
+                                        </div>
+
+                                    </div>
+                                    <div class="action-btns">
+                                        <div class="export-container">
+                                            <button class="ux-linkbutton primary"><img
+                                                    src="assets/images/svg/download.svg"
+                                                    alt="download-icon">Share</button>
+                                            <button class="ux-linkbutton primary"><img
+                                                    src="assets/images/svg/download.svg"
+                                                    alt="download-icon">Download</button>
+                                            <button class="ux-linkbutton primary"> <img
+                                                    src="assets/images/svg/print.svg" alt="print-icon">Print</button>
+                                        </div>
+                                        <div class="text-right">
+                                            <button class=" ux-button secondary sm">Feedback</button>
+                                            <button class=" ux-button primary sm">Repeat Payment</button>
+                                        </div>
+                                    </div>
+
+
+                                </div>
+                                <div class="col-12 col-md-12 col-lg-12 col-xl-3 d-none d-xl-block">
+                                    <div class="right-ads">
+                                        <a>
+                                            <img src="assets/images/banner/my-card-banner.jpg">
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+
+                    <footer>
+                        <!-- Footer Code Starts Here -->
+                        <div class="global-footer">
+                            <div class="in-glfooter">
+                                <div class="container-fluid">
+                                    <div class="row">
+                                        <div class="col-4 col-xl-6 col-lg-6 col-md-6 col-sm-4">
+                                            <div class="glfooter-content">
+                                                <div class="glfooter-box">
+                                                    <div class="glcopyright-text">
+                                                        <em>Powered by Kiya.ai</em>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-8 col-xl-6 col-lg-6 col-md-6 col-sm-8">
+                                            <div class="glfooter-content">
+                                                <div class="glfooter-box">
+                                                    <div class="glcopyright-text1">
+                                                        <em>Copyright © 2020 Infrasoft Technologies Ltd. All rights
+                                                            reserved.</em>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </footer> <!-- Footer Code Ends -->
+
+                </div>
+                <!--.container-fluid-->
+            </div>
+            <!--.body-page-container-->
+        </div>
+    </div>
+</main>

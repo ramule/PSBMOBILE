@@ -1,0 +1,1024 @@
+<div class="main bg-m">
+	<header class="global-header brand-bg2 minus-nav " *ngIf="dataService.isCordovaAvailable">
+		<div class="in-header">
+		  <div class="header-icons-lft show1">
+			<div class="header-actions">
+			  <button class="ux-button-header ml-2" (click)="backbtnClick()">
+				<img class="img-small" src="assets/images/svg/left-arrow.svg" alt="left-arrow-icon" />
+			  </button>
+			</div>
+		  </div>
+		  <div class="brand-logo">
+			<h3>{{'DEBIT_CARDS' | translate  | titlecase}}</h3>
+		  </div>
+		  <div class="header-icons-rit">
+			<div class="header-actions">
+			  <button class="ux-button-header mr-2" (click)="goToDashboard()">
+				<img src="assets/images/svg/home1.svg"  alt="home-icon" class="img-small" />
+			</button>
+			</div>
+		  </div>
+		</div>
+	  </header>
+	<div class="right-main-column ">
+		<div class="right-col-container pad-b full-width">
+			<!-- ======== body page content start from here ======== -->
+			<div class="body-page-container main-dashborad mycards">
+				<div class="container-fluid">
+					<div class="row">
+						<div class="col-12 p-0">
+							<div class="breadcrumb">
+								<ul class="lst-breadcrumb">
+									<!-- <li> <a [routerLink]="['/myCardsDetails']">My Cards</a> </li>
+									<li> Debit Cards</li> -->
+									<li *ngFor="let name of dataService.breadcrumblist">
+										<a (click)="dataService.breadcrumroute(name.routeName)">{{name.currentRoute | translate}}</a>
+								</li>
+
+								</ul>
+							</div>
+						</div>
+					</div>
+					<!--.row -->
+					<div class="vspacer15 customize d-none d-xl-block d-lg-block d-md-none d-sm-none"></div>
+					<div class="row no-gutters">
+						<div class="col-12">
+							<div class="row1">
+								<div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-9">
+									<!-- Greencard2 Start here -->
+									<div class="greencard2">
+										<div class="row1 hide-m">
+											<div class="col-md-8 col-12">
+												<h4> {{ 'MY_DEBIT_CARD' | translate }}</h4>
+												<div class="lnks-cards">
+													<ul>
+														<li *ngFor="let name of dataService.breadcrumblist"> <a (click)="dataService.breadcrumroute(name.routeName)">{{name.currentRoute |
+															translate}}</a> </li>
+													</ul>
+												</div>
+											</div>
+											<div class="col-md-4 col-12"> </div>
+										</div>
+										<!-- <div class="row1">
+											<div class="mobile-page-list">
+												<ul>
+													<li class="active"><a>Debit Cards</a></li>
+													<li><a>Prepaid Cards</a></li>
+													<li class=""><a>Credit Cards</a></li>
+												</ul>
+											</div>
+										</div> -->
+										<div class="row1">
+											<div class="col-12">
+												<!-- Qwl Carousel -->
+												<owl-carousel-o [options]="accountCarouselOptions" #cardsCarousel (changed)="getData($event)">
+													<ng-container *ngFor="let data of cardsData;let i = index;">
+														<ng-template carouselSlide class="item" [id]="i"  role="listitem" [width]="300">
+															<div class="item" role="listitem">
+																<div class="ux-component5">
+																	<div class="ux-dropdown">
+																		<div class="drp-box">
+																			<a class="drp-enterdata" (click)="activeTab='fixed'+i; currentCardIndex(i);" [style.background-image]="'url(assets/images/svg/'+ data.BinPrefix +'.svg)'" [ngClass]="{'active' : activeTab == 'fixed'+i}">
+																				<div class="card-overlay"></div>
+																				<div class="card-section2">
+																					<div class="card-info">
+																						<div class="card-actions2">
+																							<!-- <h6>Debit Card</h6>  -->
+																						</div>
+																						<div class="active-text"> <em>{{data?.CardState}}</em> </div>
+																					</div>
+																					<div class="card-info">
+																						<div class="card-actions2">
+																							<h4 class="white-text" *ngIf="!data.isMasked" >{{data?.CardNo}}</h4>
+																							<h4 class="white-text" *ngIf="data.isMasked" >{{data?.MaskCardNumber}}</h4>
+																							<!-- <h4>XXXX XXXX XXXX 8790</h4> -->
+																							<h5 class="white-text">{{data?.NameOnCard}}</h5>
+																						</div>
+																						<div class="show-btn2">
+																							<button class="refresh-btn" (click)="refreshBtn(data,i);" [ngClass]="data.isMasked == false ? '' : 'active' ">
+																								<!-- <img src="assets/images/svg/eye-g.svg" alt="eye-icon"> --></button>
+																						</div>
+																					</div>
+																					<div class="row">
+																						<ul class="card-grid-list">
+																							<li>
+																								<div class="full-info">
+																									<h6 class="white-text mt-2"> {{ 'VALID_FROM' | translate }}</h6>
+																									<h6 class="bold-text white-text" *ngIf="data.isMasked" >{{data.maskValidFrom}}</h6>
+																									<h6 class="bold-text white-text" *ngIf="!data.isMasked" >{{data.validFrom}}</h6>
+																								</div>
+																							</li>
+																							<li>
+																								<div class="full-info">
+																									<h6  class="white-text mt-2">{{ 'VALID_TO' | translate }}</h6>
+																									<!-- <h6 class="bold-text">XX/XXXX</h6> -->
+																									<!-- <h6 class="bold-text">{{data.ExpiryDate}}</h6> -->
+																									<h6 class="bold-text white-text" *ngIf="data.isMasked" >{{data.maskValifTo}}</h6>
+																									<h6 class="bold-text white-text" *ngIf="!data.isMasked" >{{data.validTo}}</h6>
+																								</div>
+																							</li>
+																							<li>
+																								<div class="full-info">
+																									<h6 class="white-text mt-2"> {{ 'CVV' | translate }}</h6>
+																									<!-- <h6 class="bold-text">XXX</h6> -->
+																									<h6 class="bold-text white-text" *ngIf="data.isMasked" >{{data.maskCvv}}</h6>
+																									<h6 class="bold-text white-text" *ngIf="!data.isMasked" >{{data.cvv}}</h6>
+																								</div>
+																							</li>
+																							<li>
+																								<div class="full-info">
+																									<div class="small-logo2">
+																										<img *ngIf="data.card_network == 'VS' " src="assets/images/icons/visa-icon.svg" alt="visa-logo" style="width: 90% !important;" >
+																										<img *ngIf="data.card_network == '' " src="assets/images/svg/Rupay-01.svg" alt="rupay-logo" style="width: 90% !important;" >
+																										<img *ngIf="data.card_network == 'RS' " src="assets/images/svg/Rupay-02.svg" alt="rupay-logo" style="width: 90% !important;" >
+																										<img *ngIf="data.card_network == 'MS' " src="assets/images/icons/visa-icon.svg" alt="master-logo" style="width: 90% !important;" >
+																									</div>
+																								</div>
+																							</li>
+																						</ul>
+																					</div>
+																				</div>
+																				<div class="card-img5" ></div>
+																			</a>
+																		</div>
+																	</div>
+																</div>
+															</div>
+														</ng-template>
+													</ng-container>
+													<!-- <ng-container>
+														<ng-template carouselSlide class="item" role="listitem" [width]="300">
+															<div class="item" role="listitem">
+																<div class="ux-component5">
+																	<div class="ux-dropdown">
+																		<div class="drp-box">
+																			<a class="drp-enterdata" (click)="activeTab='recurring';" [ngClass]="{'active' : activeTab == 'recurring'}">
+																				<div class="card-section2">
+																					<div class="card-info">
+																						<div class="card-actions2">
+																							<h6>Platinum Card</h6> </div>
+																						<div class="active-text"> <em>Active</em> </div>
+																					</div>
+																					<div class="card-info">
+																						<div class="card-actions2">
+																							<h4>XXXX XXXX XXXX 6790</h4>
+																							<h5>Prasad Thakre</h5> </div>
+																						<div class="show-btn">
+																							<button class="refresh-btn">
+																								</button>
+																						</div>
+																					</div>
+																					<div class="row">
+																						<ul class="card-grid-list">
+																							<li>
+																								<div class="full-info">
+																									<h6>Valid From</h6>
+																									<h6 class="bold-text">XX/XXXX</h6> </div>
+																							</li>
+																							<li>
+																								<div class="full-info">
+																									<h6>Valid To</h6>
+																									<h6 class="bold-text">XX/XXXX</h6> </div>
+																							</li>
+																							<li>
+																								<div class="full-info">
+																									<h6>CVV</h6>
+																									<h6 class="bold-text">XXX</h6> </div>
+																							</li>
+																							<li>
+																								<div class="full-info">
+																									<div class="small-logo"> <img src="assets/images/icons/visa-logo.svg" alt="visa-logo"> </div>
+																								</div>
+																							</li>
+																						</ul>
+																					</div>
+																				</div>
+																			</a>
+																		</div>
+																	</div>
+																</div>
+															</div>
+														</ng-template>
+													</ng-container> -->
+												</owl-carousel-o>
+												<!-- Owl Carosel -->
+											</div>
+										</div>
+										<div class="no-accounts text-center statement-table widget-box5	 mb-0 py-5" *ngIf="noCardAvailable"  >
+											<img src="assets/images/svg/no-rec-found.svg" class="mb-3">
+											<h5 class="mb-5"> {{ 'NO_CARD_AVAIL' | translate }}</h5>
+											<button class="ux-button primary submit-btn " (click)="goToPage('/applyCards')"> {{ 'APPLY_FOR_CARD' | translate }}</button>
+										</div>
+										<div class="row1">
+											<div class="col-12">
+												<div class="tab-container mt-3">
+													<div  class="tab-panel" *ngFor="let data of cardsData;let i = index;" >
+														<div *ngIf="activeTab == 'fixed'+i" [ngClass]="{'active' : activeTab == 'fixed'+i}">
+														<div class="mcinfo-container">
+															<div class="ux-nav-tabs" style="margin:0">
+																<div class="responsive5">
+																	<!-- Tab panes -->
+																	<div class="tab-content custom-tab-content">
+																		<div id="tab01" class=" tab-pane active">
+																			<form [formGroup]="topForm">
+																			<div class="row1">
+																				<div class="col-xl-12 col-12">
+																					<ul class="gridinfo-list">
+																						<li>
+																							<div class="grid-info">
+																								<div class="full-info">
+																									<div class="left-info">
+																										<h6><span class="m-text"> {{ 'LINK_SAVING_ACCOUNT' | translate }}</span></h6> </div>
+																									<div class="left-info">
+																										<!-- <h6 class="mar-custom">**** **** 8790</h6> -->
+																										<h6 class="mar-custom">{{data.AccountNo | maskAccountNo}}</h6>
+																									</div>
+																								</div>
+																							</div>
+																							<div class="grid-info">
+																								<div class="full-info">
+																									<div class="left-info">
+																										<h6><img src="assets/images/svg/lock.svg" alt="lock"> {{ 'QUICK_LOCK' | translate }}</h6> </div>
+																									<div class="left-info">
+																										<div class="toggle-col card-toggle float-right" [class.disablePointer]="blocked">
+																											<input type="checkbox" name="disable-fields" checked="" formControlName="quickLock" [disabled]="" (change)="lock(topForm.value);">
+																											<div class="flat-toggle "></div>
+																										</div>
+																									</div>
+																								</div>
+																							</div>
+																							<div class="grid-info">
+																								<div class="full-info">
+																									<div class="left-info">
+																										<h6><img src="assets/images/svg/upi-global-g.svg" alt="domestic-icon">{{ 'DOMESTIC_USAGE' | translate }}</h6> </div>
+																									<div class="left-info">
+																										<div class="toggle-col card-toggle float-right" [class.disablePointer]="inactiveCard" >
+																											<input type="checkbox" name="disable-fields" checked="" formControlName="domesticUsage"  (change)="cardOnOffUsage(topForm.value,'domestic');">
+
+																											<div class="flat-toggle "></div>
+																										</div>
+																									</div>
+																								</div>
+																							</div>
+																							<div class="grid-info" >
+																								<div class="full-info">
+																									<div class="left-info">
+																										<h6><img src="assets/images/svg/upi-global-g.svg" alt="global-icon"> {{ 'INTERNATIONL_USAGE' | translate }}</h6> </div>
+																									<div class="left-info">
+																										<div class="toggle-col card-toggle float-right" [class.disablePointer]="inactiveCard" >
+																											<input type="checkbox" name="disable-fields" checked="" formControlName="internationalUsage" (change)="cardOnOffUsage(topForm.value,'international');">
+																											<div class="flat-toggle "></div>
+																										</div>
+																									</div>
+																								</div>
+																							</div>
+																						</li>
+																					</ul>
+																				</div>
+																			</div>
+																			</form>
+																			<div class="row1 border-bottom d-none d-sm-block"></div>
+																		</div>
+																	</div>
+																	<div class="bottom-card-links2">
+																		<div class="short-links ">
+																			<div class="shortlink-control show-links">
+																				<div class="row">
+																					<ul class="fund-list2">
+																						<!-- <li class="d-block d-md-none d-lg-none d-xl-none" >
+																							<a>
+																								<div class="icon1"> <img src="assets/images/svg/manage-card.svg" alt="manage-card-icon" (click)="goToPage('mobMycardManage')" > </div> <em> {{ 'MANAGE' | translate }}</em> </a>
+																						</li> -->
+																						<li>
+																							<a>
+																								<div class="icon1"> <img src="assets/images/svg/hotlist-card.svg" alt="hotlist-card-icon"  (click)="goToPage('hotlistCard')" > </div> <em> {{ 'HOTLIST' | translate }}</em> </a>
+																						</li>
+																						<li *ngIf="isPhysical" >
+																							<a class="remove-btn">
+																								<div class="icon1"> <img src="assets/images/svg/re-generate-pin.svg" alt="re-generate-pin-icon" (click)="goToPage('generatePin')" > </div> <em> {{ 'RE_GENERATE_PIN' | translate }}</em> </a>
+																						</li>
+																						<li>
+																							<a>
+																								<div class="icon1"> <img src="assets/images/svg/upgrade-card.svg" alt="upgrade-card-icon" (click)="goToPage('upgradeCards')" > </div> <em> {{ 'UPGRADE' | translate }}</em> </a>
+																						</li>
+																						<li>
+																							<a>
+																								<div class="icon1"> <img src="assets/images/svg/block-reissue-card.svg" alt="block-reissue-card-icon" (click)="goToPage('reissueCard')"  > </div> <em>{{ 'BLOCK_RE_ISSUE' | translate }}</em> </a>
+																						</li>
+																						<li *ngIf="!isPhysical">
+																							<a>
+																								<div class="icon1"> <img src="assets/images/svg/get-physical-card.svg" alt="get-physical-card-icon"  (click)="goToPage('getPhysicalCard')"  > </div> <em>{{ 'GET_PHYSICAL_CARD' | translate }}</em> </a>
+																						</li>
+																						<!-- <li>
+																							<a>
+																								<div class="icon1"> <img src="assets/images/svg/manage-card.svg" alt="offers-icon" > </div> <em>Offers</em> </a>
+																						</li> -->
+																					</ul>
+																				</div>
+																			</div>
+																			<!-- <div class="shortlinks-expander active" >
+																				<a href="javascript:;"><img src="assets/images/icons/arrow-down-r.png"></a>
+																			</div> 
+																				Commented bcoz there are were only 4 buttons in the block, so expander wont work -->
+																		</div>
+																	</div>
+																</div>
+															</div>
+														</div>
+														</div>
+													</div>
+													<!-- <div id="current" class="tab-panel" *ngIf="activeTab == 'recurring'" [ngClass]="{'active' : activeTab == 'recurring'}">
+														<div class="mcinfo-container">
+															<div class="ux-nav-tabs" style="margin:0">
+																<div class="responsive5">
+
+																	<div class="tab-content custom-tab-content">
+																		<div id="tab01" class=" tab-pane active">
+																			<div class="row1">
+																				<div class="col-xl-12 col-12">
+																					<ul class="gridinfo-list">
+																						<li>
+																							<div class="grid-info">
+																								<div class="full-info">
+																									<div class="left-info">
+																										<h6><span class="m-text">Linked Saving Account2</span></h6> </div>
+																									<div class="left-info">
+																										<h6 class="mar-custom">**** **** 6790</h6> </div>
+																								</div>
+																							</div>
+																							<div class="grid-info">
+																								<div class="full-info">
+																									<div class="left-info">
+																										<h6><img src="assets/images/svg/lock.svg" alt="lock"> Quick Lock</h6> </div>
+																									<div class="left-info">
+																										<div class="toggle-col card-toggle float-right">
+																											<input type="checkbox" name="disable-fields" checked="">
+																											<div class="flat-toggle "></div>
+																										</div>
+																									</div>
+																								</div>
+																							</div>
+																							<div class="grid-info">
+																								<div class="full-info">
+																									<div class="left-info">
+																										<h6><img src="assets/images/svg/upi-global-g.svg" alt="domestic-icon">Domastic Usage</h6> </div>
+																									<div class="left-info">
+																										<div class="toggle-col card-toggle float-right">
+																											<input type="checkbox" name="disable-fields" checked="">
+																											<div class="flat-toggle "></div>
+																										</div>
+																									</div>
+																								</div>
+																							</div>
+																							<div class="grid-info">
+																								<div class="full-info">
+																									<div class="left-info">
+																										<h6><img src="assets/images/svg/upi-global-g.svg" alt="global-icon"> International Usage</h6> </div>
+																									<div class="left-info">
+																										<div class="toggle-col card-toggle float-right">
+																											<input type="checkbox" name="disable-fields" checked="">
+																											<div class="flat-toggle "></div>
+																										</div>
+																									</div>
+																								</div>
+																							</div>
+																						</li>
+																					</ul>
+																				</div>
+																			</div>
+																			<div class="row1 border-bottom d-none d-sm-block"></div>
+																		</div>
+																	</div>
+																	<div class="bottom-card-links2">
+																		<div class="short-links ">
+																			<div class="shortlink-control show-links">
+																				<div class="row">
+																					<ul class="fund-list2">
+																						<li>
+																							<a>
+																								<div class="icon1"> <img src="assets/images/svg/manage-card.svg" alt="manage-card-icon"> </div> <em>Manage</em> </a>
+																						</li>
+																						<li>
+																							<a>
+																								<div class="icon1"> <img src="assets/images/svg/hotlist-card.svg" alt="hotlist-card-icon"> </div> <em>Hotlist</em> </a>
+																						</li>
+																						<li>
+																							<a class="remove-btn">
+																								<div class="icon1"> <img src="assets/images/svg/re-generate-pin.svg" alt="re-generate-pin-icon"> </div> <em>Re-generate PIN</em> </a>
+																						</li>
+																						<li>
+																							<a>
+																								<div class="icon1"> <img src="assets/images/svg/upgrade-card.svg" alt="upgrade-card-icon"> </div> <em>Upgrade</em> </a>
+																						</li>
+																						<li>
+																							<a>
+																								<div class="icon1"> <img src="assets/images/svg/block-reissue-card.svg" alt="block-reissue-card-icon"> </div> <em>Block / Re-issue</em> </a>
+																						</li>
+																						<li>
+																							<a>
+																								<div class="icon1"> <img src="assets/images/svg/get-physical-card.svg" alt="get-physical-card-icon"> </div> <em>Get Physical Card</em> </a>
+																						</li>
+																						<li>
+																							<a>
+																								<div class="icon1"> <img src="assets/images/svg/manage-card.svg" alt="offers-icon"> </div> <em>Offers</em> </a>
+																						</li>
+																					</ul>
+																				</div>
+																			</div>
+																			<div class="shortlinks-expander active">
+																				<a href="javascript:;"><img src="assets/images/icons/arrow-down-r.png"></a>
+																			</div>
+																		</div>
+																	</div>
+																</div>
+															</div>
+														</div>
+													</div> -->
+												</div>
+											</div>
+										</div>
+										<!-- <div class="row1" style="display:none"  [ngClass]="{'d-block': desktopshowCardlimit }"  > -->
+											<div class="row1" *ngIf="desktopshowCardlimit" >
+											<div id="accordion" class="accordion-container col-12">
+												<div class="row1">
+													<div class="col-sm-6 col-12 col-md-6">
+														<div class="white-bg1 pad-custom mycardCollapse">
+															<div class="card2" [class.disablePointer]="!colData" >
+																<!-- <a class="card-link collapsed" data-toggle="collapse" href="#collapse1" aria-expanded="false" (click)="collapseData();"> -->
+																<a class="card-link collapsed" data-toggle="collapse" href="#collapse1" aria-expanded="false" (click)="collapseData();" >
+																	<div class="card-header3">
+																		<div class="panel-title3">
+																			<h4> <img src="assets/images/svg/upi-global-g.svg" alt="domestic-icon">  {{ 'DOMESTIC_TRANSACTION_LIMIT' | translate }} </h4> </div> <em></em> </div>
+																	<!--card-header-->
+																</a>
+																<form [formGroup]="DomesticForm">
+																<div id="collapse1" class="collapse">
+																	<div class="card-body p-0">
+																		<div class="col-12">
+																			<div class="pos">
+																				<div class="row1">
+																					<div class="grey-box">
+																						<label> {{ 'POS' | translate }}</label>
+																						<div class="toggle-col card-toggle float-right" [class.disablePointer]="!colData || !isPhysical" >
+																							<!-- {{currentCard.domesticPosStatus}} -->
+																							<input id="poscheck" type="checkbox" name="pos" checked="" formControlName="pos" [disabled]="!colData && !isPhysical" (change)="posDomCheck(DomesticForm.value);">
+																							<div class="flat-toggle "></div>
+																						</div>
+																					</div>
+																					<div class="slider-info">
+																						<div class="col-12 p-0">
+																							<div class="row1">
+																								<div class="col-6">
+																									<h6> {{ 'CURRENT_LIMIT' | translate }} </h6>
+																								</div>
+																								<div class="col-6">
+																									<input id="posdom" #posdom class="sliderInput ux-input" value="{{currentCard?.POS_dom_limit}}" formControlName="pos_dom_val" name="pos" [ngClass]="posDom ? '' : 'ux-disabled' "  (input)="inputChanged($event.target.value ,'domPosLimit')"/>
+																								</div>
+																							</div>
+																						</div>
+																						<div class="row1">
+																							<div class="col-12">
+																								<!-- <div class="limit-slider my-2 mx-1" [ngClass]="posDom ? '' : 'ui-slider-disabled ui-state-disabled' "></div>
+																								<div class="sliderticks">
+																									<p>0</p>
+																									<p>{{currentCard?.POS_dom_maxlimit}}</p>
+																								</div> -->
+
+																								<!-- New design -->
+																								<div class="sliderticks" [ngClass]="posDom ? '' : 'ui-slider-disabled ui-state-disabled' ">
+																									<input type="range" min="0" [max]="currentCard?.POS_dom_maxlimit" [value]="currentCard?.POS_dom_limit" (change)="onRangeChange($event , 'domPosLimit')" style="width: 100%;"  >
+																								</div>
+																								<p style="float:left">0</p>
+																								<p style="float:right"> {{currentCard?.POS_dom_maxlimit | customcurrency : 'symbol' : selCurrentCardAccount.currency }}</p>
+
+
+																							</div>
+																						</div>
+																					</div>
+																				</div>
+																			</div>
+																			<div class="ecom">
+																				<div class="row1">
+																					<div class="grey-box">
+																						<label> {{ 'ECOM' | translate }}</label>
+																						<div class="toggle-col card-toggle float-right" [class.disablePointer]="!colData" >
+																							<!-- {{currentCard.domesticEcomStatus}} -->
+																							<input type="checkbox" name="ecom" checked="" formControlName="ecom" [disabled]="!colData" (change)="ecomDomCheck(DomesticForm.value);">
+																							<div class="flat-toggle "></div>
+																						</div>
+																					</div>
+																					<div class="slider-info">
+																						<div class="col-12 p-0">
+																							<div class="row1">
+																								<div class="col-6">
+																									<h6>  {{ 'CURRENT_LIMIT' | translate }}</h6> </div>
+																								<div class="col-6">
+																									<input id="ecomdom" #ecomdom class="sliderInput ux-input" value="{{currentCard?.ECOM_dom_limit}}" formControlName="ecom_dom_val" name="ecom" [disabled]="ecomDomInput" [ngClass]="ecomDom ? '' : 'ux-disabled' " (input)="inputChanged($event.target.value ,'domEcomLimit')" /> </div>
+																							</div>
+																						</div>
+																						<div class="row1">
+																							<div class="col-12">
+																								<!-- <div class="limit-slider1 my-2 mx-1" [ngClass]="ecomDom ? '' : 'ui-slider-disabled ui-state-disabled' "></div>
+																								<div class="sliderticks">
+																									<p>0</p>
+																									<p>{{currentCard?.ECOM_dom_maxlimit}}</p>
+																								</div> -->
+
+
+																								<!-- New design -->
+																								<div class="sliderticks" [ngClass]="ecomDom ? '' : 'ui-slider-disabled ui-state-disabled' ">
+																									<input type="range" min="0" [max]="currentCard?.ECOM_dom_maxlimit" [value]="currentCard?.ECOM_dom_limit" (change)="onRangeChange($event , 'domEcomLimit')" style="width: 100%;"  >
+																								</div>
+																								<p style="float:left">0</p>
+																								<p style="float:right"> {{currentCard?.ECOM_dom_maxlimit | customcurrency : 'symbol' : selCurrentCardAccount.currency }}</p>
+
+																							</div>
+																						</div>
+																					</div>
+																				</div>
+																			</div>
+																			<div class="atm">
+																				<div class="row1">
+																					<div class="grey-box">
+																						<label> {{ 'ATM' | translate }}</label>
+																						<div class="toggle-col card-toggle float-right" [class.disablePointer]="!colData || !isPhysical" >
+																							<!-- {{currentCard.domesticAtmStatus}} -->
+																							<input type="checkbox" name="atm" checked="" formControlName="atm" [disabled]="!colData" (change)="atmDomCheck(DomesticForm.value);">
+																							<div class="flat-toggle "></div>
+																						</div>
+																					</div>
+																					<div class="slider-info">
+																						<div class="col-12 p-0">
+																							<div class="row1">
+																								<div class="col-6">
+																									<h6> {{ 'CURRENT_LIMIT' | translate }}</h6> </div>
+																								<div class="col-6">
+																									<input id="atmdom" #atmdom class="sliderInput ux-input" value="{{currentCard?.ATM_dom_limit}}" formControlName="atm_dom_val" name="atm" [disabled]="atmDomInput" [ngClass]="atmDom ? '' : 'ux-disabled' " (input)="inputChanged($event.target.value ,'domAtmLimit')" /> </div>
+																							</div>
+																						</div>
+																						<div class="row1">
+																							<div class="col-12">
+																								<!-- <div class="limit-slider2 my-2 mx-1" [ngClass]="atmDom ? '' : 'ui-slider-disabled ui-state-disabled' "></div>
+																								<div class="sliderticks">
+																									<p>0</p>
+																									<p>{{currentCard?.ATM_dom_maxlimit}}</p>
+																								</div> -->
+
+																								<!-- New design -->
+																								<div class="sliderticks" [ngClass]="atmDom ? '' : 'ui-slider-disabled ui-state-disabled' ">
+																									<input type="range" min="0" [max]="currentCard?.ATM_dom_maxlimit" [value]="currentCard?.ATM_dom_limit" (change)="onRangeChange($event , 'domAtmLimit')" style="width: 100%;"  >
+																								</div>
+																								<p style="float:left">0</p>
+																								<p style="float:right"> {{currentCard?.ATM_dom_maxlimit | customcurrency : 'symbol' : selCurrentCardAccount.currency }}</p>
+
+
+																							</div>
+																						</div>
+																					</div>
+																				</div>
+																			</div>
+																			<div class="contactLess" *ngIf="currentCard?.CardProgram.endsWith('CL')" >
+																				<div class="row1">
+																					<div class="grey-box">
+																						<label> {{ 'CONTACT_LESS' | translate }}</label>
+																						<div class="toggle-col card-toggle float-right" [class.disablePointer]="!colData || !isPhysical " >
+																							<!-- {{currentCard.domesticContactlessStatus}} -->
+																							<input type="checkbox" name="contactLess" checked="" formControlName="contactLess" [disabled]="!colData" value="{{currentCard?.CONT_dom_maxlimt}}" >
+																							<div class="flat-toggle "></div>
+																						</div>
+																					</div>
+																					<div class="slider-info">
+																						<div class="col-12 p-0">
+																							<div class="row1">
+																								<div class="col-6">
+																									<h6> {{ 'CURRENT_LIMIT' | translate }}</h6> </div>
+																								<div class="col-6">
+																									<input id="contdom" #contdom class="sliderInput ux-input ux-disabled" value="{{currentCard?.CONT_dom_maxlimt}}" formControlName="contact_dom_val" name="contactLess" [disabled]="contactlessDomInput" /> </div>
+																							</div>
+																						</div>
+																						<div class="row1">
+																							<div class="col-12">
+																								<!-- <div class="limit-slider3 my-2 mx-1 ui-slider-disabled ui-state-disabled"></div>
+																								<div class="sliderticks">
+																									<p>0</p>
+																									<p>{{currentCard?.CONT_dom_maxlimt}}</p>
+																								</div> -->
+
+																								<!-- New design -->
+																								<div class="sliderticks ui-slider-disabled ui-state-disabled">
+																									<input type="range" min="0" [max]="currentCard?.CONT_dom_maxlimt" [value]="currentCard?.CONT_dom_maxlimt" style="width: 100%;"  >
+																								</div>
+																								<p style="float:left">0</p>
+																								<p style="float:right"> {{currentCard?.CONT_dom_maxlimt | customcurrency : 'symbol' : selCurrentCardAccount.currency }}</p>
+
+																							</div>
+																						</div>
+																					</div>
+																				</div>
+																			</div>
+																		</div>
+																	</div>
+																	<div class="card-footer text-center">
+																		<button class="ux-button primary" [disabled]="inactiveCard || !colData" (click)="domSubmit('domestic');">{{ 'APPLY_DOMESTIC_LIMIT' | translate }}</button>
+																	</div>
+																</div>
+																</form>
+															</div>
+														</div>
+													</div>
+													<div class="col-md-6 col-12 col-md-6">
+														<div class="white-bg1 pad-custom mycardCollapse">
+															<div class="card2" [class.disablePointer]="!colDataInt"  >
+																<!-- <a class="card-link collapsed" data-toggle="collapse" href="#collapse2" aria-expanded="false" (click)="collapseDataInt();"> -->
+																<a class="card-link collapsed" data-toggle="collapse" href="#collapse2" aria-expanded="false" (click)="collapseDataInt();" >
+																	<div class="card-header3">
+																		<div class="panel-title3">
+																			<h4> <img src="assets/images/svg/upi-global-g.svg" alt="global-icon"> {{ 'INTER_TRANSACTION_LIMIT' | translate }}</h4> </div> <em></em> </div>
+																</a>
+																<form [formGroup]="InternationalForm">
+																	<!-- [ngClass]="{'show': colDataInt === true, 'hide' : colDataInt === false }" -->
+																<div id="collapse2" class="collapse ">
+																	<div class="card-body p-0">
+																		<div class="col-12">
+																			<div class="pos">
+																				<div class="row1">
+																					<div class="grey-box">
+																						<label> {{ 'POS' | translate }}</label>
+																						<div class="toggle-col card-toggle float-right" [class.disablePointer]="!colDataInt || !isPhysical"  >
+																							<!-- {{currentCard.internationalPosStatus}} -->
+																							<input type="checkbox" name="pos1" checked="" formControlName="pos1" (change)="posIntCheck(InternationalForm.value);">
+																							<div class="flat-toggle "></div>
+																						</div>
+																					</div>
+																					<div class="slider-info">
+																						<div class="col-12 p-0">
+																							<div class="row1">
+																								<div class="col-6">
+																									<h6>  {{ 'CURRENT_LIMIT' | translate }}</h6> </div>
+																								<div class="col-6">
+																									<input type="tel" numericOnly id="posint" #posint  class="sliderInput ux-input"  formControlName="pos_int_val" name="pos1" value="{{currentCard?.POS_int_limit}}" [disabled]="posIntInput" [ngClass]="posInt ? '' : 'ux-disabled' "  (input)="inputChanged($event.target.value , 'intPosLimit')" /> </div>
+																							</div>
+																						</div>
+																						<div class="row1">
+																							<div class="col-12">
+																								<!-- <div class="limit-slider-int my-2 mx-1" [ngClass]="posInt ? '' : 'ui-slider-disabled ui-state-disabled' "></div>
+																								<div class="sliderticks" >
+																									<p>0</p>
+																									<p>{{currentCard?.POS_int_maxlimit}}</p>
+																								</div> -->
+
+																								<!-- New design -->
+																								<div class="sliderticks" [ngClass]="posInt ? '' : 'ui-slider-disabled ui-state-disabled' ">
+																									<input type="range" min="0" [max]="currentCard?.POS_int_maxlimit" [value]="currentCard?.POS_int_limit" (change)="onRangeChange($event , 'intPosLimit')" style="width: 100%;"  >
+																								</div>
+																								<p style="float:left">0</p>
+																								<p style="float:right"> {{currentCard?.POS_int_maxlimit | customcurrency : 'symbol' : selCurrentCardAccount.currency }}</p>
+
+																							</div>
+																						</div>
+																					</div>
+																				</div>
+																			</div>
+																			<div class="ecom">
+																				<div class="row1">
+																					<div class="grey-box">
+																						<label> {{ 'ECOM' | translate }}</label>
+																						<div class="toggle-col card-toggle float-right" [class.disablePointer]="!colDataInt" >
+																							<!-- {{currentCard.internationalEcomStatus}} -->
+																							<input type="checkbox" name="ecom1" checked="" formControlName="ecom1" (change)="ecomIntCheck(InternationalForm.value);">
+																							<div class="flat-toggle "></div>
+																						</div>
+																					</div>
+																					<div class="slider-info">
+																						<div class="col-12 p-0">
+																							<div class="row1">
+																								<div class="col-6">
+																									<h6> {{ 'CURRENT_LIMIT' | translate }}</h6> </div>
+																								<div class="col-6">
+																									<input type="tel" numericOnly  id="ecomint" #ecomint class="sliderInput ux-input" value="{{currentCard?.ECOM_int_limit}}" formControlName="ecom_int_val" name="ecom1" [disabled]="ecomIntInput" [ngClass]="ecomInt ? '' : 'ux-disabled' "  (input)="inputChanged($event.target.value , 'intEcomLimit')" /> </div>
+																							</div>
+																						</div>
+																						<div class="row1">
+																							<div class="col-12">
+																								<!-- <div class="limit-slider-int1 my-2 mx-1" [ngClass]="ecomInt ? '' : 'ui-slider-disabled ui-state-disabled' "></div>
+																								<div class="sliderticks">
+																									<p>0</p>
+																									<p>{{currentCard?.ECOM_int_maxlimit}}</p>
+																								</div> -->
+
+																								<!-- New design -->
+																								<div class="sliderticks" [ngClass]="ecomInt ? '' : 'ui-slider-disabled ui-state-disabled' ">
+																									<input type="range" min="0" [max]="currentCard?.ECOM_int_maxlimit" [value]="currentCard?.ECOM_int_limit" (change)="onRangeChange($event , 'intEcomLimit')" style="width: 100%;"  >
+																								</div>
+																								<p style="float:left">0</p>
+																								<p style="float:right"> {{currentCard?.ECOM_int_maxlimit | customcurrency : 'symbol' : selCurrentCardAccount.currency }}</p>
+
+																							</div>
+																						</div>
+																					</div>
+																				</div>
+																			</div>
+																			<div class="atm">
+																				<div class="row1">
+																					<div class="grey-box">
+																						<label> {{ 'ATM' | translate }}</label>
+																						<div class="toggle-col card-toggle float-right" [class.disablePointer]="!colDataInt || !isPhysical">
+																							<!-- {{currentCard.internationalAtmStatus}} -->
+																							<input type="checkbox" name="atm1" checked="" formControlName="atm1" (change)="atmIntCheck(InternationalForm.value);">
+																							<div class="flat-toggle "></div>
+																						</div>
+																					</div>
+																					<div class="slider-info">
+																						<div class="col-12 p-0">
+																							<div class="row1">
+																								<div class="col-6">
+																									<h6> {{ 'CURRENT_LIMIT' | translate }}</h6> </div>
+																								<div class="col-6">
+																									<input type="tel" numericOnly  id="atmint" #atmint class="sliderInput ux-input" value="{{currentCard?.ATM_int_limit}}" formControlName="atm_int_val" name="atm1" [disabled]="atmIntInput" [ngClass]="atmInt ? '' : 'ux-disabled' " (input)="inputChanged($event.target.value , 'intAtmLimit')"  /> </div>
+																							</div>
+																						</div>
+																						<div class="row1">
+																							<div class="col-12">
+																								<!-- <div class="limit-slider-int2 my-2 mx-1" [ngClass]="atmInt ? '' : 'ui-slider-disabled ui-state-disabled' "></div>
+																								<div class="sliderticks">
+																									<p>0</p>
+																									<p>{{currentCard?.ATM_int_maxlimit}}</p>
+																								</div> -->
+
+
+																								<!-- New design -->
+																								<div class="sliderticks" [ngClass]="atmInt ? '' : 'ui-slider-disabled ui-state-disabled' ">
+																									<input type="range" min="0" [max]="currentCard?.ATM_int_maxlimit" [value]="currentCard?.ATM_int_limit" (change)="onRangeChange($event , 'intAtmLimit')" style="width: 100%;"  >
+																								</div>
+																								<p style="float:left">0</p>
+																								<p style="float:right"> {{currentCard?.ATM_int_maxlimit | customcurrency : 'symbol' : selCurrentCardAccount.currency }}</p>
+
+																							</div>
+																						</div>
+																					</div>
+																				</div>
+																			</div>
+																			<div class="contactLess" *ngIf="currentCard?.CardProgram.endsWith('CL')">
+																				<div class="row1">
+																					<div class="grey-box">
+																						<label>{{ 'CONTACT_LESS' | translate }}</label>
+																						<div class="toggle-col card-toggle float-right" [class.disablePointer]="!colDataInt || !isPhysical " >
+																							<!-- {{currentCard.internationalContactlessStatus}} -->
+																							<input type="checkbox" name="contactLess1" checked="" formControlName="contactLess1" (change)="contactlessIntCheck(InternationalForm.value);" value="{{currentCard?.CONT_int_maxlimt}}" >
+																							<div class="flat-toggle "></div>
+																						</div>
+																					</div>
+																					<div class="slider-info">
+																						<div class="col-12 p-0">
+																							<div class="row1">
+																								<div class="col-6">
+																									<h6> {{ 'CURRENT_LIMIT' | translate }}</h6> </div>
+																								<div class="col-6">
+																									<input type="tel" numericOnly  id="contint" #contint class="sliderInput ux-input ux-disabled" value="{{currentCard?.CONT_int_maxlimt}}" formControlName="contact_int_val" name="contactLess1" [disabled]="contactlessIntInput" /> </div>
+																							</div>
+																						</div>
+																						<div class="row1">
+																							<div class="col-12">
+																								<!-- <div class="limit-slider-int3 my-2 mx-1 ui-slider-disabled ui-state-disabled "></div>
+																								<div class="sliderticks">
+																									<p>0</p>
+																									<p>{{currentCard?.CONT_int_maxlimt}}</p>
+																								</div> -->
+
+																								<!-- New design -->
+																								<div class="sliderticks ui-slider-disabled ui-state-disabled">
+																									<input type="range" min="0" [max]="currentCard?.CONT_int_maxlimt" [value]="currentCard?.CONT_int_maxlimt" style="width: 100%;"  >
+																								</div>
+																								<p style="float:left">0</p>
+																								<p style="float:right"> {{currentCard?.CONT_int_maxlimt | customcurrency : 'symbol' : selCurrentCardAccount.currency }}</p>
+																							</div>
+																						</div>
+																					</div>
+																				</div>
+																			</div>
+																		</div>
+																	</div>
+																	<div class="card-footer text-center">
+																		<button class="ux-button primary" [disabled]="inactiveCard || !colDataInt " (click)="intSubmit('international');" >{{ 'APPLY_INTERNATIONAL_LIMIT' | translate }}</button>
+																	</div>
+																</div>
+																</form>
+															</div>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+										<!-- <div class="row1 d-xl-none d-lg-none d-md-none  d-sm-none d-block">
+											<div class="col-12 col-md-12">
+												<ul class="bottom-footer1">
+													<li>
+														<div class="btn-div w100">
+															<button class="ux-button secondary sm-mob" > {{ 'APPLY_FOR_NEW_CARD' | translate }}</button>
+														</div>
+													</li>
+												</ul>
+											</div>
+										</div> -->
+									</div>
+									<!-- Greencard2 End here -->
+								</div>
+								<!-- Right Column Ads Start -->
+								<div class="col-12 col-md-12 col-lg-12 col-xl-3 d-none d-xl-block">
+									<div class="right-ads">
+										<a> <img src="assets/images/banner/my-card-banner.jpg"> </a>
+									</div>
+								</div>
+								<!-- Right Column Ads Start -->
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!--.right-col-container-->
+	</div>
+	<!--.right-main-column-->
+</div>
+<!-- main -->
+
+<!-- Show Common Info Popup Start -->
+<!-- <div class="popup-bottom show-common-info sm-popup">
+	<div class="row1">
+		<div class="col-12">
+			<h4 class="text-center"> <img src="./assets/images/svg/information.svg" alt="information-icon">{{ 'INFORMATION' | translate}}
+			</h4>
+		</div>
+	</div>
+	<div class="row1">
+		<div class="col-12">
+			<p>
+				{{succRes}}
+			</p>
+		</div>
+	</div>
+	<div class="row1  mt-2">
+		<div class="col-12 text-center" (click)="closePopup('div.popup-bottom.show-common-info')">
+			<button class="ux-button primary submit-btn" type="button">{{ 'OK' | translate}}</button>
+		</div>
+	</div>
+</div> -->
+<!-- Show Common Info Popup End -->
+
+<!-- Show Success and error Info Popup Start -->
+<div class="popup-bottom show-success-error-info sm-popup">
+	<div class="row1">
+		<div class="col-12">
+			<h4 class="text-center" *ngIf="succRes != ''" > <img src="./assets/images/svg/success-circle.svg" alt="information-icon">{{ 'SUCCESS' | translate}}</h4>
+			<h4 class="text-center" *ngIf="errRes != ''" > <img src="./assets/images/svg/warning1.svg" alt="information-icon">{{ 'ERROR' | translate}}</h4>
+		</div>
+	</div>
+	<div class="row1">
+		<div class="col-12">
+			<p *ngIf="succRes != ''" >{{succRes}}</p>
+			<p *ngIf="errRes != ''" >{{errRes}}</p>
+		</div>
+	</div>
+	<div class="row1  mt-2">
+		<div class="col-12 text-center" (click)="closePopup('div.popup-bottom.show-success-error-info')">
+			<button class="ux-button primary submit-btn" type="button"> {{ 'OK' | translate}}</button>
+		</div>
+	</div>
+</div>
+<!-- Show Common Info Popup End -->
+
+<div class="popup-bottom inactive-card sm-popup">
+	<div class="row1">
+		<div class="col-12">
+			<h4 class="text-center"> <img src="./assets/images/svg/information.svg" alt="information-icon">{{ 'INFORMATION' | translate}}
+			</h4>
+		</div>
+	</div>
+	<div class="row1">
+		<div class="col-12">
+			<p>
+				{{ 'CARD_IS_NOT_ACTIVE' | translate}}
+			</p>
+		</div>
+	</div>
+	<div class="row1  mt-2">
+		<div class="col-12 text-center" (click)="closePopup('div.popup-bottom.inactive-card')">
+			<button class="ux-button primary submit-btn" type="button">{{ 'OK' | translate}}</button>
+		</div>
+	</div>
+</div>
+
+
+
+<div class="popup-bottom md-popup otp-popuplimit otp">
+	<div class="row1">
+		<div class="col-12">
+			<h4 class="text-center">  {{'OTP_VERIFICATION' | translate}}</h4>
+		</div>
+		<!-- <div class="col-12">
+			<button class="ux-button-icon close-btn" (click)="closeOtpPopup('otp-popuplimit','otpFormLimit')"> <img
+					src="assets/images/svg/close-b.svg" alt="cross-icon" class="img-vsmall"> </button>
+		</div> -->
+	</div>
+	<div class="row1">
+		<div class="col-12 col-md-8 col-lg-8 col-xl-8 m-auto">
+			<div class="mob-icon"> <img src="assets/images/icons/mobile.svg" alt="mobile-icon"> </div>
+			<!-- <h4 class="greentext text-center mar-b ">OTP Verification</h4> -->
+			<h6 class="text-center">  {{'ENTER_SIX_DIGIT_OTP' | translate}} {{maskedMobileNo}}</h6>
+		</div>
+	</div>
+	<div class="row1">
+		<div class="col-12 col-md-8 col-lg-8 col-xl-8  m-auto">
+			<div class="row1">
+				<div class="col-12 col-md-12">
+					<form [formGroup]="otpFormLimit">
+						<div class="row4">
+							<div class="col-sm-2 col-2 col-md-2">
+								<div class="ux-input password1 mb-1">
+									<input id="otp1" autocomplete="off" #otpRow type="password" numbersOnly
+										maxlength="1" placeholder="●" (keyup)="onKeyUpEventOtp(0, $event, 'otp')"
+										(focus)="onFocusEvent(0,'otp')" formControlName="otp1">
+								</div>
+							</div>
+							<div class="col-sm-2 col-2 col-md-2">
+								<div class="ux-input password1 mb-1">
+									<input id="otp2" autocomplete="off" #otpRow type="password" numbersOnly
+										maxlength="1" placeholder="●" (keyup)="onKeyUpEventOtp(1, $event, 'otp')"
+										(focus)="onFocusEvent(1,'otp')" formControlName="otp2">
+								</div>
+							</div>
+							<div class="col-sm-2 col-2 col-md-2">
+								<div class="ux-input password1 mb-1">
+									<input id="otp3" autocomplete="off" #otpRow type="password" numbersOnly
+										maxlength="1" placeholder="●" (keyup)="onKeyUpEventOtp(2, $event, 'otp')"
+										(focus)="onFocusEvent(2,'otp')" formControlName="otp3">
+								</div>
+							</div>
+							<div class="col-sm-2 col-2 col-md-2">
+								<div class="ux-input password1 mb-1">
+									<input id="otp4" autocomplete="off" #otpRow type="password" numbersOnly
+										maxlength="1" placeholder="●" (keyup)="onKeyUpEventOtp(3, $event, 'otp')"
+										(focus)="onFocusEvent(3,'otp')" formControlName="otp4">
+								</div>
+							</div>
+							<div class="col-sm-2 col-2 col-md-2">
+								<div class="ux-input password1  mb-1">
+									<input id="otp5" autocomplete="off" #otpRow type="password" numbersOnly
+										maxlength="1" placeholder="●" (keyup)="onKeyUpEventOtp(4, $event, 'otp')"
+										(focus)="onFocusEvent(4,'otp')" formControlName="otp5">
+								</div>
+							</div>
+							<div class="col-sm-2 col-2 col-md-2">
+								<div class="ux-input password1 mb-1">
+									<input id="otp6" autocomplete="off" #otpRow type="password" numbersOnly
+										maxlength="1" placeholder="●" (keyup)="onKeyUpEventOtp(5, $event, 'otp')"
+										(focus)="onFocusEvent(5,'otp')" formControlName="otp6">
+								</div>
+							</div>
+						</div>
+					</form>
+					<div class="row1">
+						<div class="col-12">
+							<div class="ux-input password1 mt-0 mb-0">
+								<p class="error-message"></p>
+							</div>
+							<div class="text-center">
+								<span class="errormsg">{{otpfailMsg}}</span>
+							</div>
+						</div>
+					</div>
+					<div class="row4">
+						<div class="col-6 col-md-6">
+							<div class="text-left">
+								<p class="text-left"> <span class="success-text" *ngIf="counter > 0">{{counter |
+										formatTimer }}</span> </p>
+							</div>
+						</div>
+						<div class="col-6 col-md-6">
+							<div class="text-right">
+								<button class="ux-linkbutton default-underline mt-3" (click)="ResendOTP()"
+									[ngClass]="counter > 0 ? 'mydisabled' : 'resendActive'">{{ 'RESEND' | translate }}</button>
+							</div>
+						</div>
+
+
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="row1 mt-2">
+		<div class="col-12 col-md-8 col-lg-8 col-xl-8  m-auto">
+			<div class="row1">
+				<div class="col-6 text-center">
+					<button class="ux-button secondary sm-mob close-btn"
+						(click)="closeOtpPopup('otp-popuplimit','otpFormLimit')">{{'CANCEL' | translate}}</button>
+				</div>
+				<div class="col-6 text-center">
+					<button class="ux-button primary sm-mob otp-submit" (click)="validateOtpAddlimit()"
+						[disabled]="otpFormLimit.invalid">{{ 'SUBMIT' | translate }}</button>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

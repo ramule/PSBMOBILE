@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <title>Set Payment Reminder</title>
+    <link href="../css/lib/bootstrap.min.css" rel="stylesheet">
+    <link href="../css/lib/jquery-ui.min.css" rel="stylesheet">
+    <link href="../css/lib/jquery.mCustomScrollbar.min.css" rel="stylesheet">
+    <link href="../css/main.css" rel="stylesheet">
+
+</head>
+
+<body>
+
+
+    <div class="main">
+
+        <!--  Header Section Start -->
+
+        <header class="global-header brand-bg2 minus-nav">
+            <div class="in-header">
+                <div class="header-icons-lft">
+                    <div class="header-actions">
+                        <button class="ux-button-header">
+                            <img src="../assets/images/svg/left-arrow.svg" alt="left-arrow-icon" class="img-small" />
+                        </button>
+                    </div>
+                </div>
+                <div class="brand-logo">
+                    <h3>Set Payment Reminder</h3>
+                </div>
+                <div class="header-icons-rit">
+                    <div class="header-actions">
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- Header Section End -->
+
+        <div class="right-main-column minus-rt-col mar-custom">
+            <div class="right-col-container">
+
+                <div class="body-page-container">
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="bg-section">
+                                <div class="col-12">
+                                    <div class="row1">
+                                        <div class="col-12">
+                                            <div class="white-bg1">
+                                                <div class="payee-info">
+                                                    <div class="info-lft">
+                                                        <span class="green1">
+                                                            <img src="../assets/images/icons/user14.png" alt="user-img">
+                                                            <!-- <h6>SS</h6> -->
+                                                        </span>
+                                                    </div>
+                                                    <div class="info-rit">
+                                                        <h5>Ronak Khanna</h5>
+                                                        <h6> <span>UPI ID :</span> ronakk@psb</h6>
+                                                        <em>9875142547</em>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-12">
+                                            <div class="white-bg1 mt-2">
+                                                <div class="row1">
+                                                    <div class="col-12 col-md-12">
+                                                        <div class="ux-input">
+                                                            <label>Amount</label>
+                                                            <input type="text" placeholder="Enter Amount">
+                                                            <p class="error-message"></p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="row1 mt-2">
+                                                    <div class="col-12 col-md-12">
+                                                        <div class="ux-input">
+                                                            <h6 class="dark-text">Set Validity</h6>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="row1">
+                                                    <div class="col-6 col-md-6">
+                                                        <div class="ux-input">
+                                                            <label>Start Date</label>
+                                                            <input type="text" class="datepicker1" placeholder="DD/MM/YYYY">
+                                                            <em class="calendar-ic cal-top" id="btnPicker"></em>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-6 col-md-6">
+                                                        <div class="ux-input">
+                                                            <label>End Date</label>
+                                                            <input type="text" class="datepicker1" placeholder="DD/MM/YYYY">
+                                                            <em class="calendar-ic cal-top" id="btnPicker"></em>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="row1 mt-2">
+                                                    <div class="col-12 col-md-12">
+                                                        <div class="ux-input">
+                                                            <h6 class="dark-text">Set Frequency</h6>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="row1">
+                                                    <div class="col-12 col-md-12 col-sm-12">
+                                                        <div class="row1">
+                                                            <div class="col-4 col-md-4 pr-2">
+                                                                <div class="ux-selection mar-custom">
+                                                                    <label class="ux-selection2">Weekly
+                                                                        <input type="radio" checked="checked" value="weekly" name="set-frequency">
+                                                                        <span class="checkmark"></span>
+                                                                    </label>
+                                                                    <div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-4 col-md-4 pl-2 pr-2">
+                                                                <div class="ux-selection mar-custom">
+                                                                    <label class="ux-selection2">Monthly
+                                                                        <input type="radio" value="monthly" name="set-frequency">
+                                                                        <span class="checkmark"></span>
+                                                                    </label>
+                                                                    <div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="row1">
+                                                            <div class="col-4 col-md-4 pr-2">
+                                                                <div class="ux-selection mar-custom">
+                                                                    <label class="ux-selection2">Quarterly
+                                                                        <input type="radio" checked="checked" value="quarterly" name="set-frequency">
+                                                                        <span class="checkmark"></span>
+                                                                    </label>
+                                                                    <div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-4 col-md-4 pl-2 pr-2">
+                                                                <div class="ux-selection mar-custom">
+                                                                    <label class="ux-selection2 mr-0">Half Yearly
+                                                                        <input type="radio" value="half-yearly" name="set-frequency">
+                                                                        <span class="checkmark"></span>
+                                                                    </label>
+                                                                    <div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-4 col-md-4 pl-2">
+                                                                <div class="ux-selection mar-custom">
+                                                                    <label class="ux-selection2">Annually
+                                                                        <input type="radio" value="annually" name="set-frequency">
+                                                                        <span class="checkmark"></span>
+                                                                    </label>
+                                                                    <div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="row1 mt-2">
+                                                    <div class="col-12 col-md-12">
+                                                        <div class="ux-input">
+                                                            <label>Remarks</label>
+                                                            <input type="text" placeholder="Enter Remarks">
+                                                            <p class="error-message"></p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Bottom Button Section Start -->
+
+                <div class="footer-container sticky-actions">
+                    <div class="footer-inactions minus-rt-col">
+                        <div class="container-fluid">
+                            <div class="row">
+                                <div class="col-6 col-lg-6 col-md-6 text-center">
+                                    <button class="ux-button secondary" onclick="window.location.href = '#'">Cancel</button>
+                                </div>
+                                <div class="col-6 col-lg-6 col-md-6 text-center">
+                                    <button class="ux-button primary" onclick="window.location.href = 'set-payment-reminder-confirmation.html'">Set Reminder</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Bottom Button Section End -->
+
+
+            </div>
+
+        </div>
+    </div>
+
+    <!-- main -->
+
+
+    <!-- =========== modal popup start ===============  -->
+
+    <!-- =========== modal popup end ===============  -->
+
+    <script src="../js/lib/jquery.min.js"></script>
+    <script src="../js/lib/bootstrap.min.js"></script>
+    <script src="../js/lib/jquery-ui.min.js"></script>
+    <script src="../js/lib/popper.min.js"></script>
+    <script src="../js/lib/jquery.mousewheel.min.js"></script>
+    <script src="../js/lib/jquery.mCustomScrollbar.js"></script>
+    <script src="../js/lib/datatables.min.js"></script>
+    <script src="../js/common.js"></script>
+ 
+
+</body>
+
+</html>

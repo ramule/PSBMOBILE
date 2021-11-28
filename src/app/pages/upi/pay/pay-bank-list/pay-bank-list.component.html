@@ -1,0 +1,76 @@
+<div class="main">
+
+    <div class="right-main-column minus-rt-col mar-custom">
+        <div class="right-col-container">
+            <!--pad-b-->
+
+            <div class="body-page-container">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="bg-section">
+                            <div class="col-12">
+                                <div class="row1" *ngIf="DataService.bankList.length > 0">
+                                    <div class="col-sm-12 col-12 col-md-12">
+                                        <div class="white-bg-custom2">
+                                            <div class="info-section1">
+                                                <div class="ux-input mt-0 mb-0">
+                                                    <input type="text" [(ngModel)]="searchBank" #searchBankList="ngModel" [pattern]="constant.ALPHABET_SPACE_REGEX" placeholder="{{'SEARCH' | translate}}" required>
+                                                    <p class="text-center error-message" *ngIf="searchBankList.errors?.pattern">{{ 'ENTER_ALPHABET_ERROR' | translate}}</p>
+                                                    <p class="error-message"></p>
+                                                </div>
+                                            </div>
+                                            <div class="innerbg-section2 bankListPaddingFix mt-4">
+                                                <div class="row">
+                                                    <ul class="contact-list2">
+                                                        <div>
+                                                            <li *ngFor="let bankobj of DataService.bankList | searchFilter : 'bankName' : searchBank">
+                                                                <a (click)="selectBank(bankobj)">
+                                                                    <div class="list-lft">
+                                                                        <span class="green1">
+                                      <h6 *ngIf="bankobj.bankName">{{bankobj.bankName | firstLastChar}}</h6>
+                                    </span>
+                                                                    </div>
+                                                                    <div class="list-rit">
+                                                                        <h5>{{bankobj.bankName}}</h5>
+                                                                    </div>
+                                                                </a>
+                                                            </li>
+
+                                                        </div>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- footer section start -->
+
+            <div class="footer-container sticky-actions">
+                <div class="footer-inactions minus-rt-col">
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-12 col-md-12 col-lg-12 text-center">
+                                <div class="powered-logo mt-0">
+                                    <img src="assets/images/logo/powered-upi-logo.svg" alt="powered-upi-logo">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- footer section end -->
+        </div>
+    </div>
+
+</div>
+
+<!-- main -->
+
+<div class="toast-messages2"></div>

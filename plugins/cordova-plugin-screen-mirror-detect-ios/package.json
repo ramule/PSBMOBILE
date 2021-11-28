@@ -1,0 +1,21 @@
+{
+    "name": "cordova-plugin-screen-mirror-detect-ios",
+    "version": "0.0.1",
+    "description": "Screen Mirror Detection iOS Functionality in your application.",
+    "cordova": {
+        "id": "cordova-plugin-screen-mirror-detect-ios",
+        "platforms": [
+            "ios"
+        ]
+    },
+    "keywords": [
+        "ecosystem:cordova",
+        "cordova-ios"
+    ],
+    "engines": [{
+        "name": "cordova",
+        "version": ">=3.5.0"
+    }],
+    "author": "",
+    "license": ""
+}

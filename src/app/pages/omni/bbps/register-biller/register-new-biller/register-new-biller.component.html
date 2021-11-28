@@ -1,0 +1,189 @@
+<div class="main bg-m">
+	<div class="right-main-column ">
+		<div class="right-col-container pad-b full-width">
+			<!-- ======== body page content start from here ======== -->
+			<div class="body-page-container main-dashborad bill-wrapper">
+				<div class="container-fluid">
+					<div class="row">
+						<div class="col-12 p-0">
+							<div class="breadcrumb">
+								<ul class="lst-breadcrumb">
+								<li *ngFor="let name of DataService.breadcrumblist">
+                                    <a (click)="DataService.breadcrumroute(name.routeName)">{{name.currentRoute | translate}}</a>
+                            </li>
+							</ul>
+							</div>
+						</div>
+					</div>
+					<!--.row -->
+					<div class="vspacer15 customize d-none d-md-block d-lg-block d-xl-block"></div>
+					<div class="row no-gutters">
+						<div class="col-12">
+							<div class="row1">
+								<div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-9">
+									<!-- Greencard2 Start here -->
+									<div class="greencard2">
+										<div class="row1 hide-m">
+											<div class="col-md-10 col-12">
+												<h4>Register New Biller </h4> </div>
+											<div class="col-md-2 col-12">
+												<div class="header-actions"> <img src="assets/images/icons/billpay.png" alt="billpay-img" class="small-img"> </div>
+											</div>
+										</div>
+										<div class="col-12">
+                                        <form [formGroup]="registerBillerForm" (ngSubmit)="registerBillerSubmit()">
+										<div class="row1">
+											<div class="col-sm-12 col-12 col-md-12">
+												<div class="widget-box5 mb-3" style="overflow:visible">
+													<div class="bg-white1 pad-custom">
+														<div class="row1">
+															<div class="flex-container2">
+																<div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 full-info">
+																	<div class="row1">
+																		<div class="col-12 col-md-6 col-lg-4 col-xl-4">
+																			<div class="ux-input">
+																				<label>Biller Category</label>
+																				<select class="biller" formControlName="billerCategory"  (change)="onCategorySelect($event.target.value)">
+																					<option value="" >Select Biller</option>
+																					<option  *ngFor="let item of billerCategory" [value]="item">{{item}}</option>
+																					
+																				</select>
+                                                                                <p class="error-message" *ngIf="registerBillerForm.controls['billerCategory'].hasError('required') && (registerBillerForm.controls['billerCategory'].dirty || registerBillerForm.controls['billerCategory'].touched)"> {{"SELECT_CATEGORY" | translate}} </p>
+
+																			</div>
+																		</div>
+																		<div class="col-12 col-md-6 col-lg-4 col-xl-4">
+																			<div class="ux-input">
+																				<label>Biller Location</label>
+																				<select formControlName="billerLocation" (change)="onStateSelect($event.target.value)" >
+																					<option value="">Select Location</option>
+																					<option *ngFor="let item of stateList; let i = index" [value]="item">{{item}}</option>
+																				</select>
+                                                                                <p class="error-message" *ngIf="registerBillerForm.controls['billerLocation'].hasError('required') && (registerBillerForm.controls['billerLocation'].dirty || registerBillerForm.controls['billerLocation'].touched)"> {{"SELETC_STATE" | translate}} </p>
+
+																			</div>
+																		</div>
+																	</div>
+																	<div class="row1">
+																		<div class="col-12 col-md-12 col-lg-8 col-xl-8">
+																			<div class="ux-input biller-custom-selectbox" >
+																				<label>Billers</label>
+																				<div class="custom-dropdown-dummy">
+																					<span (click)="onSelectOption()" class="dispayblock"><img src="{{selectedBoard.biller_logo}}" *ngIf="selectedBoard.biller_logo != ''" class="boardlogo" alt=""> {{selectedBoard.biller_legal_name}}</span>
+																					<input type="hidden" formControlName="boardname" [value]="selectedBoard.billerid" >
+																					<ul id="board-name" class="list-unstyled hide-m" class="list">
+																						<li  class="init" *ngFor="let item of finalBillerList" (click)="boardTypeSelection(item)" >
+																							<img src="{{item.biller_logo}}"  class="boardlogo" alt=""> 
+																				
+																							<span class="board-display"> {{item.biller_legal_name}} </span>	    <img style="display:none" src="assets/images/svg/BBPS_Logo.svg" alt="">
+																						</li>
+																					</ul>
+																				
+																				</div>
+																				<p class="error-message" *ngIf="selectedBoard.billerid == '' && submitClicked"> {{"REQUIRED_MSG" | translate}} </p>
+																			</div>
+																		</div>
+																		
+																		
+																	</div>
+																	<div class="row1">
+																		<div class="col-12 col-md-6 col-lg-4 col-xl-4">
+																			<div class="ux-input">
+																				<label>Short Name</label>
+																				<input type="text" placeholder="Enter Short Name" name="shortName" formControlName="shortName">
+                                                                                <p class="error-message" *ngIf="registerBillerForm.controls['shortName'].hasError('required') && (registerBillerForm.controls['shortName'].dirty || registerBillerForm.controls['shortName'].touched)"> {{"REQUIRED_MSG" | translate}} </p>
+
+																			</div>
+																		</div>
+																		<div class="col-12 col-md-6 col-lg-4 col-xl-4" *ngIf ="selectedBoard.billerid != ''">
+																			<div class="ux-input">
+																				<label>{{consumerLabel}}</label>
+																				<input type="text" placeholder="Enter {{consumerLabel}}" name="consumerNumber" formControlName="consumerNumber">
+																				<p class="text-right"> <a class="link-txt" (click)="commonMethods.openPopup('.sampleBill')" >View Sample Bill</a></p>
+                                                                                 <!-- <p class="error-message" *ngIf="registerBillerForm.controls['consumerNumber'].hasError('required')  && registerBillerForm.controls['consumerNumber'].touched)"> {{errorMsg}} </p>  -->
+
+																			</div>
+																		</div>
+																	</div>
+																</div>
+															</div>
+														</div>
+													</div>
+												</div>
+											</div>
+											<div class="col-12 col-md-12">
+												<ul class="bottom-footer1">
+													<li>
+														<div class="btn-div hide-m">
+															<button class="ux-button secondary sm-mob proceed1" type="button" (click)="goToPage('rechargeBillPay')">Cancel</button>
+														</div>
+														<div class="btn-div w100">
+															<button class="ux-button primary sm-mob proceed1" type="submit"  >Proceed</button>
+														</div>
+													</li>
+												</ul>
+											</div>
+										</div>
+                                    	</form>
+										</div>
+									</div>
+								</div>
+								<!-- Greencard2 End here -->
+								<!-- Right Column Ads Start -->
+								<div class="col-12 col-md-12 col-lg-12 col-xl-3 d-none d-xl-block">
+									<div class="right-ads">
+										<a> <img src="assets/images/banner/my-card-banner.jpg"> </a>
+									</div>
+								</div>
+								<!-- Right Column Ads Ends -->
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!--.right-col-container-->
+	</div>
+	<!--.right-main-column-->
+</div>
+<!-- main -->
+
+<div class="popup-bottom sm-popup sampleBill">
+	<div class="row1">
+		<div class="col-12">
+			<h4 class="text-center">
+				<img src="./assets/images/svg/information.svg" alt="error-icon"> Sample Bill
+			</h4>
+		</div>
+	</div>
+	<div class="row1">
+		<div class="col-12 mb-4">
+			<img src="{{billSampleURL}}" alt="Sample Bill" style="display: block;margin: 0 auto;">
+		</div>
+	</div>
+	<div class="row1  mt-2">
+		<div class="col-12 text-center">
+			<button class="ux-button primary submit-btn" (click)="commonMethods.closeAllPopup()">Close</button>
+		</div>
+	</div>
+</div>
+
+<div class="popup-bottom sm-popup successpopup">
+	<div class="row1">
+		<div class="col-12">
+			<h4 class="text-center">
+				<img src="./assets/images/svg/information.svg" alt="error-icon">Information
+			</h4>
+		</div>
+	</div>
+	<div class="row1">
+		<div class="col-12 mb-4">
+		<p>Biller has been Added Successfully</p>
+		</div>
+	</div>
+	<div class="row1  mt-2">
+		<div class="col-12 text-center">
+			<button class="ux-button primary submit-btn" (click)="commonMethods.closeAllPopup()">Close</button>
+		</div>
+	</div>
+</div>

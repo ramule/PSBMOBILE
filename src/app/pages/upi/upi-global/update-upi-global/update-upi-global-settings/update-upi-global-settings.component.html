@@ -1,0 +1,168 @@
+<div class="main">
+
+
+    <div class="right-main-column minus-rt-col mar-custom">
+        <div class="right-col-container">
+
+            <div class="body-page-container">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="bg-section">
+                            <div class="col-12">
+                                <div class="row1">
+                                    <div class="col-sm-12 col-12 col-md-12">
+                                        <div class="white-bg1">
+                                            <div class="row1">
+                                                <div class="col-12 col-md-12">
+                                                    <div class="default-info">
+                                                        <div class="title-info">
+                                                            <h5> <img src="assets/images/icons/psb-icon-yellow.png"
+                                                                    alt="ICICI-Bank-icon">Punjab &amp; Sindh Bank</h5>
+                                                            <h6>Savings XXXX XXXX XX 5847</h6>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row1 mt-3">
+                                                <div class="col-12 col-md-12">
+                                                    <div class="ux-input mb-1">
+                                                        <label>UPI Global Status</label>
+                                                    </div>
+                                                    <div class="toggle-col disable1">
+                                                        <input type="checkbox" name="disable-fields">
+                                                        <div class="flat-toggle ">
+                                                            <span>Active</span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row1 mt-3">
+                                                <div class="col-6">
+                                                    <div class="ux-input ux-common ux-disabled">
+                                                        <label>Start Date</label>
+                                                        <input type="text" name="startDate" class="datepicker1"
+                                                            placeholder="DD/MM/YYYY" disabled value="30/09/2020">
+                                                        <em class="calendar-ic cal-top" id="btnPicker"></em>
+                                                    </div>
+                                                </div>
+                                                <div class="col-6">
+                                                    <div class="ux-input ux-common ux-disabled">
+                                                        <label>End Date</label>
+                                                        <input type="text" name="endDate" class="datepicker1"
+                                                            placeholder="DD/MM/YYYY" value="30/10/2020" disabled>
+                                                        <em class="calendar-ic cal-top" id="btnPicker1"></em>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row1 mt-3">
+                                                <div class="col-sm-12 col-12 col-md-6">
+                                                    <div class="ux-input ux-common ux-disabled">
+                                                        <label for="">Per Transaction Limit</label>
+                                                        <input type="text" name="transactionLimit" placeholder=" "
+                                                            value="25000" class="pl-3" required disabled>
+                                                        <em class="show-currency"></em>
+                                                        <p></p>
+                                                    </div>
+                                                </div>
+                                                <div class="col-sm-12 col-12 col-md-6">
+                                                    <div class="ux-input ux-common ux-disabled">
+                                                        <label for="">Per Day Limit</label>
+                                                        <input type="text" name="dayLimit" placeholder=" " value="10000"
+                                                            class="pl-3" required disabled>
+                                                        <em class="show-currency"></em>
+                                                        <p></p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                                <div class="row1">
+                                    <div class="col-12 col-sm-12 col-md-12 col-lg-12 mt-2">
+                                        <h5 class="custom-h5">
+                                            Note
+                                        </h5>
+                                        <ul class="unorderlist mar-b">
+                                            <li>Start date can only be from current date and validity period cannot
+                                                exceed 90 days.</li>
+                                            <li>UPI Global can be deactivated anytime during the validity period.</li>
+                                        </ul>
+                                    </div>
+                                    <div class="col-12">
+                                        <div class="mt-3">
+                                            <div>
+                                                <div class="ux-selection1 mar-rcustom disabled">
+                                                    <label class="custom-label"> By activating UPI Global, you agree to
+                                                        enable for international UPI payment transactions from the
+                                                        selected account.
+                                                        <input type="checkbox" name="radioboxdemo" checked disabled>
+                                                        <span class="checkmark "></span>
+                                                    </label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- </div>
+    </div>
+
+</div> -->
+
+
+
+
+            <!-- footer section start -->
+
+            <div class="footer-container sticky-actions">
+                <div class="footer-inactions minus-rt-col">
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-12 col-lg-12 col-md-12 text-center">
+                                <button class="btn-update ux-button primary md"
+                                    (click)="goToPage('updateUpiGlobalConfirmation')">Update</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- <div class="sticky-actions-spacer"></div> -->
+
+            <!-- footer section end -->
+        </div>
+    </div>
+
+</div>
+
+
+<!-- main -->
+<!-- =========== modal popup start ===============  -->
+
+<!-- Deactivate Success Popup Start -->
+
+<div class="popup-bottom success-popup">
+    <div class="row1 mt-3">
+        <div class="success">
+            <img src="assets/images/svg/check.svg" alt="success-icon">
+            <h3>Success</h3>
+            <h5>UPI Global services has been Deactivated Successfully</h5>
+        </div>
+    </div>
+    <div class="row1 mt-3">
+        <div class="col-12 text-center">
+            <button class="ux-button primary md submit-btn"
+                (click)="goToPage('updateUpiGlobalConfirmation')">Ok</button>
+        </div>
+    </div>
+</div>
+
+<!-- Deactivate Success Popup End -->
+
+<div class="ios-nav-overlay"></div>

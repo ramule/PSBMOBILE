@@ -1,0 +1,1558 @@
+<div class="main bg-m">
+	<div class="right-main-column ">
+		<div class="right-col-container pad-b full-width">
+			<!-- ======== body page content start from here ======== -->
+			<div class="body-page-container main-dashborad manage-payee myprofile mob-aligment">
+				<div class="container-fluid">
+					<div class="row">
+						<div class="col-12 p-0">
+							<div class="breadcrumb">
+								<ul class="lst-breadcrumb">
+									<!-- <li> <a>Dashboard</a> </li>
+									<li> My Profile </li> -->
+									<li *ngFor="let name of dataService.breadcrumblist">
+										<a (click)="dataService.breadcrumroute(name.routeName)">{{name.currentRoute |
+											translate}}</a>
+									</li>
+
+								</ul>
+							</div>
+						</div>
+					</div>
+					<!--.row -->
+					<div class="vspacer15 customize d-none d-md-block d-lg-block d-xl-block"></div>
+					<div class="row no-gutters">
+						<div class="col-12">
+							<div class="row1">
+								<div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-9">
+									<!-- Greencard2 Start here -->
+									<div class="greencard2">
+										<div class="row1 hide-m">
+											<div class="col-md-8 col-12">
+												<h4>My Profile</h4>
+											</div>
+											<div class="col-md-4 col-12"> </div>
+										</div>
+										<div class="row1 hide-m">
+											<div class="col-sm-12 col-12 col-md-12">
+												<div class="widget-box5 mb-3">
+													<div class="bg-white1 pad-custom mtc">
+														<div class="row1">
+															<div class="col-sm-12 col-12 col-md-6 col-lg-6 col-xl-6">
+																<!-- <div class="myprofile-info">
+																	<div class="profile-circle">
+																		<h4 *ngIf="this.profileImage == '' ">
+																			{{this.dataService.profileDetails[0].custName
+																			| firstLastChar | uppercase }} </h4>
+																	
+																		<a class="browse-photo"> <img
+																				[src]="this.profileImage"
+																				onError="this.onerror=null;this.src='./assets/images/svg/camera.svg';"
+																				alt=""> </a>
+																	</div>
+																	<h3>{{this.dataService.profileDetails[0].custName}}
+																	</h3> <em>Last edited on
+																		{{this.dataService.userDetails?.webLastLogin}}</em>
+																</div> -->
+																
+																<div class="myprofile-info"
+																	(click)="platform == 'web'? fileUpload.click() : selectImage()">
+																	<div class="profile-circle">
+																		<h4 *ngIf="dataService.profileImage == '' && this.dataService.profileDetails[0].custName">
+																			{{this.dataService.profileDetails[0].custName | firstLastChar | uppercase }}
+																		</h4>
+																		<img *ngIf="dataService.profileImage != '' "
+																			[src]="dataService.profileImage"
+																			onError="this.onerror=null;this.src='./assets/images/svg/user-profile-w.svg';"
+																			alt="">
+																		<a class="browse-photo">
+																			<img src="assets/images/svg/camera.svg"
+																				alt="">
+																			<input #fileUpload type="file"
+																				(click)="fileUpload.value = null"
+																				(change)="uploadImage($event)"
+																				style="display:none" accept="image/*">
+																		</a>
+
+																	</div>
+																	<h3>{{this.dataService.profileDetails[0].custName}}</h3>
+																<em>Last edited on {{this.dataService.userDetails?.webLastLogin}}</em>
+																</div>
+															</div>
+															<div
+																class="col-sm-12 col-12 col-md-6 col-lg-6 col-xl-6 pr-1 pl-1">
+																<ul class="profile-link2">
+																	<li>
+																		<a (click)="selection('password')"> <img
+																				src="assets/images/svg/change-mpin.svg"
+																				alt="change-password-icon"> Change
+																			Password </a>
+																	</li>
+																	<li *ngIf="platform != 'web'">
+																		<a (click)="selection('mpin')"> <img
+																				src="assets/images/svg/change-mpin.svg"
+																				alt="change-mpin-icon"> Change MPIN </a>
+																	</li>
+																	<li>
+																		<a (click)="selection('tpin')"> <img
+																				src="assets/images/svg/change-mpin.svg"
+																				alt="change-tpin-icon"> Change TPIN </a>
+																	</li>
+																</ul>
+															</div>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+										<!-- Change Password -->
+										<div class="row1" *ngIf="selectionValue == 'password' ">
+											<div class="col-sm-12 col-12 col-md-12">
+												<div class="widget-box5 mb-3">
+													<div class="bg-white1 pad-custom">
+														<div class="row1 hide-m">
+															<div class="col-md-12 col-12">
+																<div class="row1">
+																	<div class="col-md-6 col-lg-6 col-xl-4 col-12">
+																		<h6 class="detail-heading">Change Password</h6>
+																	</div>
+																</div>
+															</div>
+														</div>
+														<form [formGroup]="changePasswordForm">
+															<div class="row1">
+																<div class="col-md-12 col-12">
+																	<div class="row1">
+																		<div class="col-md-6 col-lg-6 col-xl-4 col-12">
+																			<div class="ux-input pwd-input">
+																				<label>Old Password</label>
+																				<input type="password"
+																					autocomplete="off" limit-to="16"
+																					placeholder="Enter Password"
+																					formControlName="oldPassword"> <em
+																					class=" lock-ic cal-top"></em>
+																				<p class="error-message"
+																					*ngIf="changePasswordForm.controls['oldPassword'].hasError('required')  && changePasswordForm.controls['oldPassword'].touched">
+																					{{'ENTER_PASSWORD' | translate}}
+																				</p>
+																			</div>
+																		</div>
+																	</div>
+																	<div class="row1">
+																		<div class="col-md-6 col-lg-6 col-xl-4 col-12">
+																			<div class="ux-input pwd-input">
+																				<label>Set Password</label>
+																				<input type="password"
+																					autocomplete="off" limit-to="16"
+																					placeholder="Enter Password"
+																					formControlName="newPassword"> <em
+																					class=" lock-ic cal-top"></em>
+																				<p class="error-message"
+																					*ngIf="changePasswordForm.controls['newPassword'].hasError('required')  && changePasswordForm.controls['newPassword'].touched">
+																					{{'ENTER_NEW_PASSWORD' | translate}}
+																				</p>
+																				<p class="error-message"
+																					*ngIf="changePasswordForm.controls['newPassword'].hasError('minlength')  && changePasswordForm.controls['newPassword'].touched">
+																					{{'NEW_PASSWORD_LENGTH_SHORT' |
+																					translate}} </p>
+																				<p class="error-message"
+																					*ngIf="changePasswordForm.controls['newPassword'].touched && !changePasswordForm.controls['newPassword'].hasError('required') && changePasswordForm.hasError('passwordMatch')">
+																					Old and New passwords cannot be same
+																				</p>
+																				<p class="error-message"
+																					*ngIf="changePasswordForm.controls['newPassword'].hasError('pattern') && changePasswordForm.controls['newPassword'].touched">
+																					Your Password should contain minimum
+																					8 characters, at least 1 uppercase
+																					letter, 1 lowercase letter, 1 number
+																					and 1 special character </p>
+																			</div>
+																		</div>
+																		<div class="col-md-6 col-lg-6 col-xl-4 col-12">
+																			<div class="ux-input pwd-input">
+																				<label>Confirm Password</label>
+																				<input type="password"
+																					autocomplete="off" limit-to="16"
+																					placeholder="Enter Password"
+																					formControlName="confirmNewPassword">
+																				<em class=" lock-ic cal-top"></em>
+																				<p class="error-message"
+																					*ngIf="changePasswordForm.controls['confirmNewPassword'].hasError('required')  && changePasswordForm.controls['confirmNewPassword'].touched">
+																					ENTER_CONFIRM_PASSWORD </p>
+																				<p class="error-message"
+																					*ngIf="changePasswordForm.controls['confirmNewPassword'].touched && !changePasswordForm.controls['confirmNewPassword'].hasError('required') && changePasswordForm.hasError('passwordNotMatch')">
+																					<!-- Please Enter Valid Confirm Password -->
+																					New Password and confirm password should be same
+																				</p>
+																				<p class="error-message mt-2"
+																					*ngIf="PasswordError">
+																					{{PasswordError}}</p>
+																			</div>
+																		</div>
+																	</div>
+																</div>
+															</div>
+														</form>
+														<div
+															class="vspacer20 customize d-none d-md-block d-lg-block d-xl-block">
+														</div>
+													</div>
+												</div>
+											</div>
+											<div class="col-12 col-md-12">
+												<ul class="bottom-footer1">
+													<li>
+														<div class="btn-div">
+															<button class=" ux-button secondary sm-mob"
+																(click)="Cancel()">Cancel</button>
+														</div>
+														<div class="btn-div">
+															<button id="selectAcct-submit"
+																class=" ux-button primary sm-mob" type="submit"
+																(click)="onUpdate()">{{ 'SUBMIT' | translate }}</button>
+														</div>
+													</li>
+												</ul>
+											</div>
+										</div>
+										<!-- End of Change Password -->
+										<!-- MPIN Start -->
+										<div class="row1" *ngIf="selectionValue == 'mpin' ">
+											<div class="col-sm-12 col-12 col-md-12">
+												<div class="widget-box5 mb-3">
+													<div class="bg-white1 pad-custom">
+														<div class="row1 hide-m">
+															<div class="col-md-12 col-12">
+																<div class="row1">
+																	<div class="col-md-12 col-lg-12 col-xl-12 col-12">
+																		<h6 class="detail-heading">Change MPIN</h6>
+																	</div>
+																</div>
+															</div>
+														</div>
+														<div class="vspacer10 customize"></div>
+														<form [formGroup]="mPinForm">
+															<div class="row1">
+																<div class="col-md-6 col-lg-5 col-xl-5 col-12">
+																	<div class="row1">
+																		<div
+																			class="col-4 col-md-5 col-lg-5 col-xl-5 pr-1">
+																			<div class="ux-input mb-0">
+																				<label>Enter Old MPIN</label>
+																			</div>
+																		</div>
+																		<div
+																			class="col-8 col-md-7 col-lg-7 col-xl-7 pl-1">
+																			<div class="ux-input mb-0">
+																				<!-- <p class="info-message text-right">
+																					Don't remember? <a
+																						class="link-txt" >Reset MPIN</a>
+																				</p> -->
+																			</div>
+																		</div>
+																	</div>
+																	<div class="row1" *ngIf="constant.getPlatform() != 'web'" >
+																		<div class="col-12">
+																			<div class="row4">
+																				<div class="col-sm-2 col-2 col-md-2">
+																					<div
+																						class="ux-input password1 mb-1">
+																						<input id="mobile1"
+																							type="tel" #mpinRow
+																							maxlength="1"
+																							placeholder="●" numbersOnly
+																							(keyup)="onKeyUpEvent(0, $event,'mpin')"
+																							formControlName="oldMpin1">
+																					</div>
+																				</div>
+																				<div class="col-sm-2 col-2 col-md-2">
+																					<div
+																						class="ux-input password1 mb-1">
+																						<input id="mobile2"
+																							type="tel" #mpinRow
+																							maxlength="1"
+																							placeholder="●" numbersOnly
+																							(keyup)="onKeyUpEvent(1, $event,'mpin')"
+																							formControlName="oldMpin2">
+																					</div>
+																				</div>
+																				<div class="col-sm-2 col-2 col-md-2">
+																					<div
+																						class="ux-input password1 mb-1">
+																						<input id="mobile3"
+																							type="tel" #mpinRow
+																							maxlength="1"
+																							placeholder="●" numbersOnly
+																							(keyup)="onKeyUpEvent(2, $event,'mpin')"
+																							formControlName="oldMpin3">
+																					</div>
+																				</div>
+																				<div class="col-sm-2 col-2 col-md-2">
+																					<div
+																						class="ux-input password1 mb-1">
+																						<input id="mobile4"
+																							type="tel" #mpinRow
+																							maxlength="1"
+																							placeholder="●" numbersOnly
+																							(keyup)="onKeyUpEvent(3, $event,'mpin')"
+																							formControlName="oldMpin4">
+																					</div>
+																				</div>
+																				<div class="col-sm-2 col-2 col-md-2">
+																					<div
+																						class="ux-input password1  mb-1">
+																						<input id="mobile5"
+																							type="tel" #mpinRow
+																							maxlength="1"
+																							placeholder="●" numbersOnly
+																							(keyup)="onKeyUpEvent(4, $event,'mpin')"
+																							formControlName="oldMpin5">
+																					</div>
+																				</div>
+																				<div class="col-sm-2 col-2 col-md-2">
+																					<div
+																						class="ux-input password1 mb-1">
+																						<input id="mobile6"
+																							type="tel" #mpinRow
+																							maxlength="1"
+																							placeholder="●" numbersOnly
+																							(keyup)="onKeyUpEvent(5, $event,'mpin')"
+																							formControlName="oldMpin6">
+																					</div>
+																				</div>
+																			</div>
+																			<div class="row1">
+																				<div class="col-12">
+																					<div
+																						class="ux-input password1 mt-0 mb-0">
+																						<p class="error-message"
+																							*ngIf="mpinError != ''">
+																							{{mpinError}} </p>
+																					</div>
+																				</div>
+																			</div>
+																		</div>
+																	</div>
+																	<div class="row1" *ngIf="constant.getPlatform() == 'web'" >
+																		<div class="col-12">
+																			<div class="row4">
+																				<div class="col-sm-2 col-2 col-md-2">
+																					<div
+																						class="ux-input password1 mb-1">
+																						<input id="mobile1"
+																							type="password" #mpinRow
+																							maxlength="1"
+																							placeholder="●" numbersOnly
+																							(keyup)="onKeyUpEvent(0, $event,'mpin')"
+																							formControlName="oldMpin1">
+																					</div>
+																				</div>
+																				<div class="col-sm-2 col-2 col-md-2">
+																					<div
+																						class="ux-input password1 mb-1">
+																						<input id="mobile2"
+																							type="password" #mpinRow
+																							maxlength="1"
+																							placeholder="●" numbersOnly
+																							(keyup)="onKeyUpEvent(1, $event,'mpin')"
+																							formControlName="oldMpin2">
+																					</div>
+																				</div>
+																				<div class="col-sm-2 col-2 col-md-2">
+																					<div
+																						class="ux-input password1 mb-1">
+																						<input id="mobile3"
+																							type="password" #mpinRow
+																							maxlength="1"
+																							placeholder="●" numbersOnly
+																							(keyup)="onKeyUpEvent(2, $event,'mpin')"
+																							formControlName="oldMpin3">
+																					</div>
+																				</div>
+																				<div class="col-sm-2 col-2 col-md-2">
+																					<div
+																						class="ux-input password1 mb-1">
+																						<input id="mobile4"
+																							type="password" #mpinRow
+																							maxlength="1"
+																							placeholder="●" numbersOnly
+																							(keyup)="onKeyUpEvent(3, $event,'mpin')"
+																							formControlName="oldMpin4">
+																					</div>
+																				</div>
+																				<div class="col-sm-2 col-2 col-md-2">
+																					<div
+																						class="ux-input password1  mb-1">
+																						<input id="mobile5"
+																							type="password" #mpinRow
+																							maxlength="1"
+																							placeholder="●" numbersOnly
+																							(keyup)="onKeyUpEvent(4, $event,'mpin')"
+																							formControlName="oldMpin5">
+																					</div>
+																				</div>
+																				<div class="col-sm-2 col-2 col-md-2">
+																					<div
+																						class="ux-input password1 mb-1">
+																						<input id="mobile6"
+																							type="password" #mpinRow
+																							maxlength="1"
+																							placeholder="●" numbersOnly
+																							(keyup)="onKeyUpEvent(5, $event,'mpin')"
+																							formControlName="oldMpin6">
+																					</div>
+																				</div>
+																			</div>
+																			<div class="row1">
+																				<div class="col-12">
+																					<div
+																						class="ux-input password1 mt-0 mb-0">
+																						<p class="error-message"
+																							*ngIf="mpinError != ''">
+																							{{mpinError}} </p>
+																					</div>
+																				</div>
+																			</div>
+																		</div>
+																	</div>
+																</div>
+															</div>
+															<div class="row1 mt-3">
+																<div class="col-md-6 col-lg-5 col-xl-5 col-12">
+																	<div class="row1">
+																		<div class="col-12">
+																			<div class="ux-input mb-0">
+																				<label>Enter New MPIN</label>
+																			</div>
+																		</div>
+																		<div class="col-12">
+																			<div class="row4" *ngIf="constant.getPlatform() == 'web'" >
+																				<div class="col-sm-2 col-2 col-md-2">
+																					<div
+																						class="ux-input password1 mb-0">
+																						<input id="mpassword1"
+																							type="password" #mpinNewRow
+																							maxlength="1"
+																							placeholder="●" numbersOnly
+																							(keyup)="onKeyUpEvent(0, $event,'newMpin')"
+																							formControlName="newpMpin1" />
+																					</div>
+																				</div>
+																				<div class="col-sm-2 col-2 col-md-2">
+																					<div
+																						class="ux-input password1 mb-0">
+																						<input id="mpassword2"
+																							type="password" #mpinNewRow
+																							maxlength="1"
+																							placeholder="●" numbersOnly
+																							(keyup)="onKeyUpEvent(1, $event,'newMpin')"
+																							formControlName="newpMpin2" />
+																					</div>
+																				</div>
+																				<div class="col-sm-2 col-2 col-md-2">
+																					<div
+																						class="ux-input password1  mb-0">
+																						<input id="mpassword3"
+																							type="password" #mpinNewRow
+																							maxlength="1"
+																							placeholder="●" numbersOnly
+																							(keyup)="onKeyUpEvent(2, $event,'newMpin')"
+																							formControlName="newpMpin3" />
+																					</div>
+																				</div>
+																				<div class="col-sm-2 col-2 col-md-2">
+																					<div
+																						class="ux-input password1 mb-0">
+																						<input id="mpassword4"
+																							type="password" #mpinNewRow
+																							maxlength="1"
+																							placeholder="●" numbersOnly
+																							(keyup)="onKeyUpEvent(3, $event,'newMpin')"
+																							formControlName="newpMpin4" />
+																					</div>
+																				</div>
+																				<div class="col-sm-2 col-2 col-md-2">
+																					<div
+																						class="ux-input password1 mb-0">
+																						<input id="mpassword5"
+																							type="password" #mpinNewRow
+																							maxlength="1"
+																							placeholder="●" numbersOnly
+																							(keyup)="onKeyUpEvent(4, $event,'newMpin')"
+																							formControlName="newpMpin5" />
+																					</div>
+																				</div>
+																				<div class="col-sm-2 col-2 col-md-2">
+																					<div
+																						class="ux-input password1 mb-0">
+																						<input id="mpassword6"
+																							type="password" #mpinNewRow
+																							maxlength="1"
+																							placeholder="●" numbersOnly
+																							(keyup)="onKeyUpEvent(5, $event,'newMpin')"
+																							formControlName="newpMpin6" />
+																					</div>
+																				</div>
+																			</div>
+
+																			<div class="row4" *ngIf="constant.getPlatform() != 'web'" >
+																				<div class="col-sm-2 col-2 col-md-2">
+																					<div
+																						class="ux-input password1 mb-0">
+																						<input id="mpassword1"
+																							type="tel" #mpinNewRow
+																							maxlength="1"
+																							placeholder="●" numbersOnly
+																							(keyup)="onKeyUpEvent(0, $event,'newMpin')"
+																							formControlName="newpMpin1" />
+																					</div>
+																				</div>
+																				<div class="col-sm-2 col-2 col-md-2">
+																					<div
+																						class="ux-input password1 mb-0">
+																						<input id="mpassword2"
+																							type="tel" #mpinNewRow
+																							maxlength="1"
+																							placeholder="●" numbersOnly
+																							(keyup)="onKeyUpEvent(1, $event,'newMpin')"
+																							formControlName="newpMpin2" />
+																					</div>
+																				</div>
+																				<div class="col-sm-2 col-2 col-md-2">
+																					<div
+																						class="ux-input password1  mb-0">
+																						<input id="mpassword3"
+																							type="tel" #mpinNewRow
+																							maxlength="1"
+																							placeholder="●" numbersOnly
+																							(keyup)="onKeyUpEvent(2, $event,'newMpin')"
+																							formControlName="newpMpin3" />
+																					</div>
+																				</div>
+																				<div class="col-sm-2 col-2 col-md-2">
+																					<div
+																						class="ux-input password1 mb-0">
+																						<input id="mpassword4"
+																							type="tel" #mpinNewRow
+																							maxlength="1"
+																							placeholder="●" numbersOnly
+																							(keyup)="onKeyUpEvent(3, $event,'newMpin')"
+																							formControlName="newpMpin4" />
+																					</div>
+																				</div>
+																				<div class="col-sm-2 col-2 col-md-2">
+																					<div
+																						class="ux-input password1 mb-0">
+																						<input id="mpassword5"
+																							type="tel" #mpinNewRow
+																							maxlength="1"
+																							placeholder="●" numbersOnly
+																							(keyup)="onKeyUpEvent(4, $event,'newMpin')"
+																							formControlName="newpMpin5" />
+																					</div>
+																				</div>
+																				<div class="col-sm-2 col-2 col-md-2">
+																					<div
+																						class="ux-input password1 mb-0">
+																						<input id="mpassword6"
+																							type="tel" #mpinNewRow
+																							maxlength="1"
+																							placeholder="●" numbersOnly
+																							(keyup)="onKeyUpEvent(5, $event,'newMpin')"
+																							formControlName="newpMpin6" />
+																					</div>
+																				</div>
+																			</div>
+
+
+																			<div class="row1">
+																				<div class="col-12">
+																					<div
+																						class="ux-input password1 mt-0 mb-0">
+																						<p class="error-message"
+																							*ngIf="newMpinError != ''">
+																							{{newMpinError}} </p>
+                                           												<p class="error-message"
+																							*ngIf="mpinError == '' && newMpinError == '' && mPinForm.hasError('oldNewMpinNotMatch') && (mPinForm.controls['newpMpin1'].dirty && mpinForm.controls['newpMpin1'].touched)">
+																							Old and New MPIN cannot be
+																							same</p>
+                                          </div>
+																				</div>
+																			</div>
+																		</div>
+																	</div>
+																</div>
+																<div class="col-md-6 col-lg-5 col-xl-5 col-12">
+																	<div class="row1">
+																		<div class="col-12">
+																			<div class="ux-input mb-0">
+																				<label>Confirm New MPIN</label>
+																			</div>
+																		</div>
+																		<div class="col-12">
+
+
+																			<div class="row4" *ngIf="constant.getPlatform() != 'web'" >
+																				<div class="col-sm-2 col-2 col-md-2">
+																					<div
+																						class="ux-input password1 mb-1">
+																						<input id="eotppassword1"
+																							type="tel"
+																							#mpinConfirmRow
+																							maxlength="1"
+																							placeholder="●" numbersOnly
+																							(keyup)="onKeyUpEvent(0, $event,'cMpin')"
+																							formControlName="confirmMpin1">
+																					</div>
+																				</div>
+																				<div class="col-sm-2 col-2 col-md-2">
+																					<div
+																						class="ux-input password1 mb-1">
+																						<input id="eotppassword2"
+																							type="tel"
+																							#mpinConfirmRow
+																							maxlength="1"
+																							placeholder="●" numbersOnly
+																							(keyup)="onKeyUpEvent(1, $event,'cMpin')"
+																							formControlName="confirmMpin2">
+																					</div>
+																				</div>
+																				<div class="col-sm-2 col-2 col-md-2">
+																					<div
+																						class="ux-input password1 mb-1">
+																						<input id="eotppassword3"
+																							type="tel"
+																							#mpinConfirmRow
+																							maxlength="1"
+																							placeholder="●" numbersOnly
+																							(keyup)="onKeyUpEvent(2, $event,'cMpin')"
+																							formControlName="confirmMpin3">
+																					</div>
+																				</div>
+																				<div class="col-sm-2 col-2 col-md-2">
+																					<div
+																						class="ux-input password1 mb-1">
+																						<input id="eotppassword4"
+																							type="tel"
+																							#mpinConfirmRow
+																							maxlength="1"
+																							placeholder="●" numbersOnly
+																							(keyup)="onKeyUpEvent(3, $event,'cMpin')"
+																							formControlName="confirmMpin4">
+																					</div>
+																				</div>
+																				<div class="col-sm-2 col-2 col-md-2">
+																					<div
+																						class="ux-input password1  mb-1">
+																						<input id="eotppassword5"
+																							type="tel"
+																							#mpinConfirmRow
+																							maxlength="1"
+																							placeholder="●" numbersOnly
+																							(keyup)="onKeyUpEvent(4, $event,'cMpin')"
+																							formControlName="confirmMpin5">
+																					</div>
+																				</div>
+																				<div class="col-sm-2 col-2 col-md-2">
+																					<div
+																						class="ux-input password1 mb-1">
+																						<input id="eotppassword6"
+																							type="tel"
+																							#mpinConfirmRow
+																							maxlength="1"
+																							placeholder="●" numbersOnly
+																							(keyup)="onKeyUpEvent(5, $event,'cMpin')"
+																							formControlName="confirmMpin6">
+																					</div>
+																				</div>
+																			</div>
+
+
+																			<div class="row4" *ngIf="constant.getPlatform() == 'web'" >
+																				<div class="col-sm-2 col-2 col-md-2">
+																					<div
+																						class="ux-input password1 mb-1">
+																						<input id="eotppassword1"
+																							type="password"
+																							#mpinConfirmRow
+																							maxlength="1"
+																							placeholder="●" numbersOnly
+																							(keyup)="onKeyUpEvent(0, $event,'cMpin')"
+																							formControlName="confirmMpin1">
+																					</div>
+																				</div>
+																				<div class="col-sm-2 col-2 col-md-2">
+																					<div
+																						class="ux-input password1 mb-1">
+																						<input id="eotppassword2"
+																							type="password"
+																							#mpinConfirmRow
+																							maxlength="1"
+																							placeholder="●" numbersOnly
+																							(keyup)="onKeyUpEvent(1, $event,'cMpin')"
+																							formControlName="confirmMpin2">
+																					</div>
+																				</div>
+																				<div class="col-sm-2 col-2 col-md-2">
+																					<div
+																						class="ux-input password1 mb-1">
+																						<input id="eotppassword3"
+																							type="password"
+																							#mpinConfirmRow
+																							maxlength="1"
+																							placeholder="●" numbersOnly
+																							(keyup)="onKeyUpEvent(2, $event,'cMpin')"
+																							formControlName="confirmMpin3">
+																					</div>
+																				</div>
+																				<div class="col-sm-2 col-2 col-md-2">
+																					<div
+																						class="ux-input password1 mb-1">
+																						<input id="eotppassword4"
+																							type="password"
+																							#mpinConfirmRow
+																							maxlength="1"
+																							placeholder="●" numbersOnly
+																							(keyup)="onKeyUpEvent(3, $event,'cMpin')"
+																							formControlName="confirmMpin4">
+																					</div>
+																				</div>
+																				<div class="col-sm-2 col-2 col-md-2">
+																					<div
+																						class="ux-input password1  mb-1">
+																						<input id="eotppassword5"
+																							type="password"
+																							#mpinConfirmRow
+																							maxlength="1"
+																							placeholder="●" numbersOnly
+																							(keyup)="onKeyUpEvent(4, $event,'cMpin')"
+																							formControlName="confirmMpin5">
+																					</div>
+																				</div>
+																				<div class="col-sm-2 col-2 col-md-2">
+																					<div
+																						class="ux-input password1 mb-1">
+																						<input id="eotppassword6"
+																							type="password"
+																							#mpinConfirmRow
+																							maxlength="1"
+																							placeholder="●" numbersOnly
+																							(keyup)="onKeyUpEvent(5, $event,'cMpin')"
+																							formControlName="confirmMpin6">
+																					</div>
+																				</div>
+																			</div>
+
+																			<div class="row1">
+																				<div class="col-12">
+																					<div
+																						class="ux-input password1 mt-0 mb-0">
+																						<p class="error-message"
+																							*ngIf="confirmMpinError != ''">
+																							{{confirmMpinError}} </p>
+																						<p class="error-message"
+																							*ngIf="newMpinError == '' && confirmMpinError == '' && mPinForm.hasError('mpinNotMatch')">
+																							New MPIN and Confirm MPIN should be same   </p>
+
+
+																					</div>
+																				</div>
+																			</div>
+																		</div>
+																	</div>
+																</div>
+															</div>
+														</form>
+													</div>
+												</div>
+											</div>
+											<div class="col-12 col-md-12">
+												<ul class="bottom-footer1">
+													<li>
+														<div class="btn-div">
+															<button class=" ux-button secondary sm-mob"
+																(click)="Cancel()">Cancel</button>
+														</div>
+														<div class="btn-div">
+															<button class="otp-btn ux-button primary sm-mob"
+																type="submit" (click)="onUpdate()">Submit</button>
+														</div>
+													</li>
+												</ul>
+											</div>
+										</div>
+										<!-- End of MPIN  -->
+										<!-- Start of TPIN -->
+										<div class="row1" *ngIf="selectionValue == 'tpin' ">
+											<div class="col-sm-12 col-12 col-md-12">
+												<div class="widget-box5 mb-3">
+													<div class="bg-white1 pad-custom">
+														<div class="row1 hide-m">
+															<div class="col-md-12 col-12">
+																<div class="row1">
+																	<div class="col-md-12 col-lg-12 col-xl-12 col-12">
+																		<h6 class="detail-heading">Change TPIN</h6>
+																	</div>
+																</div>
+															</div>
+														</div>
+														<div class="vspacer10 customize"></div>
+														<form [formGroup]="tpinForm">
+															<div class="row1">
+																<div class="col-md-6 col-lg-5 col-xl-5 col-12">
+																	<div class="row1">
+																		<div
+																			class="col-4 col-md-5 col-lg-5 col-xl-5 pr-1">
+																			<div class="ux-input mb-0">
+																				<label>Enter Old TPIN</label>
+																			</div>
+																		</div>
+																		<!-- <div
+																			class="col-8 col-md-7 col-lg-7 col-xl-7 pl-1">
+																			<div class="ux-input mb-0">
+																				<p class="info-message text-right">
+																					Don't remember? <a class="link-txt"
+																						(click)="goToPage('resetTpin')">Reset
+																						TPIN</a> </p>
+																			</div>
+																		</div> -->
+																	</div>
+																	<div class="row1">
+																		<div class="col-12">
+																			<div class="row4" *ngIf="constant.getPlatform() != 'web'" >
+																				<div class="col-sm-2 col-2 col-md-2">
+																					<div
+																						class="ux-input password1 mb-1">
+																						<input id="mobile1"
+																							type="tel" #tpinRow
+																							maxlength="1"
+																							placeholder="●" numbersOnly
+																							(keyup)="onKeyUpEvent(0, $event,'tpin')"
+																							formControlName="oldTpin1">
+																					</div>
+																				</div>
+																				<div class="col-sm-2 col-2 col-md-2">
+																					<div
+																						class="ux-input password1 mb-1">
+																						<input id="mobile2"
+																							type="tel" #tpinRow
+																							maxlength="1"
+																							placeholder="●" numbersOnly
+																							(keyup)="onKeyUpEvent(1, $event,'tpin')"
+																							formControlName="oldTpin2">
+																					</div>
+																				</div>
+																				<div class="col-sm-2 col-2 col-md-2">
+																					<div
+																						class="ux-input password1 mb-1">
+																						<input id="mobile3"
+																							type="tel" #tpinRow
+																							maxlength="1"
+																							placeholder="●" numbersOnly
+																							(keyup)="onKeyUpEvent(2, $event,'tpin')"
+																							formControlName="oldTpin3">
+																					</div>
+																				</div>
+																				<div class="col-sm-2 col-2 col-md-2">
+																					<div
+																						class="ux-input password1 mb-1">
+																						<input id="mobile4"
+																							type="tel" #tpinRow
+																							maxlength="1"
+																							placeholder="●" numbersOnly
+																							(keyup)="onKeyUpEvent(3, $event,'tpin')"
+																							formControlName="oldTpin4">
+																					</div>
+																				</div>
+																				<div class="col-sm-2 col-2 col-md-2">
+																					<div
+																						class="ux-input password1  mb-1">
+																						<input id="mobile5"
+																							type="tel" #tpinRow
+																							maxlength="1"
+																							placeholder="●" numbersOnly
+																							(keyup)="onKeyUpEvent(4, $event,'tpin')"
+																							formControlName="oldTpin5">
+																					</div>
+																				</div>
+																				<div class="col-sm-2 col-2 col-md-2">
+																					<div
+																						class="ux-input password1 mb-1">
+																						<input id="mobile6"
+																							type="tel" #tpinRow
+																							maxlength="1"
+																							placeholder="●" numbersOnly
+																							(keyup)="onKeyUpEvent(5, $event,'tpin')"
+																							formControlName="oldTpin6">
+																					</div>
+																				</div>
+																			</div>
+
+
+																			<div class="row4" *ngIf="constant.getPlatform() == 'web'" >
+																				<div class="col-sm-2 col-2 col-md-2">
+																					<div
+																						class="ux-input password1 mb-1">
+																						<input id="mobile1"
+																							type="password" #tpinRow
+																							maxlength="1"
+																							placeholder="●" numbersOnly
+																							(keyup)="onKeyUpEvent(0, $event,'tpin')"
+																							formControlName="oldTpin1">
+																					</div>
+																				</div>
+																				<div class="col-sm-2 col-2 col-md-2">
+																					<div
+																						class="ux-input password1 mb-1">
+																						<input id="mobile2"
+																							type="password" #tpinRow
+																							maxlength="1"
+																							placeholder="●" numbersOnly
+																							(keyup)="onKeyUpEvent(1, $event,'tpin')"
+																							formControlName="oldTpin2">
+																					</div>
+																				</div>
+																				<div class="col-sm-2 col-2 col-md-2">
+																					<div
+																						class="ux-input password1 mb-1">
+																						<input id="mobile3"
+																							type="password" #tpinRow
+																							maxlength="1"
+																							placeholder="●" numbersOnly
+																							(keyup)="onKeyUpEvent(2, $event,'tpin')"
+																							formControlName="oldTpin3">
+																					</div>
+																				</div>
+																				<div class="col-sm-2 col-2 col-md-2">
+																					<div
+																						class="ux-input password1 mb-1">
+																						<input id="mobile4"
+																							type="password" #tpinRow
+																							maxlength="1"
+																							placeholder="●" numbersOnly
+																							(keyup)="onKeyUpEvent(3, $event,'tpin')"
+																							formControlName="oldTpin4">
+																					</div>
+																				</div>
+																				<div class="col-sm-2 col-2 col-md-2">
+																					<div
+																						class="ux-input password1  mb-1">
+																						<input id="mobile5"
+																							type="password" #tpinRow
+																							maxlength="1"
+																							placeholder="●" numbersOnly
+																							(keyup)="onKeyUpEvent(4, $event,'tpin')"
+																							formControlName="oldTpin5">
+																					</div>
+																				</div>
+																				<div class="col-sm-2 col-2 col-md-2">
+																					<div
+																						class="ux-input password1 mb-1">
+																						<input id="mobile6"
+																							type="password" #tpinRow
+																							maxlength="1"
+																							placeholder="●" numbersOnly
+																							(keyup)="onKeyUpEvent(5, $event,'tpin')"
+																							formControlName="oldTpin6">
+																					</div>
+																				</div>
+																			</div>
+
+
+																			<div class="row1">
+																				<div class="col-12">
+																					<div
+																						class="ux-input password1 mt-0 mb-0">
+																						<p class="error-message"
+																							*ngIf="tpinError != ''">
+																							{{tpinError}} </p>
+																					</div>
+																				</div>
+																			</div>
+																		</div>
+																	</div>
+																</div>
+															</div>
+															<div class="row1 mt-3">
+																<div class="col-md-6 col-lg-5 col-xl-5 col-12">
+																	<div class="row1">
+																		<div class="col-12">
+																			<div class="ux-input mb-0">
+																				<label>Enter New TPIN</label>
+																			</div>
+																		</div>
+																		<div class="col-12">
+																			<div class="row4"  *ngIf="constant.getPlatform() != 'web'" >
+																				<div class="col-sm-2 col-2 col-md-2">
+																					<div
+																						class="ux-input password1 mb-0">
+																						<input id="mpassword1"
+																							type="tel" #tpinNewRow
+																							maxlength="1"
+																							placeholder="●" numbersOnly
+																							(keyup)="onKeyUpEvent(0, $event,'newTpin')"
+																							formControlName="newTpin1" />
+																					</div>
+																				</div>
+																				<div class="col-sm-2 col-2 col-md-2">
+																					<div
+																						class="ux-input password1 mb-0">
+																						<input id="mpassword2"
+																							type="tel" #tpinNewRow
+																							maxlength="1"
+																							placeholder="●" numbersOnly
+																							(keyup)="onKeyUpEvent(1, $event,'newTpin')"
+																							formControlName="newTpin2" />
+																					</div>
+																				</div>
+																				<div class="col-sm-2 col-2 col-md-2">
+																					<div
+																						class="ux-input password1  mb-0">
+																						<input id="mpassword3"
+																							type="tel" #tpinNewRow
+																							maxlength="1"
+																							placeholder="●" numbersOnly
+																							(keyup)="onKeyUpEvent(2, $event,'newTpin')"
+																							formControlName="newTpin3" />
+																					</div>
+																				</div>
+																				<div class="col-sm-2 col-2 col-md-2">
+																					<div
+																						class="ux-input password1 mb-0">
+																						<input id="mpassword4"
+																							type="tel" #tpinNewRow
+																							maxlength="1"
+																							placeholder="●" numbersOnly
+																							(keyup)="onKeyUpEvent(3, $event,'newTpin')"
+																							formControlName="newTpin4" />
+																					</div>
+																				</div>
+																				<div class="col-sm-2 col-2 col-md-2">
+																					<div
+																						class="ux-input password1 mb-0">
+																						<input id="mpassword5"
+																							type="tel" #tpinNewRow
+																							maxlength="1"
+																							placeholder="●" numbersOnly
+																							(keyup)="onKeyUpEvent(4, $event,'newTpin')"
+																							formControlName="newTpin5" />
+																					</div>
+																				</div>
+																				<div class="col-sm-2 col-2 col-md-2">
+																					<div
+																						class="ux-input password1 mb-0">
+																						<input id="mpassword6"
+																							type="tel" #tpinNewRow
+																							maxlength="1"
+																							placeholder="●" numbersOnly
+																							(keyup)="onKeyUpEvent(5, $event,'newTpin')"
+																							formControlName="newTpin6" />
+																					</div>
+																				</div>
+																			</div>
+
+
+																			<div class="row4"  *ngIf="constant.getPlatform() == 'web'" >
+																				<div class="col-sm-2 col-2 col-md-2">
+																					<div
+																						class="ux-input password1 mb-0">
+																						<input id="mpassword1"
+																							type="password" #tpinNewRow
+																							maxlength="1"
+																							placeholder="●" numbersOnly
+																							(keyup)="onKeyUpEvent(0, $event,'newTpin')"
+																							formControlName="newTpin1" />
+																					</div>
+																				</div>
+																				<div class="col-sm-2 col-2 col-md-2">
+																					<div
+																						class="ux-input password1 mb-0">
+																						<input id="mpassword2"
+																							type="password" #tpinNewRow
+																							maxlength="1"
+																							placeholder="●" numbersOnly
+																							(keyup)="onKeyUpEvent(1, $event,'newTpin')"
+																							formControlName="newTpin2" />
+																					</div>
+																				</div>
+																				<div class="col-sm-2 col-2 col-md-2">
+																					<div
+																						class="ux-input password1  mb-0">
+																						<input id="mpassword3"
+																							type="password" #tpinNewRow
+																							maxlength="1"
+																							placeholder="●" numbersOnly
+																							(keyup)="onKeyUpEvent(2, $event,'newTpin')"
+																							formControlName="newTpin3" />
+																					</div>
+																				</div>
+																				<div class="col-sm-2 col-2 col-md-2">
+																					<div
+																						class="ux-input password1 mb-0">
+																						<input id="mpassword4"
+																							type="password" #tpinNewRow
+																							maxlength="1"
+																							placeholder="●" numbersOnly
+																							(keyup)="onKeyUpEvent(3, $event,'newTpin')"
+																							formControlName="newTpin4" />
+																					</div>
+																				</div>
+																				<div class="col-sm-2 col-2 col-md-2">
+																					<div
+																						class="ux-input password1 mb-0">
+																						<input id="mpassword5"
+																							type="password" #tpinNewRow
+																							maxlength="1"
+																							placeholder="●" numbersOnly
+																							(keyup)="onKeyUpEvent(4, $event,'newTpin')"
+																							formControlName="newTpin5" />
+																					</div>
+																				</div>
+																				<div class="col-sm-2 col-2 col-md-2">
+																					<div
+																						class="ux-input password1 mb-0">
+																						<input id="mpassword6"
+																							type="password" #tpinNewRow
+																							maxlength="1"
+																							placeholder="●" numbersOnly
+																							(keyup)="onKeyUpEvent(5, $event,'newTpin')"
+																							formControlName="newTpin6" />
+																					</div>
+																				</div>
+																			</div>
+
+
+																			<div class="row1">
+																				<div class="col-12">
+																					<div
+																						class="ux-input password1 mt-0 mb-0">
+																						<p class="error-message"
+																							*ngIf="newTpinError != ''">
+																							{{newTpinError}} </p>
+                                              <!-- <p class="error-message"
+																							*ngIf="newTpinError1 != ''">
+																							{{newTpinError1}} </p> -->
+																						<p class="error-message"
+																							*ngIf="tpinError == '' && newTpinError == '' && tpinForm.hasError('oldNewTpinNotMatch') && (tpinForm.controls['newTpin1'].dirty || tpinForm.controls['newTpin1'].touched)">
+																							Old and New TPIN cannot be
+																							same</p>
+																					</div>
+																				</div>
+																			</div>
+																		</div>
+																	</div>
+																</div>
+																<div class="col-md-6 col-lg-5 col-xl-5 col-12">
+																	<div class="row1">
+																		<div class="col-12">
+																			<div class="ux-input mb-0">
+																				<label>Confirm New TPIN</label>
+																			</div>
+																		</div>
+																		<div class="col-12">
+																			<div class="row4" *ngIf="constant.getPlatform() != 'web'"  >
+																				<div class="col-sm-2 col-2 col-md-2">
+																					<div
+																						class="ux-input password1 mb-1">
+																						<input id="eotppassword1"
+																							type="tel"
+																							#tpinConfirmRow
+																							maxlength="1"
+																							placeholder="●" numbersOnly
+																							(keyup)="onKeyUpEvent(0, $event,'cTpin')"
+																							formControlName="confirmTpin1">
+																					</div>
+																				</div>
+																				<div class="col-sm-2 col-2 col-md-2">
+																					<div
+																						class="ux-input password1 mb-1">
+																						<input id="eotppassword2"
+																							type="tel"
+																							#tpinConfirmRow
+																							maxlength="1"
+																							placeholder="●" numbersOnly
+																							(keyup)="onKeyUpEvent(1, $event,'cTpin')"
+																							formControlName="confirmTpin2">
+																					</div>
+																				</div>
+																				<div class="col-sm-2 col-2 col-md-2">
+																					<div
+																						class="ux-input password1 mb-1">
+																						<input id="eotppassword3"
+																							type="tel"
+																							#tpinConfirmRow
+																							maxlength="1"
+																							placeholder="●" numbersOnly
+																							(keyup)="onKeyUpEvent(2, $event,'cTpin')"
+																							formControlName="confirmTpin3">
+																					</div>
+																				</div>
+																				<div class="col-sm-2 col-2 col-md-2">
+																					<div
+																						class="ux-input password1 mb-1">
+																						<input id="eotppassword4"
+																							type="tel"
+																							#tpinConfirmRow
+																							maxlength="1"
+																							placeholder="●" numbersOnly
+																							(keyup)="onKeyUpEvent(3, $event,'cTpin')"
+																							formControlName="confirmTpin4">
+																					</div>
+																				</div>
+																				<div class="col-sm-2 col-2 col-md-2">
+																					<div
+																						class="ux-input password1  mb-1">
+																						<input id="eotppassword5"
+																							type="tel"
+																							#tpinConfirmRow
+																							maxlength="1"
+																							placeholder="●" numbersOnly
+																							(keyup)="onKeyUpEvent(4, $event,'cTpin')"
+																							formControlName="confirmTpin5">
+																					</div>
+																				</div>
+																				<div class="col-sm-2 col-2 col-md-2">
+																					<div
+																						class="ux-input password1 mb-1">
+																						<input id="eotppassword6"
+																							type="tel"
+																							#tpinConfirmRow
+																							maxlength="1"
+																							placeholder="●" numbersOnly
+																							(keyup)="onKeyUpEvent(5, $event,'cTpin')"
+																							formControlName="confirmTpin6">
+																					</div>
+																				</div>
+																			</div>
+
+
+																			<div class="row4" *ngIf="constant.getPlatform() == 'web'"  >
+																				<div class="col-sm-2 col-2 col-md-2">
+																					<div
+																						class="ux-input password1 mb-1">
+																						<input id="eotppassword1"
+																							type="password"
+																							#tpinConfirmRow
+																							maxlength="1"
+																							placeholder="●" numbersOnly
+																							(keyup)="onKeyUpEvent(0, $event,'cTpin')"
+																							formControlName="confirmTpin1">
+																					</div>
+																				</div>
+																				<div class="col-sm-2 col-2 col-md-2">
+																					<div
+																						class="ux-input password1 mb-1">
+																						<input id="eotppassword2"
+																							type="password"
+																							#tpinConfirmRow
+																							maxlength="1"
+																							placeholder="●" numbersOnly
+																							(keyup)="onKeyUpEvent(1, $event,'cTpin')"
+																							formControlName="confirmTpin2">
+																					</div>
+																				</div>
+																				<div class="col-sm-2 col-2 col-md-2">
+																					<div
+																						class="ux-input password1 mb-1">
+																						<input id="eotppassword3"
+																							type="password"
+																							#tpinConfirmRow
+																							maxlength="1"
+																							placeholder="●" numbersOnly
+																							(keyup)="onKeyUpEvent(2, $event,'cTpin')"
+																							formControlName="confirmTpin3">
+																					</div>
+																				</div>
+																				<div class="col-sm-2 col-2 col-md-2">
+																					<div
+																						class="ux-input password1 mb-1">
+																						<input id="eotppassword4"
+																							type="password"
+																							#tpinConfirmRow
+																							maxlength="1"
+																							placeholder="●" numbersOnly
+																							(keyup)="onKeyUpEvent(3, $event,'cTpin')"
+																							formControlName="confirmTpin4">
+																					</div>
+																				</div>
+																				<div class="col-sm-2 col-2 col-md-2">
+																					<div
+																						class="ux-input password1  mb-1">
+																						<input id="eotppassword5"
+																							type="password"
+																							#tpinConfirmRow
+																							maxlength="1"
+																							placeholder="●" numbersOnly
+																							(keyup)="onKeyUpEvent(4, $event,'cTpin')"
+																							formControlName="confirmTpin5">
+																					</div>
+																				</div>
+																				<div class="col-sm-2 col-2 col-md-2">
+																					<div
+																						class="ux-input password1 mb-1">
+																						<input id="eotppassword6"
+																							type="password"
+																							#tpinConfirmRow
+																							maxlength="1"
+																							placeholder="●" numbersOnly
+																							(keyup)="onKeyUpEvent(5, $event,'cTpin')"
+																							formControlName="confirmTpin6">
+																					</div>
+																				</div>
+																			</div>
+
+
+																			<div class="row1">
+																				<div class="col-12">
+																					<div
+																						class="ux-input password1 mt-0 mb-0">
+																						<p class="error-message"
+																							*ngIf="confirmTpinError !=''">
+																							{{confirmTpinError}} </p>
+																						<p class="error-message"
+																							*ngIf="confirmTpinError == '' && newTpinError == '' && tpinForm.hasError('tpinNotMatch')">
+																							New TPIN and Confirm TPIN should be same
+																							</p>
+																					</div>
+																				</div>
+																			</div>
+																		</div>
+																	</div>
+																</div>
+															</div>
+														</form>
+													</div>
+												</div>
+											</div>
+											<div class="col-12 col-md-12">
+												<ul class="bottom-footer1">
+													<li>
+														<div class="btn-div">
+															<button class=" ux-button secondary sm-mob"
+																(click)="Cancel()">Cancel</button>
+														</div>
+														<div class="btn-div">
+															<button class="otp-btn ux-button primary sm-mob"
+																type="submit" (click)="onUpdate()">Submit</button>
+														</div>
+													</li>
+												</ul>
+											</div>
+										</div>
+										<!-- End of TPIN -->
+									</div>
+									<!-- Greencard2 End here -->
+								</div>
+								<!-- Right Column Ads Start -->
+								<div class="col-12 col-md-12 col-lg-12 col-xl-3 d-none d-xl-block">
+									<div class="right-ads">
+										<a> <img src="assets/images/banner/my-card-banner.jpg"> </a>
+									</div>
+								</div>
+								<!-- Right Column Ads Ends -->
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!--.right-col-container-->
+	</div>
+	<!--.right-main-column-->
+</div>
+<!-- main -->
+<!-- OTP Popup Start -->
+<div class="popup-bottom md-popup otp-popup otp">
+	<div class="row1">
+		<div class="col-12">
+			<h4 class="text-center">OTP Verification</h4>
+		</div>
+		<!-- <div class="col-2">
+			<button class="ux-button-icon close-btn" (click)="closeAllPopup()"> <img src="assets/images/svg/close-b.svg" alt="cross-icon" class="img-vsmall"> </button>
+		</div> -->
+	</div>
+	<div class="row1">
+		<div class="col-12 col-md-8 col-lg-8 col-xl-8 m-auto">
+			<div class="mob-icon"> <img src="assets/images/icons/mobile.svg" alt="mobile-icon"> </div>
+			<h4 class="greentext text-center mar-b ">OTP Verification</h4>
+			<h6 class="text-center">Please enter 6 digit OTP sent on registered Mobile Number ending with
+				{{maskedMobileNo}}</h6>
+		</div>
+	</div>
+	<div class="row1">
+		<div class="col-12 col-md-8 col-lg-8 col-xl-8  m-auto">
+			<div class="row1">
+				<div class="col-12 col-md-12">
+					<form [formGroup]="otpForm">
+						<div class="row4" *ngIf="constant.getPlatform() == 'web'"  >
+							<div class="col-sm-2 col-2 col-md-2">
+								<div class="ux-input password1 mb-1">
+									<input id="otppassword1" #otpRow type="password" numbersOnly limit-to="1" placeholder="●"
+										(keyup)="onKeyUpEvent(0, $event, 'otp')" formControlName="otp1">
+								</div>
+							</div>
+							<div class="col-sm-2 col-2 col-md-2">
+								<div class="ux-input password1 mb-1">
+									<input id="otppassword2" #otpRow type="password" numbersOnly limit-to="1" placeholder="●"
+										(keyup)="onKeyUpEvent(1, $event, 'otp')" formControlName="otp2">
+								</div>
+							</div>
+							<div class="col-sm-2 col-2 col-md-2">
+								<div class="ux-input password1 mb-1">
+									<input id="otppassword3" #otpRow type="password" numbersOnly limit-to="1" placeholder="●"
+										(keyup)="onKeyUpEvent(2, $event, 'otp')" formControlName="otp3">
+								</div>
+							</div>
+							<div class="col-sm-2 col-2 col-md-2">
+								<div class="ux-input password1 mb-1">
+									<input id="otppassword4" #otpRow type="password" numbersOnly limit-to="1" placeholder="●"
+										(keyup)="onKeyUpEvent(3, $event, 'otp')" formControlName="otp4">
+								</div>
+							</div>
+							<div class="col-sm-2 col-2 col-md-2">
+								<div class="ux-input password1  mb-1">
+									<input id="otppassword5" #otpRow type="password" numbersOnly limit-to="1" placeholder="●"
+										(keyup)="onKeyUpEvent(4, $event, 'otp')" formControlName="otp5">
+								</div>
+							</div>
+							<div class="col-sm-2 col-2 col-md-2">
+								<div class="ux-input password1 mb-1">
+									<input id="otppassword6" #otpRow type="password" numbersOnly limit-to="1" placeholder="●"
+										(keyup)="onKeyUpEvent(5, $event, 'otp')" formControlName="otp6">
+								</div>
+							</div>
+						</div>
+
+						<div class="row4" *ngIf="constant.getPlatform() != 'web'"  >
+							<div class="col-sm-2 col-2 col-md-2">
+								<div class="ux-input password1 mb-1">
+									<input id="otppassword1" #otpRow type="tel" numbersOnly limit-to="1" placeholder="●"
+										(keyup)="onKeyUpEvent(0, $event, 'otp')" formControlName="otp1">
+								</div>
+							</div>
+							<div class="col-sm-2 col-2 col-md-2">
+								<div class="ux-input password1 mb-1">
+									<input id="otppassword2" #otpRow type="tel" numbersOnly limit-to="1" placeholder="●"
+										(keyup)="onKeyUpEvent(1, $event, 'otp')" formControlName="otp2">
+								</div>
+							</div>
+							<div class="col-sm-2 col-2 col-md-2">
+								<div class="ux-input password1 mb-1">
+									<input id="otppassword3" #otpRow type="tel" numbersOnly limit-to="1" placeholder="●"
+										(keyup)="onKeyUpEvent(2, $event, 'otp')" formControlName="otp3">
+								</div>
+							</div>
+							<div class="col-sm-2 col-2 col-md-2">
+								<div class="ux-input password1 mb-1">
+									<input id="otppassword4" #otpRow type="tel" numbersOnly limit-to="1" placeholder="●"
+										(keyup)="onKeyUpEvent(3, $event, 'otp')" formControlName="otp4">
+								</div>
+							</div>
+							<div class="col-sm-2 col-2 col-md-2">
+								<div class="ux-input password1  mb-1">
+									<input id="otppassword5" #otpRow type="tel" numbersOnly limit-to="1" placeholder="●"
+										(keyup)="onKeyUpEvent(4, $event, 'otp')" formControlName="otp5">
+								</div>
+							</div>
+							<div class="col-sm-2 col-2 col-md-2">
+								<div class="ux-input password1 mb-1">
+									<input id="otppassword6" #otpRow type="tel" numbersOnly limit-to="1" placeholder="●"
+										(keyup)="onKeyUpEvent(5, $event, 'otp')" formControlName="otp6">
+								</div>
+							</div>
+						</div>
+
+
+					</form>
+					<div class="row1">
+						<div class="col-12">
+							<div class="ux-input password1 mt-0 mb-0">
+								<p class="error-message"></p>
+							</div>
+						</div>
+					</div>
+					<div class="row4">
+						<div class="col-6 col-md-6">
+							<div class="text-left">
+								<p class="text-left"> <span class="success-text">{{counter | formatTimer }}</span> </p>
+							</div>
+						</div>
+						<div class="col-6 col-md-6">
+							<div class="text-right">
+								<button class="ux-linkbutton default-underline mt-3" (click)="ResendOTP()"
+									[ngClass]="counter > 0 ? 'mydisabled' : 'resendActive'">{{ 'RESEND' | translate }}</button>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="row1 mt-2">
+		<div class="col-12 col-md-8 col-lg-8 col-xl-8  m-auto">
+			<div class="row1">
+				<div class="col-6 text-center">
+					<button class="ux-button secondary sm-mob close-btn" (click)="closeAllPopup()">Cancel</button>
+				</div>
+				<div class="col-6 text-center">
+					<button class="ux-button primary sm-mob otp-submit" [disabled]="otpForm.invalid"
+						(click)="validateOtp()">{{ 'SUBMIT' | translate }}</button>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- OTP Popup End-->
+<div class="popup-bottom sm-popup success1 ">
+	<form  id="success-form">
+		<div class="row1 mt-3">
+			<div class="success"> <img src="assets/images/svg/check.svg" alt="success-icon">
+				<h3>Success</h3>
+				<h5 *ngIf="selectionValue == 'password'">Password changed Successfully</h5>
+				<h5 *ngIf="selectionValue == 'tpin'">TPIN Updated Successfully</h5>
+				<h5 *ngIf="selectionValue == 'mpin'">MPIN Updated Successfully</h5>
+				<h5 *ngIf="selectionValue != 'tpin'">Please login again.</h5>
+			</div>
+		</div>
+		<div class="row1 mt-3">
+			<div class="col-12 text-center">
+				<button class="ux-button primary md " (click)="closeSuccessPopup()">Ok</button>
+			</div>
+		</div>
+	</form>
+</div>
+
+
+<div class="popup-bottom sm-popup error1 ">
+	<form  id="success-form">
+		<div class="row1 mt-3">
+			<div class="success"> <img src="assets/images/svg/error.svg" alt="success-icon">
+				<h3>Error</h3>
+				<h5 *ngIf="selectionValue == 'password'">{{errorMsg}}</h5>
+				<h5 *ngIf="selectionValue == 'tpin'">{{errorMsg}}</h5>
+				<h5 *ngIf="selectionValue == 'mpin'">{{errorMsg}}</h5>
+			</div>
+		</div>
+		<div class="row1 mt-3">
+			<div class="col-12 text-center">
+				<button class="ux-button primary md " (click)="close()">Ok</button>
+			</div>
+		</div>
+	</form>
+</div>
+<!-- <div class="popup-bottom success12">
+	<form action="#" id="success-form">
+	  <div class="row1 mt-3">
+		<div class="col-12">
+		<div class="success"> <img src="assets/images/svg/check.svg" alt="success-icon">
+		  <h3>Success</h3>
+		  <h5>Please login again.</h5>
+		</div>
+		</div>
+		<div class="col-12 mt-3">
+		  <div class="col-12 text-center">
+			<button class="ux-button primary md " (click)="LoginAgain()">Ok</button>
+		  </div>
+		</div>
+	  </div>
+	</form>
+  </div> -->

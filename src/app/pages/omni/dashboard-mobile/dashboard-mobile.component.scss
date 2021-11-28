@@ -1,0 +1,167 @@
+.transact-card{
+    overflow-y: hidden;
+}
+.gradient-box .owl-theme .owl-nav.disabled+.owl-dots {margin-top:0px}
+.transact-width{
+    padding: 0 30px 0 23px;
+    position: relative;
+    display: inline-block;
+    @media (max-width: 480px) {   padding: 0px 0px 0 0px;}
+    h4 i{
+        position: absolute;top:50%; transform: translateY(-50%);
+        left:0px;
+         @media (max-width: 480px) {left: -17px;}
+        img{
+            width: 15px;
+            @media (max-width: 480px) {width:8px;margin-top:-1px;}
+        }
+    }
+    span{
+        position: absolute;top:50%; transform: translateY(-50%);
+        right:0px;
+        @media (max-width: 480px){top:100%; transform:none; font-size: 10px;
+            font-weight: 700;}
+    }
+
+}
+.featured-owl .ux-small-scroll {
+    overflow: inherit;}
+// .gradient-height{
+//     height: 223px;
+// }
+.widget-box1.credit-card .component-box {
+    max-height:400px; overflow: auto;
+
+}
+.list-image{
+    width: 14px;
+    @media (max-width:767px) {
+        width:11px;
+
+      }
+}
+
+.button-width{
+    width: 30%;
+    padding: 0.5rem 0.7rem;
+    margin-top: 20px;
+    @media (max-width:767px) {  margin-top: 10px;}
+}
+
+.button-paybill{
+    width: 30%;
+    margin-top: 20px;
+    @media (max-width:767px) {  margin-top: 10px;}
+}
+
+.crdr_col{
+    min-width: 250px;
+}
+
+.show_balance{
+    opacity: 0.8 !important;
+    color: rgba(255, 255, 255, 0.9) !important;
+}
+
+.refresh_icon{
+    margin-left: 6px;
+}
+.trasaction-details h4 {
+	@media (max-width: 767px) { font-size:11px;}
+    &.mobileDate {
+        width: 48px;
+        text-align: center;
+        border-radius: 10px;
+        background: #d9d9d9;
+        padding: 5px 5px;
+        font-weight: 700;
+        font-size: 11px;
+        line-height: 13px;
+    }
+}
+.widget-box1{
+    .component-title6 {
+        @media (max-width: 480px) { padding:10px 15px;}
+    }
+    .table-responsive {
+        @media (max-width: 480px) {padding: 0 5px;}
+        table tr td{
+            @media (max-width: 480px) { padding: 0.25rem;}
+
+        }
+    }
+}
+
+.ux-component2 .ux-dropdown .drp-box .drp-enterdata span.account-balance h5{
+    text-align: center;
+}
+
+.charts-samples .chart-heading {
+    position: static;
+  }
+
+
+#fundtransferPopup {     position: absolute; transition: all 0.5s ease;
+    left: 100%;
+    top: 0;
+    width: 100%;
+    height: calc(100% - 8px);
+    background-color: #ffff;
+    z-index: 9;
+    border: 1px solid #dedede;
+    border-radius: 5px;}
+.featured-owl  {overflow:hidden;}
+#fundtransferPopup.active {left:0%}
+#fundtransferPopup .tranferHeader { padding:15px; border-bottom:1px solid #dedede ; position:relative; }
+#fundtransferPopup .tranferHeader h3 { font-size: 20px; ; }
+#fundtransferPopup .transferButton {padding:15px;text-align:center}
+#fundtransferPopup .transferButton button {margin:5px;}
+#fundtransferPopup .closeTransfer {width:20px; height:20px; position: absolute; top:15px; right:15px;cursor:pointer }
+#fundtransferPopup .closeTransfer:after {position:absolute; content:''; height:100%;top:0; left:0; right:0px; margin:0 auto ;width:3px; background-color:#000; transform:rotate(45deg); transform-origin:center;}
+#fundtransferPopup .closeTransfer:before {position:absolute; content:''; height:100%; top:0; left:0; right:0px; margin:0 auto ;width:3px; background-color:#000; transform:rotate(-45deg); transform-origin:center;}
+
+
+.transact-card {
+        max-height:400px; overflow:auto;
+
+    table td {    padding: 0.3rem;}}
+
+.icons-corosel{
+    height: 50px;
+    margin: 20px 0 !important;
+}
+
+.owl-item.ng-tns-c64-0.ng-trigger.ng-trigger-autoHeight.active.ng-star-inserted{
+    padding: 5px;
+}
+// .icon1{
+//   border-radius: 100px;
+//     overflow: hidden;
+//     background-color: #f0f0f0;
+//     height: 42px;
+//     width: 42px;
+//     display: flex;
+// }
+
+.information-list-carousal div.item a .icon1
+{
+  border-radius: 100px;
+  overflow: hidden;
+  background-color: #f0f0f0;
+  height: 42px;
+  width: 42px;
+  display: flex;
+}
+.item{
+  margin-bottom: 12px;
+  @media (max-width: 767px) {
+        margin-bottom: 0px;
+    }
+}
+
+
+
+
+
+
+

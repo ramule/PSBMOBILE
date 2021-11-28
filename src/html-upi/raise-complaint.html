@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+
+	<html>
+	
+	<head>
+		<meta charset="UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+	    <title>Raise Complaint | Complaint</title>
+		<link href="../css/lib/bootstrap.min.css" rel="stylesheet">
+	    <link href="../css/lib/jquery-ui.min.css" rel="stylesheet">
+	 	<link href="../css/lib/jquery.mCustomScrollbar.min.css" rel="stylesheet">
+		<link href="../css/main.css" rel="stylesheet">
+		
+	</head>	
+
+<body>
+    
+	<div class="main">
+
+		<!--  Header Section Start -->
+			  
+		<header class="global-header brand-bg2 minus-nav">
+		  <div class="in-header">
+			  <div class="header-icons-lft">   
+				  <div class="header-actions">
+					  <button class="ux-button-header">
+						<img src="../assets/images/svg/left-arrow.svg"  alt="left-arrow-icon" class="img-small"/>
+					  </button>
+				 </div> 
+			  </div>  
+			   <div class="brand-logo">
+				  <h3>Raise Complaint</h3>
+			   </div> 
+			 <div class="header-icons-rit">
+				<div class="header-actions">
+				</div> 
+			  </div> 
+		  </div> 
+	  </header> 
+
+<!-- Header Section End -->
+
+<div class="right-main-column minus-rt-col mar-custom">
+	 <div class="right-col-container">
+   
+  <div class="body-page-container">
+	 <div class="container-fluid">
+		<div class="row">
+		   <div class="bg-section">
+			  <div class="col-12">
+				  <div class="row1">
+					  <div class="col-sm-12 col-12 col-md-12">
+ 						  <div class="white-bg1">
+								<div class="row1">
+                                    <div class="col-12 col-sm-12 col-md-12">
+										<div class="ux-input ux-disabled">
+											<label for="transactionId">Transaction ID</label>
+											   <input type="text" name="transactionId" placeholder="Enter Transaction ID" value="FDR567578" disabled  required>
+											  <p></p>
+										 </div>
+									  </div>
+									  <div class="col-12 col-sm-12 col-md-12">
+	 									<a href="#" class="show-link2">Select Transaction</a>
+									 </div>
+									  <div class="col-12 col-sm-12 col-md-12">
+										<div class="ux-input">
+											<label for="email">Email</label>
+											   <input type="email" name="email" placeholder="Enter email"  required>
+											  <p></p>
+										 </div>
+									  </div>
+									  <div class="col-12 col-sm-12 col-md-12">
+										<div class="ux-input ux-disabled">
+											<label for="refeId">RRN No/Reference ID</label>
+											   <input type="text" name="refenId" placeholder="Enter RRN No/Reference ID" value="6295068437359" disabled  required>
+											  <p></p>
+										 </div>
+									  </div>
+									  <div class="col-12 col-sm-12 col-md-12">
+										<div class="ux-input ux-disabled">
+											<label for="transactionAmt">Transaction Amount</label>
+											   <input type="text" name="transactionAmt" placeholder="Enter Transaction Amount" value="600" disabled  required>
+											  <p></p>
+										 </div>
+									  </div>
+									  <div class="col-12 col-sm-12 col-md-12">
+										<div class="ux-input">
+											   <label for="chargebackReason">Chargeback Reason</label>
+													<select required="">
+														<option value="select">Select</option>
+														<option value="Goods/services are not received/pr…">Goods/services are not received/pr…</option>
+													 </select>
+												   <p></p>
+												</div>
+											 </div>   
+									  <div class="col-12 col-sm-12 col-md-12">
+										<div class="ux-input">
+											<label for="subject">Subject</label>
+											   <input type="text" name="subject" placeholder="Enter Subject"  required>
+											  <p></p>
+										 </div>
+									  </div>
+									  <div class="col-12 col-sm-12 col-md-12">
+										<div class="ux-input">
+											<label for="description">Description</label>
+											   <input type="text" name="description" placeholder="Enter Description"  required>
+											  <p></p>
+										 </div>
+									  </div>
+								</div>
+						    </div>	
+						 </div>
+					  </div>
+					</div>
+				 </div>
+			  </div> 
+
+			 </div> 
+		  </div> 
+
+		     <!-- footer section start -->
+	
+				<div class="footer-container sticky-actions">
+					<div class="footer-inactions minus-rt-col">
+						<div class="container-fluid">
+							<div class="row">
+								<div class="col-12 col-md-12 col-lg-12 text-center">
+									<button class="ux-button primary" onclick="window.location.href = 'raise-complaint-confirmation.html'">Submit</button>
+								</div> 
+							</div> 
+						</div> 
+					</div> 
+				</div> 
+  
+	      <!-- footer section end -->
+
+		</div>  
+	  </div> 
+	  
+  </div> 
+    
+  <!-- main -->
+	
+    
+
+<!-- =========== modal popup start ===============  -->
+
+ 
+<!-- Complaint Success Popup Start -->
+
+<div class="popup-bottom success">
+	<form action="#" id="success-form">
+		 <div class="row mt-3">
+		  <div class="success">
+			  <img src="../assets/images/svg/check.svg" alt="success-icon">
+			  <h3>Success</h3>
+			  <h5>Your complaint has been successfully escalated and reported to <a href="#">digitalsupport@psb.com</a></h5>
+		  </div>
+		   </div>
+		 <div class="row1 mt-3">
+			<div class="col-12 text-center">
+			   <button class="ux-button primary md " onclick="window.location.href = '#'">Ok</button>
+		   </div> 
+		 </div>
+	  </form>
+  </div> 
+  
+  <!-- Complaint Success Popup End -->
+
+  <div class="ios-nav-overlay"></div> 
+ 
+<!-- =========== modal popup end ===============  -->
+
+<script src="../js/lib/jquery.min.js"></script>
+<script src="../js/lib/bootstrap.min.js"></script>
+<script src="../js/lib/jquery-ui.min.js"></script>
+<script src="../js/lib/popper.min.js"></script>
+<script src="../js/lib/jquery.mousewheel.min.js"></script>
+<script src="../js/lib/jquery.mCustomScrollbar.js"></script>
+<script src="../js/lib/datatables.min.js"></script>
+<script src="../js/common.js"></script>
+
+<script type="text/javascript">
+	//  createGlobalNavMore();
+  
+	$("button.complaint-btn").click(function(e){
+		e.preventDefault();
+		//  console.log('working');
+		 if ( !$('div.popup-bottom.success').hasClass('popup-active') ) {
+				$('div.popup-bottom.success').addClass('popup-active');
+				$( 'div.ios-nav-overlay' ).fadeIn(400);
+			} else {
+				$('div.popup-bottom.success').removeClass('popup-active');
+				$( 'div.ios-nav-overlay' ).fadeOut(400);
+		 	}
+	   });
+
+	   $("input[name='transactionAmt']").on('keyup',function() {
+		if($(this).val() != '') {
+			($(this).val('&#x20B9;'));
+	   }else{
+ 
+		}
+	});
+ 
+
+</script>
+
+</body>
+</html>

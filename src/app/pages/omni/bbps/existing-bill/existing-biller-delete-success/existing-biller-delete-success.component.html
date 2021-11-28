@@ -1,0 +1,138 @@
+<div class="main bg-m">
+	<div class="right-main-column ">
+		<div class="right-col-container pad-b full-width">
+			<!-- ======== body page content start from here ======== -->
+			<div class="body-page-container main-dashborad bill-wrapper">
+				<div class="container-fluid">
+					<div class="row">
+						<div class="col-12 p-0">
+							<div class="breadcrumb">
+								<ul class="lst-breadcrumb">
+                                    <li *ngFor="let name of DataService.breadcrumblist">
+                                        <a (click)="DataService.breadcrumroute(name.routeName)">{{name.currentRoute | translate}}</a>
+                                </li>
+								</ul>
+							</div>
+						</div>
+					</div>
+					<!--.row -->
+					<div class="vspacer15 customize d-none d-md-block d-lg-block d-xl-block"></div>
+					<div class="row no-gutters">
+						<div class="col-12">
+							<div class="row1">
+								<div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-9">
+									<!-- Greencard2 Start here -->
+									<div class="greencard2">
+										<div class="row1 hide-m">
+											<div class="col-md-10 col-12">
+												<h4>Receipt</h4> </div>
+											<div class="col-md-2 col-12">
+												<div class="header-actions"> <img src="assets/images/icons/billpay.png" alt="billpay-img" class="small-img"> </div>
+											</div>
+										</div>
+										<div class="row1">
+											<div class="col-sm-12 col-12 col-md-12">
+												<div class="white-box2 mar-t pad-custom custom-bor">
+													<div class="row">
+														<div class="success">
+															<h5> <img src="assets/images/svg/success-arrow.svg" alt="success-icon"> Success</h5> <small>Biller Deleted Successfully</small> <small class="mt-3"> 
+                                                                        <span>
+                                                                            Transaction ID 7859200249
+                                                                        </span>  
+                                                                    </small> <em class="small-text">12 July 2021, 11:40:30</em> </div>
+													</div>
+													<div class="bg-img billpay-success-img"> <img src="assets/images/svg/psb-receipt icon.svg" alt="success-bg" class="success-icon"> <img src="assets/images/svg/b-icon1.svg" alt="success-bg" class="assure-bill-icon"> </div>
+												</div>
+											</div>
+											<div class="col-sm-12 col-12 col-md-12">
+												<div class="result-container1 mar-top">
+													<div class="info-bottom pad-custom">
+														<div class="info-details mt-3">
+															<div class="row">
+																<h6>Biller ID</h6>
+																<h5>REL273927</h5> </div>
+														</div>
+														<div class="info-details">
+															<div class="row">
+																<div class="left-info"> <span class="biller-icon">
+                                                                                <img src="assets/images/icons/adani.png" alt="adani-logo">
+                                                                            </span> </div>
+																<div class="right-info">
+																	<h6>Biller Name</h6>
+																	<h5>Adani Electricity</h5> </div>
+															</div>
+														</div>
+														<div class="info-details pl-10">
+															<div class="row">
+																<h6>Consumer Number</h6>
+																<h5>3646236472837</h5> </div>
+														</div>
+														<div class="info-details">
+															<div class="row">
+																<h6>Short Name</h6>
+																<h5>Home Electricity</h5> </div>
+														</div>
+														<div class="info-details pl-40">
+															<div class="row">
+																<h6>Biller Account ID</h6>
+																<h5>RELEN34858</h5> </div>
+														</div>
+														<div class="info-details pl-10">
+															<div class="row">
+																<h6>Customer Name</h6>
+																<h5>Rajesh Shah</h5> </div>
+														</div>
+														<div class="info-details">
+															<div class="row">
+																<h6>Customer Mobile Number</h6>
+																<h5>9876543254</h5> </div>
+														</div>
+														<div class="info-details d-block d-sm-none">
+															<div class="row">
+																<div class="left-info">
+																	<h6>Reference Number</h6>
+																	<h5>3646236472837</h5> </div>
+																<div class="right-info"> <span class="biller-icon assure-icon">
+                                                                                <img src="assets/images/svg/b-icon1.svg" alt="adani-logo">
+                                                                            </span> </div>
+															</div>
+														</div>
+													</div>
+												</div>
+											</div>
+											<div class="col-12 col-md-12">
+												<div class="row1">
+													<div class="col-md-12 col-lg-12 col-12">
+														<ul class="bottom-footer1">
+															<li>
+																<div class="btn-div w100">
+																	<button class=" ux-button primary sm-mob" (click)="goToPage('existingBillerPayment')" >Back to Home</button>
+																</div>
+															</li>
+														</ul>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+									<!-- Greencard2 End here -->
+								</div>
+								<!-- Right Column Ads Start -->
+								<div class="col-12 col-md-12 col-lg-12 col-xl-3 d-none d-xl-block">
+									<div class="right-ads">
+										<a> <img src="assets/images/banner/my-card-banner.jpg"> </a>
+									</div>
+									<div class="vspacer30"></div>
+								</div>
+								<!-- Right Column Ads Ends -->
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!--.right-col-container-->
+	</div>
+	<!--.right-main-column-->
+</div>
+<!-- main -->

@@ -1,0 +1,197 @@
+<div class="main bg-m">
+	<div class="nav-overlay"></div>
+	<div class="right-main-column">
+		<div class="right-col-container pad-b full-width">
+			<!-- ======== body page content start from here ======== -->
+			<div class="body-page-container">
+				<div class="container-fluid">
+					<div class="row">
+						<div class="col-12 p-0">
+							<div class="breadcrumb">
+								<ul class="lst-breadcrumb">
+									<li> <a>My Accounts</a> </li>
+								</ul>
+							</div>
+						</div>
+					</div>
+					<!--.row -->
+					<div class="vspacer15 customize d-none d-md-block d-lg-block d-xl-block"></div>
+					<div class="row no-gutters">
+						<div class="col-12">
+							<div class="row1">
+								<div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+									<!-- Greencard2 Start here -->
+									<div class="greencard2">
+										<div class="row1">
+											<div class="col-12 col-md-12">
+												<!-- Accordion Cards Start here -->
+												<div class="accordion-cards">
+													<div class="short-links box-shadow mar-b">
+														<div class="shortlink-control cust-p" [ngClass]= "operative ? 'show-links' : '' ">
+															<div class="row">
+																<div class="flex-container2">
+																	<div class="full-info">
+																		<div class="ac-info">
+																			<h4>My Operative Accounts ({{totalOperativeAcc}})</h4> </div>
+																		<div class="ac-info">
+																			<div class="greenbg-input ux-input">
+																				<p class="info-message2 with-bg2"><i>Total Balance</i><span>{{totalOperativeAmt | customcurrency }}</span></p>
+																			</div>
+																		</div>
+																		<div class="ac-info">
+																			<button class="refresh-btn" (click)="getAccountList()" ><img src="assets/images/svg/refresh.svg" alt="refresh-icon"  ></button>
+																		</div>
+																	</div>
+																</div>
+															</div>
+															<div class="row">
+																<ul class="accountgrid-list">
+																	<li *ngFor="let item of myOperativeAccount, let i= index" (click)="selectedAccount(item,'Operative')" >
+																		<a >
+																			<div class="grid-info">
+																				<div class="full-info">
+																					<h5>{{item.accountNo}}</h5>
+																					<h6>{{item.schemeDescription}}</h6> </div>
+																			</div>
+																			<div class="grid-info">
+																				<div class="full-info">
+																					<h5>{{item.acctBalance | customcurrency}}</h5>
+																					<h6>Account Balance</h6> </div>
+																			</div>
+																		</a>
+																	</li>
+																</ul>
+															</div>
+														</div>
+														<div *ngIf="myOperativeAccount.length > 0" class="shortlinks-expander" [ngClass]= "operative ? 'active' : '' ">
+															<a href="javascript:;" (click)="openUpSlide('operativeAccounts')"><img src="assets/images/icons/arrow-down-r.png"></a>
+														</div>
+													</div>
+												</div>
+												<!-- Accordion Cards End here -->
+												<!-- Accordion Cards Start here -->
+												<div class="accordion-cards">
+													<div class="short-links box-shadow mar-b">
+														<div class="shortlink-control cust-p" [ngClass]= "deposit ? 'show-links' : '' ">
+															<div class="row">
+																<div class="flex-container2">
+																	<div class="full-info">
+																		<div class="ac-info">
+																			<h4>My Deposits ({{totalDepositeAcc}})</h4> </div>
+																		<div class="ac-info">
+																			<div class="greenbg-input ux-input">
+																				<p class="info-message2 with-bg2"><i>Total Balance</i><span>{{totalDepositeAmt | customcurrency }}</span></p>
+																			</div>
+																		</div>
+																		<div class="ac-info">
+																			<button class="refresh-btn"  (click)="getAccountList()" ><img src="assets/images/svg/refresh.svg" alt="refresh-icon"></button>
+																		</div>
+																	</div>
+																</div>
+															</div>
+															<div class="row">
+																<ul class="accountgrid-list">
+																	<li *ngFor="let item of myDepositeAccount, let i= index" (click)="selectedAccount(item,'Deposits')" >
+																		<a >
+																			<div class="grid-info">
+																				<div class="full-info">
+																					<h5>{{item.accountNo}}</h5>
+																					<h6>{{item.schemeDescription}}</h6> </div>
+																			</div>
+																			<div class="grid-info">
+																				<div class="full-info">
+																					<h5>{{item.acctBalance | customcurrency }}</h5>
+																					<h6>Account Balance</h6> </div>
+																			</div>
+																		</a>
+																	</li>
+																</ul>
+															</div>
+														</div>
+														<div *ngIf="myDepositeAccount.length > 0" class="shortlinks-expander"  [ngClass]= "operative ? 'active' : '' ">
+															<a href="javascript:;"  (click)="openUpSlide('depositAccounts')"><img src="assets/images/icons/arrow-down-r.png"></a>
+														</div>
+													</div>
+												</div>
+												<!-- Accordion Cards End here -->
+												<!-- Accordion Cards Start here -->
+												<div class="accordion-cards">
+													<div class="short-links box-shadow mar-b">
+														<div class="shortlink-control cust-p" [ngClass]= "borrowing ? 'show-links' : '' ">
+															<div class="row">
+																<div class="flex-container2">
+																	<div class="full-info">
+																		<div class="ac-info">
+																			<h4>My Borrowings ({{totalBorrowingAcc}})</h4> </div>
+																		<div class="ac-info">
+																			<div class="greenbg-input ux-input">
+																				<p class="info-message2 with-bg2"><i>Total Balance</i><span>{{totalBorrowingAmt | customcurrency}}</span></p>
+																			</div>
+																		</div>
+																		<div class="ac-info">
+																			<button class="refresh-btn"  (click)="getAccountList()"  ><img src="assets/images/svg/refresh.svg" alt="refresh-icon"></button>
+																		</div>
+																	</div>
+																</div>
+															</div>
+															<div class="row">
+																<ul class="accountgrid-list">
+																	<li *ngFor="let item of myBorrowingAccount, let i= index" (click)="selectedAccount(item,'Borrowings')" >
+																		<a >
+																			<div class="grid-info">
+																				<div class="full-info">
+																					<h5>{{item.accountNo}}</h5>
+																					<h6>{{item.schemeDescription}}</h6> </div>
+																			</div>
+																			<div class="grid-info">
+																				<div class="full-info">
+																					<h5>{{item.acctBalance | customcurrency }}</h5>
+																					<h6>Account Balance</h6> </div>
+																			</div>
+																		</a>
+																	</li>
+																</ul>
+															</div>
+														</div>
+														<div *ngIf="myBorrowingAccount.length > 0" class="shortlinks-expander"  [ngClass]= "operative ? 'active' : '' ">
+															<a href="javascript:;"  (click)="openUpSlide('borrowingsAccounts')"><img src="assets/images/icons/arrow-down-r.png"></a>
+														</div>
+													</div>
+												</div>
+											</div>
+											<!-- Accordion Cards End here -->
+										</div>
+										<!-- Greencard2 End here -->
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!--.right-col-container-->
+		</div>
+		<!--.right-main-column-->
+	</div>
+	<!-- main -->
+
+
+	<!-- Select Accounts Popup Start-->
+<div class="popup-bottom inactive-account">
+	<div class="row1">
+		<div class="col-12">
+			<h4 class="text-center"> <img src="../assets/images/svg/information.svg" alt="information-icon"> Information</h4>
+		 </div>
+	</div>
+	<div class="row1">
+		<div class="col-12">
+				<p>Selected Account is not Active</p>	 
+			</div>
+		</div>
+	<div class="row1  mt-2">
+		<div class="col-12 text-center">
+			<button  class="ux-button primary submit-btn" (click)="closePopUp('div.popup-bottom.inactive-account')">OK</button>
+		</div>
+	</div>
+</div>
+<!-- Select Accounts Popup End-->

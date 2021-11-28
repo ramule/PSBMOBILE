@@ -1,0 +1,141 @@
+<div class="main">
+    <div class="right-main-column minus-rt-col mar-custom">
+        <div class="right-col-container">
+            <div class="body-page-container">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="bg-section">
+                            <div class="col-12">
+                                <div class="row1">
+                                    <div class="col-sm-12 col-12 col-md-12">
+
+                                        <div class="white-bg1 pad-custom">
+                                            <div class="unfound-info" *ngIf="notificationList.length==0">
+                                                <img src="assets/images/svg/notification-icon.svg" alt="notification-icon">
+                                                <h6>{{'YOU_DONT_HAVE_ANY_NOTIFICATIONS' | translate}}</h6>
+                                            </div>
+                                        </div>
+                                        <div class="white-bg1 pad-custom" *ngIf="notificationList.length > 0">
+                                            <ul class="notification-list">
+                                                <li *ngFor="let notification of notificationList">
+                                                    <div class="full-container" (click)="navigateAccToType(notification.type)">
+                                                        <div class="row1">
+                                                            <div class="col-12 col-md-12">
+                                                                <div class="left-info">
+                                                                    <h6>{{notification?.type}}</h6>
+                                                                    <em>{{notification?.message}}</em>
+                                                                    <small>{{notification?.createTime | dateAgo}}</small>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="row1">
+                                                            <div class="col-8 col-md-8">
+                                                                <div class="left-info1">
+                                                                    <em>{{notification?.createTime | date :'dd MMM yyyy, hh:mm aa'}}</em>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-4 col-md-4">
+                                                                <div class="right-info">
+                                                                    <a class="share-btn" (click)="share(notification)"><img src="assets/images/svg/share.svg" alt="share-icon" /></a>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                                <!-- <li>
+                                                    <div class="full-container">
+                                                        <div class="row1">
+                                                            <div class="col-12 col-md-12">
+                                                                <div class="left-info">
+                                                                    <h6>Updated Address</h6>
+                                                                    <em>Dear Customer, Your login PIN for PSB Bank has
+                                                                        been changed successfully.</em>
+                                                                    <small>3m</small>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="row1">
+                                                            <div class="col-8 col-md-8">
+                                                                <div class="left-info1">
+                                                                    <em>24 Sept 2020, 15:03</em>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-4 col-md-4">
+                                                                <div class="right-info">
+                                                                    <a class="share-btn"><img src="assets/images/svg/share.svg" alt="share-icon" /></a>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                                <li>
+                                                    <div class="full-container">
+                                                        <div class="row1">
+                                                            <div class="col-12 col-md-12">
+                                                                <div class="left-info">
+                                                                    <h6>OTP</h6>
+                                                                    <em>Dear Customer, Your login PIN for PSB Bank has
+                                                                        been changed successfully.</em>
+                                                                    <small>5d</small>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="row1">
+                                                            <div class="col-8 col-md-8">
+                                                                <div class="left-info1">
+                                                                    <em>19 Sept 2020, 13:30</em>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-4 col-md-4">
+                                                                <div class="right-info">
+                                                                    <a class="share-btn"><img src="assets/images/svg/share.svg" alt="share-icon" /></a>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                                <li>
+                                                    <div class="full-container">
+                                                        <div class="row1">
+                                                            <div class="col-12 col-md-12">
+                                                                <div class="left-info">
+                                                                    <h6>Collect Request</h6>
+                                                                    <em>billdesk@sbi has requested for <img
+                                                                            src="assets/images/svg/rupee-grey.svg"
+                                                                            alt="rupees-icon"> 350.00. Please click here
+                                                                        to authorize the payment collect request and
+                                                                        allow the amount to be debited from your
+                                                                        account. <a >More</a></em>
+                                                                    <small>2w</small>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="row1">
+                                                            <div class="col-8 col-md-8">
+                                                                <div class="left-info1">
+                                                                    <em>05 Sept 2020, 12:30</em>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-4 col-md-4">
+                                                                <div class="right-info">
+                                                                    <a class="share-btn"><img src="assets/images/svg/share.svg" alt="share-icon" /></a>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </li> -->
+                                            </ul>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>

@@ -1,0 +1,233 @@
+<div class="main">
+  <div class="right-main-column minus-rt-col mar-custom">
+    <div class="right-col-container">
+      <div class="body-page-container">
+        <div class="container-fluid">
+          <form [formGroup]="collectRecentReqForm">
+            <div class="row">
+              <div class="bg-section">
+                <div class="col-12">
+                  <div class="row1">
+                    <div class="col-sm-12 col-12 col-md-12">
+                      <div class="white-bg1">
+                        <div class="row">
+                          <h4>{{'NEW_REQUEST' | translate}}</h4>
+                        </div>
+                        <div class="upiId" *ngIf="!showUserInfo">
+                          <div class="row1">
+                            <div class="col-12 col-sm-12 col-md-12">
+                              <div class="custom-input2 ux-input">
+                                <label for="upiId">{{'UPI_ID_MOBILE_NUMBER' | translate}}</label>
+                                <input type="text" name="upiId" autocomplete="off" autocapitalize="off"
+                                  formControlName="upiIdOrMobno"
+                                  placeholder="{{'ENTER_UPI_ID_MOBILE_NUMBER' | translate}}" name="upiId" limit-to="40"
+                                  required>
+                                <a (click)="goToPage('searchContactList')"><em class="show-phonebook2"
+                                    style="right: 6px;"></em></a>
+                                <p class="error-message"
+                                  *ngIf="collectRecentReqForm.controls['upiIdOrMobno'].hasError('required')  && collectRecentReqForm.controls['upiIdOrMobno'].touched">
+                                  {{ 'ENTER_UPI_ID_MOBILE_NUMBER_ERROR' | translate }}
+                                </p>
+                                <p class="error-message"
+                                  *ngIf="!collectRecentReqForm.controls['upiIdOrMobno'].hasError('required')  && collectRecentReqForm.controls['upiIdOrMobno'].touched && collectRecentReqForm.controls['upiIdOrMobno'].hasError('pattern')">
+                                  {{ 'ENTER_VALID_UPI_ID_MOBILE_NO' | translate }}
+                                </p>
+                                <p class="info-message">e.g. name@psb/9820000000</p>
+
+                              </div>
+
+                            </div>
+                          </div>
+                          <div class="mt-2">
+                            <div class="row1">
+                              <div class="col-6 col-sm-6 col-md-6">
+                              </div>
+                              <div class="col-6 col-sm-6 col-md-6">
+                                <button type="button" (click)="verify()"
+                                  class="verify ux-button sm2 primary float-right"
+                                  [disabled]="collectRecentReqForm.invalid">{{'VERIFY' | translate}}</button>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="userinfo" *ngIf="showUserInfo">
+                          <div class="payee-info">
+                            <div class="info-lft">
+                              <span class="green1">
+                                <h6>{{DataService.validateAddressResp.MASKNAME | firstLastChar}}</h6>
+                                <!-- <img src="assets/images/icons/user5.png" alt="user-img"> -->
+                              </span>
+                            </div>
+                            <div class="info-rit">
+                              <h5>{{DataService.validateAddressResp.MASKNAME}}</h5>
+                              <h6>{{'UPI_ID' | translate }} : {{DataService.validateAddressResp.validatedVpa}}</h6>
+                              <em
+                                *ngIf="DataService.validateAddressResp?.mobileNumber">{{DataService.validateAddressResp?.mobileNumber}}</em>
+                            </div>
+                          </div>
+                          <div class="mt-2">
+                            <div class="row1">
+                              <div class="col-6 col-sm-6 col-md-6">
+                                <button type="button" (click)="cancel()"
+                                  class="cancel ux-button sm2 secondary">{{'CANCEL' | translate}}</button>
+                              </div>
+                              <div class="col-6 col-sm-6 col-md-6" (click)="proceed()">
+                                <button class="proceed ux-button sm2 primary">{{'PROCEED' | translate}}</button>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="col-sm-12 col-12 col-md-12">
+                      <div class="ux-nav-tabs" style="margin:0">
+                        <div class="responsive3">
+                          <ul class="nav nav-tabs nav-justified bor-n" role="tablist">
+                            <li class="nav-item">
+                              <a class="nav-link active" data-toggle="tab" href="#recent">
+                                <!-- {{'RECENT_REQUEST' | translate}} -->
+                                {{'RECENT_PAYER' | translate}}
+                              </a>
+                            </li>
+                            <li class="nav-item">
+                              <a class="nav-link" data-toggle="tab"
+                                href="#favorite">{{'FAVORITE_PAYER' | translate}}</a>
+                            </li>
+                          </ul>
+
+                          <!-- Tab panes -->
+                          <div class="tab-content custom-tab-content">
+                            <div id="recent" class=" tab-pane active">
+                              <div class="row">
+                                <div class="col-sm-12 col-12 col-md-12">
+                                  <div class="unfound-info" *ngIf="recentPayeeReqList.length == 0">
+                                    <h6> {{'NO_RECENT_PAYEE_FOUND' | translate}}</h6>
+                                  </div>
+                                  <ul class="payee-list1" *ngIf="recentPayeeReqList.length > 0">
+
+                                    <li
+                                      *ngFor="let recentPayee of recentPayeeReqList; index as i">
+                                      <a (click)="validatePayee('recent',recentPayee)">
+                                        <span class="green1">
+                                          <img *ngIf="recentPayee.beneImageUrl" [src]="recentPayee.beneImageUrl"
+                                            alt="user-img">
+                                          <h6 *ngIf="!recentPayee.beneImageUrl">{{recentPayee.nickName | firstLastChar}}
+                                          </h6>
+                                        </span>
+                                        <em>{{recentPayee.nickName | truncate}}</em>
+                                      </a>
+                                    </li>
+
+
+
+                                    <li *ngIf="recentPayeeReqList.length > 0">
+                                      <a (click)="searchContact('recent')">
+                                        <span class="white1">
+                                          <img src="assets/images/svg/more.svg" alt="more-icon">
+                                        </span>
+                                        <em>{{'VIEW_MORE' | translate}}</em>
+                                      </a>
+                                    </li>
+
+
+                                  </ul>
+                                </div>
+                              </div>
+                            </div>
+                            <div id="favorite" class="tab-pane fade">
+                              <div class="row">
+                                <div class="col-sm-12 col-12 col-md-12">
+
+                                  <div class="unfound-info" *ngIf="favPayeeList.length == 0">
+                                    <h6> {{'NO_FAVORITE_PAYEE_FOUND' | translate}}</h6>
+                                  </div>
+                                  <ul class="payee-list1">
+                                    <li *ngFor="let favPayee of favPayeeList; index as i;">
+                                      <a (click)="validatePayee('fav',favPayee)">
+                                        <span class="green1">
+                                          <!-- <img [src]="assets/images/icons/user3.png" alt="user-img"> -->
+                                          <h6>{{favPayee.nickName | firstLastChar}}</h6>
+                                        </span>
+                                        <em>{{favPayee.nickName | truncate}}</em>
+                                      </a>
+                                    </li>
+
+
+                                    <li *ngIf="favPayeeList.length > 0">
+                                      <a (click)="searchContact('favorite')">
+                                        <span class="white1">
+                                          <img src="assets/images/svg/more.svg" alt="more-icon">
+                                        </span>
+                                        <em>{{'VIEW_MORE' | translate}}</em>
+                                      </a>
+                                    </li>
+
+                                  </ul>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                  </div>
+                </div>
+
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+
+
+      <!-- footer section start -->
+
+      <div class="footer-container sticky-actions">
+        <div class="footer-inactions minus-rt-col">
+          <div class="container-fluid">
+            <div class="row">
+              <div class="col-12 col-md-12 col-lg-12 text-center">
+                <div class="powered-logo mt-0">
+                  <img src="assets/images/logo/powered-upi-logo.svg" alt="powered-upi-logo">
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="sticky-actions-spacer"></div>
+
+      <!-- footer section end -->
+
+    </div>
+  </div>
+
+</div>
+
+<!-- main -->
+<div class="popup-bottom enable-camera-permissions">
+  <div class="row1">
+    <div class="col-12">
+      <h4 class="text-center"> <img src="assets/images/svg/information.svg" alt="information-icon">
+        {{'INFORMATION' | translate}}</h4>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-12">
+      <p>
+        {{'ENABLE_CAMERA_PERMISSION_MSG' | translate}}
+      </p>
+    </div>
+  </div>
+  <div class="row1 mt-2">
+    <div class="col-6 text-center">
+      <button class="ux-button secondary no md close-btn"
+        (click)="closePopup('enable-camera-permissions')">{{'CANCEL' | translate}}</button>
+    </div>
+    <div class="col-6 text-center">
+      <button class="logout-btn ux-button primary md" (click)="grant()">{{'GRANT' | translate}}</button>
+    </div>
+  </div>
+</div>

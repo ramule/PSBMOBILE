@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+
+	<html>
+	
+	<head>
+		<meta charset="UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+	    <title>Transaction Pin</title>
+		<link href="../css/lib/bootstrap.min.css" rel="stylesheet">
+	    <link href="../css/lib/jquery-ui.min.css" rel="stylesheet">
+	 	<link href="../css/lib/jquery.mCustomScrollbar.min.css" rel="stylesheet">
+		<link href="../css/main.css" rel="stylesheet">
+		
+	</head>	
+ 
+
+<body>
+ 
+    
+	<div class="main">
+
+  <!--  Header Section Start -->
+                
+		<header class="global-header brand-bg2 minus-nav">
+			<div class="in-header">
+				<div class="header-icons-lft">   
+					<div class="header-actions">
+						<button class="ux-button-header">
+							<img src="../assets/images/svg/left-arrow.svg"  alt="left-arrow-icon" class="img-small"/>
+						</button>
+				   </div> 
+				</div>  
+				 <div class="brand-logo">
+				    <h3>Transaction Pin</h3>
+				 </div> 
+			   <div class="header-icons-rit">
+					<div class="header-actions">
+					 </div> 
+				</div> 
+			</div> 
+		</header> 
+
+<!-- Header Section End -->
+ 
+ <div class="right-main-column minus-rt-col mar-custom">
+   <div class="right-col-container cust-padb">
+                
+    <div class="body-page-container">
+		<div class="container-fluid">
+		      <div class="row">
+				<div class="bg-section">
+				   <div class="col-12">
+				 	  <div class="row1">
+						  <div class="col-sm-12 col-12 col-md-12">
+
+							<div class="green-bg">
+								<div class="full-container">
+									<div class="row1">
+										<div class="col-7 col-md-6">
+											 <div class="left-info">
+											   <h6>Punjab & Sind Bank</h6>
+											   <h5>XXXXXXXXXXXX9557</h5>
+											 </div>
+										 </div>
+										<div class="col-5 col-md-6">
+											<div class="right-info">
+												<h6> <img src="../assets/images/svg/rupee-w.svg" alt="rupees-icon">100000000.00</h6>
+										    </div>
+										 </div>
+									</div>
+								  </div>
+							  </div>
+
+						     <div class="white-bg1 custom-mb">
+							    <div class="row">
+								     <div class="col-sm-12 col-12 col-md-12">
+												<div class="row">
+													<div class="col-12">
+														<div class="ux-input password1 p1 mt-0 mb-0">
+															<label for="sapassword" class="mb0">Enter Transaction PIN</label>
+														 </div> 	 
+													 </div>
+												</div>
+												 <div class="row3 pin-login mt-4" id="mainPinLogin">
+													 <div class="col-sm-2 col-2 col-md-2">
+														<div class="ux-input password1 p1 mb-0">
+															<input id="spassword1" type="password" maxlength="1" placeholder="&#9679" onkeyup="onKeyUpEvent(1, event)" onfocus="onFocusEvent(1)"/>
+														 </div> 
+													</div>
+													<div class="col-sm-2 col-2 col-md-2">
+														<div class="ux-input password1 p1 mb-0">
+															<input id="spassword2" type="password" maxlength="1" placeholder="&#9679" onkeyup="onKeyUpEvent(2, event)" onfocus="onFocusEvent(2)"/>
+														 </div> 
+													</div>
+													<div class="col-sm-2 col-2 col-md-2">
+														<div class="ux-input password1 p1 mb-0">
+															<input id="spassword3" type="password" maxlength="1" placeholder="&#9679" onkeyup="onKeyUpEvent(3, event)" onfocus="onFocusEvent(3)"/>
+														 </div> 
+													</div>
+													<div class="col-sm-2 col-2 col-md-2">
+														<div class="ux-input password1 p1 mb-0">
+															<input id="spassword4" type="password" maxlength="1" placeholder="&#9679" onkeyup="onKeyUpEvent(4, event)" onfocus="onFocusEvent(4)"/>
+														 </div> 
+													</div>
+													<div class="col-sm-2 col-2 col-md-2">
+														<div class="ux-input password1 p1 mb-0">
+															<input id="spassword5" type="password" maxlength="1" placeholder="&#9679" onkeyup="onKeyUpEvent(5, event)" onfocus="onFocusEvent(5)"/>
+														 </div> 
+													</div>
+													<div class="col-sm-2 col-2 col-md-2">
+														<div class="ux-input password1 p1 mb-0">
+															<input id="spassword6" type="password" maxlength="1" placeholder="&#9679" onkeyup="onKeyUpEvent(6, event)" onfocus="onFocusEvent(6)"/>
+														 </div> 
+													</div>
+
+													<div class="pin-login__numpad"></div>
+												 </div> 
+											  <div class="row mb-4">
+												 <div class="col-12">
+													<div class="ux-input password1 p1 mt-0 mb-0">
+														 <p class="error-message text-center"></p>
+													 </div> 	 
+												 </div>
+												</div> 
+											 </div> 
+											 
+								         </div>
+                                      </div>
+								  </div>
+ 
+                             </div> 
+						  </div> 
+                        
+				     </div>	 
+				  </div> 
+			 	</div> 
+			</div> 
+
+ <!-- Numpad Section Start -->
+ 
+ <div class="numpad-section">
+	<div class="col-sm-12 col-12 col-md-12">
+            <div class="custom-keyboard">
+                 <ul class="numpad-list">
+					 <li>
+						<button class="btn-rounded" type="button" name='1' value='1' id='1' onClick="console.log('1')">1</button> 
+					 </li>
+					 <li>
+						<button class="btn-rounded" type="button" name='2' value='2' id='2' onClick="console.log('2')" >2</button> 
+					 </li>
+					 <li>
+						<button class="btn-rounded" type="button" name='3' value='3' id='3' onClick="console.log('3')">3</button> 
+					 </li>
+					 <li>
+						<button class="btn-rounded" type="button" name='4' value='4' id='4' onClick="console.log('4')">4</button> 
+					 </li>
+					 <li>
+						<button class="btn-rounded" type="button" name='5' value='5' id='5' onClick="console.log('5')">5</button> 
+					 </li>
+					 <li>
+						<button class="btn-rounded" type="button" name='6' value='6' id='6' onClick="console.log('6')">6</button> 
+					 </li>
+					 <li>
+						<button class="btn-rounded" type="button" name='7' value='7' id='7' onClick="console.log('7')">7</button> 
+					 </li>
+					 <li>
+						<button class="btn-rounded" type="button" name='8' value='8' id='8' onClick="console.log('8')">8</button> 
+					 </li>
+					 <li>
+						<button class="btn-rounded" type="button" name='9' value='9' id='9' onClick="console.log('9')">9</button> 
+					 </li>
+					 <li>
+						<button class="btn-rounded" type="button"  name='-' value='clear' id='-' >
+							<img src="../assets/images/svg/backspace.svg"  alt="backspace-icon"/>
+						</button> 
+					 </li>
+					 <li>
+						<button class="btn-rounded" type="button" name='0' value='0' id='0' onClick="console.log('0')">0</button> 
+					 </li>
+					 <li>
+						<button class="btn-rounded submit-btn" type="button" onClick="console.log('value submitted')">
+							<img src="../assets/images/svg/thick-check.svg"  alt="check-icon"/>
+						</button> 
+					 </li>
+				 </ul>
+			</div>
+		</div>
+	   </div> 
+ 
+	<!-- Numpad Section End -->
+
+	          <!-- footer section start -->
+	
+		  <div class="footer-container sticky-actions">
+			<div class="footer-inactions minus-rt-col">
+				<div class="container-fluid">
+				  <div class="row">
+					 	<div class="col-12 col-md-12 col-lg-12 text-center">
+							<div class="powered-logo mt-0">
+								<img src="../assets/images/logo/powered-upi-logo.svg" alt="powered-upi-logo">
+							</div>
+						 </div>
+					</div> 
+				</div> 
+			</div> 
+		</div> 
+		 
+	   <!-- footer section end -->
+	
+		  </div>  
+        </div> 
+        
+    </div> 
+    
+  <!-- main -->
+	
+   
+
+<!-- =========== modal popup start ===============  -->
+
+
+ <!-- MPIN Success Popup Start -->
+
+<div class="popup-bottom mpin-success">
+	<form action="#" id="success-form">
+		 <div class="row1 mt-3">
+		  <div class="success">
+			  <img src="../assets/images/svg/check.svg" alt="success-icon">
+			  <h3>Success</h3>
+			  <h5>Login MPIN Reset Successfully</h5>
+		  </div>
+		   </div>
+		 <div class="row1 mt-3">
+			<div class="col-12 text-center">
+			   <button class="ux-button primary md " onclick="window.location.href = 'login.html'">Ok</button>
+		   </div> 
+		 </div>
+	  </form>
+  </div> 
+  
+  <!-- MPIN Success Popup End -->
+
+  <div class="ios-nav-overlay"></div> 
+ 
+<!-- =========== modal popup end ===============  -->
+
+<script src="../js/lib/jquery.min.js"></script>
+<script src="../js/lib/bootstrap.min.js"></script>
+<script src="../js/lib/jquery-ui.min.js"></script>
+<script src="../js/lib/popper.min.js"></script>
+<script src="../js/lib/jquery.mousewheel.min.js"></script>
+<script src="../js/lib/jquery.mCustomScrollbar.js"></script>
+<script src="../js/lib/datatables.min.js"></script>
+<script src="../js/common.js"></script>
+  
+<script type="text/javascript">
+	//  createGlobalNavMore();
+	function getSpasswordElement(index) {
+        return document.getElementById('spassword' + index);
+      }
+      function onKeyUpEvent(index, event) {
+        const eventCode = event.which || event.keyCode;
+        if (getSpasswordElement(index).value.length === 1) {
+          if (index !== 6) {
+            getSpasswordElement(index+ 1).focus();
+          } else {
+            getSpasswordElement(index).blur();
+            // Submit code
+            console.log('submit code ');
+          }
+        }
+        if (eventCode === 12 && index !== 1) {
+          getSpasswordElement(index - 1).focus();
+        }
+      }
+      function onFocusEvent(index) {
+        for (item = 1; item < index; item++) {
+          const currentElement = getSpasswordElement(item);
+          if (!currentElement.value) {
+              currentElement.focus();
+              break;
+          }
+        }
+	  }
+	  
+	//   function addNumber(e){
+	// //document.getElementById('PINbox').value = document.getElementById('PINbox').value+element.value;
+	//     var f = $( "#spassword1" ).val();
+	//     $( "#spassword1" ).val( f + e.value );
+	// 	var s = $( "#spassword2" ).val();
+	//     $( "#spassword2" ).val( s + e.value );
+	// 	var t = $( "#spassword3" ).val();
+	//     $( "#spassword3" ).val( t + e.value );
+	// 	var f = $( "#spassword4" ).val();
+	//     $( "#spassword4" ).val( f + e.value );
+	// 	var o = $( "#spassword5" ).val();
+	//     $( "#spassword5" ).val( o + e.value );
+	// 	var s = $( "#spassword6" ).val();
+	//     $( "#spassword6" ).val( s + e.value );
+    //   }
+
+	//   function clearForm(e){
+	//    //document.getElementById('PINbox').value = "";
+	//    $( "#spassword1" ).val( "" );
+	//    $( "#spassword2" ).val( "" );
+	//    $( "#spassword3" ).val( "" );
+	//    $( "#spassword4" ).val( "" );
+	//    $( "#spassword5" ).val( "" );
+	//    $( "#spassword6" ).val( "" );
+    //  }
+
+	 
+	   
+ 
+ 
+</script>
+
+</body>
+</html>

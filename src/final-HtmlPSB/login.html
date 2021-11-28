@@ -1,0 +1,837 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <title>Login</title>
+    <link href="../css/lib/bootstrap.min.css" rel="stylesheet">
+    <link href="../css/lib/jquery-ui.min.css" rel="stylesheet">
+    <link href="../css/lib/jquery.mCustomScrollbar.min.css" rel="stylesheet">
+    <link href="../css/main.css" rel="stylesheet">
+
+</head>
+
+<body>
+
+    <div class="prelogin-page login-page">
+
+        <!-- header section Start -->
+
+        <header class="global-header">
+            <div class="desk-header">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-xl-3 col-lg-3 col-md-3 col-sm-2 col-2 d-none  d-lg-block d-xl-block">
+                            <ul class="headerlist">
+                                <li>
+                                    <a href="#"> <img src="../assets/images/svg/home1.svg" alt="home-icon"> <em>Home</em></a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12">
+                            <div class="brand-heading text-center m-auto">
+                                <span class="logo-img2">
+                                    <img src="../assets/images/svg/final-logo.svg" alt="psb-logo">
+                                </span>
+                            </div>
+                        </div>
+                        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-2 col-2 d-none  d-lg-block d-xl-block">
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header> <!-- global-header -->
+
+        <!-- header section End -->
+
+
+
+        <div class="full-container halfBackground forLogin">
+            <div class="login-container">
+                <div class="central-box">
+
+                    <!-- Banner Container Start -->
+                    <div class="banner-container bg">
+                        <div class="left-content">
+                            <h5>Ensure Following While Login</h5>
+                            <div class="vspacer10"></div>
+                            <p>
+                                The website address (URL) starts with https://www.psbonline.co.in<br />
+                                Verify the security certificate by clicking on padlock icon. check the validity of security certificate<br />
+                                Never enter User ID, Password, & other sensitive information in any pop up window
+                            </p>
+                            <div class="vspacer20"></div>
+                            <button role="button" class="guideline-btn ux-button md primary ml-0">Guidelines for Online Security</button>
+                        </div>
+                        <div class="secure-img">
+                            <img src="../assets/images/logo/digicert-logo.png" alt="digicert-secured-logo">
+                        </div>
+                        <div class="keyboard-section">
+                            <div class="keyboard-inner">
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Banner Container End -->
+
+
+                    <div class="loginform-container">
+
+                        <div class="login-form">
+
+                            <div class="login-heading">
+                                <!-- <div class="brand-logo">
+                                        <img src="../assets/images/logo/logo1.png" alt="kiya-logo">  
+                                    </div> -->
+                                <div class="vspacer5"></div>
+                                <h3>Login to Internet Banking</h3>
+                                <h5>Welcome back, Please login to your internet banking</h5>
+                            </div>
+
+                            <!-- <div class="vspacer10"></div> -->
+                            <div class="row1">
+                                <div class="col-12">
+
+                                    <form action="#" method="#">
+                                        <div class="row1">
+                                            <div Class="col-12">
+                                                <div class="ux-input">
+                                                    <label>User Name</label>
+                                                    <input type="text" placeholder="Enter User Naame" required>
+                                                    <a href="#" class="show-keyboard"></a>
+                                                    <p class="text-right"><a href="javascript:;" class="reg-txt check-availability">Forgot Username?</a></p>
+                                                    <p class="error-message"></p>
+                                                </div>
+                                            </div>
+                                            <div Class="col-12">
+                                                <div class="ux-input">
+                                                    <label>Password</label>
+                                                    <input type="password" placeholder="Enter Password" required>
+                                                    <a href="#" class="show-keyboard"></a>
+                                                    <p class="text-right"><a href="javascript:;" class="reg-txt check-availability">Forgot Password?</a></p>
+                                                    <p class="error-message"></p>
+                                                </div>
+                                            </div>
+                                            <div Class="col-12">
+                                                <div class="ux-input">
+                                                    <label>Enter the text as shown in the image</label>
+                                                    <input type="password" placeholder="Enter Captcha" required>
+                                                    <p class="error-message"></p>
+                                                </div>
+                                            </div>
+                                            <div class="vspacer5"></div>
+                                            <div class="col-12">
+                                                <div class="ux-selection">
+                                                    <label class="ux-selection2">Image Captcha
+                                                        <input type="radio" checked="checked" name="radioboxdemo">
+                                                        <span class="checkmark"></span>
+                                                    </label>
+                                                </div>
+                                                <div class="ux-selection">
+                                                    <label class="ux-selection2">Audio Captcha
+                                                        <input type="radio" name="radioboxdemo">
+                                                        <span class="checkmark"></span>
+                                                    </label>
+                                                </div>
+                                            </div>
+                                            <div class="vspacer10"></div>
+                                            <div class="col-12">
+                                                <div class="captcha-container">
+                                                    <div class="captcha-box">
+
+                                                    </div>
+                                                    <div class="refresh-btn">
+                                                        <img src="../assets/images/svg/refresh-g.svg" alt="refresh-icon">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="vspacer20"></div>
+
+                                        <div class="row1">
+                                            <div class="col-6 col-md-6 text-center">
+                                                <button onclick="window.location.href='#'" class="ux-button secondary ">Register</button>
+                                            </div>
+                                            <div class="col-6 col-md-6 text-center">
+                                                <button onclick="window.location.href='#'" class="ux-button primary ">Login</button>
+                                            </div>
+                                        </div>
+
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+
+
+
+
+                        <div class="bfooter">
+                            <div class="row1">
+                                <div class="col-12 col-lg-12 col-xl-12 col-md-12 col-sm-12 ">
+                                    <nav class="ios-global-nav">
+                                        <ul class="lst-ios-nav">
+                                            <li>
+                                                <a href="javascript:;">
+                                                    <span class="inav-icon">
+                                                        <img src="../assets/images/svg/translate.svg" alt="translate-icon">
+                                                    </span>
+                                                    Language
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="javascript:;">
+                                                    <span class="inav-icon">
+                                                        <img src="../assets/images/svg/location-g.svg" alt="location-icon">
+                                                    </span>
+                                                    Locate Us
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="javascript:;">
+                                                    <span class="inav-icon">
+                                                        <img src="../assets/images/svg/contact-g.svg" alt="contact-icon">
+                                                    </span>
+                                                    Contact Us
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="javascript:;">
+                                                    <span class="inav-icon">
+                                                        <img src="../assets/images/svg/more.svg" alt="contact-icon">
+                                                    </span>
+                                                    More Services
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </nav>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Loginform Container End -->
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <!-- .full-container -->
+
+
+
+        <!-- Footer Code Starts Here -->
+
+        <footer>
+            <div class="global-footer full-footer">
+                <div class="in-glfooter">
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-4 col-xl-6 col-lg-6 col-md-6 col-sm-4">
+                                <div class="glfooter-content">
+                                    <div class="glfooter-box">
+                                        <div class="glcopyright-text">
+                                            <em>Powered by</em> <img src="../assets/images/kiya-logo.png">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-8 col-xl-6 col-lg-6 col-md-6 col-sm-8">
+                                <div class="glfooter-content">
+                                    <div class="glfooter-box">
+                                        <div class="glcopyright-text1">
+                                            <em>Copyright © 2020 Infrasoft Technologies Ltd. All rights reserved.</em>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+
+        <!-- Footer Code Ends -->
+
+
+    </div>
+
+    <!-- .prelogin-page -->
+
+
+    <div id="importantNotice" class="modal fade " role="dialog">
+        <div class="modal-dialog modal-dialog-centered modal-lg ">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <div class="mh-bottom">
+                        <div class="row1">
+                            <div class="col-10">
+                                <h6>Important Notice</h6>
+                            </div>
+                            <div class="col-2"><a href="javascript:;" data-dismiss="modal"><span class="mh-cross"></span></a></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-body">
+                    <p>"Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit..."
+                        "There is no one who loves pain itself, who seeks after it and wants to have it, simply because it is pain..."</p>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+
+
+<!-- 
+    <div id="countdown" class="modal fade " role="dialog">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+              <div class="modal-content pad-custom">
+                <div class="modal-header  bor-n cust-pad pt-0">
+                     <div class="mh-bottom">
+                         <div class="row1">
+                            <div class="col-10">
+                                <h6> </h6>
+                            </div>
+                            <div class="col-2">
+                                <a href="javascript:;" data-dismiss="modal">
+                                  <span class="mh-cross"></span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-body pt-0 cust-pad">
+                    <h3 class="text-center">Coming Soon</h3>
+                    <p class="text-center mt-3">Use your ﬁngerprint for faster, easier access to your account</p>
+               </div>
+           </div>
+        </div> 
+    </div> -->
+
+
+    <!-- Guidelines Info Popup Start-->
+
+    <div class="popup-bottom lg-popup guidelines-popup">
+        <div class="row1">
+            <div class="col-10">
+                <h4 class="text-left">Guidelines For Online Security</h4>
+            </div>
+            <div class="col-2">
+                <button class="ux-button-icon close-btn">
+                    <img src="../assets/images/svg/close-b.svg" alt="cross-icon" class="img-vsmall">
+                </button>
+            </div>
+        </div>
+        <div class="row1 mt-2">
+            <div class="scroll-content">
+                <div class="content-scroll">
+                   <div class="col-12 p-2">
+                        <p class="m-text"> 
+                            <b>Dear Customer </b> <br/><br/>
+                                With the increase in the popularity of Internet banking, web based frauds are also increasing. So there is a need to understand the modus operandi followed by the attackers and some tips/instructions to be followed to prevent the online fraud. <br/><br/>
+                               To ensure secure access to Internet Banking portal, please use Browser enabled with TLS 1.2 protocol. <a href="https://punjabandsindbank.co.in/document/digital-banking/How-to-Enable-TLS-1-2.pdf" target="_blank">Click Here</a> to view how to enable TLS1.2 in browser 
+                            </p> 
+                            <p class="m-text red-text mt-3">
+                                Phishing Alert- Never respond to emails asking for your Internet Banking Passwords. Never share your Account no/Card no/PIN/password/OTP with anyone over phone, SMS or e-mail. It may lead to fraud. Bank never asks such information
+                            </p>
+                            <div class="clearfix"></div>
+
+                            <h4 class="text-left primary-text mt-5">Tips on Creating Strong Password</h4>
+                            <p class="m-text">Strong passwords are important protections to help you have safer online transactions.</p>
+
+                            <p class="m-text mt-3"> <b>Keys to password strength: length and complexity</b></p>
+                            <p class="m-text mt-2">An ideal password is long and has letters, punctuation, symbols, and numbers.</p>
+                            
+                            <ul class="unorderlist  mt-2">
+                                <li>Whenever possible, use at least 14 characters or more.</li>
+                                <li>The greater the variety of characters in your password, the better.</li>
+                                <li>Use the entire keyboard, not just the letters and characters you use or see most often.</li>
+                            </ul>
+
+                           <p class="m-text mt-3"> <b>Create a strong password you can remember</b></p>
+                           <p class="m-text mt-2">There are many ways to create a long, complex password. Here is one way that may make remembering it easier:</p>
+
+                           <div class="clearfix"></div>
+
+                           <div class="datatable-box1 mt-3 mb-3">
+                            <div class="table-responsivebox">
+                                <table id="dt" class="table border1 table-striped display">
+                                    <thead>
+                                        <tr>
+                                            <th>What to do</th>
+                                            <th>Suggestion</th>
+                                            <th>Example</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr class="no-borders">
+                                            <td>Start with a sentence or two (about 10 words total).</td>
+                                            <td>Think of something meaningful to you.</td>
+                                            <td>Long and complex passwords are safest. I keep mine secret. (10 words)</td>
+                                        </tr>
+                                        <tr class="no-borders">
+                                            <td>Turn your sentences into a row of letters.</td>
+                                            <td>Use the first letter of each word.</td>
+                                            <td>lacpasikms (10 characters)</td>
+                                        </tr>
+                                        <tr class="no-borders">
+                                            <td>Add complexity.</td>
+                                            <td>Make only the letters in the first half of the alphabet uppercase.</td>
+                                            <td>lACpAsIKMs (10 characters)</td>
+                                        </tr>
+                                        <tr class="no-borders">
+                                            <td>Add length with numbers.</td>
+                                            <td>Put two numbers that are meaningful to you between the two sentences.</td>
+                                            <td>lACpAs56IKMs (12 characters)</td>
+                                        </tr>
+                                        <tr class="no-borders">
+                                            <td>Add length with punctuation.</td>
+                                            <td>Put a punctuation mark at the beginning.</td>
+                                            <td>?lACpAs56IKMs (13 characters)</td>
+                                        </tr>
+                                        <tr class="no-borders">
+                                            <td>Add length with symbols.</td>
+                                            <td>Put a symbol at the end.</td>
+                                            <td>?lACpAs56IKMs" (14 characters)</td>
+                                        </tr>
+                                     </tbody>
+                                </table>
+                            </div>
+                         </div>
+
+                         <div class="clearfix"></div>
+
+                                <h4 class="text-left primary-text mt-5">5 Tips to Keep Your Password Secret</h4>
+                                <p class="m-text mt-3"> <b>Follow these 5 Tips to Keep Your Password Secret!!!</b></p>
+                                <ul class="unorder-list-custom3">
+                                    <li>Tip # 1: Don't enter your password in unsafe computers. <br/>
+                                        Computers placed in public places such as- Internet Cafes, airport lounges, & conferences are considered unsafe for doing online transactions. So avoid using such computers for your online financial transactions.</li>
+                                    <li>Tip # 2: Don't reveal your password. <br/>
+                                        Don't provide/ divulge your password<br/>
+                                            <ul class="unorderlist">
+                                                <li>to friends, and family members.</li>
+                                                <li>in response to an E-mail purportedly coming from your Bank.</li>
+                                                <li>to a person over phone posing himself as IT computer security staff/ Computer administrator of your Bank.</li>
+                                            </ul>
+                                    </li>
+                                    <li>Tip # 3: Don't store your password on computer <br/>
+                                        Don't store password in a file in your computer because hackers can search such files. Ideally avoid writing down your password… memorize them!!!</li>
+                                    <li>Tip # 4: Use different password for different account and service <br/>
+                                        Never use same password for all your online accounts, such as- E-mail, Internet Banking, & online services.</li>
+                                    <li>Tip # 5: Change password frequently <br/>
+                                        Change your password on regular interval.</li>
+                                </ul>   
+                                <div class="clearfix"></div>
+            
+                                <h4 class="text-left primary-text mt-5">Prevent Shoulder Surfing</h4>
+                                <p class="m-text mt-3"><b>Shoulder surfing and Prevention</b></p>
+                                <p class="m-text">Shoulder surfing is a technique wherein someone looks over you shoulder, to get information about what you are writing or typing. Shoulder surfing is an effective way to get information in crowded places, such as cyber caffe, 
+                                    because it's relatively easy to stand next to someone and watch as they fill out a form, enter e-Banking User ID and Password, or enter a PIN number at an ATM machine. Shoulder surfing can also be done long distance with the aid of binoculars or other vision-enhancing devices.</p>
+                                <p class="m-text mt-3"><b>To prevent shoulder surfing</b></p>
+                                <p class="m-text">It is recommended that you shield paperwork or your keyboard from view by using your body or cupping your hand. So watch out around you before you use e-Banking from crowded place.</p>
+
+                                <div class="clearfix"></div>
+            
+                                <h4 class="text-left primary-text mt-5">Ensure You are visiting a Legitimate Website</h4>
+                                <p class="m-text mt-3">Cyber criminals use Phishing scams to set up convincing spoofs of legitimate Web sites. They then try to trick users into visiting these Web sites and disclosing personal information, such as your Passwords, ATM Pin etc. <br/><br/>
+                                    Cyber criminals use Web addresses that resemble the name of a well-known company but are slightly altered by adding, omitting, or transposing letters. For example, the address "www.microsoft.com" could appear instead as:
+                                </p>
+                                <ul class="unorderlist mt-3">
+                                    <li>
+                                        <!-- <a href="#" target="_blank">www.micosoft.com </a> -->
+                                        www.micosoft.com 
+                                        </li>
+                                    <li>
+                                        <!-- <a href="#" target="_blank">www.verify-microsoft.com </a> -->
+                                        www.verify-microsoft.com 
+                                    </li>
+                                </ul>
+                                <p class="m-text mt-3"> 
+                                    This is called "typo-squatting" or "cybersquatting." <br/> 
+                                    Typo-squatters and cybersquatters can also create more insidious scams, such as downloading malicious software applications and spyware onto unprotected computers that connect to their sites.<br/><br/>
+                                    So look closely the URL in the address field of your browser when you do online banking or online shopping.
+                                </p>
+
+                                <div class="clearfix"></div>
+            
+                                <h4 class="text-left primary-text mt-5">Protection Against Phishing Attack</h4>
+                                <p class="m-text mt-3"><b>What is Phishing Attack?</b></p>
+                                <p class="m-text"> 
+                                    Phishing is a technique used by scamsters to illegally procure personal information, like Internet Banking User Id and Passwords, Credit Card Number and ATM PIN etc., by sending e-mail.<br/><br/>
+                                    The e-mail appears to be sent by Bank or a well-established organization providing online services. The content of the e-mail is framed in a manner that creates a sense of urgency in the mind of recipient, for example- "We are upgrading our system to make it more secure. Therefore, click on the link below and provide your Internet Banking User ID & Passwords at the earliest; otherwise your Internet Banking services will be de-activated." Customers of leading Banks throughout the world have been targeted by such Phishing e-mails.
+                                </p>
+                                
+                                <p class="m-text mt-3"><b>Types of Phishing Attacks</b></p> 
+                                <ul class="unorderlist mt-3">
+                                    <li>
+                                        <p class="m-text">
+                                            <b>E-mail-based Phishing attacks:</b>
+                                        </p> 
+                                        <p class="m-text  mt-2">
+                                            Where millions of e-mails are distributed randomly. The e-mail typically includes a hyperlink, which is often codified so that the destination of hyperlink is not apparent to the recipient. Once the recipient clicks on the hyperlink he/she is taken to a spoofed Website, which is a copy of a Bank's Website. The recipient is asked to enter Internet Banking User ID and Passwords. The User ID & Password collected are then stored and forwarded to cyper-criminals.
+                                        </p>
+                                    </li>
+                                    <li>
+                                        <p class="m-text">
+                                            <b>Malware-based Phishing attacks:</b>
+                                        </p> 
+                                        <p class="m-text  mt-2">
+                                            Where a piece of Trojan (malware) is loaded onto user's computer by exploiting vulnerability in Operating System or Browser software. This Trojan can have many capabilities but typically it identifies when the user accesses a Bank's Internet Banking website and then either logs the subsequent keys or takes a screen image. This information is then forwarded to the cyber-criminals.
+                                        </p>
+                                    </li>
+                                </ul>
+
+                                <div class="clearfix"></div>
+
+                                <p class="m-text mt-3"><b>Protection Against Phishing Attack</b></p> 
+                                <ul class="unorderlist mt-3">
+                                    <li>
+                                        <p class="m-text">
+                                            <b>Do not click on hyperlinks in e-mails</b>
+                                        </p> 
+                                        <p class="m-text  mt-2">
+                                            Never click on hyperlinks in e-mails unless you are sure about the destination of the hyperlink. The hyperlink may take you to a spoofed website asking you to enter personal sensitive information or the hyperlink can secretly installed malicious software in your computer.
+                                        </p>
+                                    </li>
+                                    <li>
+                                        <p class="m-text">
+                                            <b>Verify SSL Certification (https://)</b>
+                                        </p> 
+                                        <p class="m-text  mt-2">
+                                            Whenever you enter your Internet Banking User ID and Passwords or any other sensitive information, always check that the website address (URL) starts with https:// not http:// (notice 's' in https://). Also check the validity of SSL Certificate used in the URL.
+                                        </p>
+                                    </li>
+                                    <li>
+                                        <p class="m-text">
+                                            <b>Never Enter personal sensitive information in a pop-up window</b>
+                                        </p> 
+                                        <p class="m-text  mt-2">
+                                            A common Phishing technique is to open a pop-up window when you click on a hyperlink in Phishing e-mail.
+                                        </p>
+                                    </li>
+                                    <li>
+                                        <p class="m-text">
+                                            <b>Never download software or files from an unknown source</b>
+                                        </p> 
+                                        <p class="m-text  mt-2">
+                                            Downloading software or file from unknown sources can secretly install malicious program (Trojan) into your computer. This malicious program then captures your sensitive information (as you type from keyboard) and sends the same to hacker sitting on remote computer on Internet.
+                                        </p>
+                                    </li>
+                                    <li>
+                                        <p class="m-text">
+                                            <b>Use an Antivirus and keep it up-to-date</b>
+                                        </p> 
+                                        <p class="m-text  mt-2">
+                                            Regularly scan your computer with Antivirus to detect and remove any malicious program got installed into your computer.
+                                        </p>
+                                    </li>
+                                    <li>
+                                        <p class="m-text">
+                                            <b>And last, get educated</b>
+                                        </p> 
+                                        <p class="m-text  mt-2">
+                                            Educate yourself on the trend of attacks and how to prevent these types of attacks. This is because hackers also employ new techniques of attack. Various online resources are available to get yourself updated.
+                                        </p>
+                                    </li>
+                                </ul>
+
+                                <div class="clearfix"></div>
+
+                                <h4 class="text-left primary-text mt-5">How Hackers Attack</h4>
+                                 <ul class="unorder-list-custom3 mt-3">
+                                    <li>
+                                        <p class="m-text">
+                                            <b>How Attack Starts:</b>
+                                        </p> 
+                                        <p class="m-text  mt-2">
+                                            Online Banking frauds rely on a sophisticated scheme but starts with a mundane activity: an employee checking his/her e-mail. The employee unwittingly clicks on a link or attachment that contains malware, such as a keylogging virus.
+                                        </p>
+                                    </li>
+                                    <li>
+                                        <p class="m-text">
+                                            <b>Next: Modus Operandi</b>
+                                        </p> 
+                                        <p class="m-text  mt-2">
+                                            The hacker then hacks into online Banking account with stolen login credentials. The hackers usually hack into systems using IP Spoofing so that Bank doesn't recognize them. The money stolen from the hacked accounts are transferred to Bank account of 'money mules'. <br/><br/>
+                                            People become 'money mules' by answering vaguely worded classified ads offering opportunity to work flexible hours from home as, say, a bookkeeper or funds-transfer agent. They are instructed to open a bank account to handle transactions for the supposed employer, into which the stolen money is deposited, and then to wire it to an overseas account from a commercial wire service such as Western Union.<br/><br/>
+                                            The hackers generally keep transactions under some amount because a withdrawal of that amount or higher requires the bank to file a currency transaction report to RBI.
+                                         </p>
+                                    </li>
+                                    <li>
+                                        <p class="m-text">
+                                            <b>Prevention:</b>
+                                        </p> 
+                                        <ul class="unorderlist mt-3">
+                                            <li>
+                                               If you don't know what it is, no matter what it is, never click on it. Never, never, never. If there's something you come across that looks like something you would be interested in, such as- 'Invest in XYZ fund and get 30% return or your money will double in three years!' As a thumb rule don't click it and make it your habit.
+                                            </li>
+                                            <li>
+                                              Company should disable e-mail access from its Banking computer, create clear policies for handling unsolicited e-mails, and consider requiring multiple officers using different computers to approve bank transaction.
+                                            </li>
+                                        </ul>
+                                    </li>
+                                 </ul>
+
+                                 <div class="clearfix"></div>
+
+                                 <h4 class="text-left primary-text mt-5">Preventing Spyware/ Malware</h4>
+                                  <ul class="unorder-list-custom3 mt-3">
+                                     <li>
+                                         <p class="m-text">
+                                             <b>IMPORTANT : </b>
+                                         </p> 
+                                         <p class="m-text  mt-2">
+                                            Ensure that the Computer, Mobile Phone, Smart Phone used for conducting Internet Banking Transactions are regularly updated with antivirus/firewall and the same are up-to-date
+                                         </p>
+                                     </li>
+                                     <li>
+                                         <p class="m-text">
+                                             <b>The very first thing</b>
+                                         </p> 
+                                         <p class="m-text  mt-2">
+                                            Install a good Spyware Blocker/ Antivirus. <br/>
+                                            There are two ways to purchase a Security Application: (a) Buy a comprehensive Security Suite that include all such as: an antivirus, anti spyware, and a firewall. And, (b) buy separate application for each of them.<br/><br/>
+                                            Decision is based on the capacity of your computer, if it can handle the load of a comprehensive Security Suite, then go for it. Otherwise purchase different products.<br/><br/>
+                                            But be sure you have one .... 
+                                          </p>
+                                     </li>
+                                     <li>
+                                         <p class="m-text">
+                                             <b>Install a Good Firewall</b>
+                                         </p> 
+                                         <p class="m-text  mt-2">
+                                            A firewall is a barrier against anything that could compromise the security of your computer and keeps out things such as spyware, viruses, malware, hackers, etc.<br/><br/>
+                                            Internet is a public network, which means that any computer that is connected to the Internet can connect to another one. A firewall scans all incoming and outgoing traffic and upon examination stops or approves that traffic. Combined with anti-spyware programs firewall boosts the security of your computer.
+                                          </p> 
+                                     </li>
+                                     <li>
+                                        <p class="m-text">
+                                            <b>Update, update, and update !</b>
+                                        </p> 
+                                        <p class="m-text  mt-2">
+                                            Because new spyware and viruses are written everyday and it is essential that you keep up-to-date your computer. Windows updates, security updates, patches, definitions, your firewall, your anti-virus program, your anti-spyware program - make sure all are current. You can configure your programs to update automatically or you can do them yourself.   
+                                       </p> 
+                                    </li>
+                                    <li>
+                                        <p class="m-text">
+                                            <b>Be Safe</b>
+                                        </p> 
+                                        <p class="m-text  mt-2">
+                                            Follow these tips while you surf Internet:
+                                       </p> 
+                                    </li>
+                                    <li>
+                                        <p class="m-text">
+                                            <b>Don't Click On It</b>
+                                        </p> 
+                                        <p class="m-text  mt-2">
+                                            Online Banking frauds rely on a sophisticated scheme but starts with a mundane activity: a customer checking his/her e-mail. The customer unwittingly clicks on a link or attachment that contains malware, such as a keylogging virus. <br/><br/>
+                                            If you don't know what it is, no matter what it is, never click on it. Never, never, never. If there's something you come across that looks like something you would be interested in, such as- 'Want to lose 25 pounds in 25 hours? Click here for this free easy tip!' As a thumb rule don't click it and make it your habit.<br/><br/>
+                                            Below is a pop-up that it very tempting to click on; in fact, you almost automatically do it because it looks legitimate and you need to know if you're infected, right? Well, it's not legitimate; in reality it is an advertisement that probably contains adware or spyware or a Trojan of some type. How can you tell? Look in the lower left-hand corner, all the way at the bottom. circled it in red.<br/><br/>
+                                        </p> 
+                                        <p class="text-center">
+                                            <img src="../assets/images/banner/popup-img.jpg" alt="popup-img" class="popup-img img-fluid">
+                                        </p>
+                                     </li>
+                                    <li>
+                                       <p class="m-text mt-2">
+                                            <b>
+                                                Now How to Close a Pop-up, if one pop-ups on your screen: <br/>
+                                                Now you have come to know that the pop-up that you have come across is not legitimate. How to close it?
+                                           </b>
+                                        </p>
+                                        <p class="m-text  mt-2">
+                                            Take a look at the below pop-up:
+                                       </p> 
+                                       <p class="text-center">
+                                            <img src="../assets/images/banner/popup-img2.jpg" alt="popup-img2" class="popup-img img-fluid">
+                                        </p>
+                                       <p class="m-text  mt-2">
+                                            Note that there are two X's to close the pop up with. Now companies are putting an X in the upper-right hand corner inside the pop up so that they can confuse you. The X that you should always click on to close the pop-up is circled red; it is on the outside of the pop-up itself. If you close the pop up by clicking the inner X (circled in green) then you have just activated the adware/spyware. In other words, never click inside the box! <br/><br/>
+                                            Now if you are still confused which X to choose to close the pop-up, just press down Alt key on your keyboard and then press F4 key. Note that Alt key should remain down when you click F4. This is for windows operating system. And, for Mac use CMD and W.
+                                        </p>
+ 
+                                    </li>
+                                    <li>
+                                        <p class="m-text mt-2">
+                                             <b>
+                                                One More Sample of Pop-up
+                                            </b>
+                                         </p>
+                                         <p class="m-text  mt-2">
+                                            Be careful of pop-ups that include free download/ install of a program, such as this:
+                                        </p> 
+                                        <p class="text-center ">
+                                             <img src="../assets/images/banner/popup-img3.jpg" alt="popup-img3" class="popup-img img-fluid">
+                                         </p>
+                                        <p class="m-text  mt-2">
+                                            All downloads have this warning (circled in red) that you would normally adhere to on the bottom. Just accept this as normal - for a good and bad download and check out the rest of the download box. Since this is an unwanted download, close the box with the X in the upper right-hand corner and don't click on the "Don't Instal" button, as shown below:
+                                         </p>
+                                         <p class="text-center ">
+                                            <img src="../assets/images/banner/popup-img4.jpg" alt="popup-img4" class="popup-img img-fluid">
+                                        </p>
+                                     </li>
+                                     <li>
+                                        <p class="m-text mt-2">
+                                             <b>
+                                                Prevent Phishing
+                                            </b>
+                                         </p>
+                                         <p class="m-text  mt-2">
+                                            How many times have you gotten an e-mail from someone you don't know, has your name on it and looks enticing enough to open it? Just clicking on a link within that particular e-mail can get you in trouble. If the sender is not who they portray themselves to be, then someone is Phishing. With you as the fish, and the e-mail as the bait. For example, you get an e-mail from your Bank asking you to provide your User ID and Password because Bank is doing some sort of enhancements in their computer system and alike.
+                                             The content of the e-mail will have a sense of urgency that if you don't provide the details your online Banking account will be de-activated. Keep this in mind:<br/><br/>
+                                            "Legitimate businesses don't ever ask you for personal information in an e-mail. It's as simple as that."<br/><br/>
+                                            The best practice is to never click on a link in an e-mail. If you really want to know what's up, then go and type the exact address of the link in the address bar of your browser and see what's up. If there is nothing there, you know somebody has been Phishing.
+                                         </p> 
+                                    </li>
+                                    <li>
+                                        <p class="m-text mt-2">
+                                             <b>
+                                                Be Vigilant & Read All   
+                                            </b>
+                                         </p>
+                                         <p class="m-text  mt-2">
+                                            Read everything! If you go to install a program, don't believe if it's been recommended as a safe program by anyone, read the "fine print" that comes before you start installing. There is a EULA (End User License Agreement) at the beginning of any programs installation. Read it! Most are fine, but others have what is called bundled software. See this installation image:
+                                        </p> 
+                                        <p class="text-center ">
+                                             <img src="../assets/images/banner/popup-img5.jpg" alt="popup-img5" class="popup-img img-fluid">
+                                         </p>
+                                        <p class="m-text  mt-2">
+                                            It's very easy to whip through an install and just click on "I agree to the terms above" just to get the installation over, but if you don't read through that whole EULA (or the rest of the installation), you may find that you have not only installed a program you wanted, but one (or more) that you didn't want, as well.
+                                         </p>
+                                    </li>
+                                    <li>
+                                        <p class="m-text mt-2">
+                                             <b>
+                                                Be Secure, Maintain your Privacy 
+                                            </b>
+                                         </p>
+                                         <p class="m-text  mt-2">
+                                            Identity theft (ID) is a huge problem these days. And at the heart of every ID theft is a computer or computer network. Maintain privacy of your personal financial information such as- ATM card number, ATM Pin, Credit card number, CVV number, Internet Banking User ID, & Password, and so on. Ensure nobody gets these details when you shop, eat in a restaurant, operating your account in a cyber cafe, and any such public places. Secure these details as you secure your wallet in busy market.
+                                        </p> 
+                                    </li>
+                                    <li>
+                                        <p class="m-text mt-2">
+                                             <b>
+                                                Use a Good Password
+                                            </b>
+                                         </p>
+                                         <p class="m-text  mt-2">
+                                            A secure password is one that can't be guessed. For example, if your name is Amit Kumar then Amit1234, kumar1234, amit999, kumar888, or alike are not good passwords. Hackers have amazing password cracking capabilities, so the longer and more jumbled the password, the better. And don't use the same password for each account because if they get one account, they get them all.
+                                        </p> 
+                                    </li>
+                              </ul>
+
+                            <div class="clearfix"></div>
+            
+                                <h4 class="text-left primary-text mt-5">Procedure to Report Unauthorized Access</h4>
+                                <p class="m-text mt-3"> "If there is an unauthorized access of your information, accounts or disputed transactions in Internet Banking Service. Kindly report the same immediately to Customer Care at 1800 419 8300 or visit your nearest branch."</p>
+                      
+                        </div>
+                    </div>       
+              </div>
+         </div>
+    </div>
+
+    <!--  Guidelines Info Popup End-->
+
+
+    <div class="ios-nav-overlay"></div>
+
+    <!--.toast-messages-->
+
+    <div class="toast-messages3"></div>
+
+    <!--.toast-messages-->
+
+
+    <script src="../js/lib/jquery.min.js"></script>
+    <script src="../js/lib/bootstrap.min.js"></script>
+    <script src="../js/lib/jquery-ui.min.js"></script>
+    <script src="../js/lib/popper.min.js"></script>
+    <script src="../js/lib/jquery.mousewheel.min.js"></script>
+    <script src="../js/lib/jquery.mCustomScrollbar.js"></script>
+    <script src="../js/lib/datatables.min.js"></script>
+    <script src="../js/common.js"></script>
+    
+    <script>
+
+    // $(document).ready(function() {
+    //     setTimeout(function() {
+    //         $("#countdown").modal('show');
+    //      }, 50);
+    //     });
+
+        // $(".modal-backdrop").click(function(){
+        //     $("#countdown").modal({backdrop: false});
+        // });
+
+        $(".content-scroll").mCustomScrollbar({
+		    axis:"y",
+		    theme: "dark-2",
+            //theme:"dark-thin",
+			// autoExpandScrollbar:true,
+		   advanced:{autoExpandHorizontalScroll:true}
+		 });
+
+        
+        function showToast(messageText, messageType, autoDismiss, dismissDuration) {
+            if (messageText == "Product Service Error") messageText = "";
+            if (typeof messageType === "undefined" || messageType === null)
+                messageType = 'error';
+            if (typeof autoDismiss === "undefined" || autoDismiss === null)
+                autoDismiss = true;
+            if (typeof dismissDuration === "undefined" || dismissDuration === null)
+                dismissDuration = 5000;
+
+            var messageHTML = '<div class="msg-toast msg-' + messageType + '">  <em>' + messageText + '</em> </div>';
+            $('body').append('<div class="toast-messages3"></div>');
+            $('div.toast-messages3').html(messageHTML);
+            setTimeout(function() {
+                $('div.toast-messages3').find('.msg-toast').addClass('msg-showing');
+            }, 300);
+            if (autoDismiss) {
+                setTimeout(function() {
+                    $('div.toast-messages3').find('.msg-toast').removeClass('msg-showing');
+                }, dismissDuration);
+                setTimeout(function() {
+                    $('div.toast-messages3').html('');
+                }, dismissDuration + 400);
+            } else {
+                $('div.toast-messages3').find('.msg-toast').addClass('msg-close');
+            }
+        };
+
+
+        $("button.submit-btn").click(function() {
+            console.log('Yes working');
+            showToast('Your account is locked because you have exceeded maximum number of invalid log in attempts. Please try logging in after 24 hours', 'error2', true);
+        });
+
+        $('body').on('click', 'button.guideline-btn' , function() {
+            console.log('working!')
+           if (!$('div.popup-bottom.guidelines-popup').hasClass('popup-active')) {
+                $('div.popup-bottom.guidelines-popup').addClass('popup-active');
+                $('div.ios-nav-overlay').fadeIn(400);
+            } else {
+                $('div.popup-bottom.guidelines-popup').removeClass('popup-active');
+                $('div.ios-nav-overlay').fadeOut(400);
+            }
+        });
+
+
+
+        $('body').on('click', 'button.close-btn', function() {
+            $('div.popup-bottom.guidelines-popup').removeClass('popup-active');
+            $('div.ios-nav-overlay').fadeOut(400);
+        });
+
+    </script>
+
+</body>
+
+</html>

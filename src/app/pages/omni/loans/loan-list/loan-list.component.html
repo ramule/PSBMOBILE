@@ -1,0 +1,798 @@
+<div class="main bg-m">
+	<div class="nav-overlay"></div>
+	<div class="right-main-column ">
+		<div class="right-col-container pad-b full-width">
+			<!-- ======== body page content start from here ======== -->
+			<div class="body-page-container main-dashborad">
+				<div class="container-fluid">
+					<div class="row">
+						<div class="col-12 p-0">
+							<div class="breadcrumb">
+								<ul class="lst-breadcrumb">
+									<!-- <li> <a (click)="goToPage('myAccounts')">My Accounts</a> </li>
+									<li> My Borrowings </li> -->
+									<li *ngFor="let name of dataService.breadcrumblist">
+										<a (click)="dataService.breadcrumroute(name.routeName)">{{name.currentRoute | translate}}</a>
+								</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+					<!--.row -->
+					<div class="vspacer15 customize d-none d-md-block d-lg-block d-xl-block"></div>
+					<div class="row no-gutters">
+						<div class="col-12">
+							<div class="row1">
+								<div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-9">
+									<!-- Greencard2 Start here -->
+									<div class="greencard2 myaccounts">
+										<div class="mobile-page-list">
+											<ul>
+												<li><a href="#">Operative Accounts</a></li>
+												<li><a href="#">My Deposits</a></li>
+												<li class="active"><a>My Borrowings</a></li>
+											</ul>
+										</div>
+										<div class="info-box clearfix reduce-space">
+											<div class="flex-container no-bg">
+												<div class="full-info">
+													<div class="row1">
+														<div class="col-12 col-md-12 col-lg-9 col-xl-10">
+															<div class="ac-info">
+																<div class="greenbg-input ux-input">
+																	<label for="fromaccount " class="largeview-enable">My Borrowings</label>
+																</div>
+															</div>
+															<div class="ac-info">
+																<div class="greenbg-input ux-input">
+																	<p class="info-message2 with-bg"> <i>Total Available bal.</i> <span>₹ 25,000.00</span></p>
+																</div>
+															</div>
+															<div class="ac-info hide-m">
+																<!-- <button class="refresh-btn"><img src="assets/images/svg/refresh.svg" alt="refresh-icon"></button> <span class="refresh-text"> Last refreshed on 12th Oct 2020, 21:22</span> </div> -->
+																<button class="refresh-btn"><img src="assets/images/svg/refresh.svg" alt="refresh-icon"></button> <span class="refresh-text"> Last refreshed on {{refreshDate | date: 'dd MMM yyyy, hh:mm:ss' }}</span> </div>
+														</div>
+														<div class="col-12 col-md-12 col-lg-3 col-xl-2 text-right pl-1">
+															<div class="ac-info hide-m"> <span class="link-text">
+                                                                        <a >Link Account</a>
+                                                                    </span> </div>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+										<div class="card-scrollbox">
+											<!-- Qwl Carousel -->
+											<owl-carousel-o [options]="accountCarouselOptions" #cardsCarousel>
+												<ng-container class="item" role="listitem">
+													<ng-template carouselSlide class="item" role="listitem" [width]="300">
+														<div class="item" role="listitem">
+															<div class="ux-component5 no-margin">
+																<div class="ux-dropdown">
+																	<div class="drp-box">
+																		<a class="drp-enterdata" (click)="activeTab='home';" [ngClass]="{'active' : activeTab == 'home'}">
+																			<div class="card-section">
+																				<div class="card-info">
+																					<div class="card-actions">
+																						<h4>Home Loan <span>(02)</span></h4> <span class="d-block d-md-none d-lg-none d-xl-none text-left">001184918391</span> </div>
+																					<div class="show-btn">
+																						<button class="refresh-btn">
+																							<!-- <img src="assets/images/svg/eye-g.svg" alt="eye-icon"> --></button>
+																					</div>
+																				</div>
+																				<div class="card-info">
+																					<div class="card-actions"> <span class="account-balance disable-status">
+                                                                                            <em class="entered-data " amt="50,000.00">
+                                                                                                <i> <img src="assets/images/svg/rupee-bl.svg" alt="rupees-icon"> </i> <b>50,000.00</b>
+                                                                                            </em>
+                                                                                        </span>
+																						<div class="total-target"> <small>Total Outstanding Loan Amount</small> </div>
+																					</div>
+																					<div class="ref-btn">
+																						<button class="refresh-btn"> <img src="assets/images/svg/refresh-g.svg" alt="refresh-icon"> </button>
+																					</div>
+																				</div>
+																			</div>
+																		</a>
+																	</div>
+																</div>
+															</div>
+														</div>
+													</ng-template>
+												</ng-container>
+												<ng-container>
+													<ng-template carouselSlide class="item" role="listitem" [width]="300">
+														<div class="item" role="listitem">
+															<div class="ux-component5 no-margin">
+																<div class="ux-dropdown">
+																	<div class="drp-box">
+																		<a class="drp-enterdata" (click)="activeTab='personal'" [ngClass]="{'active' : activeTab == 'personal'}">
+																			<div class="card-section">
+																				<div class="card-info">
+																					<div class="card-actions">
+																						<h4>Personal Loan <span>(01)</span> </h4> <span class="d-block d-md-none d-lg-none d-xl-none text-left">001184918391</span> </div>
+																					<div class="show-btn">
+																						<button class="refresh-btn">
+																							<!-- <img src="assets/images/svg/eye-g.svg" alt="eye-icon"> --></button>
+																					</div>
+																				</div>
+																				<div class="card-info">
+																					<div class="card-actions"> <span class="account-balance disable-status">
+                                                                                            <em class="entered-data " amt="25,000.00">
+                                                                                                <i> <img src="assets/images/svg/rupee-bl.svg" alt="rupees-icon"> </i> <b>25,000.00</b>
+                                                                                            </em>
+                                                                                        </span>
+																						<div class="total-target"> <small>Total Outstanding Loan Amount</small> </div>
+																					</div>
+																					<div class="ref-btn">
+																						<button class="refresh-btn">
+																							<!-- <img src="assets/images/svg/refresh-g.svg" alt="refresh-icon"> --></button>
+																					</div>
+																				</div>
+																			</div>
+																		</a>
+																	</div>
+																</div>
+															</div>
+														</div>
+													</ng-template>
+												</ng-container>
+												<ng-container>
+													<ng-template carouselSlide class="item" role="listitem" [width]="300">
+														<div class="item" role="listitem">
+															<div class="ux-component5 no-margin">
+																<div class="ux-dropdown">
+																	<div class="drp-box">
+																		<a class="drp-enterdata" (click)="activeTab='educational';" [ngClass]="{'active' : activeTab == 'educational'}">
+																			<div class="card-section">
+																				<div class="card-info">
+																					<div class="card-actions">
+																						<h4>Educational Loan <span>(01)</span></h4> <span class="d-block d-md-none d-lg-none d-xl-none text-left">001184918391</span> </div>
+																					<div class="show-btn">
+																						<button class="refresh-btn"> <img src="assets/images/svg/eye-g.svg" alt="eye-icon"> </button>
+																					</div>
+																				</div>
+																				<div class="card-info">
+																					<div class="card-actions"> <span class="account-balance disable-status">
+                                                                                            <em class="entered-data " amt="25,000.00">
+                                                                                                <i> <img src="assets/images/svg/rupee-bl.svg" alt="rupees-icon"> </i> <b>25,000.00</b>
+                                                                                            </em>
+                                                                                        </span>
+																						<div class="total-target"> <small>Total Outstanding Loan Amount</small> </div>
+																					</div>
+																					<div class="ref-btn">
+																						<button class="refresh-btn"> <img src="assets/images/svg/refresh-g.svg" alt="refresh-icon"> </button>
+																					</div>
+																				</div>
+																			</div>
+																		</a>
+																	</div>
+																</div>
+															</div>
+														</div>
+													</ng-template>
+												</ng-container>
+											</owl-carousel-o>
+											<!-- Owl Carosel -->
+										</div>
+										<div class="row1">
+											<div class="col-12">
+												<div class="widget-box5 mb-2 loan-msg-wrapper">
+													<div class="component-title6 custom-pad py-3">
+														<div class="row1">
+															<div class="col-sm-7 col-7 col-md-8">
+																<div class="loan-msg">
+																	<div class="icon-box"> <img src="assets/images/svg/camera.svg" alt="Icon"> </div> We are reviewing your loan request of <strong>₹ 10,00,000</strong> </div>
+															</div>
+															<div class="col-sm-5 col-5 col-md-4">
+																<p class="status-msg">Status <span class="text-info">In Progress</span></p>
+															</div>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+										<div class="statement-table dt-accounts transparent-bg w-100 mb-0">
+											<div class="tab-container">
+												<div id="home" class="tab-panel" *ngIf="activeTab == 'home' " [ngClass]="{'active' : activeTab == 'home'}">
+													<div class="row1">
+														<div class="col-sm-12 col-12 col-md-12">
+															<div class="widget-box5 mb-0">
+																<div class="component-title6 custom-pad">
+																	<div class="row1">
+																		<div class="col-6 col-md-6 col-lg-8 col-xl-8">
+																			<h4 class="default-grey">My Home Loans</h4> </div>
+																		<div class="col-6 col-md-6 col-lg-4 col-xl-4">
+																			<div class="full-info text-right">
+																				<button class="ux-button sm-mob primary">Apply for Loan</button>
+																			</div>
+																		</div>
+																	</div>
+																</div>
+																<div class="bg-white1 pt-0">
+																	<div class="row">
+																		<ul class="homeloan-list">
+																			<li class="grey-th">
+																				<div class="grid-info">
+																					<div class="full-info">
+																						<h6>Account Number</h6> </div>
+																				</div>
+																				<div class="grid-info">
+																					<div class="full-info">
+																						<h6>Loan Amount</h6> </div>
+																				</div>
+																				<div class="grid-info">
+																					<div class="full-info">
+																						<h6>Tenure</h6> </div>
+																				</div>
+																				<div class="grid-info">
+																					<div class="full-info">
+																						<h6>Interest Rate</h6> </div>
+																				</div>
+																				<div class="grid-info">
+																					<div class="full-info">
+																						<h6>EMI Amount</h6> </div>
+																				</div>
+																				<div class="grid-info">
+																					<div class="full-info">
+																						<h6>Overdue Amount</h6> </div>
+																				</div>
+																				<div class="grid-info">
+																					<div class="full-info">
+																						<h6>Loan Outstanding Balance</h6> </div>
+																				</div>
+																				<div class="grid-info">
+																					<div class="full-info">
+																						<h6>Status</h6> </div>
+																				</div>
+																				<div class="grid-info">
+																					<div class="full-info">
+                                                                                        <!-- <h6></h6> -->
+																					</div>
+																				</div>
+																				<!-- <div class="grid-info">
+																					<div class="full-info"> </div>
+																				</div> -->
+																			</li>
+																			<li>
+																				<div class="grid-info view-small">
+																					<div class="full-info">
+																						<div class="display-mt">
+																							<h5>001198656721</h5> <em class="d-block d-md-none">Loan Active</em> </div> <em></em> </div>
+																				</div>
+																				<div class="grid-info d-none d-md-block">
+																					<div class="full-info">
+																						<h5>₹ 25,00,000</h5> </div>
+																				</div>
+																				<div class="grid-info d-none d-md-block">
+																					<div class="full-info">
+																						<h5>120 Months</h5> </div>
+																				</div>
+																				<div class="grid-info d-none d-md-block">
+																					<div class="full-info">
+																						<h5>7.05 %</h5> </div>
+																				</div>
+																				<div class="grid-info d-none d-md-block">
+																					<div class="full-info">
+																						<h5>₹ 25000.00</h5> <em class="d-block d-md-none text-right">EMI Amount</em> </div>
+																				</div>
+																				<div class="grid-info d-none d-md-block">
+																					<div class="full-info">
+																						<h5>₹ 0.00</h5> <em class="d-block d-md-none text-right">Overdue Amount</em> </div>
+																				</div>
+																				<div class="grid-info view-small bal-view">
+																					<div class="full-info">
+																						<h5>₹ 20,00,000</h5> <em class="d-block d-md-none text-right">Loan Outstanding Balance</em> </div>
+																				</div>
+																				<div class="grid-info d-none d-md-block">
+																					<div class="full-info">
+                                                                                        <a  class="active-btn">Active</a>
+                                                                                        <!-- <h5 class="active-text">Active</h5> -->
+                                                                                    </div>
+																				</div>
+																				<div class="grid-info">
+																					<div class="full-info text-right">
+																						<button class="ux-button sm primary-custom md mr-2">Pay EMI</button>
+																						<button class="ux-button sm primary-custom md">More details</button>
+																					</div>
+																				</div>
+																			</li>
+																			<li class="close float-none">
+																				<div class="grid-info view-small close">
+																					<div class="full-info">
+																						<div class="display-mt">
+																							<h5>001198656721</h5> <em class="d-block d-md-none">Loan Closed</em> </div> <em></em> </div>
+																				</div>
+																				<div class="grid-info d-none d-md-block close">
+																					<div class="full-info">
+																						<h5>₹ 25,00,000</h5> </div>
+																				</div>
+																				<div class="grid-info d-none d-md-block close">
+																					<div class="full-info">
+																						<h5>120 Months</h5> </div>
+																				</div>
+																				<div class="grid-info d-none d-md-block close">
+																					<div class="full-info">
+																						<h5>7.05 %</h5> </div>
+																				</div>
+																				<div class="grid-info d-none d-md-block close">
+																					<div class="full-info">
+																						<h5>₹ 25000.00</h5> <em class="d-block d-md-none text-right">EMI Amount</em> </div>
+																				</div>
+																				<div class="grid-info d-none d-md-block close">
+																					<div class="full-info">
+																						<h5>₹ 0.00</h5> <em class="d-block d-md-none text-right">Overdue Amount</em> </div>
+																				</div>
+																				<div class="grid-info view-small bal-view close">
+																					<div class="full-info">
+																						<h5>₹ 20,00,000</h5> <em class="d-block d-md-none text-right">Loan Outstanding Balance</em> </div>
+																				</div>
+																				<div class="grid-info d-none d-md-block close">
+																					<div class="full-info">
+                                                                                        <!-- <a  class="close-btn">Closed</a>  -->
+                                                                                        <h5 class="deactive-text">Closed</h5>
+                                                                                    </div>
+																				</div>
+																				<div class="grid-info">
+																					<div class="full-info text-right">
+																						<button class="ux-button sm primary-custom md mr-2">Pay EMI</button>
+																						<button class="ux-button sm primary-custom md" (click)="goToPage('loanCloseDetails')">More details</button>
+																					</div>
+																				</div>
+																			</li>
+																			<li class="d-none d-md-block d-lg-block d-xl-block">
+																				<div class="col-12">
+																					<div class="row  mt-3 mb-2 ">
+																						<div class="col-12 col-lg-6 col-md-6 col-sm-6 px-0 ">
+																							<div id="dt-sample_wrapper" class="dataTables_wrapper dt-bootstrap4 no-footer">
+																								<div class="dataTables_info pt-2" id="dt-sample_info" role="status" aria-live="polite">Showing 1 to 2 of <b>2</b> entries</div>
+																							</div>
+																						</div>
+																						<div class="col-12 col-lg-6 col-md-6 px-0 d-none d-sm-none d-xl-block d-lg-block d-md-block text-right">
+																							<div class="custom-paging">
+																								<div class="dataTables_wrapper">
+																									<div class="dataTables_paginate">
+																										<ul class="pagination">
+																											<li class="page-item previous disabled"> <a href="javascript:;" class="page-link">Previous</a> </li>
+																											<li class="page-item active"> <a href="javascript:;" class="page-link">1</a> </li>
+																											<li class="page-item"> <a href="javascript:;" class="page-link">2</a> </li>
+																											<li class="page-item next"> <a href="javascript:;" class="page-link">Next</a> </li>
+																										</ul>
+																									</div>
+																								</div>
+																							</div>
+																						</div>
+																					</div>
+																				</div>
+																			</li>
+																		</ul>
+																	</div>
+																</div>
+															</div>
+														</div>
+													</div>
+													<div class="vspacer10 d-block d-md-none"></div>
+													<div class="row1  d-block d-md-none">
+														<div class="col-12 col-md-12">
+															<ul class="bottom-footer1">
+																<li>
+																	<div class="btn-div">
+																		<button class=" ux-button secondary sm-mob" >Cancel</button>
+																	</div>
+																	<div class="btn-div">
+																		<button class=" ux-button primary sm-mob" >Submit</button>
+																	</div>
+																</li>
+															</ul>
+														</div>
+													</div>
+												</div>
+												<div id="personal" class="tab-panel" *ngIf="activeTab == 'personal'" [ngClass]="{'active' : activeTab == 'personal'}">
+													<div class="row1">
+														<div class="col-sm-12 col-12 col-md-12">
+															<div class="widget-box5 mb-0">
+																<div class="component-title6 custom-pad">
+																	<div class="row1">
+																		<div class="col-6 col-md-6 col-lg-8 col-xl-8">
+																			<h4 class="default-grey">My Personal Loans</h4> </div>
+																		<div class="col-6 col-md-6 col-lg-4 col-xl-4">
+																			<div class="full-info text-right">
+																				<button class="ux-button sm-mob primary">Apply for Loan</button>
+																			</div>
+																		</div>
+																	</div>
+																</div>
+																<div class="bg-white1 pt-0">
+																	<div class="row">
+																		<ul class="homeloan-list">
+																			<li class="grey-th">
+																				<div class="grid-info">
+																					<div class="full-info">
+																						<h6>Account Number</h6> </div>
+																				</div>
+																				<div class="grid-info">
+																					<div class="full-info">
+																						<h6>Loan Amount</h6> </div>
+																				</div>
+																				<div class="grid-info">
+																					<div class="full-info">
+																						<h6>Tenure</h6> </div>
+																				</div>
+																				<div class="grid-info">
+																					<div class="full-info">
+																						<h6>Interest Rate</h6> </div>
+																				</div>
+																				<div class="grid-info">
+																					<div class="full-info">
+																						<h6>EMI Amount</h6> </div>
+																				</div>
+																				<div class="grid-info">
+																					<div class="full-info">
+																						<h6>Overdue Amount</h6> </div>
+																				</div>
+																				<div class="grid-info">
+																					<div class="full-info">
+																						<h6>Loan Outstanding Balance</h6> </div>
+																				</div>
+																				<div class="grid-info">
+																					<div class="full-info">
+																						<h6>Status</h6> </div>
+																				</div>
+																				<div class="grid-info">
+																					<div class="full-info">
+																						 <!-- <h6></h6> -->
+                                                                                    </div>
+																				</div>
+																				<!-- <div class="grid-info">
+																					<div class="full-info"> </div>
+																				</div> -->
+																			</li>
+																			<li>
+																				<div class="grid-info view-small">
+																					<div class="full-info">
+																						<div class="display-mt">
+																							<h5>001198656721</h5> <em class="d-block d-md-none">Loan Active</em> </div> <em></em> </div>
+																				</div>
+																				<div class="grid-info d-none d-md-block">
+																					<div class="full-info">
+																						<h5>₹ 25,00,000</h5> </div>
+																				</div>
+																				<div class="grid-info d-none d-md-block">
+																					<div class="full-info">
+																						<h5>120 Months</h5> </div>
+																				</div>
+																				<div class="grid-info d-none d-md-block">
+																					<div class="full-info">
+																						<h5>7.05 %</h5> </div>
+																				</div>
+																				<div class="grid-info d-none d-md-block">
+																					<div class="full-info">
+																						<h5>₹ 25000.00</h5> <em class="d-block d-md-none text-right">EMI Amount</em> </div>
+																				</div>
+																				<div class="grid-info d-none d-md-block">
+																					<div class="full-info">
+																						<h5>₹ 0.00</h5> <em class="d-block d-md-none text-right">Overdue Amount</em> </div>
+																				</div>
+																				<div class="grid-info view-small bal-view">
+																					<div class="full-info">
+																						<h5>₹ 20,00,000</h5> <em class="d-block d-md-none text-right">Loan Outstanding Balance</em> </div>
+																				</div>
+																				<div class="grid-info d-none d-md-block">
+																					<div class="full-info">
+                                                                                        <!-- <a  class="active-btn">Active</a>  -->
+                                                                                        <h5 class="active-text">Active</h5>
+                                                                                    </div>
+																				</div>
+																				<div class="grid-info">
+																					<div class="full-info text-right">
+																						<button class="ux-button sm primary-custom md mr-2">Pay EMI</button>
+																						<button class="ux-button sm primary-custom md" (click)="goToPage('loanDetails')">More details</button>
+																					</div>
+																				</div>
+																			</li>
+																			<li class="float-none">
+																				<div class="grid-info view-small close">
+																					<div class="full-info">
+																						<div class="display-mt">
+																							<h5>001198656721</h5> <em class="d-block d-md-none">Loan Closed</em> </div> <em></em> </div>
+																				</div>
+																				<div class="grid-info d-none d-md-block close">
+																					<div class="full-info">
+																						<h5>₹ 25,00,000</h5> </div>
+																				</div>
+																				<div class="grid-info d-none d-md-block close" >
+																					<div class="full-info">
+																						<h5>120 Months</h5> </div>
+																				</div>
+																				<div class="grid-info d-none d-md-block close">
+																					<div class="full-info">
+																						<h5>7.05 %</h5> </div>
+																				</div>
+																				<div class="grid-info d-none d-md-block close">
+																					<div class="full-info">
+																						<h5>₹ 25000.00</h5> <em class="d-block d-md-none text-right">EMI Amount</em> </div>
+																				</div>
+																				<div class="grid-info d-none d-md-block close">
+																					<div class="full-info">
+																						<h5>₹ 0.00</h5> <em class="d-block d-md-none text-right">Overdue Amount</em> </div>
+																				</div>
+																				<div class="grid-info view-small bal-view close">
+																					<div class="full-info">
+																						<h5>₹ 20,00,000</h5> <em class="d-block d-md-none text-right">Loan Outstanding Balance</em> </div>
+																				</div>
+																				<div class="grid-info d-none d-md-block close">
+																					<div class="full-info">
+                                                                                        <!-- <a  class="close-btn">Closed</a>  -->
+                                                                                        <h5 class="deactive-text">Closed</h5>
+                                                                                    </div>
+																				</div>
+																				<div class="grid-info">
+																					<div class="full-info text-right">
+																						<button class="ux-button sm primary-custom md mr-2">Pay EMI</button>
+																						<button class="ux-button sm primary-custom md" (click)="goToPage('loanCloseDetails')">More details</button>
+																					</div>
+																				</div>
+																			</li>
+																			<li class="d-none d-md-block d-lg-block d-xl-block">
+																				<div class="col-12">
+																					<div class="row  mt-3 mb-2 ">
+																						<div class="col-12 col-lg-6 col-md-6 col-sm-6 px-0 ">
+																							<div id="dt-sample_wrapper" class="dataTables_wrapper dt-bootstrap4 no-footer">
+																								<div class="dataTables_info pt-2" id="dt-sample_info" role="status" aria-live="polite">Showing 1 to 2 of <b>2</b> entries</div>
+																							</div>
+																						</div>
+																						<div class="col-12 col-lg-6 col-md-6 px-0 d-none d-sm-none d-xl-block d-lg-block d-md-block text-right">
+																							<div class="custom-paging">
+																								<div class="dataTables_wrapper">
+																									<div class="dataTables_paginate">
+																										<ul class="pagination">
+																											<li class="page-item previous disabled"> <a href="javascript:;" class="page-link">Previous</a> </li>
+																											<li class="page-item active"> <a href="javascript:;" class="page-link">1</a> </li>
+																											<li class="page-item"> <a href="javascript:;" class="page-link">2</a> </li>
+																											<li class="page-item next"> <a href="javascript:;" class="page-link">Next</a> </li>
+																										</ul>
+																									</div>
+																								</div>
+																							</div>
+																						</div>
+																					</div>
+																				</div>
+																			</li>
+																		</ul>
+																	</div>
+																</div>
+															</div>
+														</div>
+													</div>
+													<div class="vspacer10 d-block d-md-none"></div>
+													<div class="row1  d-block d-md-none">
+														<div class="col-12 col-md-12">
+															<ul class="bottom-footer1">
+																<li>
+																	<div class="btn-div">
+																		<button class=" ux-button secondary sm-mob" >Cancel</button>
+																	</div>
+																	<div class="btn-div">
+																		<button class=" ux-button primary sm-mob">Submit</button>
+																	</div>
+																</li>
+															</ul>
+														</div>
+													</div>
+												</div>
+												<div id="educational" class="tab-panel " *ngIf="activeTab == 'educational'" [ngClass]="{'active' : activeTab == 'educational'}">
+													<div class="row1">
+														<div class="col-sm-12 col-12 col-md-12">
+															<div class="widget-box5 mb-0">
+																<div class="component-title6 custom-pad">
+																	<div class="row1">
+																		<div class="col-6 col-md-6 col-lg-8 col-xl-8">
+																			<h4 class="default-grey">My Educational Loans</h4> </div>
+																		<div class="col-6 col-md-6 col-lg-4 col-xl-4">
+																			<div class="full-info text-right">
+																				<button class="ux-button sm-mob primary">Apply for Loan</button>
+																			</div>
+																		</div>
+																	</div>
+																</div>
+																<div class="bg-white1 pt-0">
+																	<div class="row">
+																		<ul class="homeloan-list">
+																			<li class="grey-th">
+																				<div class="grid-info">
+																					<div class="full-info">
+																						<h6>Account Number</h6> </div>
+																				</div>
+																				<div class="grid-info">
+																					<div class="full-info">
+																						<h6>Loan Amount</h6> </div>
+																				</div>
+																				<div class="grid-info">
+																					<div class="full-info">
+																						<h6>Tenure</h6> </div>
+																				</div>
+																				<div class="grid-info">
+																					<div class="full-info">
+																						<h6>Interest Rate</h6> </div>
+																				</div>
+																				<div class="grid-info">
+																					<div class="full-info">
+																						<h6>EMI Amount</h6> </div>
+																				</div>
+																				<div class="grid-info">
+																					<div class="full-info">
+																						<h6>Overdue Amount</h6> </div>
+																				</div>
+																				<div class="grid-info">
+																					<div class="full-info">
+																						<h6>Loan Outstanding Balance</h6> </div>
+																				</div>
+																				<div class="grid-info">
+																					<div class="full-info">
+																						<h6>Status</h6> </div>
+																				</div>
+																				<div class="grid-info">
+																					<div class="full-info">
+																						<!-- <h6></h6>  -->
+                                                                                    </div>
+																				</div>
+																				<!-- <div class="grid-info">
+																					<div class="full-info"> </div>
+																				</div> -->
+																			</li>
+																			<li>
+																				<div class="grid-info view-small">
+																					<div class="full-info">
+																						<div class="display-mt">
+																							<h5>001198656721</h5> <em class="d-block d-md-none">Loan Active</em> </div> <em></em> </div>
+																				</div>
+																				<div class="grid-info d-none d-md-block">
+																					<div class="full-info">
+																						<h5>₹ 25,00,000</h5> </div>
+																				</div>
+																				<div class="grid-info d-none d-md-block">
+																					<div class="full-info">
+																						<h5>120 Months</h5> </div>
+																				</div>
+																				<div class="grid-info d-none d-md-block">
+																					<div class="full-info">
+																						<h5>7.05 %</h5> </div>
+																				</div>
+																				<div class="grid-info d-none d-md-block">
+																					<div class="full-info">
+																						<h5>₹ 25000.00</h5> <em class="d-block d-md-none text-right">EMI Amount</em> </div>
+																				</div>
+																				<div class="grid-info d-none d-md-block">
+																					<div class="full-info">
+																						<h5>₹ 0.00</h5> <em class="d-block d-md-none text-right">Overdue Amount</em> </div>
+																				</div>
+																				<div class="grid-info view-small bal-view">
+																					<div class="full-info">
+																						<h5>₹ 20,00,000</h5> <em class="d-block d-md-none text-right">Loan Outstanding Balance</em> </div>
+																				</div>
+																				<div class="grid-info d-none d-md-block">
+																					<div class="full-info">
+                                                                                        <!-- <a  class="active-btn">Active</a>  -->
+                                                                                        <h5 class="active-text">Active</h5>
+                                                                                    </div>
+																				</div>
+																				<div class="grid-info">
+																					<div class="full-info text-right">
+																						<button class="ux-button sm primary-custom md mr-2">Pay EMI</button>
+																						<button class="ux-button sm primary-custom md" (click)="goToPage('loanDetails')">More details</button>
+																					</div>
+																				</div>
+																			</li>
+																			<li class="float-none">
+																				<div class="grid-info view-small close">
+																					<div class="full-info">
+																						<div class="display-mt">
+																							<h5>001198656721</h5> <em class="d-block d-md-none">Loan Closed</em> </div> <em></em> </div>
+																				</div>
+																				<div class="grid-info d-none d-md-block close">
+																					<div class="full-info">
+																						<h5>₹ 25,00,000</h5> </div>
+																				</div>
+																				<div class="grid-info d-none d-md-block close">
+																					<div class="full-info">
+																						<h5>120 Months</h5> </div>
+																				</div>
+																				<div class="grid-info d-none d-md-block close">
+																					<div class="full-info">
+																						<h5>7.05 %</h5> </div>
+																				</div>
+																				<div class="grid-info d-none d-md-block close">
+																					<div class="full-info">
+																						<h5>₹ 25000.00</h5> <em class="d-block d-md-none text-right">EMI Amount</em> </div>
+																				</div>
+																				<div class="grid-info d-none d-md-block close">
+																					<div class="full-info">
+																						<h5>₹ 0.00</h5> <em class="d-block d-md-none text-right">Overdue Amount</em> </div>
+																				</div>
+																				<div class="grid-info view-small bal-view close">
+																					<div class="full-info">
+																						<h5>₹ 20,00,000</h5> <em class="d-block d-md-none text-right">Loan Outstanding Balance</em> </div>
+																				</div>
+																				<div class="grid-info d-none d-md-block close">
+																					<div class="full-info">
+                                                                                        <!-- <a  class="close-btn">Closed</a>  -->
+                                                                                        <h5 class="deactive-text">Closed</h5>
+                                                                                    </div>
+																				</div>
+																				<div class="grid-info">
+																					<div class="full-info text-right">
+																						<button class="ux-button sm primary-custom md mr-2">Pay EMI</button>
+																						<button class="ux-button sm primary-custom md" (click)="goToPage('loanCloseDetails')">More details</button>
+																					</div>
+																				</div>
+																			</li>
+																			<li class="d-none d-md-block d-lg-block d-xl-block">
+																				<div class="col-12">
+																					<div class="row  mt-3 mb-2 ">
+																						<div class="col-12 col-lg-6 col-md-6 col-sm-6 px-0 ">
+																							<div id="dt-sample_wrapper" class="dataTables_wrapper dt-bootstrap4 no-footer">
+																								<div class="dataTables_info pt-2" id="dt-sample_info" role="status" aria-live="polite">Showing 1 to 2 of <b>2</b> entries</div>
+																							</div>
+																						</div>
+																						<div class="col-12 col-lg-6 col-md-6 px-0 d-none d-sm-none d-xl-block d-lg-block d-md-block text-right">
+																							<div class="custom-paging">
+																								<div class="dataTables_wrapper">
+																									<div class="dataTables_paginate">
+																										<ul class="pagination">
+																											<li class="page-item previous disabled"> <a href="javascript:;" class="page-link">Previous</a> </li>
+																											<li class="page-item active"> <a href="javascript:;" class="page-link">1</a> </li>
+																											<li class="page-item"> <a href="javascript:;" class="page-link">2</a> </li>
+																											<li class="page-item next"> <a href="javascript:;" class="page-link">Next</a> </li>
+																										</ul>
+																									</div>
+																								</div>
+																							</div>
+																						</div>
+																					</div>
+																				</div>
+																			</li>
+																		</ul>
+																	</div>
+																</div>
+															</div>
+														</div>
+													</div>
+													<div class="vspacer10 d-block d-md-none"></div>
+													<div class="row1  d-block d-md-none">
+														<div class="col-12 col-md-12">
+															<ul class="bottom-footer1">
+																<li>
+																	<div class="btn-div">
+																		<button class=" ux-button secondary sm-mob" >Cancel</button>
+																	</div>
+																	<div class="btn-div">
+																		<button class=" ux-button primary sm-mob" >Submit</button>
+																	</div>
+																</li>
+															</ul>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+									<!-- Greencard2 End here -->
+								</div>
+								<!-- Right Column Ads Start -->
+								<div class="col-12 col-md-12 col-lg-12 col-xl-3 d-none d-xl-block">
+									<div class="right-ads">
+										<a > <img src="assets/images/banner/my-card-banner.jpg"> </a>
+									</div>
+								</div>
+								<!-- Right Column Ads End -->
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!--.right-col-container-->
+	</div>
+	<!--.right-main-column-->
+</div>
+<!-- main -->

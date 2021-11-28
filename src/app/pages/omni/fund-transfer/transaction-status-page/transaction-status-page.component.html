@@ -1,0 +1,867 @@
+<div class="main bg-m">
+	<div class="right-main-column ">
+		<div class="right-col-container pad-b full-width">
+			<!-- ======== body page content start from here ======== -->
+			<div class="body-page-container main-dashborad myprofile">
+				<div class="container-fluid">
+					<div class="row">
+						<div class="col-12 p-0">
+							<div class="breadcrumb">
+								<ul class="lst-breadcrumb">
+									<li *ngFor="let name of DataService.breadcrumblist"> <a (click)="DataService.breadcrumroute(name.routeName)">{{name.currentRoute | translate}}</a> </li>
+								</ul>
+							</div>
+						</div>
+					</div>
+					<!--.row -->
+					<div class="vspacer30 customize d-none d-md-block d-lg-block d-xl-block"></div>
+					<div class="row no-gutters">
+						<div class="col-12">
+							<div class="row1">
+								<div class="col-12 col-sm-12 col-md-12 col-lg-12  col-xl-12">
+									<div class="ux-acc-container" style="margin: 0">
+										<div class="greenCard  detailed-statement">
+											<div class="ux-nav-tabs" style="margin:0">
+												<div class="flex-container no-bg">
+													<div class="full-info">
+														<div class="ac-info">
+															<div class="greenbg-input ux-input ">
+																<label for="fromaccount">{{"TRANSACTION_FOR" | translate }}</label>
+															</div>
+														</div>
+														<div class="ac-info" (click)="onAccountSelectType()">
+															<div class="greenbg-input ux-input">
+																<select  class="hide-m" (change)="onFromAccountSelect($event.target.value)">
+																	<ng-container *ngFor="let account of formAccList">
+																		<option  [value]="account.accountNo" [selected]="account.accountNo == selectedAccount" >{{account.SchemeCode}} {{account.sbAccount}} </option>
+																	</ng-container>
+
+																	<!-- <option value="saving" selected>Saving Account</option>  -->
+																</select>
+
+																<div class="custom-selectbox">
+																	<span *ngIf="selectedAccount == '' ">  {{"SELECT_ACCOUNT" | translate}}</span>
+																	<span *ngIf="selectedAccount != '' ">{{selectedAccount}}</span>
+																<span class="right-arrow"></span> </div>
+
+																<p class="error-message"></p>
+															</div>
+														</div>
+
+														<div class="ac-info">
+															<div class="greenbg-input ux-input">
+																<p class="info-message2"><i class="hide-d">{{'TOTAL_AVL_BAL' | translate}} </i><span>{{accBalance | customcurrency: "symbol"}}</span></p>
+																<!-- <i>Total Available Balance</i>  --></div>
+														</div>
+														<div class="ac-info hide-m">
+															<button class="refresh-btn"><img src="assets/images/svg/refresh.svg" alt="refresh-icon"></button> <span class="refresh-text"> {{'LAST_REFRESH' | translate}} {{refreshedTime}}</span> </div>
+													</div>
+
+												</div>
+											</div>
+										</div>
+										<div class="statement-table  overlap3 detailed-statment">
+											<div class="block-header clearfix  bottom-border">
+												<h5> {{"TRANSACTION_STATUS" | translate }}</h5> </div>
+											<div class="inner-panel pb-0">
+												<div class=""> </div>
+												<div class="row1">
+													<div class="col-12 col-md-12 col-lg-10 col-xl-10 pb-3">
+														<div class="row1">
+															<div class="col-12 pb-1">
+																<h6 class="detail-heading">Select Period</h6> </div>
+															<div class="col-12">
+																<div class="ux-selection">
+																	<label class="ux-selection2">  {{"RECENT_TRANSACTION" | translate }}
+																		<input type="radio" name="filtertype1" value="recent" checked="filterType == 'recent' " [(ngModel)]="filterType"  (change)="onTransactionTabChange('recent')"> <span class="checkmark"></span> </label>
+																</div>
+																<div class="ux-selection">
+																	<label class="ux-selection2">  {{"UPCOMING_TRANSACTION" | translate }}
+																		<input type="radio" name="filtertype1" value="upcoming" checked="filterType == 'upcoming' " [(ngModel)]="filterType" (change)="onTransactionTabChange('upcoming')"> <span class="checkmark"></span> </label>
+																</div>
+																<!-- <div class="ux-selection">
+																	<label class="ux-selection2"> Card less cash withdrawals
+																		<input type="radio" name="filtertype1" value="cardless" checked="filterType == 'cardless' " [(ngModel)]="filterType"> <span class="checkmark"></span> </label>
+																</div> -->
+															</div>
+														</div>
+													</div>
+													<!-- <div class="col-12 col-md-12 col-lg-2 col-xl-2 pb-3"> <a class="advanceSearch link-text greentext pt-4"><u>Advance Search </u></a> </div> -->
+												</div>
+												<div class="detailedstatment-tab" id="period">
+													<div class="advsearch">
+														<div class="row1">
+															<div class="col-12 col-md-12 col-lg-12 col-xl-12">
+																<div class="row1">
+																	<div class="col-md-6 col-lg-6 col-xl-3">
+																		<h6>Date Range</h6>
+																		<div class="row1">
+																			<div class="col-6 col-md-6 col-lg-6 col-xl-6">
+																				<div class="ux-input no-label p-0">
+																					<label>To Date</label>
+																					<!-- <input type="text" class="datepicker1 " placeholder="DD/MM/YYYY" disabled> <em class="calendar-disable"></em> -->
+                                                                                    <input type="text" [owlDateTime]="dt1" [owlDateTimeTrigger]="dt1" placeholder="DD/MM/YYYY" readonly   >
+                                                                                    <owl-date-time [pickerType]="'calendar'" #dt1></owl-date-time><em class=" calendar-ic cal-top"></em>
+																					<p class="error-message"></p>
+																				</div>
+																			</div>
+																			<div class="col-6 col-md-6 col-lg-6 col-xl-6">
+																				<div class="ux-input no-label p-0">
+																					<label>From Date</label>
+																					<!-- <input type="text" class="datepicker1" placeholder="DD/MM/YYYY" disabled> <em class="calendar-disable"></em> -->
+                                                                                    <input type="text" [owlDateTime]="dt2" [owlDateTimeTrigger]="dt2" placeholder="DD/MM/YYYY" readonly   >
+                                                                                    <owl-date-time [pickerType]="'calendar'" #dt2></owl-date-time><em class=" calendar-ic cal-top"></em>
+																					<p class="error-message">error</p>
+																				</div>
+																			</div>
+																		</div>
+																	</div>
+																	<div class="vspacer10 d-block d-md-none d-lg-none d-xl-none"></div>
+																	<div class="col-md-6 col-lg-6 col-xl-3">
+																		<h6>Amount Range</h6>
+																		<div class="row1">
+																			<div class="col-12 col-md-6 col-lg-6 col-xl-6">
+																				<div class="ux-input  p-0">
+																					<label>Min Amount</label>
+																					<input type="text" class=" " placeholder="Enter Amount">
+																					<p class="error-message"></p>
+																				</div>
+																			</div>
+																			<div class="col-12 col-md-6 col-lg-6 col-xl-6">
+																				<div class="ux-input  p-0">
+																					<label>Max Amount</label>
+																					<input type="text" class=" " placeholder="Enter Amount">
+																					<p class="error-message"></p>
+																				</div>
+																			</div>
+																		</div>
+																	</div>
+																	<div class="vspacer10 d-block d-md-none d-lg-none d-xl-none"></div>
+																	<div class="col-md-6 col-lg-6 col-xl-3">
+																		<div class="vspacer20 d-none d-sm-block"></div>
+																		<div class="ux-input no-label p-0">
+																			<label>Transaction Type (CR/DR)</label>
+																			<select>
+																				<option value="" selected>All</option>
+																			</select>
+																			<p class="error-message"></p>
+																		</div>
+																	</div>
+																	<div class="vspacer10 d-block d-md-none d-lg-none d-xl-none"></div>
+																	<div class="col-md-6 col-lg-6 col-xl-3">
+																		<div class="vspacer20 d-none d-sm-block"></div>
+																		<div class="ux-input no-label p-0">
+																			<label>Last Transaction</label>
+																			<select>
+																				<option value="" selected>All</option>
+																			</select>
+																			<p class="error-message"></p>
+																		</div>
+																	</div>
+																</div>
+															</div>
+														</div>
+													</div>
+												</div>
+											</div>
+											<!-- <div class="panel-footer detstat-action text-right  clearfix">
+												<ul class="bottom-footer1">
+													<li>
+														<div class="btn-div">
+															<button class=" ux-button secondary sm-mob">Reset</button>
+														</div>
+														<div class="btn-div">
+															<button class=" ux-button primary sm-mob">Get Statement</button>
+														</div>
+													</li>
+												</ul>
+											</div> -->
+										</div>
+										<div class="statement-table detailed-statment recent " *ngIf="filterType == 'recent' ">
+											<div class="block-header clearfix">
+												<h5>{{"RECENT_TRANSACTION" | translate }}</h5>
+												<ul>
+													<li class="d-none d-sm-none border-0  mob-filter" (click)="filterOpenPopup()">
+														<a><img src="assets/images/svg/filter-g.svg">Filter</a>
+													</li>
+													<li class="d-none d-sm-inline-block">
+														<a><img src="assets/images/svg/email.svg"> {{"SEND_OVER_EMAIL" | translate }}</a>
+													</li>
+													<li class="d-none d-sm-inline-block">
+														<a (click)="generatePDF()"><img src="assets/images/svg/download.svg">{{"DOWNLOAD" | translate }}</a>
+													</li>
+													<li class="d-none d-sm-inline-block">
+														<a (click)="generatePDF(true)"><img src="assets/images/svg/print.svg">{{"PRINT" | translate }}</a>
+													</li>
+												</ul>
+											</div>
+											<div class="row">
+												<div class="col-12">
+													<div class="no-records  py-5 px-2 text-center" *ngIf = "completedTransactionList.length == 0 ">
+														<label>NO_RECORDS_FOUND</label>
+													</div>
+													<ul class="grid-list5" *ngIf = "completedTransactionList.length > 0 ">
+														<li class="grey-th">
+															<div class="grid-info">
+																<div class="full-info">
+																	<h6> {{"BENIFICIARY" | translate }}</h6> </div>
+															</div>
+															<div class="grid-info">
+																<div class="full-info"> 
+																	<h6>{{"TO_ACCOUNT" | translate }}</h6> </div>
+															</div>
+															<div class="grid-info">
+																<div class="full-info">
+																	<h6>{{"START_DATE" | translate }} </h6> </div>
+															</div>
+															<div class="grid-info">
+																<div class="full-info">
+																	<h6>IFSC</h6> </div>
+															</div>
+															<div class="grid-info">
+																<div class="full-info">
+																	<h6>EMI Amount</h6> </div>
+															</div>
+															<div class="grid-info">
+																<div class="full-info">
+																	<h6>EMI Paid </h6> </div>
+															</div>
+															<div class="grid-info">
+																<div class="full-info">
+																	<h6>{{"FREQUENCY" | translate }}</h6> </div>
+															</div>
+
+															<div class="grid-info">
+																<div class="full-info">
+																	<h6>Status</h6> </div>
+															</div>
+															<div class="grid-info">
+																<div class="full-info"> </div>
+															</div>
+														</li>
+														<li *ngFor="let item of completedTransactionList ">
+															<div class="grid-info view-small ">
+																<div class="full-info no-after pl-2">
+																	<div class="display-mt">
+																		<h5>{{item.benefName}}</h5>
+																		<em class="d-block d-md-none">{{item.toAccountNo}}/{{item.ifsc_code}}</em>
+																	 </div>
+																</div>
+															</div>
+                              								<div class="grid-info d-none d-md-block ">
+																<div class="full-info">
+																	<h5>{{item.toAccountNo}}</h5> </div>
+															</div>
+															<!-- <div class="grid-info view-small bal-view">
+																<div class="full-info">
+																	<h5 class="credit-text d-none d-md-block">12</h5> <span class="d-inline-block d-md-none">₹ 12 </span>
+																	<h5 class="credit-text d-inline-block d-md-none"><span>DR</span></h5> <em class="d-block d-md-none text-right">Successful <img src="assets/images/svg/success-circle.svg" alt="icon" class="mob-icon"></em> </div>
+															</div> -->
+															<div class="grid-info d-none d-md-block ">
+																<div class="full-info">
+																	<h5>{{item.paymentStartDate}}</h5> </div>
+															</div>
+															<div class="grid-info d-none d-md-block grid-info-3">
+																<div class="full-info">
+																	<h5>{{item.ifsc_code}}</h5> </div>
+															</div>
+															<div class="grid-info d-none d-md-block">
+																<div class="full-info">
+																	<h5>{{item.emiAmount}}</h5> </div>
+															</div>
+															<div class="grid-info d-none d-md-block">
+																<div class="full-info">
+																	<h5>{{item.emiExecuted}}</h5> </div>
+															</div>
+															<div class="grid-info d-none d-md-block">
+																<div class="full-info">
+																	<h5 >{{item.paymentFrequency}}</h5> </div>
+															</div>
+															<div class="grid-info view-small bal-view">
+																<div class="full-info">
+																	<span class="d-inline-block d-md-none">₹ {{item.emiAmount}} </span>
+																	<em class="d-block d-md-none text-right credit-text">{{item.statusId}} </em>
+																</div>
+															</div>
+															<div class="grid-info d-none d-md-block">
+																<div class="full-info">
+																	<h5 class="credit-text">{{item.statusId}}</h5> </div>
+															</div>
+															<!-- <div class="grid-info">
+																<div class="full-info text-right">
+																	<button class="ux-button sm primary-custom md">Raise Dispute</button>
+																</div>
+															</div> -->
+														</li>
+
+														<!-- <li class="d-none d-md-block d-lg-block d-xl-block">
+															<div class="col-12">
+																<div class="row  mt-3 mb-2 ">
+																	<div class="col-12 col-lg-6 col-md-6 col-sm-6 px-0 ">
+																		<div id="dt-sample_wrapper" class="dataTables_wrapper dt-bootstrap4 no-footer">
+																			<div class="dataTables_info pt-2" id="dt-sample_info" role="status" aria-live="polite">Showing 1 to 2 of <b>2</b> entries</div>
+																		</div>
+																	</div>
+																	<div class="col-12 col-lg-6 col-md-6 px-0 d-none d-sm-none d-xl-block d-lg-block d-md-block text-right">
+																		<div class="custom-paging">
+																			<div class="dataTables_wrapper">
+																				<div class="dataTables_paginate">
+																					<ul class="pagination">
+																						<li class="page-item previous disabled"> <a href="javascript:;" class="page-link">Previous</a> </li>
+																						<li class="page-item active"> <a href="javascript:;" class="page-link">1</a> </li>
+																						<li class="page-item"> <a href="javascript:;" class="page-link">2</a> </li>
+																						<li class="page-item next"> <a href="javascript:;" class="page-link">Next</a> </li>
+																					</ul>
+																				</div>
+																			</div>
+																		</div>
+																	</div>
+																</div>
+															</div>
+														</li> -->
+													</ul>
+												</div>
+											</div>
+										</div>
+										<div class="statement-table detailed-statment upcoming" *ngIf="filterType == 'upcoming' ">
+											<div class="block-header clearfix">
+												<h5>Upcoming Transaction</h5>
+												
+												<ul>
+													<li class="d-block d-sm-none border-0  mob-filter" (click)="filterOpenPopup()">
+														<a><img src="assets/images/svg/filter-g.svg">Filter</a>
+													</li>
+													<li class="d-none d-sm-inline-block">
+														<a><img src="assets/images/svg/email.svg">{{"SEND_OVER_EMAIL" | translate }}</a>
+													</li>
+													<li class="d-none d-sm-inline-block">
+														<a (click)="generatePDF()"><img src="assets/images/svg/download.svg"> {{"DOWNLOAD" | translate }}</a>
+													</li>
+													<li class="d-none d-sm-inline-block">
+														<a (click)="generatePDF(true)"> <img src="assets/images/svg/print.svg">{{"PRINT" | translate }}</a>
+													</li>
+												</ul>
+											</div>
+											<div class="row">
+												<div class="col-12">
+													<div class="no-records py-5 px-2 text-center" *ngIf = "scheduledTransactionList.length == 0 ">
+														<label> {{"NO_RECORDS_FOUND" | translate }}</label>
+													</div>
+													<ul class="grid-list5"  *ngIf = "scheduledTransactionList.length > 0">
+														<li class="grey-th">
+															<div class="grid-info">
+																<div class="full-info">
+																	<h6>  {{"BENIFICIARY" | translate }}</h6> </div>
+															</div>
+															<div class="grid-info">
+																<div class="full-info">
+																	<h6>   {{"TO_ACCOUNT" | translate }}</h6> </div>
+															</div>
+															<div class="grid-info">
+																<div class="full-info">
+																	<h6> {{"START_DATE" | translate }} </h6> </div>
+															</div>
+															<div class="grid-info">
+																<div class="full-info">
+																	<h6>  {{"IFSC_CODE" | translate }}C</h6> </div>
+															</div>
+															<div class="grid-info">
+																<div class="full-info">
+																	<h6> {{"EMI_AMOUNT" | translate }}</h6> </div>
+															</div>
+															<div class="grid-info">
+																<div class="full-info">
+																	<h6>   {{"EMI_PAID" | translate }}</h6> </div>
+															</div>
+															<div class="grid-info">
+																<div class="full-info">
+																	<h6> {{"FREQUENCY" | translate }}</h6> </div>
+															</div>
+
+															<div class="grid-info">
+																<div class="full-info">
+																	<h6>Status</h6> </div>
+															</div>
+														
+															<div class="grid-info">
+																<div class="full-info"> </div>
+															</div>
+														</li>
+														
+														<li *ngFor="let item of scheduledTransactionList" class="clearfix">
+															<div class="grid-info view-small ">
+																<div class="full-info no-after pl-2">
+																	<div class="display-mt">
+																		<h5>{{item.benefName}}</h5>
+																		<em class="d-block d-md-none">{{item.toAccountNo}}/{{item.ifsc_code}}</em>
+																	 </div>
+																</div>
+															</div>
+                              								<div class="grid-info d-none d-md-block ">
+																<div class="full-info">
+																	<h5>{{item.toAccountNo}}</h5> </div>
+															</div>
+															<!-- <div class="grid-info view-small bal-view">
+																<div class="full-info">
+																	<h5 class="credit-text d-none d-md-block">12</h5> <span class="d-inline-block d-md-none">₹ 12 </span>
+																	<h5 class="credit-text d-inline-block d-md-none"><span>DR</span></h5> <em class="d-block d-md-none text-right">Successful <img src="assets/images/svg/success-circle.svg" alt="icon" class="mob-icon"></em> </div>
+															</div> -->
+															<div class="grid-info d-none d-md-block ">
+																<div class="full-info">
+																	<h5>{{item.paymentStartDate}}</h5> </div>
+															</div>
+															<div class="grid-info d-none d-md-block grid-info-3">
+																<div class="full-info">
+																	<h5>{{item.ifsc_code}}</h5> </div>
+															</div>
+															<div class="grid-info d-none d-md-block">
+																<div class="full-info">
+																	<h5>{{item.emiAmount}}</h5> </div>
+															</div>
+															<div class="grid-info d-none d-md-block">
+																<div class="full-info">
+																	<h5>{{item.emiExecuted}}</h5> </div>
+															</div>
+															<div class="grid-info d-none d-md-block">
+																<div class="full-info">
+																	<h5 >{{item.paymentFrequency}}</h5> </div>
+															</div>
+															<div class="grid-info view-small bal-view d-md-none">
+																<div class="full-info">
+																	<span class="d-inline-block d-md-none">₹ {{item.emiAmount}} </span>
+																	<em class="d-block d-md-none text-right credit-text">{{item.statusId}} </em>
+																</div>
+															</div>
+														
+															<div class="grid-info d-none d-md-block">
+																<div class="full-info">
+																	<h5 class="credit-text">{{item.statusId}}</h5> </div>
+															</div>
+
+
+
+															<div class="grid-info">
+																<div class="full-info text-right">
+																	<!-- <button class="ux-button sm primary-custom md" (click)="openUpdatePopup(item)">Update </button> -->
+																	<button  class="icon-btn mr"   (click)="openUpdatePopup(item)"><img  src="assets/images/svg/edit.svg" alt="edit-icon"></button>
+																	
+																	<!-- <button class="ux-button sm primary-custom md" (click)="openDeletePopup(item )">DELETE </button> -->
+																	<button  class="icon-btn "  (click)="openDeletePopup(item )"><img  src="assets/images/svg/delete-g.svg" alt="delete-icon"></button>
+																</div>
+															</div>
+														</li>
+
+														<!-- <li class="d-none d-md-block d-lg-block d-xl-block">
+															<div class="col-12">
+																<div class="row  mt-3 mb-2 ">
+																	<div class="col-12 col-lg-6 col-md-6 col-sm-6 px-0 ">
+																		<div id="dt-sample_wrapper" class="dataTables_wrapper dt-bootstrap4 no-footer">
+																			<div class="dataTables_info pt-2" id="dt-sample_info" role="status" aria-live="polite">Showing 1 to 2 of <b>2</b> entries</div>
+																		</div>
+																	</div>
+																	<div class="col-12 col-lg-6 col-md-6 px-0 d-none d-sm-none d-xl-block d-lg-block d-md-block text-right">
+																		<div class="custom-paging">
+																			<div class="dataTables_wrapper">
+																				<div class="dataTables_paginate">
+																					<ul class="pagination">
+																						<li class="page-item previous disabled"> <a href="javascript:;" class="page-link">Previous</a> </li>
+																						<li class="page-item active"> <a href="javascript:;" class="page-link">1</a> </li>
+																						<li class="page-item"> <a href="javascript:;" class="page-link">2</a> </li>
+																						<li class="page-item next"> <a href="javascript:;" class="page-link">Next</a> </li>
+																					</ul>
+																				</div>
+																			</div>
+																		</div>
+																	</div>
+																</div>
+															</div>
+														</li> -->
+													</ul>
+												</div>
+											</div>
+										</div>
+										<div class="statement-table detailed-statment cardless mrg-top-100" *ngIf="filterType == 'cardless' ">
+											<div class="block-header clearfix">
+												<h5>Cardless Cash Withdrawals</h5>
+												<ul>
+													<li class="d-block d-sm-none border-0  mob-filter" (click)="filterOpenPopup()">
+														<a><img src="assets/images/svg/filter-g.svg">Filter</a>
+													</li>
+													<li class="d-none d-sm-inline-block">
+														<a><img src="assets/images/svg/email.svg">{{"SEND_OVER_EMAIL" | translate }}</a>
+													</li>
+													<li class="d-none d-sm-inline-block">
+														<a><img src="assets/images/svg/download.svg">{{"DOWNLOAD" | translate }}</a>
+													</li>
+													<li class="d-none d-sm-inline-block">
+														<a><img src="assets/images/svg/print.svg"> {{"PRINT" | translate }}</a>
+													</li>
+												</ul>
+											</div>
+											<div class="row">
+												<div class="col-12">
+													<ul class="grid-list9">
+														<li class="grey-th">
+															<div class="grid-info">
+																<div class="full-info">
+																	<h6>Request Date</h6> </div>
+															</div>
+															<div class="grid-info">
+																<div class="full-info">
+																	<h6>Transaction Reference</h6> </div>
+															</div>
+															<div class="grid-info">
+																<div class="full-info">
+																	<h6>Withdrawal Type</h6> </div>
+															</div>
+															<div class="grid-info">
+																<div class="full-info">
+																	<h6>Receivers Mobile Number</h6> </div>
+															</div>
+															<div class="grid-info">
+																<div class="full-info">
+																	<h6>Remarks</h6> </div>
+															</div>
+															<div class="grid-info">
+																<div class="full-info">
+																	<h6>Value Date</h6> </div>
+															</div>
+															<div class="grid-info">
+																<div class="full-info">
+																	<h6>ATM Location</h6> </div>
+															</div>
+															<div class="grid-info">
+																<div class="full-info">
+																	<h6>Withdrawal(₹)</h6> </div>
+															</div>
+															<div class="grid-info">
+																<div class="full-info">
+																	<h6>Status</h6> </div>
+															</div>
+															<div class="grid-info">
+																<div class="full-info"> </div>
+															</div>
+														</li>
+														<li>
+															<div class="grid-info view-small ">
+																<div class="full-info no-after pl-2">
+																	<div class="display-mt">
+																		<h5>01/06/2020</h5> <em class="d-block d-md-none">#386483648/Food Bazzar-Shopping</em> </div>
+																</div>
+															</div>
+															<div class="grid-info d-none d-md-block ">
+																<div class="full-info">
+																	<h5>#386483648</h5> </div>
+															</div>
+															<div class="grid-info d-none d-md-block ">
+																<div class="full-info">
+																	<h5>Self Use</h5> </div>
+															</div>
+															<div class="grid-info d-none d-md-block ">
+																<div class="full-info">
+																	<h5>9788636786</h5> </div>
+															</div>
+															<div class="grid-info d-none d-md-block grid-info-3">
+																<div class="full-info">
+																	<h5>Food Bazzar-Shopping</h5> </div>
+															</div>
+															<div class="grid-info d-none d-md-block">
+																<div class="full-info">
+																	<h5>01/06/2020</h5> </div>
+															</div>
+															<div class="grid-info d-none d-md-block">
+																<div class="full-info">
+																	<h5>Andheri(E)</h5> </div>
+															</div>
+															<div class="grid-info view-small bal-view">
+																<div class="full-info">
+																	<h5 class="debit-text d-none d-md-block">1000.00</h5> <span class="d-inline-block d-md-none">₹ 1000.00 </span>
+																	<h5 class="debit-text d-inline-block d-md-none"><span>DR</span></h5> <em class="d-block d-md-none text-right">Successful <img src="assets/images/svg/success-circle.svg" alt="icon" class="mob-icon"></em> </div>
+															</div>
+															<div class="grid-info d-none d-md-block">
+																<div class="full-info">
+																	<h5 class="credit-text">Success</h5> </div>
+															</div>
+															<div class="grid-info">
+																<div class="full-info text-right">
+																	<button class="ux-button sm primary-custom md">Raise Dispute</button>
+																</div>
+															</div>
+														</li>
+														<li class="d-none d-md-block d-lg-block d-xl-block">
+															<div class="col-12">
+																<div class="row  mt-3 mb-2 ">
+																	<div class="col-12 col-lg-6 col-md-6 col-sm-6 px-0 ">
+																		<div id="dt-sample_wrapper" class="dataTables_wrapper dt-bootstrap4 no-footer">
+																			<div class="dataTables_info pt-2" id="dt-sample_info" role="status" aria-live="polite">Showing 1 to 2 of <b>2</b> entries</div>
+																		</div>
+																	</div>
+																	<div class="col-12 col-lg-6 col-md-6 px-0 d-none d-sm-none d-xl-block d-lg-block d-md-block text-right">
+																		<div class="custom-paging">
+																			<div class="dataTables_wrapper">
+																				<div class="dataTables_paginate">
+																					<ul class="pagination">
+																						<li class="page-item previous disabled"> <a href="javascript:;" class="page-link">Previous</a> </li>
+																						<li class="page-item active"> <a href="javascript:;" class="page-link">1</a> </li>
+																						<li class="page-item"> <a href="javascript:;" class="page-link">2</a> </li>
+																						<li class="page-item next"> <a href="javascript:;" class="page-link">Next</a> </li>
+																					</ul>
+																				</div>
+																			</div>
+																		</div>
+																	</div>
+																</div>
+															</div>
+														</li>
+													</ul>
+												</div>
+											</div>
+										</div>
+										<div class="vspacer30 d-none d-md-block d-lg-block d-xl-block"></div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<!-- row no-gutters -->
+				</div>
+				<!--.container-fluid-->
+			</div>
+			<!--.body-page-container-->
+		</div>
+		<!--.right-col-container-->
+	</div>
+	<!--.right-main-column-->
+</div>
+<!-- main -->
+<!-- Select Accounts Popup Start-->
+<div class="popup-bottom sel-account">
+	<div class="row1">
+		<div class="col-10">
+			<h4>Select </h4> </div>
+		<div class="col-2">
+			<button class="ux-button-icon close-btn" (click)="closePopup()"> <img src="assets/images/svg/close-b.svg" alt="cross-icon" class="img-vsmall"> </button>
+		</div>
+	</div>
+	<div class="row1">
+		<div class="col-12">
+			<div class="row1">
+                <div class="col-12 col-md-12" *ngFor="let account of formAccList; let i = index" (click)="getToAccValue(account.accountType,account.accountNo )">
+					<div class="ux-selection mar-custom">
+						<label class="ux-selection2"> {{account?.SchemeCode}} : {{account.sbAccount}}
+							<input type="radio"   [value]="account.accountNo"  name="upi-account" [checked]="selectedAccount == account?.accountNo ? true : false" [(ngModel)]="selectedAccount" [ngModelOptions]="{standalone: true}"> <span class="checkmark"></span> </label>
+					</div>
+				</div>
+				<!-- <div class="col-12 col-md-12">
+					<div class="ux-selection mar-custom">
+						<label class="ux-selection2">Saving Account: XXXX XXX 967
+							<input type="radio" checked="checked" value="XXXX XXX 967" name="upi-account"> <span class="checkmark"></span> </label>
+					</div>
+				</div>
+			 -->
+			</div>
+		</div>
+	</div>
+	<div class="row mt-2">
+		<div class="col-12 text-center">
+			<button class="ux-button primary submit-btn2" (click)="closePopup()">{{ 'SUBMIT' | translate }}</button>
+		</div>
+	</div>
+</div>
+
+
+<div class="popup-bottom update-schedular sm-popup">
+	<div class="row1">
+		<div class="col-10">
+			<h4>Update Scheduler</h4>
+		</div>
+		<div class="col-2">
+			<button class="ux-button-icon close-btn" (click)="closePopup()">
+				<img src="assets/images/svg/close-b.svg" alt="cross-icon" class="img-vsmall">
+			</button>
+		</div>
+	</div>
+	<!-- <form [formGroup]="updateschedularform"> -->
+	<div class="row1">
+		<div class="col-12">
+			<div class="row1">
+			  <div class="col-12 col-md-12" >
+				<div class="ux-selection mar-custom text-center">
+				 		<p>Update scheduled transaction of {{deleteSchedulername}}  dated for {{deleterecord.paymentStartDate}}</p>
+						 <div class="ux-input ">
+							<label class="d-block p-0 text-left">Update Amount</label>
+							<input type="text" placeholder="Enter amount" [value]="deleterecord.emiAmount"  placeholder="₹ 0"  [(ngModel)]="editedAmount"  limit-to="12" (input)="OnInput($event.target.value)" (blur)="formatCurrency($event.target.value)" >
+							<p class="error-message" *ngIf="editedAmount == 0">Amount cannot be zero</p>
+							<p class="error-message" *ngIf="invalidAmount">Insufficient Balance</p>
+						
+						</div>
+
+				</div>
+			   </div>
+			</div>
+		 </div>
+	</div>
+  
+	<div class="row mt-2">
+		<div class="col-12 text-center">
+			<button class="ux-button primary submit-btn2" (click)="updateScheduler()" >UPDATE</button>
+		</div>
+	</div>
+	<!-- </form> -->
+  </div>
+
+  <div class="popup-bottom delete-schedular sm-popup">
+	<div class="row1">
+		<div class="col-10">
+			<h4>Delete Scheduler </h4>
+		</div>
+		<div class="col-2">
+			<button class="ux-button-icon close-btn" (click)="closePopup()">
+				<img src="assets/images/svg/close-b.svg" alt="cross-icon" class="img-vsmall">
+			</button>
+		</div>
+	</div>
+	<div class="row1">
+		<div class="col-12">
+			<div class="row1">
+			  <div class="col-12 col-md-12" >
+				<div class="ux-selection mar-custom text-center">
+				 		<p>	Are you sure you want to delete Scheduled transaction of {{deleteSchedulername}} dated for {{deleterecord.paymentStartDate}}</p>
+				</div>
+			  </div>
+			</div>
+		 </div>
+	</div>
+  
+	<div class="row mt-2">
+		<div class="col-12 text-center">
+			<button class="ux-button primary submit-btn2" (click)="deleteScheduler()" >DELETE</button>
+		</div>
+	</div>
+  </div>
+<!-- Select Accounts Popup End-->
+<!-- filter Popup Start-->
+<div class="popup-bottom filterPopup">
+	<div class="row1">
+		<div class="col-10">
+			<h4>Filter</h4> </div>
+		<div class="col-2">
+			<button class="ux-button-icon close-btn" (click)="closePopup()"> <img src="assets/images/svg/close-b.svg" alt="cross-icon" class="img-vsmall"> </button>
+		</div>
+	</div>
+	<div class="row1">
+		<div class="col-12">
+			<div class="row1">
+				<div class="col-12 col-md-12 col-lg-10 col-xl-10 pb-3">
+					<div class="row1">
+						<div class="col-12 pb-1">
+							<h6 class="detail-heading">Select Period</h6> </div>
+						<div class="col-12">
+							<div class="ux-selection">
+								<label class="ux-selection2" > Recent Tranasction
+									<input type="radio" name="filtertype1" value="recent" checked="checked"> <span class="checkmark"></span> </label>
+							</div>
+							<div class="ux-selection">
+								<label class="ux-selection2"> Upcoming Tranasction
+									<input type="radio" name="filtertype1" value="upcoming"> <span class="checkmark"></span> </label>
+							</div>
+							<!-- <div class="ux-selection">
+								<label class="ux-selection2"> Card less cash withdrawals
+									<input type="radio" name="filtertype1" value="cardless"> <span class="checkmark"></span> </label>
+							</div> -->
+						</div>
+					</div>
+				</div>
+				<div class="col-12 col-md-12 col-lg-2 col-xl-2 pb-3"> <a class="advanceSearch link-text greentext pt-4"><u>Advance Search </u></a> </div>
+			</div>
+			<div class="detailedstatment-tab" id="period">
+				<div class="advsearch">
+					<div class="row1">
+						<div class="col-12 col-md-12 col-lg-12 col-xl-12">
+							<div class="row1">
+								<div class="col-md-6 col-lg-6 col-xl-3">
+									<h6>Date Range</h6>
+									<div class="row1">
+										<div class="col-6 col-md-6 col-lg-6 col-xl-6">
+											<div class="ux-input no-label p-0">
+												<label>To Date</label>
+												<!-- <input type="text" class="datepicker1 " placeholder="DD/MM/YYYY" disabled> <em class="calendar-disable"></em> -->
+                                                <input type="text" [owlDateTime]="dt1" [owlDateTimeTrigger]="dt1" placeholder="DD/MM/YYYY" readonly   >
+                                                <owl-date-time [pickerType]="'calendar'" #dt1></owl-date-time><em class=" calendar-ic cal-top"></em>
+												<p class="error-message"></p>
+											</div>
+										</div>
+										<div class="col-6 col-md-6 col-lg-6 col-xl-6">
+											<div class="ux-input no-label p-0">
+												<label>From Date</label>
+												<!-- <input type="text" class="datepicker1" placeholder="DD/MM/YYYY" disabled> <em class="calendar-disable"></em> -->
+                                                <input type="text" [owlDateTime]="dt2" [owlDateTimeTrigger]="dt2" placeholder="DD/MM/YYYY" readonly   >
+                                                <owl-date-time [pickerType]="'calendar'" #dt2></owl-date-time><em class=" calendar-ic cal-top"></em>
+												<p class="error-message">error</p>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="vspacer10 d-block d-md-none d-lg-none d-xl-none"></div>
+								<div class="col-md-6 col-lg-6 col-xl-3">
+									<h6>Amount Range</h6>
+									<div class="row1">
+										<div class="col-6 col-md-6 col-lg-6 col-xl-6">
+											<div class="ux-input  p-0">
+												<label>Min Amount</label>
+												<input type="text" class=" " placeholder="Enter Amount">
+												<p class="error-message"></p>
+											</div>
+										</div>
+										<div class="col-6 col-md-6 col-lg-6 col-xl-6">
+											<div class="ux-input  p-0">
+												<label>Max Amount</label>
+												<input type="text" class=" " placeholder="Enter Amount">
+												<p class="error-message"></p>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="vspacer10 d-block d-md-none d-lg-none d-xl-none"></div>
+								<div class="col-md-6 col-lg-6 col-xl-3">
+									<div class="vspacer20 d-none d-sm-block"></div>
+									<div class="ux-input no-label p-0">
+										<label>Transaction Type (CR/DR)</label>
+										<select>
+											<option value="" selected>All</option>
+										</select>
+										<p class="error-message"></p>
+									</div>
+								</div>
+								<div class="vspacer10 d-block d-md-none d-lg-none d-xl-none"></div>
+								<div class="col-md-6 col-lg-6 col-xl-3">
+									<div class="vspacer20 d-none d-sm-block"></div>
+									<div class="ux-input no-label p-0">
+										<label>Last Transaction</label>
+										<select>
+											<option value="" selected>All</option>
+										</select>
+										<p class="error-message"></p>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="row">
+		<ul class="bottom-footer1">
+			<li>
+				<div class="btn-div">
+					<button class="ux-button secondary sm-mob">Reset</button>
+				</div>
+				<div class="btn-div">
+					<button class="ux-button primary sm-mob">Apply</button>
+				</div>
+			</li>
+		</ul>
+	</div>
+</div>
+<!-- filter Popup End-->

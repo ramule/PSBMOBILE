@@ -1,0 +1,247 @@
+<div class="main">
+
+
+    <div class="right-main-column minus-rt-col mar-custom">
+        <div class="right-col-container">
+
+            <div class="body-page-container">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="bg-section">
+                            <div class="col-12">
+                                <div class="row1">
+                                    <div class="col-sm-12 col-12 col-md-12">
+                                        <div class="row1">
+                                            <div class="col-sm-12 col-12 col-md-12">
+                                                <div class="white-box2 pad-customise">
+                                                    <ul class="payment-list ">
+                                                        <li class="bor-n">
+                                                            <div class="full-container">
+                                                                <div class="row1">
+                                                                    <div class="col-12">
+                                                                        <div class="left-info1">
+                                                                            <h6 *ngIf="pendingWithMe.notificationType != 'MANDATE_NOTIFICATION'">{{'FROM_UPI_ID' | translate}}</h6>
+                                                                            <h6 *ngIf="pendingWithMe?.notificationType == 'MANDATE_NOTIFICATION'"> {{'TO_BE_RECEIVED_FROM' | translate}}</h6>
+                                                                            <h5>{{'UPI_ID' | translate }} : {{pendingWithMe.payerAddress}}</h5>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </li>
+                                                        <li class="bor-n">
+                                                            <div class="full-container">
+                                                                 <div class="row1">
+                                                                     <div class="col-12">
+                                                                          <div class="left-info1">
+                                                                            <h6>{{'LINKED_ACCOUNT' | translate}}</h6>
+                                                                            <h5>{{VPAAccountDetails.accType}} {{VPAAccountDetails.maskedAccountNumber}}</h5> 
+                                                                           </div>
+                                                                      </div>
+                                                                 </div>
+                                                                 <div class="row1">
+                                                                   <div class="col-12 col-md-12">
+                                                                        <div class="left-info1">
+                                                                             <h5> <a class="set" (click)="routePage('collectUpiIdList')" > {{'CHANGE_AC' |
+                                                                                translate}} </a> </h5> 
+                                                                         </div>
+                                                                    </div>
+                                                                </div>
+                                                           </div>
+                                                         </li>
+                                                        <li class="bor-n">
+                                                            <div class="full-container">
+                                                                <div class="row1">
+                                                                    <div class="col-12">
+                                                                        <div class="left-info1">
+                                                                            <h6>{{'AMOUNT' | translate}}</h6>
+                                                                            <h5> {{pendingWithMe.amount | customcurrency : 'symbol'}}</h5>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </li>
+                                                        <li class="bor-n">
+                                                            <div class="full-container">
+                                                                <div class="row1">
+                                                                    <div class="col-12">
+                                                                        <div class="left-info1">
+                                                                            <h6 *ngIf="pendingWithMe.notificationType != 'MANDATE_NOTIFICATION'">{{'TO_PAYEE' | translate}}</h6>
+                                                                            <h6 *ngIf="pendingWithMe.notificationType == 'MANDATE_NOTIFICATION'">{{'TO_BE_SENT_TO' | translate}}</h6>
+                                                                            <h5>{{'UPI_ID' | translate }} : {{pendingWithMe.payeeAddress}}</h5>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </li>
+                                                        <li class="bor-n">
+                                                            <div class="full-container">
+                                                                <div class="row1">
+                                                                    <div class="col-12">
+                                                                        <div class="left-info1">
+                                                                            <h6>{{'PAYEE_NAME' | translate}}</h6>
+                                                                            <h5>{{pendingWithMe.payeeName}}</h5>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </li>
+
+                                                        <li class="bor-n" *ngIf="pendingWithMe.isGstEnable == 'Y' || pendingWithMe.payeeCode != '0000'">
+                                                            <div class="full-container">
+                                                                <div class="row1">
+                                                                    <div class="col-12">
+                                                                        <div class="left-info1">
+                                                                            <h6>{{'INVOICE_NAME' | translate}}</h6>
+                                                                            <h5>{{pendingWithMe.invoiceName}}</h5>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </li>
+
+                                                        <li class="bor-n" *ngIf="pendingWithMe.isGstEnable == 'Y' || pendingWithMe.payeeCode != '0000'">
+                                                            <div class="full-container">
+                                                                <div class="row1">
+                                                                    <div class="col-12">
+                                                                        <div class="left-info1">
+                                                                            <h6>{{'INVOICE_NUMBER' | translate}}</h6>
+                                                                            <h5>{{pendingWithMe.invoiceNumber}}</h5>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </li>
+
+                                                        <li class="bor-n" *ngIf="pendingWithMe.isGstEnable == 'Y' || pendingWithMe.payeeCode != '0000'">
+                                                            <div class="full-container">
+                                                                <div class="row1">
+                                                                    <div class="col-12">
+                                                                        <div class="left-info1">
+                                                                            <h6>{{'INVOICE_DATE' | translate}}</h6>
+                                                                            <h5>{{pendingWithMe.invoiceDate ? pendingWithMe.invoiceDate : '-'}}</h5>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </li>
+                                                        <li class="bor-n" *ngIf="pendingWithMe.payeeCode != '0000'">
+                                                            <div class="full-container">
+                                                                <div class="row1">
+                                                                    <div class="col-12">
+                                                                        <div class="left-info1">
+                                                                            <h6>{{'INVOICE_URL' | translate}}</h6>
+                                                                            <h5 (click)="viewInvoice()">{{pendingWithMe.refUrl}}</h5>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </li>
+                                                        <!-- <li class="bor-n">
+															<div class="full-container">
+																<div class="row1">
+																	<div class="col-12">
+																		<div class="left-info1">
+																			<h6>{{'REMARKS' | translate}}</h6>
+																			<h5>{{pendingWithMe.remarks ? pendingWithMe.remarks : '-'}}</h5>
+																		</div>
+																	</div>
+																</div>
+															</div>
+														</li> -->
+                                                        <li class="bor-n">
+                                                            <div class="full-container">
+                                                                <div class="row1">
+                                                                    <div class="col-12">
+                                                                        <div class="full-info">
+                                                                            <em class="custom-t"><span>*</span> {{ 'NPCI_CIRCULAR_COLLECT_MSG' | translate }}</em>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </li>
+
+                                                    </ul>
+                                                    <div class="col-12 mt-4" *ngIf="pendingWithMe.isGstEnable == 'Y'">
+                                                        <div class="text-left">
+                                                            <div>
+                                                                <div class="ux-selection1 mar-rcustom">
+                                                                    <label class="fsmall">{{'I_AGREE_TO_SHARE_MY_PAN_AADHAR_DETAILS_MSG' | translate}}
+																		<input type="checkbox" name="consentFlag"  [(ngModel)]="consentFlag"  [ngModelOptions]="{ standalone: true }">
+																		<span class="checkmark"></span>
+																	</label>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+
+
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <!-- </div>
+	</div>
+
+</div> -->
+
+            <!-- footer section start -->
+
+            <div class="footer-container sticky-actions">
+                <div class="footer-inactions minus-rt-col">
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-12 col-md-12 col-lg-12 text-center">
+                                <button class="ux-button primary md" (click)="acceptReq()">{{'CONFIRM' |
+									translate}}</button>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-12 col-md-12 col-lg-12 text-center">
+                                <div class="powered-logo">
+                                    <img src="assets/images/logo/powered-upi-logo.svg" alt="powered-upi-logo">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- footer section end -->
+
+        </div>
+    </div>
+
+</div>
+
+<div class="popup-bottom pendingReq-NoVPA">
+    <div class="row1">
+        <div class="col-12">
+            <h4 class="text-center">
+                <img src="./assets/images/svg/information.svg" alt="information-icon"> {{ 'INFORMATION' | translate }}
+            </h4>
+        </div>
+    </div>
+    <div class="row1">
+        <div class="col-12">
+            <p>
+                {{'VPA_DOES_NOT_EXISTS' | translate}}
+            </p>
+        </div>
+    </div>
+    <div class="row1 mt-2">
+        <div class="col-12 text-center">
+            <button class="ux-button primary submit-btn" type="button" (click)="closePopup('pendingReq-NoVPA')">{{ 'OK' |
+                translate}}</button>
+        </div>
+    </div>
+</div>
+
+<!-- main -->

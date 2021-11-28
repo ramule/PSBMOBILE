@@ -1,0 +1,527 @@
+<div class="main">
+    <div class="right-main-column minus-rt-col mar-custom">
+        <div class="right-col-container cust-pb2">
+            <div class="body-page-container">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="bg-section">
+                            <div class="col-12">
+                                <div class="row1">
+                                    <div class="col-sm-12 col-12 col-md-12">
+                                        <div class="white-bg1 pad-8">
+                                            <div class="row">
+                                                <ul class="mandate-list">
+                                                    <li>
+                                                        <a (click)="goToPage('createMandate')">
+                                                            <div class="icon1"> <img src="assets/images/svg/create.svg" alt="create-icon" /> </div>
+                                                            <em>{{'CREATE' | translate}}</em>
+                                                        </a>
+                                                    </li>
+                                                    <li>
+                                                        <a (click)="goToPage('requestMandate')">
+                                                            <div class="icon1"> <img src="assets/images/svg/payment.svg" alt="payment-icon" /> </div>
+                                                            <em>{{'REQUEST' | translate}}</em>
+                                                        </a>
+                                                    </li>
+                                                    <li>
+                                                        <a (click)="goToPage('approveMandate')">
+                                                            <div class="icon1">
+                                                                <img src="assets/images/svg/payment1.svg" alt="payment-icon" />
+                                                                <span class="red-dot" *ngIf="mandateNotificationCount>0"></span>
+                                                            </div>
+                                                            <em>{{'APPROVE' | translate}}</em>
+                                                        </a>
+                                                    </li>
+                                                    <!-- <li>
+                                                        <a (click)="goToPage('mandateHistory')">
+                                                            <div class="icon1">
+                                                                <img src="assets/images/svg/mandate-history.svg" alt="mandate-historyt-icon" />
+                                                                <span class="red-dot"></span>
+                                                            </div>
+                                                            <em>{{'HISTORY' | translate}}</em>
+                                                        </a>
+                                                    </li> -->
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-12 col-12 col-md-12">
+                                        <div class="ux-nav-tabs" style="margin:0">
+                                            <div class="responsive3 custom-card">
+                                                <ul class="nav nav-tabs nav-justified bor-n mt-0" role="tablist">
+                                                    <li class="nav-item"> <a class="nav-link active" data-toggle="tab" href="#active1">{{'ACTIVE' | translate}}</a> </li>
+                                                    <li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#pending1">{{'PENDING' | translate}}</a> </li>
+                                                    <li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#completed1">{{'COMPLETED' | translate}}</a> </li>
+                                                </ul>
+                                                <!-- Tab panes -->
+                                                <div class="tab-content custom-tab-content3 pt-0">
+                                                    <div id="active1" class=" tab-pane active">
+                                                        <div class="row">
+                                                            <div class="col-sm-12 col-12 col-md-12">
+                                                                <div class="white-bg1 mt-0 pt-0 pb-0">
+                                                                    <div class="row1">
+                                                                        <div class="col-12 p-0">
+                                                                            <div class="ux-nav-tabs" style="margin:0">
+                                                                                <div class="responsive4">
+                                                                                    <ul class="nav nav-tabs nav-justified bor-n pad-custom2" role="tablist">
+                                                                                        <li class="nav-item3"> <a class="nav-link active" data-toggle="tab" href="#created">{{'CREATED' |
+                                                translate}} </a> </li>
+                                                                                        <li class="nav-item3"> <a class="nav-link " data-toggle="tab" href="#accepted">{{'RECEIVED' |
+                                                translate}} </a> </li>
+                                                                                    </ul>
+                                                                                </div>
+                                                                                <!-- Tab panes -->
+                                                                                <div class="tab-content pb-0">
+                                                                                    <div id="created" class=" tab-pane active">
+                                                                                        <div class="row">
+                                                                                            <div class="col-sm-12 col-12 col-md-12">
+                                                                                                <!-- No record found section -->
+                                                                                                <div class="unfound-info" *ngIf="createdByMeList.length == 0">
+                                                                                                    <h6> {{'NO_RECORD_FOUND' | translate}}</h6>
+                                                                                                </div>
+                                                                                                <!-- No record found section end -->
+                                                                                                <div class="row1">
+                                                                                                    <ul class="payment-list">
+                                                                                                        <li *ngFor="let createdMandate of createdByMeList">
+                                                                                                            <div class="full-container mb-0">
+                                                                                                                <div class="row1">
+                                                                                                                    <div class="col-7 col-md-6">
+                                                                                                                        <div class="left-info1">
+                                                                                                                            <h6 class="heading" *ngIf="createdMandate.initiatedBy == 'PAYER'">
+                                                                                                                                {{'SEND_TO' | translate}} {{createdMandate.payeeName}}
+                                                                                                                            </h6>
+                                                                                                                            <h6 class="heading" *ngIf="createdMandate.initiatedBy == 'PAYEE'">
+                                                                                                                                {{'REQUESTED_TO' | translate}} {{createdMandate.payerName}}
+                                                                                                                            </h6>
+                                                                                                                            <h5 *ngIf="createdMandate.initiatedBy == 'PAYER'">
+                                                                                                                                {{'UPI_ID' | translate }} : {{createdMandate.payeeAddress}}
+                                                                                                                            </h5>
+                                                                                                                            <h5 *ngIf="createdMandate.initiatedBy == 'PAYEE'">
+                                                                                                                                {{'UPI_ID' | translate }} : {{createdMandate.payerAddress}}
+                                                                                                                            </h5>
+                                                                                                                        </div>
+                                                                                                                    </div>
+                                                                                                                    <div class="col-5 col-md-6">
+                                                                                                                        <div class="right-info mt-2">
+                                                                                                                            <h5>
+                                                                                                                                <!-- <img src="assets/images/svg/rupee-bl.svg"
+                                                                  alt="rupees-icon"> -->
+                                                                                                                                {{createdMandate.amount | customcurrency:'symbol'}}
+                                                                                                                            </h5>
+                                                                                                                        </div>
+                                                                                                                    </div>
+                                                                                                                </div>
+                                                                                                                <div class="row1 mt-2">
+                                                                                                                    <div class="col-6 col-md-6">
+                                                                                                                        <div class="left-info3">
+                                                                                                                            <div class="icon-info"> <span>
+                                                                  <img src="assets/images/svg/expiry-date.svg"
+                                                                    alt="expiry-date-icon">
+                                                                </span> </div> <em>{{ 'EXPIRY_DATE' | translate }} </em>
+                                                                                                                            <h6>{{createdMandate.validityEnd | formatDate}}</h6>
+                                                                                                                        </div>
+                                                                                                                    </div>
+                                                                                                                    <div class="col-6 col-md-6">
+                                                                                                                        <div class="left-info3">
+                                                                                                                            <div class="icon-info"> <span>
+                                                                  <img src="assets/images/svg/debit-frequency.svg"
+                                                                    alt="debit-frequency-icon">
+                                                                </span> </div> <em>{{ 'DEBIT_FREQUENCY' | translate }}
+                                                              </em>
+                                                                                                                            <h6>{{createdMandate.frequency}}</h6>
+                                                                                                                        </div>
+                                                                                                                    </div>
+                                                                                                                </div>
+                                                                                                                <div class="row1 mt-3">
+                                                                                                                    <div class="col-6 col-md-6"> </div>
+                                                                                                                    <!-- <div class="col-6 col-md-6 text-right">
+                                                            <button class="ux-button secondary sm5"
+                                                              (click)="routePage('createdMandate',createdMandate)">
+                                                              {{ 'VIEW_DETAILS' | translate }} </button>
+                                                          </div> -->
+                                                                                                                    <div class="col-6 col-md-6">
+                                                                                                                        <div class="btn-section">
+                                                                                                                            <div class="text-right">
+                                                                                                                                <button class="ux-button secondary sm5" (click)="routePage('createdMandate',createdMandate)">
+                                                                  {{ 'VIEW' | translate }}</button>
+                                                                                                                            </div>
+                                                                                                                        </div>
+                                                                                                                    </div>
+                                                                                                                </div>
+                                                                                                            </div>
+                                                                                                        </li>
+                                                                                                    </ul>
+                                                                                                </div>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                    <!-- Accepted Section -->
+                                                                                    <div id="accepted" class="tab-pane fade">
+                                                                                        <div class="row">
+                                                                                            <div class="col-sm-12 col-12 col-md-12">
+                                                                                                <!-- No record found section -->
+                                                                                                <div class="unfound-info" *ngIf="acceptedByMeList.length == 0">
+                                                                                                    <h6> {{'NO_RECORD_FOUND' | translate}}</h6>
+                                                                                                </div>
+                                                                                                <!-- No record found section end-->
+                                                                                                <div class="row1">
+                                                                                                    <ul class="payment-list">
+                                                                                                        <li *ngFor="let acceptedMandate of acceptedByMeList">
+                                                                                                            <div class="full-container mb-0">
+                                                                                                                <div class="row1">
+                                                                                                                    <div class="col-7 col-md-6">
+                                                                                                                        <div class="left-info1">
+                                                                                                                            <h6 class="heading" *ngIf="acceptedMandate.initiatedBy == 'PAYEE'">
+                                                                                                                                {{'REQUESTED_BY' | translate}} {{acceptedMandate.payeeName}}
+                                                                                                                            </h6>
+                                                                                                                            <h6 class="heading" *ngIf="acceptedMandate.initiatedBy == 'PAYER'">
+                                                                                                                                {{'RECEIVED_FROM' | translate}} {{acceptedMandate.payerName}} </h6>
+                                                                                                                            <!-- <h6 class="heading"
+                                                              *ngIf="acceptedMandate.initiatedBy == 'PAYER' && acceptedMandate.createdBy == 'CREATED_BY_OTHERS'">
+                                                              {{'RECEIVED_FROM' | translate}} {{acceptedMandate.payerName}} </h6>
+                                                            <h6 class="heading"
+                                                              *ngIf="acceptedMandate.initiatedBy == 'PAYEE' && acceptedMandate.createdBy == 'CREATED_BY_OTHERS'">
+                                                              {{'REQUESTED_BY' | translate}} {{mandateCompleted.payeeName}} </h6> -->
+                                                                                                                            <h5 *ngIf="acceptedMandate.initiatedBy == 'PAYEE'">
+                                                                                                                                {{'UPI_ID' | translate }} : {{acceptedMandate.payeeAddress}}</h5>
+                                                                                                                            <h5 *ngIf="acceptedMandate.initiatedBy == 'PAYER'">
+                                                                                                                                {{'UPI_ID' | translate }} : {{acceptedMandate.payerAddress}}</h5>
+                                                                                                                        </div>
+                                                                                                                    </div>
+                                                                                                                    <div class="col-5 col-md-6">
+                                                                                                                        <div class="right-info mt-2">
+                                                                                                                            <h5>
+                                                                                                                                <!-- <img src="assets/images/svg/rupee-bl.svg"
+                                                                  alt="rupees-icon"> -->
+                                                                                                                                {{acceptedMandate.amount | customcurrency:'symbol'}}
+                                                                                                                            </h5>
+                                                                                                                        </div>
+                                                                                                                    </div>
+                                                                                                                </div>
+                                                                                                                <div class="row1 mt-2">
+                                                                                                                    <div class="col-6 col-md-6">
+                                                                                                                        <div class="left-info3">
+                                                                                                                            <div class="icon-info"> <span>
+                                                                  <img src="assets/images/svg/expiry-date.svg"
+                                                                    alt="expiry-date-icon">
+                                                                </span> </div> <em>{{ 'EXPIRY_DATE' | translate }} </em>
+                                                                                                                            <h6>{{acceptedMandate.validityEnd | formatDate}}</h6>
+                                                                                                                        </div>
+                                                                                                                    </div>
+                                                                                                                    <div class="col-6 col-md-6">
+                                                                                                                        <div class="left-info3">
+                                                                                                                            <div class="icon-info"> <span>
+                                                                  <img src="assets/images/svg/debit-frequency.svg"
+                                                                    alt="debit-frequency-icon">
+                                                                </span> </div>
+                                                                                                                            <em>{{ 'DEBIT_FREQUENCY' | translate }}</em>
+                                                                                                                            <h6>{{acceptedMandate.frequency}}</h6>
+                                                                                                                        </div>
+                                                                                                                    </div>
+                                                                                                                </div>
+                                                                                                                <div class="row1 mt-3">
+                                                                                                                    <div class="col-6 col-md-6"> </div>
+                                                                                                                    <!-- <div class="col-6 col-md-6 text-right">
+                                                            <button class="ux-button secondary sm5"
+                                                              (click)="routePage('acceptedMandate',acceptedMandate)">
+                                                              {{ 'VIEW_DETAILS' | translate }} </button>
+                                                          </div> -->
+                                                                                                                    <div class="col-6 col-md-6">
+                                                                                                                        <div class="btn-section">
+                                                                                                                            <div class="text-right">
+                                                                                                                                <button class="ux-button secondary sm5" (click)="routePage('acceptedMandate',acceptedMandate)">
+                                                                  {{ 'VIEW' | translate }}</button>
+                                                                                                                            </div>
+                                                                                                                        </div>
+                                                                                                                    </div>
+                                                                                                                </div>
+                                                                                                            </div>
+                                                                                                        </li>
+                                                                                                    </ul>
+                                                                                                </div>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <!-- Pending Section  -->
+                                                    <div id="pending1" class="tab-pane fade">
+                                                        <div class="row">
+                                                            <div class="col-sm-12 col-12 col-md-12">
+                                                                <div class="white-bg1 mt-0 pad-tb">
+                                                                    <!-- No record found section -->
+                                                                    <div class="unfound-info" *ngIf="pendingWithPayerList.length == 0">
+                                                                        <h6> {{'NO_RECORD_FOUND' | translate}}</h6>
+                                                                    </div>
+                                                                    <!-- No record found section -->
+                                                                    <div class="row1">
+                                                                        <ul class="payment-list">
+                                                                            <li *ngFor="let pendingMandate of pendingWithPayerList">
+                                                                                <div class="full-container mb-0">
+                                                                                    <div class="row1">
+                                                                                        <div class="col-7 col-md-6">
+                                                                                            <div class="left-info1">
+                                                                                                <h6>{{'PENDING_WITH' | translate}} {{pendingMandate.initiatedBy == 'PAYER'? pendingMandate.payeeName : pendingMandate.payerName}}
+                                                                                                </h6>
+                                                                                                <h5>
+                                                                                                    {{'UPI_ID' | translate }} : {{pendingMandate.initiatedBy == 'PAYER'? pendingMandate.payeeAddress : pendingMandate.payerAddress}}
+                                                                                                </h5>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                        <div class="col-5 col-md-6">
+                                                                                            <div class="right-info mt-2">
+                                                                                                <h5>
+                                                                                                    <!-- <img src="assets/images/svg/rupee-bl.svg" alt="rupees-icon"> -->
+                                                                                                    {{pendingMandate.amount | customcurrency: 'symbol'}}
+                                                                                                </h5>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                    <div class="row1 mt-2">
+                                                                                        <div class="col-6 col-md-6">
+                                                                                            <div class="left-info3">
+                                                                                                <div class="icon-info"> <span>
+                                                    <img src="assets/images/svg/expiry-date.svg" alt="expiry-date-icon">
+                                                  </span> </div> <em>{{ 'EXPIRY_DATE_AND_TIME' | translate }}</em>
+                                                                                                <h6>{{pendingMandate.requestExpireTime }}</h6>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                        <div class="col-6 col-md-6">
+                                                                                            <div class="left-info3">
+                                                                                                <div class="icon-info"> <span>
+                                                    <img src="assets/images/svg/debit-frequency.svg"
+                                                      alt="debit-frequency-icon">
+                                                  </span> </div> <em>{{ 'DEBIT_FREQUENCY' | translate }}</em>
+                                                                                                <h6>{{pendingMandate.frequency }}</h6>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                    <div class="row1 mt-3">
+                                                                                        <div class="col-6 col-md-6">
+                                                                                            <div class="left-info1">
+                                                                                                <h6 class="pending"><img src="assets/images/svg/pending1.svg" alt="pending-icon" class="big-img"> {{'PENDING' | translate}}</h6>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                        <!-- <div class="col-6 col-md-6 text-right">
+                                              <button class="ux-button secondary sm5"
+                                                (click)="routePage('pendingMandate',pendingMandate)">
+                                                {{ 'VIEW_DETAILS' | translate }}</button>
+                                            </div> -->
+                                                                                        <div class="col-6 col-md-6">
+                                                                                            <div class="btn-section">
+                                                                                                <div class="text-right">
+                                                                                                    <button class="ux-button secondary sm5" (click)="routePage('pendingMandate',pendingMandate)">
+                                                    {{ 'VIEW' | translate }}</button>
+                                                                                                </div>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </li>
+                                                                        </ul>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <!-- Pending Section End -->
+                                                    <!-- Complete Section End -->
+                                                    <div id="completed1" class="tab-pane fade">
+                                                        <div class="row">
+                                                            <div class="col-sm-12 col-12 col-md-12">
+                                                                <div class="white-bg1 mt-0 pad-tb">
+                                                                    <!-- No record found section -->
+                                                                    <div class="unfound-info" *ngIf="completedList.length == 0">
+                                                                        <h6> {{'NO_RECORD_FOUND' | translate}}</h6>
+                                                                    </div>
+                                                                    <!-- No record found section end-->
+                                                                    <div class="row1">
+                                                                        <ul class="payment-list">
+                                                                            <li *ngFor="let mandateCompleted of completedList">
+                                                                                <div class="full-container mb-0">
+                                                                                    <div class="row1">
+                                                                                        <div class="col-7 col-md-6">
+                                                                                            <div class="left-info1">
+                                                                                                <h6 class="heading" *ngIf="mandateCompleted.initiatedBy == 'PAYER' && mandateCompleted.createdBy == 'CREATED_BY_ME'">
+                                                                                                    {{'SEND_TO' | translate}} {{mandateCompleted.payeeName}} </h6>
+                                                                                                <h6 class="heading" *ngIf="mandateCompleted.initiatedBy == 'PAYER' && mandateCompleted.createdBy == 'CREATED_BY_OTHERS'">
+                                                                                                    {{'RECEIVED_FROM' | translate}} {{mandateCompleted.payerName}} </h6>
+                                                                                                <h6 class="heading" *ngIf="mandateCompleted.initiatedBy == 'PAYEE' && mandateCompleted.createdBy == 'CREATED_BY_ME'">
+                                                                                                    {{'REQUESTED_TO' | translate}} {{mandateCompleted.payerName}} </h6>
+                                                                                                <h6 class="heading" *ngIf="mandateCompleted.initiatedBy == 'PAYEE' && mandateCompleted.createdBy == 'CREATED_BY_OTHERS'">
+                                                                                                    {{'REQUESTED_BY' | translate}} {{mandateCompleted.payeeName}} </h6>
+
+
+                                                                                                <h5 *ngIf="mandateCompleted.initiatedBy == 'PAYER' && mandateCompleted.createdBy == 'CREATED_BY_ME'">
+                                                                                                    {{'UPI_ID' | translate }} : {{mandateCompleted.payeeAddress}} </h5>
+                                                                                                <h5 *ngIf="mandateCompleted.initiatedBy == 'PAYER' && mandateCompleted.createdBy == 'CREATED_BY_OTHERS'">
+                                                                                                    {{'UPI_ID' | translate }} : {{mandateCompleted.payerAddress}} </h5>
+                                                                                                <h5 *ngIf="mandateCompleted.initiatedBy == 'PAYEE' && mandateCompleted.createdBy == 'CREATED_BY_ME'">
+                                                                                                    {{'UPI_ID' | translate }} : {{mandateCompleted.payerAddress}} </h5>
+                                                                                                <h5 *ngIf="mandateCompleted.initiatedBy == 'PAYEE' && mandateCompleted.createdBy == 'CREATED_BY_OTHERS'">
+                                                                                                    {{'UPI_ID' | translate }} : {{mandateCompleted.payeeAddress}} </h5>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                        <div class="col-5 col-md-6">
+                                                                                            <div class="right-info mt-2">
+                                                                                                <h5>
+                                                                                                    <!-- <img src="assets/images/svg/rupee-bl.svg" alt="rupees-icon"> -->
+                                                                                                    {{mandateCompleted.amount | customcurrency:'symbol'}} </h5>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                    <div class="row1 mt-2">
+                                                                                        <div class="col-6 col-md-6">
+                                                                                            <div class="left-info3">
+                                                                                                <div class="icon-info"> <span>
+                                                    <img src="assets/images/svg/expiry-date.svg" alt="expiry-date-icon">
+                                                  </span> </div> <em>{{ 'EXPIRY_DATE' | translate }}</em>
+                                                                                                <h6>{{mandateCompleted.validityEnd | formatDate}}</h6>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                        <div class="col-6 col-md-6">
+                                                                                            <div class="left-info3">
+                                                                                                <div class="icon-info"> <span>
+                                                    <img src="assets/images/svg/debit-frequency.svg"
+                                                      alt="debit-frequency-icon">
+                                                  </span> </div> <em>{{ 'DEBIT_FREQUENCY' | translate }}</em>
+                                                                                                <h6>{{mandateCompleted.frequency}}</h6>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                    <div class="row1 mt-3">
+                                                                                        <div class="col-6 col-md-6">
+                                                                                            <div class="left-info1">
+                                                                                                <h6 class="success" *ngIf="mandateCompleted.status == 'COMPLETED'"><img src="assets/images/svg/completed.svg" alt="completed-icon" class="big-img"> {{'COMPLETED' | translate}} </h6>
+                                                                                                <h6 class="expired" *ngIf="mandateCompleted.status == 'EXPIRED'"><img src="assets/images/svg/expired1.svg" alt="expired-icon" class="big-img"> {{'EXPIRED' | translate}}</h6>
+                                                                                                <h6 class="error" *ngIf="mandateCompleted.status == 'REJECTED'"><img src="assets/images/svg/declined.svg" alt="declined-icon" class="big-img"> {{'DECLINED' | translate}}</h6>
+                                                                                                <h6 class="error" *ngIf="mandateCompleted.status == 'REVOKED'"><img src="assets/images/svg/declined.svg" alt="declined-icon" class="big-img"> {{'REVOKED' | translate}}</h6>
+                                                                                                <h6 class="error" *ngIf="mandateCompleted.status == 'FAILED'"><img src="assets/images/svg/declined.svg" alt="declined-icon" class="big-img"> {{'FAILED' | translate}}</h6>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                        <!-- <div class="col-6 col-md-6 text-right">
+                                              <button class="ux-button secondary sm5"
+                                                (click)="routePage('completedMandate',mandateCompleted)">
+                                                {{ 'VIEW_DETAILS' | translate }}</button>
+                                            </div> -->
+                                                                                        <div class="col-6 col-md-6">
+                                                                                            <div class="btn-section">
+                                                                                                <div class="text-right">
+                                                                                                    <button class="ux-button secondary sm5" (click)="routePage('completedMandate',mandateCompleted)">
+                                                    {{ 'VIEW' | translate }}</button>
+                                                                                                </div>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </li>
+                                                                        </ul>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- =========== modal popup start ===============  -->
+<!-- Invalid QR Popup Start -->
+<div class="popup-bottom UPI-global inValidQrCode">
+    <div class="row">
+        <div class="col-12">
+            <h4 class="text-center">{{'INVALID_QR_CODE' | translate }}</h4>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12">
+            <p> {{ 'SCAN_VALID_QR_CODE' | translate }} </p>
+        </div>
+    </div>
+    <div class="row1 mt-2">
+        <div class="col-12 text-center">
+            <button class="ux-button primary md" (click)="closePopup('inValidQrCode')">{{'OK' | translate}}</button>
+        </div>
+    </div>
+</div>
+<!-- Invalid QR Popup End -->
+<!-- Sign not  QR Popup End -->
+<div class="popup-bottom UPI-global insecure-qrcode">
+    <div class="row">
+        <div class="col-12">
+            <h4 class="text-center">{{'INSECURE_QR_CODE' | translate}}</h4>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12">
+            <p> {{ 'INSECURE_QR_CODE_DO_YOU_WANT_TO_PROCEED' | translate}} </p>
+        </div>
+    </div>
+    <div class="row1 mt-2">
+        <div class="col-6 text-center">
+            <button class="ux-button primary close-btn md" (click)="validateVpa(); closePopup('insecure-qrcode')">{{'YES' | translate}}</button>
+        </div>
+        <div class="col-6 text-center">
+            <button class="ux-button secondary close-btn md" (click)="closePopup('insecure-qrcode')">{{ 'NO' | translate}}</button>
+        </div>
+    </div>
+</div>
+<!-- Invalid QR Popup End -->
+<!-- NO Account available popup start -->
+<div class="popup-bottom noAccountLinkAlert">
+    <div class="row">
+        <div class="col-12">
+            <h4 class="text-center">{{ 'ALERT' | translate }}</h4>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12">
+            <p> {{ 'NO_ACCOUNT_LINKED_KINDLY_ADD_MORE_ACCOUNT_TO_PROCEED_WITH_SCAN_QR' | translate }} </p>
+        </div>
+    </div>
+    <div class="row1 mt-2">
+        <div class="col-6 text-center">
+            <button class="ux-button secondary no md close-btn" (click)="closePopup('noAccountLinkAlert')">{{'NO' | translate}}</button>
+        </div>
+        <div class="col-6 text-center">
+            <button class="ux-button primary md" (click)="goToPage('manageAccounts')">{{'ADD_NEW_ACCOUNT' | translate}}</button>
+        </div>
+    </div>
+</div>
+<div class="popup-bottom enable-camera-permissions">
+    <div class="row1">
+        <div class="col-12">
+            <h4 class="text-center"> <img src="assets/images/svg/information.svg" alt="information-icon"> {{'INFORMATION' | translate}}
+            </h4>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12">
+            <p> {{'ENABLE_CAMERA_PERMISSION_MSG' | translate}} </p>
+        </div>
+    </div>
+    <div class="row1 mt-2">
+        <div class="col-6 text-center">
+            <button class="ux-button secondary no md close-btn" (click)="closePopup('enable-camera-permissions')">{{'CANCEL' | translate}}</button>
+        </div>
+        <div class="col-6 text-center">
+            <button class="logout-btn ux-button primary md" (click)="grant()">{{'GRANT' | translate}}</button>
+        </div>
+    </div>
+</div>
+<!-- NO Account available popup END -->

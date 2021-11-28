@@ -1,0 +1,638 @@
+<div class="nav-overlay"></div>
+<div class="right-main-column">
+    <div class="right-col-container pad-b full-width">
+        <div class="body-page-container main-dashborad">
+            <div class="container-fluid">
+
+                <div class="row">
+                    <div class="col-12 p-0">
+                        <div class="breadcrumb">
+                            <ul class="lst-breadcrumb">
+                                <!-- <li>
+                                    <a routerLink="/dashboard">{{'HOME' | translate}}</a>
+                                </li>
+                                <li>
+                                    {{'PENDING_REQUESTS' | translate}}
+                                </li> -->
+                                <li *ngFor="let name of dataService.breadcrumblist">
+                                    <a (click)="dataService.breadcrumroute(name.routeName)">{{name.currentRoute | translate}}</a>
+                            </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <!--.row -->
+                <div class="vspacer15 customize"></div>
+                <div class="row no-gutters">
+                    <div class="col-12">
+                        <div class="row1">
+                            <div class="col-12">
+                                <div class="row1">
+                                    <div
+                                        class="col-12 col-xl-9 col-lg-8 col-md-8 col-sm-12 d-none d-sm-none d-lg-block d-md-block">
+                                        <h4>{{'PENDING_REQUESTS' | translate}}</h4>
+                                    </div>
+                                    <div class="col-12 col-xl-3 col-lg-4 col-md-4 col-sm-12">
+                                        <div class="ux-input pt-0 pb-0">
+                                            <input type="text" placeholder="{{'SEARCH' | translate}}" name="search" [(ngModel)]="pendingSearchQuery" >
+                                            <p></p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="clearfix"> </div>
+                                <!-- accordian starts here -->
+
+                                <div class="ux-acc-container" style="margin: 0">
+                                    <ul>
+                                        <li *ngFor="let pendingReq of pendingOmniReq | search:'referenceNumber,benfName,startChequeNo,chequeNo,accountNumber,accountno':pendingSearchQuery; let i = index">
+                                            <div class="acc-slide mt-2" [ngClass]="{'slide-active': i==0 }" *ngIf="pendingReq.type == 'fundTransfer'" >
+                                                <a href="javascript:;" class="arrow-toggle custom">
+                                                    <div class="panel-title">
+                                                        <ul class="list2">
+                                                            <li>
+                                                                <span class="grey1">
+                                                                    <em>F</em>
+                                                                </span>
+                                                            </li>
+                                                            <li>
+                                                                <h4>Fund Transfer to {{pendingReq.benfName}}</h4>
+                                                                <small> {{pendingReq.amount | customcurrency}}</small>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                    <i></i>
+                                                </a>
+                                                <!-- arrow-toggle -->
+                                                <div class="acc-slide-content" [ngStyle]="{'display': i==0 ? 'block' : 'none' }" >
+                                                    <div class="slide-body  component-box bg-lg">
+                                                        <div class="row">
+                                                            <div class="col2">
+                                                                <h6>Ref Number</h6>
+                                                                <h5>{{pendingReq.referenceNumber}}</h5>
+                                                            </div>
+                                                            <div class="col2">
+                                                                <h6>Account Name</h6>
+                                                                <h5>{{pendingReq.accountName}}</h5>
+                                                            </div>
+                                                            <div class="col2">
+                                                                <h6>Bank Name</h6>
+                                                                <h5>{{pendingReq.bankName}}</h5>
+                                                            </div>
+                                                            <div class="col2">
+                                                                <h6>Account Number</h6>
+                                                                <h5>{{pendingReq.accountNumber}}</h5>
+                                                            </div>
+                                                            <div class="col2">
+                                                                <h6>Remarks</h6>
+                                                                <h5>{{pendingReq.remarks}}</h5>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <!--.slide-body-->
+                                                    <div class="ux-footer bg-lg">
+                                                        <div class="row1">
+                                                            <div class="col-6 col-lg-6 col-md-6 col-sm-6">
+                                                                <button
+                                                                    class="ux-button secondary sm2 d-block d-sm-block d-xl-none d-lg-none d-md-none"
+                                                                    (click)="deleteReq(pendingReq)" >{{'CANCEL' | translate}}</button>
+                                                            </div>
+                                                            <div class="col-6 col-lg-6 col-md-6 col-sm-6">
+                                                                <button
+                                                                    class="ux-button primary sm2 d-block d-sm-block d-xl-none d-lg-none d-md-none"
+                                                                    (click)="proceedPendingTransaction(pendingReq)">{{'PROCEED' | translate}}</button>
+                                                            </div>
+                                                        </div>
+                                                        <div
+                                                            class="row1 d-none d-sm-none d-xl-block d-lg-block d-md-block">
+                                                            <div class="col-12 col-lg-12 col-md-12 col-sm-12">
+                                                                <button class="ux-button sm primary float-right ml-4"
+                                                                    (click)="proceedPendingTransaction(pendingReq)">{{'PROCEED' | translate}}</button>
+                                                                <button class="ux-button sm secondary float-right"
+                                                                    (click)="deleteReq(pendingReq)" >{{'CANCEL' | translate}}</button>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <!--.acc-slide-content-->
+                                            </div>
+                                            <!--.acc-slide-->
+                                            <div class="acc-slide mt-2" [ngClass]="{'slide-active': i==0 }" *ngIf="pendingReq.type == 'addPayee'" >
+                                                <a href="javascript:;" class="arrow-toggle custom">
+                                                    <div class="panel-title">
+                                                        <ul class="list2">
+                                                            <li>
+                                                                <span class="grey1">
+                                                                    <em>A</em>
+                                                                </span>
+                                                            </li>
+                                                            <li>
+                                                                <h4>Add Payee</h4>
+                                                                <small>{{pendingReq.benfName}}</small>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                    <i></i>
+                                                </a>
+                                                <!-- arrow-toggle -->
+                                                <div class="acc-slide-content" [ngStyle]="{'display': i==0 ? 'block' : 'none' }" >
+                                                    <div class="slide-body  component-box bg-lg">
+                                                        <div class="row">
+                                                            <div class="col2">
+                                                                <h6>Ref Number</h6>
+                                                                <h5>{{pendingReq.referenceNumber}}</h5>
+                                                            </div>
+                                                            <div class="col2">
+                                                                <h6>Account Name</h6>
+                                                                <h5>{{pendingReq.accountName}}</h5>
+                                                            </div>
+                                                            <div class="col2">
+                                                                <h6>Bank Name</h6>
+                                                                <h5>{{pendingReq.bankName}}</h5>
+                                                            </div>
+                                                            <div class="col2">
+                                                                <h6>Account Number</h6>
+                                                                <h5>{{pendingReq.accountNumber}}</h5>
+                                                            </div>
+                                                            <!-- <div class="col2">
+                                                                <h6>Remarks</h6>
+                                                                <h5>{{pendingReq.remarks}}</h5>
+                                                            </div> -->
+                                                        </div>
+                                                    </div>
+                                                    <!--.slide-body-->
+                                                    <div class="ux-footer bg-lg">
+                                                        <div class="row1">
+                                                            <div class="col-6 col-lg-6 col-md-6 col-sm-6">
+                                                                <button
+                                                                    class="ux-button secondary sm2 d-block d-sm-block d-xl-none d-lg-none d-md-none"
+                                                                    (click)="deleteReq(pendingReq)" >{{'CANCEL' | translate}}</button>
+                                                            </div>
+                                                            <div class="col-6 col-lg-6 col-md-6 col-sm-6">
+                                                                <button
+                                                                    class="ux-button primary sm2 d-block d-sm-block d-xl-none d-lg-none d-md-none"
+                                                                    (click)="proceedPendingTransaction(pendingReq)">{{'PROCEED' | translate}}</button>
+                                                            </div>
+                                                        </div>
+                                                        <div
+                                                            class="row1 d-none d-sm-none d-xl-block d-lg-block d-md-block">
+                                                            <div class="col-12 col-lg-12 col-md-12 col-sm-12">
+                                                                <button class="ux-button sm primary float-right ml-4"
+                                                                    (click)="proceedPendingTransaction(pendingReq)">{{'PROCEED' | translate}}</button>
+                                                                <button class="ux-button sm secondary float-right"
+                                                                    (click)="deleteReq(pendingReq)" >{{'CANCEL' | translate}}</button>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <!--.acc-slide-content-->
+                                            </div>
+                                            <!--.acc-slide-->
+                                            <div class="acc-slide mt-2" [ngClass]="{'slide-active': i==0 }" *ngIf="pendingReq.type == 'bulkChequeCancel'" >
+                                                <a href="javascript:;" class="arrow-toggle custom">
+                                                    <div class="panel-title">
+                                                        <ul class="list2">
+                                                            <li>
+                                                                <span class="grey1">
+                                                                    <em>S</em>
+                                                                </span>
+                                                            </li>
+                                                            <li>
+                                                                <h4>Stop cheque</h4>
+                                                                <small>{{pendingReq?.startChequeNo}} - {{pendingReq?.stopChequeNo}}</small>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                    <i></i>
+                                                </a>
+                                                <!-- arrow-toggle -->
+                                                <div class="acc-slide-content" [ngStyle]="{'display': i==0 ? 'block' : 'none' }" >
+                                                    <div class="slide-body  component-box bg-lg">
+                                                        <div class="row">
+                                                            <div class="col2">
+                                                                <h6>Ref Number</h6>
+                                                                <h5>{{pendingReq?.referenceNumber}}</h5>
+                                                            </div>
+                                                            <div class="col2">
+                                                                <h6>Account Name</h6>
+                                                                <h5>{{pendingReq?.accountNumber}}</h5>
+                                                            </div>
+                                                            <div class="col2">
+                                                                <h6>From Cheque Number</h6>
+                                                                <h5>{{pendingReq?.startChequeNo}}</h5>
+                                                            </div>
+                                                            <div class="col2">
+                                                                <h6>To Cheque Number</h6>
+                                                                <h5>{{pendingReq?.stopChequeNo}}</h5>
+                                                            </div>
+                                                            <div class="col2">
+                                                                <h6>Remarks</h6>
+                                                                <h5>{{pendingReq.remarks}}</h5>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <!--.slide-body-->
+                                                    <div class="ux-footer bg-lg">
+                                                        <div class="row1">
+                                                            <div class="col-6 col-lg-6 col-md-6 col-sm-6">
+                                                                <button
+                                                                    class="ux-button secondary sm2 d-block d-sm-block d-xl-none d-lg-none d-md-none"
+                                                                    (click)="deleteReq(pendingReq)" >{{'CANCEL' | translate}}</button>
+                                                            </div>
+                                                            <div class="col-6 col-lg-6 col-md-6 col-sm-6">
+                                                                <button
+                                                                    class="ux-button primary sm2 d-block d-sm-block d-xl-none d-lg-none d-md-none"
+                                                                    (click)="proceedPendingTransaction(pendingReq)">{{'PROCEED' | translate}}</button>
+                                                            </div>
+                                                        </div>
+                                                        <div
+                                                            class="row1 d-none d-sm-none d-xl-block d-lg-block d-md-block">
+                                                            <div class="col-12 col-lg-12 col-md-12 col-sm-12">
+                                                                <button class="ux-button sm primary float-right ml-4"
+                                                                    (click)="proceedPendingTransaction(pendingReq)">{{'PROCEED' | translate}}</button>
+                                                                <button class="ux-button sm secondary float-right"
+                                                                    (click)="deleteReq(pendingReq)" >{{'CANCEL' | translate}}</button>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <!--.acc-slide-content-->
+                                            </div>
+                                            <!--.acc-slide-->
+                                            <div class="acc-slide mt-2" [ngClass]="{'slide-active': i==0 }" *ngIf="pendingReq.type == 'stopCheque'" >
+                                                <a href="javascript:;" class="arrow-toggle custom">
+                                                    <div class="panel-title">
+                                                        <ul class="list2">
+                                                            <li>
+                                                                <span class="grey1">
+                                                                    <em>S</em>
+                                                                </span>
+                                                            </li>
+                                                            <li>
+                                                                <h4>Stop cheque</h4>
+                                                                <small>{{pendingReq?.chequeNo}}</small>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                    <i></i>
+                                                </a>
+                                                <!-- arrow-toggle -->
+                                                <div class="acc-slide-content" [ngStyle]="{'display': i==0 ? 'block' : 'none' }" >
+                                                    <div class="slide-body  component-box bg-lg">
+                                                        <div class="row">
+                                                            <div class="col2">
+                                                                <h6>Ref Number</h6>
+                                                                <h5>{{pendingReq.referenceNumber}}</h5>
+                                                            </div>
+                                                            <div class="col2">
+                                                                <h6>Account Name</h6>
+                                                                <h5>{{pendingReq?.accountNumber}}</h5>
+                                                            </div>
+                                                            <div class="col2">
+                                                                <h6>Cheque Number</h6>
+                                                                <h5>{{pendingReq?.chequeNo}}</h5>
+                                                            </div>
+                                                            <div class="col2">
+                                                                <h6>Remarks</h6>
+                                                                <h5>{{pendingReq?.remarks}}</h5>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <!--.slide-body-->
+                                                    <div class="ux-footer bg-lg">
+                                                        <div class="row1">
+                                                            <div class="col-6 col-lg-6 col-md-6 col-sm-6">
+                                                                <button
+                                                                    class="ux-button secondary sm2 d-block d-sm-block d-xl-none d-lg-none d-md-none"
+                                                                    (click)="deleteReq(pendingReq)" >{{'CANCEL' | translate}}</button>
+                                                            </div>
+                                                            <div class="col-6 col-lg-6 col-md-6 col-sm-6">
+                                                                <button
+                                                                    class="ux-button primary sm2 d-block d-sm-block d-xl-none d-lg-none d-md-none"
+                                                                    (click)="proceedPendingTransaction(pendingReq)">{{'PROCEED' | translate}}</button>
+                                                            </div>
+                                                        </div>
+                                                        <div
+                                                            class="row1 d-none d-sm-none d-xl-block d-lg-block d-md-block">
+                                                            <div class="col-12 col-lg-12 col-md-12 col-sm-12">
+                                                                <button class="ux-button sm primary float-right ml-4"
+                                                                    (click)="proceedPendingTransaction(pendingReq)">{{'PROCEED' | translate}}</button>
+                                                                <button class="ux-button sm secondary float-right"
+                                                                    (click)="deleteReq(pendingReq)" >{{'CANCEL' | translate}}</button>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <!--.acc-slide-content-->
+                                            </div>
+                                            <!--.acc-slide-->
+                                            <div class="acc-slide mt-2" [ngClass]="{'slide-active': i==0 }" *ngIf="pendingReq.type == 'issueChequeBook'" >
+                                                <a href="javascript:;" class="arrow-toggle custom">
+                                                    <div class="panel-title">
+                                                        <ul class="list2">
+                                                            <li>
+                                                                <span class="grey1">
+                                                                    <em>C</em>
+                                                                </span>
+                                                            </li>
+                                                            <li>
+                                                                <h4>Cheque book request</h4>
+                                                                <small>{{pendingReq?.accountNumber}}</small>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                    <i></i>
+                                                </a>
+                                                <!-- arrow-toggle -->
+                                                <div class="acc-slide-content" [ngStyle]="{'display': i==0 ? 'block' : 'none' }" >
+                                                    <div class="slide-body  component-box bg-lg">
+                                                        <div class="row">
+                                                            <div class="col2">
+                                                                <h6>Ref Number</h6>
+                                                                <h5>{{pendingReq?.referenceNumber}}</h5>
+                                                            </div>
+                                                            <div class="col2">
+                                                                <h6>Account Number</h6>
+                                                                <h5>{{pendingReq?.accountNumber}}</h5>
+                                                            </div>
+                                                            <div class="col2">
+                                                                <h6>Number of pages</h6>
+                                                                <h5>{{pendingReq?.numberOfPages}}</h5>
+                                                            </div>
+                                                            <div class="col2">
+                                                                <h6>Address</h6>
+                                                                <h5>{{pendingReq?.address}}</h5>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <!--.slide-body-->
+                                                    <div class="ux-footer bg-lg">
+                                                        <div class="row1">
+                                                            <div class="col-6 col-lg-6 col-md-6 col-sm-6">
+                                                                <button
+                                                                    class="ux-button secondary sm2 d-block d-sm-block d-xl-none d-lg-none d-md-none"
+                                                                    (click)="deleteReq(pendingReq)" >{{'CANCEL' | translate}}</button>
+                                                            </div>
+                                                            <div class="col-6 col-lg-6 col-md-6 col-sm-6">
+                                                                <button
+                                                                    class="ux-button primary sm2 d-block d-sm-block d-xl-none d-lg-none d-md-none"
+                                                                    (click)="proceedPendingTransaction(pendingReq)">{{'PROCEED' | translate}}</button>
+                                                            </div>
+                                                        </div>
+                                                        <div
+                                                            class="row1 d-none d-sm-none d-xl-block d-lg-block d-md-block">
+                                                            <div class="col-12 col-lg-12 col-md-12 col-sm-12">
+                                                                <button class="ux-button sm primary float-right ml-4"
+                                                                    (click)="proceedPendingTransaction(pendingReq)">{{'PROCEED' | translate}}</button>
+                                                                <button class="ux-button sm secondary float-right"
+                                                                    (click)="deleteReq(pendingReq)" >{{'CANCEL' | translate}}</button>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <!--.acc-slide-content-->
+                                            </div>
+                                            <!--.acc-slide-->
+
+                                            <div class="acc-slide mt-2" [ngClass]="{'slide-active': i==0 }" *ngIf="pendingReq.type == 'DTH'" >
+                                                <a href="javascript:;" class="arrow-toggle custom">
+                                                    <div class="panel-title">
+                                                        <ul class="list2">
+                                                            <li>
+                                                                <span class="grey1">
+                                                                    <em>D</em>
+                                                                </span>
+                                                            </li>
+                                                            <li>
+                                                                <h4>DTH Bill Pay</h4>
+                                                                <small>{{pendingReq.accountno}}</small>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                    <i></i>
+                                                </a>
+                                                <!-- arrow-toggle -->
+                                                <div class="acc-slide-content" [ngStyle]="{'display': i==0 ? 'block' : 'none' }" >
+                                                    <div class="slide-body  component-box bg-lg">
+                                                        <div class="row">
+                                                            <div class="col2">
+                                                                <h6>Ref Number</h6>
+                                                                <h5>{{pendingReq.referenceNumber}}</h5>
+                                                            </div>
+                                                            <div class="col2">
+                                                                <h6>Operator Name</h6>
+                                                                <h5>{{pendingReq.operatorName}}</h5>
+                                                            </div>
+                                                            <div class="col2">
+                                                                <h6>{{pendingReq.labelName}}</h6>
+                                                                <h5>{{pendingReq.subscriber}}</h5>
+                                                            </div>
+                                                            <div class="col2">
+                                                                <h6>Date</h6>
+                                                                <h5>{{pendingReq.dateofTxn | date:'dd-MM-yyyy'}}</h5>
+                                                            </div>
+                                                            <div class="col2">
+                                                                <h6>Account Number</h6>
+                                                                <h5>{{pendingReq.accountno}}</h5>
+                                                            </div>
+                                                            <div class="col2">
+                                                                <h6>Amount</h6>
+                                                                <h5>{{pendingReq.amount | customcurrency:'symbol'}}</h5>
+                                                            </div>
+                                                          
+                                                        </div>
+                                                    </div>
+                                                    <!--.slide-body-->
+                                                    <div class="ux-footer bg-lg">
+                                                        <div class="row1">
+                                                            <div class="col-6 col-lg-6 col-md-6 col-sm-6">
+                                                                <button
+                                                                    class="ux-button secondary sm2 d-block d-sm-block d-xl-none d-lg-none d-md-none"
+                                                                    (click)="deleteReq(pendingReq)" >{{'CANCEL' | translate}}</button>
+                                                            </div>
+                                                            <div class="col-6 col-lg-6 col-md-6 col-sm-6">
+                                                                <button
+                                                                    class="ux-button primary sm2 d-block d-sm-block d-xl-none d-lg-none d-md-none"
+                                                                    (click)="proceedPendingTransaction(pendingReq)">{{'PROCEED' | translate}}</button>
+                                                            </div>
+                                                        </div>
+                                                        <div
+                                                            class="row1 d-none d-sm-none d-xl-block d-lg-block d-md-block">
+                                                            <div class="col-12 col-lg-12 col-md-12 col-sm-12">
+                                                                <button class="ux-button sm primary float-right ml-4"
+                                                                    (click)="proceedPendingTransaction(pendingReq)">{{'PROCEED' | translate}}</button>
+                                                                <button class="ux-button sm secondary float-right"
+                                                                    (click)="deleteReq(pendingReq)" >{{'CANCEL' | translate}}</button>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <!--.acc-slide-content-->
+                                            </div>
+
+                                            <div class="acc-slide mt-2" [ngClass]="{'slide-active': i==0 }" *ngIf="pendingReq.type == 'Water Bill Pay'">
+                                                <a href="javascript:;" class="arrow-toggle custom">
+                                                    <div class="panel-title">
+                                                        <ul class="list2">
+                                                            <li>
+                                                                <span class="grey1">
+                                                                    <em>W</em>
+                                                                </span>
+                                                            </li>
+                                                            <li>
+                                                                <h4>Water Bill Pay</h4>
+                                                                <small>{{pendingReq.accountno}}</small>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                    <i></i>
+                                                </a>
+                                                <!-- arrow-toggle -->
+                                                <div class="acc-slide-content" [ngStyle]="{'display': i==0 ? 'block' : 'none' }" >
+                                                    <div class="slide-body  component-box bg-lg">
+                                                        <div class="row">
+                                                            <div class="col2">
+                                                                <h6>Ref Number</h6>
+                                                                <h5>{{pendingReq.referenceNumber}}</h5>
+                                                            </div>
+                                                            <div class="col2">
+                                                                <h6>Date</h6>
+                                                                <h5>{{pendingReq.dateofTxn | date:'dd-MM-yyyy'}}</h5>
+                                                            </div>
+                                                            <div class="col2">
+                                                                <h6>Account Number</h6>
+                                                                <h5>{{pendingReq.accountno}}</h5>
+                                                            </div>
+                                                            <div class="col2">
+                                                                <h6>Board Name</h6>
+                                                                <h5>{{pendingReq.boardName}}</h5>
+                                                            </div>
+                                                            <div class="col2">
+                                                                <h6>{{pendingReq.labelName}}</h6>
+                                                                <h5>{{pendingReq.billerTypeID}}</h5>
+                                                            </div>
+                                                            <div class="col2">
+                                                                <h6>Amount</h6>
+                                                                <h5>{{pendingReq.amount | customcurrency:'symbol'}}</h5>
+                                                            </div>
+                                                          
+                                                        </div>
+                                                    </div>
+                                                    <!--.slide-body-->
+                                                    <div class="ux-footer bg-lg">
+                                                        <div class="row1">
+                                                            <div class="col-6 col-lg-6 col-md-6 col-sm-6">
+                                                                <button
+                                                                    class="ux-button secondary sm2 d-block d-sm-block d-xl-none d-lg-none d-md-none"
+                                                                    (click)="deleteReq(pendingReq)" >{{'CANCEL' | translate}}</button>
+                                                            </div>
+                                                            <div class="col-6 col-lg-6 col-md-6 col-sm-6">
+                                                                <button
+                                                                    class="ux-button primary sm2 d-block d-sm-block d-xl-none d-lg-none d-md-none"
+                                                                    (click)="proceedPendingTransaction(pendingReq)">{{'PROCEED' | translate}}</button>
+                                                            </div>
+                                                        </div>
+                                                        <div
+                                                            class="row1 d-none d-sm-none d-xl-block d-lg-block d-md-block">
+                                                            <div class="col-12 col-lg-12 col-md-12 col-sm-12">
+                                                                <button class="ux-button sm primary float-right ml-4"
+                                                                    (click)="proceedPendingTransaction(pendingReq)">{{'PROCEED' | translate}}</button>
+                                                                <button class="ux-button sm secondary float-right"
+                                                                    (click)="deleteReq(pendingReq)" >{{'CANCEL' | translate}}</button>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <!--.acc-slide-content-->
+                                            </div>
+
+
+                                            <div class="acc-slide mt-2" [ngClass]="{'slide-active': i==0 }" *ngIf="pendingReq.type == 'Mobile Recharge'">
+                                                <a href="javascript:;" class="arrow-toggle custom">
+                                                    <div class="panel-title">
+                                                        <ul class="list2">
+                                                            <li>
+                                                                <span class="grey1">
+                                                                    <em>M</em>
+                                                                </span>
+                                                            </li>
+                                                            <li>
+                                                                <h4>Mobile Recharge</h4>
+                                                                <small>{{pendingReq.mobileNo}}</small>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                    <i></i>
+                                                </a>
+                                                <!-- arrow-toggle -->
+                                                <div class="acc-slide-content" [ngStyle]="{'display': i==0 ? 'block' : 'none' }" >
+                                                    <div class="slide-body  component-box bg-lg">
+                                                        <div class="row">
+                                                            <div class="col2">
+                                                                <h6>Ref Number</h6>
+                                                                <h5>{{pendingReq.referenceNumber}}</h5>
+                                                            </div>
+                                                            <div class="col2">
+                                                                <h6>Account Number</h6>
+                                                                <h5>{{pendingReq.accountno}}</h5>
+                                                            </div>
+                                                            <div class="col2">
+                                                                <h6>Mobile Number</h6>
+                                                                <h5>{{pendingReq.mobileNo}}</h5>
+                                                            </div>
+                                                            <div class="col2">
+                                                                <h6>Amount</h6>
+                                                                <h5>{{pendingReq.amount | customcurrency:'symbol'}}</h5>
+                                                            </div>
+                                                          
+                                                        </div>
+                                                    </div>
+                                                    <!--.slide-body-->
+                                                    <div class="ux-footer bg-lg">
+                                                        <div class="row1">
+                                                            <div class="col-6 col-lg-6 col-md-6 col-sm-6">
+                                                                <button
+                                                                    class="ux-button secondary sm2 d-block d-sm-block d-xl-none d-lg-none d-md-none"
+                                                                    (click)="deleteReq(pendingReq)" >{{'CANCEL' | translate}}</button>
+                                                            </div>
+                                                            <div class="col-6 col-lg-6 col-md-6 col-sm-6">
+                                                                <button
+                                                                    class="ux-button primary sm2 d-block d-sm-block d-xl-none d-lg-none d-md-none"
+                                                                    (click)="proceedPendingTransaction(pendingReq)">{{'PROCEED' | translate}}</button>
+                                                            </div>
+                                                        </div>
+                                                        <div
+                                                            class="row1 d-none d-sm-none d-xl-block d-lg-block d-md-block">
+                                                            <div class="col-12 col-lg-12 col-md-12 col-sm-12">
+                                                                <button class="ux-button sm primary float-right ml-4"
+                                                                    (click)="proceedPendingTransaction(pendingReq)">{{'PROCEED' | translate}}</button>
+                                                                <button class="ux-button sm secondary float-right"
+                                                                    (click)="deleteReq(pendingReq)" >{{'CANCEL' | translate}}</button>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <!--.acc-slide-content-->
+                                            </div>
+                                        </li>
+                                    </ul>
+
+                                </div>
+                                <!--.ux-acc-container-->
+                                <!-- accordian starts ends -->
+
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+            <!--.container-fluid-->
+        </div>
+        <!--.body-page-container-->
+
+
+    </div>
+    <!--.right-col-container-->
+</div>
+<!--.right-main-column-->

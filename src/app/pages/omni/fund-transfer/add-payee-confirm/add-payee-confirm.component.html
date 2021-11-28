@@ -1,0 +1,154 @@
+<div class="main">
+    <div class="nav-overlay"></div>
+    <div class="right-main-column">
+        <div class="right-col-container full-width">
+            <div class="body-page-container main-dashborad">
+                <div class="container-fluid">
+
+                    <div class="row">
+                        <div class="col-12 p-0">
+                            <div class="breadcrumb">
+                                <ul class="lst-breadcrumb">
+                                    <!-- <li>
+                                        <a href="javascript:;">{{"FUND_TRANSFER" | translate }}</a>
+                                    </li>
+                                    <li>
+                                        <a routerLink="/managePayee">{{"MANAGE_PAYEE" | translate }}</a>
+                                    </li>
+                                    <li>
+                                        <a routerLink="/addPayee">{{"ADD_PAYEE" | translate}} </a>
+                                    </li>
+                                    <li>
+                                        {{"ADD_PAYEE_CONFIRM" | translate }}
+                                    </li> -->
+                                    <li *ngFor="let name of dataService.breadcrumblist">
+                                        <a (click)="dataService.breadcrumroute(name.routeName)">{{name.currentRoute | translate}}</a>
+                                </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <!--.row -->
+                    <div class="vspacer30"></div>
+                    <div class="row no-gutters">
+                        <div class="col-12">
+                            <div class="row1">
+                                <div class="col-12">
+                                    <div class="row1 mt-3">
+                                        <div class="col-12">
+                                            <div class="grid-container">
+                                                <div class="grid-header">
+                                                    <h2>{{'ADD_PAYEE_CONFIRM' | translate}}</h2>
+                                                </div>
+                                                <div class="row1">
+
+                                                    <div class="col-12 col-xl-3 col-lg-6 col-md-6 col-sm-12">
+                                                        <div class="ux-input">
+                                                            <label>{{"ACCOUNT_NUMBER" | translate }}</label>
+                                                            <input type="text" [(ngModel)]="customerDtls.values.accNumber"
+                                                            [ngModelOptions]="{ standalone: true }"
+                                                               disabled>
+                                                            <p></p>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-12 col-xl-3 col-lg-6 col-md-6 col-sm-12">
+                                                        <div class="ux-input">
+                                                            <label>{{"ACCOUNT_NAME" | translate }}</label>
+                                                            <input type="text" [(ngModel)]="customerDtls.values.accName"
+                                                            [ngModelOptions]="{ standalone: true }"
+                                                                disabled>
+                                                            <p></p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="row1">
+
+                                                    <div *ngIf="customerDtls.bankType == '3'" class="col-12 col-xl-3 col-lg-6 col-md-6 col-sm-12">
+                                                        <div class="ux-input">
+                                                            <label>{{'IFSC_CODE' | translate}}</label>
+                                                            <input type="text" [(ngModel)]="customerDtls.values.ifscCode"
+                                                            [ngModelOptions]="{ standalone: true }" disabled>
+                                                            <p></p>
+                                                        </div>
+                                                    </div>
+                                                    <div *ngIf="customerDtls.bankType == '4'" class="col-12 col-xl-3 col-lg-6 col-md-6 col-sm-12">
+                                                        <div class="ux-input">
+                                                            <label>{{"SWIFT_CODE" | translate }}</label>
+                                                            <input type="text" [(ngModel)]="customerDtls.values.swiftCode"
+                                                            [ngModelOptions]="{ standalone: true }"  disabled>
+                                                            <p></p>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-12 col-xl-3 col-lg-6 col-md-6 col-sm-12">
+                                                        <div class="ux-input">
+                                                            <label>{{'NICK_NAME' | translate}}</label>
+                                                            <input type="text" [(ngModel)]="customerDtls.values.nickName"
+                                                            [ngModelOptions]="{ standalone: true }"  disabled>
+                                                            <p></p>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-12 col-xl-3 col-lg-6 col-md-6 col-sm-12" *ngIf="customerDtls.bankType == '1'">
+                                                            <div class="ux-input">
+                                                                <label>{{'TRANSFER_LIMIT' | translate}} </label>
+                                                                <input type="text" [(ngModel)]="customerDtls.values.limitAmount"
+                                                                [ngModelOptions]="{ standalone: true }"  disabled>
+                                                                <span>
+                                                                    {{customerDtls.amountInWords}}
+                                                                </span>
+                                                                <p></p>
+                                                            </div>
+                                                    </div>
+                                                </div>
+                                                <div class="row1" *ngIf="customerDtls.bankType == '3' || customerDtls.bankType == '4'">
+                                                    <div class="col-12 col-xl-3 col-lg-6 col-md-6 col-sm-12">
+                                                        <div class="ux-input">
+                                                            <label>{{'TRANSFER_LIMIT' | translate}} </label>
+                                                            <input type="text" [(ngModel)]="customerDtls.values.limitAmount"
+                                                            [ngModelOptions]="{ standalone: true }"  disabled>
+                                                            <span>
+                                                                {{customerDtls.amountInWords}}
+                                                            </span>
+                                                            <p></p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                            <div class="ux-footer border-n p-0">
+                                                <div class="row1">
+                                                    <div class="col-6 col-lg-6 col-md-6 col-sm-6">
+                                                        <button
+                                                            class="ux-button secondary w-100 d-block d-sm-block d-xl-none d-lg-none d-md-none"
+                                                            type="button" (click)="cancel()">{{"CANCEL" | translate }}</button>
+                                                    </div>
+                                                    <div class="col-6 col-lg-6 col-md-6 col-sm-6">
+                                                        <button
+                                                            class="ux-button primary  w-100 d-block d-sm-block d-xl-none d-lg-none d-md-none"
+                                                            type="button" (click)="submit()">{{"SUBMIT_BTN" | translate }}</button>
+                                                    </div>
+                                                </div>
+                                                <div class="row  d-none d-sm-none d-xl-block d-lg-block d-md-block">
+                                                    <div class="col-12 col-lg-12 col-md-12 col-sm-12 p-0">
+                                                        <button class="ux-button primary float-right ml-4"
+                                                            type="button" (click)="submit()">{{"SUBMIT_BTN" | translate }}</button>
+                                                        <button class="ux-button secondary float-right"
+                                                            type="button" (click)="cancel()">{{"CANCEL" | translate }}</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+                <!--.container-fluid-->
+            </div>
+
+        </div>
+    </div>
+</div>

@@ -1,0 +1,49 @@
+<div class="prelogin-page">
+	<div class="registration-steps">
+		<div class="row1">
+			<div class="col-12 position-static">
+				<div class="inner-header">
+					<div class="registration-container">
+						<!-- <a class="prev-tab"> <img src="assets/images/icons_old/cross-w.png" alt="cross-w"></a> -->
+						<h4>{{'LANGUAGE' | translate}}</h4>
+						<a class="closewindow"><img (click)="closeLanguage()" src="assets/images/svg/close-w.svg"></a>
+					</div>
+				</div>
+				<div class="registrationsteps-block registration-container clearfix more-service mb-2">
+					<div class="moreservice-container"> <img src="assets/images/background/lang-bg.png">
+						<div class="grey-bg2 mt-0 mb-0 pad-lr">
+							<div class="inner-container">
+								<form [formGroup]="LanguageForm">
+									<div class="row">
+										<ul class="language-list">
+											<li *ngFor="let item of finalLangList; index as i;" [ngClass]="{'language-selected': item.checked}">
+												<a href="javascript:;" class="">
+													<div class="row1">
+														<div class="col-6 col-lg-6 col-md-6">
+															<div class="float-left">
+																<label class="ux-selection2"> {{item.lanugae}}
+																	<input type="radio" name="language" id="r1" [checked]="item.checked" [value]="item.langCode" formControlName="language"> 
+                                                                    <span class="checkmark"></span> </label>
+															</div>
+														</div>
+														<div class="col-6 col-lg-6 col-md-6"> <em>{{item.name}}</em> </div>
+													</div>
+												</a>
+											</li>
+										</ul>
+									</div>
+                                </form>
+							</div>
+							<div class="row1">
+								<div class="text-center m-auto text-center">
+									<button class="ux-button primary md" type="submit" (click)="applyLanguage()">Apply</button>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+	<!-- .full-container -->

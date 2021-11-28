@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+
+	<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+	    <title>Contact Us</title>
+		<link href="../css/lib/bootstrap.min.css" rel="stylesheet">
+	    <link href="../css/lib/jquery-ui.min.css" rel="stylesheet">
+	 	<link href="../css/lib/jquery.mCustomScrollbar.min.css" rel="stylesheet">
+		<link href="../css/main.css" rel="stylesheet">
+
+	</head>
+
+<body>
+
+	<div  class="prelogin-page">
+
+        <div class="full-container pt-2 full full1">
+            <div class="login-container inner1">
+                <div class="central-box">
+
+            <!-- Loginform Container Start -->
+               <div class="radius loginform-container">
+                  <div class="radius1 login-form1">
+                    <div class="login-header  d-none d-sm-none d-md-block d-lg-block d-xl-block">
+                      <div class="brand-logo">
+                          <img src="./assets/images/logo/logo1.png" alt="kiya-logo">
+                      </div>
+                     </div>
+                     <div class="main-heading ">
+                         <div class="container-fluid">
+                          <div class="row1">
+                            <div class="col-12 col-sm-12 col-lg-11 col-md-11 m-auto">
+                              <em>Contact Us</em>
+                                 <button class="ux-btn-header" (click)="cancelContact()" >
+                                    <img src="./assets/images/svg/close1.svg" alt="cross-icon" class="img-vsmall">
+                                </button>
+                               </div>
+                             </div>
+                           </div>
+                        </div>
+                        <div class="vspacer10"></div>
+                          <div class="row">
+                            <div class="col-12 col-lg-11 col-md-11 col-sm-12 m-auto">
+                              <div class="row1">
+                                  <div class="col-12 col-lg-6 col-md-6">
+                                      <div class="contact-info">
+                                        <div class="row">
+                                          <div class="col-2 col-xl-6 col-lg-6 col-md-3">
+                                            <img src="./assets/images/svg/customer-service.svg" alt="contact-icon">
+                                            </div>
+                                          <div class="col-10 col-xl-6 col-lg-6 col-md-9">
+                                              <h6>{{headerContact[0]?.header}}</h6>
+                                              <h3  (click)="commonMethods.openDailler(headerContact[0]?.phoneNumber)">{{headerContact[0]?.phoneNumber}}</h3>
+                                          </div>
+                                        </div>
+                                      </div>
+                                    </div>
+                                    <div class="col-12 col-lg-6 col-md-6">
+                                      <div class="contact-info">
+                                        <div class="row">
+                                          <div class="col-2 col-xl-6 col-lg-6 col-md-3">
+                                            <img src="./assets/images/svg/support.svg" alt="support-icon">
+                                            </div>
+                                          <div class="col-10 col-xl-6 col-lg-6 col-md-9">
+                                            <h6>{{headerContact[1]?.header}}</h6>
+                                            <h3 (click)="commonMethods.openDailler(headerContact[1]?.phoneNumber)" >{{headerContact[1]?.phoneNumber}}</h3>
+                                          </div>
+                                        </div>
+                                      </div>
+                                    </div>
+                              </div>
+                             </div>
+                          </div>
+                           <div class="vspacer10"></div>
+                               <div class="row">
+                                 <div class="col-12 col-lg-11 col-md-11 col-sm-12 m-auto">
+                                   <div class="row1">
+                                     <div class="col-12">
+
+									 <!-- Accordion Start here-->
+
+											<div id="accordion" class="accordion-container">
+
+												<div class="card">
+													<a class="card-link collapsed" data-toggle="collapse" href="#collapse1" aria-expanded="false">
+														<div class="card-header">
+															<div class="panel-title1">
+																<h4>Contact Center</h4>
+															</div>
+															<em></em>
+														</div>
+														<!--card-header-->
+													</a>
+
+													<div id="collapse1" class="collapse" data-parent="#accordion">
+														<div class="card-body bg-lg2">
+															<div class="row">
+																<div class="contactlist">
+																	<ul>
+																		<li *ngFor="let contact of contactCenter">
+																		  <div class="row" (click)="commonMethods.openDailler(contact.phoneNumber)">
+																			<div class="col-12 col-lg-5 col-md-5">
+																				<h5><span>{{contact.header}}</span></h5>
+																			  </div>
+																			<div class="col-12 col-lg-7 col-md-7">
+																				<h5><img src="./assets/images/svg/phone.svg" alt="phone-icon"> {{contact.phoneNumber}}</h5>
+																			</div>
+																		  </div>
+																		</li>
+																		<!-- <li>
+																		  <div class="row">
+																			<div class="col-12 col-lg-5 col-md-5">
+																				<h5><span>Queries Regarding Remittance from abroad</span></h5>
+																			  </div>
+																			<div class="col-12 col-lg-7 col-md-7">
+																				<h5><img src="./assets/images/svg/phone.svg" alt="phone-icon"> 011-25728462, 25850059</h5>
+																			</div>
+																		  </div>
+																		</li>
+																		<li>
+																		  <div class="row">
+																			<div class="col-12 col-lg-5 col-md-5">
+																				<h5><span>For Hot Listing (Blocking) ATM/Rupay Cards</span></h5>
+																			  </div>
+																			<div class="col-12 col-lg-7 col-md-7">
+																				<h5><img src="./assets/images/svg/phone.svg" alt="phone-icon"> (By SMS) 9223815844</h5>
+																			</div>
+																		  </div>
+																		</li>
+																		<li>
+																		  <div class="row">
+																			<div class="col-12 col-lg-5 col-md-5">
+																				<h5><span>For Debit Freeze Account</span></h5>
+																			  </div>
+																			<div class="col-12 col-lg-7 col-md-7">
+																				<h5><img src="./assets/images/svg/phone.svg" alt="phone-icon"> (By SMS) 8828837411</h5>
+																			</div>
+																		  </div>
+																		</li>
+																		<li>
+																		  <div class="row">
+																			<div class="col-12 col-lg-5 col-md-5">
+																				<h5><span>For Phone Banking Services</span></h5>
+																			  </div>
+																			<div class="col-12 col-lg-7 col-md-7">
+																				<h5><img src="./assets/images/svg/phone.svg" alt="phone-icon"> (Call) 1800-22-1908</h5>
+																			</div>
+																		  </div>
+																		</li>
+																		<li>
+																		  <div class="row">
+																			<div class="col-12 col-lg-5 col-md-5">
+																				<h5><span>For Balance Enquiry</span></h5>
+																			  </div>
+																			<div class="col-12 col-lg-7 col-md-7">
+																				<h5><img src="./assets/images/svg/phone.svg" alt="phone-icon"> (By Missed Call) 7039035156</h5>
+																			</div>
+																		  </div>
+																		</li> -->
+																	</ul>
+																  </div>
+															</div>
+														</div>
+													</div>
+												</div>
+												<!--card-->
+
+												<div class="card">
+													<a class="card-link collapsed" data-toggle="collapse" href="#collapse2" aria-expanded="false">
+														<div class="card-header">
+															<div class="panel-title1">
+																<h4>Head Office Department</h4>
+															</div>
+															<em></em>
+														</div>
+														<!--card-header-->
+													</a>
+
+
+													<div id="collapse2" class="collapse" data-parent="#accordion">
+														<div class="card-body bg-lg2">
+															<div class="row">
+															   <div class="contactlist">
+																		<ul>
+																		  <li *ngFor="let headContact of headOffDepartment">
+																			<div class="row" (click)="commonMethods.openDailler(headContact.phoneNumber)">
+																			  <div class="col-12 col-lg-5 col-md-5">
+																				  <h5><span>{{headContact.header}}</span></h5>
+																				</div>
+																			  <div class="col-12 col-lg-7 col-md-7">
+																				  <h5><img src="./assets/images/svg/phone.svg" alt="phone-icon"> {{headContact.phoneNumber}}</h5>
+																			  </div>
+																			</div>
+																		  </li>
+																			<!-- <li>
+																			  <div class="row">
+																				<div class="col-12 col-lg-5 col-md-5">
+																					<h5><span>Call Centre ( All India Toll Free Numbers )</span></h5>
+																				  </div>
+																				<div class="col-12 col-lg-7 col-md-7">
+																					<h5><img src="./assets/images/svg/phone.svg" alt="phone-icon"> 1800-419-8300</h5>
+																				</div>
+																			  </div>
+																			</li>
+																			<li>
+																			  <div class="row">
+																				<div class="col-12 col-lg-5 col-md-5">
+																					<h5><span>Queries Regarding Remittance from abroad</span></h5>
+																				  </div>
+																				<div class="col-12 col-lg-7 col-md-7">
+																					<h5><img src="./assets/images/svg/phone.svg" alt="phone-icon"> 011-25728462, 25850059</h5>
+																				</div>
+																			  </div>
+																			</li>
+																			<li>
+																			  <div class="row">
+																				<div class="col-12 col-lg-5 col-md-5">
+																					<h5><span>For Hot Listing (Blocking) ATM/Rupay Cards</span></h5>
+																				  </div>
+																				<div class="col-12 col-lg-7 col-md-7">
+																					<h5><img src="./assets/images/svg/phone.svg" alt="phone-icon"> (By SMS) 9223815844</h5>
+																				</div>
+																			  </div>
+																			</li>
+																			<li>
+																			  <div class="row">
+																				<div class="col-12 col-lg-5 col-md-5">
+																					<h5><span>For Debit Freeze Account</span></h5>
+																				  </div>
+																				<div class="col-12 col-lg-7 col-md-7">
+																					<h5><img src="./assets/images/svg/phone.svg" alt="phone-icon"> (By SMS) 8828837411</h5>
+																				</div>
+																			  </div>
+																			</li>
+																			<li>
+																			  <div class="row">
+																				<div class="col-12 col-lg-5 col-md-5">
+																					<h5><span>For Phone Banking Services</span></h5>
+																				  </div>
+																				<div class="col-12 col-lg-7 col-md-7">
+																					<h5><img src="./assets/images/svg/phone.svg" alt="phone-icon"> (Call) 1800-22-1908</h5>
+																				</div>
+																			  </div>
+																			</li>
+																			<li>
+																			  <div class="row">
+																				<div class="col-12 col-lg-5 col-md-5">
+																					<h5><span>For Balance Enquiry</span></h5>
+																				  </div>
+																				<div class="col-12 col-lg-7 col-md-7">
+																					<h5><img src="./assets/images/svg/phone.svg" alt="phone-icon"> (By Missed Call) 7039035156</h5>
+																				</div>
+																			  </div>
+																			</li> -->
+																		</ul>
+																 </div>
+															</div>
+														</div>
+													</div>
+												</div>
+												<!--card-->
+
+
+												<div class="card">
+													<a class="card-link collapsed" data-toggle="collapse" href="#collapse3" aria-expanded="false">
+														<div class="card-header">
+															<div class="panel-title1">
+																<h4>UPI Helpline</h4>
+															</div>
+															<em></em>
+														</div>
+														<!--card-header-->
+													</a>
+
+
+													<div id="collapse3" class="collapse" data-parent="#accordion">
+														<div class="card-body bg-lg2">
+															<div class="row">
+																<div class="contactlist">
+																	<ul>
+																	  <!-- <li *ngFor="let headContact of headOffDepartment">
+																		<div class="row" (click)="commonMethods.openDailler(headContact.phoneNumber)">
+																		  <div class="col-12 col-lg-5 col-md-5">
+																			  <h5><span>{{headContact.header}}</span></h5>
+																			</div>
+																		  <div class="col-12 col-lg-7 col-md-7">
+																			  <h5><img src="./assets/images/svg/phone.svg" alt="phone-icon"> {{headContact.phoneNumber}}</h5>
+																		  </div>
+																		</div>
+																	  </li> -->
+																	  <li>
+																		<div class="row">
+																		  <div class="col-12 col-lg-5 col-md-5">
+																			  <h5><span>Call Centre ( All India Toll Free Numbers )</span></h5>
+																			</div>
+																		  <div class="col-12 col-lg-7 col-md-7">
+																			  <h5><img src="../assets/images/svg/phone.svg" alt="phone-icon"> 011 - 41671249</h5>
+																		  </div>
+																		</div>
+																	  </li>
+																	  <li>
+																		<div class="row">
+																		  <div class="col-12 col-lg-5 col-md-5">
+																			  <h5><span>Email</span></h5>
+																			</div>
+																		  <div class="col-12 col-lg-7 col-md-7">
+																			  <h5><img src="../assets/images/svg/email.svg" alt="email-icon"> <a href="mailto:upi@psb.co.in" target="_blank">upi@psb.co.in</a></h5>
+																		  </div>
+																		</div>
+																	  </li>
+																		<!-- <li>
+																		  <div class="row">
+																			<div class="col-12 col-lg-5 col-md-5">
+																				<h5><span>Call Centre ( All India Toll Free Numbers )</span></h5>
+																			  </div>
+																			<div class="col-12 col-lg-7 col-md-7">
+																				<h5><img src="./assets/images/svg/phone.svg" alt="phone-icon"> 1800-419-8300</h5>
+																			</div>
+																		  </div>
+																		</li>
+																		<li>
+																		  <div class="row">
+																			<div class="col-12 col-lg-5 col-md-5">
+																				<h5><span>Queries Regarding Remittance from abroad</span></h5>
+																			  </div>
+																			<div class="col-12 col-lg-7 col-md-7">
+																				<h5><img src="./assets/images/svg/phone.svg" alt="phone-icon"> 011-25728462, 25850059</h5>
+																			</div>
+																		  </div>
+																		</li>
+																		<li>
+																		  <div class="row">
+																			<div class="col-12 col-lg-5 col-md-5">
+																				<h5><span>For Hot Listing (Blocking) ATM/Rupay Cards</span></h5>
+																			  </div>
+																			<div class="col-12 col-lg-7 col-md-7">
+																				<h5><img src="./assets/images/svg/phone.svg" alt="phone-icon"> (By SMS) 9223815844</h5>
+																			</div>
+																		  </div>
+																		</li>
+																		<li>
+																		  <div class="row">
+																			<div class="col-12 col-lg-5 col-md-5">
+																				<h5><span>For Debit Freeze Account</span></h5>
+																			  </div>
+																			<div class="col-12 col-lg-7 col-md-7">
+																				<h5><img src="./assets/images/svg/phone.svg" alt="phone-icon"> (By SMS) 8828837411</h5>
+																			</div>
+																		  </div>
+																		</li>
+																		<li>
+																		  <div class="row">
+																			<div class="col-12 col-lg-5 col-md-5">
+																				<h5><span>For Phone Banking Services</span></h5>
+																			  </div>
+																			<div class="col-12 col-lg-7 col-md-7">
+																				<h5><img src="./assets/images/svg/phone.svg" alt="phone-icon"> (Call) 1800-22-1908</h5>
+																			</div>
+																		  </div>
+																		</li>
+																		<li>
+																		  <div class="row">
+																			<div class="col-12 col-lg-5 col-md-5">
+																				<h5><span>For Balance Enquiry</span></h5>
+																			  </div>
+																			<div class="col-12 col-lg-7 col-md-7">
+																				<h5><img src="./assets/images/svg/phone.svg" alt="phone-icon"> (By Missed Call) 7039035156</h5>
+																			</div>
+																		  </div>
+																		</li> -->
+																	</ul>
+															   </div>
+															</div>
+														</div>
+													</div>
+												</div>
+										 <!--card-->
+
+								    </div>
+									 <!-- accordian End here-->
+
+                               </div>
+                            </div>
+                          </div>
+
+                      </div>
+
+                 <!-- Loginform Container End -->
+
+               </div>
+
+            </div>
+
+         </div>
+        <!-- .full-container -->
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+<!-- =========== modal popup start ===============  -->
+
+
+<!-- =========== modal popup end ===============  -->
+
+<script src="../js/lib/jquery.min.js"></script>
+<script src="../js/lib/bootstrap.min.js"></script>
+<script src="../js/lib/jquery-ui.min.js"></script>
+<script src="../js/lib/popper.min.js"></script>
+<script src="../js/lib/jquery.mousewheel.min.js"></script>
+<script src="../js/lib/jquery.mCustomScrollbar.js"></script>
+<script src="../js/lib/datatables.min.js"></script>
+<script src="../js/common.js"></script>
+
+<script type="text/javascript">
+	//  createGlobalNavMore();
+
+
+</script>
+
+</body>
+</html>

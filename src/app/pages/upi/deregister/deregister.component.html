@@ -1,0 +1,205 @@
+<div class="main">
+    <div class="right-main-column minus-rt-col mar-custom">
+        <div class="right-col-container">
+            <div class="body-page-container">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="bg-section">
+                            <div class="col-12">
+                                <div class="row1">
+                                    <div class="col-sm-12 col-12 col-md-12">
+                                        <div class="white-bg1">
+                                            <div>
+                                                <div class="info-section1">
+                                                    <h5>
+                                                        <span class="round-circle">
+                                                            <img [src]="dataService.profileImage" onerror="this.src='./assets/images/svg/user-profile-w.svg'" alt="user-img">
+                                                        </span>
+                                                        <!-- Mr. Rajesh Omprakash Shah -->
+                                                        {{ customerName }}
+                                                    </h5>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-sm-12 col-12 col-md-12 mt-4 mb-4">
+                                                    <div class="row">
+                                                        <div class="col-12">
+                                                            <div class="ux-input password1 p1 ">
+                                                                <label for="sapassword" class="mb0">
+                                                                    <!-- Enter Login MPIN -->
+                                                                    {{ 'ENTER_LOGIN_MPIN' | translate }}
+                                                                </label>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <form id="mpin-form"  [formGroup]="MPINForm">
+                                                        <div class="row3">
+                                                            <div class="col-sm-2 col-2 col-md-2" *ngFor="let mpinInput of formInput | slice:0:6; index as i">
+                                                                <div class="ux-input password1 p1 mb-0">
+                                                                    <input #mPINformRow id="spassword{{i}}" type="tel" maxlength="1" placeholder="&#9679;" formControlName="{{mpinInput}}" (keyup)="onKeyUpEvent(i, $event)" (focus)="onFocusEvent(i)" pattern="\d*" numbersOnly />
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </form>
+                                                    <div class="row">
+                                                        <div class="col-12">
+                                                            <div class="ux-input input-error password1 p1 mt-0 mb-0">
+                                                                <p> </p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-sm-12 col-md-12 col-lg-12 mt-2">
+                                        <h5 class="custom-h5">
+                                            {{ 'NOTE' | translate }}
+                                            <!-- Note -->
+                                        </h5>
+                                        <ul class="unorderlist mar-b">
+                                            <li>
+                                                {{ 'DEREGISTER_DESC_1' | translate }}
+                                                <!-- De-registering UPI services will result in deactivation of your existing UPI ID/s and de-linking of your account/s from UPI services. -->
+                                            </li>
+                                            <li>
+                                                {{ 'DEREGISTER_DESC_2' | translate }}
+                                                <!-- You will have to re-register again and create new UPI ID to use the UPI services. -->
+                                            </li>
+                                            <li>
+                                                {{ 'DEREGISTER_DESC_3' | translate }}
+                                                <!-- Your UPI profile will not be de-registered if there are any active mandates available in  any of the existing UPI ID/s or linked account/s. -->
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- </div>
+    </div>
+</div> -->
+
+
+            <!-- footer section start -->
+            <div class="footer-container sticky-actions">
+                <div class="footer-inactions minus-rt-col">
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-12 text-center">
+                                <button class="deregister-procced ux-button primary md" [disabled]="MPINForm.invalid" (click)="showPopup('deregisterConfirmationPopup')" >
+                                    {{ 'PROCEED' | translate }}
+                                    <!-- Proceed -->
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="sticky-actions-spacer"></div>
+            <!-- footer section end -->
+        </div>
+    </div>
+
+</div>
+
+<!-- main -->
+
+<!-- =========== modal popup start ===============  -->
+<!-- Deregister Popup Start -->
+<div class="popup-bottom deregisterConfirmationPopup">
+    <!--deregister1-->
+    <div class="row1">
+        <div class="col-12">
+            <h4 class="text-center">
+                {{ 'DEREGISTER_UPI_SERVICES' | translate }}
+                <!-- Deregister UPI Services -->
+            </h4>
+        </div>
+    </div>
+    <div class="row1">
+        <div class="col-12">
+            <p>
+                {{ 'DEREGISTER_PROCEED_CONFIRMATION' | translate }}
+                <!-- Do you want to deregister the UPI Services? -->
+            </p>
+        </div>
+    </div>
+    <div class="row1 mt-2">
+        <div class="col-6 text-center">
+            <button class="ux-button secondary no md close-btn" (click)="closePopup('deregisterConfirmationPopup')">
+                {{ 'NO' | translate }}
+                <!-- No -->
+            </button>
+        </div>
+        <div class="col-6 text-center">
+            <button class="deregister-submit ux-button primary md" (click)="deregisterUser()">
+                {{ 'YES' | translate }}
+                <!-- Yes -->
+            </button>
+        </div>
+    </div>
+</div>
+<!-- Deregister Popup End -->
+
+<!-- Deregister Success Popup Start -->
+<div class="popup-bottom deregisterSuccessPopup">
+    <!--success1-->
+    <div class="row mt-3">
+        <div class="success">
+            <img src="assets/images/svg/check.svg" alt="success-icon">
+            <h3>
+                {{ 'SUCCESS' | translate }}
+                <!-- Success -->
+            </h3>
+            <h5>
+                {{ 'DEREGISTER_SUCCESS' | translate }}
+                <!-- Your account has been deregistered successfully -->
+            </h5>
+        </div>
+    </div>
+    <div class="row1 mt-3">
+        <div class="col-12 text-center">
+            <button class="ux-button primary md submit-btn" (click)="clearAppData('deregisterSuccessPopup',true)">
+                {{ 'OK' | translate }}
+                <!-- Ok -->
+            </button>
+        </div>
+    </div>
+</div>
+<!-- Deregister Success Popup End -->
+
+<!-- Not Allow to Deregister Popup Start -->
+<div class="popup-bottom deregisterRejectPopup">
+    <!--reject1-->
+    <div class="row1">
+        <div class="col-12">
+            <h4 class="text-center">
+                {{ 'DEREGISTER_UPI_SERVICES' | translate }}
+                <!-- Deregister UPI Services -->
+            </h4>
+        </div>
+    </div>
+    <div class="row1">
+        <div class="col-12">
+            <p>
+                {{ 'DEREGISTER_NOT_ALLOWED' | translate }}
+                <!-- You are not allowed to de-register as your UPI profile has an active mandate associated with your UPI ID / linked account. Please contact bank for more details -->
+            </p>
+        </div>
+    </div>
+    <div class="row1 mt-2">
+        <div class="col-12 text-center">
+            <button class="ux-button primary md submit-btn1" (click)="clearAppData('deregisterRejectPopup')">
+                {{ 'OK' | translate }}
+                <!-- Ok -->
+            </button>
+        </div>
+    </div>
+</div>
+<!-- Not Allow to Deregister Popup End -->
+
+<!-- <div class="ios-nav-overlay"></div> -->
+<!-- =========== modal popup end ===============  -->

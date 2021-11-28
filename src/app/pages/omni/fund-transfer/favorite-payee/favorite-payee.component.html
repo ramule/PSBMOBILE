@@ -1,0 +1,371 @@
+<div class="main bg-m">
+	<!-- Start Global Nav -->
+	<div class="nav-overlay"></div>
+	<!-- End Global Nav -->
+	<div class="right-main-column ">
+		<div class="right-col-container pad-b full-width">
+			<!-- ======== body page content start from here ======== -->
+			<div class="body-page-container main-dashborad manage-payee">
+				<div class="container-fluid">
+					<div class="row">
+						<div class="col-12 p-0">
+							<div class="breadcrumb">
+								<ul class="lst-breadcrumb">
+									<!-- <li> <a (click)="goToPage('sendMoney')">{{"SEND_MONEY" | translate}}</a> </li>
+									<li> {{"FAVOURITE_PAYEE" | translate }} </li> -->
+									<li *ngFor="let name of DataService.breadcrumblist">
+                                        <a (click)="DataService.breadcrumroute(name.routeName)">{{name.currentRoute | translate}}</a>
+                                	</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+					<!--.row -->
+					<div class="vspacer15 customize d-none d-md-block d-lg-block d-xl-block"></div>
+					<div class="row no-gutters">
+						<div class="col-12">
+							<div class="row1">
+								<div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+									<!-- Greencard2 Start here -->
+									<div class="greencard2">
+										<div class="row1 hide-m">
+											<div class="col-md-8 col-12">
+												<h4>{{"FAVOURITE_PAYEE" | translate }} </h4> </div>
+											<div class="col-md-4 col-12"> </div>
+										</div>
+										<div class="no-accounts text-center statement-table widget-box5	 mb-0 py-5" *ngIf="favroutelist.length==0"> <img src="assets/images/svg/no-rec-found.svg" class="mb-3">
+											<h5 class="mb-5">{{"NO_FAVOURITE_FOUND" | translate }} </h5>
+											<!-- <button class="ux-button primary submit-btn " (click)="goToPage('/accountOpening')">Open a new account</button> -->
+										</div>
+										<div class="row1" *ngIf="favroutelist.length!=0">
+											<div class="col-sm-12 col-12 col-md-12">
+												<div class="widget-box5">
+													<div class="component-title6 custom-pad">
+														<div class="row1">
+															<div class="col-12 col-md-6 col-lg-7 col-xl-8">
+																<h4 class="default-grey">Favourite Payee List ({{favroutelist.length}})</h4>
+															 </div>
+															<div class="col-12 col-md-6 col-lg-5 col-xl-4">
+																<div class="row1">
+																	<div class="col-12 col-md-12">
+																		<div class="search-input ux-input  mt-0 mb-0">
+																			<input type="text" name="search" [(ngModel)]="searchText" (ngModelChange)="searchAccount($event)" placeholder='{{"SEARCH_HERE" | translate}}' > <em class="show-searchicon"></em>
+																			<p class="error-message"></p>
+																		</div>
+																	</div>
+																</div>
+															</div>
+														</div>
+													</div>
+													<!-- <div class="grey-container">
+																<div class="row1">
+																	<div class="col-6 col-md-6 text-left">
+																		<button class="ux-linkbutton link-text primary"> <img src="assets/images/svg/user-profile.svg" alt="star-icon"> Add Payee</button>
+																	 </div>
+																	<div class="col-6 col-md-6 text-right">
+																		<button class="ux-linkbutton link-text primary"> <img src="assets/images/svg/deactivate-star.svg" alt="star-icon"> Favourite Payee</button>
+																	 </div>
+																</div>
+															</div> -->
+													<div class="bg-white1">
+														<div class="row">
+															<ul class="grid-list1">
+																<li class="grey-th">
+																	<div class="grid-info2">
+																		<div class="full-info">
+																			<h6>{{"PAYEE_NAME" | translate}}</h6> </div>
+																	</div>
+																	<div class="grid-info2">
+																		<div class="full-info">
+																			<h6>{{"NICK_NAME" | translate}}</h6> </div>
+																	</div>
+																	<div class="grid-info2">
+																		<div class="full-info">
+																			<h6>{{"PAYEE_TYPE" | translate}}</h6> </div>
+																	</div>
+																	
+																	<div class="grid-info2">
+																		<div class="full-info">
+																			<h6>{{"ACCOUNT_NUMBER" | translate}}</h6> </div>
+																	</div>
+																	<div class="grid-info2">
+																		<div class="full-info">
+																			<h6>{{"BANK_NAME" | translate}}</h6> </div>
+																	</div>
+																	<div class="grid-info2">
+																		<div class="full-info">
+																			<h6>{{"IFSC" | translate}}</h6> </div>
+																	</div>
+																	<div class="grid-info2">
+																		<div class="full-info">
+																			<h6>{{"TRANSACTION_LIMIT" | translate}}</h6> </div>
+																	</div>
+																	<div class="grid-info2">
+																		<div class="full-info">
+																			<h6>{{"MOBILE NUMBER" | translate}}</h6> </div>
+																	</div>
+																	<div class="grid-info2">
+																		<div class="full-info">
+																			<h6>{{"MMID" | translate}}</h6> </div>
+																	</div>
+																	<div class="grid-info2">
+																		<div class="full-info">
+																			<h6>{{"VPA" | translate}}</h6> </div>
+																	</div>
+																	<div class="grid-info2">
+																		<div class="full-info"> </div>
+																	</div>
+																</li>
+																<!-- modified by USER PSB1-->
+																<li *ngIf="this.favroutelist.length == 0">
+																	<div class="col-12">
+																		<div class="row mt-3 mb-2">
+																			<div class="col-12 col-lg-12 col-md-12 col-sm-12 px-0 d-none d-sm-none d-xl-block d-lg-block d-md-block">
+																				<div class="dataTables_info text-center">
+																					{{"NO_PAYEE_FOUND" | translate}}
+																				</div>
+																			</div>
+																		</div>
+																	</div>
+																</li>
+																<!-- modified by USER PSB1 Ends-->
+																<!-- <li *ngFor="let favourites of favroutelist" [class.active]="clicked === i" (click)="clicked = (clicked === i ? null : i )"> -->
+																	<!-- modified by USER PSB1-->
+																	<li *ngFor="let favourites of favroutelist | paginate:config1, let i= index" [class.active]="clicked === i" (click)="clicked = (clicked === i ? null : i )">
+																	<!-- modified by USER PSB1 Ends-->
+																	<div class="grid-info2">
+																		<div class="full-info">
+																			<div class="left-info p-0">
+																				<h5>{{favourites.benefName}}</h5>
+																				<!-- <div class="user-info"> <span class="blue">
+																								   <h6>{{favourites.benefName | firstLastChar |  uppercase  }}</h6>
+																							   </span> </div> -->
+																			</div> <em></em> </div>
+																	</div>
+																	<div class="grid-info2">
+																		<div class="full-info">
+																			<h6 class="display-mt">{{"NICK_NAME" | translate}}</h6>
+																			<h5>{{favourites.beneficiary_nick_name}} </h5> </div>
+																	</div>
+																	<div class="grid-info2">
+																		<div class="full-info">
+																			<h6 class="display-mt">{{"PAYEE_TYPE" | translate}}</h6>
+																			<h5 *ngIf="favourites.beneficiaryType=='INTRA'">Within</h5>
+																			<h5 *ngIf="favourites.beneficiaryType=='INTERBANK'">Outside</h5>
+																			<h5 *ngIf="favourites.statusId=='3' && favourites.MMID!='null'  ">MMID</h5>
+																			<h5 *ngIf="favourites.statusId=='3' && favourites.VPA!='null' ">VPA</h5>
+																		
+																		</div>
+																	</div>
+																	<div class="grid-info2">
+																		<div class="full-info">
+																			<h6 class="display-mt">{{"ACCOUNT_NUMBER" | translate}}</h6>
+																			<h5>{{favourites.beneficiary_account_no}}</h5> </div>
+																	</div>
+																	<div class="grid-info2">
+																		<div class="full-info">
+																			<h6 class="display-mt">{{"BANK_NAME" | translate}}</h6>
+																			<h5>{{favourites?.beneficiary_bank_name != 'null' ? favourites.beneficiary_bank_name : '-'}}</h5> </div>
+																	</div>
+																	<div class="grid-info2">
+																		<div class="full-info">
+																			<h6 class="display-mt">{{"IFSC" | translate}}</h6>
+																			<h5>{{favourites.ifsc_code && favourites.ifsc_code != 'null' ? favourites.ifsc_code : "-"}}</h5> </div>
+																	</div>
+																	<div class="grid-info2">
+																		<div class="full-info">
+																			<h6 class="display-mt">{{"TRANSACTION_LIMIT" | translate}}</h6>
+																			<h5><img src="assets/images/svg/rupee-bl.svg" alt="rupees-icon"> {{favourites.TransactionAmount && favourites.TransactionAmount != 'null' ? favourites.TransactionAmount : '-'}}</h5> </div>
+																	</div>
+																	<div class="grid-info2">
+																		<div class="full-info">
+																			<h6 class="display-mt">{{"MOBILE_NUMBER" | translate}}</h6>
+																			<h5> {{ favourites.beneficiaryMobileNo && favourites.beneficiaryMobileNo != 'null' ? favourites.beneficiaryMobileNo : '-' }}</h5> </div>
+																	</div>
+																	<div class="grid-info2">
+																		<div class="full-info">
+																			<h6 class="display-mt">{{"MMID" | translate}}</h6>
+																			<h5> {{favourites.MMID && favourites.MMID != 'null' ? favourites.MMID : '-'}}</h5> </div>
+																	</div>
+																	<div class="grid-info2">
+																		<div class="full-info">
+																			<h6 class="display-mt">{{"VPA" | translate}}</h6>
+																			<h5> {{favourites.VPA && favourites.VPA != 'null' ? favourites.VPA : '-'}}</h5> </div>
+																	</div>
+																	<div class="grid-info2">
+																		<div class="full-info text-right">
+																			<!-- <button class="star-btn active mr"> </button> -->
+																			<button class="ux-button sm primary-custom md" (click)="sendMoneyy(favourites)">{{"SEND_MONEY" | translate}}</button>
+																		</div>
+																	</div>
+																</li>
+																<!-- <li>
+																	<div class="grid-info2">
+																		<div class="full-info">
+																			<div class="left-info">
+																				<h5>Paras Verma</h5>
+																				<div class="user-info"> <span class="red">
+																								   <h6>PV</h6>
+																							   </span> </div>
+																			</div> <em></em> </div>
+																	</div>
+																	<div class="grid-info2">
+																		<div class="full-info">
+																			<h6 class="display-mt">Nick Name</h6>
+																			<h5>Paras</h5> </div>
+																	</div>
+																	<div class="grid-info2">
+																		<div class="full-info">
+																			<h6 class="display-mt">Payee Type</h6>
+																			<h5>Outside Bank</h5> </div>
+																	</div>
+																	<div class="grid-info2">
+																		<div class="full-info">
+																			<h6 class="display-mt">Account Number</h6>
+																			<h5>7834 8282 8722</h5> </div>
+																	</div>
+																	<div class="grid-info2">
+																		<div class="full-info">
+																			<h6 class="display-mt">Bank Name</h6>
+																			<h5>ICICI Bank</h5> </div>
+																	</div>
+																	<div class="grid-info2">
+																		<div class="full-info">
+																			<h6 class="display-mt">IFSC</h6>
+																			<h5>ICICI0000078</h5> </div>
+																	</div>
+																	<div class="grid-info2">
+																		<div class="full-info">
+																			<h6 class="display-mt">Transaction Limit</h6>
+																			<h5><img src="assets/images/svg/rupee-bl.svg" alt="rupees-icon"> 20,000.00</h5> </div>
+																	</div>
+																	<div class="grid-info2">
+																		<div class="full-info text-right">
+																			<button class="star-btn active mr"> </button>
+																			<button class="ux-button sm primary-custom md">Send Money</button>
+																		</div>
+																	</div>
+																</li> -->
+																<li>
+																	<div class="col-12">
+																		<div class="row  mt-3 mb-2">
+																			<div class="col-12 col-lg-6 col-md-6 col-sm-6 px-0 d-none d-sm-none d-xl-block d-lg-block d-md-block" *ngIf="this.favroutelist.length > 0">
+																				<div id="dt-sample_wrapper" class="dataTables_wrapper dt-bootstrap4 no-footer">
+																					<!-- <div class="dataTables_info pt-2" id="dt-sample_info" role="status" aria-live="polite">Showing 1 to 2 of <b>2</b> entries</div> -->
+																					<!-- modified by USER PSB1-->
+																						<div class="dataTables_info pt-2" id="dt-sample_info" role="status" aria-live="polite">Showing {{this.favroutelist.length > 0 ? ((this.config1.currentPage -1) * this.config1.itemsPerPage) +1 : 0}} to {{this.favroutelist.length > (this.config1.currentPage * this.config1.itemsPerPage) ? (this.config1.currentPage * this.config1.itemsPerPage) : this.favroutelist.length}} of <b>{{this.favroutelist.length}}</b> entries</div>
+																					<!-- modified by USER PSB1 Ends-->
+																				</div>
+																			</div>
+																			<div class="col-12 col-lg-6 col-md-6 px-0 d-none d-sm-none d-xl-block d-lg-block d-md-block text-right">
+																				<!-- <div class="custom-paging">
+																					<div class="dataTables_wrapper">
+																						<div class="dataTables_paginate">
+																							<ul class="pagination">
+																								<li class="page-item previous disabled"> <a href="javascript:;" class="page-link">Previous</a> </li>
+																								<li class="page-item active"> <a href="javascript:;" class="page-link">1</a> </li>
+																								<li class="page-item"> <a href="javascript:;" class="page-link">2</a> </li>
+																								<li class="page-item next"> <a href="javascript:;" class="page-link">Next</a> </li>
+																							</ul>
+																						</div>
+																					</div>
+																				</div> -->
+																				<!-- modified by USER PSB1 -->
+																					<div class="pagination-container pull-right"  *ngIf="this.favroutelist.length > this.config1.itemsPerPage">
+																						<pagination-controls id='basicPaginate1' (pageChange)="pageChanged1($event)" class="my-pagination"></pagination-controls>
+																					</div>
+																				<!-- modified by USER PSB1 Ends-->
+
+																			</div>
+																		</div>
+																	</div>
+																</li>
+															</ul>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+									<!-- Greencard2 End here -->
+								</div>
+								<!-- Right Column Ads Start -->
+								<!-- <div class="col-12 col-md-12 col-lg-12 col-xl-3 d-none d-xl-block">
+									<div class="right-ads">
+										<a > <img src="assets/images/banner/my-card-banner.jpg"> </a>
+									</div>
+									<div class="vspacer30"></div>
+									<div class="offers-card">
+										<div class="header-block clearfix">
+											<h5>{{"OFFERS_ON_CARD"}}</h5> </div>
+										<div class="panel-body">
+											<div class="recentpayment-control">
+												<ul>
+													<li> <img src="assets/images/banner/offer-banner.png"> </li>
+												</ul>
+											</div>
+										</div>
+									</div>
+								</div> -->
+								<!-- Right Column Ads Ends -->
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!--.right-col-container-->
+	</div>
+	<!--.right-main-column-->
+</div>
+<!-- main -->
+<aside class="notification-panel sticky-panel ">
+	<div class="notp-header">
+		<a href="javascript:;" class="btn-closenoty"></a>
+		<h5>{{"THEME_CUSTOMIZER" | translate}}</h5> </div>
+	<div class="notp-content">
+		<div class="notp-innercontent">
+			<div class="notp-nodatafound">
+				<div class="col-12">
+					<h5>{{"NAVIGATOR" | translate}}</h5>
+					<div>
+						<label class="ux-selection2">{{"VERTICAL" | translate}}
+							<input type="radio" checked="checked" name="radioboxdemo"> <span class="checkmark"></span> </label>
+						<label class="ux-selection2">{{"HORIZONTAL" | translate}}
+							<input type="radio" name="radioboxdemo"> <span class="checkmark"></span> </label>
+					</div>
+					<div class="vspacer20"></div>
+					<h5>{{"THEME_COLOR" | translate}}</h5>
+					<div class="row1 mb-1">
+						<div class="col-12">
+							<ul class="theme-list">
+								<li class="blue"></li>
+								<li class="green"></li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="vspacer20"></div>
+			<div class="vspacer20"></div>
+			<div class="row1">
+				<div class="col-12 col-xl-12 col-lg-12 col-md-12 ">
+					<div class="ux-footer">
+						<button class="ux-button sm primary float-right">{{"SUBMIT" | translate}}</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- <div class="notp-footer">
+			<p>Test</p>
+		</div>  -->
+	<!-- <div class="page-tools">
+			<div class="lst-page-tools">
+				  <a href="#" class="rightpannel">
+					  <img src="assets/images/svg/adjust.svg" alt="adjust-icon">
+					</a>
+			 </div>
+		 </div> -->
+</aside>
+<div class="notpanel-overlay"></div>

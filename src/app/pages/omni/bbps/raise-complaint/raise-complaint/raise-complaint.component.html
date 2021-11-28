@@ -1,0 +1,276 @@
+<div class="main bg-m">
+	<div class="right-main-column ">
+		<div class="right-col-container pad-b full-width">
+			<!-- ======== body page content start from here ======== -->
+			<div class="body-page-container main-dashborad bill-wrapper">
+				<div class="container-fluid">
+					<div class="row">
+						<div class="col-12 p-0">
+							<div class="breadcrumb">
+								<ul class="lst-breadcrumb">
+									<li *ngFor="let name of DataService.breadcrumblist">
+                                        <a (click)="DataService.breadcrumroute(name.routeName)">{{name.currentRoute | translate}}</a>
+                                </li>
+								</ul>
+							</div>
+						</div>
+					</div>
+					<!--.row -->
+					<div class="vspacer15 customize d-none d-md-block d-lg-block d-xl-block"></div>
+					<div class="row no-gutters">
+						<div class="col-12">
+							<div class="row1">
+								<div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-9">
+									<!-- Greencard2 Start here -->
+									<div class="greencard2">
+										<div class="row1 hide-m">
+											<div class="col-md-10 col-12">
+												<h4>Raise Complaint</h4> </div>
+											<div class="col-md-2 col-12">
+												<div class="header-actions"> <img src="assets/images/icons/billpay.png" alt="billpay-img" class="small-img"> </div>
+											</div>
+										</div>
+										<div class="row1">
+											<div class="col-sm-12 col-12 col-md-12">
+												<div class="widget-box5 mb-3">
+													<div class="bg-white1 pad-custom">
+														<div class="row1">
+															<div class="flex-container2">
+																<div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 full-info">
+																	<div class="row1">
+																		<div class="col-12 col-sm-6 col-md-6 col-xl-4 col-lg-6">
+																			<div class="ux-input">
+																				<label for="complaintType">Complaint Type</label>
+																				<select  class="complaints biller" (change)="onComplaintTypeSelect($event.target.value)">
+																					<option value="">Select</option>
+																					<option *ngFor="let type of complaintTypeList" [value]="type" >{{type}}</option>
+																					
+																				</select>
+																				<p></p>
+																			</div>
+																		</div>
+																	</div>
+																</div>
+															</div>
+														</div>
+													</div>
+												</div>
+											</div>
+											<div class="col-sm-12 col-12 col-md-12">
+												<div class="widget-box5 mb-3">
+													<div class="Service complaint-info bg-white1 pad-custom"  *ngIf="selectedComplaintType == 'Service' ">
+                                                        <form [formGroup]="serviceForm">
+                                                        <div class="mar-custom mb-0">
+															<div class="row1">
+																<div class="col-12 col-md-6 col-lg-4 col-xl-4">
+																	<div class="ux-input">
+																		<label for="participationType">Participation Type</label>
+																		<select  class="billertype" formControlName="participationType" (change)="participationTypeChange($event.target.value)"> 
+																			<option value="">Select</option>
+																			<option *ngFor="let type of participationTypeList" [value]="type">{{type}}</option>
+																		</select>
+                                                                        <p class="error-message" *ngIf="serviceForm.controls['participationType'].hasError('required') && (serviceForm.controls['participationType'].dirty || serviceForm.controls['participationType'].touched)"> {{"REQUIRED_MSG" | translate}} </p>
+
+																	</div>
+																</div>
+																<div class="col-12 col-md-6 col-lg-4 col-xl-4">
+																	<div class="ux-input">
+																		<label for="category">Biller Category</label>
+																		<select  class="" formControlName="billerCategory" (change)="onCategorySelect($event.target.value)">
+																			<option value="">Select</option>
+																			<option *ngFor = "let type of billerCategory" [value]="type" selected>{{type}}</option>
+																		</select>
+                                                                        <p class="error-message" *ngIf="serviceForm.controls['billerCategory'].hasError('required') && (serviceForm.controls['billerCategory'].dirty || serviceForm.controls['billerCategory'].touched)"> {{"REQUIRED_MSG" | translate}} </p>
+
+																	</div>
+																</div>
+															</div>
+															<div class="row1">
+																<div class="col-12 col-md-6 col-lg-4 col-xl-4" *ngIf="stateList?.length > 0">
+																	<div class="ux-input">
+																		<label for="Location">Biller Location</label>
+																		<select  class="" formControlName="billerLocation" (change)="onStateSelect($event.target.value)">
+																			<option value="">Select</option>
+																			<option *ngFor="let location of stateList" [value]="location">{{location}}</option>
+																		</select>
+                                                                        <p class="error-message" *ngIf="serviceForm.controls['billerLocation'].hasError('required') && (serviceForm.controls['billerLocation'].dirty || serviceForm.controls['billerLocation'].touched)"> {{"REQUIRED_MSG" | translate}} </p>
+
+																	</div>
+																</div>
+																<div class="col-12 col-md-6 col-lg-4 col-xl-4"  *ngIf="finalBillerList?.length > 0">
+																	<div class="ux-input biller-custom-selectbox" >
+																		<label>Billers</label>
+																		<div class="custom-dropdown-dummy">
+																			<span (click)="onSelectOption()" class="dispayblock"><img src="{{selectedBoard.biller_logo}}" *ngIf="selectedBoard.biller_logo != ''" class="boardlogo" alt=""> {{selectedBoard.biller_legal_name}}</span>
+																			<input type="hidden" formControlName="biller" [value]="selectedBoard.billerid" >
+																			<ul id="board-name" class="list-unstyled hide-m" class="list">
+																				<li  class="init" *ngFor="let item of finalBillerList" (click)="boardTypeSelection(item)" >
+																					<img src="{{item.biller_logo}}"  class="boardlogo" alt=""> 
+																		
+																					<span class="board-display"> {{item.biller_legal_name}} </span>	    <img style="display:none" src="assets/images/svg/BBPS_Logo.svg" alt="">
+																				</li>
+																			</ul>
+																		
+																		</div>
+																		<p class="error-message" *ngIf="selectedBoard.billerid == '' && submitClicked"> {{"REQUIRED_MSG" | translate}} </p>
+																	</div>
+																</div>
+															</div>
+															<div class="row1">
+																<div class="col-12 col-md-6 col-lg-4 col-xl-4"  *ngIf="finalBillerList?.length > 0">
+																	<div class="ux-input">
+																		<label for="reason">Complaint Reason</label>
+																		<select  class="" formControlName="complaintReason">
+																			<option value="">Select</option>
+																			<option value="Incorrect bill details displayed" *ngFor="let list of getComplaintReasonList" [value]="list"> {{list}}</option>
+																		</select>
+                                                                        <p class="error-message" *ngIf="serviceForm.controls['complaintReason'].hasError('required') && (serviceForm.controls['complaintReason'].dirty || serviceForm.controls['complaintReason'].touched)"> {{"REQUIRED_MSG" | translate}} </p>
+
+																	</div>
+																</div>
+																<div class="col-12 col-md-6 col-lg-4 col-xl-4" *ngIf="getComplaintReasonList?.length > 0">
+																	<div class="ux-input">
+																		<label for="description">Complaint Description</label>
+																		<textarea rows="3" placeholder="Enter Complaint Description"  formControlName="complaintDescription">Agent is charging more charges</textarea>
+                                                                        <p class="error-message" *ngIf="serviceForm.controls['complaintDescription'].hasError('required') && (serviceForm.controls['complaintDescription'].dirty || serviceForm.controls['complaintDescription'].touched)"> {{"REQUIRED_MSG" | translate}} </p>
+
+																	</div>
+																</div>
+															</div>
+														</div>
+                                                        </form>
+													</div>
+													<div class="Transaction complaint-info bg-white1 pad-custom" *ngIf="selectedComplaintType == 'Transaction' ">
+														<div class=" mar-custom mb-0">
+															<div class="row1">
+																<div class="col-12">
+																	<div class="ux-input mb-0">
+																		<label>Search by</label>
+																	</div>
+																</div>
+																<div class="col-12 col-xl-12 col-lg-12 col-md-12 col-sm-12">
+																	<div class="row1">
+																		<div class="col-12 col-md-6 col-lg-4 col-xl-3">
+																			<div class="ux-selection mar-custom">
+																				<label class="ux-selection2">Transaction ID
+																					<input type="radio" [checked]="searchByType == 'transaction' " value="transaction" name="searchby" [(ngModel)]="searchByTypeModel"> <span class="checkmark"></span> </label>
+																				<div> </div>
+																			</div>
+																		</div>
+																		<div class="col-12 col-md-6 col-lg-4 col-xl-3">
+																			<div class="ux-selection mar-custom">
+																				<label class="ux-selection2">Duration
+																					<input type="radio" [checked]="searchByType == 'duration' " value="duration" name="searchby" [(ngModel)]="searchByTypeModel"> <span class="checkmark"></span> </label>
+																				<div> </div>
+																			</div>
+																		</div>
+																	</div>
+																</div>
+															</div>
+															<div id="transaction" *ngIf="searchByTypeModel == 'transaction' ">
+                                                                <form [formGroup]="transactionForm">
+																<div class="row1 mt-3">
+																	<div class="col-12 col-md-6 col-lg-4 col-xl-4">
+																		<div class="ux-input">
+																			<label>Transaction Number</label>
+																			<input type="text" placeholder=""  value="7326478236743286" formControlName="transactionNumber" numbersOnly>
+                                                                            <p class="error-message" *ngIf="transactionForm.controls['transactionNumber'].hasError('required') && (transactionForm.controls['transactionNumber'].dirty || transactionForm.controls['transactionNumber'].touched)"> {{"REQUIRED_MSG" | translate}} </p>
+
+																		</div>
+																	</div>
+																	<div class="col-12 col-md-6 col-lg-4 col-xl-4">
+																		<div class="ux-input ux-disabled">
+																			<label>Bill Amount</label>
+																			<input type="text" placeholder=""  value="₹ 1000" disabled formControlName="billAmount">
+
+																		</div>
+																	</div>
+																</div>
+                                                          
+																<div class="row1 mt-3">
+																	<div class="col-12 col-md-6 col-lg-4 col-xl-4">
+																		<div class="ux-input">
+																			<label>Complaint Reason</label>
+																			<select formControlName="complaintReason">
+																				<option value="">Select</option>
+																				<option value="Amount Deducted Multiple Times" selected>Amount Deducted Multiple Times</option>
+																			</select>
+                                                                            <p class="error-message" *ngIf="transactionForm.controls['complaintReason'].hasError('required') && (transactionForm.controls['complaintReason'].dirty || transactionForm.controls['complaintReason'].touched)"> {{"REQUIRED_MSG" | translate}} </p>
+
+																		</div>
+																	</div>
+																	<div class="col-12 col-md-6 col-lg-4 col-xl-4">
+																		<div class="ux-input">
+																			<label>Complaint Description</label>
+																			<input type="text" placeholder=""  value="Please resolve the issue" formControlName="complaintDescription">
+                                                                            <p class="error-message" *ngIf="transactionForm.controls['complaintDescription'].hasError('required') && (transactionForm.controls['complaintDescription'].dirty || transactionForm.controls['complaintDescription'].touched)"> {{"REQUIRED_MSG" | translate}} </p>
+
+																		</div>
+																	</div>
+																</div>
+                                                            </form>
+															</div>
+															<div id="duration" *ngIf="searchByTypeModel == 'duration' ">
+                                                                <form [formGroup]="durationForm">
+																<div class="row1 mt-3">
+																	<div class="col-12 col-md-6 col-lg-4 col-xl-4">
+																		<div class="ux-input mb-0">
+																			<label>From Date</label>
+																			<!-- <input type="text" class="datepicker1" placeholder="DD/MM/YYYY"> <em class="calendar-ic cal-top"></em> -->
+                                                                            <input type="text" [owlDateTime]="dt1" [owlDateTimeTrigger]="dt1" placeholder="DD/MM/YYYY"   formControlName="startDate"  >
+                                                                            <owl-date-time [pickerType]="'calendar'" #dt1></owl-date-time><em class=" calendar-ic cal-top" [owlDateTimeTrigger]="dt1"></em>
+                                                                            <p class="error-message" *ngIf="durationForm.controls['startDate'].hasError('required') && (durationForm.controls['startDate'].dirty || durationForm.controls['startDate'].touched)"> {{"REQUIRED_MSG" | translate}} </p>
+
+																		</div>
+																	</div>
+																	<div class="col-12 col-md-6 col-lg-4 col-xl-4">
+																		<div class="ux-input mb-0">
+																			<label>To Date</label>
+																			<!-- <input type="text" class="datepicker1" placeholder="DD/MM/YYYY"> <em class="calendar-ic cal-top"></em> -->
+                                                                            <input type="text" [owlDateTime]="dt2" [owlDateTimeTrigger]="dt2" placeholder="DD/MM/YYYY"   formControlName="endDate"  >
+                                                                            <owl-date-time [pickerType]="'calendar'" #dt2></owl-date-time><em class=" calendar-ic cal-top" [owlDateTimeTrigger]="dt2"></em>
+                                                                            <p class="error-message" *ngIf="durationForm.controls['endDate'].hasError('required') && (durationForm.controls['endDate'].dirty || durationForm.controls['endDate'].touched)"> {{"REQUIRED_MSG" | translate}} </p>
+
+																		</div>
+																	</div>
+																</div>
+                                                            </form>
+															</div>
+														</div>
+													</div>
+												</div>
+											</div>
+											<div class="col-12 col-md-12" *ngIf="selectedComplaintType != '' ">
+												<ul class="bottom-footer1">
+													<li>
+														<div class="btn-div hide-m">
+															<button class="ux-button secondary sm-mob proceed1" >Cancel</button>
+														</div>
+														<div class="btn-div w100">
+															<button class="ux-button primary sm-mob proceed1" (click)="raiseComplaintSubmit()" >Submit</button>
+														</div>
+													</li>
+												</ul>
+											</div>
+										</div>
+									</div>
+								</div>
+								<!-- Greencard2 End here -->
+								<!-- Right Column Ads Start -->
+								<div class="col-12 col-md-12 col-lg-12 col-xl-3 d-none d-xl-block">
+									<div class="right-ads">
+										<a> <img src="assets/images/banner/my-card-banner.jpg"> </a>
+									</div>
+								</div>
+								<!-- Right Column Ads Ends -->
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!--.right-col-container-->
+	</div>
+	<!--.right-main-column-->
+</div>
+<!-- main -->

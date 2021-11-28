@@ -1,0 +1,195 @@
+
+<div class=" prelogin-page">
+    <!-- <div class=" full">
+        <div class="inner-header">
+            <div class="registration-container">
+                <h4>Receipt</h4>
+                <a class="close-registration" ><img src="assets/images/svg/close-w.svg"></a>
+            </div>
+        </div>
+
+        <div class="registrationsteps-block registration-container clearfix">
+           
+            <div class="tab-block w-100   success-page">
+                <div class="row1">
+                    <div class="col-12" *ngIf="!dataService.isFromMpinLogin">
+                         <div class="success-box">
+                             <img src="./assets/images/svg/success.svg" alt="success-icon">   
+                             <h2 class="success"> {{'CONGRATULATIONS' | translate}}</h2>
+                             <h3>{{'REGISTER_SUCCESS_MSG' | translate}}</h3>
+                             <div class="vspacer5"></div>	
+                             <h4>{{'REFERENCE_ID' | translate}} : {{regRefId}}</h4>
+                         </div>
+                        <div class="vspacer30"></div>
+                        <div class="ux-success-button">
+                             <button  routerLink="/login" role="button" class="ux-button primary">{{'LETS_START' | translate}}</button>	
+                        </div>
+                        <div class="vspacer40"></div>
+                     </div> 
+                     <div class="col-12" *ngIf="dataService.isFromMpinLogin">
+                        <div class="success-box">
+                            <img src="./assets/images/svg/success.svg" alt="success-icon">   
+                            <h2 class="success"> {{'CONGRATULATIONS' | translate}}</h2>
+                            <h3>{{'REGISTER_SUCCESS_MSG_MPIN' | translate}}</h3>
+                            <div class="vspacer5"></div>
+                        </div>
+                       <div class="vspacer30"></div>
+                       <div class="ux-success-button">
+                             <button  routerLink="/login" role="button" class="ux-button primary">{{'LETS_START' | translate}}</button>
+                       </div>	
+                       <div class="vspacer40"></div>
+                    </div>
+               </div>
+            </div>
+        </div>
+    </div> -->
+    <div class="registration-steps">
+        <div class="row">
+            <div class="col-12 position-static">
+
+                <div class="inner-header">
+                    <div class="registration-container">
+                      
+                        <h4>{{"REGISTRATION_COMPLETED" | translate}}</h4>
+                        
+                    </div>
+                </div>
+
+                <div class="registrationsteps-block registration-container success-page ">
+                    <div class="img-block">
+                        <img src="assets/images/svg/reg-success.svg" alt="reg-success">
+                    </div>
+                   <h3>{{"REGISTRATION_SUCCESS_GREET" | translate}}</h3>
+                   <p>{{"REGISTRATION_SUCCESS_MESSAGE" | translate}}</p>
+                   <!-- <span>{{'REFERENCE_ID' | translate}} : {{regRefId}}</span> -->
+                   <button   role="button" class="ux-button sm primary" (click)="gotoLogin()" >{{"LOGIN_NOW" | translate}}</button>
+                  
+            </div>
+        </div>
+    </div>
+ </div>
+</div>
+
+
+<div class="sticky-actions-spacer"></div>
+
+<!-- footer section end -->
+
+
+
+<!-- Confirmation Popup Start -->
+
+<div class="popup-bottom confirmation">
+  <div class="row">
+    <div class="col-12">
+      <h4 class="text-center">
+        {{ 'CONFIRMATION' | translate }}
+        <!-- Confirmation -->
+      </h4>
+    </div>
+  </div>
+  <form id="terms-form">
+    <div class="row">
+      <div class="col-12">
+        <p>
+          {{ 'ACTIVATE_BIOMETRIC' | translate }}
+          <!-- Do you want to activate the Biometric or Face recognition option? -->
+        </p>
+      </div>
+      <div class="col-12">
+        <ul class="sim-list">
+          <li *ngIf="biometricType == 'finger' || biometricType == 'biometric'">
+            <a (click)="thumbClick()">
+              <div class="text-center">
+                <svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" viewBox="0 0 80 80">
+                  <g transform="translate(0)">
+                    <path class="a"
+                      d="M383.541,0h-11.2a2.344,2.344,0,1,0,0,4.687h11.2A3.964,3.964,0,0,1,387.5,8.647v11.2a2.344,2.344,0,0,0,4.688,0V8.647A8.657,8.657,0,0,0,383.541,0Z"
+                      transform="translate(-312.188)"></path>
+                    <path class="a"
+                      d="M2.344,22.187a2.344,2.344,0,0,0,2.344-2.344V8.647a3.964,3.964,0,0,1,3.96-3.959h11.2a2.344,2.344,0,0,0,0-4.687H8.647A8.657,8.657,0,0,0,0,8.647v11.2a2.344,2.344,0,0,0,2.344,2.344Z">
+                    </path>
+                    <path class="a"
+                      d="M19.844,387.5H8.647a3.964,3.964,0,0,1-3.96-3.959v-11.2a2.344,2.344,0,1,0-4.687,0v11.2a8.657,8.657,0,0,0,8.647,8.647h11.2a2.344,2.344,0,0,0,0-4.688Z"
+                      transform="translate(0 -312.188)"></path>
+                    <path class="a"
+                      d="M389.844,370a2.344,2.344,0,0,0-2.344,2.344v11.2a3.964,3.964,0,0,1-3.959,3.959h-11.2a2.344,2.344,0,0,0,0,4.688h11.2a8.657,8.657,0,0,0,8.647-8.647v-11.2A2.344,2.344,0,0,0,389.844,370Z"
+                      transform="translate(-312.188 -312.188)"></path>
+                    <path class="a"
+                      d="M140.512,50.309c-16.268-12.067-33.8-12.374-50.546-.214a2.344,2.344,0,1,0,2.754,3.793c15.132-10.989,30.425-10.625,45,.186a2.344,2.344,0,1,0,2.793-3.765Z"
+                      transform="translate(-75.093 -34.691)"></path>
+                    <path class="a"
+                      d="M101.593,105c-9.957,0-22.757,6.63-28.2,14.794a2.344,2.344,0,1,0,3.9,2.6c4.512-6.769,15.867-12.706,24.3-12.706,8.257,0,19.55,4.405,24.215,12.569a2.344,2.344,0,1,0,4.07-2.325C124.5,110.527,111.887,105,101.593,105Z"
+                      transform="translate(-61.593 -88.594)"></path>
+                    <path class="a"
+                      d="M149.688,251.594c0-7.668,5.678-13.906,12.656-13.906S175,243.926,175,251.594v2.5a2.344,2.344,0,1,0,4.687,0v-2.5c0-10.253-7.78-18.594-17.344-18.594S145,241.341,145,251.594c0,9.966,7.493,15.305,10.8,20.084a2.344,2.344,0,1,0,3.854-2.668C156.075,263.838,149.688,259.549,149.688,251.594Z"
+                      transform="translate(-122.344 -196.594)"></path>
+                    <path class="a"
+                      d="M134.19,206.142C141.434,191.655,128.553,169,108.344,169,94.116,169,81,181.059,81,196.344c0,5.549.712,10.243,4.186,15.111A2.344,2.344,0,1,0,89,208.732c-2.447-3.429-3.314-6.671-3.314-12.389,0-12.069,10.587-22.656,22.656-22.656a22.792,22.792,0,0,1,16.463,7.353c6.21,6.615,8.441,16.5,5.191,23.006-3.384,6.767-14.31,4.849-14.31-3.952,0-17.382-17.805-12.183-14.617.568a2.344,2.344,0,1,0,4.547-1.137c-.819-3.275.683-5.838,2.726-5.838,1.835,0,2.656,3.217,2.656,6.406C111,213.818,128.58,217.362,134.19,206.142Z"
+                      transform="translate(-68.344 -142.594)"></path>
+                  </g>
+                </svg>
+              </div>
+            </a>
+          </li>
+          <li  *ngIf="biometricType == 'face'">
+            <a (click)="faceClick()">
+              <div class="text-center">
+                <svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" viewBox="0 0 80 80">
+                  <path class="a"
+                    d="M14.333,34.333H11a2.5,2.5,0,0,1,0-5h3.333A4.172,4.172,0,0,0,18.5,25.167V8.5a2.5,2.5,0,0,1,5,0V25.167A9.174,9.174,0,0,1,14.333,34.333Z"
+                    transform="translate(19.833 14)"></path>
+                  <path class="a"
+                    d="M21.416,27.92a16.107,16.107,0,0,1-13.82-7.9,2.5,2.5,0,0,1,4.31-2.54,11.042,11.042,0,0,0,19.027,0,2.5,2.5,0,0,1,4.31,2.54A16.126,16.126,0,0,1,21.416,27.92Z"
+                    transform="translate(16.917 37.914)"></path>
+                  <path class="a"
+                    d="M40.979,27.827a2.5,2.5,0,0,1-2.5-2.5V9.167A4.172,4.172,0,0,0,34.312,5H18.152a2.5,2.5,0,1,1,0-5h16.16a9.176,9.176,0,0,1,9.167,9.167v16.16A2.5,2.5,0,0,1,40.979,27.827Z"
+                    transform="translate(36.521)"></path>
+                  <path class="a"
+                    d="M2.5,27.827a2.5,2.5,0,0,1-2.5-2.5V9.167A9.176,9.176,0,0,1,9.167,0h16.16a2.5,2.5,0,0,1,0,5H9.167A4.172,4.172,0,0,0,5,9.167v16.16a2.5,2.5,0,0,1-2.5,2.5Z">
+                  </path>
+                  <path class="a"
+                    d="M34.312,43.479H18.152a2.5,2.5,0,0,1,0-5h16.16a4.172,4.172,0,0,0,4.167-4.167V18.152a2.5,2.5,0,0,1,5,0v16.16A9.176,9.176,0,0,1,34.312,43.479Z"
+                    transform="translate(36.521 36.521)"></path>
+                  <path class="a"
+                    d="M25.327,43.479H9.167A9.176,9.176,0,0,1,0,34.312V18.152a2.5,2.5,0,0,1,5,0v16.16a4.172,4.172,0,0,0,4.167,4.167h16.16a2.5,2.5,0,0,1,0,5Z"
+                    transform="translate(0 36.521)"></path>
+                  <path class="a" d="M7.5,6A2.5,2.5,0,0,0,5,8.5v5a2.5,2.5,0,0,0,5,0v-5A2.5,2.5,0,0,0,7.5,6Z"
+                    transform="translate(11.667 14)"></path>
+                  <path class="a" d="M19,6a2.5,2.5,0,0,0-2.5,2.5v5a2.5,2.5,0,0,0,5,0v-5A2.5,2.5,0,0,0,19,6Z"
+                    transform="translate(38.5 14)"></path>
+                </svg>
+              </div>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-12 text-center">
+        <p *ngIf="biometriSelectedOption=='nooption'">
+          {{'CHECK_ONE_OPTION' | translate}}
+        </p>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-6 text-center">
+        <button class="ux-button secondary" (click)="hideBiometricModal()">
+          {{ 'LATER' | translate }}
+          <!-- Later -->
+        </button>
+      </div>
+      <div class="col-6 text-center">
+        <!-- <button class="ux-button primary" (click)="goToPage('createUpi')"> -->
+        <button class="ux-button primary" (click)="biometricCheck()">
+          {{ 'YES' | translate }}
+          <!-- Yes -->
+        </button>
+      </div>
+    </div>
+  </form>
+</div>
+
+<!-- Confirmation Popup End -->

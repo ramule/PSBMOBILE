@@ -1,0 +1,20 @@
+.sim-list li a {
+position: relative;
+    input {
+        position:absolute;
+        width:100%; 
+        left:0; 
+        right:0; 
+        height:100%;
+        opacity: 0;
+        z-index: 99;
+        &:checked ~ svg {
+            fill: #007c3d;
+        }
+    }
+
+
+}
+.footer-container.sticky-actions {
+    left:0;
+}

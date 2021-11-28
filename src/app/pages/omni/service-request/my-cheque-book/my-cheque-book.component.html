@@ -1,0 +1,249 @@
+<div class="main bg-m">
+	<div class="right-main-column ">
+		<div class="right-col-container pad-b full-width">
+			<!-- ======== body page content start from here ======== -->
+			<div class="body-page-container main-dashborad">
+				<div class="container-fluid">
+					<div class="row">
+						<div class="col-12 p-0">
+							<div class="breadcrumb">
+								<ul class="lst-breadcrumb">
+									<li *ngFor="let name of dataService.breadcrumblist"> <a (click)="dataService.breadcrumroute(name.routeName)">{{name.currentRoute | translate}}</a> </li>
+								</ul>
+							</div>
+						</div>
+					</div>
+					<!--.row -->
+					<div class="vspacer15 customize d-none d-md-block d-lg-block d-xl-block"></div>
+					<div class="row no-gutters">
+						<div class="col-12">
+							<div class="row1">
+								<div class="col-12 col-sm-12 col-md-12 col-lg-12  col-xl-9">
+									<!-- Greencard2 Start here -->
+									<div class="greencard2">
+										<div class="row1">
+											<div class="col-sm-12 col-12 col-md-12">
+												<div class=" no-bg mb-2">
+													<div class="row1">
+														<div class="col-12">
+															<div class="full-info">
+																<div class="ac-info hide-m">
+																	<h4 class="white-c"> {{"MY_CHEQUE_BOOK" | translate }}</h4> 
+																</div>
+															</div>
+														</div>
+														<div class="col-12">
+															<div class="flex-container" [ngClass]="{'d-block' : platfrom != 'web'}"> 
+															<div class="ac-info">
+																<div class="greenbg-input ux-input mr-2">
+																	<label for="fromaccount ">{{"ACCOUNT_NUMBER" | translate }}</label>
+																</div>
+															</div>
+														
+														<!-- <div class="ac-info">
+                                                                <div class="greenbg-input ux-input">
+                                                                    <select required="" class="hide-m">
+                                                                        <option value="select">Select</option>
+                                                                        <option value="saving">XXX XXX 9897 </option>
+                                                                        <option value="saving">XXX XXX 9897</option>
+                                                                    </select>
+                                                                    <div class="custom-selectbox">
+                                                                        <span>XXX XXX 9897 </span>
+                                                                        <span class="right-arrow"></span>
+                                                                    </div>
+                                                                    <p class="error-message"></p>
+                                                                </div>
+                                                            </div> -->
+																<div class="ac-info" (click)="onAccountSelectType()">
+																	<div class="greenbg-input ux-input">
+																			<select class="hide-m" (change)="onFromAccountSelect($event.target.value)">
+																				<option value="select">  {{"SELECT" | translate }}</option>
+																				<option *ngFor="let account of accList" [value]="account.accountNo" [selected]="selectedAccount == account?.accountNo ? true : false" [(ngModel)]="selectedAccount" [ngModelOptions]="{standalone: true}" >{{account.SchemeCode}} &nbsp; {{account.sbAccount}}</option>
+																			</select>
+																			<div class="custom-selectbox">
+																				<span *ngIf="selectedAccount == '' "> {{"SELECT_ACCOUNT" | translate }} </span>
+																				<span *ngIf="selectedAccount != '' ">{{selectedAccountDisplay}}</span>
+																				<span class="right-arrow"></span> </div>
+																			<p class="error-message"></p>
+																	</div>
+																</div>
+															</div>
+															</div>
+														</div>
+												</div>
+											</div>
+											<div class="col-sm-12 col-12 col-md-12">
+												<div class="widget-box5 mb-3">
+													<div class="bg-white1 pad-custom">
+														<div class="vspacer5 customize d-none d-md-block d-lg-block d-xl-block"></div>
+														<div class="row1">
+															<div class="col-md-12 col-12">
+																<form [formGroup]="myChequeBookForm" (ngSubmit)="submit()">
+																	<div class="row1">
+																		<div class="col-md-6 col-lg-6 col-xl-4 col-12">
+																			<div class="ux-input">
+																				<label> {{"FROM_DATE" | translate }}</label>
+																				<!-- <input type="text" class="datepicker1" placeholder="Enter Date" autocomplete="off">
+                                                                            <em class=" calendar-ic cal-top"></em> -->
+																				<input type="text" [owlDateTime]="dt1" [owlDateTimeTrigger]="dt1" placeholder="DD/MM/YYYY" [max]="maxTo" readonly formControlName="fromDate">
+																				<owl-date-time [pickerType]="'calendar'" #dt1></owl-date-time> <em class=" calendar-enable" [owlDateTimeTrigger]="dt1"></em>
+																				<p class="error-message"></p>
+																				<p class="error-message" *ngIf="myChequeBookForm.controls['fromDate'].touched && myChequeBookForm.controls['fromDate'].hasError('required')"> {{ 'PLEASE_SELECT_FROM_DATE' | translate }}</p>
+																			</div>
+																		</div>
+																		<div class="col-md-6 col-lg-6 col-xl-4 col-12">
+																			<div class="ux-input">
+																				<label>{{"TO_DATE" | translate }}</label>
+																				<!-- <input type="text" class="datepicker1" placeholder="Enter Date"  autocomplete="off">
+                                                                            <em class=" calendar-ic cal-top"></em> -->
+																				<input type="text" [owlDateTime]="dt2" [owlDateTimeTrigger]="dt2" placeholder="DD/MM/YYYY"   readonly formControlName="toDate" [min]="this.myChequeBookForm.value.fromDate" [max]="maxTo">
+																				<owl-date-time [pickerType]="'calendar'" #dt2></owl-date-time> <em class=" calendar-enable" [owlDateTimeTrigger]="dt2"></em>
+																				<p class="error-message"></p>
+																				<p class="error-message" *ngIf="myChequeBookForm.controls['toDate'].touched && myChequeBookForm.controls['toDate'].hasError('required')"> {{ 'PLEASE_SELECT_TO_DATE' | translate }}</p>
+																			</div>
+																		</div>
+																	</div>
+																</form>
+															</div>
+															<div class="vspacer40 customize d-sm-block d-none"></div>
+															<div class="vspacer40 customize d-sm-block d-none"></div>
+															<div class="vspacer40 customize d-sm-block d-none"></div>
+															<div class="vspacer10 customize d-sm-block d-none"></div>
+														</div>
+													</div>
+												</div>
+											</div>
+											<div class="col-12 col-md-12">
+												<ul class="bottom-footer1">
+													<li>
+														<div class="btn-div hide-m">
+															<button class="ux-button secondary sm-mob" type="button" (click)="onCancel()">{{'CANCEL' | translate}}</button>
+														</div>
+														<div class="btn-div w100">
+															<button class="ux-button primary sm-mob" type="submit" (click)="submit()">{{ 'SUBMIT' | translate }}</button>
+														</div>
+													</li>
+												</ul>
+											</div>
+											<div class="col-12 col-md-12  mt-3">
+												<div class="row1">
+													<div class="col-sm-12 col-12 col-md-12">
+														<div class="widget-box5 mb-3">
+															<div class="row1">
+																<div class="col-sm-12 col-12 col-md-12">
+																	<ul class="cheque-book-new-grid">
+																		<li *ngFor="let cheque of chequeHistory,let i=index;">
+																			<div class="grid-info">
+																				<div class="full-info">
+																					<h6>  {{"CHEQUEBOOK_NUMBER" | translate }}</h6>
+																					<h5> {{"CHEQUEBOOK_NUMBER" | translate }} {{i+1}}</h5> </div>
+																			</div>
+																			<div class="grid-info">
+																				<div class="full-info">
+																					<h6> {{"FROM_CHEQUE" | translate }}</h6>
+																					<!-- <h5>8690434</h5> -->
+																					<h5 *ngIf="cheque.cheque_Number.length==1"> {{'00000' + cheque.cheque_Number}}</h5>
+																					<h5 *ngIf="cheque.cheque_Number.length==2"> {{'0000' + cheque.cheque_Number}}</h5>
+																					<h5 *ngIf="cheque.cheque_Number.length==3"> {{'000' + cheque.cheque_Number}}</h5>
+																					<h5 *ngIf="cheque.cheque_Number.length==4"> {{'00' + cheque.cheque_Number}}</h5>
+																					<h5 *ngIf="cheque.cheque_Number.length==5"> {{'0' + cheque.cheque_Number}}</h5>
+																					<h5 *ngIf="cheque.cheque_Number.length==6"> {{ cheque.cheque_Number}}</h5> </div>
+																			</div>
+																			<div class="grid-info">
+																				<div class="full-info">
+																					<h6>  {{"TO_CHEQUE" | translate }}</h6>
+																					<h5 *ngIf="(+cheque.cheque_Number + +cheque.noOfLeaves - 1).toString().length==1">{{'00000' + (+cheque.cheque_Number + +cheque.noOfLeaves - 1)}}</h5>
+																					<h5 *ngIf="(+cheque.cheque_Number + +cheque.noOfLeaves - 1).toString().length==2">{{'0000' + (+cheque.cheque_Number + +cheque.noOfLeaves - 1)}}</h5>
+																					<h5 *ngIf="(+cheque.cheque_Number + +cheque.noOfLeaves - 1).toString().length==3">{{'000' + (+cheque.cheque_Number + +cheque.noOfLeaves - 1)}}</h5>
+																					<h5 *ngIf="(+cheque.cheque_Number + +cheque.noOfLeaves - 1).toString().length==4">{{'00' + (+cheque.cheque_Number + +cheque.noOfLeaves - 1)}}</h5>
+																					<h5 *ngIf="(+cheque.cheque_Number + +cheque.noOfLeaves - 1).toString().length==5">{{'0' + (+cheque.cheque_Number + +cheque.noOfLeaves - 1)}}</h5>
+																					<h5 *ngIf="(+cheque.cheque_Number + +cheque.noOfLeaves - 1).toString().length==6">{{ (+cheque.cheque_Number + +cheque.noOfLeaves - 1)}}</h5> </div>
+																			</div>
+																			<div class="grid-info">
+																				<div class="full-info">
+																					<h6>  {{"NUMBER_OF_LEAVES" | translate }} {{"CHEQUEBOOK_NUMBER" | translate }}</h6>
+																					<h5>{{cheque.noOfLeaves}}</h5> </div>
+																			</div>
+																			<div class="grid-info">
+																				<div class="full-info">
+																					<h6>  {{"DESTROYED" | translate }}</h6>
+																					<h5>{{cheque.destroyed}}</h5> </div>
+																			</div>
+																			<div class="grid-info">
+																				<div class="full-info">
+																					<h6>  {{"STOPED" | translate }}</h6>
+																					<h5>{{cheque.stopped}}</h5> </div>
+																			</div>
+																			<div class="grid-info">
+																				<div class="full-info">
+																					<h6>  {{"USED_LEAVES" | translate }}</h6>
+																					<h5>{{cheque.usedLeaves}}</h5> </div>
+																			</div>
+																			<div class="grid-info">
+																				<div class="full-info">
+																					<h6>  {{"UNUSED_LEAVES" | translate }}</h6>
+																					<h5>{{cheque.unusedLeaves}}</h5> </div>
+																			</div>
+																			<!-- <div class="grid-info">
+                                                                                    <div class="full-info view-btn text-left">
+                                                                                        <button class="ux-button sm secondary md" onclick="window.location.href='my-cheque-book-view-details.html'">View</button>
+																					</div>
+                                                                                </div> -->
+																		</li>
+																	</ul>
+																</div>
+															</div>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+									<!-- Greencard2 End here -->
+								</div>
+								<div class="col-12 col-md-12 col-lg-12 col-xl-3 d-none d-xl-block">
+									<div class="right-ads">
+										<a> <img src="assets/images/banner/my-card-banner.jpg"> </a>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!--.container-fluid-->
+			</div>
+			<!--.body-page-container-->
+		</div>
+		<!--.right-col-container-->
+	</div>
+	<!--.right-main-column-->
+</div>
+<!-- main -->
+<!-- Select Accounts Popup Start-->
+<div class="popup-bottom sel-account">
+	<div class="row1">
+		<div class="col-10">
+			<h4>{{"SELECT_FROM_ACCOUNT" | translate }}</h4> </div>
+		<div class="col-2">
+			<button class="ux-button-icon close-btn" (click)="closePopup()"> <img src="assets/images/svg/close-b.svg" alt="cross-icon" class="img-vsmall"> </button>
+		</div>
+	</div>
+	<div class="row1">
+		<div class="col-12">
+			<div class="row1">
+				<div class="col-12 col-md-12" *ngFor="let account of accList; let i = index">
+					<div class="ux-selection mar-custom">
+						<label class="ux-selection2">{{account.SchemeCode}}  {{account.sbAccount}}
+							<input type="radio" [value]="account.accountNo" name="upi-account" [checked]="selectedAccount == item?.accountNo ? true : false" [(ngModel)]="selectedAccount" [ngModelOptions]="{standalone: true}" > <span class="checkmark"></span> </label>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="row mt-2">
+		<div class="col-12 text-center">
+			<button class="ux-button primary submit-btn2" (click)="onFromAccountSelect(selectedAccount);closePopup()">{{ 'SUBMIT' | translate }}</button>
+		</div>
+	</div>
+</div>
+<!-- Select Accounts Popup End-->

@@ -1,0 +1,75 @@
+{
+  "_from": "cordova-plugin-iroot@^2.1.0",
+  "_id": "cordova-plugin-iroot@2.1.0",
+  "_inBundle": false,
+  "_integrity": "sha512-pGTXNTflIi3FlWhiUoABhCfkrhsYXWvWjhxRUxjRAZ4CJpkf8lt0P22ZsI4H/CgzcL9aIqjWjzXc80Zc8ZMDdg==",
+  "_location": "/cordova-plugin-iroot",
+  "_phantomChildren": {},
+  "_requested": {
+    "type": "range",
+    "registry": true,
+    "raw": "cordova-plugin-iroot@^2.1.0",
+    "name": "cordova-plugin-iroot",
+    "escapedName": "cordova-plugin-iroot",
+    "rawSpec": "^2.1.0",
+    "saveSpec": null,
+    "fetchSpec": "^2.1.0"
+  },
+  "_requiredBy": [
+    "/"
+  ],
+  "_resolved": "https://registry.npmjs.org/cordova-plugin-iroot/-/cordova-plugin-iroot-2.1.0.tgz",
+  "_shasum": "d499a2e093c6e23caf5d4463d22ed1efd70b90fe",
+  "_spec": "cordova-plugin-iroot@^2.1.0",
+  "_where": "/Users/apple/Desktop/project/PSB_UPI/PSB THEME/V1.0",
+  "author": {
+    "name": "Elderov Ali",
+    "url": "info@cyberkatze.de"
+  },
+  "bugs": {
+    "url": "https://github.com/WuglyakBolgoink/cordova-plugin-iroot/issues"
+  },
+  "bundleDependencies": false,
+  "cordova": {
+    "id": "cordova-plugin-iroot",
+    "platforms": [
+      "ios",
+      "android"
+    ]
+  },
+  "deprecated": false,
+  "description": "Cordova Jailbreak/Root Detection Plugin for Apache Cordova",
+  "engines": [
+    {
+      "name": "cordova",
+      "version": ">=6.0.0"
+    }
+  ],
+  "homepage": "https://github.com/WuglyakBolgoink/cordova-plugin-iroot#readme",
+  "keywords": [
+    "ecosystem:cordova",
+    "cordova-android",
+    "cordova-ios",
+    "cordova",
+    "jailbreak",
+    "jailbroken",
+    "cydia",
+    "detection",
+    "detector",
+    "root",
+    "rooted",
+    "rootBeer",
+    "android",
+    "ios",
+    "iroot",
+    "plugin"
+  ],
+  "license": "MIT",
+  "name": "cordova-plugin-iroot",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/WuglyakBolgoink/cordova-plugin-iroot.git"
+  },
+  "types": "./types/index.d.ts",
+  "version": "2.1.0"
+}

@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+
+	<html>
+	
+	<head>
+		<meta charset="UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+	    <title> Verification - Migrated User</title>
+		<link href="../css/lib/bootstrap.min.css" rel="stylesheet">
+	    <link href="../css/lib/jquery-ui.min.css" rel="stylesheet">
+	 	<link href="../css/lib/jquery.mCustomScrollbar.min.css" rel="stylesheet">
+		<link href="../css/main.css" rel="stylesheet">
+		
+	</head>	
+
+<body>
+    
+ <div class="main">
+
+   <!--  Header Section Start -->
+                
+		  <header class="global-header brand-bg2 minus-nav">
+			<div class="in-header">
+				<div class="header-icons-lft">   
+					<div class="header-actions">
+						<button class="ux-button-header">
+							<img src="../assets/images/svg/left-arrow.svg"  alt="left-arrow-icon" class="img-small"/>
+						</button>
+				   </div> 
+				</div>  
+				 <div class="brand-logo">
+					<h3>Verification</h3>
+				 </div> 
+			   <div class="header-icons-rit">
+					<div class="header-actions">
+					 </div> 
+				</div> 
+			</div> 
+		</header> 
+
+<!-- Header Section End -->
+ 
+ <div class="right-main-column minus-rt-col mar-custom">
+   	<div class="right-col-container">
+     
+    <div class="body-page-container">
+	   <div class="container-fluid">
+		  <div class="row">
+			 <div class="bg-section">
+				<div class="col-12">
+					<div class="row1">
+						<div class="col-sm-12 col-12 col-md-12">
+							  <div class="white-bg1">
+								  <div class="upiId"> 
+								   <div class="row1">	
+									 <div class="col-12 col-sm-12 col-md-12">
+									   <div class="ux-input">
+										   <label for="upiId">UPI ID</label>
+												<select required="" >
+													<option value="">Select</option>
+													<option value="9768214501@psb" selected="selected">9768214501@psb</option>
+												</select>
+											   <p></p>
+											</div>
+											<div class="ux-input">
+												<label for="bank">Bank</label>
+													 <select required="" >
+														 <option value="">Select</option>
+														 <option value="9768214501@psb">Punjab & Sind Bank</option>
+													 </select>
+													<p></p>
+												 </div>
+												 <div class="ux-input">
+													<label for="accountnumber">Re-enter Account Number</label>
+													   <input type="text" name="accountnumber" placeholder="" required>
+													  <p></p>
+											     </div>
+										  </div>
+									  </div> 
+								  </div>	
+							  </div>
+						  </div>
+                        </div> 
+					 </div> 
+				  </div>
+			   </div> 
+ 
+            	</div> 
+			</div> 
+
+			    <!-- footer section start -->
+	
+				<div class="footer-container sticky-actions">
+					<div class="footer-inactions minus-rt-col">
+						<div class="container-fluid">
+							<div class="row">
+							   <div class="col-12 col-md-12 col-lg-12 text-center">
+									 <button  id="select-account" class="ux-button primary md" onclick="window.location.href = '#'">Proceed</button>
+								 </div>
+							 </div> 
+						</div> 
+					</div> 
+				</div> 
+			 
+	           <!-- footer section end -->
+
+		  </div>  
+        </div> 
+        
+    </div> 
+    
+  <!-- main -->
+  
+
+<!-- =========== modal popup start ===============  -->
+
+
+<!-- Select Account Popup Start -->
+
+<div class="popup-bottom selectaccount">
+	<div class="row1">
+	  <div class="col-10">
+		<h4>Select Account</h4>
+	  </div>
+	  <div class="col-2">
+		<button class="ux-button-icon">
+			<img src="../assets/images/svg/close-b.svg" alt="cross-icon" class="img-vsmall">
+		</button> 
+	  </div>
+	</div>
+	<form action="#" id="selectaccount-form"> 
+		<div class="row2">
+			<div class="col-12 p-0">
+				  <div class="col-sm-12 col-12 col-md-12">
+					 <div class="ux-input">
+						 <input type="text" placeholder="Search banks" required>
+						 <p class="mb-0"></p>
+					 </div> 
+				 </div> 
+			  </div>
+		  </div>
+		  <div class="full-width1">
+			<ul class="list2">
+				<li>
+					  <div class="ux-selection mar-4">	  
+						<label class="ux-selection2"> A.P. Mahesh Co-operative Bank
+							<input type="radio" checked="checked" name="radioboxdemo1">
+							<span class="checkmark"></span>
+						  </label>
+					  </div> 
+				</li>
+				<li>
+					 <div class="ux-selection mar-4">	  
+						<label class="ux-selection2"> Andhra Pradesh Grameen Vikas Bank
+							<input type="radio" name="radioboxdemo1">
+							<span class="checkmark"></span>
+						  </label>
+					 </div> 
+				</li>
+				<li>
+					<div class="ux-selection mar-4">	  
+						 <label class="ux-selection2"> AU Small Finance Bank
+							 <input type="radio" name="radioboxdemo1">
+							 <span class="checkmark"></span>
+						   </label>
+					</div> 
+			  </li>
+		   </ul>
+		  </div>
+
+		 <div class="row">
+			<div class="col-12 text-center">
+			   <button id="debit-details" class="ux-button primary" onclick="window.location.href = '#'">Proceed</button>
+			</div>
+		 </div>
+	</form>
+</div> 
+
+<!-- Select Account Popup End -->	
+
+<!-- Select Debit Card Popup Start -->
+
+<div class="popup-bottom debitcard-info">
+	<div class="row1">
+	  <div class="col-10">
+		<h4>Debit Card Details</h4>
+	  </div>
+	  <div class="col-2">
+		<button class="ux-button-icon">
+			<img src="../assets/images/svg/close-b.svg" alt="cross-icon" class="img-vsmall">
+		</button> 
+	  </div>
+	</div>
+	<form action="#" id="debitcard-form"> 
+		<div class="row1">
+		 <div class="col-12">
+			<div class="ux-input digit-input">
+				<label for="">Enter Last 6 Digit of Debit Card</label>
+				  <input type="text" placeholder="" required>
+				   <span class="show-digit">XXXX XXXX XX</span>
+				  <p class="mb-0"></p>
+			  </div>
+		   </div> 
+			<div class="col-12">
+				  <div class="ux-input">
+						<label>Expiry Date</label>
+						  <input type="text" class="datepicker1" placeholder="DD/MM">
+						  <em class="calendar-ic cal-top"></em>
+						<p class="mb-0"></p>
+					 </div> 	 
+			  </div>
+			  <div class="col-12">
+				  <span class="small-icons">
+					  <img src="../assets/images/svg/question.svg" alt="question-icon"/>
+					</span>
+                  <ol class="orderlist2 mar-b">
+					  <li>UPI PIN is used for authenticating your UPI transactions.</li>
+					  <li>Never share your UPI PIN with anyone.</li>
+				  </ol>
+			  </div>
+		 </div>
+
+		 <div class="row">
+			<div class="col-12 text-center">
+			   <button class="ux-button primary debit-details" onclick="window.location.href = '#'">Proceed</button>
+			</div>
+		 </div>
+	</form>
+</div> 
+
+<!-- Select Debit Card Popup End -->	
+
+
+ <!-- Verification Popup Start -->
+
+<div class="popup-bottom verification1">
+	<div class="row">
+	  <div class="col-12">
+		<h4 class="text-center">Verification</h4>
+	  </div>
+	</div>
+	<form action="#" id="verification-form"> 
+		<div class="row">
+			<div class="col-12">
+				<p>
+					Welcome back to the new PSB BHIM UPI services! Please verify your account details to proceed further
+				</p>
+			</div>
+		</div>
+	  <div class="row">
+		  <div class="col-12 text-center">
+			 <button class="ux-button primary">ok</button>
+		  </div>
+	   </div>
+	</form>
+</div> 
+
+
+<div class="popup-bottom verification2">
+	<div class="row">
+	  <div class="col-12">
+		<h4 class="text-center">Verification</h4>
+	  </div>
+	</div>
+	<form action="#" id="verification-form2"> 
+		<div class="row">
+			<div class="col-12">
+				<p>
+					Your account verification was not successful and you have exceeded the maximum attempts. Please OK to Register for the BHIM UPI services
+				</p>
+			</div>
+		</div>
+	  <div class="row">
+		  <div class="col-12 text-center">
+			 <button class="ux-button primary">ok</button>
+		  </div>
+	   </div>
+	</form>
+</div> 
+
+
+<div class="popup-bottom verification3">
+	<div class="row">
+	  <div class="col-12">
+		<h4 class="text-center">Verification</h4>
+	  </div>
+	</div>
+	<form action="#" id="verification-form3"> 
+		<div class="row">
+			<div class="col-12">
+				<p>
+					Your account verification was not successful as the enter details are invalid. Please try again
+				</p>
+			</div>
+		</div>
+	  <div class="row">
+		  <div class="col-12 text-center">
+			 <button class="ux-button primary">ok</button>
+		  </div>
+	   </div>
+	</form>
+</div> 
+
+<!-- Verification Popup End -->	
+ 
+<div class="ios-nav-overlay"></div> 
+
+
+<!-- =========== modal popup end ===============  -->
+
+<script src="../js/lib/jquery.min.js"></script>
+<script src="../js/lib/bootstrap.min.js"></script>
+<script src="../js/lib/jquery-ui.min.js"></script>
+<script src="../js/lib/popper.min.js"></script>
+<script src="../js/lib/jquery.mousewheel.min.js"></script>
+<script src="../js/lib/jquery.mCustomScrollbar.js"></script>
+<script src="../js/lib/datatables.min.js"></script>
+<script src="../js/common.js"></script>
+
+<script type="text/javascript">
+	//  createGlobalNavMore();
+	 
+	$("ul.info-list li").click(function(){
+		console.log('its working');
+		  $("ul.info-list li").removeClass("active");
+		if (!$(this).hasClass('active') ) {
+		   $(this).addClass('active');
+	    } else {
+		   $(this).removeClass('active');
+	    }
+	 });  
+
+</script>
+
+</body>
+</html>

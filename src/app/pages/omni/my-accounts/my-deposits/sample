@@ -1,0 +1,306 @@
+<!-- ======== body page content start from here ======== -->
+
+<div class="body-page-container main-dashborad">
+    <div class="container-fluid">
+
+        <div class="row">
+            <div class="col-12 p-0">
+                <div class="breadcrumb">
+                    <ul class="lst-breadcrumb">
+                        <li>
+                            <a [routerLink]="['/dashboard']">{{"HOME" | translate }}</a>
+                        </li>
+                        <!-- <li>
+                            <a href="my-accounts.html">My Accounts</a>
+                        </li> -->
+                        <li>
+                            {{"MY_ACCOUNTS" | translate }}
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <!--.row -->
+
+        <div class="vspacer30"></div>
+        <div class="row no-gutters">
+            <div class="col-12">
+                <div class="row1">
+                    <div class="col-12">
+                        <div class="ux-acc-container" style="margin: 0">
+                            <div class="acc-slide" [class.slide-active]="isActive" *ngIf="mySavingAccount.length > 0">
+                                <a href="javascript:;" class="arrow-toggle"
+                                    (click)="isActive = !isActive;isActiveCurrent?isActiveCurrent=!isActiveCurrent:isActiveCurrent;">
+                                    <h6 class="panel-title">
+                                        <em>{{"SAVING_ACC" | translate }}</em>
+                                    </h6>
+                                    <i></i>
+                                </a>
+                                <div class="acc-slide-content"
+                                    [style.display]="isActive ? 'block' : 'none'">
+                                    <div class="slide-body pad-0">
+                                        <div class="row1">
+                                            <div class="col-12 col-xl-12 col-lg-12 col-md-12 col-sm-12">
+                                                <div class="datatable-box">
+                                                    <div class="table-responsive">
+                                                        <table id="dt-sample3"
+                                                            class="table table-hover display table-borderless">
+                                                            <thead>
+                                                                <tr>
+                                                                    <th>{{"ACCOUNT_NUMBER" | translate }}
+                                                                    </th>
+                                                                    <th class="display-n">
+                                                                        {{"BRANCH" | translate }}</th>
+                                                                    <th class="display-n">
+                                                                        {{"CURRENCY" | translate }}</th>
+                                                                    <th class="text-right">
+                                                                        {{"AVAIL_BAL" | translate }}</th>
+                                                                    <th class="text-right display-n">
+                                                                        {{"LEDGER_BAL" | translate }}</th>
+                                                                </tr>
+                                                            </thead>
+                                                            <tbody>
+                                                                <tr class="no-borders"
+                                                                    *ngFor="let account of mySavingAccount;index as i"
+                                                                    (click)="goToAccountDetails(account,i)">
+                                                                    <td>{{account.accountNumber}}</td>
+                                                                    <td class="display-n">
+                                                                        {{account.BRANCHADDRESS}}</td>
+                                                                    <td class="display-n">
+                                                                        {{account.currency}}</td>
+                                                                    <td class="text-right"><img
+                                                                            src="assets/images/svg/rupee-grey.svg"
+                                                                            class="list-image"
+                                                                            alt="rupees-icon">{{account?.sbBalance | customcurrency}}
+                                                                    </td>
+                                                                    <td class="text-right display-n"><img
+                                                                            src="assets/images/svg/rupee-grey.svg"
+                                                                            class="list-image"
+                                                                            alt="rupees-icon">{{account?.LedgerBalance | customcurrency}}
+                                                                    </td>
+                                                                </tr>
+                                                                <tr class="t-footer">
+                                                                    <td><em>{{"TOTAL" | translate }}</em>
+                                                                    </td>
+                                                                    <td class="display-n"> </td>
+                                                                    <td class="display-n"> </td>
+                                                                    <td class="text-right"><em><img
+                                                                                src="assets/images/svg/rupee2.svg"
+                                                                                class="value-image"
+                                                                                alt="rupees-icon">{{getTotalAvailBal(mySavingAccount) | customcurrency}}</em>
+                                                                    </td>
+                                                                    <td class="text-right display-n">
+                                                                        <em><img src="assets/images/svg/rupee2.svg"
+                                                                                class="value-image"
+                                                                                alt="rupees-icon">{{getTotalLedgerBal(mySavingAccount) | customcurrency}}</em>
+                                                                    </td>
+                                                                </tr>
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+
+
+                            <div class="acc-slide" [class.slide-active]="isActiveCurrent" *ngIf="myCurrentAccount.length > 0">
+                                <a href="javascript:;" class="arrow-toggle"
+                                    (click)="isActiveCurrent = !isActiveCurrent;isActive?isActive=!isActive:isActive;">
+                                    <h6 class="panel-title">
+                                        <em>{{"CURRENT_ACCOUNT" | translate }}</em>
+                                    </h6>
+                                    <i></i>
+                                </a>
+                                <div class="acc-slide-content"
+                                    [style.display]="isActiveCurrent ? 'block' : 'none'">
+                                    <div class="slide-body pad-0">
+                                        <div class="row1">
+                                            <div class="col-12 col-xl-12 col-lg-12 col-md-12 col-sm-12">
+                                                <div class="datatable-box">
+                                                    <div class="table-responsive">
+                                                        <table id="dt-sample3"
+                                                            class="table table-hover display table-borderless">
+                                                            <thead>
+                                                                <tr>
+                                                                    <th>{{"ACCOUNT_NUMBER" | translate }}
+                                                                    </th>
+                                                                    <th class="display-n">
+                                                                        {{"BRANCH" | translate }}</th>
+                                                                    <th class="display-n">
+                                                                        {{"CURRENCY" | translate }}</th>
+                                                                    <th class="text-right">
+                                                                        {{"AVAIL_BAL" | translate }}</th>
+                                                                    <th class="text-right display-n">
+                                                                        {{"LEDGER_BAL" | translate }}</th>
+                                                                </tr>
+                                                            </thead>
+                                                            <tbody>
+                                                                <tr class="no-borders"
+                                                                    *ngFor="let account of myCurrentAccount"
+                                                                    (click)="goToAccountDetails(account,i)">
+                                                                    <td>{{account.accountNumber}}</td>
+                                                                    <td class="display-n">
+                                                                        {{account.BRANCHADDRESS}}</td>
+                                                                    <td class="display-n">
+                                                                        {{account.currency}}</td>
+                                                                    <td class="text-right"><img
+                                                                            src="assets/images/svg/rupee-grey.svg"
+                                                                            class="list-image"
+                                                                            alt="rupees-icon">{{account?.sbBalance | customcurrency}}
+                                                                    </td>
+                                                                    <td class="text-right display-n"><img
+                                                                            src="assets/images/svg/rupee-grey.svg"
+                                                                            class="list-image"
+                                                                            alt="rupees-icon">{{account?.LedgerBalance | customcurrency}}
+                                                                    </td>
+                                                                </tr>
+                                                                <!-- <tr class="no-borders" onclick="window.location.href = 'saving-account.html'"> 
+                                                                    <td>001849124671</td>
+                                                                    <td class="display-n">Nariman Point</td>
+                                                                    <td class="display-n">INR</td>
+                                                                    <td class="text-right"><img src="assets/images/svg/rupee-grey.svg" alt="rupees-icon">70,000.00</td>
+                                                                    <td class="text-right display-n"><img src="assets/images/svg/rupee-grey.svg" alt="rupees-icon">65,000.00</td>
+                                                                 </tr> -->
+                                                                <tr class="t-footer">
+                                                                    <td><em>{{"TOTAL" | translate }}</em>
+                                                                    </td>
+                                                                    <td class="display-n"> </td>
+                                                                    <td class="display-n"> </td>
+                                                                    <td class="text-right"><em><img
+                                                                                src="assets/images/svg/rupee2.svg"
+                                                                                class="value-image"
+                                                                                alt="rupees-icon">{{getTotalAvailBal(myCurrentAccount) | customcurrency}}</em>
+                                                                    </td>
+                                                                    <td class="text-right display-n">
+                                                                        <em><img src="assets/images/svg/rupee2.svg"
+                                                                                class="value-image"
+                                                                                alt="rupees-icon">{{getTotalLedgerBal(myCurrentAccount) | customcurrency }}</em>
+                                                                    </td>
+                                                                </tr>
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                            <div class="acc-slide" [class.slide-active]="isDeposite" *ngIf="myDepositeAccount.length > 0">
+                                <a href="javascript:;" class="arrow-toggle"
+                                    (click)="isDeposite = !isDeposite;isActive?isActive=!isActive:isActive;">
+                                    <h6 class="panel-title">
+                                        <em>Deposits</em>
+                                    </h6>
+                                    <i></i>
+                                </a>
+                                <div class="acc-slide-content"
+                                    [style.display]="isDeposite ? 'block' : 'none'">
+                                    <div class="slide-body pad-0">
+                                        <div class="row1">
+                                            <div class="col-12 col-xl-12 col-lg-12 col-md-12 col-sm-12">
+                                                <div class="datatable-box">
+                                                    <div class="table-responsive">
+                                                        <table id="dt-sample3"
+                                                            class="table table-hover display table-borderless">
+                                                            <thead>
+                                                                <tr>
+                                                                    <th>{{"ACCOUNT_NUMBER" | translate }}
+                                                                    </th>
+                                                                    <th class="display-n">
+                                                                        Account Type</th>
+                                                                    <th class="display-n">
+                                                                        Start Date</th>
+                                                                    <th class="display-n">
+                                                                        Maturity Date</th>
+                                                                    <th class="display-n">
+                                                                        Currency</th>
+                                                                    <th class="text-right">
+                                                                        Maturity Amount</th>
+                                                                    <th class="text-right display-n">
+                                                                        Interest Rate</th>
+                                                                    <th class="text-right">
+                                                                        Curent Balance</th>
+                                                                </tr>
+                                                            </thead>
+                                                            <tbody>
+                                                                <tr class="no-borders"
+                                                                    *ngFor="let account of myDepositeAccount"
+                                                                    (click)="goToAccountDetails(account,i)">
+                                                                    <td>{{account?.accountNumber}}</td>
+                                                                    <td class="display-n">
+                                                                        {{account?.accountType | titlecase }}</td>
+                                                                    <td class="display-n">
+                                                                        {{account.depositStartDate ?  (account?.depositStartDate | date : 'dd/MM/yyyy') : '-' }}</td>
+                                                                    <td class="display-n">
+                                                                        {{account.maturityDate ?  (account?.maturityDate | date : 'dd/MM/yyyy'):'-' }}</td>
+                                                                    <td class="display-n">
+                                                                        {{account?.currency}}</td>
+                                                                    <td class="text-right account_adjust"><img *ngIf="account.maturityAmount != null"
+                                                                            src="assets/images/svg/rupee-grey.svg"
+                                                                            class="list-image"
+                                                                            alt="rupees-icon">{{account.maturityAmount ? (account?.maturityAmount | customcurrency) : '-'}}
+                                                                    </td>
+                                                                    <td class="text-right display-n">
+                                                                        {{account.interest_Rate ? account?.interest_Rate+'%' : '-'}}</td>
+                                                                    <td class="text-right account_adjust"><img
+                                                                            src="assets/images/svg/rupee-grey.svg"
+                                                                            class="list-image"
+                                                                            alt="rupees-icon">{{account.sbBalance ? (account?.sbBalance | customcurrency) : '-'}}
+                                                                    </td>
+                                                                </tr>
+                                                                <!-- <tr class="no-borders" onclick="window.location.href = 'saving-account.html'"> 
+                                                                    <td>001849124671</td>
+                                                                    <td class="display-n">Nariman Point</td>
+                                                                    <td class="display-n">INR</td>
+                                                                    <td class="text-right"><img src="assets/images/svg/rupee-grey.svg" alt="rupees-icon">70,000.00</td>
+                                                                    <td class="text-right display-n"><img src="assets/images/svg/rupee-grey.svg" alt="rupees-icon">65,000.00</td>
+                                                                 </tr> -->
+                                                                <tr class="t-footer">
+                                                                    <td><em>{{"TOTAL" | translate }}</em>
+                                                                    </td>
+                                                                    <td class="display-n"> </td>
+                                                                    <td class="display-n"> </td>
+                                                                    <td class="display-n"> </td>
+                                                                    <td class="display-n"> </td>
+                                                                    <td class=""> </td>
+                                                                    <td class="display-n"> </td>
+                                                                    <td class="text-right account_adjust">
+                                                                        <em><img src="assets/images/svg/rupee2.svg"
+                                                                                class="value-image"
+                                                                                alt="rupees-icon">{{getTotalCurrentBal(myDepositeAccount) | customcurrency }}</em>
+                                                                    </td>
+                                                                </tr>
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+
+
+
+
+
+    </div>
+    <!--.container-fluid-->
+</div>
+<!--.body-page-container-->

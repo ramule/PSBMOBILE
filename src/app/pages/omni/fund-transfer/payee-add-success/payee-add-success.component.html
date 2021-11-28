@@ -1,0 +1,76 @@
+<div class="main">
+    <div class="nav-overlay"></div>
+    <div class="right-main-column">
+        <div class="right-col-container full-width">
+            <div class="body-page-container main-dashborad">
+                <div class="container-fluid">
+
+                  <div class="row">
+                        <div class="col-12 p-0">
+                            <div class="breadcrumb">
+                                <ul class="lst-breadcrumb">
+                                      <li>
+                                        <a routerLink="/managePayee">{{"MANAGE_PAYEE" | translate }} </a>
+                                    </li>
+                                    <li>
+                                        <a routerLink="/addPayee">{{"ADD_PAYEE" | translate }} </a>
+                                    </li>
+                                   <li> {{'RECEIPT' | translate}} </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                 <!--.row -->
+                 <div class="vspacer30"></div>
+                    <div class="row no-gutters">
+                        <div class="col-12">
+                           <div class="row1">
+                               <div class="col-12">
+                                 <div class="white-box1">
+                                    <div class="row1">
+                                        <div class="col-12 col-xl-3 col-lg-3 col-md-2 col-sm-12">
+                                        </div>
+                                        <div class="col-12 col-xl-6 col-lg-6 col-md-8 col-sm-12">
+                                            <div class="row1">
+                                                <div class="success-box">
+                                                    <img *ngIf="receiptType =='success'" src="./assets/images/svg/success.svg" alt="success-icon"> 
+                                                    <img *ngIf="receiptType =='failure'" src="./assets/images/svg/failurevg" alt="success-icon">   
+          
+                                                    <h3>{{receiptResp.msg}}</h3>
+                                                    <div class="vspacer5"></div>	
+                                                    <h3 *ngIf="receiptResp.RRN != ''">{{'REFERENCE_NUMBER' | translate}} : {{receiptResp.RRN}}</h3>
+                                          
+                                                  </div>
+                                             </div>
+                                          </div>
+                                        <div class="col-12 col-xl-3 col-lg-3 col-md-2 col-sm-12">
+                                        </div>
+                                    </div>
+                                  </div>
+                               <div class="ux-footer border-n p-0">
+                                <div class="row1">
+                                    <div class="col-6 col-lg-6 col-md-6 col-sm-6">
+                                        <button class="ux-button secondary w-100 d-block d-sm-block d-xl-none d-lg-none d-md-none" (click)="goToPage('managePayee')">{{'PAYEE_LIST' | translate}}</button>
+                                      </div>
+                                    <div class="col-6 col-lg-6 col-md-6 col-sm-6">
+                                        <button class="ux-button primary w-100 d-block d-sm-block d-xl-none d-lg-none d-md-none" (click)="goToPage('ownBanks')">{{"FUND_TRANSFER" | translate }}</button>
+                                      </div>
+                                   </div>
+                                  <div class="row  d-none d-sm-none d-xl-block d-lg-block d-md-block">
+                                    <div class="col-12 col-lg-12 col-md-12 col-sm-12 p-0">
+                                         <button class="ux-button primary float-right ml-4" (click)="goToPage('ownBanks')">{{"FUND_TRANSFER" | translate }}</button>
+                                         <button class="ux-button  secondary float-right" (click)="goToPage('managePayee')">{{'PAYEE_LIST' | translate}}</button>
+                                      </div>
+                                   </div>
+                               </div>
+                             </div>
+                          </div>
+                        </div>
+                        
+                    </div>
+
+                </div><!--.container-fluid-->
+            </div><!--.body-page-container-->  
+        </div>
+    </div>
+</div>

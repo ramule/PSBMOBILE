@@ -1,0 +1,278 @@
+/* You can add global styles to this file, and also import other style files */
+
+
+/* You can add global styles to this file, and also import other style files */
+
+// .compact .global-nav {width:70px}
+// .compact .global-nav .nav-items .lst-nav-items li a{font-size:0px!important}
+// .compact  .main .right-main-column{margin-left: 70px;}
+// .compact .main  .global-header {left:70px}
+// .compact  .global-nav .nav-items .lst-nav-items li a img {object-fit:conatin ; margin-top:0px; width: 25px; height: 22px;}
+.myProfile .owl-dots {
+    bottom: -23px;
+    margin-left: -32px !important;
+    top: auto !important;
+}
+.dataTables_length{
+    display:none;
+  }
+  .dataTables_filter{
+    display:block; float: none !important; text-align: right; padding:0 15px;
+    input {
+        width: 250px !important;
+    }
+  }
+.manageAccount .owl-dots {
+    margin-left: -32px !important;
+}
+
+.rejectPendingReq .ios-collect-reject-css {
+    -webkit-user-select: text !important;
+}
+
+#map {
+    height: calc(100vh - 240px)
+}
+.apexcharts-canvas{
+    left:0; right:0; margin:0 auto;
+}
+.locate-us .branch-searchresult .branch-lst ul {
+    height: calc(100vh - 240px);
+    overflow: auto;
+}
+
+.dashboard-slider .owl-theme .owl-dots .owl-dot.active span {
+    background-color: #FFF200;
+    opacity: 1;
+}
+
+.owl-theme .owl-dots .owl-dot span {
+    width: 7px;
+    height: 7px;
+}
+
+.manage-accounts-slider .owl-theme .owl-dots .owl-dot.active span {
+    background-color: #FFF200;
+    opacity: 1;
+}
+
+.upi-profile-slider .owl-theme .owl-dots .owl-dot.active span {
+    background-color: #007C3D;
+    opacity: 1;
+}
+
+a.mydisabled {
+    pointer-events: none;
+    cursor: default;
+    color: #bebebe;
+}
+
+.mydisabled {
+    pointer-events: none;
+    cursor: default;
+    color: #bebebe;
+}
+
+a.resendActive {
+    pointer-events: visible;
+    color: #007C3D;
+}
+
+.resendActive {
+    pointer-events: visible;
+    cursor: pointer;
+    color: #007C3D !important;
+}
+
+// .white-box2 .bg-img {
+//     width: 112px;
+//     top: -8px;
+// }
+
+.white-box2 .success #collect-success {
+    width: calc(100% - 80px);
+}
+
+.my-pagination .ngx-pagination .current {
+    background: #007C3D !important;
+}
+
+// @media (min-width: 767px) {
+//     #bank-logo {
+//         width: 175px;
+//         top: -38px;
+//     }
+// }
+
+body {
+    padding-top: env(safe-area-inset-top);
+    padding-bottom: env(safe-area-inset-top);
+}
+
+.main.iosAfterImageUpload {
+    height: 97vh;
+    &.iphone12 {
+        height: 95vh;
+    }
+}
+
+.main.iphone12 .right-main-column {
+    padding-bottom: 50px;
+}
+
+body.iosLogout {
+    padding-bottom: 0!important;
+}
+
+.main.iosAfterImageUpload nav.ios-global-nav3 {
+    margin-bottom: 0!important;
+}
+
+.main.iphone12 nav.ios-global-nav3 {
+    margin-bottom: 0!important;
+}
+
+
+
+
+
+.captcha-container {
+    width:315px;
+   margin:0 auto;
+  }
+
+
+  .captcha-actions input[type=text] {
+   padding:5px;
+   border:1px solid #CCC;
+   border-radius: 10px 0 0 10px;
+   outline: none;
+  }
+  .captcha-actions input[type=button] {
+   outline: none;
+   padding:6px;
+   border:none;
+   background: #CCC;
+   border-radius: 0 10px 10px 0 ;
+  }
+  .captcha-actions a {
+    padding:10px;
+    cursor: pointer;
+    font-size: 15px;
+    font-weight:bold;
+    text-decoration: none;
+    color:#222;
+  }
+
+  .captcha-container .powered-by {
+    font-size:11px;
+    font-family: Arial;
+    color:#CCC;
+    padding:5px;
+    display: block !important;
+  }
+
+  .click-disabled{
+    pointer-events: none;
+    opacity: 0.5;
+  }
+
+
+.copyrighttext{
+    position: absolute; z-index: -1;opacity: 0;
+}
+
+#cards-carousel .owl-theme .owl-dots {
+    margin-top: 4px !important;
+}
+
+.right-ads{
+    overflow: hidden;
+    border-radius: 17px !important;
+}
+
+.right-custom-arrow
+{
+    background: url(assets/images/icons/arrow-down-r.png) no-repeat center center;
+    position: absolute;
+    content: "";
+    width: 11px;
+    height: 12px;
+    right: 12px;
+    top: 32px;
+    background-size: 16px;
+    cursor: pointer;
+}
+
+.grid-list5 li .grid-info:last-child{
+    @media (max-width: 767px) {
+        position: static;
+        display: block;
+        padding: 0px;
+    }
+}
+
+.ux-component5 .ux-dropdown .drp-box .drp-enterdata.active:after{
+    @media (max-width: 767px) {
+        display: none;
+    }
+}
+
+
+
+
+// ###################################### BBPS ############################################
+.widget-box5.min-height{
+    min-height: 265px;
+}
+
+.board-display{
+    padding-left: 34px !important;
+    display:block;
+}
+
+.custom-dropdown-dummy {
+    position: relative;
+    background: url(assets/images/icons/arrow-down-r.png) no-repeat center right;
+    background-position: bottom 11px right 6px; border-bottom: 1px solid rgba(0, 0, 0, 0.3);
+    background-size: 15px;
+    padding-right: 25px;
+    #board-name{
+        position: absolute; top:100%; left:0; border-radius: 0 0 10px 10px;z-index: 99;
+        border: 1px solid gray; width: 100%;background-color:#ffffff;display:none;
+        li{
+            padding:5px;position: relative; cursor:pointer;
+            img{
+                &.boardlogo{
+                    position: absolute;left:4px; top:4px;width: 24px;    object-fit: contain;
+                    height: 24px;
+                }
+            }
+        }
+    }
+   > span.dispayblock{
+       img{width:24px;   object-fit: contain;
+        height: 24px;}
+        display:block;
+      
+        border: none;
+        word-wrap: normal;
+        white-space: nowrap;
+        overflow: hidden;
+        border-radius: 0px;
+        box-shadow: none;
+        margin-bottom: 0px;
+        color: rgba(0, 0, 0, 0.6);
+        display: block;
+        width: 100%;
+        font-size: 1rem;
+        height: 39px;
+        padding: 8px 35px 5px 0px;
+    }
+}
+
+#errorMessage{
+    text-align: left;
+    color: #c51523;
+    display: block;
+}

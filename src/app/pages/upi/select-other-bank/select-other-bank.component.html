@@ -1,0 +1,47 @@
+<div class="right-main-column minus-rt-col">
+    <div class="right-col-container">
+        <div class="body-page-container">
+            <div class="vspacer5"></div>
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-12 p-0">
+                        <ul class="list2">
+                            <li *ngFor="let bank of bankList">
+                                <div class="ux-selection mar-4">
+                                    <!-- <label class="ux-selection2">
+                                        123456789XXXXX<br/>AU Small Finance Bank <br/><span>Overdraft A/c</span>
+                                        <input type="radio" checked="checked" name="radioboxdemo">
+                                        <span class="checkmark"></span>
+                                    </label> -->
+                                    <label class="ux-selection2">
+                                        {{ bank }}
+                                        <input type="radio" checked="checked" name="radioboxdemo" (click)="goToPage('createUpi', bank)">
+                                        <span class="checkmark"></span>
+                                    </label>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="footer-container sticky-actions">
+            <div class="footer-inactions minus-rt-col">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-12 col-md-3 col-lg-4">
+                        </div>
+                        <div class="col-12 col-md-6 col-lg-4">
+                            <button class="ux-button primary" routerLink="/upiLogin">
+                                    {{ 'PROCEED' | translate }}
+                                    <!-- Proceed -->
+                                </button>
+                        </div>
+                        <div class="col-12 col-md-3 col-lg-4">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

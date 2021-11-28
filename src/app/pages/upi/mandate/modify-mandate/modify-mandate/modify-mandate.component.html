@@ -1,0 +1,184 @@
+<div class="main main-bg2">
+
+
+    <div class="right-main-column mar-custom">
+        <div class="right-col-container pad-b">
+
+            <div class="body-page-container">
+                <div class="vspacer5 d-sm-block d-none"></div>
+                <div class="container-fluid">
+                    <form id="request-form" [formGroup]="modifyMandateForm" (ngSubmit)="goToPage('modifyMandateConfirmation')">
+                        <div class="row">
+                            <div class="bg-section2">
+                                <div class="col-12">
+                                    <div class="row1">
+                                        <div class="col-sm-5 col-8 col-md-3 m-auto">
+                                            <div class="ux-input white-input mar-tb">
+                                                <!-- Android Keyboard Start -->
+                                                <!-- <input type="tel" placeholder="₹ 0" autocomplete="off" formControlName="amount" limit-to="12" (blur)="formatCurrency($event.target.value)" id="amt" data-a-sign="Rs."> -->
+                                                <!-- Android Keyboard End -->
+                                                <!-- iOS Keyboard Start -->
+                                                <input type="text" inputmode="decimal" placeholder="₹ 0" autocomplete="off" formControlName="amount" limit-to="12" (blur)="formatCurrency($event.target.value)" id="amt" data-a-sign="Rs.">
+                                                <!-- iOS Keyboard End -->
+                                                <p class="text-center error-message" *ngIf="modifyMandateForm.controls['amount'].hasError('required')  && modifyMandateForm.controls['amount'].touched">
+                                                    {{ 'ENTER_AMOUNT_ERROR' | translate }}
+                                                </p>
+                                                <p class="text-center error-message" *ngIf="modifyMandateForm.controls['amount'].hasError('pattern')">
+                                                    {{ 'ENTER_NUMBER_ERROR' | translate}}</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row1">
+                                        <div class="col-sm-5 col-5 col-md-3 m-auto">
+                                            <div class="ux-input dark-input mar-tb">
+                                                <input type="text" formControlName="remarks" autocomplete="off" limit-to="100" placeholder="{{'REMARKS' | translate}}">
+                                                <p class="text-center error-message" *ngIf="modifyMandateForm.controls['remarks'].hasError('pattern')">
+                                                    {{ 'ENTER_SPECIAL_CHARACTOR_ERROR' | translate}}</p>
+                                                <!-- <p class="text-center error-message"></p> -->
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Info Bottom Container Start -->
+                                    <div class="info-bottom-container">
+                                        <div class="row1 mt-5">
+                                            <div class="col-sm-12 col-12 col-md-12 m-auto">
+                                                <!-- bottom info Start -->
+                                                <div class="bottom-info">
+
+
+                                                    <div class="row1">
+                                                        <div class="col-12">
+                                                            <div class="payee-info ">
+                                                                <div class="info-lft">
+                                                                    <span class="green1">
+                                    <!-- <img src="assets/images/icons/Vodafone_icon.png"
+                                                                        alt="vodafone-icon"> -->
+                                    <h6>{{mandateDetails.payerName | firstLastChar}}</h6>
+
+                                  </span>
+                                                                </div>
+                                                                <div class="info-rit">
+                                                                    <h5>{{mandateDetails.payerName}}</h5>
+                                                                    <h6>{{'UPI_ID' | translate }} : {{mandateDetails.payerAddress}}</h6>
+                                                                    <span class="small-icons" *ngIf="isAmountLimitExceeded" (click)="openPopup('amount-limit-exceeded')">
+                                    <a class="info-btn"><img src="assets/images/svg/question.svg"
+                                        alt="question-icon" /></a>
+                                  </span>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <!-- <form action="#" id="payment-form"> -->
+                                                    <div class="row1">
+                                                        <div class="col-6 col-md-6">
+                                                            <div class="ux-input ux-disabled pb-0">
+                                                                <label>{{'START_DATE' | translate}}</label>
+                                                                <input type="text" class="datepicker1" formControlName="startDate" placeholder="DD/MM/YYYY">
+                                                                <em class="calendar-ic cal-top"></em>
+                                                                <p class="mb0"></p>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-6 col-md-6">
+                                                            <div class="ux-input ux-readonly pb-0">
+                                                                <label>{{'END_DATE' | translate}}</label>
+                                                                <input type="text" class="datepicker1" formControlName="endDate" placeholder="DD/MM/YYYY" readonly (click)="openDatePicker()">
+                                                                <p class="error-message" *ngIf="modifyMandateForm.controls['endDate'].hasError('required')  && modifyMandateForm.controls['endDate'].touched">
+                                                                    {{ 'ENTER_END_DATE' | translate }}
+                                                                </p>
+                                                                <em class="calendar-ic cal-top" (click)="openDatePicker()"></em>
+                                                                <p class="mb0"></p>
+
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row1">
+                                                        <ul class="complaint-list">
+                                                            <li class="bor-n pad-custom">
+                                                                <div class="full-container">
+                                                                    <div class="row1">
+                                                                        <div class="col-12 col-md-12">
+                                                                            <div class="left-info">
+                                                                                <h6>{{'FREQUENCY' | translate}}</h6>
+                                                                                <h5>{{mandateDetails.frequency}}</h5>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </li>
+                                                            <li class="bor-n pad-custom" *ngIf="mandateDetails.frequency != 'ONETIME' && mandateDetails.frequency != 'DAILY' && mandateDetails.frequency != 'ASPRESENTED'">
+                                                                <div class="full-container">
+                                                                    <div class="row1">
+                                                                        <div class="col-12 col-md-12">
+                                                                            <div class="left-info">
+                                                                                <h6>{{'DEBIT_DAY' | translate}}</h6>
+                                                                                <h5>{{mandateDetails.recurrenceRuleType}}</h5>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+
+                                                    <div class="row1 mt-2">
+                                                        <div class="col-12 text-center">
+                                                            <button class="ux-button primary md" type="submit" [disabled]="modifyMandateForm.invalid">{{'PROCEED'
+                                                                | translate}}</button>
+                                                        </div>
+                                                    </div>
+                                                    <!-- </form> -->
+                                                    <!-- <div class="row1">
+                            <div class="col-12 text-center mt-4">
+                              <div class="powered-logo">
+                                <img src="assets/images/logo/powered-upi-logo.svg" alt="powered-upi-logo">
+                              </div>
+                            </div>
+                          </div> -->
+                                                </div>
+                                                <!-- bottom info End -->
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- Info Bottom Container End -->
+
+
+                                </div>
+                            </div>
+
+                        </div>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<!-- Information Popup Start -->
+
+<div class="popup-bottom amount-limit-exceeded">
+    <div class="row">
+        <div class="col-12">
+            <h4 class="text-center"> <img src="./assets/images/svg/information.svg" alt="information-icon">{{'INFORMATION' | translate}}</h4>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12">
+            <p class="mb-0">
+                <!-- You are creating a recurring mandate for amount more than Rs.2000 and it is necessary to provide authentication for every mandate execution in future, failing which mandate will not be executed. -->
+                {{'MANDATE_AMOUNT_EXCEEDS_MSG' | translate}}
+            </p>
+        </div>
+    </div>
+    <div class="row1 mt-2">
+        <div class="col-12 text-center">
+            <button class="ux-button primary md" (click)="closePopup('amount-limit-exceeded')">{{'OK' |
+				translate}}</button>
+        </div>
+    </div>
+</div>
+
+<!-- Information Popup End -->

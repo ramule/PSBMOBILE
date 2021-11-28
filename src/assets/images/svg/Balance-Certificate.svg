@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 30 30">
+  <g id="Group_40095" data-name="Group 40095" transform="translate(-284 -10768)">
+    <g id="Rectangle_18711" data-name="Rectangle 18711" transform="translate(284 10768)" fill="#fff" stroke="#707070" stroke-width="1" opacity="0">
+      <rect width="30" height="30" stroke="none"/>
+      <rect x="0.5" y="0.5" width="29" height="29" fill="none"/>
+    </g>
+    <g id="official-documents" transform="translate(273 10771)">
+      <path id="Path_43993" data-name="Path 43993" d="M78.059,66.118A3.059,3.059,0,1,0,75,63.059,3.062,3.062,0,0,0,78.059,66.118Zm0-4.706a1.647,1.647,0,1,1-1.647,1.647A1.649,1.649,0,0,1,78.059,61.412Z" transform="translate(-57.176 -57.176)" fill="#007c3d"/>
+      <path id="Path_43994" data-name="Path 43994" d="M75,225h9.882v1.412H75Z" transform="translate(-57.176 -214.412)" fill="#007c3d"/>
+      <path id="Path_43995" data-name="Path 43995" d="M75,285h9.882v1.412H75Z" transform="translate(-57.176 -271.588)" fill="#007c3d"/>
+      <path id="Path_43996" data-name="Path 43996" d="M75,345h7.765v1.412H75Z" transform="translate(-57.176 -328.765)" fill="#007c3d"/>
+      <path id="Path_43997" data-name="Path 43997" d="M75,405h6.588v1.412H75Z" transform="translate(-57.176 -385.941)" fill="#007c3d"/>
+      <path id="Path_43998" data-name="Path 43998" d="M37.588,19.12a2.182,2.182,0,0,0-2.179-2.179h-.644v-.229a15.252,15.252,0,0,1,.784-4.833,3.053,3.053,0,0,0,.157-.967v-.089a3.064,3.064,0,0,0-2.353-2.976v-3.2L28.7,0H15V24H36.882V21.176h.706Zm-1.412,0v.644H29.118V19.12a.768.768,0,0,1,.767-.767h5.524A.768.768,0,0,1,36.176,19.12Zm-1.882-8.3v.089a1.644,1.644,0,0,1-.085.521,16.663,16.663,0,0,0-.857,5.279v.229H31.941v-.229a16.663,16.663,0,0,0-.857-5.279A1.645,1.645,0,0,1,31,10.912v-.089a1.647,1.647,0,1,1,3.294,0ZM31.649,4.941H28.412V1.7ZM16.412,22.588V1.412H27V6.353h4.941V7.848a3.064,3.064,0,0,0-2.353,2.976v.089a3.054,3.054,0,0,0,.157.967,15.251,15.251,0,0,1,.784,4.832v.229h-.644a2.182,2.182,0,0,0-2.179,2.179v2.056h.706v1.412Zm19.059,0H29.824V21.176h5.647Z" fill="#007c3d"/>
+    </g>
+  </g>
+</svg>

@@ -1,0 +1,184 @@
+<div class="main bg-m">
+	<div class="right-main-column ">
+		<div class="right-col-container pad-b full-width">
+			<!-- ======== body page content start from here ======== -->
+			<div class="body-page-container main-dashborad bill-wrapper myprofile">
+				<div class="container-fluid">
+					<div class="row">
+						<div class="col-12 p-0">
+							<div class="breadcrumb">
+								<ul class="lst-breadcrumb">
+                                    <li *ngFor="let name of DataService.breadcrumblist">
+                                        <a (click)="DataService.breadcrumroute(name.routeName)">{{name.currentRoute | translate}}</a>
+                                    </li>
+								</ul>
+							</div>
+						</div>
+					</div>
+					<!--.row -->
+					<div class="vspacer15 customize d-none d-md-block d-lg-block d-xl-block"></div>
+					<div class="row no-gutters">
+						<div class="col-12">
+							<div class="row1">
+								<div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-9">
+									<!-- Greencard2 Start here -->
+									<div class="greencard2">
+										<div class="row1 hide-m">
+											<div class="col-md-10 col-12">
+												<h4>Mobile Prepaid</h4> </div>
+											<div class="col-md-2 col-12">
+												<div class="header-actions"> <img src="assets/images/icons/billpay.png" alt="billpay-img" class="small-img"> </div>
+											</div>
+										</div>
+										<div class="row1">
+											<div class="col-sm-12 col-12 col-md-12">
+												<div class="white-box2 mb-3 mt-0 p-0">
+													<div class="info-bottom pad-custom">
+														<div class="info-details py-0 mb-4">
+															<div class="row">
+																<h6>Mobile Number</h6>
+																<h5>{{operatorsDetails.mobileNumber}}</h5> </div>
+														</div>
+														<div class="info-details py-0">
+															<div class="row">
+																<h6>Operator/Service Provider</h6>
+																<h5>{{operatorsDetails.biller_name}}</h5> </div>
+														</div>
+														<div class="info-details py-0">
+															<div class="row">
+																<h6>Circle Name</h6>
+																<h5>{{operatorsDetails.circle_name}}</h5> </div>
+														</div>
+													</div>
+												</div>
+											</div>
+											<div class="col-sm-12 col-12 col-md-12">
+												<div class="white-box2 mb-3  mt-0 py-3">
+													<div class="row1">
+														<div class="col-md-12 col-12">
+															<div class="row1 mb-1">
+																<div class="col-md-4 col-lg-4 col-xl-4 col-12">
+																	<h6 class="detail-heading">Plans</h6> </div>
+															</div>
+														</div>
+													</div>
+													<div class="row1">
+														<div class="col-sm-12 col-12 col-md-12">
+															<div class="ux-nav-tabs" style="margin:0">
+																<div class="flex-container p-0 bg-transparent mb-0">
+																	<div class="full-info">
+																		<div class="responsive6 custom-card bg-custom pad-custom2 mar-custom3  p-0 bg-transparent">
+																			<div class="custom-width">
+																				<ul class="nav nav-tabs nav-justified bor-n" role="tablist">
+																					<li class="nav-item3" *ngIf="topup.length > 0"> <a class="nav-link  show active" data-toggle="tab" (click)="ontabClick('topup')">Topup</a> </li>
+																					<li class="nav-item3"  *ngIf="recommended.length > 0"> <a class="nav-link " data-toggle="tab" (click)="ontabClick('recommended')">Recommended</a> </li>
+																					<li class="nav-item3"  *ngIf="threeGFourGPlans.length > 0"> <a class="nav-link " data-toggle="tab" (click)="ontabClick('threeGFourGPlans')">3G/4G Data</a> </li>
+																					<li class="nav-item3" *ngIf="sms.length > 0"> <a class="nav-link" data-toggle="tab" (click)="ontabClick('sms')">SMS</a> </li>
+																					<li class="nav-item3" *ngIf="roaming.length > 0"> <a class="nav-link" data-toggle="tab" (click)="ontabClick('roaming')">Roaming</a> </li>
+																					<li class="nav-item3" *ngIf="specialTariff.length > 0"> <a class="nav-link show" data-toggle="tab" (click)="ontabClick('specialTariff')">Special Recharges</a> </li>
+																				</ul>
+																			</div>
+																		</div>
+																	</div>
+																</div>
+															</div>
+														</div>
+														<div class="col-12 col-md-12">
+															<div class="tab-content bg-transparent  mt-2">
+																<div id="topup" class="tab-pane active show">
+																	<div class="row1">
+																		<div class="col-sm-12 col-12 col-md-12">
+																			<ul class="bill-reminder-list payment-history-grid border recharge-plan-list">
+																				<li class="grey-th">
+																					<div class="grid-info">
+																						<div class="full-info">
+																							<h6>Amount</h6> </div>
+																					</div>
+																					<div class="grid-info">
+																						<div class="full-info">
+																							<h6>Talk Time</h6> </div>
+																					</div>
+																					<div class="grid-info">
+																						<div class="full-info">
+																							<h6>Validity</h6> </div>
+																					</div>
+																					<div class="grid-info">
+																						<div class="full-info">
+																							<h6></h6> </div>
+																					</div>
+																				</li>
+																				<li  *ngFor="let item of selectedPlan">
+																					<div class="grid-info order-1">
+																						<div class="full-info">
+																							<h6 class="display-mt">Amount</h6>
+																							<h5><img src="assets/images/svg/rupee-bl.svg" alt="rupee-icon">{{item.amount}}</h5> </div>
+																					</div>
+																					<div class="grid-info order-2">
+																						<div class="full-info">
+																							<h6 class="display-mt">Talktime</h6>
+																							<h5>{{item.talktime}}</h5> </div>
+																					</div>
+																					<div class="grid-info order-3">
+																						<div class="full-info">
+																							<h6 class="display-mt">Validity</h6>
+																							<h5 >{{item.validity}} 
+																								<span *ngIf ="item.validity == '1'">Day</span>
+																								<span *ngIf ="item.validity != '1' && item.validity != 'NA' ">Days</span>
+																							
+																							</h5> 
+																						
+																						</div>
+																					</div>
+																					<div class="grid-info order-4">
+																						<div class="full-info view-btn text-right">
+																							<button class="ux-button sm secondary mt-0" (click)="chosenPlan(item)">Select</button>
+																						</div>
+																					</div>
+																					<div class="grid-info order-5 pt-0 w-100">
+																						<div class="full-info">
+																							<h6><b>Description</b>: {{item.plan_description}}</h6>
+																						 </div>
+																					</div>
+																				</li>
+																			</ul>
+																		</div>
+																	</div>
+																</div>
+																
+															</div>
+														</div>
+													</div>
+												</div>
+											</div>
+											<div class="col-12 col-md-12 d-none d-sm-block">
+												<ul class="bottom-footer1">
+													<li>
+														<div class="btn-div w100">
+															<button class="ux-button secondary sm-mob">Back</button>
+														</div>
+													</li>
+												</ul>
+											</div>
+										</div>
+									</div>
+								</div>
+								<!-- Greencard2 End here -->
+								<!-- Right Column Ads Start -->
+								<div class="vspacer5 d-block d-sm-none"></div>
+								<div class="col-12 col-md-12 col-lg-12 col-xl-3  d-none d-sm-block">
+									<div class="right-ads">
+										<a> <img src="assets/images/banner/Banner-ad.png"> </a>
+									</div>
+								</div>
+								<!-- Right Column Ads Ends -->
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!--.right-col-container-->
+	</div>
+	<!--.right-main-column-->
+</div>
+<!-- main -->
